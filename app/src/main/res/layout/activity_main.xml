@@ -7,12 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:layout_height="0dp"
         android:background="@mipmap/i_stock_580115846"
         >
 
@@ -21,7 +20,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
 
         >
 
@@ -42,16 +41,25 @@
                     android:text="@string/app_intro"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
-                    android:layout_marginHorizontal="48dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="2dp"
                     />
                 <Button
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="300dip"
+                    android:minHeight="50dip"
                     android:text="@string/button_intro"
-                    android:background="@color/colorWhite"
+                    android:background="@drawable/roundedcorner"
                     android:textColor="@color/colorBlack"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+
                     />
 
 
