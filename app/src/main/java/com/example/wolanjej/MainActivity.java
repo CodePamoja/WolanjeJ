@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void movetoRegistration() {
         System.out.println("Button pressed");
-        Intent move = new Intent(this,Registartion06.class);
+        Intent move = new Intent(this,CardLink.class);
         startActivity(move);
     }
 
