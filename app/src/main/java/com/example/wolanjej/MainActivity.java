@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,4 +28,11 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.login, menu);
         return true;
     }
+
+    //code for image
+    //ImageView mImageView = (ImageView)findViewById(R.id.mImageView);
+
+//set resource for imageview
+
+    //mImageView.setImageResource(R.drawable.your_image_name);
 }
