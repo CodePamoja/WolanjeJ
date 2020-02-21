@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical" >
+
+
+    <include layout="@layout/toobarwithout"/>
+    <include layout="@layout/imageholder"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Registration"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:text="Please enter your mobile number, then we will send OTP to verify" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="725 000 000"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:textAlignment="center" />
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="200dp"
+        android:background="#9C27B0"
+        android:textColor="#FFFFFF"
+        android:text="Continue"
+        android:layout_marginLeft="20dp"
+        android:layout_height="40dp"
+
+        ></Button>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="By clicking Continue you agree to our terms and condition as well as our privacy policy"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+</LinearLayout>
