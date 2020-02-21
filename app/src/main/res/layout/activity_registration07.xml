@@ -6,19 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <include layout="@layout/toobarwithout"/>
+    <include layout="@layout/imageholder"/>
+
     <TextView
+        android:id="@+id/SetPINTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Set your PIN"
-        android:id="@+id/SetPINTextView"
-        android:textFontWeight="100"
-        android:textStyle="bold"
-        android:textSize="25dp"
         android:textColor="@android:color/black"
+        android:textFontWeight="100"
+        android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.417" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +38,7 @@
 
     <EditText
         android:id="@+id/PINEditView"
-        android:layout_width="250dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="4 digit PIN"
@@ -45,7 +51,7 @@
 
     <EditText
         android:id="@+id/RepeatPINEditView"
-        android:layout_width="250dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Repeat PIN"
@@ -57,7 +63,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:layout_width="250dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:id="@+id/ContinueButton"
         android:layout_marginTop="16dp"
