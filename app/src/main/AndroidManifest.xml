@@ -9,9 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CardLink"></activity>
-        <activity android:name=".Registration07" />
-
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@layout/toobarwithout" />
@@ -23,8 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".Registartion06"></activity>
 
+=======
+>>>>>>> 1223bdcf86fe19504b75ec2411e7c6cc1accabce
     </application>
 
 </manifest>
