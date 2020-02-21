@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="100dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Link your Card"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="50dp"
+        android:background="#dcdcdc"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/email_address"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="Card Number"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            />
+
+        <EditText
+
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:paddingBottom="20dp"
+            android:layout_marginLeft="10dp"
+
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+            <EditText
+
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:hint="CVV"
+                android:inputType="number"
+                android:paddingBottom="20dp"
+                android:paddingLeft="20dp"
+                android:layout_marginLeft="10dp"
+                />
+
+            <EditText
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:hint="Expiry Date"
+                android:inputType="date"
+                android:paddingBottom="20dp"
+                android:paddingLeft="30dp"
+                />
+
+        </LinearLayout>
+        <Button
+
+            android:layout_width="330dp"
+            android:layout_height="match_parent"
+            android:text="Continue"
+            android:textColor="#ffffff"
+            android:background="#863b87"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
