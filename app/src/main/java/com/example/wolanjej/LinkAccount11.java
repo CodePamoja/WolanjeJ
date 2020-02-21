@@ -7,15 +7,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ImageView;
 
-public class Registration07 extends AppCompatActivity {
+public class LinkAccount11 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration07);
+        setContentView(R.layout.activity_link_account11);
 
-    mImageView.setImageResource(R.mipmap.group_7);
-}
+    }
 
     private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
@@ -26,14 +25,9 @@ public class Registration07 extends AppCompatActivity {
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.login, menu);
+        getMenuInflater().inflate(R.menu.skip, menu);
         return true;
     }
 
     //code for image
-    ImageView mImageView = (ImageView)findViewById(R.id.image_holder);
-
-
-
-//set resource for imageview
 }
