@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setToolBar();
+        //setToolBar();
     }
 
-    private void setToolBar() {
+    /*private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
@@ -34,5 +34,5 @@ public class MainActivity extends AppCompatActivity {
 
 //set resource for imageview
 
-    //mImageView.setImageResource(R.drawable.your_image_name);
+    //mImageView.setImageResource(R.drawable.your_image_name);*/
 }

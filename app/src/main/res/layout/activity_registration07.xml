@@ -63,7 +63,7 @@
         android:layout_marginTop="16dp"
         android:text="Continue"
         android:padding="16dp"
-        android:backgroundTint="drawable/shape"
+        android:backgroundTint="@drawable/shape"
         android:textColor="@color/colorWhite"
         android:background="@color/colorPurple"
         app:layout_constraintTop_toBottomOf="@+id/RepeatPINEditView"
