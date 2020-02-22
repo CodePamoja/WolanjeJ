@@ -22,11 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".Registartion06"></activity>
 
-=======
->>>>>>> 1223bdcf86fe19504b75ec2411e7c6cc1accabce
+        <activity android:name=".CardLink"></activity>
+
     </application>
 
 </manifest>

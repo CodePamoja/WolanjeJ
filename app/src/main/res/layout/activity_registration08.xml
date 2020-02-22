@@ -79,7 +79,7 @@
         android:layout_width="362dp"
         android:layout_height="59dp"
         android:layout_marginTop="152dp"
-        android:background="@drawable/roundcorner"
+        android:background="@drawable/roundedcorner"
         android:text="continue"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
