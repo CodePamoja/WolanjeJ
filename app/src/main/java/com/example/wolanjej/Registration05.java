@@ -20,7 +20,7 @@ public class Registration05 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_registration05);
 
         setToolBar();
@@ -51,7 +51,7 @@ public class Registration05 extends AppCompatActivity {
     }
 
     public void movetoLog(MenuItem item) {
-        Intent movetoLogo = new Intent(this,CardLink.class);
+        Intent movetoLogo = new Intent(this,LogIn.class);
         startActivity(movetoLogo);
     }
 

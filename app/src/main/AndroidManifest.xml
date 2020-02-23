@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wolanjej">
 
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Registration05"></activity>
+        <activity android:name=".LogIn"></activity>
+        <activity android:name=".Registration05" />
 
         <meta-data
             android:name="com.google.android.actions"
@@ -22,12 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registartion06"></activity>
-
-        <activity android:name=".CardLink"></activity>
-        <activity android:name=".Registration07"></activity>
-        <activity android:name=".Registration08"></activity>
-
+        <activity android:name=".Registartion06" />
+        <activity android:name=".CardLink" />
+        <activity android:name=".Registration07" />
+        <activity android:name=".Registration08" />
     </application>
 
 </manifest>
