@@ -8,8 +8,9 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:logo="@mipmap/small_left"
         android:id="@+id/toolbar"
+        app:navigationIcon="@mipmap/small_left"
+
         >
 
     </androidx.appcompat.widget.Toolbar>

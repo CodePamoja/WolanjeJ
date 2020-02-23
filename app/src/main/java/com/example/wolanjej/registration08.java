@@ -3,33 +3,48 @@ package com.example.wolanjej;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
-public class registration08 extends AppCompatActivity {
-
+public class Registration08 extends AppCompatActivity {
+    private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_registration08);
 
-        mImageView.setImageResource(R.mipmap.group_8);
+        setToolBar();
+        imageView = (ImageView)findViewById(R.id.image_holder);
+        imageView.setImageResource(R.mipmap.group_6);
     }
 
     private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
+        final Intent movetoLogo = new Intent(this,Registration07.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(movetoLogo);
+                    }
+                }
+        );
 
     }
 
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.login, menu);
-        return true;
-    }
+    public void sendtoFingerPrint(View view) {
+        Intent move = new Intent(this, Registration08.class);
+        startActivity(move);
 
-    //code for image
-    ImageView mImageView = (ImageView)findViewById(R.id.image_holder);
+    }
 }
