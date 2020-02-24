@@ -7,15 +7,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ImageView;
 
-public class Registartion06 extends AppCompatActivity {
-
+public class CardLink extends AppCompatActivity {
     private ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registartion06);
-        setToolBar();
+        setContentView(R.layout.activity_card_link);
 
+        setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
         imageView.setImageResource(R.mipmap.group_6);
     }
@@ -29,16 +29,8 @@ public class Registartion06 extends AppCompatActivity {
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.login, menu);
+        getMenuInflater().inflate(R.menu.skip, menu);
         return true;
     }
-
-    //code for image
-    //ImageView mImageView = (ImageView)findViewById(R.id.image_holder);
-
-
-
-//set resource for imageview
-
 
 }

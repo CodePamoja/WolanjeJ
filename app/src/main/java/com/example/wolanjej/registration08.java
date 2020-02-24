@@ -7,17 +7,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ImageView;
 
-public class Registartion06 extends AppCompatActivity {
+public class registration08 extends AppCompatActivity {
 
-    private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registartion06);
-        setToolBar();
+        setContentView(R.layout.activity_registration08);
 
-        imageView = (ImageView)findViewById(R.id.image_holder);
-        imageView.setImageResource(R.mipmap.group_6);
+        mImageView.setImageResource(R.mipmap.group_8);
     }
 
     private void setToolBar() {
@@ -34,11 +31,5 @@ public class Registartion06 extends AppCompatActivity {
     }
 
     //code for image
-    //ImageView mImageView = (ImageView)findViewById(R.id.image_holder);
-
-
-
-//set resource for imageview
-
-
+    ImageView mImageView = (ImageView)findViewById(R.id.image_holder);
 }
