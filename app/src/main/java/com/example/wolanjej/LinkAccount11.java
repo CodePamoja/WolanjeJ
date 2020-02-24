@@ -5,7 +5,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class LinkAccount11 extends AppCompatActivity {
 
@@ -19,7 +21,12 @@ public class LinkAccount11 extends AppCompatActivity {
     private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle("Link Accoount");
+
+
+//        TextView tv = (TextView) tb.findViewById(R.id.toolbarTextView);
+//        tv.setText("Link Accoount");
+//        getSupportActionBar().setDisplayShowTitleEnabled(true);
 
     }
 
