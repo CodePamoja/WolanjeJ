@@ -23,11 +23,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
                 android:text="Registration"
-                android:textColor="@color/colorBlack"
-                android:textSize="32sp"
-                android:textStyle="normal"
+                android:textColor="@color/colorMidnight"
+                android:textSize="22sp"
                 android:textAlignment="center"
                 />
 
@@ -39,12 +37,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
                 android:text="Please enter your mobile number,then we will send OTP to verify"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="16sp"
-                android:textStyle="normal"
-                android:paddingTop="8dp"
+                android:textColor="@color/blue_grey"
+                android:textSize="14sp"
+                android:paddingTop="6dp"
                 android:paddingHorizontal="32dp"
                 android:textAlignment="center"
                 />
@@ -53,12 +49,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            >
             <com.google.android.material.card.MaterialCardView
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginHorizontal="24dp"
                 android:outlineAmbientShadowColor="@color/colorBlack"
                 >
 
@@ -70,10 +68,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="8dp"
-                        android:paddingTop="8dp"
-                        android:layout_marginTop="24dp"
-
+                        android:paddingHorizontal="20dp"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginBottom="24dp"
                         >
 
                         <EditText
@@ -83,7 +80,6 @@
                             android:height="48dp"
                             android:background="@drawable/textviewborder"
                             android:padding="10dp"
-                            android:layout_marginBottom="8dp"
                             />
                     </LinearLayout>
 
@@ -93,7 +89,6 @@
                         android:orientation="horizontal"
                         android:paddingHorizontal="8dp"
                         android:layout_marginBottom="24dp"
-
                         >
                         <Button
                             android:id="@+id/btn_getstarted"
@@ -114,16 +109,18 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="46dp"
+            android:layout_marginRight="46dp"
+            >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
                 android:text='By clicking "Continue you agree to our terms and conditions as well as our privacy policy'
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                android:textStyle="normal"
-                android:paddingTop="24dp"
+                android:textColor="#222b45"
+                android:textSize="12sp"
+                android:lineSpacingExtra="6sp"
                 android:textAlignment="center"
                 />
 
