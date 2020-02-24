@@ -11,17 +11,16 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-public class CardLink extends AppCompatActivity {
-    private ImageView imageView;
+public class Registration06 extends AppCompatActivity {
 
+    private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_card_link);
-
+        setContentView(R.layout.activity_registration06);
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
         imageView.setImageResource(R.mipmap.group_6);
@@ -43,10 +42,8 @@ public class CardLink extends AppCompatActivity {
 
     }
 
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.skip, menu);
-        return true;
+    public void sendtoSetYourPin(View view) {
+        Intent movetoLogo = new Intent(this,Registration07.class);
+        startActivity(movetoLogo);
     }
-
 }

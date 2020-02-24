@@ -2,8 +2,13 @@
 <resources>
     <color name="colorPrimary">#932777</color>
     <color name="colorPrimaryDark">#3E1737</color>
-    <color name="colorAccent">#03DAC5</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorPurple">#932777</color>
     <color name="colorBlack">#333333</color>
+    <color name="colorMidnight">#0b0320</color>
+    <color name="reddish_orange">#fe5218</color>
+    <color name="blue_grey">#8c8a9a</color>
+    <color name="colorWarmpurple">#932777</color>
+    <color name="colorBluepurple">#531EDC</color>
+
 </resources>

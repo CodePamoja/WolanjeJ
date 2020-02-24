@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wolanjej">
 
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
 
         <activity android:name=".LinkAccount11"></activity>
         <activity android:name=".Registration07" />
         <activity android:name=".CardLink" />
+=======
+        <activity android:name=".Home"></activity>
+        <activity android:name=".LinkCardSuccessfully" />
+        <activity android:name=".LogIn" />
+        <activity android:name=".Registration05" />
+>>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
 
         <meta-data
             android:name="com.google.android.actions"
@@ -25,10 +34,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 
         <activity android:name=".Registartion06"></activity>
 
 
+=======
+        <activity android:name=".Registration06" />
+        <activity android:name=".CardLink" />
+        <activity android:name=".Registration07" />
+        <activity android:name=".Registration08" />
+>>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
     </application>
 
 </manifest>

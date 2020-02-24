@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         //setToolBar();
         button = (Button)findViewById(R.id.btn_getstarted);
@@ -26,10 +30,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void movetoRegistration() {
+<<<<<<< HEAD
         System.out.println("Button pressed");
         Intent move = new Intent(this,LinkAccount11.class);
+=======
+        Intent move = new Intent(this,Registration05.class);
+>>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
         startActivity(move);
     }
+
+
 
     /*private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
