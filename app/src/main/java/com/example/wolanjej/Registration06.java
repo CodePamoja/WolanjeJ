@@ -42,12 +42,6 @@ public class Registration06 extends AppCompatActivity {
 
     }
 
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.skip, menu);
-        return true;
-    }
-
     public void sendtoSetYourPin(View view) {
         Intent movetoLogo = new Intent(this,Registration07.class);
         startActivity(movetoLogo);
