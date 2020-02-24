@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-public class Registartion06 extends AppCompatActivity {
+public class Registration06 extends AppCompatActivity {
 
     private ImageView imageView;
     @Override
@@ -20,7 +20,7 @@ public class Registartion06 extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_registartion06);
+        setContentView(R.layout.activity_registration06);
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
         imageView.setImageResource(R.mipmap.group_6);

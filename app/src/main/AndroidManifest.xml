@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registartion06" />
+        <activity android:name=".Registration06" />
         <activity android:name=".CardLink" />
         <activity android:name=".Registration07" />
         <activity android:name=".Registration08" />
