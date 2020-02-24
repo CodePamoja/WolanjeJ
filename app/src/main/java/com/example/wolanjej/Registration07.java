@@ -29,7 +29,7 @@ public class Registration07 extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,Registartion06.class);
+        final Intent movetoLogo = new Intent(this, Registration06.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override

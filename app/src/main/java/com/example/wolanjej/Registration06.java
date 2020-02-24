@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-public class Registartion06 extends AppCompatActivity {
+public class Registration06 extends AppCompatActivity {
 
     private ImageView imageView;
     @Override
@@ -20,7 +20,7 @@ public class Registartion06 extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_registartion06);
+        setContentView(R.layout.activity_registration06);
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
         imageView.setImageResource(R.mipmap.group_6);
@@ -42,9 +42,12 @@ public class Registartion06 extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD:app/src/main/java/com/example/wolanjej/Registartion06.java
 
 
 
+=======
+>>>>>>> 083668e0c2bf3e9b659bcfcf1b6de35fc65a6d77:app/src/main/java/com/example/wolanjej/Registration06.java
     public void sendtoSetYourPin(View view) {
         Intent movetoLogo = new Intent(this,Registration07.class);
         startActivity(movetoLogo);

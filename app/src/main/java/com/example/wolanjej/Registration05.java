@@ -56,7 +56,7 @@ public class Registration05 extends AppCompatActivity {
     }
 
     public void sendtoVerification(View view) {
-        Intent movetoLogo = new Intent(this,Registartion06.class);
+        Intent movetoLogo = new Intent(this, Registration06.class);
         startActivity(movetoLogo);
     }
 }
