@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LogIn"></activity>
+        <activity android:name=".Home"></activity>
+        <activity android:name=".LinkCardSuccessfully" />
+        <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
 
         <meta-data
