@@ -77,7 +77,7 @@ public class LogIn extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,Registration08.class);
+        final Intent movetoLogo = new Intent(this, Registration08.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
