@@ -100,4 +100,10 @@ public class Registration08 extends AppCompatActivity {
         Intent move = new Intent(this, LogIn.class);
         startActivity(move);
     }
+
+    public void sendtoLinkSuccess(View view) {
+        Intent movetolink = new Intent(this, LinkCardSuccessfully.class);
+        startActivity(movetolink);
+    }
+
 }
