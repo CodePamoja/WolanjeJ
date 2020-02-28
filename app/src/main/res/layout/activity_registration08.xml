@@ -95,7 +95,6 @@
         android:id="@+id/textView5"
 =======
     <include layout="@layout/toobarwithout" />
-
     <include layout="@layout/imageholder" />
 
     <LinearLayout
@@ -190,7 +189,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="skip for now"
-
+                android:onClick="sendtoLinkSuccess"
                 android:textColor="@color/colorPurple"
                 android:textSize="16sp"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
