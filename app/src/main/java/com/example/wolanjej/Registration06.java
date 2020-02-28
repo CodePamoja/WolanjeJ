@@ -42,12 +42,6 @@ public class Registration06 extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD:app/src/main/java/com/example/wolanjej/Registartion06.java
-
-
-
-=======
->>>>>>> 083668e0c2bf3e9b659bcfcf1b6de35fc65a6d77:app/src/main/java/com/example/wolanjej/Registration06.java
     public void sendtoSetYourPin(View view) {
         Intent movetoLogo = new Intent(this,Registration07.class);
         startActivity(movetoLogo);
