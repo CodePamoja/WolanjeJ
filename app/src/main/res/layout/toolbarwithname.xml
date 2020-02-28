@@ -8,20 +8,21 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="375dp"
-        android:layout_height="58dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:logo="@mipmap/small_left">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textColor="@color/colorMidnight"
-            android:backgroundTint="@color/colorWhite"
+            android:text="Link Accoount"
+            android:id="@+id/toolbarTextView"
+            android:textColor="@color/colorBlack"
             android:textSize="18sp"
-            android:layout_marginLeft="128dp"
-            android:layout_marginRight="128dp"
-            tools:text="Link account" />
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            />
+
 
     </androidx.appcompat.widget.Toolbar>
 

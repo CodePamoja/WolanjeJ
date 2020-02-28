@@ -18,18 +18,6 @@ public class LinkAccount11 extends AppCompatActivity {
 
     }
 
-    private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(tb);
-        getSupportActionBar().setTitle("Link Accoount");
-
-
-//        TextView tv = (TextView) tb.findViewById(R.id.toolbarTextView);
-//        tv.setText("Link Accoount");
-//        getSupportActionBar().setDisplayShowTitleEnabled(true);
-
-    }
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.skip, menu);
