@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 
 
 
-public class Registration08 extends AppCompatActivity {
+public class registration08 extends AppCompatActivity {
     private ImageView imageView;
     private Button button;
 
@@ -46,7 +46,7 @@ public class Registration08 extends AppCompatActivity {
                     }).build();
         }
         button = (Button)findViewById(R.id.button2);
-        final Registration08 activity = this;
+        final registration08 activity = this;
         final BiometricPrompt finalBp = bp;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +59,7 @@ public class Registration08 extends AppCompatActivity {
                             activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(Registration08.this,"Athentication",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(registration08.this,"Athentication",Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -91,7 +91,7 @@ public class Registration08 extends AppCompatActivity {
 
 
     public void sendtoFingerPrint(View view) {
-        Intent move = new Intent(this, Registration08.class);
+        Intent move = new Intent(this, registration08.class);
         startActivity(move);
 
     }
