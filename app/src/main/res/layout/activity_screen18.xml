@@ -7,188 +7,265 @@
     tools:context=".screen18"
     android:orientation="vertical"
     >
+    <ImageView
+        android:id="@+id/rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/rectangle"
+        android:layout_marginTop="150dp" />
     <!--    scroll view-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="0dp"
         >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
+            android:layout_marginStart="15dp"
             android:textSize="20sp"
-            android:text="@string/billers" />
+            android:text="Billers" />
 
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="false"
-        >
+        android:fillViewport="false">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
             <androidx.cardview.widget.CardView
                 app:cardElevation="10dp"
                 android:id="@+id/card_view7"
-                android:layout_width="98dp"
-                android:layout_height="120dp"
+                android:layout_width="84dp"
+                android:layout_height="98dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="15dp"
                 android:background="@drawable/splash"
                 app:cardCornerRadius="15dp">
 
-                <TextView
-                    android:id="@+id/Saved_billers"
+                <ImageView
+                    android:id="@+id/image_holder"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="70dp"
-                    android:text="@string/saved_billers"
-                    android:textAlignment="center" />
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/group_18"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/blue_grey"
+                    android:lineSpacingExtra="2sp"
+                    android:gravity="center_horizontal"
+                    tools:text="Saved
+                    Billers"
+                    android:layout_marginTop="60dp"
+                    android:layout_gravity="center_horizontal" />
+
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 app:cardElevation="10dp"
                 android:id="@+id/card_view8"
-                android:layout_width="98dp"
-                android:layout_height="120dp"
+                android:layout_width="84dp"
+                android:layout_height="98dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="15dp"
                 android:background="@drawable/splash"
                 app:cardCornerRadius="15dp">
 
-                <TextView
-                    android:id="@+id/electricity"
+                <ImageView
+                    android:id="@+id/group_18h"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="70dp"
-                    android:textAlignment="center"
-                    android:text="@string/electricity" />
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/group_18h"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/blue_grey"
+                    android:lineSpacingExtra="2sp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="60dp"
+                    tools:text="Electricity"
+                    android:layout_gravity="center_horizontal" />
+
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 app:cardElevation="10dp"
                 android:id="@+id/card_view9"
-                android:layout_width="98dp"
-                android:layout_height="120dp"
+                android:layout_width="84dp"
+                android:layout_height="98dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="15dp"
                 android:background="@drawable/splash"
                 app:cardCornerRadius="15dp">
 
-                <TextView
-                    android:id="@+id/pay_internet"
+                <ImageView
+                    android:id="@+id/group_18b"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="70dp"
-                    android:textAlignment="center"
-                    android:text="@string/pay_internet" />
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/group_18b"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/blue_grey"
+                    android:lineSpacingExtra="2sp"
+                    android:gravity="center_horizontal"
+                    tools:text="Pay Internet"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="60dp" />
+
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 app:cardElevation="10dp"
                 android:id="@+id/card_view10"
-                android:layout_width="98dp"
-                android:layout_height="120dp"
+                android:layout_width="84dp"
+                android:layout_height="98dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="15dp"
                 android:background="@drawable/splash"
                 app:cardCornerRadius="15dp">
 
                 <TextView
-                    android:id="@+id/purchase_Air"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="70dp"
-                    android:textAlignment="center"
-                    android:text="@string/purchase_air" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/blue_grey"
+                    android:lineSpacingExtra="2sp"
+                    android:gravity="center_horizontal"
+                    tools:text="Purchase Airtime"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="60dp" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
-
-
-
-
 
     <!--    end scroll view-->
     <!-- A CardView that contains a TextView -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        >
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
-            android:text="@string/my_account" />
+            android:layout_marginStart="15dp"
+            android:text="My_account" />
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_marginTop="5dp"
-        >
+        android:layout_marginTop="5dp">
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
-            android:layout_width="98dp"
-            android:layout_height="120dp"
+            android:layout_width="84dp"
+            android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
             app:cardCornerRadius="15dp">
 
-            <TextView
-                android:id="@+id/Transfer"
+            <ImageView
+                android:id="@+id/image_18f"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:textSize="17sp"
-                android:paddingTop="70dp"
-                android:text="@string/transfer" />
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/group_18f"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/blue_grey"
+                android:gravity="end"
+                tools:text="Transfer"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp" />
+
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view1"
-            android:layout_width="98dp"
-            android:layout_height="120dp"
+            android:layout_width="84dp"
+            android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
             app:cardCornerRadius="15dp">
 
-            <TextView
-                android:id="@+id/income_details"
+            <ImageView
+                android:id="@+id/image_18e"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:paddingTop="70dp"
-                android:textSize="17sp"
-                android:text="@string/income_details" />
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/group_18e"
+                android:layout_marginTop="20dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/blue_grey"
+                android:lineSpacingExtra="2sp"
+                android:gravity="center_horizontal"
+                tools:text="Income
+                            Details"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp" />
+
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view2"
-            android:layout_width="98dp"
-            android:layout_height="120dp"
+            android:layout_width="84dp"
+            android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
             app:cardCornerRadius="15dp">
+            <ImageView
+                android:id="@+id/image_18d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/group_18d"
+                android:layout_marginTop="20dp" />
+
 
             <TextView
-                android:id="@+id/Wallet"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:textSize="17sp"
-                android:paddingTop="70dp"
-                android:text="@string/wallet" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/blue_grey"
+                android:gravity="center_horizontal"
+                tools:text="Wallet"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp" />
+
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+
+<!--    text view value add-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp">
@@ -198,70 +275,98 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
-            android:text="@string/value_add" />
+            android:layout_marginStart="15dp"
+            android:text="Value Add" />
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_marginTop="5dp"
-        >
+        android:layout_marginTop="5dp">
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view4"
-            android:layout_width="98dp"
-            android:layout_height="120dp"
+            android:layout_width="84dp"
+            android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
             app:cardCornerRadius="15dp">
+            <ImageView
+                android:id="@+id/image_18c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/group_18c"
+                android:layout_marginTop="20dp" />
+
 
             <TextView
-                android:id="@+id/Services"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:textSize="17sp"
-                android:paddingTop="70dp"
-                android:text="@string/services" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/blue_grey"
+                android:gravity="center_horizontal"
+                tools:text="Services"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp" />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view5"
-            android:layout_width="98dp"
-            android:layout_height="120dp"
+            android:layout_width="84dp"
+            android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
             app:cardCornerRadius="15dp">
+            <ImageView
+                android:id="@+id/image_18a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/group_18a"
+                android:layout_marginTop="20dp" />
+
 
             <TextView
-                android:id="@+id/exchange"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:textSize="17sp"
-                android:paddingTop="70dp"
-                android:text="@string/exchange" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/blue_grey"
+                android:gravity="end"
+                tools:text="Exchange"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp" />
+
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view6"
-            android:layout_width="98dp"
-            android:layout_height="120dp"
+            android:layout_width="84dp"
+            android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
             app:cardCornerRadius="15dp">
+            <ImageView
+                android:id="@+id/image_18b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/group_18b"
+                android:layout_marginTop="20dp" />
 
             <TextView
-                android:id="@+id/crypto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:textSize="17sp"
-                android:paddingTop="70dp"
-                android:text="@string/crypto" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/blue_grey"
+                android:gravity="center_horizontal"
+                tools:text="Crypto"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                />
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 </LinearLayout>
