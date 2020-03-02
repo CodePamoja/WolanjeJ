@@ -10,10 +10,8 @@
     <color name="blue_grey">#8c8a9a</color>
     <color name="colorWarmpurple">#932777</color>
     <color name="colorBluepurple">#531EDC</color>
-<<<<<<< HEAD
+
     <color name="warm_purple">#932777</color>
-=======
     <color name="colorAccent">#21c1a8</color>
->>>>>>> 515cf520691c12027e52bc23d759862953930b33
 
 </resources>

@@ -29,7 +29,7 @@
             android:textSize="40sp"
             android:textColor="@color/colorWhite"
             android:gravity="center_horizontal"
-            tools:text="$7800.00"
+            android:text="$7800.00"
             android:layout_below="@id/textbalance"
             android:layout_marginTop="16dp"
             android:id="@+id/price"
@@ -69,7 +69,7 @@
             android:textSize="16sp"
             android:layout_marginTop="8dp"
             android:textColor="#222222"
-            tools:text="Recent Transfer"
+            android:text="Recent Transfer"
             android:id="@+id/trans"
             />
 
@@ -103,7 +103,7 @@
             android:textSize="16sp"
             android:layout_marginTop="8dp"
             android:textColor="#222222"
-            tools:text="Quick Services"
+            android:text="Quick Services"
             android:id="@+id/quick"
             />
 
@@ -127,12 +127,12 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:layout_below="@id/btnviewall"
                 android:clickable="true"
-                android:outlineAmbientShadowColor="@color/blue_grey"
-                android:elevation="@dimen/cardview_compat_inset_shadow"
+                android:elevation="4dp"
+                app:cardCornerRadius="2dp"
                 android:id="@+id/card1"
                 >
                 <RelativeLayout
@@ -142,7 +142,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/credit_card_1"
-                        android:layout_centerInParent="true"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="18dp"
+                        android:layout_centerHorizontal="true"
                         android:id="@+id/airtime"
                         />
                     <TextView
@@ -151,10 +153,10 @@
                         android:textSize="12sp"
                         android:textColor="#444444"
                         android:layout_below="@id/airtime"
-                        android:layout_marginTop="48dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_centerHorizontal="true"
-                        tools:text="Buy Airtime"
+android:layout_centerHorizontal="true"
+
+                        android:layout_marginBottom="13dp"
+                        android:text="Buy Airtime"
                         />
 
                 </RelativeLayout>
@@ -163,12 +165,13 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_below="@id/btnviewall"
                 android:layout_toEndOf="@id/card1"
                 android:clickable="true"
                 android:layout_marginLeft="8dp"
-                android:elevation="@dimen/cardview_compat_inset_shadow"
+                android:elevation="4dp"
+                app:cardCornerRadius="2dp"
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -177,7 +180,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/money"
-                        android:layout_centerInParent="true"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_centerHorizontal="true"
                         android:id="@+id/transfer"
                         />
                     <TextView
@@ -185,11 +190,11 @@
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
                         android:textColor="#444444"
-                        android:layout_marginBottom="16dp"
                         android:layout_below="@id/transfer"
-                        android:layout_marginTop="48dp"
                         android:layout_centerHorizontal="true"
-                        tools:text="Buy Airtime"
+                        android:text="Transfers"
+
+                        android:layout_marginBottom="13dp"
                         />
 
                 </RelativeLayout>
@@ -198,12 +203,13 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_below="@id/btnviewall"
                 android:layout_toEndOf="@id/card1"
                 android:clickable="true"
                 android:layout_marginLeft="8dp"
-                android:elevation="@dimen/cardview_compat_inset_shadow"
+                android:elevation="4dp"
+                app:cardCornerRadius="2dp"
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -212,6 +218,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/group_15"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="15dp"
                         android:layout_centerInParent="true"
                         android:id="@+id/loans"
                         />
@@ -220,11 +228,10 @@
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
                         android:textColor="#444444"
-                        android:layout_marginBottom="16dp"
                         android:layout_below="@id/loans"
-                        android:layout_marginTop="48dp"
                         android:layout_centerHorizontal="true"
-                        tools:text="Buy Airtime"
+                        android:text="Loans"
+                        android:layout_marginBottom="13dp"
                         />
 
                 </RelativeLayout>
@@ -234,5 +241,38 @@
         
 
     </RelativeLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/analytics"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#222222"
+                android:text="You have spent this month"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:text="$5670"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/invalid_name"
+                />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
