@@ -5,31 +5,27 @@
         android:icon="@mipmap/my_wallet"
         android:title="My wallet"
         android:enabled="true"
-        android:titSize="10sp"
         android:iconTint="@color/colorGreen"/>
 
     <item
         android:id="@+id/payments"
-        android:icon="@mipmap/Payments"
+        android:icon="@mipmap/payments"
         android:title="Payments"
         android:enabled="true"
-        android:titSize="10sp"
         android:iconTint="@color/colorBlack"/>
 
     <item
         android:id="@+id/referrals"
-        android:icon="@mipmap/Referrals"
+        android:icon="@mipmap/referrals"
         android:title="Referrals"
         android:enabled="true"
-        android:titSize="10sp"
         android:iconTint="@color/colorBlack"/>
 
     <item
         android:id="@+id/billers"
-        android:icon="@mipmap/Billers"
+        android:icon="@mipmap/billers"
         android:title="Billers"
         android:enabled="true"
-        android:titSize="10sp"
         android:iconTint="@color/colorBlack"/>
 
     <item
@@ -37,6 +33,5 @@
         android:icon="@mipmap/settings"
         android:title="Settings"
         android:enabled="true"
-        android:titSize="10sp"
         android:iconTint="@color/colorBlack"/>
 </menu>
