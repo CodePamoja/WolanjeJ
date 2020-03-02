@@ -5,8 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <include layout="@layout/toolbarhome"/>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -234,5 +240,17 @@
         
 
     </RelativeLayout>
+        </LinearLayout>
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/colorWhite"
+            app:itemIconTint=""
+            app:itemTextColor=""
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/navigation" />
+    </FrameLayout>
 </LinearLayout>

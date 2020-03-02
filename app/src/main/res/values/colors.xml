@@ -4,16 +4,14 @@
     <color name="colorPrimaryDark">#3E1737</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorPurple">#932777</color>
-    <color name="colorBlack">#333333</color>
+    <color name="colorGray">#333333</color>
     <color name="colorMidnight">#0b0320</color>
     <color name="reddish_orange">#fe5218</color>
     <color name="blue_grey">#8c8a9a</color>
     <color name="colorWarmpurple">#932777</color>
     <color name="colorBluepurple">#531EDC</color>
-<<<<<<< HEAD
-    <color name="warm_purple">#932777</color>
-=======
+    <color name="colorGreen">#21c17a</color>
     <color name="colorAccent">#21c1a8</color>
->>>>>>> 515cf520691c12027e52bc23d759862953930b33
+    <color name="colorBlack">#000000 </color>
 
 </resources>

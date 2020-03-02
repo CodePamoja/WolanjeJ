@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/my_wallet"
+        android:icon="@mipmap/my_wallet"
+        android:title="My wallet"
+        android:enabled="true"
+        android:titSize="10sp"
+        android:iconTint="@color/colorGreen"/>
+
+    <item
+        android:id="@+id/payments"
+        android:icon="@mipmap/Payments"
+        android:title="Payments"
+        android:enabled="true"
+        android:titSize="10sp"
+        android:iconTint="@color/colorBlack"/>
+
+    <item
+        android:id="@+id/referrals"
+        android:icon="@mipmap/Referrals"
+        android:title="Referrals"
+        android:enabled="true"
+        android:titSize="10sp"
+        android:iconTint="@color/colorBlack"/>
+
+    <item
+        android:id="@+id/billers"
+        android:icon="@mipmap/Billers"
+        android:title="Billers"
+        android:enabled="true"
+        android:titSize="10sp"
+        android:iconTint="@color/colorBlack"/>
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@mipmap/settings"
+        android:title="Settings"
+        android:enabled="true"
+        android:titSize="10sp"
+        android:iconTint="@color/colorBlack"/>
+</menu>

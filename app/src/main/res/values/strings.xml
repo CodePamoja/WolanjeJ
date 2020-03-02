@@ -10,4 +10,9 @@
     <string name="todo">TODO</string>
     <string name="bank_account">Bank Account</string>
     <string name="international_card">International Card</string>
+    <string name="billers">Billers</string>
+    <string name="referrals">Referrals</string>
+    <string name="payments">Payments</string>
+    <string name="my_wallet">My Wallet</string>
+    <string name="settings">Settings</string>
 </resources>
