@@ -19,6 +19,11 @@ import android.widget.Toast;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9907bda31c9a388269a4db57f8633ef75c41089d
 public class registration08 extends AppCompatActivity {
     private ImageView imageView;
     private Button button;

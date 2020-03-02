@@ -1,16 +1,22 @@
 <resources>
     <string name="app_name">Wolenje Arica</string>
+    <string name="Link_Accoount">Link Accoount</string>
     <string name="app_intro">Wolenje, Lipa kwa urahisi</string>
     <string name="button_intro">Get started</string>
     <string name="fingerprint">FingerPrint</string>
     <string name="please_lift_and_rest_your_finger">please lift and rest your finger</string>
-    <string name="continuee">Continue</string>
+    <string name="Continue">Continue</string>
     <string name="skip_for_now">Skip For Now</string>
     <string name="todo">TODO</string>
+<<<<<<< HEAD
     <string name="current_balance">Current Balance</string>
     <string name="my_e_wallet">My E-Wallet</string>
     <string name="transfer_money">Transfer Money</string>
     <string name="add_new">ADD NEW</string>
     <string name="no_transfers">NO TRANSFERS</string>
     <string name="buy_airtime">Buy Airtime</string>
+=======
+    <string name="bank_account">Bank Account</string>
+    <string name="international_card">International Card</string>
+>>>>>>> 9907bda31c9a388269a4db57f8633ef75c41089d
 </resources>
