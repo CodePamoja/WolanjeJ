@@ -6,20 +6,13 @@
 
     <corners android:radius="7dp" />
     <solid android:color="@color/colorWhite" />
-<<<<<<< HEAD
-=======
-=======
     <corners android:radius="0dp"  />
     <gradient android:startColor="#FFFFFF"
         android:endColor="#00FF00"
         android:angle="270" />
-<<<<<<< HEAD
     <solid android:color="@color/colorPurple" />
->>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
-=======
     <solid android:color="@color/colorPurple" />\
 
 
->>>>>>> 599fbeca6528786d75291d75b8e1b02a231b5682
->>>>>>> 515cf520691c12027e52bc23d759862953930b33
+
 </shape>
