@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Registration08"
+    tools:context=".registration08"
     tools:ignore="ExtraText">
 
     <include layout="@layout/toobarwithout" />

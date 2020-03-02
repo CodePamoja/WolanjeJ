@@ -43,7 +43,7 @@ public class Registration07 extends AppCompatActivity {
 
 
     public void sendtoFingerPrint(View view) {
-        Intent move = new Intent(this, Registration08.class);
+        Intent move = new Intent(this, registration08.class);
         startActivity(move);
 
     }

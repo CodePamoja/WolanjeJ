@@ -45,7 +45,7 @@ public class LogIn extends AppCompatActivity {
                         }
                     }).build();
         }
-        button = (Button)findViewById(R.id.button2);
+        button = findViewById(R.id.button2);
         final LogIn activity = this;
         final BiometricPrompt finalBp = bp;
         button.setOnClickListener(new View.OnClickListener() {
@@ -69,15 +69,15 @@ public class LogIn extends AppCompatActivity {
         });
 
         setToolBar();
-        imageView = (ImageView)findViewById(R.id.image_holder);
+        imageView = findViewById(R.id.image_holder);
         imageView.setImageResource(R.mipmap.group_6);
     }
 
     private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,Registration08.class);
+        final Intent movetoLogo = new Intent(this, registration08.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -96,7 +96,7 @@ public class LogIn extends AppCompatActivity {
 
 
     public void sendtoFingerPrint(View view) {
-        Intent move = new Intent(this, Registration08.class);
+        Intent move = new Intent(this, registration08.class);
         startActivity(move);
 
     }
@@ -105,4 +105,10 @@ public class LogIn extends AppCompatActivity {
         Intent move = new Intent(this, Registration05.class);
         startActivity(move);
     }
+
+    public void sendtohome(View view) {
+        Intent move = new Intent(this, Home.class);
+        startActivity(move);
+    }
+
 }

@@ -7,4 +7,10 @@
     <string name="continuee">Continue</string>
     <string name="skip_for_now">Skip For Now</string>
     <string name="todo">TODO</string>
+    <string name="current_balance">Current Balance</string>
+    <string name="my_e_wallet">My E-Wallet</string>
+    <string name="transfer_money">Transfer Money</string>
+    <string name="add_new">ADD NEW</string>
+    <string name="no_transfers">NO TRANSFERS</string>
+    <string name="buy_airtime">Buy Airtime</string>
 </resources>
