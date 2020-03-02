@@ -13,14 +13,15 @@
         android:theme="@style/AppTheme">
 <<<<<<< HEAD
 
-        <activity android:name=".LinkAccount11"></activity>
+        <activity android:name=".LinkAccount11" />
         <activity android:name=".Registration07" />
         <activity android:name=".CardLink" />
 =======
-        <activity android:name=".Home"></activity>
+        <activity android:name=".Home" />
         <activity android:name=".LinkCardSuccessfully" />
         <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
+        <activity android:name="screen18"/>
 >>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
 
         <meta-data
