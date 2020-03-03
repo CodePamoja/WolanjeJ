@@ -187,7 +187,7 @@
             android:layout_gravity="right|bottom"
             android:tint="#FFFFFF"
             android:src="@drawable/floatbutton"
-            app:backgroundTint="@color/warm_purple" >
+            app:backgroundTint="@color/colorWarmpurple" >
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </FrameLayout>
