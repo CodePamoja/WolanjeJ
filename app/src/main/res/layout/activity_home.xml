@@ -6,27 +6,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    tools:context="com.example.wolanjej.Home"
-    android:orientation="vertical">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-    <include layout="@layout/toolbarhome"/>
-
-
-    <ScrollView
-=======
     tools:context=".Home"
     android:orientation="vertical"
     >
     <FrameLayout
->>>>>>> 2a0ed60eb82ad12a4c21cc1888ded12c0ec37f08
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -353,59 +336,6 @@
 
             </ScrollView>
         </LinearLayout>
-<<<<<<< HEAD
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/analytics"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#222222"
-                android:text="You have spent this month"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#222222"
-                android:text="$5670"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/invalid_name"
-                />
-        </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-
-    </ScrollView>
-        </LinearLayout>
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottom_navigation"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:background="@color/colorWhite"-->
-<!--        app:itemIconTint=""-->
-<!--        app:itemTextColor=""-->
-<!--        app:labelVisibilityMode="labeled"-->
-<!--        app:menu="@menu/navigation" />-->
-    </FrameLayout>
-
-
-=======
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
@@ -416,6 +346,5 @@
             app:labelVisibilityMode="labeled"
             app:menu="@menu/navigation"/>
     </FrameLayout>
->>>>>>> 2a0ed60eb82ad12a4c21cc1888ded12c0ec37f08
 </LinearLayout>
 
