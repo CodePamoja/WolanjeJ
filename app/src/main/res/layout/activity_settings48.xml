@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Settings48">
+
+    <include layout="@layout/toobarwithout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        app:layout_editor_absoluteY="55dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="36sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:text="SECURITY"
+                android:layout_marginTop="22dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="317dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fingerprint"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="20sp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="1dp"
+                    android:textColor="@color/colorBlack"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="8dp"
+                    android:textAlignment="viewEnd"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/group_2" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue_grey" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/PwdButton"
+                    android:layout_width="317dp"
+                    android:layout_height="wrap_content"
+                    android:text="Password / PIN"
+                    android:textSize="22sp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/shape"
+                    android:textStyle="normal"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textColor="@color/colorBlack"
+                    android:backgroundTint="@color/colorWhite" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="15dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="12dp"
+                    android:src="@mipmap/path" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue_grey" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/profileBtn"
+                    android:layout_width="317dp"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textSize="22sp"
+                    android:background="@drawable/shape"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="30dp"
+                    android:textStyle="normal"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBlack"
+                    android:backgroundTint="@color/colorWhite" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="15dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="12dp"
+                    android:src="@mipmap/path" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue_grey" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="25dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/notification" />
+
+                <TextView
+                    android:layout_width="245dp"
+                    android:layout_height="wrap_content"
+                    android:text="Notification"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="20sp"
+                    android:paddingTop="8dp"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/colorBlack" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/group_2" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue_grey" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="317dp"
+                    android:layout_height="wrap_content"
+                    android:text="Unlock wallet"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="20sp"
+                    android:paddingTop="8dp"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/colorBlack" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/group_2" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue_grey" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

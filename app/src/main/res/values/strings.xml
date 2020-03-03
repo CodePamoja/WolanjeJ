@@ -6,6 +6,10 @@
     <string name="fingerprint">FingerPrint</string>
     <string name="please_lift_and_rest_your_finger">please lift and rest your finger</string>
     <string name="Continue">Continue</string>
+<<<<<<< HEAD
+    <string name="continuee">Continue</string>
+=======
+>>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
     <string name="skip_for_now">Skip For Now</string>
     <string name="todo">TODO</string>
     <string name="bank_account">Bank Account</string>
