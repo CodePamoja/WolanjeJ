@@ -36,9 +36,13 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
+<<<<<<< HEAD
     android:layout_weight="7"
     android:orientation="vertical"
     >
+=======
+    android:layout_weight="7">
+>>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
     <androidx.cardview.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"

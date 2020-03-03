@@ -30,12 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void movetoRegistration() {
-<<<<<<< HEAD
-        System.out.println("Button pressed");
-        Intent move = new Intent(this,LinkAccount11.class);
-=======
         Intent move = new Intent(this,Registration05.class);
->>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
         startActivity(move);
     }
 

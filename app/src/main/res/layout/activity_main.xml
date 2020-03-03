@@ -43,6 +43,7 @@
                     android:layout_below="@id/intotext"
                     android:text="@string/button_intro"
                     android:background="@drawable/splash"
+                    android:backgroundTint="@color/colorWhite"
                     android:textColor="@color/colorBlack"                    android:layout_marginHorizontal="40dp"
                     android:layout_marginTop="35dp"
                     android:layout_gravity="center"

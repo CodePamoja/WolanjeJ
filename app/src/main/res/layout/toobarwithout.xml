@@ -8,22 +8,10 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:id="@+id/toolbar"
         app:navigationIcon="@mipmap/small_left"
-
         >
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Link Accoount"-->
-<!--            android:id="@+id/toolbarTextView"-->
-<!--            android:textColor="@color/colorBlack"-->
-<!--            android:textSize="18sp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginBottom="2dp"-->
-<!--            />-->
     </androidx.appcompat.widget.Toolbar>
 
 </LinearLayout>

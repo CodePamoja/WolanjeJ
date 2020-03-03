@@ -77,7 +77,7 @@ public class LogIn extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,Registration08.class);
+        final Intent movetoLogo = new Intent(this, com.example.wolanjej.registration08.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -96,13 +96,18 @@ public class LogIn extends AppCompatActivity {
 
 
     public void sendtoFingerPrint(View view) {
-        Intent move = new Intent(this, Registration08.class);
+        Intent move = new Intent(this, registration08.class);
         startActivity(move);
 
     }
 
     public void movetoreg(MenuItem item) {
         Intent move = new Intent(this, Registration05.class);
+        startActivity(move);
+    }
+
+    public void sendtohome(View view) {
+        Intent move = new Intent(this, Home.class);
         startActivity(move);
     }
 }

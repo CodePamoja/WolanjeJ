@@ -75,7 +75,7 @@
         android:contentDescription="todo" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@id/button2"
         android:layout_width="362dp"
         android:layout_height="59dp"
         android:layout_marginTop="152dp"
@@ -90,6 +90,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText,MissingConstraints" />
 
+<<<<<<< HEAD
     <TextView
         android:id="@+id/textView5"/>
 
@@ -101,6 +102,11 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="vertical"
+=======
+    <include layout="@layout/toobarwithout" />
+    <include layout="@layout/imageholder" />
+
+>>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
         >
 
         <LinearLayout
@@ -196,6 +202,3 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-</LinearLayout>

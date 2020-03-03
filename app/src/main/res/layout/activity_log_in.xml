@@ -104,6 +104,7 @@
                             android:backgroundTint="@color/colorPurple"
                             android:textColor="@color/colorWhite"
                             android:textSize="16sp"
+                android:onClick="sendtohome"
                             />
 
 

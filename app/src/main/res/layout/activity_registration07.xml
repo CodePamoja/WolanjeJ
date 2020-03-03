@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Registration07">
+<<<<<<< HEAD
     android:orientation="vertical"
     android:orientation="vertical"
     tools:context=".Registration07">
@@ -12,6 +13,11 @@
     <include layout="@layout/toobarwithout"/>
     <include layout="@layout/imageholder"/>
 
+=======
+
+    <include layout="@layout/toobarwithout"/>
+    <include layout="@layout/imageholder"/>
+>>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
     <TextView
         android:id="@+id/SetPINTextView"
         android:layout_width="wrap_content"
