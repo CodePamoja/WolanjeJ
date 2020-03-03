@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_shop"
-        android:icon="@drawable/ic_store_white_24dp"
-        android:title="@string/title_shop" />
+        android:id="@+id/my_wallet"
+        android:icon="@mipmap/wallet"
+        android:title="My wallet"
+        android:enabled="true"
+        android:iconTint="@color/colorBlack"/>
 
     <item
-        android:id="@+id/navigation_gifts"
-        android:icon="@drawable/ic_card_giftcard_white_24dp"
-        android:title="@string/title_gifts" />
+        android:id="@+id/payments"
+        android:icon="@mipmap/payments"
+        android:title="Payments"
+        android:enabled="true"
+        android:iconTint="@color/colorBlack"/>
 
     <item
-        android:id="@+id/navigation_cart"
-        android:icon="@drawable/ic_shopping_cart_white_24dp"
-        android:title="@string/title_cart" />
+        android:id="@+id/referrals"
+        android:icon="@mipmap/referrals"
+        android:title="Referrals"
+        android:enabled="true"
+        android:iconTint="@color/colorBlack"/>
 
     <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_person_white_24dp"
-        android:title="@string/title_profile" />
+        android:id="@+id/billers"
+        android:icon="@mipmap/billers"
+        android:title="Billers"
+        android:enabled="true"
+        android:iconTint="@color/colorBlack"/>
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@mipmap/settings"
+        android:title="Settings"
+        android:enabled="true"
+        android:iconTint="@color/colorBlack"/>
 </menu>
