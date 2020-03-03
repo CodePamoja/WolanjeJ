@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
-<<<<<<< HEAD
 
-=======
->>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
 
 <corners android:radius="16dp"></corners>
     <solid android:color="@color/colorWhite"></solid>
 
     <corners android:radius="7dp" />
     <solid android:color="@color/colorWhite" />
-<<<<<<< HEAD
-
-=======
->>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
     <corners android:radius="0dp"  />
     <gradient android:startColor="#FFFFFF"
         android:endColor="#00FF00"
         android:angle="270" />
-<<<<<<< HEAD
-
-    <solid android:color="@color/colorPurple" />
-
-    <solid android:color="@color/colorPurple" />\
-
-
-=======
     <solid android:color="@color/colorPurple" />
     <solid android:color="@color/colorPurple" />\
 
-
-
->>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
 </shape>
