@@ -4,18 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     tools:context=".Registration07">
     android:orientation="vertical"
-=======
     android:orientation="vertical"
     tools:context=".Registration07">
->>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
 
     <include layout="@layout/toobarwithout"/>
     <include layout="@layout/imageholder"/>
 
-<<<<<<< HEAD
     <TextView
         android:id="@+id/SetPINTextView"
         android:layout_width="wrap_content"
@@ -82,7 +78,6 @@
         app:layout_constraintTop_toBottomOf="@+id/RepeatPINEditView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-=======
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -214,6 +209,5 @@
 
     </LinearLayout>
 
->>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
 
 </LinearLayout>

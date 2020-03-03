@@ -11,18 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-
+        <activity android:name=".IdentifyCard51"></activity>
+        <activity android:name=".SettingsI48" />
+        <activity android:name=".Settings48" />
         <activity android:name=".LinkAccount11" />
         <activity android:name=".Registration07" />
         <activity android:name=".CardLink" />
-=======
         <activity android:name=".Home" />
         <activity android:name=".LinkCardSuccessfully" />
         <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
-        <activity android:name="screen18"/>
->>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
+        <activity android:name=".screen18" />
+        <activity android:name=".Registration08" />
+        <activity android:name=".Registration06" />
 
         <meta-data
             android:name="com.google.android.actions"
@@ -35,17 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-
-        <activity android:name=".Registartion06"></activity>
-
-
-=======
-        <activity android:name=".Registration06" />
-        <activity android:name=".CardLink" />
-        <activity android:name=".Registration07" />
-        <activity android:name=".Registration08" />
->>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
     </application>
 
 </manifest>

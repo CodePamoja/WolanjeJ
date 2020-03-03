@@ -37,12 +37,7 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="7"
-<<<<<<< HEAD
     android:orientation="vertical"
-=======
-    android:paddingHorizontal="16dp"
->>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
-
     >
     <androidx.cardview.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"

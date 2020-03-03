@@ -5,11 +5,8 @@
     <string name="button_intro">Get started</string>
     <string name="fingerprint">FingerPrint</string>
     <string name="please_lift_and_rest_your_finger">please lift and rest your finger</string>
-<<<<<<< HEAD
     <string name="Continue">Continue</string>
-=======
     <string name="continuee">Continue</string>
->>>>>>> 65bcc79153e5c71c835de7ae7a148617e5821457
     <string name="skip_for_now">Skip For Now</string>
     <string name="todo">TODO</string>
     <string name="bank_account">Bank Account</string>
