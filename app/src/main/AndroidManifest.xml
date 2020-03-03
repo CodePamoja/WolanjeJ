@@ -11,35 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
         <activity android:name=".IdentifyCard51"></activity>
         <activity android:name=".SettingsI48" />
         <activity android:name=".Settings48" />
         <activity android:name=".LinkAccount11" />
         <activity android:name=".Registration07" />
-        <activity android:name=".CardLink" />
-=======
-
-        <activity android:name=".LinkAccount11" />
-        <activity android:name=".Registration07" />
-        <activity android:name=".CardLink" />
-
+        <activity android:name=".CardLink" />1" />
         <activity android:name=".Home"></activity>
         <activity android:name=".LinkCardSuccessfully" />
         <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
->>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
-        <activity android:name=".Home" />
-        <activity android:name=".LinkCardSuccessfully" />
-        <activity android:name=".LogIn" />
-        <activity android:name=".Registration05" />
-<<<<<<< HEAD
         <activity android:name=".screen18" />
-        <activity android:name=".Registration08" />
+        <activity android:name=".registration08" />
         <activity android:name=".Registration06" />
-=======
-        <activity android:name="screen18"/>
->>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
 
         <meta-data
             android:name="com.google.android.actions"
@@ -52,11 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-=======
-        <activity android:name=".Registration06" />
-        <activity android:name=".registration08" />
->>>>>>> c4aded2fc121e48d574eabf88e6643b715400ce3
     </application>
 
 </manifest>
