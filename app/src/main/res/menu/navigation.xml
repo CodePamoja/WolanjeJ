@@ -2,10 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/my_wallet"
+<<<<<<< HEAD
         android:icon="@mipmap/my_wallet"
         android:title="My wallet"
         android:enabled="true"
         android:iconTint="@color/colorGreen"/>
+=======
+        android:icon="@mipmap/wallet"
+        android:title="My wallet"
+        android:enabled="true"
+        android:iconTint="@color/colorBlack"/>
+>>>>>>> 2a0ed60eb82ad12a4c21cc1888ded12c0ec37f08
 
     <item
         android:id="@+id/payments"
