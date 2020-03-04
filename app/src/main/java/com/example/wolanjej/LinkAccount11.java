@@ -65,7 +65,7 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
 
         switch (v.getId()){
             case R.id.card_westernunion: i = new Intent(this,Registration06.class);startActivity(i); break;
-            case R.id.card_worldplay: i = new Intent(this,Registration05.class);startActivity(i); break;
+            case R.id.card_worldplay: i = new Intent(this,screen18.class);startActivity(i); break;
             default:break;
         }
     }

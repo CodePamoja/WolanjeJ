@@ -11,23 +11,14 @@
     <include
         android:id="@+id/include2"
         layout="@layout/toobarwithout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+       />
 
     <include
         android:id="@+id/include"
         layout="@layout/imageholder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2"
-        app:layout_constraintVertical_bias="0.0" />
+        />
 
     <TextView
         android:id="@+id/textView8"
@@ -37,13 +28,7 @@
         android:text="@string/fingerprint"
         android:textSize="30sp"
         android:textColor="@color/colorBlack"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:name="font_size_large"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"
-        app:layout_constraintVertical_bias="0.0" />
+        />
 
     <TextView
         android:id="@+id/textView7"
@@ -51,28 +36,15 @@
         android:layout_height="38dp"
         android:gravity="center"
         android:text="@string/please_lift_and_rest_your_finger"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+        />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="43dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/group_8a"
-        tools:ignore="HardcodedText,MissingConstraints"
-        android:contentDescription="todo" />
+        />
 
     <Button
         android:id="@id/button2"
@@ -82,109 +54,8 @@
         android:background="@drawable/roundedcorner"
         android:text="continue"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="HardcodedText,MissingConstraints" />
+         />
 
-    <include layout="@layout/toobarwithout" />
-    <include layout="@layout/imageholder" />
 
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fingerprint"
-                android:textColor="@color/colorMidnight"
-                android:textSize="22sp"
-                android:textAlignment="center"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tap to register finger print"
-                android:textColor="@color/blue_grey"
-                android:textSize="14sp"
-                android:paddingTop="6dp"
-                android:paddingHorizontal="32dp"
-                android:textAlignment="center"
-                />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <Button
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:icon="@mipmap/group_9"
-             android:layout_centerInParent="true"
-
-              android:backgroundTint="@android:color/transparent"
-                />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="24dp"
-            android:layout_marginTop="24dp"
-
-            >
-            <Button
-                android:id="@+id/btn_getcon"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="Continue"
-                android:backgroundTint="@color/colorPurple"
-                android:textColor="@color/colorWhite"
-                android:textSize="16sp"
-                android:onClick="sendtoLogin"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="24dp"
-            android:layout_marginTop="8dp"
-
-            >
-            <Button
-                android:id="@+id/btn_getstarted"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="skip for now"
-                android:onClick="sendtoLinkSuccess"
-                android:textColor="@color/colorPurple"
-                android:textSize="16sp"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                />
-
-        </LinearLayout>
 
     </LinearLayout>

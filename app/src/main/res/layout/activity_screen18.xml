@@ -6,14 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".screen18"
     android:orientation="vertical"
+    android:gravity="bottom"
+    android:background="@drawable/splash2"
+    android:layout_marginTop="130dp"
+    android:outlineSpotShadowColor="@color/colorMidnight"
+
     >
     <ImageView
         android:id="@+id/rectangle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/rectangle"
-        android:layout_marginTop="150dp" />
+        android:src="@mipmap/rectangle" />
     <!--    scroll view-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +33,7 @@
             android:textColor="@color/colorBlack"
             android:layout_marginStart="15dp"
             android:textSize="20sp"
-            android:text="Billers" />
+            android:text="@string/billers" />
 
     </LinearLayout>
     <ScrollView
@@ -42,13 +45,15 @@
             android:layout_height="wrap_content">
             <androidx.cardview.widget.CardView
                 app:cardElevation="10dp"
-                android:id="@+id/card_view7"
+                android:id="@+id/saved_billers"
                 android:layout_width="84dp"
                 android:layout_height="98dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="20dp"
                 android:background="@drawable/splash"
-                app:cardCornerRadius="15dp">
+                android:clickable="true"
+                app:cardCornerRadius="15dp"
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/image_holder"
@@ -65,21 +70,22 @@
                     android:textColor="@color/blue_grey"
                     android:lineSpacingExtra="2sp"
                     android:gravity="center_horizontal"
-                    tools:text="Saved
-                    Billers"
+                    android:text="@string/saved_billers"
                     android:layout_marginTop="60dp"
                     android:layout_gravity="center_horizontal" />
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 app:cardElevation="10dp"
-                android:id="@+id/card_view8"
+                android:id="@+id/electricity"
                 android:layout_width="84dp"
                 android:layout_height="98dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="15dp"
                 android:background="@drawable/splash"
-                app:cardCornerRadius="15dp">
+                android:clickable="true"
+                app:cardCornerRadius="15dp"
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/group_18h"
@@ -97,19 +103,21 @@
                     android:lineSpacingExtra="2sp"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="60dp"
-                    tools:text="Electricity"
+                    android:text="@string/electricity"
                     android:layout_gravity="center_horizontal" />
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 app:cardElevation="10dp"
-                android:id="@+id/card_view9"
+                android:id="@+id/pay_internet"
                 android:layout_width="84dp"
                 android:layout_height="98dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="15dp"
                 android:background="@drawable/splash"
-                app:cardCornerRadius="15dp">
+                android:clickable="true"
+                app:cardCornerRadius="15dp"
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/group_18b"
@@ -126,20 +134,22 @@
                     android:textColor="@color/blue_grey"
                     android:lineSpacingExtra="2sp"
                     android:gravity="center_horizontal"
-                    tools:text="Pay Internet"
+                    android:text="@string/pay_internet"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="60dp" />
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 app:cardElevation="10dp"
-                android:id="@+id/card_view10"
+                android:id="@+id/purchase_air"
                 android:layout_width="84dp"
                 android:layout_height="98dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="15dp"
                 android:background="@drawable/splash"
-                app:cardCornerRadius="15dp">
+                android:clickable="true"
+                app:cardCornerRadius="15dp"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -148,7 +158,7 @@
                     android:textColor="@color/blue_grey"
                     android:lineSpacingExtra="2sp"
                     android:gravity="center_horizontal"
-                    tools:text="Purchase Airtime"
+                    android:text="@string/purchase_airtime"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="60dp" />
             </androidx.cardview.widget.CardView>
@@ -168,7 +178,7 @@
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:layout_marginStart="15dp"
-            android:text="My_account" />
+            android:text="@string/my_account" />
 
     </LinearLayout>
     <LinearLayout
@@ -177,14 +187,16 @@
         android:layout_marginTop="5dp">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_view"
+            android:id="@+id/transfer"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
-            app:cardCornerRadius="15dp">
+            android:clickable="true"
+            app:cardCornerRadius="15dp"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/image_18f"
@@ -200,20 +212,22 @@
                 android:textSize="12sp"
                 android:textColor="@color/blue_grey"
                 android:gravity="end"
-                tools:text="Transfer"
+                android:text="@string/transfer"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp" />
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_view1"
+            android:id="@+id/income_details"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
-            app:cardCornerRadius="15dp">
+            android:clickable="true"
+            app:cardCornerRadius="15dp"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/image_18e"
@@ -231,21 +245,22 @@
                 android:textColor="@color/blue_grey"
                 android:lineSpacingExtra="2sp"
                 android:gravity="center_horizontal"
-                tools:text="Income
-                            Details"
+                android:text="@string/income_details"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp" />
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_view2"
+            android:id="@+id/wallet"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
-            app:cardCornerRadius="15dp">
+            android:clickable="true"
+            app:cardCornerRadius="15dp"
+            android:focusable="true">
             <ImageView
                 android:id="@+id/image_18d"
                 android:layout_width="match_parent"
@@ -261,14 +276,14 @@
                 android:textSize="12sp"
                 android:textColor="@color/blue_grey"
                 android:gravity="center_horizontal"
-                tools:text="Wallet"
+                android:text="@string/wallet"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp" />
 
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
-<!--    text view value add-->
+    <!--    text view value add-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp">
@@ -279,22 +294,26 @@
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:layout_marginStart="15dp"
-            android:text="Value Add" />
+            android:text="@string/value_add" />
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="65dp"
+        >
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_view4"
+            android:id="@+id/services"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="20dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
-            app:cardCornerRadius="15dp">
+            android:clickable="true"
+            app:cardCornerRadius="15dp"
+            android:focusable="true">
             <ImageView
                 android:id="@+id/image_18c"
                 android:layout_width="match_parent"
@@ -307,22 +326,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/blue_grey"
-                android:gravity="center_horizontal"
-                tools:text="Services"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp" />
+                android:layout_marginTop="60dp"
+                android:gravity="center_horizontal"
+                android:text="@string/services"
+                android:textColor="@color/blue_grey"
+                android:textSize="12sp" />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_view5"
+            android:id="@+id/exchange"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
-            app:cardCornerRadius="15dp">
+            android:clickable="true"
+            app:cardCornerRadius="15dp"
+            android:focusable="true">
             <ImageView
                 android:id="@+id/image_18a"
                 android:layout_width="match_parent"
@@ -338,20 +359,22 @@
                 android:textSize="12sp"
                 android:textColor="@color/blue_grey"
                 android:gravity="end"
-                tools:text="Exchange"
+                android:text="@string/exchange"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp" />
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_view6"
+            android:id="@+id/crypto"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             app:cardElevation="10dp"
             android:background="@drawable/splash"
-            app:cardCornerRadius="15dp">
+            android:clickable="true"
+            app:cardCornerRadius="15dp"
+            android:focusable="true">
             <ImageView
                 android:id="@+id/image_18b"
                 android:layout_width="match_parent"
@@ -366,7 +389,7 @@
                 android:textSize="12sp"
                 android:textColor="@color/blue_grey"
                 android:gravity="center_horizontal"
-                tools:text="Crypto"
+                android:text="@string/crypto"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp"
                 />

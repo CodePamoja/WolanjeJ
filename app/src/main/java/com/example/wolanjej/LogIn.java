@@ -111,8 +111,14 @@ public class LogIn extends AppCompatActivity {
     }
 
     public void sendtohome(View view) {
+<<<<<<< HEAD
         Intent move = new Intent(this, Home.class);
         startActivity(move);
     }
 
+=======
+        Intent move2 = new Intent(this, Home.class);
+        startActivity(move2);
+    }
+>>>>>>> cc77b9dfc6665b98d30dc1ae780674048228fcbf
 }
