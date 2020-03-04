@@ -28,4 +28,6 @@
     <string name="services">Services</string>
     <string name="exchange">Exchange</string>
     <string name="crypto">Crypto</string>
+    <string name="Open_drawer">Open Drawer</string>
+    <string name="Close_drawer">Closed Drawer</string>
 </resources>
