@@ -20,19 +20,8 @@
         >
         <FrameLayout
             android:layout_width="match_parent"
-<<<<<<< HEAD
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginBottom="32dp"
-
-            >
-            <include layout="@layout/toolbarhome"/>
-
-            <ScrollView
-=======
             android:layout_height="match_parent">
             <LinearLayout
->>>>>>> a492ba9f4e7e2082de7e2a189e83672b61f02f0b
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
