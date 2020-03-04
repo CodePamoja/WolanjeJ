@@ -107,7 +107,7 @@ public class LogIn extends AppCompatActivity {
     }
 
     public void sendtohome(View view) {
-        Intent move = new Intent(this, Home.class);
-        startActivity(move);
+        Intent move2 = new Intent(this, Home.class);
+        startActivity(move2);
     }
 }

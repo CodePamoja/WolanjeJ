@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="#acb1c0"
+        android:layout_marginLeft="15dp"
         android:letterSpacing="0.02"
         android:layout_toRightOf="@id/image_holder"
         android:layout_below="@id/name_holder"
