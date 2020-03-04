@@ -15,4 +15,17 @@
     <string name="payments">Payments</string>
     <string name="my_wallet">My Wallet</string>
     <string name="settings">Settings</string>
+    <string name="my_account">My Account</string>
+    <string name="Wallet">wallet</string>
+    <string name="value_add">value_add</string>
+    <string name="saved_billers">Saved Billers</string>
+    <string name="purchase_airtime">Purchase airtime</string>
+    <string name="electricity">Electricity</string>
+    <string name="pay_internet">Pay Internet</string>
+    <string name="transfer">Transfer</string>
+    <string name="income_details">Income Details</string>
+    <string name="wallet">Wallet</string>
+    <string name="services">Services</string>
+    <string name="exchange">Exchange</string>
+    <string name="crypto">Crypto</string>
 </resources>

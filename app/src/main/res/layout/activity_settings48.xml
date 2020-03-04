@@ -51,7 +51,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Fingerprint"
+                    android:drawablePadding="5dp"
                     android:textStyle="bold"
+                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="30dp"
                     android:drawableEnd="@mipmap/group_2"
                     android:drawableRight="@mipmap/path"
@@ -64,11 +66,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:orientation="horizontal">
                 <Button
                     android:id="@+id/PwdButton"
@@ -77,8 +79,8 @@
                     android:text="Password / PIN"
                     android:drawableEnd="@mipmap/path"
                     android:drawableRight="@mipmap/path"
-                    android:textSize="22sp"
-                    android:layout_marginLeft="15dp"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/shape"
                     android:textStyle="normal"
@@ -92,11 +94,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -107,9 +109,9 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:drawableEnd="@mipmap/path"
                     android:drawableRight="@mipmap/path"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:background="@drawable/shape"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginRight="5dp"
                     android:textStyle="normal"
                     android:textAlignment="textStart"
@@ -122,11 +124,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
@@ -143,6 +145,7 @@
                     android:textSize="20sp"
                     android:paddingTop="8dp"
                     android:textStyle="bold"
+                    android:layout_marginRight="10dp"
                     android:paddingBottom="8dp"
                     android:textColor="@color/colorBlack" />
 
@@ -151,11 +154,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
@@ -166,10 +169,12 @@
                     android:layout_marginLeft="30dp"
                     android:textSize="20sp"
                     android:paddingTop="8dp"
+                    android:drawablePadding="5dp"
                     android:textStyle="bold"
                     android:paddingBottom="8dp"
                     android:drawableEnd="@mipmap/group_2"
                     android:drawableRight="@mipmap/group_2"
+                    android:layout_marginRight="10dp"
                     android:textColor="@color/colorBlack" />
 
             </LinearLayout>
@@ -177,7 +182,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
         </LinearLayout>
     </LinearLayout>
 

@@ -11,13 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IdentifyCard51"></activity>
+        <activity android:name=".Pin49"></activity>
+        <activity android:name=".IdentifyCard51" />
         <activity android:name=".SettingsI48" />
         <activity android:name=".Settings48" />
         <activity android:name=".LinkAccount11" />
         <activity android:name=".Registration07" />
-        <activity android:name=".CardLink" />1" />
-        <activity android:name=".Home"></activity>
+        <activity android:name=".CardLink" />
+        <activity android:name=".Home" />
         <activity android:name=".LinkCardSuccessfully" />
         <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
