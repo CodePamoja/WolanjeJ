@@ -48,41 +48,40 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="317dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Fingerprint"
+                    android:drawablePadding="5dp"
                     android:textStyle="bold"
+                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="30dp"
+                    android:drawableEnd="@mipmap/group_2"
+                    android:drawableRight="@mipmap/path"
                     android:textSize="20sp"
                     android:paddingTop="8dp"
                     android:paddingBottom="1dp"
                     android:textColor="@color/colorBlack"/>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="8dp"
-                    android:textAlignment="viewEnd"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/group_2" />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:orientation="horizontal">
                 <Button
                     android:id="@+id/PwdButton"
-                    android:layout_width="317dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Password / PIN"
-                    android:textSize="22sp"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginRight="30dp"
+                    android:drawableEnd="@mipmap/path"
+                    android:drawableRight="@mipmap/path"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="5dp"
                     android:background="@drawable/shape"
                     android:textStyle="normal"
                     android:textAlignment="textStart"
@@ -90,120 +89,100 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:textColor="@color/colorBlack"
                     android:backgroundTint="@color/colorWhite" />
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="15dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="12dp"
-                    android:src="@mipmap/path" />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/profileBtn"
-                    android:layout_width="317dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Profile"
                     style="?android:attr/borderlessButtonStyle"
-                    android:textSize="22sp"
+                    android:drawableEnd="@mipmap/path"
+                    android:drawableRight="@mipmap/path"
+                    android:textSize="20sp"
                     android:background="@drawable/shape"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="5dp"
                     android:textStyle="normal"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/colorBlack"
                     android:backgroundTint="@color/colorWhite" />
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="15dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="12dp"
-                    android:src="@mipmap/path" />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="25dp"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/notification" />
-
                 <TextView
-                    android:layout_width="245dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@mipmap/notification"
+                    android:drawableLeft="@mipmap/path"
+                    android:drawablePadding="5dp"
                     android:text="Notification"
                     android:layout_marginLeft="30dp"
+                    android:drawableEnd="@mipmap/group_2"
+                    android:drawableRight="@mipmap/group_2"
                     android:textSize="20sp"
                     android:paddingTop="8dp"
                     android:textStyle="bold"
+                    android:layout_marginRight="10dp"
                     android:paddingBottom="8dp"
                     android:textColor="@color/colorBlack" />
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/group_2" />
 
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="317dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Unlock wallet"
                     android:layout_marginLeft="30dp"
                     android:textSize="20sp"
                     android:paddingTop="8dp"
+                    android:drawablePadding="5dp"
                     android:textStyle="bold"
                     android:paddingBottom="8dp"
+                    android:drawableEnd="@mipmap/group_2"
+                    android:drawableRight="@mipmap/group_2"
+                    android:layout_marginRight="10dp"
                     android:textColor="@color/colorBlack" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/group_2" />
 
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/blue_grey" />
+                android:background="@color/light_gray" />
         </LinearLayout>
     </LinearLayout>
 

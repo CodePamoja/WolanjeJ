@@ -14,5 +14,6 @@
     <color name="colorAccent">#21c1a8</color>
     <color name="colorBlack">#000000 </color>
     <color name="warm_purple">#932777</color>
+    <color name="light_gray">#ededed</color>
 
 </resources>
