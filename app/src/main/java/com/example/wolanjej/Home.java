@@ -9,9 +9,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Home extends AppCompatActivity {
     Toolbar tb;
@@ -63,5 +69,30 @@ public class Home extends AppCompatActivity {
     public void closeMyDrawer(View view) {
         drawer.closeDrawer(GravityCompat.START);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_menu,
+                menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public void maketoast(MenuItem item) {
+
+        drawer.closeDrawer(GravityCompat.START);
+
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.mywallet,
+                (ViewGroup) findViewById(R.id.mywallettoast));
+
+
+        Toast toast = new Toast(getApplicationContext());
+        //toast.setGravity(Gravity.CLIP_HORIZONTAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+
+
+        toast.setView(layout);
+        toast.show();
     }
 }
