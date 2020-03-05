@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pin49"></activity>
+        <activity android:name=".CryptoBalance"></activity>
+        <activity android:name=".Pin49" />
         <activity android:name=".IdentifyCard51" />
         <activity android:name=".SettingsI48" />
         <activity android:name=".Settings48" />
