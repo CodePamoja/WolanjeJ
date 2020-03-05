@@ -67,7 +67,7 @@ public class MainTransfer36 extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,MainActivity.class);
+        final Intent movetoLogo = new Intent(this,Home.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override

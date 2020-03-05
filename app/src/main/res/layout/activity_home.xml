@@ -76,6 +76,7 @@
                                 android:layout_marginBottom="24dp"
                                 />
                             <Button
+                                android:id="@+id/transfer_money_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/price"

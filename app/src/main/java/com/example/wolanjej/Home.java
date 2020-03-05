@@ -12,10 +12,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 public class Home extends AppCompatActivity {
     Toolbar tb;
     DrawerLayout drawer;
+    Button transferMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,14 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
+
+        transferMoney = (Button)findViewById(R.id.confirm_single_transfer);
+        transferMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movetoTransfer();
+            }
+        });
 
 //            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,tb,R.string.Open_drawer,R.string.Close_drawer);
   //      drawer.addDrawerListener(toggle);
@@ -63,5 +73,10 @@ public class Home extends AppCompatActivity {
     public void closeMyDrawer(View view) {
         drawer.closeDrawer(GravityCompat.START);
 
+    }
+
+    public void movetoTransfer() {
+        Intent move = new Intent(this, MainTransfer36.class);
+        startActivity(move);
     }
 }
