@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Registration07">
+    tools:context=".Registration07"
+
+    android:orientation="vertical">
 
     <include layout="@layout/toobarwithout"/>
     <include layout="@layout/imageholder"/>
-
-    <LinearLayout
+       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"

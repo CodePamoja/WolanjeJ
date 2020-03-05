@@ -36,10 +36,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="7"
-    android:paddingHorizontal="16dp"
-
-    >
+    android:layout_weight="7">
     <androidx.cardview.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
@@ -149,10 +146,14 @@
             </LinearLayout>
         </LinearLayout>
 
-
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:src="@drawable/abc_vector_test"
+    />
 
     </androidx.cardview.widget.CardView>
-
 
 
 </LinearLayout>

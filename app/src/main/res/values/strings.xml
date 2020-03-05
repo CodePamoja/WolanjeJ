@@ -1,12 +1,52 @@
 <resources>
     <string name="app_name">Wolenje Arica</string>
+    <string name="Link_Accoount">Link Accoount</string>
     <string name="app_intro">Wolenje, Lipa kwa urahisi</string>
     <string name="button_intro">Get started</string>
     <string name="fingerprint">FingerPrint</string>
     <string name="please_lift_and_rest_your_finger">please lift and rest your finger</string>
-    <string name="continuee">Continue</string>
+    <string name="Continue">Continue</string>
     <string name="skip_for_now">Skip For Now</string>
+    <string name="bank_account">Bank Account</string>
+    <string name="international_card">International Card</string>
+    <string name="billers">Billers</string>
+    <string name="referrals">Referrals</string>
+    <string name="payments">Payments</string>
+    <string name="my_wallet">My Wallet</string>
+    <string name="settings">Settings</string>
+    <string name="my_account">My Account</string>
+    <string name="Wallet">wallet</string>
+    <string name="value_add">value_add</string>
+    <string name="saved_billers">Saved Billers</string>
+    <string name="purchase_airtime">Purchase airtime</string>
+    <string name="electricity">Electricity</string>
+    <string name="pay_internet">Pay Internet</string>
+    <string name="transfer">Transfer</string>
+    <string name="income_details">Income Details</string>
+    <string name="wallet">Wallet</string>
+    <string name="services">Services</string>
+    <string name="exchange">Exchange</string>
+    <string name="crypto">Crypto</string>
+    <string name="Open_drawer">Open Drawer</string>
+    <string name="Close_drawer">Closed Drawer</string>
+    <string name="_0725_000_000">0725 000 000</string>
+    <string name="mr_mof">Mr_mof</string>
+    <string name="current_balance">Current Balance</string>
+    <string name="_7800_00">$7800.00</string>
+    <string name="my_e_wallet">My E-Wallet</string>
+    <string name="transfer_money">Transfer Money</string>
+    <string name="recent_transfer">Recent Transfer</string>
+    <string name="add_new">ADD NEW</string>
+    <string name="no_transfers">NO TRANSFERS</string>
+    <string name="quick_services">Quick Services</string>
+    <string name="view_all">View All</string>
+    <string name="buy_airtime">Buy Airtime</string>
+    <string name="transfers">Transfers</string>
+    <string name="loans">Loans</string>
+    <string name="you_have_spent_this_month">You have spent this month</string>
+    <string name="_5670">$5670</string>
     <string name="todo">TODO</string>
+<<<<<<< HEAD
     <string name="transfer">Transfer</string>
     <string name="transfer_to_wallet">Transfer to Wallet</string>
     <string name="transfer_to_bank">Transfer to Bank</string>
@@ -15,4 +55,8 @@
         <item>Single User</item>
         <item>Multiple Users</item>
     </string-array>
+=======
+    <string name="registration">Registration</string>
+    <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number, then we will send OTP to verify</string>
+>>>>>>> master
 </resources>

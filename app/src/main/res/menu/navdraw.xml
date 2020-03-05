@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:title="Home"
+            android:icon="@mipmap/group_3"
+
+            />
+        <item
+            android:id="@+id/my_e_wallet"
+            android:title="My E-wallet"
+            android:icon="@mipmap/group5"
+
+            />
+        <item
+            android:id="@+id/biling"
+            android:title="Biling"
+            android:icon="@mipmap/receipt_list_43"
+
+            />
+        <item
+            android:id="@+id/services"
+            android:title="Services"
+            android:icon="@mipmap/pot"
+
+            />
+        <item
+            android:id="@+id/referrals"
+            android:title="Referrals"
+            android:icon="@mipmap/group3"
+
+            />
+        <item
+            android:id="@+id/income"
+            android:title="Income Details"
+            android:icon="@mipmap/group_12"
+
+            />
+        <item
+            android:id="@+id/repor"
+            android:title="Reports"
+            android:icon="@mipmap/group8"
+
+            />
+        <item
+            android:id="@+id/lernhub"
+            android:title="Learning Hub"
+            android:icon="@mipmap/fill_1"
+
+            />
+        <item
+            android:id="@+id/profile"
+            android:title="Profile"
+            android:icon="@mipmap/group5"
+
+            />
+        <item
+            android:id="@+id/not"
+            android:title="Notifications"
+            android:icon="@mipmap/group6"
+
+            />
+        <item
+            android:id="@+id/settings"
+            android:title="Settings
+"
+            android:icon="@mipmap/set_1"
+
+            />
+        <item
+            android:id="@+id/swacc"
+            android:title="Switch Account"
+            android:icon="@mipmap/group7"
+
+            />
+        <item
+            android:id="@+id/fav"
+            android:title="Register new member"
+            android:icon="@mipmap/favorites_2"
+
+            />
+
+
+    </group>
+
+
+
+
+</menu>

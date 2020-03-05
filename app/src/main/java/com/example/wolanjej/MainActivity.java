@@ -2,7 +2,9 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         //setToolBar();
+        if(Build.VERSION.SDK_INT >8){
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         button = (Button)findViewById(R.id.btn_getstarted);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

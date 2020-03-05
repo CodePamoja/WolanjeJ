@@ -67,7 +67,7 @@
                             android:minWidth="40dp"
                             android:minHeight="41dp"
                             android:scaleType="fitCenter"
-                            android:src="@mipmap/wallet"/>
+                            android:src="@mipmap/transfer_wallet"/>
 
                         <TextView
                             android:layout_width="wrap_content"

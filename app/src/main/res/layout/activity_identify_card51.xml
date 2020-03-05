@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Settings48">
+
+        <include layout="@layout/toobarwithout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            app:layout_editor_absoluteY="55dp"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:text="Profile"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Personal Info"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/textviewborder"
+                        android:hint="Full Name"
+                        android:padding="8dp"
+                        android:textColorHint="@color/blue_grey"
+                        android:textSize="22sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/textviewborder"
+                        android:hint="Msmof"
+                        android:padding="8dp"
+                        android:textColorHint="@color/blue_grey"
+                        android:textSize="22sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/textviewborder"
+                        android:hint="Email"
+                        android:padding="8dp"
+                        android:textColorHint="@color/blue_grey"
+                        android:textSize="22sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/textviewborder"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:drawableStart="@mipmap/bitmap"
+                            android:drawablePadding="5dp"
+                            android:background="@drawable/textviewborder"
+                            android:hint="KEN | 725 000 000"
+                            android:inputType="phone"
+                            android:padding="8dp"
+                            android:textColorHint="@color/blue_grey"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Identity Card Information"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:hint="ID card number"
+                        android:padding="8dp"
+                        android:textColorHint="@color/blue_grey"
+                        android:textSize="22sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/textviewborder"
+                        android:hint="Country"
+                        android:padding="8dp"
+                        android:textColorHint="@color/blue_grey"
+                        android:textSize="22sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@mipmap/calendar_date"
+                        android:drawableEnd="@mipmap/calendar_date"
+                        android:drawablePadding="5dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/textviewborder"
+                        android:hint="Date of Birth"
+                        android:padding="8dp"
+                        android:textColorHint="@color/blue_grey"
+                        android:textSize="22sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Changes"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="25sp"
+                android:padding="10dp"
+                android:background="@drawable/rounder"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
