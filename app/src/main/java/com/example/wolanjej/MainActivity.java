@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void movetoRegistration() {
-        Intent move = new Intent(this,Registration05.class);
+        Intent move = new Intent(this,MainTransfer36.class);
         startActivity(move);
     }
 
