@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/button_rounded"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transfer Done!"
+                android:textAlignment="center"
+                android:textColor="@color/colorMidnight"
+                android:textSize="26sp"/>
+
+        </LinearLayout>
+
+        <View style="@style/Divider"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="Reference Number"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="Transfer Fee"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="#B3423424234"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_weight="1"
+                    android:text="0.00"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Amount Sent"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Balance"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1,000"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="14,000.00"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:text="Recipient:"
+                android:textAlignment="textStart"
+                android:textColor="@color/blue_grey"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="John Doe"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorMidnight"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="0725 000 000"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorMidnight"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Barclays Bank - Westlands"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorMidnight"
+                android:textSize="20sp"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/dismiss_success"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPurple"
+            android:layout_marginVertical="20dp"
+            android:padding="15dp"
+            android:text="Continue"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
