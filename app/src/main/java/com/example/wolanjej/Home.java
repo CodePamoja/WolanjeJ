@@ -30,7 +30,7 @@ public class Home extends AppCompatActivity {
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
 
-        transferMoney = (Button)findViewById(R.id.confirm_single_transfer);
+        transferMoney = (Button)findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
