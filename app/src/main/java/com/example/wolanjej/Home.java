@@ -16,12 +16,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+<<<<<<< HEAD
 import android.widget.TextView;
 import android.widget.Toast;
+=======
+import android.widget.Button;
+>>>>>>> 348f4f0aa3451e4106a76fe53bbefd52571272d8
 
 public class Home extends AppCompatActivity {
     Toolbar tb;
     DrawerLayout drawer;
+    Button transferMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,14 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
+
+        transferMoney = (Button)findViewById(R.id.transfer_money_button);
+        transferMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movetoTransfer();
+            }
+        });
 
 //            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,tb,R.string.Open_drawer,R.string.Close_drawer);
   //      drawer.addDrawerListener(toggle);
@@ -71,6 +84,7 @@ public class Home extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu,
@@ -94,5 +108,10 @@ public class Home extends AppCompatActivity {
 
         toast.setView(layout);
         toast.show();
+=======
+    public void movetoTransfer() {
+        Intent move = new Intent(this, MainTransfer36.class);
+        startActivity(move);
+>>>>>>> 348f4f0aa3451e4106a76fe53bbefd52571272d8
     }
 }

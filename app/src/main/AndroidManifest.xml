@@ -13,6 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".EnterPin"></activity>
+        <activity android:name=".ConfirmMultipleTransfer42" />
+        <activity android:name=".TransferToWalletMultiple40" />
+        <activity android:name=".ConfirmTransferToPhone52" />
+        <activity android:name=".ConfirmTransferToBank46" />
+        <activity android:name=".ConfirmSingleTransfer40" />
+        <activity android:name=".TransferToPhone50" />
+        <activity android:name=".TransferToBank44" />
+        <activity android:name=".MainTransfer36" />
+        <activity android:name=".TransferToWalletSingle37" />
         <activity android:name=".Pin49"></activity>
         <activity android:name=".IdentifyCard51" />
         <activity android:name=".SettingsI48" />
