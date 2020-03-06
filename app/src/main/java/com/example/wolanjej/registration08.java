@@ -89,13 +89,6 @@ public class registration08 extends AppCompatActivity {
 
     }
 
-
-    public void sendtoFingerPrint(View view) {
-        Intent move = new Intent(this, registration08.class);
-        startActivity(move);
-
-    }
-
     public void sendtoLogin(View view) {
         Intent move = new Intent(this, LogIn.class);
         startActivity(move);

@@ -8,7 +8,7 @@
     >
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarhome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -23,8 +23,7 @@
             android:gravity="center_horizontal"
             android:layout_gravity="center"
             android:id="@+id/toolbar_title" />
-
-
+        
 
     </androidx.appcompat.widget.Toolbar>
 

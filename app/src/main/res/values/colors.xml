@@ -10,10 +10,13 @@
     <color name="blue_grey">#8c8a9a</color>
     <color name="colorWarmpurple">#932777</color>
     <color name="colorBluepurple">#531EDC</color>
+    <color name="colorGreyBackground">#268484a9</color>
+    <color name="colorGreenBlue">#3ca8b3</color>
     <color name="colorGreen">#21c17a</color>
     <color name="colorAccent">#21c1a8</color>
     <color name="colorBlack">#000000 </color>
     <color name="warm_purple">#932777</color>
     <color name="light_gray">#ededed</color>
+>>>>>>> master
 
 </resources>
