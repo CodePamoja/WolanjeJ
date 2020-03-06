@@ -1,65 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".registration08"
-    tools:ignore="ExtraText">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".registration08">
 
-    <include
-        android:id="@+id/include2"
-        layout="@layout/toobarwithout"
-       />
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/imageholder"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="match_parent"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="412dp"
-        android:layout_height="43dp"
-        android:gravity="center"
-        android:text="@string/fingerprint"
-        android:textSize="30sp"
-        android:textColor="@color/colorBlack"
-        />
+        <include
+            android:id="@+id/include2"
+            layout="@layout/toobarwithout" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="413dp"
-        android:layout_height="38dp"
-        android:gravity="center"
-        android:text="@string/please_lift_and_rest_your_finger"
-        />
+        <include
+            android:id="@+id/include"
+            layout="@layout/imageholder"
+            android:layout_marginVertical="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        app:icon="@mipmap/group_8a"
-        android:layout_marginVertical="24dp"
-        android:layout_gravity="center_horizontal"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="20dp"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@id/button2"
-        android:layout_width="362dp"
-        android:layout_height="59dp"
-        android:background="@drawable/roundedcorner"
-        android:text="continue"
-        android:layout_marginTop="24dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/colorWhite"
-        android:onClick="sendtoLogin"
-         />
+            <TextView
+                android:text="@string/fingerprint"
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/colorMidnight"
+                android:textSize="22sp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:textAlignment="center" />
 
+            <TextView
+                android:id="@+id/textView7"
+                android:text="@string/please_lift_and_rest_your_finger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_grey"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingVertical="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:textAlignment="center"
+                />
 
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                app:icon="@mipmap/group_8a"
+                android:layout_marginVertical="20dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <Button
+                android:id="@id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundedcorner"
+                android:text="continue"
+                android:layout_gravity="center_horizontal"
+                android:onClick="sendtoLogin"
+                android:padding="5dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Skip For Now"
+                android:onClick="sendtoLogin"
+                android:layout_marginVertical="5dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+        </LinearLayout>
 
     </LinearLayout>
+</ScrollView>
