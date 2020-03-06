@@ -4,15 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CryptoBalance">
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        >
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="55dp"
-        android:layout_gravity="center_horizontal"
+        android:textSize="40sp"
+        tools:text="$12000"
         />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:textSize="24sp"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="14dp"
+        tools:text=",88"
+
+        />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#3ec9dc"
+        android:gravity="center_horizontal"
+        tools:text="+$1765 (13.1%) last week"
+        />
+    <TextView
+        android:layout_marginTop="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:textSize="13sp"
+        android:textColor="@color/blue_grey"
+        android:letterSpacing="0.08"
+        tools:text="WALLETS"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textSize="13sp"
+        android:textColor="@color/blue_grey"
+        android:letterSpacing="0.08"
+        tools:text="STATISTICS"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="286dp"
+        android:layout_marginTop="40dp"
+        android:textSize="12sp"
+        android:textColor="@color/warm_purple"
+        tools:text="Week"
+        />
+    </RelativeLayout>
 </LinearLayout>
