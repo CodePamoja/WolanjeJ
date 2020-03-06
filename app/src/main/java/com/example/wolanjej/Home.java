@@ -93,6 +93,7 @@ public class Home extends AppCompatActivity {
 
         findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
         findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+ findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
 
     }
     public void movetoTransfer(){

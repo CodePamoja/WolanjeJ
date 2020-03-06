@@ -5,8 +5,8 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    android:layout_gravity="clip_horizontal"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -353,23 +353,59 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="700dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:background="@drawable/splash2"
                 android:orientation="vertical"
+<<<<<<< HEAD
                 android:padding="24dp">
+=======
+                android:visibility="gone"
+                android:id="@+id/show_ple"
+                android:padding="16dp">
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:icon="@mipmap/rectanglew"
+                    android:onClick="close_show_ple"
+                    />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:layout_marginTop="13dp"
+                        android:textColor="@color/colorMidnight"
+                        android:text="My E-Wallet"
+                        />
+>>>>>>> cebf6c8c1fc8ec5eb53532d7a48dfcb656da144f
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     android:orientation="horizontal">
+=======
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    >
+>>>>>>> cebf6c8c1fc8ec5eb53532d7a48dfcb656da144f
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+<<<<<<< HEAD
                         app:cardCornerRadius="20dp"
                         app:cardElevation="25dp">
+=======
+                        android:clickable="true"
+                        >
+>>>>>>> cebf6c8c1fc8ec5eb53532d7a48dfcb656da144f
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -402,7 +438,8 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:clickable="true">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -435,7 +472,8 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:clickable="true">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -471,12 +509,24 @@ Transfer"
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+<<<<<<< HEAD
                     android:orientation="horizontal">
+=======
+                    android:orientation="horizontal"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="40dp"
+                    >
+>>>>>>> cebf6c8c1fc8ec5eb53532d7a48dfcb656da144f
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+<<<<<<< HEAD
                         android:layout_weight="1">
+=======
+                        android:layout_weight="1"
+                        android:clickable="true">
+>>>>>>> cebf6c8c1fc8ec5eb53532d7a48dfcb656da144f
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -509,7 +559,12 @@ History"
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+<<<<<<< HEAD
                         android:layout_weight="1">
+=======
+                        android:layout_weight="1"
+                        android:clickable="true">
+>>>>>>> cebf6c8c1fc8ec5eb53532d7a48dfcb656da144f
 
                         <RelativeLayout
                             android:layout_width="match_parent"
