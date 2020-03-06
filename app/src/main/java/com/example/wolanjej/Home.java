@@ -9,9 +9,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Button;
 
 public class Home extends AppCompatActivity {
@@ -39,11 +45,11 @@ public class Home extends AppCompatActivity {
         });
 
 //            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,tb,R.string.Open_drawer,R.string.Close_drawer);
-  //      drawer.addDrawerListener(toggle);
-    //    toggle.syncState();
+        //      drawer.addDrawerListener(toggle);
+        //    toggle.syncState();
 
 
-     setToolBar();
+        setToolBar();
     }
 
     @Override
@@ -51,7 +57,7 @@ public class Home extends AppCompatActivity {
         if(drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else{
-        super.onBackPressed();}
+            super.onBackPressed();}
     }
 
 
@@ -64,7 +70,7 @@ public class Home extends AppCompatActivity {
                     public void onClick(View v) {
                         drawer.openDrawer(GravityCompat.START);
 
-                   }
+                    }
                 }
         );
 
@@ -75,8 +81,30 @@ public class Home extends AppCompatActivity {
 
     }
 
-    public void movetoTransfer() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_menu,
+                menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public void maketoast(MenuItem item) {
+        drawer.closeDrawer(GravityCompat.START);
+
+        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+ findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+
+    }
+    public void movetoTransfer(){
         Intent move = new Intent(this, MainTransfer36.class);
         startActivity(move);
+    }
+
+    public void close_show_ple(View view) {
+        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+
     }
 }
