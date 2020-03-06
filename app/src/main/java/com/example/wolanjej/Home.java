@@ -89,23 +89,21 @@ public class Home extends AppCompatActivity {
     }
 
     public void maketoast(MenuItem item) {
-
         drawer.closeDrawer(GravityCompat.START);
 
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.mywallet,
-                (ViewGroup) findViewById(R.id.mywallettoast));
+        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+ findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
 
-
-        Toast toast = new Toast(getApplicationContext());
-        //toast.setGravity(Gravity.CLIP_HORIZONTAL, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
-
-
-        toast.setView(layout);
-        toast.show();}
+    }
     public void movetoTransfer(){
         Intent move = new Intent(this, MainTransfer36.class);
         startActivity(move);
+    }
+
+    public void close_show_ple(View view) {
+        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+
     }
 }
