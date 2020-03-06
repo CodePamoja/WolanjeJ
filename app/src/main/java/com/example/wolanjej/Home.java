@@ -16,12 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-<<<<<<< HEAD
 import android.widget.TextView;
 import android.widget.Toast;
-=======
 import android.widget.Button;
->>>>>>> 348f4f0aa3451e4106a76fe53bbefd52571272d8
 
 public class Home extends AppCompatActivity {
     Toolbar tb;
@@ -84,7 +81,6 @@ public class Home extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu,
@@ -107,11 +103,9 @@ public class Home extends AppCompatActivity {
 
 
         toast.setView(layout);
-        toast.show();
-=======
-    public void movetoTransfer() {
+        toast.show();}
+    public void movetoTransfer(){
         Intent move = new Intent(this, MainTransfer36.class);
         startActivity(move);
->>>>>>> 348f4f0aa3451e4106a76fe53bbefd52571272d8
     }
 }

@@ -356,22 +356,20 @@
                 android:layout_height="700dp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/splash2"
-android:padding="24dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="24dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         app:cardCornerRadius="20dp"
-                        app:cardElevation="25dp"
-                        >
+                        app:cardElevation="25dp">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -419,7 +417,7 @@ android:padding="24dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:src="@mipmap/group7w" />
+                                android:src="@mipmap/group7w1" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -452,7 +450,7 @@ android:padding="24dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:src="@mipmap/group7w" />
+                                android:src="@mipmap/group7w2" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -461,6 +459,80 @@ android:padding="24dp"
                                 android:layout_centerHorizontal="true"
                                 android:text="Fund
 Transfer"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="18dp"
+
+                            >
+
+                            <ImageView
+                                android:id="@+id/imagetop4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:src="@mipmap/groupth" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/imagetop4"
+                                android:layout_centerHorizontal="true"
+                                android:text="Transaction
+History"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="18dp"
+
+                            >
+
+                            <ImageView
+                                android:id="@+id/imagetop5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:src="@mipmap/grouppc" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/imagetop5"
+                                android:layout_centerHorizontal="true"
+                                android:text="Pending
+Commision"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
                         </RelativeLayout>
