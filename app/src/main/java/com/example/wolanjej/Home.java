@@ -16,12 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-
 import android.widget.TextView;
 import android.widget.Toast;
-
 import android.widget.Button;
-
 
 public class Home extends AppCompatActivity {
     Toolbar tb;
@@ -45,17 +42,14 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 movetoTransfer();
             }
-
-            private void movetoTransfer() {
-            }
         });
 
 //            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,tb,R.string.Open_drawer,R.string.Close_drawer);
-  //      drawer.addDrawerListener(toggle);
-    //    toggle.syncState();
+        //      drawer.addDrawerListener(toggle);
+        //    toggle.syncState();
 
 
-     setToolBar();
+        setToolBar();
     }
 
     @Override
@@ -63,7 +57,7 @@ public class Home extends AppCompatActivity {
         if(drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else{
-        super.onBackPressed();}
+            super.onBackPressed();}
     }
 
 
@@ -76,7 +70,7 @@ public class Home extends AppCompatActivity {
                     public void onClick(View v) {
                         drawer.openDrawer(GravityCompat.START);
 
-                   }
+                    }
                 }
         );
 
@@ -87,7 +81,6 @@ public class Home extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu,
@@ -96,25 +89,21 @@ public class Home extends AppCompatActivity {
     }
 
     public void maketoast(MenuItem item) {
-
         drawer.closeDrawer(GravityCompat.START);
 
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.mywallet,
-                (ViewGroup) findViewById(R.id.mywallettoast));
+        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
 
+    }
+    public void movetoTransfer(){
+        Intent move = new Intent(this, MainTransfer36.class);
+        startActivity(move);
+    }
 
-        Toast toast = new Toast(getApplicationContext());
-        //toast.setGravity(Gravity.CLIP_HORIZONTAL, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
+    public void close_show_ple(View view) {
+        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
 
+        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
 
-        toast.setView(layout);
-        toast.show();
-
-//    public void movetoTransfer() {
-//        Intent move = new Intent(this, MainTransfer36.class);
-//        startActivity(move);
-//    }
-}
+    }
 }
