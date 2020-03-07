@@ -69,12 +69,11 @@
             <Button
                 android:id="@id/button2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:background="@drawable/roundedcorner"
                 android:text="continue"
                 android:layout_gravity="center_horizontal"
                 android:onClick="sendtoLogin"
-                android:padding="5dp"
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"

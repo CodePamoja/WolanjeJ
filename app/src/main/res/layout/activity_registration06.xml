@@ -103,12 +103,11 @@
                             android:id="@+id/btn_getstarted"
                             style="@style/Widget.AppCompat.Button.Borderless.Colored"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="56dp"
                             android:backgroundTint="@color/colorPurple"
                             android:onClick="sendtoSetYourPin"
                             android:layout_marginVertical="20dp"
                             android:text="Continue"
-                            android:padding="5dp"
                             android:fontFamily="@font/poppins_medium"
                             android:textColor="@color/colorWhite"
                             android:textSize="16sp" />

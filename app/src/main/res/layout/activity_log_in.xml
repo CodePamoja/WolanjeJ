@@ -80,12 +80,11 @@
                         <Button
                             android:id="@+id/btn_getstarted"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="56dp"
                             android:layout_marginVertical="10dp"
                             android:text="Log in"
                             android:backgroundTint="@color/colorPurple"
                             android:textColor="@color/colorWhite"
-                            android:padding="5dp"
                             android:fontFamily="@font/poppins_medium"
                             android:textSize="16sp"
                             android:onClick="sendtohome" />
