@@ -9,11 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-<<<<<<< HEAD
-=======
 import android.view.LayoutInflater;
 import android.view.Menu;
->>>>>>> 252219eefaff7859b434c81cee4d7f69e34be7ff
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
