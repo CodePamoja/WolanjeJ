@@ -75,17 +75,17 @@ public class Registration05 extends AppCompatActivity {
         String value = text.getText().toString();
         System.out.println(value);
 
-        /*JSONObject jValue = new JSONObject();
+        JSONObject jValue = new JSONObject();
         try {
             jValue.put("phone", value);
             Log.e("JValues",jValue.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-       OkhttpConnection okConn = new OkhttpConnection();
-        String result = okConn.postRequest(jValue.toString());
-        System.out.println(result);*/
+        String url = "/register";
+        OkhttpConnection okConn = new OkhttpConnection();
+        String result = okConn.postRequest(url,jValue.toString());
+        System.out.println(result);
 
         Intent move = new Intent(this, Registration06.class);
         startActivity(move);
