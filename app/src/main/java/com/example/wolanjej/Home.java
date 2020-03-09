@@ -9,17 +9,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of c71ee8c... resolved conflicts
 import android.view.LayoutInflater;
 import android.view.Menu;
->>>>>>> 252219eefaff7859b434c81cee4d7f69e34be7ff
 import android.view.MenuItem;
-=======
->>>>>>> parent of 3a0d1d2... settings pages linked
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -68,6 +60,11 @@ public class Home extends AppCompatActivity {
             super.onBackPressed();}
     }
 
+    public void movetoSettings48(MenuItem item){
+        Intent intent = new Intent(this, Settings48.class);
+        startActivity(intent);
+
+    }
 
     private void setToolBar() {
         setSupportActionBar(tb);

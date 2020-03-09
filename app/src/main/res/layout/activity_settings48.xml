@@ -73,7 +73,7 @@
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
                 <Button
-                    android:id="@+id/PwdButton"
+                    android:id="@+id/btn_pwdPIN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Password / PIN"
@@ -102,7 +102,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/profileBtn"
+                    android:id="@+id/btn_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Profile"

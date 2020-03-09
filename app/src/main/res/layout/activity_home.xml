@@ -357,10 +357,12 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/splash2"
                 android:orientation="vertical"
+<<<<<<< HEAD
+                android:padding="24dp">
+=======
                 android:visibility="gone"
                 android:id="@+id/show_ple"
                 android:padding="16dp">
-                android:padding="24dp">
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.TextButton"
