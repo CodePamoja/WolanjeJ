@@ -10,8 +10,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> parent of c71ee8c... resolved conflicts
 import android.view.LayoutInflater;
 import android.view.Menu;
+>>>>>>> 252219eefaff7859b434c81cee4d7f69e34be7ff
 import android.view.MenuItem;
 =======
 >>>>>>> parent of 3a0d1d2... settings pages linked
