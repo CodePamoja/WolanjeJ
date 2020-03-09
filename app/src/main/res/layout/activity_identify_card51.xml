@@ -56,7 +56,7 @@
                         android:layout_height="match_parent"
                         android:text="Personal Info"
                         android:textColor="@color/colorBlack"
-                        android:textSize="25sp"
+                        android:textSize="22sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -92,7 +92,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/textviewborder"
                         android:orientation="horizontal">
 
                         <EditText
@@ -100,6 +99,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
                             android:drawableStart="@mipmap/bitmap"
+                            android:layout_marginBottom="30dp"
                             android:drawablePadding="5dp"
                             android:background="@drawable/textviewborder"
                             android:hint="KEN | 725 000 000"
@@ -137,6 +137,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
+                        android:background="@drawable/textviewborder"
                         android:hint="ID card number"
                         android:padding="8dp"
                         android:textColorHint="@color/blue_grey"
@@ -159,6 +160,7 @@
                         android:drawableEnd="@mipmap/calendar_date"
                         android:drawablePadding="5dp"
                         android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp"
                         android:background="@drawable/textviewborder"
                         android:hint="Date of Birth"
                         android:padding="8dp"
@@ -176,7 +178,7 @@
                 android:layout_marginTop="10dp"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textSize="25sp"
+                android:textSize="22sp"
                 android:padding="10dp"
                 android:background="@drawable/rounder"/>
         </LinearLayout>

@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -44,6 +45,11 @@ public class Home extends AppCompatActivity {
         super.onBackPressed();}
     }
 
+    public void movetoSettings48(MenuItem item){
+        Intent intent = new Intent(this, Settings48.class);
+        startActivity(intent);
+
+    }
 
     private void setToolBar() {
         setSupportActionBar(tb);

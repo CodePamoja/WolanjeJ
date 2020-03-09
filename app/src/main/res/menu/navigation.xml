@@ -33,5 +33,6 @@
         android:icon="@mipmap/settings"
         android:title="Settings"
         android:enabled="true"
+        android:onClick="movetoSettings48"
         android:iconTint="@color/colorBlack"/>
 </menu>
