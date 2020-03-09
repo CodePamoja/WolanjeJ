@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/my_wallet"
-        android:icon="@mipmap/wallet"
+        android:icon="@mipmap/transfer_wallet"
         android:title="My wallet"
         android:enabled="true"
         android:iconTint="@color/colorBlack"/>

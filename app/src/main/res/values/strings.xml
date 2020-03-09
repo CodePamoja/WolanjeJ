@@ -46,6 +46,13 @@
     <string name="you_have_spent_this_month">You have spent this month</string>
     <string name="_5670">$5670</string>
     <string name="todo">TODO</string>
+    <string name="transfer_to_wallet">Transfer to Wallet</string>
+    <string name="transfer_to_bank">Transfer to Bank</string>
+    <string name="transfer_to_phone">Transfer to Phone</string>
+    <string-array name="user_select">
+        <item>Single User</item>
+        <item>Multiple Users</item>
+    </string-array>
     <string name="registration">Registration</string>
     <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number, then we will send OTP to verify</string>
 </resources>

@@ -15,6 +15,7 @@
             android:id="@+id/my_e_wallet"
             android:title="My E-wallet"
             android:icon="@mipmap/group5"
+            android:onClick="maketoast"
 
             />
         <item
