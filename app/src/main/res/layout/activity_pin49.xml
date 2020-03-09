@@ -54,88 +54,9 @@
                     android:layout_height="wrap_content"
                     android:text="You will use this to log in next time"/>
 
-                <LinearLayout
+                <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:paddingHorizontal="8dp"
-                                android:paddingTop="8dp"
-                                android:layout_marginTop="24dp"
-
-                                >
-
-                                <EditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="4 digit Pin"
-                                    android:height="48dp"
-                                    android:inputType="numberPassword"
-                                    android:drawableRight="@mipmap/preview_1"
-                                    android:background="@drawable/textviewborder"
-                                    android:paddingHorizontal="16dp"
-                                    android:paddingVertical="10dp"
-                                    android:layout_marginBottom="8dp"
-                                    />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:paddingHorizontal="8dp"
-                                android:paddingTop="4dp"
-                                android:layout_marginTop="4dp"
-
-                                >
-
-                                <EditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Repeat Pin"
-                                    android:height="48dp"
-                                    android:inputType="numberPassword"
-                                    android:drawableRight="@mipmap/preview_1"
-                                    android:background="@drawable/textviewborder"
-                                    android:paddingHorizontal="16dp"
-                                    android:paddingVertical="10dp"
-                                    android:layout_marginBottom="8dp"
-                                    />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:paddingHorizontal="8dp"
-                                android:layout_marginBottom="24dp"
-
-                                >
-                                <Button
-                                    android:id="@+id/btn_resetPIN"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="56dp"
-                                    android:text="Reset PIN"
-                                    android:textAllCaps="false"
-                                    android:backgroundTint="@color/colorPurple"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="16sp"
-                                    />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                </LinearLayout>
-
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
