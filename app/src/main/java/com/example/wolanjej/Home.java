@@ -20,10 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements View.OnClickListener{
     Toolbar tb;
     DrawerLayout drawer;
-    Button transferMoney;
+    Button transferMoney, viewall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +36,13 @@ public class Home extends AppCompatActivity {
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
 
+        viewall = (Button)findViewById(R.id.btnviewall);
+        viewall.setOnClickListener(this);
+
         transferMoney = (Button)findViewById(R.id.transfer_money_button);
-        transferMoney.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                movetoTransfer();
-            }
-        });
+        transferMoney.setOnClickListener(this);
+
+
 
 //            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,tb,R.string.Open_drawer,R.string.Close_drawer);
         //      drawer.addDrawerListener(toggle);
@@ -101,15 +101,26 @@ public class Home extends AppCompatActivity {
  findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
 
     }
-    public void movetoTransfer(){
-        Intent move = new Intent(this, MainTransfer36.class);
-        startActivity(move);
-    }
+//    public void movetoTransfer(){
+//        Intent move = new Intent(this, MainTransfer36.class);
+//        startActivity(move);
+//    }
 
     public void close_show_ple(View view) {
         findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
 
         findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent i;
+
+        switch (v.getId()){
+            case R.id.btnviewall: i = new Intent(this,screen18.class);startActivity(i); break;
+            case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);startActivity(i); break;
+            default:break;
+        }
     }
 }
