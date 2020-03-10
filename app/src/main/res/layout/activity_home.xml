@@ -357,7 +357,9 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/splash2"
                 android:orientation="vertical"
-                android:padding="24dp">
+                android:visibility="gone"
+                android:id="@+id/show_ple"
+                android:padding="16dp">
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -381,14 +383,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <com.google.android.material.card.MaterialCardView
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    >
+
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         app:cardCornerRadius="20dp"
-                        app:cardElevation="25dp">
-                    <RelativeLayout
+                        app:cardElevation="25dp"
+                        android:clickable="true"
+                        >
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:paddingTop="15dp"
@@ -490,12 +497,18 @@ Transfer"
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                <com.google.android.material.card.MaterialCardView
+                    android:orientation="horizontal"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="40dp"
+                    >
+
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
-                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:clickable="true">
+
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:paddingTop="15dp"
@@ -515,8 +528,7 @@ Transfer"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/imagetop4"
                                 android:layout_centerHorizontal="true"
-                                android:text="Transaction
-History"
+                                android:text="Transaction History"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
                         </RelativeLayout>
@@ -526,8 +538,10 @@ History"
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
-                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:clickable="true">
+
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:paddingTop="15dp"
@@ -547,8 +561,7 @@ History"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/imagetop5"
                                 android:layout_centerHorizontal="true"
-                                android:text="Pending
-Commision"
+                                android:text="Pending Commision"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
                         </RelativeLayout>

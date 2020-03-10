@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -73,7 +79,7 @@
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
                 <Button
-                    android:id="@+id/PwdButton"
+                    android:id="@+id/btn_pwdPIN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Password / PIN"
@@ -102,7 +108,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/profileBtn"
+                    android:id="@+id/btn_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Profile"
@@ -187,3 +193,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</ScrollView>
