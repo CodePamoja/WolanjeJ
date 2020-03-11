@@ -55,4 +55,10 @@
     </string-array>
     <string name="registration">Registration</string>
     <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number, then we will send OTP to verify</string>
+    <string name="bill_manager">Bill Manager</string>
+    <string name="all">All</string>
+    <string name="unpaid">Unpaid</string>
+    <string name="paid">Paid</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

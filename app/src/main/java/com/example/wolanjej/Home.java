@@ -66,6 +66,18 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     }
 
+    public void moveBillManagerPayment(MenuItem item){
+        Intent intent = new Intent(this, BillManager.class);
+        startActivity(intent);
+
+    }
+
+    public void moveBillManagerBiller(MenuItem item){
+        Intent intent = new Intent(this, BillManager.class);
+        startActivity(intent);
+
+    }
+
     private void setToolBar() {
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");

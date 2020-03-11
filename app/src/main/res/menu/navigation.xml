@@ -12,6 +12,7 @@
         android:icon="@mipmap/hand"
         android:title="Payments"
         android:enabled="true"
+        android:onClick="moveBillManagerPayment"
         android:iconTint="@color/colorBlack"/>
 
     <item
@@ -26,6 +27,7 @@
         android:icon="@mipmap/combined_shape"
         android:title="Billers"
         android:enabled="true"
+        android:onClick="moveBillManagerBiller"
         android:iconTint="@color/colorBlack"/>
 
     <item
