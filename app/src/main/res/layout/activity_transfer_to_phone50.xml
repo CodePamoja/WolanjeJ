@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransferToPhone50">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <include layout="@layout/toobarwithout"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="25dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:text="Transfer to Phone"
+                android:textColor="@color/colorMidnight"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:paddingVertical="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="50"
+                            android:layout_height="wrap_content"
+                            android:text="Wallet"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorPurple"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="50"
+                            android:textAlignment="textEnd"
+                            android:layout_height="wrap_content"
+                            android:text="Balance"
+                            android:textSize="14sp"
+                            android:textColor="@color/blue_grey"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="50"
+                            android:layout_height="wrap_content"
+                            android:text="Wolenje 01"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorMidnight"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="50"
+                            android:textAlignment="textEnd"
+                            android:layout_height="wrap_content"
+                            android:text="Kes 15,000"
+                            android:textSize="22sp"
+                            android:textColor="@color/colorMidnight"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        android:text="Transfer detail"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorMidnight"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:inputType="phone"
+                        android:hint="Enter Phone No."
+                        android:padding="10dp"
+                        android:background="@drawable/textviewborder"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:layout_marginRight="20dp"
+                            android:text="Scan QR"
+                            android:textAllCaps="false"
+                            android:textSize="14sp"
+                            android:textColor="@color/blue_grey"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:backgroundTint="@color/colorGreyBackground"/>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:layout_marginLeft="20dp"
+                            android:text="Contacts"
+                            android:textAllCaps="false"
+                            android:textSize="14sp"
+                            android:textColor="@color/blue_grey"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:backgroundTint="@color/colorGreyBackground"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="DETAILS"
+                        android:autoSizeMinTextSize="12sp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/blue_grey"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:inputType="number"
+                        android:hint="Amount"
+                        android:padding="10dp"
+                        android:background="@drawable/textviewborder"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginVertical="20dp"
+                        android:inputType="text|textMultiLine"
+                        android:padding="10dp"
+                        android:hint="Message"
+                        android:background="@drawable/textviewborder"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="50dp"
+            android:paddingHorizontal="20dp">
+            <Button
+                android:id="@+id/continue_phone_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPurple"
+                android:padding="15dp"
+                android:text="Continue"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

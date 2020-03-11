@@ -2,30 +2,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/my_wallet"
-        android:icon="@mipmap/wallet"
+        android:icon="@mipmap/transfer_wallet"
         android:title="My wallet"
         android:enabled="true"
         android:iconTint="@color/colorBlack"/>
 
     <item
         android:id="@+id/payments"
-        android:icon="@mipmap/payments"
+        android:icon="@mipmap/hand"
         android:title="Payments"
         android:enabled="true"
+        android:onClick="moveBillManagerPayment"
         android:iconTint="@color/colorBlack"/>
 
     <item
         android:id="@+id/referrals"
-        android:icon="@mipmap/referrals"
+        android:icon="@mipmap/group2"
         android:title="Referrals"
         android:enabled="true"
         android:iconTint="@color/colorBlack"/>
 
     <item
         android:id="@+id/billers"
-        android:icon="@mipmap/billers"
+        android:icon="@mipmap/combined_shape"
         android:title="Billers"
         android:enabled="true"
+        android:onClick="moveBillManagerBiller"
         android:iconTint="@color/colorBlack"/>
 
     <item
@@ -33,5 +35,6 @@
         android:icon="@mipmap/settings"
         android:title="Settings"
         android:enabled="true"
+        android:onClick="movetoSettings48"
         android:iconTint="@color/colorBlack"/>
 </menu>

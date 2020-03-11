@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.wolanjej">
 
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,20 +13,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pin49"></activity>
+        <activity android:name=".BillManager"></activity>
+        <activity android:name=".CryptoBalance" />
+        <activity android:name=".Pin49" />
+        <activity android:name=".EnterPin" />
+        <activity android:name=".ConfirmMultipleTransfer42" />
+        <activity android:name=".TransferToWalletMultiple40" />
+        <activity android:name=".ConfirmTransferToPhone52" />
+        <activity android:name=".ConfirmTransferToBank46" />
+        <activity android:name=".ConfirmSingleTransfer40" />
+        <activity android:name=".TransferToPhone50" />
+        <activity android:name=".TransferToBank44" />
+        <activity android:name=".MainTransfer36" />
+        <activity android:name=".TransferToWalletSingle37" />
+        <activity
+            android:name=".Pin49"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".IdentifyCard51" />
         <activity android:name=".SettingsI48" />
         <activity android:name=".Settings48" />
         <activity android:name=".LinkAccount11" />
         <activity android:name=".Registration07" />
-        <activity android:name=".CardLink" />
+        <activity
+            android:name=".CardLink"
+            tools:ignore="MissingClass" />
         <activity android:name=".Home" />
-        <activity android:name=".LinkCardSuccessfully" />
+        <activity
+            android:name=".LinkCardSuccessfully"
+            tools:ignore="MissingClass" />
         <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
         <activity android:name=".screen18" />
         <activity android:name=".registration08" />
-        <activity android:name=".Registration06" />
+        <activity
+            android:name=".Registration06"
+            tools:ignore="MissingClass" />
 
         <meta-data
             android:name="com.google.android.actions"
