@@ -75,7 +75,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     public void moveBillManagerBiller(MenuItem item){
         Intent intent = new Intent(this, BillManager.class);
         startActivity(intent);
+    }
 
+    public void moveReferrals(MenuItem item){
+        Intent intent = new Intent(this, Referrals.class);
+        startActivity(intent);
+    }
+
+    public void moveMyWallet(MenuItem item){
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
     }
 
     private void setToolBar() {
