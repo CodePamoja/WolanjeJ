@@ -25,33 +25,37 @@
 
 
 
-                <TextView
-                    android:id="@+id/intotext"
-                    style="@style/TextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_intro"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="32dp"
-                    />
+        <TextView
+            android:id="@+id/intotext"
+            style="@style/TextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_intro"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="16sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            />
 
-                <Button
-                    android:id="@+id/btn_getstarted"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_below="@id/intotext"
-                    android:text="@string/button_intro"
-                    android:background="@drawable/splash"
-                    android:backgroundTint="@color/colorWhite"
-                    android:textColor="@color/colorBlack"                    android:layout_marginHorizontal="40dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_gravity="center"
-                   android:textSize="16sp"
+        <Button
+            android:id="@+id/btn_getstarted"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_below="@id/intotext"
+            android:text="@string/button_intro"
+            android:background="@drawable/splash"
+            android:fontFamily="@font/poppins_medium"
+            android:backgroundTint="@color/colorWhite"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"                    android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textSize="16sp"
 
-                     />
+            />
 
 
-            </RelativeLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

@@ -360,14 +360,19 @@
                 android:orientation="vertical"
                 android:visibility="gone"
                 android:id="@+id/show_ple"
-                android:padding="16dp">
+                android:paddingHorizontal="24dp"
+                >
 
                 <Button
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
                     app:icon="@mipmap/rectanglew"
+                    android:layout_marginStart="4dp"
+                    android:gravity="end"
+                    android:layout_marginBottom="29dp"
+                    android:layout_gravity="center"
                     android:onClick="close_show_ple"
                     />
 
@@ -392,8 +397,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="25dp"
                         android:clickable="true"
                         >
                         <RelativeLayout
@@ -499,8 +502,8 @@ Transfer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="100dp"
                     >
 
                     <com.google.android.material.card.MaterialCardView
@@ -529,8 +532,7 @@ Transfer"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/imagetop4"
                                 android:layout_centerHorizontal="true"
-                                android:text="Transaction
-History"
+                                android:text="Transaction History"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
                         </RelativeLayout>
@@ -563,8 +565,7 @@ History"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/imagetop5"
                                 android:layout_centerHorizontal="true"
-                                android:text="Pending
-Commision"
+                                android:text="Pending Commision"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
                         </RelativeLayout>

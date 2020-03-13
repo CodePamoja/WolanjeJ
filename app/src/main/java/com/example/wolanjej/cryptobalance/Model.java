@@ -3,7 +3,7 @@ package com.example.wolanjej.cryptobalance;
 public class Model {
     private int image;
 
-    private String title;
+    private String  title;
     private int color;
 
     /**

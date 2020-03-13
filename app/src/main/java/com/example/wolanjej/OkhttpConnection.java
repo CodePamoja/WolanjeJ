@@ -15,13 +15,13 @@ public class OkhttpConnection {
     String baseUrl= "https://backoffice.wolenjeafrica.com/wolenje/gapi";
     OkHttpClient client = new OkHttpClient();
 
-    public  String postRequest(String jsonbody){
+    public  String postRequest(String url, String jsonbody){
         String result = null;
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonbody);
-
+            String allUrl = baseUrl + url;
             Request request = new Request.Builder()
-                    .url(baseUrl)
+                    .url(allUrl)
                     .post(body)
                     .build();
 

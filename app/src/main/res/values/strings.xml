@@ -2,8 +2,8 @@
     <string name="app_name">Wolenje Arica</string>
     <string name="Link_Accoount">Link Accoount</string>
     <string name="app_intro">Wolenje, Lipa kwa urahisi</string>
-    <string name="button_intro">Get started</string>
-    <string name="fingerprint">FingerPrint</string>
+    <string name="button_intro">Get Started</string>
+    <string name="fingerprint">Fingerprint</string>
     <string name="please_lift_and_rest_your_finger">please lift and rest your finger</string>
     <string name="Continue">Continue</string>
     <string name="skip_for_now">Skip For Now</string>
@@ -55,4 +55,10 @@
     </string-array>
     <string name="registration">Registration</string>
     <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number, then we will send OTP to verify</string>
+    <string name="bill_manager">Bill Manager</string>
+    <string name="all">All</string>
+    <string name="unpaid">Unpaid</string>
+    <string name="paid">Paid</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

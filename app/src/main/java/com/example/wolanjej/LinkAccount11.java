@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
     private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
-        getSupportActionBar().setTitle("Link Account");
+        getSupportActionBar().setTitle("");
 //        final Intent movetoLogo = new Intent(this,MainActivity.class);
 //        tb.setNavigationOnClickListener(
 //                new View.OnClickListener() {
@@ -70,4 +71,8 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    public void moveToHome(MenuItem item) {
+        Intent movetohome = new Intent(this,Home.class);
+        startActivity(movetohome);
+    }
 }
