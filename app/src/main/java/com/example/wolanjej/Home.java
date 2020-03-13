@@ -112,4 +112,8 @@ public class Home extends AppCompatActivity {
         findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
 
     }
+
+    public void open_screen16(View view) {
+        findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
+    }
 }
