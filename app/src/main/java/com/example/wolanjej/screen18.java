@@ -91,7 +91,7 @@ public class screen18 extends AppCompatActivity implements View.OnClickListener 
             case R.id.wallet: i = new Intent(this, screen18.class);startActivity(i);break;
             case R.id.services: i = new Intent(this, Registration05.class);startActivity(i);break;
             case R.id.exchange: i = new Intent(this, screen18.class);startActivity(i);break;
-            case R.id.crypto: i = new Intent(this, Registration05.class);startActivity(i);break;
+            case R.id.crypto: i = new Intent(this,CryptoBalance.class);startActivity(i);break;
 
             default:
                 break;
