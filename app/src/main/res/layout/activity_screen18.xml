@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".screen18"
     android:orientation="vertical"
-    android:gravity="bottom"
+    android:layout_gravity="bottom"
     android:background="@drawable/splash2"
     android:paddingTop="26dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">

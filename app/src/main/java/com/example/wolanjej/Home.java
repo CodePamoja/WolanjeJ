@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -128,12 +129,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 //    }
 
     public void close_show_ple(View view) {
+        Log.e("yes","pressed");
         findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
 
         findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
 
     }
 
+    public void open_screen16(View view) {
+        findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
+    }
     @Override
     public void onClick(View v) {
         Intent i;
