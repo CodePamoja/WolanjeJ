@@ -68,4 +68,8 @@ public class BillManager extends AppCompatActivity {
         );
 
     }
+
+    public void show(View view){
+        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+    }
 }
