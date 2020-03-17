@@ -3,28 +3,64 @@
     android:layout_width="139dp"
     android:layout_height="162dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/splash"
     android:layout_margin="13dp"
     android:clickable="true"
     app:cardCornerRadius="15dp"
     android:focusable="true"
     app:cardElevation="10dp"
+    android:id="@+id/carditem2"
+    android:orientation="vertical"
     android:padding="7dp">
     <ImageView
-        android:id="@+id/item_image"
-        android:layout_width="match_parent"
+        android:id="@+id/item_image1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="left"
+        android:layout_marginStart="20dp"
         android:src="@mipmap/group_18f"
         android:layout_marginTop="20dp"/>
     <TextView
         android:id="@+id/item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:text="Item Title"
         android:layout_marginTop="60dp"
         android:textColor="@color/blue_grey"
-        android:gravity="end"
+        android:layout_gravity="left"
+        android:layout_marginStart="20dp"
         android:textSize="12sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:paddingTop="85dp"
+            android:textColor="@color/colorWhite"
+            android:text="9.88032" />
+
+        <TextView
+            android:id="@+id/item_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/item_title2"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="-32dp"
+            android:paddingTop="85dp"
+            android:text=" BTC" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/item_title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+1234 (13%)"
+        android:layout_marginTop="105dp"
+        android:layout_marginStart="20dp"
+        />
 </androidx.cardview.widget.CardView>

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="clip_horizontal"
+
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -32,6 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fillViewport="true"
+                    android:id="@+id/myscroll"
                     tools:context=".Home">
 
 
@@ -107,7 +109,6 @@
 
                             <Button
                                 android:id="@+id/btnaddnew"
-                                style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
@@ -352,231 +353,7 @@
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/navigation" />
               <include layout="@layout/activity_screen18" android:id="@+id/screen_16" android:visibility="gone"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@drawable/splash2"
-                android:orientation="vertical"
-                android:visibility="gone"
-                android:id="@+id/show_ple"
-                android:paddingHorizontal="24dp"
-                >
-
-                <Button
-                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    app:icon="@mipmap/rectanglew"
-                    android:layout_marginStart="4dp"
-                    android:gravity="end"
-                    android:layout_marginBottom="29dp"
-                    android:layout_gravity="center"
-                    android:onClick="close_show_ple"
-                    />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="22sp"
-                        android:layout_marginTop="13dp"
-                        android:textColor="@color/colorMidnight"
-                        android:text="My E-Wallet"
-                        />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
-                    >
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true"
-                        >
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="18dp"
-
-                            >
-
-                            <ImageView
-                                android:id="@+id/imagetop"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:src="@mipmap/group7w" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/imagetop"
-                                android:layout_centerHorizontal="true"
-                                android:gravity="center_horizontal"
-                                android:text="Top Up"
-                                android:textColor="@color/blue_grey"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="18dp"
-
-                            >
-
-                            <ImageView
-                                android:id="@+id/imagetop2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:src="@mipmap/group7w1" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/imagetop2"
-                                android:layout_centerHorizontal="true"
-                                android:text="Withdraw"
-                                android:textColor="@color/blue_grey"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="18dp"
-
-                            >
-
-                            <ImageView
-                                android:id="@+id/imagetop3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:src="@mipmap/group7w2" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/imagetop3"
-                                android:layout_centerHorizontal="true"
-                                android:text="Fund
-Transfer"
-                                android:textColor="@color/blue_grey"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="100dp"
-                    >
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="18dp"
-
-                            >
-
-                            <ImageView
-                                android:id="@+id/imagetop4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:src="@mipmap/groupth" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/imagetop4"
-                                android:layout_centerHorizontal="true"
-                                android:text="Transaction History"
-                                android:textColor="@color/blue_grey"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clickable="true">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="18dp"
-
-                            >
-
-                            <ImageView
-                                android:id="@+id/imagetop5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:src="@mipmap/grouppc" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/imagetop5"
-                                android:layout_centerHorizontal="true"
-                                android:text="Pending Commision"
-                                android:textColor="@color/blue_grey"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-
+           <include layout="@layout/pop_up_my_wallet" />
         </FrameLayout>
 
     </LinearLayout>

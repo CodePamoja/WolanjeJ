@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -20,6 +21,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
+
+import static com.example.wolanjej.R.color.warm_purple;
 
 public class Home extends AppCompatActivity implements View.OnClickListener{
     Toolbar tb;
@@ -138,6 +141,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     public void open_screen16(View view) {
         findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
+        findViewById(R.id.myscroll).setBackgroundColor(getResources().getColor(warm_purple));
+
+        DrawerLayout draw = (DrawerLayout) findViewById(R.id.drawer_layout);
+        draw.setBackgroundColor(getResources().getColor(warm_purple));
+        //findViewById(R.id.second_layer).setVisibility(View.INVISIBLE);
     }
     @Override
     public void onClick(View v) {
