@@ -73,7 +73,7 @@
             android:layout_gravity="bottom"
             android:background="@drawable/splash2"
             android:orientation="vertical"
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/show_ple"
             android:padding="16dp">
 
