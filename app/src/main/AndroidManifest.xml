@@ -36,7 +36,7 @@
         <activity android:name=".Settings48" />
         <activity android:name=".LinkAccount11" />
         <activity android:name=".Registration07" />
-        <activity android:name=".Service"/>
+        <activity android:name=".transport" />
         <activity
             android:name=".CardLink"
             tools:ignore="MissingClass" />

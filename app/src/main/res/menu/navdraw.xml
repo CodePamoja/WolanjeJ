@@ -28,6 +28,7 @@
             android:id="@+id/services"
             android:title="Services"
             android:icon="@mipmap/pot"
+            android:onClick="services"
 
             />
         <item
@@ -68,8 +69,7 @@
             />
         <item
             android:id="@+id/settings"
-            android:title="Settings
-"
+            android:title="Settings"
             android:icon="@mipmap/set_1"
 
             />

@@ -156,5 +156,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);startActivity(i); break;
             default:break;
         }
+
+
+
+        switch (v.getId()){
+            case R.id.services: i = new Intent(this,screen18.class);startActivity(i); break;
+            default:break;
+
     }
+}
 }
