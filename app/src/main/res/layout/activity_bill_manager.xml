@@ -73,7 +73,6 @@
             android:layout_gravity="bottom"
             android:background="@drawable/splash2"
             android:orientation="vertical"
-            .30x0
             android:visibility="gone"
             android:id="@+id/show_ple"
             android:padding="16dp">
@@ -324,6 +323,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
     </FrameLayout>
 
 </LinearLayout>
