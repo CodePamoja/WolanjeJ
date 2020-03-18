@@ -7,81 +7,80 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/home"
-            android:title="Home"
+            android:title="@string/home"
             android:icon="@mipmap/group_3"
 
             />
         <item
             android:id="@+id/my_e_wallet"
-            android:title="My E-wallet"
+            android:title="@string/my_e_wallets"
             android:icon="@mipmap/group5"
             android:onClick="maketoast"
 
             />
         <item
             android:id="@+id/biling"
-            android:title="Biling"
+            android:title="@string/biling"
             android:icon="@mipmap/receipt_list_43"
 
             />
         <item
             android:id="@+id/services"
-            android:title="Services"
+            android:title="@string/services"
             android:icon="@mipmap/pot"
-            android:onClick="services"
 
             />
         <item
             android:id="@+id/referrals"
-            android:title="Referrals"
+            android:title="@string/referrals"
             android:icon="@mipmap/group3"
 
             />
         <item
             android:id="@+id/income"
-            android:title="Income Details"
+            android:title="@string/income_details"
             android:icon="@mipmap/group_12"
 
             />
         <item
             android:id="@+id/repor"
-            android:title="Reports"
+            android:title="@string/reports"
             android:icon="@mipmap/group8"
 
             />
         <item
             android:id="@+id/lernhub"
-            android:title="Learning Hub"
+            android:title="@string/learning_hub"
             android:icon="@mipmap/fill_1"
 
             />
         <item
             android:id="@+id/profile"
-            android:title="Profile"
+            android:title="@string/profile"
             android:icon="@mipmap/group5"
 
             />
         <item
             android:id="@+id/not"
-            android:title="Notifications"
+            android:title="@string/notifications"
             android:icon="@mipmap/group6"
 
             />
         <item
             android:id="@+id/settings"
-            android:title="Settings"
+            android:title="@string/settings"
             android:icon="@mipmap/set_1"
 
             />
         <item
             android:id="@+id/swacc"
-            android:title="Switch Account"
+            android:title="@string/switch_account"
             android:icon="@mipmap/group7"
 
             />
         <item
             android:id="@+id/fav"
-            android:title="Register new member"
+            android:title="@string/register_new_member"
             android:icon="@mipmap/favorites_2"
 
             />

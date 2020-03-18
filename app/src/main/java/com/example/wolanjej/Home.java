@@ -32,9 +32,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_home);
         tb = findViewById(R.id.toolbarhome);
@@ -46,7 +46,23 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         transferMoney = (Button)findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
 
-
+        findViewById(R.id.test7w1).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.e("test","My test");
+                    }
+                }
+        );
+        findViewById(R.id.opentrans).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getBaseContext(), MainTransfer36.class);
+                        startActivity(i);
+                  }
+                }
+        );
 
 //            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,tb,R.string.Open_drawer,R.string.Close_drawer);
         //      drawer.addDrawerListener(toggle);
@@ -55,6 +71,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         setToolBar();
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -141,11 +159,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     public void open_screen16(View view) {
         findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
-        findViewById(R.id.myscroll).setBackgroundColor(getResources().getColor(warm_purple));
-
-        DrawerLayout draw = (DrawerLayout) findViewById(R.id.drawer_layout);
-        draw.setBackgroundColor(getResources().getColor(warm_purple));
-        //findViewById(R.id.second_layer).setVisibility(View.INVISIBLE);
     }
     @Override
     public void onClick(View v) {
@@ -165,4 +178,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     }
 }
+
+
 }
