@@ -5,6 +5,7 @@
         android:id="@+id/action_skip"
         android:orderInCategory="300"
         android:title="Skip"
+        android:onClick="moveToHome"
         app:showAsAction="always"
         />
 </menu>

@@ -1,79 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Registration07">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:orientation="vertical">
 
     <include layout="@layout/toobarwithout"/>
-    <include layout="@layout/imageholder"/>
-
-    <TextView
-        android:id="@+id/SetPINTextView"
-        android:layout_width="wrap_content"
+    <include layout="@layout/imageholder"
+        android:layout_marginVertical="20dp"
         android:layout_height="wrap_content"
-        android:text="Set your PIN"
-        android:textColor="@android:color/black"
-        android:textFontWeight="100"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        android:layout_width="wrap_content"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/InstructionTextView"
-        android:padding="16dp"
-        android:textSize="18dp"
-        android:text="You will use this to login next time"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/SetPINTextView" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="20dp"
+           android:paddingHorizontal="20dp"
+           android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/PINEditView"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="4 digit PIN"
-        android:background="@drawable/shape"
-        android:padding="16dp"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/InstructionTextView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/RepeatPINEditView"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Repeat PIN"
-        android:background="@drawable/shape"
-        android:padding="16dp"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/PINEditView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set your PIN"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/colorMidnight"
+                android:textSize="22sp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:textAlignment="center"/>
 
-    <Button
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/ContinueButton"
-        android:layout_marginTop="16dp"
-        android:text="Continue"
-        android:padding="16dp"
-        android:backgroundTint="@drawable/shape"
-        android:textColor="@color/colorWhite"
-        android:background="@color/colorPurple"
-        app:layout_constraintTop_toBottomOf="@+id/RepeatPINEditView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You will use this to login next time"
+                android:textColor="@color/blue_grey"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingVertical="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:textAlignment="center" />
+        </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:outlineAmbientShadowColor="@color/colorBlack">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="4 digit Pin"
+                            android:inputType="numberPassword"
+                            android:drawableRight="@mipmap/preview_1"
+                            android:background="@drawable/textviewborder"
+                            android:padding="5dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_marginBottom="10dp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Repeat Pin"
+                            android:inputType="numberPassword"
+                            android:drawableRight="@mipmap/preview_1"
+                            android:background="@drawable/textviewborder"
+                            android:padding="5dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_marginBottom="10dp"/>
+                        <Button
+                            android:id="@+id/btn_getstarted"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:backgroundTint="@color/colorPurple"
+                            android:layout_marginVertical="20dp"
+                            android:text="Continue"
+                            android:onClick="sendtoFingerPrint"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16sp"
+                            />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+</ScrollView>

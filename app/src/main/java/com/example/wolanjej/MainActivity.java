@@ -2,8 +2,12 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,8 +16,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         //setToolBar();
+        if(Build.VERSION.SDK_INT >8){
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         button = (Button)findViewById(R.id.btn_getstarted);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,10 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void movetoRegistration() {
-        System.out.println("Button pressed");
-        Intent move = new Intent(this,CardLink.class);
+        Intent move = new Intent(this,Registration05.class);
         startActivity(move);
     }
+
+
 
     /*private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);

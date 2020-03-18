@@ -6,13 +6,12 @@
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:logo="@mipmap/small_left"
-        android:id="@+id/toolbar"
+        android:layout_gravity="center_horizontal"
+        app:navigationIcon="@mipmap/small_left"
         >
-
     </androidx.appcompat.widget.Toolbar>
-
 
 </LinearLayout>

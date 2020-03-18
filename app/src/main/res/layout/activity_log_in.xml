@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LogIn">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp"
+        android:orientation="vertical">
+
+        <include layout="@layout/toobarwithout"/>
+        <include layout="@layout/imageholder"
+            android:layout_marginVertical="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log in to your account"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorMidnight"
+                android:textSize="22sp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:textAlignment="center"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:outlineAmbientShadowColor="@color/colorBlack">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Phone Number"
+                            android:background="@drawable/textviewborder"
+                            android:layout_margin="10dp"
+                            android:padding="5dp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Pin"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/textviewborder"
+                            android:padding="5dp" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Forgot Password?"
+                            android:textAlignment="textStart"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+                        <Button
+                            android:id="@+id/btn_getstarted"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:layout_marginVertical="10dp"
+                            android:text="Log in"
+                            android:backgroundTint="@color/colorPurple"
+                            android:textColor="@color/colorWhite"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="16sp"
+                            android:onClick="sendtohome" />
+
+                        <Button
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:id="@+id/button2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:icon="@mipmap/group_9"
+                            android:layout_gravity="center_horizontal"
+                            />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

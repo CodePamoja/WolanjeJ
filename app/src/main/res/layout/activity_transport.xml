@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toobarwithout"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        >
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Transport"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingLeft="32dp"
+            android:paddingTop="8dp"
+            ></TextView>
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:padding="12dp"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card1"
+                android:layout_width="160dp"
+                android:layout_height="180dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                android:layout_margin="12dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="12dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/transport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/txt1"
+                        android:src="@mipmap/ticket"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="42dp">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Flight Ticket"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+
+                        ></TextView>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="160dp"
+                android:layout_height="180dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+
+                android:layout_margin="12dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="12dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/transportt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/txt2"
+                        android:src="@mipmap/subway"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="42dp">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Train Ticket"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+
+                        ></TextView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card3"
+                android:layout_width="160dp"
+                android:layout_height="180dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                android:layout_margin="12dp"
+                android:layout_alignParentTop="false"
+                android:layout_below="@id/card1"
+                android:layout_alignParentLeft="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="12dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/transporttt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/txt3"
+                        android:src="@mipmap/bus"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="42dp">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txt3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Bus Ticket"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+
+                        ></TextView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card4"
+                android:layout_width="160dp"
+                android:layout_height="180dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                android:layout_margin="12dp"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/card2"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="12dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/transpot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/txt4"
+                        android:src="@mipmap/taxi_1"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="42dp">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txt4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Booking Ticket"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+
+                        ></TextView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
