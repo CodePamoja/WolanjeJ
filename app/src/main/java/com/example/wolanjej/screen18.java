@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -48,6 +49,13 @@ public class screen18 extends AppCompatActivity implements View.OnClickListener 
 
 
     }
+    //    }
+
+    public void close_show_ple(View view) {
+        Log.e("yes","pressed");
+        findViewById(R.id.show_all).setVisibility(View.INVISIBLE);
+
+    }
 
     public ArrayList<Model> getMylist() {
         ArrayList<Model>models = new ArrayList<>();
@@ -64,7 +72,7 @@ public class screen18 extends AppCompatActivity implements View.OnClickListener 
         Model m1 = new Model();
         m1.setTitle("Electricity");
         m1.setImage(R.mipmap.group_18c);
-        models.add(m1);
+        models.add(m);
 
         Model m2 = new Model();
         m2.setTitle("Pay Internet");
@@ -75,8 +83,6 @@ public class screen18 extends AppCompatActivity implements View.OnClickListener 
         m4.setTitle("Buy Airtime");
         m4.setImage(R.mipmap.group_18d);
         models.add(m4);
-
-
 
         return models;
     }
