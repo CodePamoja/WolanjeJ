@@ -18,9 +18,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static com.example.wolanjej.R.color.warm_purple;
 
@@ -28,6 +32,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     Toolbar tb;
     DrawerLayout drawer;
     Button transferMoney, viewall;
+    private EditText text;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,31 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         transferMoney = (Button)findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
+
+//             start of  end of registernew number for activity_new_number
+
+
+        Button btn_sendinvite = findViewById(R.id.btn_sendinvite);
+        btn_sendinvite.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                System.out.println("Button Clicked");
+                sendToVerification();
+            }
+        });
+
+
+        TextView cancel = findViewById(R.id.cancel_register_new);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("cancelled");
+                closeMyDrawer1();
+            }
+        });
+
+//        end of registernew number for activity_new_number
 
         findViewById(R.id.test7w1).setOnClickListener(
                 new View.OnClickListener() {
@@ -72,6 +103,32 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         setToolBar();
     }
 
+
+    //    close drawer on register new number
+    private void closeMyDrawer1() {
+        drawer.closeDrawer(GravityCompat.START);
+    }
+
+    private void sendToVerification() {
+        text = findViewById(R.id.newphoneNumber);
+        String value = text.getText().toString();
+        System.out.println(value);
+
+        JSONObject jValue = new JSONObject();
+        try {
+            jValue.put("phone", value);
+            Log.e("JValues",jValue.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String url = "/register";
+        OkhttpConnection okConn = new OkhttpConnection();
+        String result = okConn.postRequest(url,jValue.toString());
+        System.out.println(result);
+
+        Intent move = new Intent(this, Home.class);
+        startActivity(move);
+    }
 
 
     @Override
