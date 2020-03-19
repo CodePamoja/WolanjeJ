@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
-    android:background="@drawable/splash2"
-    android:orientation="vertical"
-    android:visibility="gone"
-    android:id="@+id/show_ple"
-    >
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context="com.example.wolanjej.Home"
+        >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/splash2"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:id="@+id/show_ple"
+        android:paddingHorizontal="16dp"
+        android:alpha="1"
+        >
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -36,6 +47,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="15dp"
+
             >
 
             <com.google.android.material.card.MaterialCardView
@@ -43,6 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:id="@+id/mytopupcard"
+                android:layout_margin="8dp"
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -76,7 +90,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:clickable="true">
+                android:clickable="true"
+                android:id="@+id/mywithdrawcard"
+                android:layout_margin="8dp"
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -110,7 +127,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:clickable="true">
+                android:clickable="true"
+                android:id="@+id/opentrans"
+                android:layout_margin="8dp"
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -132,8 +152,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/imagetop3"
                         android:layout_centerHorizontal="true"
-                        android:text="Fund
-Transfer"
+                        android:text="Fund Transfer"
                         android:textColor="@color/blue_grey"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -155,7 +174,9 @@ Transfer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:clickable="true">
+                android:clickable="true"
+                android:layout_margin="8dp"
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -188,7 +209,9 @@ Transfer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:clickable="true">
+                android:clickable="true"
+                android:layout_margin="8dp"
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -218,10 +241,11 @@ Transfer"
             </com.google.android.material.card.MaterialCardView>
 
 
+
         </LinearLayout>
 
 
 
-
+    </LinearLayout>
 
 </LinearLayout>

@@ -32,9 +32,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_home);
         tb = findViewById(R.id.toolbarhome);
@@ -47,6 +47,37 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         transferMoney.setOnClickListener(this);
 
 
+        findViewById(R.id.mytopupcard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
+                    }
+                }
+        );
+        findViewById(R.id.mywithdrawcard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.Ewallet3).setVisibility(View.VISIBLE);
+
+                    }
+                }
+        );
+
+        findViewById(R.id.opentrans).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getBaseContext(), MainTransfer36.class);
+                        startActivity(i);
+                  }
+                }
+        );
 
 //            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,tb,R.string.Open_drawer,R.string.Close_drawer);
         //      drawer.addDrawerListener(toggle);
@@ -55,6 +86,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         setToolBar();
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -132,7 +165,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 //    }
 
     public void close_show_ple(View view) {
-        Log.e("yes","pressed");
         findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
 
         findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
@@ -141,11 +173,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     public void open_screen16(View view) {
         findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
-        findViewById(R.id.myscroll).setBackgroundColor(getResources().getColor(warm_purple));
-
-        DrawerLayout draw = (DrawerLayout) findViewById(R.id.drawer_layout);
-        draw.setBackgroundColor(getResources().getColor(warm_purple));
-        //findViewById(R.id.second_layer).setVisibility(View.INVISIBLE);
     }
     @Override
     public void onClick(View v) {
@@ -156,5 +183,28 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);startActivity(i); break;
             default:break;
         }
+
+
+
+        switch (v.getId()){
+            case R.id.services: i = new Intent(this,screen18.class);startActivity(i); break;
+            default:break;
+
+    }
+}
+
+
+    public void close_wallet2(View view) {
+        findViewById(R.id.Ewallet2).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+
+    }
+
+    public void close_wallet3(View view) {
+        findViewById(R.id.Ewallet3).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+
     }
 }

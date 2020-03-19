@@ -61,4 +61,14 @@
     <string name="paid">Paid</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="my_e_wallets">My E-wallet</string>
+    <string name="biling">Biling</string>
+
+    <string name="reports">Reports</string>
+    <string name="learning_hub">Learning Hub</string>
+    <string name="notifications">Notifications</string>
+    <string name="switch_account">Switch Account</string>
+    <string name="profile">Profile</string>
+    <string name="register_new_member">Register new member</string>
 </resources>

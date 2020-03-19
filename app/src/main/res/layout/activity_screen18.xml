@@ -8,13 +8,27 @@
     android:orientation="vertical"
     android:layout_gravity="bottom"
     android:background="@drawable/splash2"
-    android:paddingTop="26dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    <ImageView
-        android:id="@+id/rectangle"
+    android:id="@+id/show_all"
+    android:paddingTop="26dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/rectangle" />
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/rectanglew"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:onClick="close_show_ple"
+            android:layout_marginBottom="29dp"
+
+            />
+    </LinearLayout>
     <!--    scroll view-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,7 +77,7 @@
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:background="@drawable/splash"
             android:clickable="true"
             app:cardCornerRadius="15dp"
@@ -94,7 +108,7 @@
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:background="@drawable/splash"
             android:clickable="true"
             app:cardCornerRadius="15dp"
@@ -127,7 +141,7 @@
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:background="@drawable/splash"
             android:clickable="true"
             app:cardCornerRadius="15dp"
@@ -180,7 +194,7 @@
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:background="@drawable/splash"
             android:clickable="true"
             app:cardCornerRadius="15dp"
@@ -210,7 +224,7 @@
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:background="@drawable/splash"
             android:clickable="true"
             app:cardCornerRadius="15dp"
@@ -241,7 +255,7 @@
             android:layout_height="98dp"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:background="@drawable/splash"
             android:clickable="true"
             app:cardCornerRadius="15dp"

@@ -6,13 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="clip_horizontal"
-
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context="com.example.wolanjej.Home"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+
+        >
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -24,6 +27,7 @@
                 android:layout_marginBottom="32dp"
                 android:orientation="vertical"
 
+                android:id="@+id/whatblur"
                 >
 
                 <include layout="@layout/toolbarhome" />
@@ -34,7 +38,9 @@
                     android:layout_height="match_parent"
                     android:fillViewport="true"
                     android:id="@+id/myscroll"
-                    tools:context=".Home">
+                    tools:context=".Home"
+
+                    >
 
 
                     <LinearLayout
@@ -353,7 +359,16 @@
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/navigation" />
               <include layout="@layout/activity_screen18" android:id="@+id/screen_16" android:visibility="gone"/>
-           <include layout="@layout/pop_up_my_wallet" />
+
+              <include layout="@layout/pop_up_my_wallet" />
+
+                 <include layout="@layout/wallet_pop_up"/>
+
+            <include layout="@layout/withdraw"/>
+
+
+
+
         </FrameLayout>
 
     </LinearLayout>
