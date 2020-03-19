@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="24dp"
+    android:layout_gravity="bottom"
+    android:background="@drawable/splash2"
+    android:visibility="gone"
+    android:id="@+id/Ewallet2"
+    >
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/rectanglew"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="close_wallet2"
+        android:layout_marginBottom="29dp"
+        android:id="@+id/imagebtn"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textColor="@color/colorMidnight"
+        android:text="Wallet Top-Up"
+        android:id="@+id/wpp"
+        android:layout_below="@id/balance"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/blue_grey"
+        android:gravity="end"
+        android:text="Balance"
+        android:id="@+id/balance"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/imagebtn"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#18181c"
+        android:letterSpacing="0.03"
+        android:gravity="end"
+        android:text="kes 15.000"
+        android:layout_below="@id/balance"
+        android:layout_alignParentRight="true"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:hint="Select Type"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:paddingStart="18dp"
+        android:background="@drawable/wallet_pop_up_shape"
+        android:id="@+id/selecttype"
+        android:layout_below="@id/wpp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:paddingStart="18dp"
+        android:background="@drawable/wallet_pop_up_shape"
+        android:hint="Mobile Number"
+        android:id="@+id/mobilenumber"
+        android:layout_below="@id/selecttype"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:paddingStart="18dp"
+        android:background="@drawable/wallet_pop_up_shape"
+        android:hint="Account"
+        android:id="@+id/account"
+        android:layout_below="@id/mobilenumber"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/cont"
+        android:backgroundTint="@color/warm_purple"
+        style="@style/TextStyle4"
+        android:layout_below="@id/account"
+        android:layout_marginTop="16dp"
+        android:text="@string/Continue"
+        />
+    <Button
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cont"
+        android:textSize="16sp"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_marginTop="16dp"
+        android:text="Cancel"
+        />
+
+</RelativeLayout>
