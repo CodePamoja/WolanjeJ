@@ -15,7 +15,7 @@
         android:layout_gravity="bottom"
         android:background="@drawable/splash2"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/show_ple"
         android:paddingHorizontal="16dp"
         android:alpha="1"
@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:id="@+id/mytopupcard"
                 android:layout_margin="8dp"
                 >
                 <RelativeLayout
@@ -90,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:id="@+id/test7w1"
+                android:id="@+id/mywithdrawcard"
                 android:layout_margin="8dp"
                 >
 

@@ -46,14 +46,29 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         transferMoney = (Button)findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
 
-        findViewById(R.id.test7w1).setOnClickListener(
+
+        findViewById(R.id.mytopupcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.e("test","My test");
+                        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
                     }
                 }
         );
+        findViewById(R.id.mywithdrawcard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.Ewallet3).setVisibility(View.VISIBLE);
+
+                    }
+                }
+        );
+
         findViewById(R.id.opentrans).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -150,7 +165,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 //    }
 
     public void close_show_ple(View view) {
-        Log.e("yes","pressed");
         findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
 
         findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
@@ -180,4 +194,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 }
 
 
+    public void close_wallet2(View view) {
+        findViewById(R.id.Ewallet2).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+
+    }
+
+    public void close_wallet3(View view) {
+        findViewById(R.id.Ewallet3).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+
+    }
 }

@@ -360,7 +360,13 @@
                 app:menu="@menu/navigation" />
               <include layout="@layout/activity_screen18" android:id="@+id/screen_16" android:visibility="gone"/>
 
-            <include layout="@layout/pop_up_my_wallet"/>
+              <include layout="@layout/pop_up_my_wallet" />
+
+                 <include layout="@layout/wallet_pop_up"/>
+
+            <include layout="@layout/withdraw"/>
+
+
 
 
         </FrameLayout>
