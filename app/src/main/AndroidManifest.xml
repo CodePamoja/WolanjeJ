@@ -28,9 +28,6 @@
         <activity android:name=".TransferToBank44" />
         <activity android:name=".MainTransfer36" />
         <activity android:name=".TransferToWalletSingle37" />
-        <activity
-            android:name=".Pin49"
-            tools:ignore="DuplicateActivity" />
         <activity android:name=".IdentifyCard51" />
         <activity android:name=".SettingsI48" />
         <activity android:name=".Settings48" />

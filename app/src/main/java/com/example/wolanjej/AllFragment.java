@@ -64,7 +64,7 @@ public class AllFragment extends Fragment {
 
     }
 
-    public void payNow(View view) {
-        new BillManager().show(view);
-    }
+//    public void payNow(View view) {
+//        new BillManager().show(view);
+//    }
 }
