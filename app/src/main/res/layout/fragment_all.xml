@@ -63,13 +63,14 @@
                         android:layout_marginLeft="10dp"
                         />
                     <Button
+                        android:id="@+id/btnPayElectric"
                         android:text="Pay Now"
                         android:textSize="12sp"
                         android:letterSpacing="0.08"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:onClick="payNow"
+                        android:onClick="payNowElectric"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginBottom="10dp"/>

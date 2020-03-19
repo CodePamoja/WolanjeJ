@@ -73,7 +73,7 @@
             android:layout_gravity="bottom"
             android:background="@drawable/splash2"
             android:orientation="vertical"
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/show_ple"
             android:padding="16dp">
 
@@ -129,7 +129,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="--------------------------------------------------------------------"
+                    android:text="----------------------------------------------------------"
                     android:textColor="@color/blue_grey"
                     android:textSize="12sp"
                     android:textStyle="bold"
@@ -254,7 +254,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="--------------------------------------------------------------------"
+                    android:text="----------------------------------------------------------"
                     android:textColor="@color/blue_grey"
                     android:textSize="12sp"
                     android:textStyle="bold"
