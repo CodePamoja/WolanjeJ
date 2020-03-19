@@ -72,12 +72,15 @@ public class BillManager extends AppCompatActivity {
     public void payNowElectric(View v) {
         switch(v.getId()) {
             case R.id.btnPayElectric:
-                findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+                findViewById(R.id.show_pay_now).setVisibility(View.VISIBLE);
+                findViewById(R.id.floatBill).setVisibility(View.INVISIBLE);
                 break;
         }
     }
+    public void close_pay_now(View view) {
+        findViewById(R.id.show_pay_now).setVisibility(View.INVISIBLE);
 
-//    public void show(View view){
-//        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
-//    }
+        findViewById(R.id.floatBill).setVisibility(View.VISIBLE);
+
+    }
 }
