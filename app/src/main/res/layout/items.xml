@@ -10,13 +10,14 @@
     android:focusable="true"
     app:cardElevation="5dp"
     android:padding="7dp">
+
     <ImageView
         android:id="@+id/item_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@mipmap/group_18f"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/group_18f" />
     <TextView
         android:id="@+id/item_title"
         android:layout_width="wrap_content"
