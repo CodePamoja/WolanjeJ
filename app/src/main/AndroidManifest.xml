@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Referrals"></activity>
+        <activity android:name=".EnterPinPay"></activity>
+        <activity android:name=".Referrals" />
         <activity android:name=".BillManager" />
         <activity android:name=".CryptoBalance" />
         <activity android:name=".Pin49" />

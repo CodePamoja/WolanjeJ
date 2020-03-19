@@ -77,17 +77,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
       
       //end of registernew number for activity_new_number
 
-        findViewById(R.id.test7w1).setOnClickListener(
+//        findViewById(R.id.test7w1).setOnClickListener(
 
-        findViewById(R.id.mytopupcard).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
-                    }
-                }
-        );
+//        findViewById(R.id.mytopupcard).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+//                        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
+//                        findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
+//                    }
+//                }
+//        );
         findViewById(R.id.mywithdrawcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override

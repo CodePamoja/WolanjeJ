@@ -69,6 +69,15 @@ public class BillManager extends AppCompatActivity {
 
     }
 
+    public void payContinue(View v) {
+        switch(v.getId()) {
+            case R.id.btn_continue_pay:
+                final Intent moveToPin = new Intent(this,EnterPinPay.class);
+                startActivity(moveToPin);
+                break;
+        }
+    }
+
     public void payNowElectric(View v) {
         switch(v.getId()) {
             case R.id.btnPayElectric:
