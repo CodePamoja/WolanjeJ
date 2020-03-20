@@ -1,0 +1,233 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".learninghub"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <include layout="@layout/toolbar_learninghub"/>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="215dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="fill_parent"
+                android:layout_height="222dp"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="2dp"
+                android:src="@mipmap/image" />
+
+
+            <TextView
+                android:layout_width="103dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="136dp"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.02"
+                android:layout_marginTop="82dp"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                tools:text="NEW" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="30dp"
+                android:letterSpacing="-0.41sp"
+                android:layout_marginTop="104dp"
+                android:lineSpacingExtra="5sp"
+                android:gravity="center_horizontal"
+                tools:text="SME targeted interventions placeholder text commonly used in print"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:layout_marginStart="136dp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="157dp"
+                android:letterSpacing="0.02"
+                android:gravity="center_horizontal"
+                tools:text="02 January 2020"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="0dp"
+            android:backgroundTint="#efeff3"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#8c8c8c"
+                android:layout_marginTop="28dp"
+                android:layout_marginStart="52dp"
+                android:letterSpacing="0.02"
+                android:gravity="center_horizontal"
+                tools:text="Innovation"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:layout_marginTop="117dp"
+                android:textColor="#8c8c8c"
+                android:layout_marginStart="52dp"
+                android:letterSpacing="0.02"
+                android:gravity="center_horizontal"
+                tools:text="2 hours ago"
+                />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:textSize="14sp"
+                android:textColor="#323643"
+                android:layout_marginTop="50dp"
+                android:letterSpacing="-0.02"
+                android:layout_marginStart="19dp"
+                android:lineSpacingExtra="3sp"
+                android:gravity="center_horizontal"
+                tools:text="Kenya&apos;s mobile magic Lorem ipsum dolor sit consectetur"
+                />
+
+
+            <ImageView
+                android:id="@+id/item_image2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"
+                android:layout_marginStart="197dp"
+
+
+                android:src="@mipmap/image_copy" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="0dp"
+            android:backgroundTint="#0f1020"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_image5"
+            android:layout_width="195dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+
+            android:scaleType="fitXY"
+            android:src="@mipmap/image_copy_3" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:layout_marginStart="255dp"
+                android:layout_marginTop="25dp"
+                android:textColor="#8c8c8c"
+                android:letterSpacing="0.02"
+                android:gravity="center_horizontal"
+                tools:text="TECHNOLOGY"
+                />
+            <TextView
+                android:layout_width="135dp"
+                android:layout_height="34dp"
+                android:textSize="14sp"
+                android:layout_marginLeft="215dp"
+                android:layout_marginTop="50dp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="3sp"
+                android:gravity="center_horizontal"
+                tools:text="Breaking Down The Difference"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#8c8c8c"
+                android:layout_marginTop="90dp"
+                android:layout_marginStart="255dp"
+                android:letterSpacing="0.02"
+                android:gravity="center_horizontal"
+                tools:text="4 hours ago"
+                />
+
+
+
+
+    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="143dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/item_image3"
+                android:layout_width="fill_parent"
+                android:layout_height="143dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/image_copy_2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="82dp"
+                android:layout_marginStart="170dp"
+                android:letterSpacing="0.02"
+                android:gravity="center_horizontal"
+                tools:text="Innovation"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#000000"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.02"
+                android:layout_marginTop="104dp"
+                android:layout_marginStart="45dp"
+                android:lineSpacingExtra="5sp"
+                android:gravity="center_horizontal"
+                tools:text="Ut enim ad minim veniam, quis nostrud"
+                />
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+    </RelativeLayout>
