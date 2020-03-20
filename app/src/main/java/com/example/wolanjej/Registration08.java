@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 
 
 
-public class registration08 extends AppCompatActivity {
+public class Registration08 extends AppCompatActivity {
     private ImageView imageView;
     private Button button;
 
@@ -46,7 +46,7 @@ public class registration08 extends AppCompatActivity {
                     }).build();
         }
         button = (Button)findViewById(R.id.button2);
-        final registration08 activity = this;
+        final Registration08 activity = this;
         final BiometricPrompt finalBp = bp;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +59,7 @@ public class registration08 extends AppCompatActivity {
                             activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(registration08.this,"Athentication",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Registration08.this,"Athentication",Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }

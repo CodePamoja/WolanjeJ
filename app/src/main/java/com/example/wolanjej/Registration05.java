@@ -14,14 +14,23 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Response;
 
 public class Registration05 extends AppCompatActivity {
 
     private ImageView imageView;
     private EditText text;
+    private JSONObject sessionID = null;
+    private String phone = null;
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,22 +81,79 @@ public class Registration05 extends AppCompatActivity {
 
     public void sendToVerification() {
         text = findViewById(R.id.phoneNumber);
-        String value = text.getText().toString();
-        System.out.println(value);
+        phone = text.getText().toString();
+        System.out.println(phone);
 
+        JSONObject jPhone = new JSONObject();
+        try {
+            jPhone.put("phone", "254"+phone);
+            Log.e("jPhone",jPhone.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String url = "/gapi/sendOTP";
+        OkhttpConnection okConn = new OkhttpConnection();
+        Response result = okConn.postRequest(url,jPhone.toString());
+        int responseCode = 0;
+        if ((responseCode = result.code()) == 201) {
+            System.out.println("Response body json values are : " + result);
+            Log.e("TAG", String.valueOf(result));
+            Toast.makeText(getApplicationContext(), "Phone number sent successfuly", Toast.LENGTH_LONG).show();
+            verifyOTP(phone);
+
+        }else if((responseCode = result.code()) != 201) {
+            Log.e("TAG", String.valueOf(result));
+        }
+
+        //bypass the verification code and page for now since we are adding otp for testing
+//        Intent move = new Intent(this, Registration06.class);
+//        startActivity(move);
+    }
+
+    public void verifyOTP(String phone){
+        String verifyResult = null;
         JSONObject jValue = new JSONObject();
         try {
-            jValue.put("phone", value);
+            jValue.put("phone", "254"+phone);
+            jValue.put("otp", "12345678");
             Log.e("JValues",jValue.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        String url = "/register";
+        String url = "/gapi/verifyOTP";
         OkhttpConnection okConn = new OkhttpConnection();
-        String result = okConn.postRequest(url,jValue.toString());
-        System.out.println(result);
+        Response result = okConn.postRequest(url, jValue.toString());
+        int responseCode = 0;
+        if ((responseCode = result.code()) == 201) {
+            try {
+                verifyResult = result.body().string();
+                sessionID = new JSONObject(verifyResult); // adding
+                System.out.println("Response body json values are : " + result);
+                Log.e("TAG", String.valueOf(result));
 
-        Intent move = new Intent(this, Registration06.class);
-        startActivity(move);
+                //bypass the verification code and page for now since we are adding otp for testing
+                Intent move = new Intent(this, Registration07.class);
+                move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
+                move.putExtra(EXTRA_PHONE, phone);
+                startActivity(move);
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        }else if((responseCode = result.code()) != 201) {
+            try {
+                verifyResult = result.body().string();
+                Log.e("TAG", String.valueOf(result));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public JSONObject getSessionID(){
+        return sessionID;
+    }
+
+    public String getPhone(){
+        return phone;
     }
 }

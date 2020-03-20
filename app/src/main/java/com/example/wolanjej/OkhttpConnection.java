@@ -12,11 +12,11 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class OkhttpConnection {
-    String baseUrl= "https://backoffice.wolenjeafrica.com/wolenje/gapi";
+    String baseUrl= "https://backoffice.wolenjeafrica.com/wolenje";
     OkHttpClient client = new OkHttpClient();
 
-    public  String postRequest(String url, String jsonbody){
-        String result = null;
+    public  Response postRequest(String url, String jsonbody){
+        Response result = null;
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonbody);
             String allUrl = baseUrl + url;
@@ -27,20 +27,35 @@ public class OkhttpConnection {
 
             Call call = client.newCall(request);
             Response response = call.execute();
-            result = response.body().string();     // Get response
-            int responseCode = 0;
-
-            if ((responseCode = response.code()) == 200) {
-                System.out.println("Response body json values are : " + result);
-                Log.d("TAG",result);
-
-            }else if((responseCode = response.code()) != 200) {
-                Log.d("TAG",result);
-            }
-
+            result  = response;
 
         } catch (IOException ex) {
             System.out.println("IO Error : " + ex);
+            Log.d("TAG", String.valueOf(ex));
+        }
+
+        return result;
+    }
+
+    public  Response postPin(String url, String jsonBody, String sessionID){
+        Response result = null;
+        try {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
+            String allUrl = baseUrl + url;
+            Request request = new Request.Builder()
+                    .header("X-Requested-With", "XMLHttpRequest")
+                    .header("X-Authorization", "Bearer"+sessionID+"" )
+                    .url(allUrl)
+                    .post(body)
+                    .build();
+
+            Call call = client.newCall(request);
+            Response response = call.execute();
+            result  = response;
+
+        } catch (IOException ex) {
+            System.out.println("IO Error : " + ex);
+            Log.d("TAG", String.valueOf(ex));
         }
 
         return result;

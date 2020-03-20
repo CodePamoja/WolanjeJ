@@ -2,7 +2,6 @@ package com.example.wolanjej;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,7 +37,7 @@ public class MyHolder2 extends RecyclerView.ViewHolder implements  View.OnClickL
         final Intent intent;
         switch (getAdapterPosition()){
             case 0:
-                intent =  new Intent(context, registration08.class);
+                intent =  new Intent(context, Registration08.class);
                 break;
 
             case 1:
