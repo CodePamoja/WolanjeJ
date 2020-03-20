@@ -26,8 +26,7 @@
             android:layout_gravity="center_horizontal"
             android:onClick="close_pay_now"
             android:layout_marginBottom="15dp"
-
-            />
+            tools:ignore="OnClick" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

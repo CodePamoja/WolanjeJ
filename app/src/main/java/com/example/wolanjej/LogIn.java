@@ -77,7 +77,7 @@ public class LogIn extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this, com.example.wolanjej.registration08.class);
+        final Intent movetoLogo = new Intent(this, Registration08.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -96,7 +96,7 @@ public class LogIn extends AppCompatActivity {
 
 
     public void sendtoFingerPrint(View view) {
-        Intent move = new Intent(this, registration08.class);
+        Intent move = new Intent(this, Registration08.class);
         startActivity(move);
 
     }
