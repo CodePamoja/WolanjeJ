@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toobarwithout"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:paddingTop="2dp"
+        android:backgroundTint="#ffffff"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Need Support?"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+
+                />
+
+            <RelativeLayout
+                android:id="@+id/block2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_below="@id/text1"
+                android:layout_marginTop="12dp"
+                android:padding="12dp"
+                tools:ignore="ExtraText">
+
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:src="@mipmap/icon"
+                    android:contentDescription="Getting dtarted Image" />
+
+                <TextView
+                    android:id="@+id/text1a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Getting Started"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/img2"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/text1b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="false"
+                    android:layout_below="@id/text1a"
+                    android:layout_toRightOf="@id/img2"
+
+                    />
+
+                ></RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/block3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_below="@id/block2"
+                android:layout_marginTop="12dp"
+                android:padding="12dp"
+                >
+
+                <ImageView
+                    android:id="@+id/img3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:src="@mipmap/icon_copy"
+                    />
+
+                <TextView
+                    android:id="@+id/text3a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Security 101"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/img3"
+
+                    />
+
+                <TextView
+                    android:id="@+id/text3b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley."
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="false"
+                    android:layout_below="@id/text3a"
+                    android:layout_toEndOf="@id/img3"
+
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/block4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_below="@id/block3"
+                android:layout_marginTop="12dp"
+                android:padding="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/text4a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="Recommended"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+
+
+                    />
+
+                <ImageView
+                    android:id="@+id/img4"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentLeft="true"
+                    android:src="@mipmap/group_copy"
+                    android:layout_below="@+id/text4a"
+
+
+                    tools:ignore="ContentDescription"
+                    android:contentDescription="play video holder" />
+
+                <TextView
+                    android:id="@+id/text4b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="How To"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="false"
+                    android:layout_toRightOf="@id/img4"
+                    android:layout_below="@id/text4a"
+                    android:padding="12sp"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/text4c"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contrary to popular belief, Lorem Ipsum is not simply random text."
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="false"
+                    android:layout_below="@id/text4b"
+                    android:layout_toRightOf="@id/img4"
+                    android:padding="8sp"
+
+                    />
+                ></RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/block5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_below="@id/block4"
+                android:layout_marginTop="24dp"
+                android:padding="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/text5a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Follow Us:"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="12dp"
+
+
+                    />
+
+                <ImageView
+                    android:id="@+id/img5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:layout_below="@id/text5a"
+                    android:layout_alignParentLeft="true"
+                    android:src="@mipmap/facebook"
+                    android:layout_margin="8dp"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/img6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:src="@mipmap/instagram"
+                    android:layout_toRightOf="@id/img5"
+                    android:layout_below="@id/text5a"
+                    android:layout_margin="8dp" />
+
+
+                <ImageView
+                    android:id="@+id/img7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:src="@mipmap/twitter"
+                    android:layout_toRightOf="@id/img6"
+                    android:layout_below="@id/text5a"
+                    android:layout_margin="8dp" />
+
+                <ImageView
+                    android:id="@+id/img8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:layout_below="@id/text5a"
+                    android:layout_toRightOf="@id/img7"
+                    android:src="@mipmap/pinterest"
+                    android:layout_margin="8dp"
+
+                    />
+
+                ></RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>
