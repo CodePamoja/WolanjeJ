@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Referrals"></activity>
+        <activity android:name=".EnterPinPay"></activity>
+        <activity android:name=".Referrals" />
         <activity android:name=".BillManager" />
         <activity android:name=".CryptoBalance" />
         <activity android:name=".Pin49" />
@@ -28,9 +29,6 @@
         <activity android:name=".TransferToBank44" />
         <activity android:name=".MainTransfer36" />
         <activity android:name=".TransferToWalletSingle37" />
-        <activity
-            android:name=".Pin49"
-            tools:ignore="DuplicateActivity" />
         <activity android:name=".IdentifyCard51" />
         <activity android:name=".SettingsI48" />
         <activity android:name=".Settings48" />
@@ -48,7 +46,7 @@
         <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
         <activity android:name=".screen18" />
-        <activity android:name=".registration08" />
+        <activity android:name=".Registration08" />
         <activity
             android:name=".Registration06"
             tools:ignore="MissingClass" />

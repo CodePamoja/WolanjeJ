@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#62def8">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:id="@+id/show_pay_now"
+        android:paddingHorizontal="16dp"
+        android:alpha="1"
+        >
+
+        <Image
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/paypal_1"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Successful!"
+                android:textColor="@color/colorBlack"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:text="----------------------------------------------------------"
+                android:textColor="@color/blue_grey"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="left"
+                />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textReference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reference number"
+                android:textColor="@color/blue_grey"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="left"
+                />
+
+            <TextView
+                android:id="@+id/reference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#B3423424234"
+                android:layout_below="@id/textReference"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:gravity="left"
+                />
+
+            <TextView
+                android:id="@+id/textAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount sent"
+                android:textColor="@color/blue_grey"
+                android:textSize="18sp"
+                android:layout_below="@+id/reference"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="left"
+                />
+            <TextView
+                android:id="@+id/amountValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500.00"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@+id/textAmount"
+                android:layout_marginLeft="20dp"
+                android:gravity="end"
+                />
+            <TextView
+                android:id="@+id/textTransferFee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transfer fee"
+                android:textColor="@color/blue_grey"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/reference"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/textAmount"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="70dp"
+                android:gravity="left"
+                />
+            <TextView
+                android:id="@+id/transferFee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/textTransferFee"
+                android:layout_marginLeft="80dp"
+                android:gravity="left"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_continue_pay"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Close"
+                android:onClick="payContinue"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginLeft="24dp"
+                android:fontFamily="@font/poppins_medium"
+                android:backgroundTint="@color/colorPurple"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
