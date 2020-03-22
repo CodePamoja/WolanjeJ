@@ -198,6 +198,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         findViewById(R.id.Ewallet2).setVisibility(View.INVISIBLE);
 
         findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+        findViewById(R.id.drawer_layout).setAlpha(0f);
 
     }
 
@@ -205,6 +206,22 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         findViewById(R.id.Ewallet3).setVisibility(View.INVISIBLE);
 
         findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+
+    }
+
+    public void openBillManager(MenuItem item) {
+        Intent intent = new Intent(this, BillManager.class);
+        startActivity(intent);
+    }
+
+    public void opensevrvices(MenuItem item) {
+        Intent intent = new Intent(this, services.class);
+        startActivity(intent);
+    }
+
+    public void openreferalls(MenuItem item) {
+        Intent intent = new Intent(this, Referrals.class);
+        startActivity(intent);
 
     }
 }

@@ -37,6 +37,7 @@
         <activity android:name=".LinkAccount11" />
         <activity android:name=".Registration07" />
         <activity android:name=".transport" />
+        <activity android:name=".services"/>
         <activity
             android:name=".CardLink"
             tools:ignore="MissingClass" />

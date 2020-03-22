@@ -22,18 +22,21 @@
             android:id="@+id/biling"
             android:title="@string/biling"
             android:icon="@mipmap/receipt_list_43"
+            android:onClick="openBillManager"
 
             />
         <item
             android:id="@+id/services"
             android:title="@string/services"
             android:icon="@mipmap/pot"
+            android:onClick="opensevrvices"
 
             />
         <item
             android:id="@+id/referrals"
             android:title="@string/referrals"
             android:icon="@mipmap/group3"
+            android:onClick="openreferalls"
 
             />
         <item
