@@ -12,7 +12,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,18 +23,10 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-        button = (Button)findViewById(R.id.btn_getstarted);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                movetoRegistration();
-            }
-        });
     }
 
 
-    public void movetoRegistration() {
+    public void movetoRegistration(View view) {
         Intent move = new Intent(this,Registration05.class);
         startActivity(move);
     }

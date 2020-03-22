@@ -76,20 +76,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 closeMyDrawer1();
             }
         });
-      
-      //end of registernew number for activity_new_number
 
-//        findViewById(R.id.test7w1).setOnClickListener(
-
-//        findViewById(R.id.mytopupcard).setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
-//                        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
-//                        findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
-//                    }
-//                }
-//        );
         findViewById(R.id.mywithdrawcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -282,5 +269,30 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         Intent intent = new Intent(this, Referrals.class);
         startActivity(intent);
 
+    }
+
+    public void openLearningHub(MenuItem item) {
+        Intent intent = new Intent(this, learninghub.class);
+        startActivity(intent);
+    }
+
+    public void openIncomingDetails(MenuItem item) {
+        Intent intent = new Intent(this, IncomeDetails.class);
+        startActivity(intent);
+    }
+
+    public void openProfile(MenuItem item) {
+        Intent intent = new Intent(this, profile.class);
+        startActivity(intent);
+    }
+
+    public void openNotifications52(MenuItem item) {
+        Intent intent = new Intent(this, Notifications52.class);
+        startActivity(intent);
+    }
+
+    public void chooseAnotherAccount(MenuItem item) {
+        Intent intent = new Intent(this, LogIn.class);
+        startActivity(intent);
     }
 }

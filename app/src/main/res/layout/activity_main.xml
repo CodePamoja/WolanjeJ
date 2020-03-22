@@ -47,10 +47,12 @@
             android:fontFamily="@font/poppins_medium"
             android:backgroundTint="@color/colorWhite"
             android:textAllCaps="false"
-            android:textColor="@color/colorBlack"                    android:layout_marginHorizontal="40dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:textSize="16sp"
+            android:onClick="movetoRegistration"
 
             />
 

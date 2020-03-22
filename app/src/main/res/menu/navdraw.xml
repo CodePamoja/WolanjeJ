@@ -43,6 +43,7 @@
             android:id="@+id/income"
             android:title="@string/income_details"
             android:icon="@mipmap/group_12"
+            android:onClick="openIncomingDetails"
 
             />
         <item
@@ -55,30 +56,35 @@
             android:id="@+id/lernhub"
             android:title="@string/learning_hub"
             android:icon="@mipmap/fill_1"
+            android:onClick="openLearningHub"
 
             />
         <item
             android:id="@+id/profile"
             android:title="@string/profile"
             android:icon="@mipmap/group5"
+            android:onClick="openProfile"
 
             />
         <item
             android:id="@+id/not"
             android:title="@string/notifications"
             android:icon="@mipmap/group6"
+            android:onClick="openNotifications52"
 
             />
         <item
             android:id="@+id/settings"
             android:title="@string/settings"
             android:icon="@mipmap/set_1"
+            android:onClick="movetoSettings48"
 
             />
         <item
             android:id="@+id/swacc"
             android:title="@string/switch_account"
             android:icon="@mipmap/group7"
+            android:onClick="chooseAnotherAccount"
 
             />
         <item
@@ -86,7 +92,9 @@
             android:title="@string/register_new_member"
             android:icon="@mipmap/favorites_2"
 
+
             />
+
 
 
     </group>
