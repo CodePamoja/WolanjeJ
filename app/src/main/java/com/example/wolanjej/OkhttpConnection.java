@@ -20,6 +20,7 @@ public class OkhttpConnection {
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonbody);
             String allUrl = baseUrl + url;
+            Log.e("TAG", allUrl );
             Request request = new Request.Builder()
                     .url(allUrl)
                     .post(body)
@@ -27,6 +28,7 @@ public class OkhttpConnection {
 
             Call call = client.newCall(request);
             Response response = call.execute();
+            Log.e("TAG", String.valueOf(response.code()));
             result  = response;
 
         } catch (IOException ex) {
