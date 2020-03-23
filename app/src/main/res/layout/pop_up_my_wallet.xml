@@ -108,7 +108,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:src="@mipmap/group7w1" />
+                        android:src="@mipmap/group7w" />
 
                     <TextView
                         android:layout_width="wrap_content"
