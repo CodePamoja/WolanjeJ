@@ -1,18 +1,22 @@
 package com.example.wolanjej;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
+import com.github.mikephil.charting.charts.LineChart;
 
 import java.util.ArrayList;
 
 public class CryptoBalance extends AppCompatActivity implements View.OnClickListener{
     RecyclerView mRecyclerView;
     MyAdapter2 myAdapter;
+    LineChart lineChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,25 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
 
         myAdapter = new MyAdapter2(this,getMylist());
         mRecyclerView.setAdapter(myAdapter);
+
+        lineChart = (LineChart) findViewById(R.id.linegraph);
+        ArrayList<String> xAxes = new ArrayList<>();
+        ArrayList<String> yAxes = new ArrayList<>();
+
+        settoolbar();
+
+    }
+    private void settoolbar(){
+        Toolbar tb= (Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent movetologo = new Intent(this,screen18.class);
+        tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(movetologo);
+            }
+        });
 
     }
 
