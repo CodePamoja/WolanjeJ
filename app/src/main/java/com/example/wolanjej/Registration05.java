@@ -31,6 +31,7 @@ public class Registration05 extends AppCompatActivity {
     private String phone = null;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
+    Toolbar tb ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,22 +39,15 @@ public class Registration05 extends AppCompatActivity {
 
         setContentView(R.layout.activity_registration05);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+         tb = (Toolbar) findViewById(R.id.toolbar);
 
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
         imageView.setImageResource(R.mipmap.group_5);
 
-        Button btn = findViewById(R.id.btn_continue);
-        btn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                System.out.println("Button Clicked");
-                sendToVerification();
-            }
-        });
     }
 
     private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this,MainActivity.class);

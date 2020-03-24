@@ -1,28 +1,27 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
+import android.widget.Toolbar;
 
-public class learninghub extends AppCompatActivity {
-    Toolbar tb;
+public class Hub extends AppCompatActivity {
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_learninghub);
-            setToolBar();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_hub);
+
+        setToolBar();
     }
 
+
     private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        androidx.appcompat.widget.Toolbar tb = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbarhome);
         setSupportActionBar(tb);
-        getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this, Registration08.class);
+        final Intent movetoLogo = new Intent(this,Home.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -33,5 +32,4 @@ public class learninghub extends AppCompatActivity {
         );
 
     }
-
 }

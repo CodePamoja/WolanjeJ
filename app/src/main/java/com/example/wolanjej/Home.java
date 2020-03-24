@@ -1,34 +1,21 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Button;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.ResponseCache;
-
-import static com.example.wolanjej.R.color.warm_purple;
 
 public class Home extends AppCompatActivity implements View.OnClickListener{
     Toolbar tb;
@@ -272,7 +259,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void openLearningHub(MenuItem item) {
-        Intent intent = new Intent(this, learninghub.class);
+        Log.e("Found","Troal");
+        Intent intent = new Intent(this, Hub.class);
         startActivity(intent);
     }
 
