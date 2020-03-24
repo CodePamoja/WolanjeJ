@@ -45,6 +45,18 @@ public class Registration05 extends AppCompatActivity {
         imageView = (ImageView)findViewById(R.id.image_holder);
         imageView.setImageResource(R.mipmap.group_5);
 
+        Button btn = (Button)findViewById(R.id.btn_continue);
+        btn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        text = findViewById(R.id.phoneNumber);
+
+                        new Sendtover(text.toString()).sendToVerification();
+                    }
+                }
+        );
+
     }
 
     private void setToolBar() {
