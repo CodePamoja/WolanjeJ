@@ -67,7 +67,7 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
         m1.setTitle2("5.80112");
         m1.setTitle3("ETH");
         m1.setTitle4("+1243(13%)");
-        m1.setImage(R.mipmap.bitcoin);
+        m1.setImage(R.mipmap.etherium);
         m1.setBackgroundColor(getResources().getColor(R.color.reddish_orange));
         models.add(m1);
 
@@ -76,7 +76,7 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
         m2.setTitle2("5.80112");
         m2.setTitle3("ETH");
         m2.setTitle4("+1243(13%)");
-        m2.setImage(R.mipmap.bitcoin);
+        m2.setImage(R.mipmap.bitcoin2);
         m2.setBackgroundColor(getResources().getColor(R.color.colorGreenBlue));
         models.add(m2);
 

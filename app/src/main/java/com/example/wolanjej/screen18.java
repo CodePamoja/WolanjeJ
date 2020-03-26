@@ -1,14 +1,15 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class screen18 extends AppCompatActivity implements View.OnClickListener 
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
 
-    private CardView saved_billers, electricity, pay_internet, purchace_air, transfer, income_details, wallet, services, exchange, crypto;
+    private MaterialCardView  transfer, income_details, wallet, services, exchange, crypto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +33,12 @@ public class screen18 extends AppCompatActivity implements View.OnClickListener 
         mRecyclerView.setAdapter(myAdapter);
 
 
-        transfer = (CardView) findViewById(R.id.transfer);
-        income_details = (CardView) findViewById(R.id.income_details);
-        wallet = (CardView) findViewById(R.id.wallet);
-        services = (CardView) findViewById(R.id.services);
-        exchange = (CardView) findViewById(R.id.exchange);
-        crypto = (CardView) findViewById(R.id.crypto);
+        transfer = (MaterialCardView) findViewById(R.id.transfer);
+        income_details = (MaterialCardView) findViewById(R.id.income_details);
+        wallet = (MaterialCardView) findViewById(R.id.wallet);
+        services = (MaterialCardView) findViewById(R.id.services);
+        exchange = (MaterialCardView) findViewById(R.id.exchange);
+        crypto = (MaterialCardView) findViewById(R.id.crypto);
 
 
           transfer.setOnClickListener(this);
@@ -53,7 +54,7 @@ public class screen18 extends AppCompatActivity implements View.OnClickListener 
 
     public void close_show_ple(View view) {
         Log.e("yes","pressed");
-        findViewById(R.id.show_all).setVisibility(View.INVISIBLE);
+        findViewById(R.id.screen_16).setVisibility(View.INVISIBLE);
 
     }
 
@@ -93,9 +94,9 @@ public class screen18 extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()) {
 
             case R.id.transfer: i = new Intent(this, screen18.class);startActivity(i);break;
-            case R.id.income_details: i = new Intent(this, Registration05.class);startActivity(i);break;
-            case R.id.wallet: i = new Intent(this, screen18.class);startActivity(i);break;
-            case R.id.services: i = new Intent(this, Registration05.class);startActivity(i);break;
+            case R.id.income_details: i = new Intent(this, IncomeDetails.class);startActivity(i);break;
+            case R.id.wallet: i = new Intent(this, Home.class);startActivity(i);break;
+            case R.id.services: i = new Intent(this, services.class);startActivity(i);break;
             case R.id.exchange: i = new Intent(this, screen18.class);startActivity(i);break;
             case R.id.crypto: i = new Intent(this,CryptoBalance.class);startActivity(i);break;
 
