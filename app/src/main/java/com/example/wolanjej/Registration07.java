@@ -75,7 +75,6 @@ public class Registration07 extends AppCompatActivity {
 
         String pin1 = textPin1.getText().toString();
         String pin2 = textPin2.getText().toString();
-        System.out.println(pin1 + pin2);
             if (pin1.equals(pin2)){
                 JSONObject jPin = new JSONObject();
                 try {
