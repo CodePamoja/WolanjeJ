@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="693dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtstatistics"
+                android:layout_width="381dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="16dp"
+                android:text="statistics" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/statistics"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:layout_below="@+id/txtstatistics"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="27dp"
+                android:background="@drawable/splash2" >
+                <com.github.mikephil.charting.charts.LineChart
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent">
+                </com.github.mikephil.charting.charts.LineChart>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/txtmarket"
+                android:layout_width="362dp"
+                android:layout_height="31dp"
+                android:layout_below="@+id/statistics"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:text="Markets" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/market"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtmarket"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="37dp"
+                android:background="@drawable/splash2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/top"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/colorWarmpurple"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tradingfloor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="12dp"
+                            android:text="Trading Floor"
+                            android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:id="@+id/price"
+                            android:layout_width="105dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="33dp"
+                            android:layout_toEndOf="@+id/tradingfloor"
+                            android:text="Trading Floor"
+                            android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:id="@+id/pairs"
+                            android:layout_width="91dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="41dp"
+                            android:layout_marginEnd="-6dp"
+                            android:layout_toEndOf="@+id/price"
+                            android:text="Pairs"
+                            android:textColor="@color/colorWhite" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/splash"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/bitfinex"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="35dp"
+                                android:text="Bitfinex"
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:id="@+id/btc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="60dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_toEndOf="@+id/bitfinex"
+                                android:text="BTC/USD"
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:id="@+id/numbers"
+                                android:layout_width="87dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="65dp"
+                                android:layout_marginEnd="23dp"
+                                android:layout_toEndOf="@+id/btc"
+                                android:text="$4032.1"
+                                android:textColor="@color/colorBlack" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/bitcointime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="14dp"
+                            android:text="1 minute ago" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

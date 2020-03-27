@@ -37,7 +37,7 @@ public class MyHolder2 extends RecyclerView.ViewHolder implements  View.OnClickL
         final Intent intent;
         switch (getAdapterPosition()){
             case 0:
-                intent =  new Intent(context, Registration08.class);
+                intent =  new Intent(context, cryptomarket.class);
                 break;
 
             case 1:
