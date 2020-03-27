@@ -104,7 +104,6 @@ public class Registration05 extends AppCompatActivity {
         String url = "/gapi/sendOTP";
         OkhttpConnection okConn = new OkhttpConnection();
         Response result = okConn.postRequest(url,jPhone.toString());
-        Log.e("TAG", String.valueOf(result.code()));
 
         if ( result.code() == 201) {
             System.out.println("Response body json values are : " + result);
