@@ -21,7 +21,7 @@ import okhttp3.Response;
 
 public class OkhttpConnection {
     String baseUrl= "https://backoffice.wolenjeafrica.com/wolenje";
-    OkHttpClient client = new OkHttpClient();
+//    OkHttpClient client = new OkHttpClient();
     OkHttpClient clientSSL = null;
     private static OkHttpClient getUnsafeOkHttpClient() {
         try {
@@ -67,6 +67,7 @@ public class OkhttpConnection {
 
     public  Response postRequest(String url, String jsonbody){
         Response result = null;
+        clientSSL = getUnsafeOkHttpClient();
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonbody);
             String allUrl = baseUrl + url;
@@ -76,7 +77,7 @@ public class OkhttpConnection {
                     .post(body)
                     .build();
 
-            Call call = client.newCall(request);
+            Call call = clientSSL.newCall(request);
             Response response = call.execute();
             Log.e("TAG", String.valueOf(response.code()));
             result  = response;
