@@ -84,16 +84,16 @@ public class Registration07 extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                String url = "/api";
+                String url = "/api/";
                 OkhttpConnection okConn = new OkhttpConnection();
                 Response result = null;
                 result = okConn.postPin(url, jPin.toString(), sessionID);
 
                 int responseCode = 0;
-                if ((responseCode = result.code()) == 201) {
+                if ((responseCode = result.code()) == 202) {
                     System.out.println("Response body json values are : " + result);
                     Log.d("TAG", String.valueOf(result));
-                    Toast.makeText(getApplicationContext(), "Your PIN has been set successfuly", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Your password has been changed successfuly", Toast.LENGTH_LONG).show();
                     Intent move = new Intent(this, Registration08.class);
                     startActivity(move);
 

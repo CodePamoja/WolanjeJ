@@ -20,7 +20,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class OkhttpConnection {
-    String baseUrl= "https://backoffice.wolenjeafrica.com/wolenje";
+    String baseUrl= "https://wolenjeafrica.com/wolenje";
     OkHttpClient client = new OkHttpClient();
 
     public  Response postRequest(String url, String jsonbody){
