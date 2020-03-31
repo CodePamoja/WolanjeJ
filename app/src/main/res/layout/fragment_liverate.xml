@@ -1,6 +1,484 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="Live currency rate"/>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/live_currency_rate"
+            android:layout_width="350dp"
+            android:layout_height="400dp"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/splash2">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/top"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/colorWarmpurple"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tradingfloor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="12dp"
+                        android:gravity="center_horizontal"
+                        android:text="Major Pairs"
+                        android:textColor="@color/colorWhite" />
+
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="105dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="33dp"
+                        android:layout_toEndOf="@+id/tradingfloor"
+                        android:gravity="center_horizontal"
+                        android:text="Price"
+                        android:textColor="@color/colorWhite" />
+
+                    <TextView
+                        android:id="@+id/pairs"
+                        android:layout_width="91dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="39dp"
+                        android:layout_marginEnd="-6dp"
+                        android:layout_toEndOf="@+id/price"
+                        android:gravity="center_horizontal"
+                        android:text="Pairs"
+                        android:textColor="@color/colorWhite" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/splash"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/Usd_vnd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="32dp"
+                            android:text="USD/VND"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/price_usd_vnd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toEndOf="@+id/Usd_vnd"
+                            android:text="23.2311"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/pairs_usd_vnd"
+                            android:layout_width="87dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="67dp"
+                            android:layout_marginEnd="23dp"
+                            android:layout_toEndOf="@+id/price_usd_vnd"
+                            android:text="23.2311"
+                            android:textColor="@color/colorBlack" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/splash"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/eur_usd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="32dp"
+                            android:text="EUR/USD"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/price_eur_usd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toEndOf="@+id/eur_usd"
+                            android:text="1.2231"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/pairs_eur_usd"
+                            android:layout_width="87dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="67dp"
+                            android:layout_marginEnd="23dp"
+                            android:layout_toEndOf="@+id/price_eur_usd"
+                            android:text="1.2232"
+                            android:textColor="@color/colorBlack" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/splash"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/bitfinex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="32dp"
+                            android:text="USD/VND"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/btc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="60dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toEndOf="@+id/bitfinex"
+                            android:text="23.2311"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/numbers"
+                            android:layout_width="87dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="67dp"
+                            android:layout_marginEnd="23dp"
+                            android:layout_toEndOf="@+id/btc"
+                            android:text="23.2311"
+                            android:textColor="@color/colorBlack" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="Live Central Bank Rates"/>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/live_central_bank_rates"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/splash2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/central_rates1"
+                    android:layout_width="149dp"
+                    android:layout_height="209dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="25dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/jpy"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        android:text="JPY" />
+
+
+                    <TextView
+                        android:id="@+id/jpy_count"
+                        android:layout_width="49dp"
+                        android:textColor="@color/reddish_orange"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="18dp"
+                        android:layout_toEndOf="@+id/jpy"
+                        android:gravity="center_horizontal"
+                        android:text="-0.75%" />
+
+                    <TextView
+                        android:id="@+id/AUD"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/jpy"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        android:text="AUD" />
+
+                    <TextView
+                        android:id="@+id/aud_count"
+                        android:layout_width="52dp"
+                        android:textColor="@color/reddish_orange"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/jpy_count"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@+id/AUD"
+                        android:gravity="center_horizontal"
+                        android:text="-0.32%" />
+
+                    <TextView
+                        android:id="@+id/USD"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/AUD"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        android:text="USD" />
+
+                    <TextView
+                        android:textColor="@color/reddish_orange"
+                        android:id="@+id/usd_count"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/aud_count"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@+id/USD"
+                        android:gravity="center_horizontal"
+                        android:text="-0.43%" />
+
+                    <TextView
+                        android:id="@+id/VND"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/USD"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="27dp"
+                        android:layout_marginBottom="44dp"
+                        android:gravity="center_horizontal"
+                        android:text="USD" />
+
+                    <TextView
+                        android:textColor="@color/reddish_orange"
+                        android:id="@+id/vnd_count"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/usd_count"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="43dp"
+                        android:layout_toEndOf="@+id/USD"
+                        android:gravity="center_horizontal"
+                        android:text="-0.11%" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:orientation="vertical"
+                    android:layout_width="140dp"
+                    android:layout_height="204dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="23dp"
+                    android:layout_marginBottom="26dp"
+                    android:layout_toEndOf="@+id/central_rates1">
+
+
+                    <TextView
+                        android:id="@+id/CHF"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        android:text="CHF" />
+
+                    <TextView
+                        android:id="@+id/chf_count"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="9dp"
+                        android:layout_toEndOf="@+id/CHF"
+                        android:gravity="center_horizontal"
+                        android:text="0.56%" />
+
+                    <TextView
+                        android:id="@+id/CAD"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/CHF"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:text="CAD" />
+
+                    <TextView
+                        android:id="@+id/cad_count"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/chf_count"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginEnd="15dp"
+                        android:gravity="center_horizontal"
+                        android:layout_toEndOf="@+id/CAD"
+                        android:text="-0.11%" />
+
+                    <TextView
+                        android:id="@+id/KRW"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/CAD"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        android:text="KRW" />
+
+                    <TextView
+                        android:id="@+id/krw_count"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cad_count"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginTop="99dp"
+                        android:layout_marginEnd="13dp"
+                        android:layout_toEndOf="@+id/KRW"
+                        android:gravity="center_horizontal"
+                        android:text="0.56%" />
+
+                    <TextView
+                        android:id="@+id/KAO"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/KRW"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="46dp"
+                        android:gravity="center_horizontal"
+                        android:text="KAO" />
+
+                    <TextView
+                        android:id="@+id/kao_count"
+                        android:layout_width="41dp"
+                        android:layout_height="21dp"
+                        android:layout_below="@+id/krw_count"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginEnd="18dp"
+                        android:layout_marginBottom="47dp"
+                        android:layout_toEndOf="@+id/KAO"
+                        android:gravity="center_horizontal"
+                        android:text="-0.11%" />
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
+
+
+
 </LinearLayout>
+</ScrollView>

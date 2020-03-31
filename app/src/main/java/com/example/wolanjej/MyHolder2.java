@@ -41,10 +41,10 @@ public class MyHolder2 extends RecyclerView.ViewHolder implements  View.OnClickL
                 break;
 
             case 1:
-                intent =  new Intent(context, Registration06.class);
+                intent =  new Intent(context, cryptomarket.class);
                 break;
             case 2:
-                intent =  new Intent(context, Home.class);
+                intent =  new Intent(context, cryptomarket.class);
                 break;
             default:
                 intent =  new Intent(context, Registration07.class);
