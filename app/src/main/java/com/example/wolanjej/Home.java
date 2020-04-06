@@ -100,26 +100,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         drawer.closeDrawer(GravityCompat.START);
     }
 
-//    private void sendToVerification() {
-//        text = findViewById(R.id.newphoneNumber);
-//        String value = text.getText().toString();
-//        System.out.println(value);
-//
-//        JSONObject jValue = new JSONObject();
-//        try {
-//            jValue.put("phone", value);
-//            Log.e("JValues",jValue.toString());
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        String url = "/register";
-//        OkhttpConnection okConn = new OkhttpConnection();
-//        ResponseCache result = okConn.postRequest(url,jValue.toString());
-//        System.out.println(result);
-//
-//        Intent move = new Intent(this, Home.class);
-//        startActivity(move);
-//    }
 
 
     @Override
@@ -192,10 +172,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
  findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
 
     }
-//    public void movetoTransfer(){
-//        Intent move = new Intent(this, MainTransfer36.class);
-//        startActivity(move);
-//    }
 
     public void close_show_ple(View view) {
         findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);

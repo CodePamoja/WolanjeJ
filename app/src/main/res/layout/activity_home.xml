@@ -364,7 +364,7 @@
             <include layout="@layout/activity_register_new_number"/>
 
 
-              <include layout="@layout/pop_up_my_wallet" />
+              <include layout="@layout/pop_up_my_wallet"  />
 
                  <include layout="@layout/wallet_pop_up"/>
 
