@@ -3,6 +3,14 @@ package com.example.wolanjej;
 import android.util.Log;
 
 import java.io.IOException;
+import java.security.cert.CertificateException;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -12,7 +20,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class OkhttpConnection {
-    String baseUrl= "https://backoffice.wolenjeafrica.com/wolenje";
+    String baseUrl= "https://wolenjeafrica.com/wolenje";
     OkHttpClient client = new OkHttpClient();
 
     public  Response postRequest(String url, String jsonbody){
@@ -45,14 +53,15 @@ public class OkhttpConnection {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
             String allUrl = baseUrl + url;
             Request request = new Request.Builder()
-                    .header("X-Requested-With", "XMLHttpRequest")
-                    .header("X-Authorization", "Bearer"+sessionID+"" )
+                    .header("Authorization", "Bearer "+sessionID+"" )
                     .url(allUrl)
                     .post(body)
                     .build();
 
             Call call = client.newCall(request);
             Response response = call.execute();
+            String test = response.body().string();
+            Log.d("TAG", test);
             result  = response;
 
         } catch (IOException ex) {

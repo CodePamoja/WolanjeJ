@@ -29,6 +29,7 @@ public class Registration05 extends AppCompatActivity {
     private EditText text;
     private JSONObject sessionID = null;
     private String phone = null;
+    public Sendtover conn;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
     Toolbar tb ;
@@ -50,9 +51,10 @@ public class Registration05 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        text = findViewById(R.id.phoneNumber);
-
-                        new Sendtover(text.toString()).sendToVerification();
+//                        text = findViewById(R.id.phoneNumber);
+//                        conn = new Sendtover(text.toString());
+//                        conn.sendToVerification();
+                        sendToVerification();
                     }
                 }
         );
@@ -102,7 +104,6 @@ public class Registration05 extends AppCompatActivity {
         String url = "/gapi/sendOTP";
         OkhttpConnection okConn = new OkhttpConnection();
         Response result = okConn.postRequest(url,jPhone.toString());
-        Log.e("TAG", String.valueOf(result.code()));
 
         if ( result.code() == 201) {
             System.out.println("Response body json values are : " + result);
@@ -111,7 +112,7 @@ public class Registration05 extends AppCompatActivity {
             verifyOTP(phone);
 
         }else if(result.code() != 201) {
-            Log.e("TAG", String.valueOf(result));
+            Log.e("TAG", String.valueOf(result.body()));
         }
 
         //bypass the verification code and page for now since we are adding otp for testing

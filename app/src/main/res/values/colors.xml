@@ -17,6 +17,6 @@
     <color name="colorBlack">#000000 </color>
     <color name="warm_purple">#932777</color>
     <color name="light_gray">#ededed</color>
->>>>>>> master
+    <color name="trans">#80000000</color>
 
 </resources>
