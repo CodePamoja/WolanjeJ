@@ -91,7 +91,7 @@
             android:id="@+id/fav"
             android:title="@string/register_new_member"
             android:icon="@mipmap/favorites_2"
-
+            android:onClick="registerNewNumber"
 
             />
 

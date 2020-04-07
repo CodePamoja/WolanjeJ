@@ -4,14 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.text.BreakIterator;
 
 public class MyHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
     Context context = itemView.getContext();
@@ -36,7 +33,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements  View.OnClickLi
         final Intent intent;
         switch (getAdapterPosition()){
             case 0:
-                intent =  new Intent(context, screen18.class);
+                intent =  new Intent(context,Home.class);
                 break;
 
             case 1:

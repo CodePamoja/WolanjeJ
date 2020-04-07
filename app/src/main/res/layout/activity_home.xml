@@ -153,6 +153,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:text="@string/view_all"
+                                android:clickable="true"
                                 android:onClick="open_screen16"
                                 android:textColor="#21c17a"
                                 android:textSize="16sp" />
@@ -364,7 +365,7 @@
             <include layout="@layout/activity_register_new_number"/>
 
 
-              <include layout="@layout/pop_up_my_wallet" />
+              <include layout="@layout/pop_up_my_wallet"  />
 
                  <include layout="@layout/wallet_pop_up"/>
 

@@ -5,16 +5,19 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
-    tools:context="com.example.wolanjej.screen18">
+    tools:context="com.example.wolanjej.Home">
+
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/screen_16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:alpha="1"
+        android:visibility="gone"
         android:background="@drawable/splash2"
         android:orientation="vertical"
         android:paddingHorizontal="16dp">
@@ -32,7 +35,7 @@
             android:src="@mipmap/rectanglew"
             android:layout_marginTop="8dp"
             android:layout_gravity="center_horizontal"
-            android:onClick="close_show_ple"
+            android:onClick="close_screen18"
             android:layout_marginBottom="29dp"
             android:backgroundTint="@color/colorWhite"
 
@@ -81,7 +84,7 @@
         android:layout_marginTop="5dp">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/transfer"
+            android:id="@+id/transfer101"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
@@ -112,7 +115,7 @@
 
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/income_details"
+            android:id="@+id/income_details101"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
@@ -145,7 +148,7 @@
 
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/wallet"
+            android:id="@+id/wallet101"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
@@ -198,7 +201,7 @@
         android:layout_marginBottom="65dp"
         >
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/services"
+            android:id="@+id/services101"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
@@ -228,7 +231,7 @@
                 android:textSize="12sp" />
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/exchange"
+            android:id="@+id/exchange101"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
@@ -259,7 +262,7 @@
 
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/crypto"
+            android:id="@+id/crypto101"
             android:layout_width="84dp"
             android:layout_height="98dp"
             android:layout_gravity="center"
