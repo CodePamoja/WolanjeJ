@@ -21,6 +21,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     Toolbar tb;
     DrawerLayout drawer;
     Button transferMoney, viewall;
+    private String sessionID;
     private EditText text;
 
 
@@ -34,6 +35,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_home);
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
+
+        // Get the Intent that started this activity and extract the string
+        Intent intent = getIntent();
+        this.sessionID = intent.getStringExtra(LogIn.EXTRA_SESSION);
 
         viewall = (Button)findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);

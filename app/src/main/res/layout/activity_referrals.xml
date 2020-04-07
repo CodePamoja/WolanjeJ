@@ -4,12 +4,56 @@
     android:layout_height="match_parent" >
 
     <!-- A RecyclerView with some commonly used attributes -->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/contacts_list"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"
-        android:scrollbars="vertical" />
+        android:layout_weight="1"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbarwithsearch"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Referrals"
+                android:textColor="@color/colorBlack"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="start"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_host"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PENDING"
+                android:textColor="@color/colorGray"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="start"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/contacts_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:clickable="true"
+                android:scrollbars="vertical" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout >

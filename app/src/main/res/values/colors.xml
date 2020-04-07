@@ -17,6 +17,11 @@
     <color name="colorBlack">#000000 </color>
     <color name="warm_purple">#932777</color>
     <color name="light_gray">#ededed</color>
+<!--    <color name="colorPrimary">#111</color>-->
+<!--    <color name="colorPrimaryDark">#FFF</color>-->
+<!--    <color name="colorAccent">#ea3732</color>-->
+    <color name="contact_name">#333333</color>
+    <color name="contact_number">#8c8c8c</color>
 >>>>>>> master
 
 </resources>
