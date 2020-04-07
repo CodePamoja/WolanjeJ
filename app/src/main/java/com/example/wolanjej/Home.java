@@ -16,12 +16,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.card.MaterialCardView;
+
+import java.util.ArrayList;
 
 public class Home extends AppCompatActivity implements View.OnClickListener{
     Toolbar tb;
     DrawerLayout drawer;
     Button transferMoney, viewall;
     private EditText text;
+
+    RecyclerView mRecyclerView;
+    MyAdapter myAdapter;
+
+    private MaterialCardView  transfer101, income_details101, wallet101, services101, exchange101, crypto101;
 
 
     @Override
@@ -35,15 +46,40 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
 
+
+//     this  belongs to  screen 18
+        mRecyclerView = findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        myAdapter = new MyAdapter(this,getMylist());
+        mRecyclerView.setAdapter(myAdapter);
+
         viewall = (Button)findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
 
         transferMoney = (Button)findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
 
-     //start of  end of registernew number for activity_new_number
+        transfer101 = (MaterialCardView) findViewById(R.id.transfer101);
+        transfer101.setOnClickListener(this);
+
+        income_details101 = (MaterialCardView) findViewById(R.id.income_details101);
+        income_details101.setOnClickListener(this);
+
+        wallet101 = (MaterialCardView) findViewById(R.id.wallet101);
+        wallet101.setOnClickListener(this);
+
+        services101 = (MaterialCardView) findViewById(R.id.services101);
+        services101.setOnClickListener(this);
+
+        exchange101 = (MaterialCardView) findViewById(R.id.exchange101);
+        exchange101.setOnClickListener(this);
+
+        crypto101 = (MaterialCardView) findViewById(R.id.crypto101);
+        crypto101.setOnClickListener(this);
 
 
+     //start of  registernew number for activity_new_number
         Button btn_sendinvite = findViewById(R.id.btn_sendinvite);
         btn_sendinvite.setOnClickListener(new View.OnClickListener(){
 
@@ -93,6 +129,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         setToolBar();
     }
+
+    public void close_screen18(View view) {
+        Log.e("yes","pressed");
+        findViewById(R.id.screen_16).setVisibility(View.INVISIBLE);
+
+    }
+
+
 
 
     //    close drawer on register new number
@@ -181,6 +225,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void open_screen16(View view) {
+        Log.e("yes","pressed");
         findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
     }
     @Override
@@ -188,7 +233,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         Intent i;
 
         switch (v.getId()){
-            case R.id.btnviewall: i = new Intent(this,screen18.class);startActivity(i); break;
+            case R.id.income_details101: i = new Intent(this, IncomeDetails.class);startActivity(i);break;
+            case R.id.wallet101: i = new Intent(this, Home.class);startActivity(i);break;
+            case R.id.services101: i = new Intent(this, services.class);startActivity(i);break;
+            case R.id.exchange101: i = new Intent(this, Home.class);startActivity(i);break;
+            case R.id.crypto101: i = new Intent(this, CryptoBalance.class);startActivity(i);break;
+            case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);break;
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);startActivity(i); break;
             default:break;
         }
@@ -196,7 +246,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
 
         switch (v.getId()){
-            case R.id.services: i = new Intent(this,screen18.class);startActivity(i); break;
+            case R.id.services: i = new Intent(this,Home.class);startActivity(i); break;
             default:break;
 
     }
@@ -260,6 +310,40 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         startActivity(intent);
     }
     public void registerNewNumber(MenuItem item){
-        findViewById(R.id.register_new_number).setVisibility(View.VISIBLE);
+        drawer.closeDrawer(GravityCompat.START);
+        findViewById(R.id.show_newnumber).setVisibility(View.VISIBLE);
     }
+    public void closeRegisterNewNumber(View view){
+        findViewById(R.id.show_newnumber).setVisibility(View.INVISIBLE);
+    }
+    public ArrayList<Model> getMylist() {
+        ArrayList<Model>models = new ArrayList<>();
+        Model m = new Model();
+        m.setTitle("Pay Tv");
+        m.setImage(R.mipmap.group_18a);
+        models.add(m);
+
+        Model m3 = new Model();
+        m3.setTitle("Saved Billers");
+        m3.setImage(R.mipmap.group_18);
+        models.add(m3);
+
+        Model m1 = new Model();
+        m1.setTitle("Electricity");
+        m1.setImage(R.mipmap.group_18c);
+        models.add(m);
+
+        Model m2 = new Model();
+        m2.setTitle("Pay Internet");
+        m2.setImage(R.mipmap.group_18d);
+        models.add(m2);
+
+        Model m4 = new Model();
+        m4.setTitle("Buy Airtime");
+        m4.setImage(R.mipmap.group_18d);
+        models.add(m4);
+
+        return models;
+    }
+
 }
