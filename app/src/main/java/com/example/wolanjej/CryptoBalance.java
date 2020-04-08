@@ -40,7 +40,7 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
         Toolbar tb= (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetologo = new Intent(this,screen18.class);
+        final Intent movetologo = new Intent(this,Home.class);
         tb.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

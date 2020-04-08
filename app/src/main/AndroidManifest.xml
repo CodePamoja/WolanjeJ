@@ -16,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Reg_02"></activity>
+        <activity android:name=".ContactsView"></activity>
+
         <activity android:name=".cryptomarket" />
         <activity android:name=".Hub" />
         <activity android:name=".EnterPinPay" />
@@ -50,7 +52,7 @@
             tools:ignore="MissingClass" />
         <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
-        <activity android:name=".screen18" />
+
         <activity android:name=".Registration08" />
         <activity
             android:name=".Registration06"

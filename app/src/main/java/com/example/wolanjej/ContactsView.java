@@ -4,46 +4,24 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.Manifest;
 import android.annotation.TargetApi;
-import android.content.ContentUris;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
 import java.util.List;
 
-public class Referrals extends AppCompatActivity {
-    ReferralsDatabaseAdapter mydb;
-    ReferralsAdapter suAdapter;
+public class ContactsView extends AppCompatActivity {
+
+    DatabaseAdapter mydb;
+    SelectUserAdapter suAdapter;
     public static final int PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     RecyclerView recyclerView;
     SearchView search;
@@ -52,12 +30,12 @@ public class Referrals extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_referrals);
+        setContentView(R.layout.activity_contacts_view);
 
-        mydb  = new ReferralsDatabaseAdapter(getApplicationContext());
+        mydb  = new DatabaseAdapter(getApplicationContext());
         recyclerView = (RecyclerView)findViewById(R.id.contacts_list);
         requestContactPermission();
-        search = (SearchView)findViewById(R.id.searchViewToolbar);
+        search = (SearchView)findViewById(R.id.searchView);
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -74,31 +52,29 @@ public class Referrals extends AppCompatActivity {
     }
 
     private void setRecyclerview() {
-        new ContUserLoader().execute();
+        new ConttactLoader().execute();
     }
 
-    public class ContUserLoader extends AsyncTask<Void, Void, List<Contacts>> {
+    public class ConttactLoader extends AsyncTask<Void, Void, List<SelectUser>> {
 
         @Override
-        protected List<Contacts> doInBackground(Void... voids) {
-            List<Contacts> MHList = mydb.getData();
+        protected List<SelectUser> doInBackground(Void... voids) {
+            List<SelectUser> MHList = mydb.getData();
             return MHList;
         }
 
         @Override
-        protected void onPostExecute(List<Contacts> contactsUsers) {
-            if (contactsUsers.isEmpty()==false){
-                suAdapter = new ReferralsAdapter(Referrals.this, contactsUsers);
+        protected void onPostExecute(List<SelectUser> selectUsers) {
+            if (selectUsers.isEmpty()==false){
+                suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers);
 
-                recyclerView.setLayoutManager(new LinearLayoutManager(Referrals.this));
+                recyclerView.setLayoutManager(new LinearLayoutManager(ContactsView.this));
                 recyclerView.setAdapter(suAdapter);
             }
         }
     }
 
     private void getContacts() {
-        //TODO get contacts code here
-        Toast.makeText(this, "Get contacts ....", Toast.LENGTH_LONG).show();
         setRecyclerview();
     }
 

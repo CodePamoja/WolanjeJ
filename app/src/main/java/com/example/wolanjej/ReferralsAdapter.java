@@ -1,79 +1,88 @@
 package com.example.wolanjej;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class ReferralsAdapter extends RecyclerView.Adapter<ReferralsAdapter.ViewHolder> {
-    private LayoutInflater layoutInflater;
-    public List<Contacts> cont;
-    Contacts list;
+public class ReferralsAdapter extends RecyclerView.Adapter<ReferralsAdapter.MyContactListViewHolder> {
+
+    List<Contacts> mainInfo;
     private ArrayList<Contacts> arraylist;
-    boolean checked = false;
-    View vv;
+    Context context;
 
 
-    public ReferralsAdapter(LayoutInflater inflater, List<Contacts> items) {
-        this.layoutInflater = inflater;
-        this.cont = items;
+    public ReferralsAdapter(Context context, List<Contacts> mainInfo) {
+        this.mainInfo = mainInfo;
+        this.context = context;
         this.arraylist = new ArrayList<Contacts>();
-        this.arraylist.addAll(cont);
+        this.arraylist.addAll(mainInfo);
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = layoutInflater.inflate(R.layout.row_layout, parent, false);
-        ViewHolder viewHolder = new ViewHolder(v);
-        return viewHolder;
-    }
+    public class MyContactListViewHolder extends RecyclerView.ViewHolder {
 
-    @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
-        list = cont.get(position);
-        String name = (list.getName());
+        de.hdodenhof.circleimageview.CircleImageView imageViewUserImage;
+        TextView textViewShowName;
+        TextView textViewPhoneNumber;
 
-        holder.title.setText(name);
-        holder.phone.setText(list.getPhone());
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return cont.size();
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView title;
-        public TextView phone;
-        public LinearLayout contact_select_layout;
-
-        public ViewHolder(View itemView) {
+        public MyContactListViewHolder(View itemView) {
             super(itemView);
-            this.setIsRecyclable(false);
-            title = (TextView) itemView.findViewById(R.id.referralsName);
-            phone = (TextView) itemView.findViewById(R.id.phoneNumber);
-            contact_select_layout = (LinearLayout) itemView.findViewById(R.id.contact_select_layout);
 
+            textViewShowName = (TextView) itemView.findViewById(R.id.referralsName);
+            textViewPhoneNumber = (TextView) itemView.findViewById(R.id.phoneNumber);
+            imageViewUserImage = (de.hdodenhof.circleimageview.CircleImageView) itemView.findViewById(R.id.referralsImage);
         }
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public MyContactListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_layout, parent, false);
+        MyContactListViewHolder holder = new MyContactListViewHolder(v);
+        return holder;
     }
 
     @Override
-    public int getItemViewType(int position) {
-        return position;
+    public void onBindViewHolder(MyContactListViewHolder holder, int position) {
+        String imagepath = mainInfo.get(position).getImage();
+        if (imagepath == null) {
+            Picasso.with(context).load(R.drawable.image).into(holder.imageViewUserImage);
+        }else {
+            Picasso.with(context).load(imagepath).into(holder.imageViewUserImage);
+        }
+        holder.textViewShowName.setText(mainInfo.get(position).getName());
+        holder.textViewPhoneNumber.setText(mainInfo.get(position).getPhone());
+    }
+
+    @Override
+    public int getItemCount() {
+        return mainInfo.size();
+    }
+
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        mainInfo.clear();
+        if (charText.length() == 0) {
+            mainInfo.addAll(arraylist);
+        } else {
+            for (Contacts wp : arraylist) {
+                if (wp.getName().toLowerCase(Locale.getDefault())
+                        .contains(charText)) {
+                    mainInfo.add(wp);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 }
-

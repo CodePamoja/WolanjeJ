@@ -5,11 +5,15 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class TransferToPhone50 extends AppCompatActivity {
     private Button button;
+    private String phoneNumber = "phone1";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,17 @@ public class TransferToPhone50 extends AppCompatActivity {
                 movetoConfirm();
             }
         });
+
+        SelectUserAdapter intent = new SelectUserAdapter();
+        this.phoneNumber = intent.getEXTRANumber();
+        if(phoneNumber!="phone1") {
+            Intent move = getIntent();
+            String CheckphoneNumber = move.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
+//            Log.e("phone number", phoneNumber);
+//            Toast.makeText(getApplicationContext(), CheckphoneNumber, Toast.LENGTH_LONG).show();
+            EditText tvtext =  findViewById(R.id.transPhoneAmout);
+            tvtext.setText(CheckphoneNumber);
+        }
     }
 
     private void setToolBar() {
@@ -42,6 +57,13 @@ public class TransferToPhone50 extends AppCompatActivity {
 
     public void movetoConfirm() {
         Intent move = new Intent(this, ConfirmTransferToPhone52.class);
+        startActivity(move);
+    }
+
+    public void moveToContact(View view) {
+        String cont = "get all user contacts contact button preseed";
+        Log.e("Move to ", cont);
+        Intent move = new Intent(this, ContactsView.class);
         startActivity(move);
     }
 }

@@ -117,6 +117,7 @@
                         android:textColor="@color/colorMidnight"/>
 
                     <EditText
+                        android:id="@+id/transPhoneAmout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="5dp"
@@ -142,12 +143,14 @@
                             style="?android:attr/borderlessButtonStyle"
                             android:backgroundTint="@color/colorGreyBackground"/>
                         <Button
+                            android:id="@+id/TranPhoneContact"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="50"
                             android:layout_marginLeft="20dp"
                             android:text="Contacts"
                             android:textAllCaps="false"
+                            android:onClick="moveToContact"
                             android:textSize="14sp"
                             android:textColor="@color/blue_grey"
                             style="?android:attr/borderlessButtonStyle"

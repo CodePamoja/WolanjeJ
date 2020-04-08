@@ -9,22 +9,37 @@ import android.hardware.biometrics.BiometricPrompt;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+
+import okhttp3.Response;
 
 public class LogIn extends AppCompatActivity {
 
     private ImageView imageView;
     private Button button;
+    public  JSONObject sessionID = null;
+    private EditText textPhone;
+    private EditText textPin;
+
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+
+    public Base64Encoder baseResult = new Base64Encoder();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +83,17 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
+        // login button action
+        button = (Button)findViewById(R.id.btn_LogIn);
+        button.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sendHomeScreen();
+                    }
+                }
+        );
+
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
         imageView.setImageResource(R.mipmap.group_6);
@@ -106,8 +132,44 @@ public class LogIn extends AppCompatActivity {
         startActivity(move);
     }
 
-    public void sendtohome(View view) {
-        Intent move2 = new Intent(this, LinkAccount11.class);
-        startActivity(move2);
+    public void sendHomeScreen() {
+        textPhone = findViewById(R.id.phoneNoLogIN);
+        textPin = findViewById(R.id.pinLogIN);
+
+        String phone = textPhone.getText().toString();
+        String pin = textPin.getText().toString();
+        if(phone!=null && pin!=null){
+            String phonePin = "254"+phone+":"+pin; //adding a phone number and a pin together separating them using Full collon
+            Log.d("TAG", phonePin);
+            String results = baseResult.encodedValue(phonePin); // sending the phone number and pin for base 64 encoder for and getting the string value
+            Log.d("TAG", results);
+            String url = "/api/";
+            OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
+            Response result = okConn.getLogin(url, results); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
+            Log.d("TAG", String.valueOf(result));
+
+            if ( result.code() == 200) {
+                Toast.makeText(getApplicationContext(), "Your have been Loggedin successfuly", Toast.LENGTH_LONG).show();
+                try {
+                    String test = result.body().string();
+                    Log.d("TAG test", test);
+                    sessionID = new JSONObject(test);
+                    System.out.println("Response body json values are : " + sessionID);
+                    Intent move = new Intent(this, Home.class);
+                    move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
+                    startActivity(move);
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }else if( result.code() != 201) {
+                Log.d("TAG", String.valueOf(result));
+                Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
+            }
+        }
+
+//        Intent move2 = new Intent(this, LinkAccount11.class);
+//        startActivity(move2);
     }
 }

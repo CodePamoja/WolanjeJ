@@ -158,9 +158,6 @@ public class Registration05 extends AppCompatActivity {
         }
     }
 
-    public JSONObject getSessionID(){
-        return sessionID;
-    }
 
     public String getPhone(){
         return phone;

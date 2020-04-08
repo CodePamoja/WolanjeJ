@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contact_select_layout"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -11,16 +12,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            android:id="@+id/referralsImage"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="fill_parent"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_marginRight="6dip"-->
+<!--            android:contentDescription="TODO"-->
+<!--            android:src="@mipmap/ic_launcher" />-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/referralsImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/group5"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000" />
 
-            <ImageView
-                    android:id="@+id/icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="6dip"
-                    android:contentDescription="TODO"
-                    android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,7 +45,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignWithParentIfMissing="true"
-                android:layout_toRightOf="@id/icon"
+                android:layout_toRightOf="@id/referralsImage"
                 android:gravity="center_vertical"
                 android:text="Name"
                 android:textSize="16sp" />
@@ -47,7 +56,7 @@
                 android:layout_height="26dip"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/icon"
+                android:layout_toRightOf="@id/referralsImage"
                 android:ellipsize="marquee"
                 android:text="Phone Number"
                 android:textSize="12sp"

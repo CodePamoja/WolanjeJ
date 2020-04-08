@@ -125,7 +125,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginVertical="10dp"
-                        android:background="@drawable/for_reg5"
                         android:backgroundTint="#120d0229"
                         android:text="Create a Business Account"
                         android:textColor="#8484a9"
