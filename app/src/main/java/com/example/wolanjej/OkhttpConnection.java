@@ -39,7 +39,7 @@ public class OkhttpConnection {
         return result;
     }
 
-    public  Response postPin(String url, String jsonBody, String sessionID){
+    public  Response postValue(String url, String jsonBody, String sessionID){
         Response result = null;
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);

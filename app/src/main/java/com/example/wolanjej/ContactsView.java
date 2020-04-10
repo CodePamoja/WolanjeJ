@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -26,11 +27,16 @@ public class ContactsView extends AppCompatActivity {
     RecyclerView recyclerView;
     SearchView search;
 
+    private String sessionID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts_view);
+
+        Intent intentExtra = getIntent();
+        this.sessionID = intentExtra.getStringExtra(TransferToPhone50.EXTRA_SESSION);
 
         mydb  = new DatabaseAdapter(getApplicationContext());
         recyclerView = (RecyclerView)findViewById(R.id.contacts_list);
@@ -66,7 +72,7 @@ public class ContactsView extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<SelectUser> selectUsers) {
             if (selectUsers.isEmpty()==false){
-                suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers);
+                suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers, sessionID);
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(ContactsView.this));
                 recyclerView.setAdapter(suAdapter);

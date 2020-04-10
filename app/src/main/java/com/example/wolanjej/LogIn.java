@@ -155,13 +155,13 @@ public class LogIn extends AppCompatActivity {
                     Log.d("TAG test", test);
                     sessionID = new JSONObject(test);
                     System.out.println("Response body json values are : " + sessionID);
+                    Log.d("TAG test Session", sessionID.getString("session_token"));
                     Intent move = new Intent(this, Home.class);
                     move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
                     startActivity(move);
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
-
 
             }else if( result.code() != 201) {
                 Log.d("TAG", String.valueOf(result));

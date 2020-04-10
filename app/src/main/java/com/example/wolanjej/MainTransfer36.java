@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +17,18 @@ import android.widget.PopupWindow;
 public class MainTransfer36 extends AppCompatActivity {
 
     private CardView walletCard, bankCard, phoneCard;
+    private String sessionID;
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_transfer36);
         setToolBar();
+
+        Intent intent = getIntent();
+        this.sessionID = intent.getStringExtra(Home.EXTRA_SESSION);
+//        Log.e("sessionID on mainTrans",intent.getStringExtra(LogIn.EXTRA_SESSION));
 
         walletCard = (CardView)findViewById(R.id.transfer_to_wallet);
         walletCard.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +50,7 @@ public class MainTransfer36 extends AppCompatActivity {
         phoneCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("sessionID to mpesa",sessionID);
                 toPhone();
             }
         });
@@ -59,7 +67,9 @@ public class MainTransfer36 extends AppCompatActivity {
     }
 
     public void toPhone() {
+        Log.e("sessionID to mpesa",sessionID);
         Intent move = new Intent(this,TransferToPhone50.class);
+        move.putExtra(EXTRA_SESSION, sessionID);
         startActivity(move);
     }
 
