@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Reg03Activity"></activity>
+        <activity android:name=".Reg_04"></activity>
+        <activity android:name=".Reg03Activity" />
         <activity android:name=".Reg_02" />
         <activity android:name=".ContactsView" />
         <activity android:name=".cryptomarket" />
