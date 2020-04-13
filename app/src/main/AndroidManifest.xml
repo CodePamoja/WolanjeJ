@@ -18,6 +18,7 @@
         <activity android:name=".activity_05_reg" />
         <activity android:name=".activity_05_reg_1" />
         <activity android:name=".HomeTwo"/>
+        <activity android:name=".Reg_04"/>
         <activity android:name=".Reg03Activity" />
         <activity android:name=".Reg_02" />
         <activity android:name=".ContactsView" />
