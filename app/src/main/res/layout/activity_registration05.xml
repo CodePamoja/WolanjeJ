@@ -122,6 +122,7 @@
                     </LinearLayout>
 
                     <Button
+                        android:id="@+id/btn_business"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginVertical="10dp"

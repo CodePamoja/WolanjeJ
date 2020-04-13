@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home_home_two"
+            android:title="@string/home"
+            android:icon="@mipmap/group_3"
+
+            />
+        <item
+            android:id="@+id/my_e_wallet_home_two"
+            android:title="@string/my_e_wallets"
+            android:icon="@mipmap/group5"
+
+            />
+        <item
+            android:id="@+id/billing_home_two"
+            android:title="@string/biling"
+            android:icon="@mipmap/receipt_list_43"
+
+            />
+        <item
+            android:id="@+id/services_home_two"
+            android:title="@string/services"
+            android:icon="@mipmap/pot"
+
+            />
+        <item
+            android:id="@+id/referrals_nav_home_two"
+            android:title="@string/referrals"
+            android:icon="@mipmap/group3"
+
+            />
+        <item
+            android:id="@+id/income_nav_home_two"
+            android:title="@string/income_details"
+            android:icon="@mipmap/group_12"
+
+            />
+        <item
+            android:id="@+id/reports_home_two"
+            android:title="@string/reports"
+            android:icon="@mipmap/group8"
+
+            />
+        <item
+            android:id="@+id/learn_hub_home_two"
+            android:title="@string/learning_hub"
+            android:icon="@mipmap/fill_1"
+
+            />
+        <item
+            android:id="@+id/profile_home_two"
+            android:title="@string/profile"
+            android:icon="@mipmap/group5"
+
+            />
+        <item
+            android:id="@+id/not_home_two"
+            android:title="@string/notifications"
+            android:icon="@mipmap/group6"
+
+            />
+        <item
+            android:id="@+id/settings_nav_home_two"
+            android:title="@string/settings"
+            android:icon="@mipmap/set_1"
+
+            />
+        <item
+            android:id="@+id/switch_account_nav_home_two"
+            android:title="@string/switch_account"
+            android:icon="@mipmap/group7"
+
+            />
+        <item
+            android:id="@+id/new_number_home_two"
+            android:title="@string/register_new_member"
+            android:icon="@mipmap/favorites_2"
+
+            />
+
+
+
+    </group>
+
+
+
+
+</menu>
