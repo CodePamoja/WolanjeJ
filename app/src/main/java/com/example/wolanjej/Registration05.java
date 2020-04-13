@@ -58,6 +58,13 @@ public class Registration05 extends AppCompatActivity {
                     }
                 }
         );
+        Button btn_business= findViewById(R.id.btn_business);
+        btn_business.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Registration05.this,HomeTwo.class));
+            }
+        });
 
     }
 
