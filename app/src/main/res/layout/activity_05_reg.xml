@@ -168,6 +168,14 @@ Thank You!"
         android:lineSpacingExtra="4sp"
         tools:text="I have read and agree to the Terms &amp; Conditions "
         />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="486dp"
+        android:layout_marginBottom="36dp"
+        android:src="@drawable/shape" />
 
     <TextView
         android:layout_width="305dp"
