@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/my_wallet_home_two"
+        android:icon="@mipmap/transfer_wallet"
+        android:title="My wallet"
+        android:enabled="true" />
+
+    <item
+        android:id="@+id/payments_home_two"
+        android:icon="@mipmap/hand"
+        android:title="Payments"
+        android:enabled="true" />
+
+
+    <item
+        android:id="@+id/billers_home_two"
+        android:icon="@mipmap/combined_shape"
+        android:title="Billers"
+        android:enabled="true" />
+
+    <item
+        android:id="@+id/settings_home_two"
+        android:icon="@mipmap/settings"
+        android:title="Settings"
+        android:enabled="true" />
+</menu>

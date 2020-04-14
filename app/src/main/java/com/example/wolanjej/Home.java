@@ -45,6 +45,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.activity_home);
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
