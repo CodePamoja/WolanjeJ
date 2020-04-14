@@ -32,7 +32,9 @@ public class TransferToPhone50 extends AppCompatActivity {
     private String phoneNumber = "phone1";
     private String sessionID;
     private String phoneName;
+    private String classType;
     private String amount;
+    public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
@@ -45,29 +47,20 @@ public class TransferToPhone50 extends AppCompatActivity {
         setToolBar();
 
         Intent intentExtra = getIntent();
-        this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
-//        button = (Button)findViewById(R.id.continue_phone_transfer);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                transferMoney(v);
-//            }
-//        });
-
-        //getting phone number and updating it on the Enter phone number text field
-        SelectUserAdapter intent = new SelectUserAdapter();
-        this.phoneNumber = intent.getEXTRANumber();
-        if(phoneNumber!="phone1") {
-            Intent move = getIntent();
-            String CheckphoneNumber = move.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
-            this.sessionID = move.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
-            this.phoneName = move.getStringExtra(SelectUserAdapter.EXTRA_NAME);
+        String className = getIntent().getStringExtra("Class");
+        Log.e("class Type className", className);
+        if(className.equals("MainTransfer36")) {
+            this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+        }else if (className.equals("SelectUserAdapter")){
+            String CheckphoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
+            this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
+            this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
 //            Log.e("phone number", phoneNumber);
             Toast.makeText(getApplicationContext(), "Check phone Number test", Toast.LENGTH_LONG).show();
             EditText tvtext =  findViewById(R.id.transContactAmount);
             tvtext.setText(CheckphoneNumber);
-
         }
+
 //        Intent moveIN = getIntent();
 //        this.phoneNumber = moveIN.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENUMBER);
 //        this.sessionID = moveIN.getStringExtra(ConfirmTransferToPhone52.EXTRA_SESSION);
@@ -101,9 +94,11 @@ public class TransferToPhone50 extends AppCompatActivity {
 //    }
 
     public void moveToContact(View view) {
-        Log.e("session before contact", sessionID);
+//        Log.e("session before contact", sessionID);
         Intent move = new Intent(this, ContactsView.class);
+        move.putExtra("Class","TransferToPhone50");
         move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra(EXTRA_CLASSTYPE, "phone");
         startActivity(move);
     }
 
@@ -118,7 +113,7 @@ public class TransferToPhone50 extends AppCompatActivity {
         String phonenumber = changePhoneNo(phone, view);
         Log.e("session after contact", sessionID);
         Log.e("TAG phone number last", phonenumber);
-        if(phonenumber!="false"){
+        if(phonenumber!="Fasle"){
             valuesConferm(phonenumber, amount);
         }
     }
@@ -135,7 +130,6 @@ public class TransferToPhone50 extends AppCompatActivity {
 
     public String changePhoneNo(String inputPhone, View view){
         String validPhoneNo = "Fasle";
-        text = findViewById(R.id.transContactAmount);
         String pattern = "^(?:254 |\\+254|0)?(7(?:(?:[12][0-9])|(?:0[0-8])|(?:9[0-2]))[0-9]{6})$";
         Pattern patt = Pattern.compile(pattern);
         Matcher match;
@@ -169,60 +163,6 @@ public class TransferToPhone50 extends AppCompatActivity {
         }
 
         return validPhoneNo;
-    }
-
-    public void mpesaPhone(String phone, String amount){
-        String verifyResult = null;
-
-        JSONArray jdataset = new JSONArray();
-        JSONObject jdata = new JSONObject();
-        try {
-            jdata.put("product_name", "MPESA_B2C");
-            jdata.put("amount", amount);
-            jdata.put("phone", phone);
-            jdata.put("ref", phoneName);
-            jdataset.put(jdata);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        JSONObject jMpesa = new JSONObject();
-        try {
-            jMpesa.put("ac_uname", "test");
-            jMpesa.put("sched", jdataset);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        Log.e("TAG", String.valueOf(jMpesa));
-        Log.e("TAG session on phon50", sessionID);
-
-//        String url = "/api/transactions/";
-//        OkhttpConnection okConn = new OkhttpConnection();
-//        Response result = okConn.postValue(url, jMpesa.toString(),sessionID);
-//        if (result.code() == 201) {
-//            try {
-//                verifyResult = result.body().string();
-//                JSONObject jBody = new JSONObject(verifyResult); // adding
-//                System.out.println("Response body json values are : " + verifyResult);
-//                Log.e("TAG", String.valueOf(verifyResult));
-//
-////                //bypass the verification code and page for now since we are adding otp for testing
-//                Intent move = new Intent(this, Registration07.class);
-//                move.putExtra(EXTRA_SESSION, sessionID);
-//                move.putExtra(EXTRA_JSONBODY, verifyResult);
-//                startActivity(move);
-//            } catch (IOException | JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }else if(result.code() != 201) {
-//            try {
-//                verifyResult = result.body().string();
-//                Log.e("TAG", String.valueOf(result));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
     }
 
 

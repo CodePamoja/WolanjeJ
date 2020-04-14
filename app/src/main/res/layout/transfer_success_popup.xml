@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_element"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -69,10 +70,10 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp">
                 <TextView
+                    android:id="@+id/refncNumber"
                     android:layout_height="wrap_content"
                     android:layout_width="fill_parent"
                     android:layout_weight="1"
-                    android:text="#B3423424234"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorMidnight"
                     android:textSize="18sp"
@@ -128,10 +129,10 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/amoutSent"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="1,000"
                     android:textAlignment="textStart"
                     android:textColor="@color/colorMidnight"
                     android:textSize="18sp" />
@@ -166,34 +167,34 @@
                 />
 
             <TextView
+                android:id="@+id/recpName"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="John Doe"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorMidnight"
                 android:textSize="20sp"
                 />
 
             <TextView
+                android:id="@+id/recpNumber"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="0725 000 000"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorMidnight"
                 android:textSize="20sp"
                 />
 
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Barclays Bank - Westlands"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorMidnight"
-                android:textSize="20sp"
-                />
+<!--            <TextView-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:text="Barclays Bank - Westlands"-->
+<!--                android:textAlignment="textStart"-->
+<!--                android:textColor="@color/colorMidnight"-->
+<!--                android:textSize="20sp"-->
+<!--                />-->
 
         </LinearLayout>
 

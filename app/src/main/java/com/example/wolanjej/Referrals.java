@@ -2,6 +2,7 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.loader.app.LoaderManager;
@@ -15,6 +16,7 @@ import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -27,6 +29,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -56,7 +59,9 @@ public class Referrals extends AppCompatActivity {
 
         mydb  = new ReferralsDatabaseAdapter(getApplicationContext());
         recyclerView = (RecyclerView)findViewById(R.id.contacts_list);
+
         requestContactPermission();
+
         search = (SearchView)findViewById(R.id.searchViewToolbar);
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -148,5 +153,21 @@ public class Referrals extends AppCompatActivity {
                 return;
             }
         }
+    }
+
+    private void setToolBar() {
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent movetoLogo = new Intent(this,Home.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(movetoLogo);
+                    }
+                }
+        );
+
     }
 }

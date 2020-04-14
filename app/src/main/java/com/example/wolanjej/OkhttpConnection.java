@@ -52,8 +52,6 @@ public class OkhttpConnection {
 
             Call call = client.newCall(request);
             Response response = call.execute();
-            String test = response.body().string();
-            Log.d("TAG", test);
             result  = response;
 
         } catch (IOException ex) {

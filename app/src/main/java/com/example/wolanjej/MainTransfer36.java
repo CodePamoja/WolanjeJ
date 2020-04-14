@@ -34,6 +34,7 @@ public class MainTransfer36 extends AppCompatActivity {
         walletCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("sessionID to wallet",sessionID);
                 toWallet();
             }
         });
@@ -42,6 +43,7 @@ public class MainTransfer36 extends AppCompatActivity {
         bankCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("sessionID to bank",sessionID);
                 toBank();
             }
         });
@@ -58,17 +60,22 @@ public class MainTransfer36 extends AppCompatActivity {
 
     public void toWallet() {
         Intent move = new Intent(this, TransferToWalletSingle37.class);
+        move.putExtra("Class","MainTransfer36");
+        move.putExtra(EXTRA_SESSION, sessionID);
         startActivity(move);
     }
 
     public void toBank() {
         Intent move = new Intent(this, TransferToBank44.class);
+        move.putExtra("Class","MainTransfer36");
+        move.putExtra(EXTRA_SESSION, sessionID);
         startActivity(move);
     }
 
     public void toPhone() {
         Log.e("sessionID to mpesa",sessionID);
         Intent move = new Intent(this,TransferToPhone50.class);
+        move.putExtra("Class","MainTransfer36");
         move.putExtra(EXTRA_SESSION, sessionID);
         startActivity(move);
     }
