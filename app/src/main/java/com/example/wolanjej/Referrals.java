@@ -1,152 +1,173 @@
 package com.example.wolanjej;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Referrals extends AppCompatActivity {
+    ReferralsDatabaseAdapter mydb;
+    ReferralsAdapter suAdapter;
+    public static final int PERMISSIONS_REQUEST_READ_CONTACTS = 1;
+    RecyclerView recyclerView;
+    SearchView search;
 
-    ArrayList<Contacts> selectUsers;
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    ReferralsAdapter adapter;
-    Cursor phones;
-
-
-    private static final int READ_CONTACTS_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_referrals);
 
-        recyclerView = (RecyclerView) findViewById(R.id.contacts_list);
-        recyclerView.setHasFixedSize(true);
+        mydb  = new ReferralsDatabaseAdapter(getApplicationContext());
+        recyclerView = (RecyclerView)findViewById(R.id.contacts_list);
 
-        recyclerView.setLayoutManager(layoutManager);
-        selectUsers = new ArrayList<>();
-        checkPermission(Manifest.permission.READ_CONTACTS, READ_CONTACTS_CODE);
+        requestContactPermission();
+
+        search = (SearchView)findViewById(R.id.searchViewToolbar);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String stext) {
+                suAdapter.filter(stext);
+                return false;
+            }
+        });
+
     }
 
-    private void showContacts() {
-        // Check the SDK version and whether the permission is already granted or not.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, READ_CONTACTS_CODE);
-            //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
+    private void setRecyclerview() {
+        new ContUserLoader().execute();
+    }
+
+    public class ContUserLoader extends AsyncTask<Void, Void, List<Contacts>> {
+
+        @Override
+        protected List<Contacts> doInBackground(Void... voids) {
+            List<Contacts> MHList = mydb.getData();
+            return MHList;
+        }
+
+        @Override
+        protected void onPostExecute(List<Contacts> contactsUsers) {
+            if (contactsUsers.isEmpty()==false){
+                suAdapter = new ReferralsAdapter(Referrals.this, contactsUsers);
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(Referrals.this));
+                recyclerView.setAdapter(suAdapter);
+            }
+        }
+    }
+
+    private void getContacts() {
+        //TODO get contacts code here
+        Toast.makeText(this, "Get contacts ....", Toast.LENGTH_LONG).show();
+        setRecyclerview();
+    }
+
+    public void requestContactPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        android.Manifest.permission.READ_CONTACTS)) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Read Contacts permission");
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    builder.setMessage("Please enable access to contacts.");
+                    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @TargetApi(Build.VERSION_CODES.M)
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            requestPermissions(
+                                    new String[]
+                                            {android.Manifest.permission.READ_CONTACTS}
+                                    , PERMISSIONS_REQUEST_READ_CONTACTS);
+                        }
+                    });
+                    builder.show();
+                } else {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{android.Manifest.permission.READ_CONTACTS},
+                            PERMISSIONS_REQUEST_READ_CONTACTS);
+                }
+            } else {
+                getContacts();
+            }
         } else {
-            // Android version is lesser than 6.0 or the permission is already granted.
-            phones = getApplicationContext().getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
-            LoadContact loadContact = new LoadContact();
-            loadContact.execute();
-        }
-    }
-
-    // Function to check and request permission
-    public void checkPermission(String permission, int requestCode) {
-        // Checking if permission is not granted
-        if (ContextCompat.checkSelfPermission(Referrals.this, permission) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(Referrals.this, new String[] { permission }, requestCode);
-        }
-        else {
-            showContacts();
+            getContacts();
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == READ_CONTACTS_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission is granted
-                showContacts();
-            } else {
-                Toast.makeText(this, "Until you grant the permission, we canot display the names", Toast.LENGTH_SHORT).show();
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_READ_CONTACTS: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    getContacts();
+                } else {
+                    Toast.makeText(this, "You have disabled a contacts permission", Toast.LENGTH_LONG).show();
+                }
+                return;
             }
         }
     }
 
-    class LoadContact extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            // Get Contact list from Phone
-
-            if (phones != null) {
-                Log.e("count", "" + phones.getCount());
-                if (phones.getCount() == 0) {
-
+    private void setToolBar() {
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent movetoLogo = new Intent(this,Home.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(movetoLogo);
+                    }
                 }
+        );
 
-                while (phones.moveToNext()) {
-                    Bitmap bit_thumb = null;
-                    String id = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
-                    String name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-                    String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-
-
-                    Contacts selectUser = new Contacts();
-                    selectUser.setName(name);
-                    selectUser.setPhone(phoneNumber);
-                    selectUsers.add(selectUser);
-
-
-                }
-            } else {
-                Log.e("Cursor close 1", "----------------");
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            // sortContacts();
-            int count=selectUsers.size();
-            ArrayList<Contacts> removed=new ArrayList<>();
-            ArrayList<Contacts> contacts=new ArrayList<>();
-            for(int i=0;i<selectUsers.size();i++){
-                Contacts inviteFriendsProjo = selectUsers.get(i);
-
-                if(inviteFriendsProjo.getName().matches("\\d+(?:\\.\\d+)?")||inviteFriendsProjo.getName().trim().length()==0){
-                    removed.add(inviteFriendsProjo);
-                    Log.d("Removed Contact",new Gson().toJson(inviteFriendsProjo));
-                }else{
-                    contacts.add(inviteFriendsProjo);
-                }
-            }
-            contacts.addAll(removed);
-            selectUsers=contacts;
-            adapter = new ReferralsAdapter(inflater, selectUsers);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-            recyclerView.setAdapter(adapter);
-
-        }
     }
 }

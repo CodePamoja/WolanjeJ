@@ -69,6 +69,16 @@
     <string name="learning_hub">Learning Hub</string>
     <string name="notifications">Notifications</string>
     <string name="switch_account">Switch Account</string>
-    <string name="profile">Profile</string>
     <string name="register_new_member">Register new member</string>
+    <string name="security">SECURITY</string>
+    <string name="password_pin">Password / Pin</string>
+    <string name="profile">Profile</string>
+    <string name="unlock_wallet">Unlock wallet</string>
+    <string name="notificationsset">Notifications</string>
+
+    <!--    <string name="app_name">RecyclerView Search</string>-->
+    <string name="action_settings">Settings</string>
+    <string name="toolbar_title">Contacts</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Type name…</string>
 </resources>

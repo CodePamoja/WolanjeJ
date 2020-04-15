@@ -19,11 +19,11 @@ public class Registration06 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+
         setContentView(R.layout.activity_registration06);
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
-        imageView.setImageResource(R.mipmap.group_6);
+        imageView.setImageResource(R.drawable.ic_group_7__1_);
     }
 
     private void setToolBar() {

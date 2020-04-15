@@ -41,19 +41,19 @@
                 android:textSize="10sp"
                 tools:text="NEW" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:textColor="#ffffff"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="30dp"
-                android:letterSpacing="-0.41sp"
-                android:layout_marginTop="104dp"
-                android:lineSpacingExtra="5sp"
-                android:gravity="center_horizontal"
-                tools:text="SME targeted interventions placeholder text commonly used in print"
-                />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="17sp"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:layout_marginStart="25dp"-->
+<!--                android:layout_marginEnd="30dp"-->
+<!--                android:letterSpacing="0.41sp"-->
+<!--                android:layout_marginTop="104dp"-->
+<!--                android:lineSpacingExtra="5sp"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                tools:text="SME targeted interventions placeholder text commonly used in print"-->
+<!--                />-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -12,15 +12,40 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class OkhttpConnection {
-    String baseUrl= "https://backoffice.wolenjeafrica.com/wolenje";
+    String baseUrl= "https://wolenjeafrica.com/wolenje";
     OkHttpClient client = new OkHttpClient();
 
-    public  Response postRequest(String url, String jsonbody){
+    public  Response postRequest(String url, String jsonBody){
         Response result = null;
         try {
-            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonbody);
+            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
+            String allUrl = baseUrl + url;
+            Log.e("TAG", allUrl );
+            Request request = new Request.Builder()
+                    .url(allUrl)
+                    .post(body)
+                    .build();
+
+            Call call = client.newCall(request);
+            Response response = call.execute();
+            Log.e("TAG", String.valueOf(response.code()));
+            result  = response;
+
+        } catch (IOException ex) {
+            System.out.println("IO Error : " + ex);
+            Log.d("TAG", String.valueOf(ex));
+        }
+
+        return result;
+    }
+
+    public  Response postValue(String url, String jsonBody, String sessionID){
+        Response result = null;
+        try {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
             String allUrl = baseUrl + url;
             Request request = new Request.Builder()
+                    .header("Authorization", "Bearer "+sessionID+"" )
                     .url(allUrl)
                     .post(body)
                     .build();
@@ -37,20 +62,20 @@ public class OkhttpConnection {
         return result;
     }
 
-    public  Response postPin(String url, String jsonBody, String sessionID){
+    public  Response getLogin(String url, String base64Results){
         Response result = null;
         try {
-            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
             String allUrl = baseUrl + url;
             Request request = new Request.Builder()
-                    .header("X-Requested-With", "XMLHttpRequest")
-                    .header("X-Authorization", "Bearer"+sessionID+"" )
+                    .header("Authorization", "Basic "+base64Results+"" )
+                    .get()
                     .url(allUrl)
-                    .post(body)
                     .build();
 
             Call call = client.newCall(request);
             Response response = call.execute();
+//            String test = response.body().string();
+//            Log.d("TAG", test);
             result  = response;
 
         } catch (IOException ex) {

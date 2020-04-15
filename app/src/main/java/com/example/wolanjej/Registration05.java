@@ -29,31 +29,46 @@ public class Registration05 extends AppCompatActivity {
     private EditText text;
     private JSONObject sessionID = null;
     private String phone = null;
+    public Sendtover conn;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
+    Toolbar tb ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //setContentView(R.layout.activity_main);
+
         setContentView(R.layout.activity_registration05);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+         tb = (Toolbar) findViewById(R.id.toolbar);
 
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
-        imageView.setImageResource(R.mipmap.group_5);
+        imageView.setImageResource(R.drawable.ic_group_7);
 
-        Button btn = findViewById(R.id.btn_continue);
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button btn = (Button)findViewById(R.id.btn_continue);
+        btn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        text = findViewById(R.id.phoneNumber);
+//                        conn = new Sendtover(text.toString());
+//                        conn.sendToVerification();
+                        sendToVerification();
+                    }
+                }
+        );
+       /* Button btn_business= findViewById(R.id.btn_business);
+        btn_business.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                System.out.println("Button Clicked");
-                sendToVerification();
+                startActivity(new Intent(Registration05.this,HomeTwo.class));
             }
         });
+*/
     }
 
     private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this,MainActivity.class);
@@ -82,6 +97,7 @@ public class Registration05 extends AppCompatActivity {
     public void sendToVerification() {
         text = findViewById(R.id.phoneNumber);
         phone = text.getText().toString();
+        Log.e("Test 1", phone);
         System.out.println(phone);
 
         JSONObject jPhone = new JSONObject();
@@ -89,20 +105,21 @@ public class Registration05 extends AppCompatActivity {
             jPhone.put("phone", "254"+phone);
             Log.e("jPhone",jPhone.toString());
         } catch (JSONException e) {
+            Log.e("Error",e.toString());
             e.printStackTrace();
         }
         String url = "/gapi/sendOTP";
         OkhttpConnection okConn = new OkhttpConnection();
         Response result = okConn.postRequest(url,jPhone.toString());
-        int responseCode = 0;
-        if ((responseCode = result.code()) == 201) {
+
+        if ( result.code() == 201) {
             System.out.println("Response body json values are : " + result);
             Log.e("TAG", String.valueOf(result));
             Toast.makeText(getApplicationContext(), "Phone number sent successfuly", Toast.LENGTH_LONG).show();
             verifyOTP(phone);
 
-        }else if((responseCode = result.code()) != 201) {
-            Log.e("TAG", String.valueOf(result));
+        }else if(result.code() != 201) {
+            Log.e("TAG", String.valueOf(result.body()));
         }
 
         //bypass the verification code and page for now since we are adding otp for testing
@@ -123,15 +140,14 @@ public class Registration05 extends AppCompatActivity {
         String url = "/gapi/verifyOTP";
         OkhttpConnection okConn = new OkhttpConnection();
         Response result = okConn.postRequest(url, jValue.toString());
-        int responseCode = 0;
-        if ((responseCode = result.code()) == 201) {
+        if (result.code() == 201) {
             try {
                 verifyResult = result.body().string();
                 sessionID = new JSONObject(verifyResult); // adding
-                System.out.println("Response body json values are : " + result);
-                Log.e("TAG", String.valueOf(result));
+                System.out.println("Response body json values are : " + verifyResult);
+                Log.e("TAG", String.valueOf(verifyResult));
 
-                //bypass the verification code and page for now since we are adding otp for testing
+//                //bypass the verification code and page for now since we are adding otp for testing
                 Intent move = new Intent(this, Registration07.class);
                 move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
                 move.putExtra(EXTRA_PHONE, phone);
@@ -139,7 +155,7 @@ public class Registration05 extends AppCompatActivity {
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
-        }else if((responseCode = result.code()) != 201) {
+        }else if(result.code() != 201) {
             try {
                 verifyResult = result.body().string();
                 Log.e("TAG", String.valueOf(result));
@@ -149,11 +165,13 @@ public class Registration05 extends AppCompatActivity {
         }
     }
 
-    public JSONObject getSessionID(){
-        return sessionID;
-    }
 
     public String getPhone(){
         return phone;
+    }
+
+    public void createAccount(View view) {
+        Intent movetobusiness = new Intent(this,Reg_02.class);
+        startActivity(movetobusiness);
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Settings48">
+    tools:context=".Notifications52">
 
     <include layout="@layout/toobarwithout" />
 
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="Cash Back !"
                 android:drawablePadding="5dp"
-                android:drawableStart="@mipmap/group_18f"
+                android:drawableStart="@mipmap/cash_back"
                 android:textSize="28sp"
                 />
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="System Update "
                 android:drawablePadding="5dp"
-                android:drawableStart="@mipmap/group_18f"
+                android:drawableStart="@mipmap/system_update"
                 android:textSize="28sp"
                 />
 
@@ -123,12 +123,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
 
-            <TextView
-                android:id="@+id/amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:text="Amount: kes 1000"/>
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="Amount: kes 1000"/>
 
                 <TextView
                     android:layout_width="wrap_content"

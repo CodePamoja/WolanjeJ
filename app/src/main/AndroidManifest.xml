@@ -9,12 +9,22 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EnterPinPay"></activity>
+        <activity android:name=".activity_05_reg" />
+        <activity android:name=".activity_05_reg_1" />
+        <activity android:name=".HomeTwo"/>
+        <activity android:name=".Reg_04"/>
+        <activity android:name=".Reg03Activity" />
+        <activity android:name=".Reg_02" />
+        <activity android:name=".ContactsView" />
+        <activity android:name=".cryptomarket" />
+        <activity android:name=".Hub" />
+        <activity android:name=".EnterPinPay" />
         <activity android:name=".Referrals" />
         <activity android:name=".BillManager" />
         <activity android:name=".CryptoBalance" />
@@ -35,6 +45,8 @@
         <activity android:name=".LinkAccount11" />
         <activity android:name=".Registration07" />
         <activity android:name=".transport" />
+        <activity android:name=".services" />
+        <activity android:name=".IncomeDetails" />
         <activity
             android:name=".CardLink"
             tools:ignore="MissingClass" />
@@ -44,7 +56,6 @@
             tools:ignore="MissingClass" />
         <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
-        <activity android:name=".screen18" />
         <activity android:name=".Registration08" />
         <activity
             android:name=".Registration06"

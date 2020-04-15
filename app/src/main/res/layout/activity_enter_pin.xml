@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp">
                 <EditText
+                    android:id="@+id/pinValue1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="50dp"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp">
                 <EditText
+                    android:id="@+id/pinValue2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="50dp"
@@ -63,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp">
                 <EditText
+                    android:id="@+id/pinValue3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="50dp"
@@ -78,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp">
                 <EditText
+                    android:id="@+id/pinValue4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="50dp"

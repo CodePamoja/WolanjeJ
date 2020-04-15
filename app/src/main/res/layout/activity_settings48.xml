@@ -1,196 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="false">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".Settings48">
+    tools:context="com.example.wolanjej.Settings48"
+    android:background="@color/colorWhite"
+    >
+    <include layout="@layout/toobarwithout"/>
 
-    <include layout="@layout/toobarwithout" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical"
-        app:layout_editor_absoluteY="55dp"
-        tools:ignore="MissingConstraints">
-
-        <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        >
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            >
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Settings"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
+                android:text="@string/settings"
+                android:layout_marginStart="16dp"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
-                android:textSize="36sp"/>
+                android:textSize="36sp"
+                android:id="@+id/settingsheader"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:text="SECURITY"
-                android:layout_marginTop="22dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/security"
+                android:id="@+id/security"
+                android:layout_below="@id/settingsheader"
                 />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Fingerprint"
-                    android:drawablePadding="5dp"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="30dp"
-                    android:drawableEnd="@mipmap/group_2"
-                    android:drawableRight="@mipmap/path"
-                    android:textSize="20sp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="1dp"
-                    android:textColor="@color/colorBlack"/>
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:text="@string/fingerprint"
+                android:id="@+id/fingerprint"
+                android:layout_below="@id/security"
+                />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/security"
+                android:layout_toEndOf="@id/fingerprint"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:id="@+id/fingercontrol"
+                android:onClick="controlfingerprint"
+                />
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/light_gray" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/btn_pwdPIN"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Password / PIN"
-                    android:drawableEnd="@mipmap/path"
-                    android:drawableRight="@mipmap/path"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@drawable/shape"
-                    android:textStyle="normal"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:textColor="@color/colorBlack"
-                    android:backgroundTint="@color/colorWhite" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                style="@style/Divider"
+                android:layout_marginTop="24dp"
+                android:id="@+id/view1"
+                android:layout_below="@id/fingerprint"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:text="@string/password_pin"
+                android:id="@+id/passsword"
+                android:layout_below="@id/view1"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/invalid_name"
+                android:layout_below="@id/view1"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="movetoIdentityCard"
+                android:background="@color/colorWhite"/>
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/light_gray" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                style="@style/Divider"
+                android:layout_marginTop="24dp"
+                android:id="@+id/view2"
+                android:layout_below="@id/passsword"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:text="@string/profile"
+                android:id="@+id/profile"
+                android:layout_below="@id/view2"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/invalid_name"
+                android:layout_below="@id/view2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="movetoPwdPIN"
+                android:background="@color/colorWhite"
+                />
 
-                <Button
-                    android:id="@+id/btn_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Profile"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:drawableEnd="@mipmap/path"
-                    android:drawableRight="@mipmap/path"
-                    android:textSize="20sp"
-                    android:background="@drawable/shape"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="5dp"
-                    android:textStyle="normal"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorBlack"
-                    android:backgroundTint="@color/colorWhite" />
 
-            </LinearLayout>
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/light_gray" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                style="@style/Divider"
+                android:layout_marginTop="24dp"
+                android:id="@+id/view3"
+                android:layout_below="@id/profile"
+                />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@mipmap/notification"
-                    android:drawableLeft="@mipmap/path"
-                    android:drawablePadding="5dp"
-                    android:text="Notification"
-                    android:layout_marginLeft="30dp"
-                    android:drawableEnd="@mipmap/group_2"
-                    android:drawableRight="@mipmap/group_2"
-                    android:textSize="20sp"
-                    android:paddingTop="8dp"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:paddingBottom="8dp"
-                    android:textColor="@color/colorBlack" />
-
-            </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/notification"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:id="@+id/notimage"
+                android:layout_below="@id/view3"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:text="@string/notificationsset"
+                android:id="@+id/notitext"
+                android:layout_toEndOf="@id/notimage"
+                android:layout_below="@id/view3"
+                />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view3"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:id="@+id/notiswitch"
+                android:onClick="controlnotification"
+                />
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/light_gray" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                style="@style/Divider"
+                android:layout_marginTop="24dp"
+                android:id="@+id/view4"
+                android:layout_below="@id/notimage"
+                />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Unlock wallet"
-                    android:layout_marginLeft="30dp"
-                    android:textSize="20sp"
-                    android:paddingTop="8dp"
-                    android:drawablePadding="5dp"
-                    android:textStyle="bold"
-                    android:paddingBottom="8dp"
-                    android:drawableEnd="@mipmap/group_2"
-                    android:drawableRight="@mipmap/group_2"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBlack" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:text="@string/unlock_wallet"
+                android:id="@+id/unwall"
+                android:layout_below="@id/view4"
+                />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view4"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:id="@+id/unlockwallet"
+                android:onClick="controlwallet"
+                />
+        </RelativeLayout>
+    </ScrollView>
 
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/light_gray" />
-        </LinearLayout>
-    </LinearLayout>
 
 </LinearLayout>
-</ScrollView>
+

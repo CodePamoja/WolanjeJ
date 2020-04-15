@@ -1,16 +1,13 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.card.MaterialCardView;
 
@@ -66,7 +63,8 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
 
         switch (v.getId()){
             case R.id.card_westernunion: i = new Intent(this,Registration06.class);startActivity(i); break;
-            case R.id.card_worldplay: i = new Intent(this,screen18.class);startActivity(i); break;
+            case R.id.card_worldplay: i = new Intent(this,
+                    Home.class);startActivity(i); break;
             default:break;
         }
     }

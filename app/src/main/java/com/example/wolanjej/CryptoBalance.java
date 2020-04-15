@@ -1,18 +1,22 @@
 package com.example.wolanjej;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
+import com.github.mikephil.charting.charts.LineChart;
 
 import java.util.ArrayList;
 
 public class CryptoBalance extends AppCompatActivity implements View.OnClickListener{
     RecyclerView mRecyclerView;
     MyAdapter2 myAdapter;
+    LineChart lineChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,25 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
 
         myAdapter = new MyAdapter2(this,getMylist());
         mRecyclerView.setAdapter(myAdapter);
+
+        lineChart = (LineChart) findViewById(R.id.linegraph);
+        ArrayList<String> xAxes = new ArrayList<>();
+        ArrayList<String> yAxes = new ArrayList<>();
+
+        settoolbar();
+
+    }
+    private void settoolbar(){
+        Toolbar tb= (Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent movetologo = new Intent(this,Home.class);
+        tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(movetologo);
+            }
+        });
 
     }
 
@@ -44,7 +67,7 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
         m1.setTitle2("5.80112");
         m1.setTitle3("ETH");
         m1.setTitle4("+1243(13%)");
-        m1.setImage(R.mipmap.bitcoin);
+        m1.setImage(R.mipmap.etherium);
         m1.setBackgroundColor(getResources().getColor(R.color.reddish_orange));
         models.add(m1);
 
@@ -53,7 +76,7 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
         m2.setTitle2("5.80112");
         m2.setTitle3("ETH");
         m2.setTitle4("+1243(13%)");
-        m2.setImage(R.mipmap.bitcoin);
+        m2.setImage(R.mipmap.bitcoin2);
         m2.setBackgroundColor(getResources().getColor(R.color.colorGreenBlue));
         models.add(m2);
 

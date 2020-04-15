@@ -49,16 +49,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/PName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="John Doe"
                         android:textAlignment="center"
                         android:textColor="@color/colorMidnight"
                         android:textSize="24sp"/>
                     <TextView
+                        android:id="@+id/transDateTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="9:00 PM | 10/Jan/2020"
                         android:textAlignment="center"
                         android:textColor="@color/blue_grey"
                         android:textSize="18sp"/>
@@ -96,6 +96,7 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/senderName"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
@@ -121,10 +122,10 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/PNumber"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
-                            android:text="0725 000 000"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorMidnight"
                             android:textSize="18sp"
@@ -146,10 +147,10 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/sendAmount"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
-                            android:text="KES 1,000"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorMidnight"
                             android:textSize="18sp"
@@ -196,10 +197,10 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/transFee"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
-                            android:text="0.00"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorMidnight"
                             android:textSize="18sp"
@@ -226,10 +227,10 @@
                         android:textSize="18sp"
                         />
                     <TextView
+                        android:id="@+id/totalAmount"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:layout_weight="50"
-                        android:text="KES 1,000"
                         android:textAlignment="textEnd"
                         android:textColor="@color/colorGreenBlue"
                         android:textSize="22sp"

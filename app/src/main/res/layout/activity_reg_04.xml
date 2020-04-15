@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Reg_04">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#1A2652"
+        android:id="@+id/top"
+        >
+        <include layout="@layout/toolbarbusiness"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/colorWhite"
+            android:lineSpacingExtra="6sp"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:text="Step 03 of 03"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_indicatorchange"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="36dp"
+            />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/top"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="50dp"
+                android:textColor="@color/colorMidnight"
+                tools:text="Upload Documents"
+                />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="18dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_attach_file_24"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/uploadbtn"
+                        android:layout_marginStart="43dp"
+                        android:backgroundTint="@color/colorWhite"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="#9c7bfc"
+                        android:lineSpacingExtra="7sp"
+                        android:text="Certificate of incorporation"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/uploadbtn"
+                        />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_play_for_work_24"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="43dp"
+                        />
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="18dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_attach_file_24"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/uploadbtn1"
+                        android:layout_marginStart="43dp"
+                        android:backgroundTint="@color/colorWhite"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="#9c7bfc"
+                        android:lineSpacingExtra="7sp"
+                        android:text="Signed off agreement"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/uploadbtn1"
+                        />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_play_for_work_24"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="43dp"
+                        />
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#222b45"
+                android:lineSpacingExtra="4sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="50dp"
+                android:text="This authorizes utilization of Wolenje services by the
+CEO or Board members"
+                />
+            <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="18dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_attach_file_24"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/uploadbtn2"
+                    android:layout_marginStart="43dp"
+                    android:backgroundTint="@color/colorWhite"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#9c7bfc"
+                    android:lineSpacingExtra="7sp"
+                    android:text="KRA PIN Certificate"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/uploadbtn2"
+                    />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_play_for_work_24"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="43dp"
+                    />
+
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp">
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mycheckbox"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#222b45"
+                    android:lineSpacingExtra="4sp"
+                    android:text="I have read and agree to the Terms &amp; Conditions "
+                    android:layout_toRightOf="@id/mycheckbox"
+                    android:layout_marginTop="15dp"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#222b45"
+                android:lineSpacingExtra="6sp"
+                android:layout_above="@id/contbtn"
+                android:layout_marginStart="43dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="10dp"
+                android:text="By clicking “Continue you agree to our Terms and conditions as well as our privacy policy"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:textSize="15sp"
+
+                android:textColor="@color/colorWhite"
+                android:lineSpacingExtra="9sp"
+                android:text="Continue"
+                android:id="@+id/contbtn"
+                android:onClick="movetoLogin"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

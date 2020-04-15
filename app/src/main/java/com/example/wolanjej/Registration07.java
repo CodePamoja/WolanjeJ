@@ -34,7 +34,7 @@ public class Registration07 extends AppCompatActivity {
 
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
-        imageView.setImageResource(R.mipmap.group_6);
+        imageView.setImageResource(R.drawable.ic_group_7__2_);
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         this.phoneNumber = intent.getStringExtra(Registration05.EXTRA_PHONE);
@@ -75,7 +75,6 @@ public class Registration07 extends AppCompatActivity {
 
         String pin1 = textPin1.getText().toString();
         String pin2 = textPin2.getText().toString();
-        System.out.println(pin1 + pin2);
             if (pin1.equals(pin2)){
                 JSONObject jPin = new JSONObject();
                 try {
@@ -85,16 +84,16 @@ public class Registration07 extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                String url = "/api";
+                String url = "/api/";
                 OkhttpConnection okConn = new OkhttpConnection();
                 Response result = null;
-                result = okConn.postPin(url, jPin.toString(), sessionID);
+                result = okConn.postValue(url, jPin.toString(), sessionID);
 
                 int responseCode = 0;
-                if ((responseCode = result.code()) == 201) {
+                if ((responseCode = result.code()) == 202) {
                     System.out.println("Response body json values are : " + result);
                     Log.d("TAG", String.valueOf(result));
-                    Toast.makeText(getApplicationContext(), "Your PIN has been set successfuly", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Your password has been changed successfuly", Toast.LENGTH_LONG).show();
                     Intent move = new Intent(this, Registration08.class);
                     startActivity(move);
 
