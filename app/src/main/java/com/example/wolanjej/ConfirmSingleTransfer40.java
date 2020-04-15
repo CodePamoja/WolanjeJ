@@ -20,6 +20,9 @@ public class ConfirmSingleTransfer40 extends AppCompatActivity {
     public String amount;
     public String message;
     private TextView tvtext;
+
+    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
+    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_PRODUCT_NAME = "com.example.wolanjej.PRODUCT_NAME";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
@@ -78,6 +81,12 @@ public class ConfirmSingleTransfer40 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        movetoLogo.putExtra("Class","ConfirmSingleTransfer40");
+                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
+                        movetoLogo.putExtra(EXTRA_MESSAGE, message);
+                        movetoLogo.putExtra(EXTRA_PHONENAME, phoneName);
+                        movetoLogo.putExtra(EXTRA_PHONENUMBER, phoneNumber);
+                        movetoLogo.putExtra(EXTRA_AMOUNT, amount);
                         startActivity(movetoLogo);
                     }
                 }

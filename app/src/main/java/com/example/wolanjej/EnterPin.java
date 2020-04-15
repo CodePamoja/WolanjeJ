@@ -31,8 +31,11 @@ public class EnterPin extends AppCompatActivity {
     private String phoneNumber;
     private String phoneName;
     private String amount;
+    private String phoneProvider;
     private String message;
     private EditText editText1, editText2;
+
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class EnterPin extends AppCompatActivity {
             this.sessionID = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_SESSION);
             this.amount = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AMOUNT);
             this.phoneName = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENAME);
+            this.phoneProvider = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PROVIDER);
 
         }
 
@@ -81,7 +85,21 @@ public class EnterPin extends AppCompatActivity {
                     if (className.equals("TransferToWalletSingle37")){
                         Transfer(fullPin, "WALLET_XFER");
                     }else if (className.equals("TransferToPhone50")){
-                        Transfer(fullPin, "MPESA_B2C");
+                        switch(phoneProvider){
+                            //Case statements
+                            case "safaricom": Transfer(fullPin, "MPESA_B2C");
+                                Toast.makeText(getApplicationContext(), "Sending via MPESA", Toast.LENGTH_LONG).show();
+                                break;
+                            case "airtel": Transfer(fullPin, "AIRTEL_B2C");
+                                Toast.makeText(getApplicationContext(), "Sending via AIRTEL MONEY", Toast.LENGTH_LONG).show();
+                                break;
+                            case "telkom": Transfer(fullPin, "TKASH_B2C");
+                                Toast.makeText(getApplicationContext(), "Sending via TKASH", Toast.LENGTH_LONG).show();
+                                break;
+                            //Default case statement
+                            default:System.out.println("Not an airtel, safaricom or telkom");
+                        }
+
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "Please Enter your Pin", Toast.LENGTH_LONG).show();
@@ -93,6 +111,8 @@ public class EnterPin extends AppCompatActivity {
 
     public void movetoSuccess() {
         Intent move = new Intent(this, MainTransfer36.class);
+        move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra("Class","EnterPin");
         startActivity(move);
     }
 

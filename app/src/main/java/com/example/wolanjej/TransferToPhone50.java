@@ -32,9 +32,10 @@ public class TransferToPhone50 extends AppCompatActivity {
     private String phoneNumber = "phone1";
     private String sessionID;
     private String phoneName;
-    private String classType;
+    private String phoneCompany;
     private String amount;
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
+    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
@@ -55,21 +56,22 @@ public class TransferToPhone50 extends AppCompatActivity {
             String CheckphoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
             this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-//            Log.e("phone number", phoneNumber);
-            Toast.makeText(getApplicationContext(), "Check phone Number test", Toast.LENGTH_LONG).show();
+
             EditText tvtext =  findViewById(R.id.transContactAmount);
             tvtext.setText(CheckphoneNumber);
+        }else if (className.equals("ConfirmTransferToPhone52")){
+            String CheckphoneNumber = "+"+intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENUMBER);
+            this.sessionID = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_SESSION);
+            this.phoneName = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENAME);
+            String sendAmount = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AMOUNT);
+
+            EditText tvtext =  findViewById(R.id.transContactAmount);
+            tvtext.setText(CheckphoneNumber);
+
+            tvtext = findViewById(R.id.transAmountPhone);
+            tvtext.setText(sendAmount);
+
         }
-
-//        Intent moveIN = getIntent();
-//        this.phoneNumber = moveIN.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENUMBER);
-//        this.sessionID = moveIN.getStringExtra(ConfirmTransferToPhone52.EXTRA_SESSION);
-//        this.phoneName = moveIN.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENAME);
-//        this.amount = moveIN.getStringExtra(ConfirmTransferToPhone52.EXTRA_AMOUNT);
-//
-//        EditText ttext =  findViewById(R.id.transAmountPhone);
-//        ttext.setText(amount);
-
 
     }
 
@@ -78,6 +80,8 @@ public class TransferToPhone50 extends AppCompatActivity {
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this,MainTransfer36.class);
+        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
+        movetoLogo.putExtra("Class","TransferToPhone50");
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -88,10 +92,6 @@ public class TransferToPhone50 extends AppCompatActivity {
         );
     }
 
-//    public void movetoConfirm() {
-//        Intent move = new Intent(this, ConfirmTransferToPhone52.class);
-//        startActivity(move);
-//    }
 
     public void moveToContact(View view) {
 //        Log.e("session before contact", sessionID);
@@ -122,6 +122,7 @@ public class TransferToPhone50 extends AppCompatActivity {
         Log.e("session before contact", sessionID);
         Intent move = new Intent(this, ConfirmTransferToPhone52.class);
         move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra(EXTRA_PROVIDER, phoneCompany);
         move.putExtra(EXTRA_PHONENAME, phoneName);
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_AMOUNT, amount);
@@ -130,16 +131,20 @@ public class TransferToPhone50 extends AppCompatActivity {
 
     public String changePhoneNo(String inputPhone, View view){
         String validPhoneNo = "Fasle";
-        String pattern = "^(?:254 |\\+254|0)?(7(?:(?:[12][0-9])|(?:0[0-8])|(?:9[0-2]))[0-9]{6})$";
-        Pattern patt = Pattern.compile(pattern);
+        String safaricom = "^(?:254|\\+254|0)?(7(?:(?:[129][0-9])|(?:0[0-9])|(?:6[8-9])|(?:5[7-9])|(?:4[5-6])|(?:4[8])|(4[0-3]))[0-9]{6})$";
+        String telkom = "^(?:254|\\+254|0)?(7(?:(?:[7][0-9]))[0-9]{6})$";
+        String airtel = "^(?:254|\\+254|0)?(7(?:(?:[3][0-9])|(?:5[0-6])|(?:6[2])|(8[0-9]))[0-9]{6})$";
+        Pattern patt;
         Matcher match;
         if (!inputPhone.isEmpty()) {
             String replPhone1 = inputPhone.trim();
             String replPhone2 = replPhone1.replaceAll("\\s", "");
+            patt = Pattern.compile(safaricom);
             match = patt.matcher(replPhone2);
             if (match.find()) {
-                Toast.makeText(getApplicationContext(), "MATCH", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
                 String replPhone3 = "null";
+                phoneCompany = "safaricom";
                 if(replPhone2.startsWith("0")){
                     replPhone3 = replPhone2.replaceFirst("0", "\\254");
                     Log.e("TAG phone starts 0", replPhone3);
@@ -153,9 +158,50 @@ public class TransferToPhone50 extends AppCompatActivity {
                     Log.e("TAG phone number +", validPhoneNo);
                 }
             } else {
-                Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
-                Log.e("TAG phone No not check", replPhone2);
-                moveToContact(view);
+                patt = Pattern.compile(airtel);
+                match = patt.matcher(replPhone2);
+                if (match.find()) {
+                    Toast.makeText(getApplicationContext(), "Airtel Number", Toast.LENGTH_LONG).show();
+                    String replPhone3 = "null";
+                    phoneCompany = "airtel";
+                    if(replPhone2.startsWith("0")){
+                        replPhone3 = replPhone2.replaceFirst("0", "\\254");
+                        Log.e("TAG phone starts 0", replPhone3);
+                        validPhoneNo = replPhone3;
+                    }else if(replPhone2.startsWith("7")){
+                        replPhone3 = replPhone2.replaceFirst("7", "\\254");
+                        Log.e("TAG phone starts 7", replPhone3);
+                        validPhoneNo = replPhone3;
+                    }else if(replPhone2.startsWith("+")){
+                        validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]","");
+                        Log.e("TAG phone number +", validPhoneNo);
+                    }
+                }else {
+                    patt = Pattern.compile(telkom);
+                    match = patt.matcher(replPhone2);
+                    if (match.find()) {
+                        Toast.makeText(getApplicationContext(), "Telkom Number", Toast.LENGTH_LONG).show();
+                        String replPhone3 = "null";
+                        phoneCompany = "telkom";
+                        if(replPhone2.startsWith("0")){
+                            replPhone3 = replPhone2.replaceFirst("0", "\\254");
+                            Log.e("TAG phone starts 0", replPhone3);
+                            validPhoneNo = replPhone3;
+                        }else if(replPhone2.startsWith("7")){
+                            replPhone3 = replPhone2.replaceFirst("7", "\\254");
+                            Log.e("TAG phone starts 7", replPhone3);
+                            validPhoneNo = replPhone3;
+                        }else if(replPhone2.startsWith("+")){
+                            validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]","");
+                            Log.e("TAG phone number +", validPhoneNo);
+                        }
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
+                        Log.e("TAG phone No not check", replPhone2);
+                        moveToContact(view);
+                    }
+                }
+
             }
         } else {
             Toast.makeText(getApplicationContext(), "Please enter a mobile number ", Toast.LENGTH_LONG).show();
@@ -164,6 +210,5 @@ public class TransferToPhone50 extends AppCompatActivity {
 
         return validPhoneNo;
     }
-
 
 }

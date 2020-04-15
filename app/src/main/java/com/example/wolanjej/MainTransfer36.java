@@ -26,9 +26,18 @@ public class MainTransfer36 extends AppCompatActivity {
         setContentView(R.layout.activity_main_transfer36);
         setToolBar();
 
-        Intent intent = getIntent();
-        this.sessionID = intent.getStringExtra(Home.EXTRA_SESSION);
-//        Log.e("sessionID on mainTrans",intent.getStringExtra(LogIn.EXTRA_SESSION));
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        Log.e("class Type className", className);
+        if(className.equals("Home")) {
+            this.sessionID = intentExtra.getStringExtra(Home.EXTRA_SESSION);
+        }else if (className.equals("EnterPin")){
+            this.sessionID = intentExtra.getStringExtra(EnterPin.EXTRA_SESSION);
+        }else if (className.equals("TransferToPhone50")){
+            this.sessionID = intentExtra.getStringExtra(TransferToPhone50.EXTRA_SESSION);
+        }else if (className.equals("TransferToWalletSingle37")){
+            this.sessionID = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
+        }
 
         walletCard = (CardView)findViewById(R.id.transfer_to_wallet);
         walletCard.setOnClickListener(new View.OnClickListener() {

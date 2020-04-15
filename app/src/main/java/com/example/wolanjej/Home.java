@@ -241,14 +241,21 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         Log.e("sessionID home activity",sessionID);
 
         switch (v.getId()){
-            case R.id.income_details101: i = new Intent(this, IncomeDetails.class);startActivity(i);break;
-            case R.id.wallet101: i = new Intent(this, Home.class);startActivity(i);break;
-            case R.id.services101: i = new Intent(this, services.class);startActivity(i);break;
-            case R.id.exchange101: i = new Intent(this, Home.class);startActivity(i);break;
-            case R.id.crypto101: i = new Intent(this, CryptoBalance.class);startActivity(i);break;
-            case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);break;
+            case R.id.income_details101: i = new Intent(this, IncomeDetails.class);startActivity(i);
+            break;
+            case R.id.wallet101: i = new Intent(this, Home.class);startActivity(i);
+            break;
+            case R.id.services101: i = new Intent(this, services.class);startActivity(i);
+            break;
+            case R.id.exchange101: i = new Intent(this, Home.class);startActivity(i);
+            break;
+            case R.id.crypto101: i = new Intent(this, CryptoBalance.class);startActivity(i);
+            break;
+            case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
+            break;
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
-                i.putExtra(EXTRA_SESSION, sessionID);startActivity(i);break;
+                i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);
+                break;
             default:break;
         }
 
