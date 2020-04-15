@@ -80,12 +80,13 @@ public class TransferToPhone50 extends AppCompatActivity {
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this,MainTransfer36.class);
-        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
-        movetoLogo.putExtra("Class","TransferToPhone50");
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.e("set toolbar sess", sessionID);
+                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
+                        movetoLogo.putExtra("Class","TransferToPhone50");
                         startActivity(movetoLogo);
                     }
                 }

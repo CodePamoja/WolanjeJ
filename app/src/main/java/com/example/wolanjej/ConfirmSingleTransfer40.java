@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -81,6 +82,7 @@ public class ConfirmSingleTransfer40 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.e("set toolbar sess", sessionID);
                         movetoLogo.putExtra("Class","ConfirmSingleTransfer40");
                         movetoLogo.putExtra(EXTRA_SESSION, sessionID);
                         movetoLogo.putExtra(EXTRA_MESSAGE, message);

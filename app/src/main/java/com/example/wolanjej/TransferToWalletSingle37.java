@@ -82,12 +82,14 @@ public class TransferToWalletSingle37 extends AppCompatActivity {
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this,MainTransfer36.class);
-        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
-        movetoLogo.putExtra("Class","TransferToWalletSingle37");
         tb.setNavigationOnClickListener(
+
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.e("set toolbar sess", sessionID);
+                        movetoLogo.putExtra("Class","TransferToWalletSingle37");
+                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
                         startActivity(movetoLogo);
                     }
                 }
