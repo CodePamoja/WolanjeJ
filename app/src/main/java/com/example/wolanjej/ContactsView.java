@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -26,11 +28,29 @@ public class ContactsView extends AppCompatActivity {
     RecyclerView recyclerView;
     SearchView search;
 
+    private String sessionID;
+    private String classType;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts_view);
+
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        Log.e("class Type className", className);
+        if(className.equals("TransferToPhone50")) {
+            this.sessionID = intentExtra.getStringExtra(TransferToPhone50.EXTRA_SESSION);
+            this.classType = intentExtra.getStringExtra(TransferToPhone50.EXTRA_CLASSTYPE);
+        }else if (className.equals("TransferToWalletSingle37")){
+            this.sessionID = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
+            this.classType = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_CLASSTYPE);
+        }else if (className.equals("ConfirmSingleTransfer40")){
+            this.sessionID = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
+            this.classType = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_CLASSTYPE);
+        }
+
 
         mydb  = new DatabaseAdapter(getApplicationContext());
         recyclerView = (RecyclerView)findViewById(R.id.contacts_list);
@@ -66,7 +86,7 @@ public class ContactsView extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<SelectUser> selectUsers) {
             if (selectUsers.isEmpty()==false){
-                suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers);
+                suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers, sessionID, classType);
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(ContactsView.this));
                 recyclerView.setAdapter(suAdapter);

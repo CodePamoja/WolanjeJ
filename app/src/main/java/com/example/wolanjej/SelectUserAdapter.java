@@ -2,6 +2,7 @@ package com.example.wolanjej;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -26,18 +30,26 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
     private ArrayList<SelectUser> arraylist;
     Context context;
     String phoneNumber = "phone1";
-    String EXTRANumber = "phone1";
+    String phoneName;
+    private  String EXTRANumber = "phone1";
+    private String sessionID;
+    private String classType;
+    JSONObject jPhoneDetails;
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
+    public static final String EXTRA_NAME = "com.example.wolanjej.NAME";
 
 
-    public SelectUserAdapter(Context context, List<SelectUser> mainInfo) {
+    public SelectUserAdapter(Context context, List<SelectUser> mainInfo, String sessionID, String classType) {
         this.mainInfo = mainInfo;
+        this.classType = classType;
         this.context = context;
+        this.sessionID = sessionID;
         this.arraylist = new ArrayList<>();
         this.arraylist.addAll(mainInfo);
     }
 
-    public SelectUserAdapter(){ }
+    public SelectUserAdapter(){}
 
     public class MyContactListViewHolder extends RecyclerView.ViewHolder {
         de.hdodenhof.circleimageview.CircleImageView imageViewUserImage;
@@ -55,10 +67,20 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
                 @Override
                 public void onClick(View v) {
                     final SelectUser selectUser = mainInfo.get(getAdapterPosition());
-                    Toast.makeText(itemView.getContext(), "Hi, I'm " + selectUser.getPhone(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(itemView.getContext(), "Hi, I'm " + selectUser.getName(), Toast.LENGTH_SHORT).show();
                     phoneNumber = selectUser.getPhone();
+                    phoneName = selectUser.getName();
+                    Toast.makeText(itemView.getContext(), "Hi,  " + classType, Toast.LENGTH_SHORT).show();
+//                    jPhoneDetails = new JSONObject();
+//                    try {
+//                        jPhoneDetails.put("phone", phoneNumber);
+//                        jPhoneDetails.put("name", phoneName);
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
                     setEXTRANumber(phoneNumber);
-                    movebackTotrasfer();
+                    moversCheck(classType);
+
 
                 }
             });
@@ -74,9 +96,37 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         return EXTRA_PHONE;
     }
 
+    public void moversCheck(String name){
+        Log.e("session at contact", name);
+        if(name.equals("phone")){
+            Log.e("phone move", sessionID);
+            movebackTotrasfer();
+        }else if (name.equals("wallet")){
+            Log.e("wallet move", sessionID);
+            movebackTowalet();
+        }else if (name.equals("bank")){
+
+        }
+    }
     public void movebackTotrasfer(){
+        Log.e("session move trasfer", sessionID);
+//        Log.e("json at contact", jPhoneDetails.toString());
         Intent move = new Intent(context, TransferToPhone50.class);
+        move.putExtra("Class","SelectUserAdapter");
+        move.putExtra(EXTRA_NAME, phoneName);
         move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.putExtra(EXTRA_SESSION, sessionID);
+        context.startActivity(move);
+    }
+
+    public void movebackTowalet(){
+        Log.e("session at contact", sessionID);
+//        Log.e("json at contact", jPhoneDetails.toString());
+        Intent move = new Intent(context, TransferToWalletSingle37.class);
+        move.putExtra("Class","SelectUserAdapter");
+        move.putExtra(EXTRA_NAME, phoneName);
+        move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.putExtra(EXTRA_SESSION, sessionID);
         context.startActivity(move);
     }
 

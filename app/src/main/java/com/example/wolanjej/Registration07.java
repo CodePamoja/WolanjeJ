@@ -87,7 +87,7 @@ public class Registration07 extends AppCompatActivity {
                 String url = "/api/";
                 OkhttpConnection okConn = new OkhttpConnection();
                 Response result = null;
-                result = okConn.postPin(url, jPin.toString(), sessionID);
+                result = okConn.postValue(url, jPin.toString(), sessionID);
 
                 int responseCode = 0;
                 if ((responseCode = result.code()) == 202) {

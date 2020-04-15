@@ -117,7 +117,7 @@
                         android:textColor="@color/colorMidnight"/>
 
                     <EditText
-                        android:id="@+id/transPhoneAmout"
+                        android:id="@+id/transContactAmount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="5dp"
@@ -173,15 +173,7 @@
                         android:inputType="number"
                         android:hint="Amount"
                         android:padding="10dp"
-                        android:background="@drawable/textviewborder"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:layout_marginVertical="20dp"
-                        android:inputType="text|textMultiLine"
-                        android:padding="10dp"
-                        android:hint="Message"
+                        android:id="@+id/transAmountPhone"
                         android:background="@drawable/textviewborder"/>
 
                 </LinearLayout>
@@ -203,6 +195,7 @@
                 android:backgroundTint="@color/colorPurple"
                 android:padding="15dp"
                 android:text="Continue"
+                android:onClick="transferMoney"
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>
 

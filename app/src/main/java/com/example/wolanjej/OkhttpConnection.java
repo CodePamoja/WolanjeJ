@@ -39,7 +39,7 @@ public class OkhttpConnection {
         return result;
     }
 
-    public  Response postPin(String url, String jsonBody, String sessionID){
+    public  Response postValue(String url, String jsonBody, String sessionID){
         Response result = null;
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
@@ -52,8 +52,6 @@ public class OkhttpConnection {
 
             Call call = client.newCall(request);
             Response response = call.execute();
-            String test = response.body().string();
-            Log.d("TAG", test);
             result  = response;
 
         } catch (IOException ex) {

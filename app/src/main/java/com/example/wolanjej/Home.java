@@ -30,6 +30,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     private String sessionID;
     private EditText text;
 
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
 
@@ -236,15 +238,24 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         Intent i;
+        Log.e("sessionID home activity",sessionID);
 
         switch (v.getId()){
-            case R.id.income_details101: i = new Intent(this, IncomeDetails.class);startActivity(i);break;
-            case R.id.wallet101: i = new Intent(this, Home.class);startActivity(i);break;
-            case R.id.services101: i = new Intent(this, services.class);startActivity(i);break;
-            case R.id.exchange101: i = new Intent(this, Home.class);startActivity(i);break;
-            case R.id.crypto101: i = new Intent(this, CryptoBalance.class);startActivity(i);break;
-            case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);break;
-            case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);startActivity(i); break;
+            case R.id.income_details101: i = new Intent(this, IncomeDetails.class);startActivity(i);
+            break;
+            case R.id.wallet101: i = new Intent(this, Home.class);startActivity(i);
+            break;
+            case R.id.services101: i = new Intent(this, services.class);startActivity(i);
+            break;
+            case R.id.exchange101: i = new Intent(this, Home.class);startActivity(i);
+            break;
+            case R.id.crypto101: i = new Intent(this, CryptoBalance.class);startActivity(i);
+            break;
+            case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
+            break;
+            case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
+                i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);
+                break;
             default:break;
         }
 
