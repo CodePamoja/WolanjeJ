@@ -131,7 +131,9 @@
                         android:textColor="#8484a9"
                         android:textSize="14sp"
                         app:strokeColor="#120d0229"
-                        app:strokeWidth="0dp" />
+                        app:strokeWidth="0dp"
+                        android:onClick="createAccount"
+                        />
 
                 </LinearLayout>
 

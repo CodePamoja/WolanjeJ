@@ -96,7 +96,7 @@ public class LogIn extends AppCompatActivity {
 
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
-        imageView.setImageResource(R.mipmap.group_6);
+        imageView.setImageResource(R.drawable.ic_group_7);
     }
 
     private void setToolBar() {

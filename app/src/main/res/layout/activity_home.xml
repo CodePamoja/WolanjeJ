@@ -188,7 +188,7 @@
                                             android:layout_centerHorizontal="true"
                                             android:layout_marginTop="25dp"
                                             android:layout_marginBottom="8dp"
-                                            android:src="@mipmap/credit_card_1" />
+                                            android:src="@drawable/ic_credit_card_1" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
@@ -229,7 +229,7 @@
                                             android:layout_marginTop="23dp"
                                             android:layout_marginBottom="8dp"
                                             android:contentDescription="@string/todo"
-                                            android:src="@mipmap/money" />
+                                            android:src="@drawable/ic_money" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
@@ -269,7 +269,7 @@
                                             android:layout_centerInParent="true"
                                             android:layout_marginTop="30dp"
                                             android:contentDescription="@string/todo"
-                                            android:src="@mipmap/group_15" />
+                                            android:src="@drawable/ic_money_bags" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
@@ -309,7 +309,7 @@
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="20dp"
                                     android:contentDescription="@string/todo"
-                                    android:src="@mipmap/analytics" />
+                                    android:src="@drawable/ic_analytics" />
 
                                 <TextView
                                     android:id="@+id/text_analyitics"
@@ -332,7 +332,7 @@
                                     android:textColor="#222222"
                                     android:textSize="18sp" />
 
-                                <ImageView
+                                <ImageButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
@@ -340,6 +340,7 @@
                                     android:layout_marginEnd="20dp"
                                     android:contentDescription="@string/todo"
                                     android:src="@mipmap/invalid_name" />
+
                             </RelativeLayout>
                         </com.google.android.material.card.MaterialCardView>
 

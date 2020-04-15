@@ -23,7 +23,7 @@ public class Registration06 extends AppCompatActivity {
         setContentView(R.layout.activity_registration06);
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
-        imageView.setImageResource(R.mipmap.group_6);
+        imageView.setImageResource(R.drawable.ic_group_7__1_);
     }
 
     private void setToolBar() {

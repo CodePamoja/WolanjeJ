@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        app:navigationIcon="@mipmap/menu"
+        app:navigationIcon="@drawable/ic_menu"
         >
         <TextView
             android:layout_width="wrap_content"

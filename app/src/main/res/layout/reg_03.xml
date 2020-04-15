@@ -145,20 +145,23 @@
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_alignParentBottom="true"
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:lineSpacingExtra="9sp"
+                android:text="Continue"
+                android:background="@drawable/businessbtncon"
+                android:onClick="movetoreg04"
+                />
         </LinearLayout>
 
     </ScrollView>
 
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:textSize="15sp"
-        android:textColor="@color/colorWhite"
-        android:lineSpacingExtra="9sp"
-        android:text="Continue"
-        />
 
 
 </RelativeLayout>
