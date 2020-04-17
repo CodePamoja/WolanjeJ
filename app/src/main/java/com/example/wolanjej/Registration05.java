@@ -44,7 +44,7 @@ public class Registration05 extends AppCompatActivity {
 
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
-        imageView.setImageResource(R.mipmap.group_5);
+        imageView.setImageResource(R.drawable.ic_group_7);
 
         Button btn = (Button)findViewById(R.id.btn_continue);
         btn.setOnClickListener(
@@ -58,14 +58,14 @@ public class Registration05 extends AppCompatActivity {
                     }
                 }
         );
-        Button btn_business= findViewById(R.id.btn_business);
+       /* Button btn_business= findViewById(R.id.btn_business);
         btn_business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Registration05.this,HomeTwo.class));
             }
         });
-
+*/
     }
 
     private void setToolBar() {
@@ -168,5 +168,10 @@ public class Registration05 extends AppCompatActivity {
 
     public String getPhone(){
         return phone;
+    }
+
+    public void createAccount(View view) {
+        Intent movetobusiness = new Intent(this,Reg_02.class);
+        startActivity(movetobusiness);
     }
 }

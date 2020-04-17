@@ -34,7 +34,7 @@ public class Registration07 extends AppCompatActivity {
 
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
-        imageView.setImageResource(R.mipmap.group_6);
+        imageView.setImageResource(R.drawable.ic_group_7__2_);
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         this.phoneNumber = intent.getStringExtra(Registration05.EXTRA_PHONE);

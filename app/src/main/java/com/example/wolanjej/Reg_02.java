@@ -2,7 +2,9 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class Reg_02 extends AppCompatActivity {
 
@@ -10,5 +12,10 @@ public class Reg_02 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_02);
+    }
+
+    public void movetoreg3(View view) {
+        Intent movetoreg3 = new Intent(this,Reg03Activity.class);
+        startActivity(movetoreg3);
     }
 }

@@ -75,28 +75,35 @@
                                 android:textSize="30sp"
                                 android:maxLength="1"
                                 android:inputType="number"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:id="@+id/edittext"
+                                />
                             <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="30sp"
                                 android:maxLength="1"
                                 android:inputType="number"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1"
+                                android:id="@+id/inp2"
+                                />
                             <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="30sp"
                                 android:maxLength="1"
                                 android:inputType="number"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1"
+                                android:id="@+id/inp3"
+                                />
                             <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="30sp"
                                 android:inputType="number"
                                 android:maxLength="1"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1"
+                                android:id="@+id/inp4"/>
                         </LinearLayout>
 
                         <Button
