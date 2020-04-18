@@ -1,6 +1,7 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
@@ -60,10 +61,10 @@ public class LogIn extends AppCompatActivity {
                         }
                     }).build();
         }
-        button = (Button)findViewById(R.id.button2);
+        AppCompatImageButton btn = (AppCompatImageButton)findViewById(R.id.button2);
         final LogIn activity = this;
         final BiometricPrompt finalBp = bp;
-        button.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
