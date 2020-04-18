@@ -50,8 +50,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         drawer = findViewById(R.id.drawer_layout);
 
         // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        this.sessionID = intent.getStringExtra(LogIn.EXTRA_SESSION);
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        Log.e("class Type className", className);
+        if(className.equals("LogIn")) {
+            this.sessionID = intentExtra.getStringExtra(LogIn.EXTRA_SESSION);
+        }else if (className.equals("MainTransfer36")){
+            this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+        }
 
 //     this  belongs to  screen 18
         mRecyclerView = findViewById(R.id.recycler_view);

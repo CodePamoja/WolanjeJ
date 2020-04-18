@@ -98,6 +98,8 @@ public class MainTransfer36 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        movetoLogo.putExtra("Class","MainTransfer36");
+                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
                         startActivity(movetoLogo);
                     }
                 }
