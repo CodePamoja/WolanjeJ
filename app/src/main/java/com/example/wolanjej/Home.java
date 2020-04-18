@@ -44,9 +44,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_home);
+
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
 
@@ -362,4 +361,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         return models;
     }
 
+//    public void openTransction(View view) {
+//        Intent intent = new Intent(this, TransactionsView.class);
+//        startActivity(intent);
+//    }
 }

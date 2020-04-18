@@ -2,6 +2,7 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -31,11 +33,14 @@ public class ContactsView extends AppCompatActivity {
     private String sessionID;
     private String classType;
 
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts_view);
+
+        setToolBar();
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
@@ -68,6 +73,26 @@ public class ContactsView extends AppCompatActivity {
                 return false;
             }
         });
+
+    }
+
+    private void setToolBar() {
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent movetoLogo = new Intent(this,TransferToPhone50.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.e("set toolbar sess", sessionID);
+                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
+                        movetoLogo.putExtra("Class","ContactsView");
+                        startActivity(movetoLogo);
+                        startActivity(movetoLogo);
+                    }
+                }
+        );
 
     }
 
