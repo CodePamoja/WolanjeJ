@@ -52,6 +52,8 @@ public class TransferToPhone50 extends AppCompatActivity {
         Log.e("class Type className", className);
         if(className.equals("MainTransfer36")) {
             this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+        }else if(className.equals("ContactsView")) {
+            this.sessionID = intentExtra.getStringExtra(ContactsView.EXTRA_SESSION);
         }else if (className.equals("SelectUserAdapter")){
             String CheckphoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);

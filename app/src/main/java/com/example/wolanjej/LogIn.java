@@ -159,6 +159,7 @@ public class LogIn extends AppCompatActivity {
                     Log.d("TAG test Session", sessionID.getString("session_token"));
                     Intent move = new Intent(this, Home.class);
                     move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
+                    move.putExtra("Class","LogIn");
                     startActivity(move);
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
