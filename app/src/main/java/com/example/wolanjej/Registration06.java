@@ -32,6 +32,7 @@ public class Registration06 extends AppCompatActivity {
         final EditText text2 =findViewById(R.id.inp2);
         final EditText text3 = findViewById(R.id.inp3);
         final EditText text4 = findViewById(R.id.inp4);
+        final String [] numbers = new String[4];
 
 
         text1.addTextChangedListener(new TextWatcher() {
@@ -48,6 +49,7 @@ public class Registration06 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
+                numbers[0] = s.toString();
                 text1.setFocusable(false);
                 text1.setClickable(false);
                 text2.requestFocus();
@@ -69,6 +71,7 @@ public class Registration06 extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
 
+                numbers[1] =s.toString();
                 text2.setFocusable(false);
                 text2.setClickable(false);
                 text3.requestFocus();
@@ -88,6 +91,7 @@ public class Registration06 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
+                numbers[2]=s.toString();
                 text3.setFocusable(false);
                 text3.setClickable(false);
                 text4.requestFocus();
@@ -107,9 +111,12 @@ public class Registration06 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
+                numbers[3]=s.toString();
                 text4.setFocusable(false);
                 text4.setClickable(false);
-                            }
+                Toast.makeText(Registration06.this, ""+numbers[0]+""+numbers[1]+""+numbers[2]+""+numbers[3], Toast.LENGTH_SHORT).show();
+
+            }
         });
 
 
