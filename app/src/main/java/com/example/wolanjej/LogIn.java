@@ -1,11 +1,14 @@
 package com.example.wolanjej;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.hardware.biometrics.BiometricPrompt;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
@@ -30,6 +33,8 @@ import java.util.concurrent.Executors;
 
 import okhttp3.Response;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 public class LogIn extends AppCompatActivity {
 
     private ImageView imageView;
@@ -37,7 +42,13 @@ public class LogIn extends AppCompatActivity {
     public  JSONObject sessionID = null;
     private EditText textPhone;
     private EditText textPin;
+
     private ImageButton imageButton;
+
+
+    private  androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
+    private  androidx.biometric.BiometricPrompt biometricPrompt;
+    private Executor executor;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
 
@@ -48,6 +59,7 @@ public class LogIn extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
+
         final Executor executor = Executors.newSingleThreadExecutor();
         BiometricPrompt bp = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
@@ -66,24 +78,66 @@ public class LogIn extends AppCompatActivity {
         final LogIn activity = this;
         final BiometricPrompt finalBp = bp;
         imageButton.setOnClickListener(new View.OnClickListener() {
+
+//adasd
+        executor = ContextCompat.getMainExecutor(this);
+        final BiometricManager biometricManager = BiometricManager.from(this);
+
+        biometricPrompt = new androidx.biometric.BiometricPrompt(LogIn.this,executor,new androidx.biometric.BiometricPrompt.AuthenticationCallback() {
             @Override
-            public void onClick(View v) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    finalBp.authenticate(new CancellationSignal(), executor, new BiometricPrompt.AuthenticationCallback() {
-                        @Override
-                        public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
-                            // super.onAuthenticationSucceeded(result);
-                            activity.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(LogIn.this,"Athentication",Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-                    });
-                }
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                //super.onAuthenticationError(errorCode, errString);
+                Toast.makeText(LogIn.this,"Error"+errString, LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                //super.onAuthenticationSucceeded(result);
+                Toast.makeText(LogIn.this,"Succes"+result, LENGTH_SHORT).show();
+
+                startActivity(new Intent(getParent(),Home.class));
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                //super.onAuthenticationFailed();
+                Toast.makeText(LogIn.this,"Failed", LENGTH_SHORT).show();
             }
         });
+
+        promptInfo = new androidx.biometric.BiometricPrompt.PromptInfo.Builder().setTitle("Biometric Registration")
+                .setSubtitle("Register using your biometric credential")
+                .setNegativeButtonText("Use account password")
+                .build();
+
+
+
+        //button = findViewById(R.id.button2);
+        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                switch (biometricManager.canAuthenticate()) {
+                    case BiometricManager.BIOMETRIC_SUCCESS:
+                        biometricPrompt.authenticate(promptInfo);
+                        break;
+                    case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                        Toast.makeText(LogIn.this,"No hardware", LENGTH_SHORT).show();
+                        break;
+                    case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                        Toast.makeText(LogIn.this,"Hardware unavailable", LENGTH_SHORT).show();
+                        break;
+                    case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                        Toast.makeText(LogIn.this,"No Bio Enrolled", LENGTH_SHORT).show();
+                        break;
+                }
+
+            }
+        });
+
+
+
+
 
         // login button action
         button = (Button)findViewById(R.id.btn_LogIn);
