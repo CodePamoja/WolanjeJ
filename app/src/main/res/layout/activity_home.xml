@@ -165,7 +165,11 @@
                                 android:orientation="horizontal">
 
                                 <com.google.android.material.card.MaterialCardView
+
+                                    android:id="@+id/card001"
+
                                     android:id="@+id/cardBuyAirtime"
+
                                     style="@style/Widget.MaterialComponents.CardView"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -364,6 +368,7 @@
 
             <include layout="@layout/pop_up_my_wallet"/>
             <include layout="@layout/activity_register_new_number"/>
+            <include layout="@layout/transfer_unsuccessful_popup"/>
 
    <include layout="@layout/wallet_pop_up"/>
 

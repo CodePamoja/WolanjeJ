@@ -20,6 +20,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -41,9 +42,14 @@ public class LogIn extends AppCompatActivity {
     public  JSONObject sessionID = null;
     private EditText textPhone;
     private EditText textPin;
+
+    private ImageButton imageButton;
+
+
     private  androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
     private  androidx.biometric.BiometricPrompt biometricPrompt;
     private Executor executor;
+
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
 
     public Base64Encoder baseResult = new Base64Encoder();
@@ -53,6 +59,26 @@ public class LogIn extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
+
+        final Executor executor = Executors.newSingleThreadExecutor();
+        BiometricPrompt bp = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+            bp = new BiometricPrompt.Builder(this)
+                    .setTitle("This is  finger print")
+                    .setSubtitle("subtitle")
+                    .setDescription("Description")
+                    .setNegativeButton("cancel", executor, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).build();
+        }
+        imageButton = findViewById(R.id.button2);
+        final LogIn activity = this;
+        final BiometricPrompt finalBp = bp;
+        imageButton.setOnClickListener(new View.OnClickListener() {
+
 //adasd
         executor = ContextCompat.getMainExecutor(this);
         final BiometricManager biometricManager = BiometricManager.from(this);
