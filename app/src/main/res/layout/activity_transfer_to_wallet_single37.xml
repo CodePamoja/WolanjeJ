@@ -82,7 +82,6 @@
                             android:layout_height="wrap_content"
                             android:drawSelectorOnTop="true"
                             android:dropDownWidth="wrap_content"
-                            android:entries="@array/user_select"
                             android:popupBackground="@android:color/holo_purple"
                             android:spinnerMode="dropdown"
                             android:textAlignment="textStart"

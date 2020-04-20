@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context="com.example.wolanjej.HomeTwo"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/splash2"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:id="@+id/show_ple"
+        android:paddingHorizontal="16dp"
+        android:alpha="1"
+        >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/rectanglew"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:onClick="close_show_ple"
+            android:layout_marginBottom="29dp"
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_marginTop="13dp"
+            android:textColor="@color/colorMidnight"
+            android:text="My E-Wallet"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+
+            >
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:id="@+id/mytopupcard"
+                android:layout_margin="8dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="18dp"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/imagetop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@mipmap/group7w" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imagetop"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal"
+                        android:text="Top Up"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+
+                android:id="@+id/mywithdrawcard"
+                android:layout_margin="8dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="18dp"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/imagetop2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@mipmap/group7w" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imagetop2"
+                        android:layout_centerHorizontal="true"
+                        android:text="Withdraw"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:id="@+id/opentrans"
+                android:layout_margin="8dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="18dp"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/imagetop3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@mipmap/group7w2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imagetop3"
+                        android:layout_centerHorizontal="true"
+                        android:text="Fund Transfer"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="100dp"
+            >
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:layout_margin="8dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="18dp"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/imagetop4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@mipmap/groupth" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imagetop4"
+                        android:layout_centerHorizontal="true"
+                        android:text="Transaction History"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

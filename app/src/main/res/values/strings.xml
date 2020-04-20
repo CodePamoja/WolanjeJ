@@ -81,4 +81,15 @@
     <string name="toolbar_title">Contacts</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Type name…</string>
+    <string name="try_again">Try Again</string>
+    <string name="transfer_unsuccessful">Transfer Unsuccessful !</string>
+    <string name="reference_number">Reference number</string>
+    <string name="b3423424234">#B3423424234</string>
+    <string name="amount_sent">Amount sent</string>
+    <string name="_0_00">0.00</string>
+    <string name="contacts">Contacts</string>
+    <string name="other_number">Other Number</string>
+    <string name="select_recipient">Select Recipient</string>
+    <string name="top_up">Top-Up</string>
+    <string name="balance">Balance</string>
 </resources>

@@ -354,6 +354,9 @@
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/navigation_home_two"
                 android:layout_marginTop="20dp"/>
+
+            <include layout="@layout/pop_up_my_wallet"/>
+
         </FrameLayout>
     </LinearLayout>
 
@@ -364,7 +367,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_draw_home_two" />
+        app:menu="@menu/nav_draw_home_two"
+
+        />
 </androidx.drawerlayout.widget.DrawerLayout>
 
 

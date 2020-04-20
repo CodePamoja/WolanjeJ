@@ -17,10 +17,11 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TransferToWalletSingle37 extends AppCompatActivity {
+public class TransferToWalletSingle37 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    String[] selectUser = { "Single User", "Multiple Users"};
 
     private Button button;
-    private Spinner spinner;
+    private Spinner spin;
     private EditText text;
     private String phoneNumber;
     private String sessionID;
@@ -73,7 +74,24 @@ public class TransferToWalletSingle37 extends AppCompatActivity {
             tvtext.setText(sendMessage);
         }
 
-        spinner = (Spinner) this.findViewById(R.id.select_user);
+        spin = (Spinner) this.findViewById(R.id.select_user);
+        spin.setOnItemSelectedListener(this);
+
+        //Creating the ArrayAdapter instance having the country list
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,selectUser);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spin.setAdapter(aa);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getApplicationContext(),selectUser[position] , Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
@@ -225,4 +243,6 @@ public class TransferToWalletSingle37 extends AppCompatActivity {
 
         return validPhoneNo;
     }
+
+
 }
