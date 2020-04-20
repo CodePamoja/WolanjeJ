@@ -28,6 +28,7 @@ public class MainTransfer36 extends AppCompatActivity {
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
+
         Log.e("class Type className", className);
         if(className.equals("Home")) {
             this.sessionID = intentExtra.getStringExtra(Home.EXTRA_SESSION);

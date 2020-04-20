@@ -82,6 +82,7 @@
                                 android:layout_marginBottom="24dp"
                                 android:background="@drawable/gradient"
                                 android:backgroundTint="@color/colorAccent"
+                                android:onClick="maketoast"
                                 android:text="@string/my_e_wallet" />
 
                             <Button

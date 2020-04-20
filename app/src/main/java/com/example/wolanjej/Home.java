@@ -129,12 +129,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 }
         );
 
-//            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,tb,R.string.Open_drawer,R.string.Close_drawer);
-        //      drawer.addDrawerListener(toggle);
-        //    toggle.syncState();
-
-
         setToolBar();
+        findViewById(R.id.mytopupcard).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.closeDrawer(GravityCompat.START);
+
+                findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+                findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
+                findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
     public void close_screen18(View view) {
@@ -215,6 +220,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         return super.onCreateOptionsMenu(menu);
     }
 
+
     public void maketoast(MenuItem item) {
         drawer.closeDrawer(GravityCompat.START);
 
@@ -273,7 +279,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         findViewById(R.id.Ewallet2).setVisibility(View.INVISIBLE);
 
         findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
-        findViewById(R.id.drawer_layout).setAlpha(0f);
 
     }
 
@@ -362,4 +367,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         return models;
     }
 
+    public void maketoast(View view) {
+        drawer.closeDrawer(GravityCompat.START);
+
+        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+
+    }
 }
