@@ -123,13 +123,26 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                     }
                 }
         );
-
-        findViewById(R.id.opentrans).setOnClickListener(
+        findViewById(R.id.mytopupcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(getBaseContext(), MainTransfer36.class);
-                        startActivity(i);
+                        Intent intent = new Intent(v.getContext(), activity_15_Ewallet2.class);
+                        intent.putExtra(EXTRA_SESSION, sessionID);
+                        intent.putExtra("Class","Home");
+                        startActivity(intent);
+                    }
+                }
+        );
+
+        findViewById(R.id.openFundTrasfer).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), MainTransfer36.class);
+                        intent.putExtra(EXTRA_SESSION, sessionID);
+                        intent.putExtra("Class","Home");
+                        startActivity(intent);
                   }
                 }
         );
@@ -365,6 +378,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         models.add(m4);
 
         return models;
+    }
+
+    public void fundTrasfer(View view) {
+        Intent intent = new Intent(this, MainTransfer36.class);
+        intent.putExtra(EXTRA_SESSION, sessionID);
+        intent.putExtra("Class","Home");
+        startActivity(intent);
+    }
+
+    public void topUpWallet(View view) {
+
     }
 
 //    public void openTransction(View view) {

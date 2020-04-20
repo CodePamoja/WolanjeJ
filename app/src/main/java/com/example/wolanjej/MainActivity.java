@@ -30,14 +30,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+// Do not change here because it checks if your are connected to the internet first
     public void movetoRegistration(View view) {
-<<<<<<< HEAD
-        Intent move = new Intent(this,Registration06.class);
-        startActivity(move);
-=======
         if (isNetworkAvailable()){
-            Intent move = new Intent(this,Registration08.class);
+            Intent move = new Intent(this,LogIn.class);
             startActivity(move);
         }else {
             Toast.makeText(this, "Please connect to the Internet First", Toast.LENGTH_LONG).show();
@@ -49,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
->>>>>>> 92604b7f5c02246f3591ab1f1d54bbf02fcfe116
     }
 
 

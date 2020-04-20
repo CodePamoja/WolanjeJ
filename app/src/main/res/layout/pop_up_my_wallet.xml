@@ -91,7 +91,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-
                 android:id="@+id/mywithdrawcard"
                 android:layout_margin="8dp"
                 >
@@ -129,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:id="@+id/opentrans"
+                android:id="@+id/openFundTrasfer"
                 android:layout_margin="8dp"
                 >
 

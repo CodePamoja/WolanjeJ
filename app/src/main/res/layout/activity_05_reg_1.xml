@@ -90,64 +90,8 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="#99000000">
+        <include layout="@layout/reg_05_01"/>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card1"
-            android:layout_width="345dp"
-            android:layout_height="245dp"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="8dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginStart="30dp"
-            >
-            <ImageView
-                android:id="@+id/group_3a"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="307dp"
-
-                android:scaleType="fitXY"
-                android:src="@mipmap/group_3a"
-                />
-            <ImageView
-                android:id="@+id/button_rounded_1"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginTop="39dp"
-                android:layout_marginStart="153dp"
-
-                android:scaleType="fitXY"
-                android:src="@mipmap/button_rounded_2"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#fa1c1c"
-                android:layout_marginTop="85dp"
-                android:layout_marginStart="148dp"
-                android:lineSpacingExtra="8sp"
-                android:gravity="center_horizontal"
-                tools:text="Error!"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="108dp"
-                android:textSize="14sp"
-                android:layout_marginTop="123dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:textColor="#222b45"
-                android:lineSpacingExtra="4sp"
-                android:gravity="center_horizontal"
-                tools:text="Your account has been successfully created. You will receive a confirmation message to the email linked to your account shortly.
-
-Thank You!"
-                />
-
-        </androidx.cardview.widget.CardView>
     </LinearLayout>
     <TextView
         android:layout_width="279dp"
@@ -164,7 +108,7 @@ Thank You!"
         android:textSize="12sp"
         android:textColor="#222b45"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="486dp"
+        android:layout_marginTop="520dp"
         android:lineSpacingExtra="4sp"
         tools:text="I have read and agree to the Terms &amp; Conditions "
         />
@@ -173,7 +117,7 @@ Thank You!"
         android:layout_height="14dp"
         android:layout_gravity="center"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="486dp"
+        android:layout_marginTop="520dp"
         android:layout_marginBottom="36dp"
         android:src="@drawable/shape" />
     <TextView
