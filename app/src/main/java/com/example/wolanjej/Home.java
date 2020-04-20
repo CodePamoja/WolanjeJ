@@ -29,6 +29,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     Button transferMoney, viewall;
     private String sessionID;
     private EditText text;
+    private MaterialCardView materialCardView;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
 
@@ -60,6 +61,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         myAdapter = new MyAdapter(this,getMylist());
         mRecyclerView.setAdapter(myAdapter);
+
+        materialCardView = findViewById(R.id.card001);
+        materialCardView.setOnClickListener(this);
 
         viewall = (Button)findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
@@ -252,6 +256,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             case R.id.crypto101: i = new Intent(this, CryptoBalance.class);startActivity(i);
             break;
             case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
+            break;
+            case R.id.card001: i = new Intent(this,Top_up.class);startActivity(i);
             break;
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
                 i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);

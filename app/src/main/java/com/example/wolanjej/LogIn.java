@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class LogIn extends AppCompatActivity {
     public  JSONObject sessionID = null;
     private EditText textPhone;
     private EditText textPin;
+    private ImageButton imageButton;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
 
@@ -60,10 +62,10 @@ public class LogIn extends AppCompatActivity {
                         }
                     }).build();
         }
-        button = (Button)findViewById(R.id.button2);
+        imageButton = findViewById(R.id.button2);
         final LogIn activity = this;
         final BiometricPrompt finalBp = bp;
-        button.setOnClickListener(new View.OnClickListener() {
+        imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
