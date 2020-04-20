@@ -15,11 +15,12 @@
             android:id="@+id/my_e_wallet_home_two"
             android:title="@string/my_e_wallets"
             android:icon="@mipmap/group5"
+            android:onClick="maketoast"
 
             />
         <item
             android:id="@+id/billing_home_two"
-            android:title="@string/biling"
+            android:title="Bulk Payment"
             android:icon="@mipmap/receipt_list_43"
 
             />
@@ -29,12 +30,7 @@
             android:icon="@mipmap/pot"
 
             />
-        <item
-            android:id="@+id/referrals_nav_home_two"
-            android:title="@string/referrals"
-            android:icon="@mipmap/group3"
 
-            />
         <item
             android:id="@+id/income_nav_home_two"
             android:title="@string/income_details"
@@ -78,12 +74,11 @@
 
             />
         <item
-            android:id="@+id/new_number_home_two"
-            android:title="@string/register_new_member"
-            android:icon="@mipmap/favorites_2"
+
+            android:title="Logout"
+
 
             />
-
 
 
     </group>
