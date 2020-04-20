@@ -62,7 +62,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         myAdapter = new MyAdapter(this,getMylist());
         mRecyclerView.setAdapter(myAdapter);
 
-        materialCardView = findViewById(R.id.card001);
+        materialCardView = findViewById(R.id.cardBuyAirtime);
         materialCardView.setOnClickListener(this);
 
         viewall = (Button)findViewById(R.id.btnviewall);
@@ -263,7 +263,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             break;
             case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
             break;
-            case R.id.card001: i = new Intent(this,Top_up.class);startActivity(i);
+            case R.id.cardBuyAirtime: i = new Intent(this,Top_up.class);startActivity(i);
             break;
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
                 i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);
