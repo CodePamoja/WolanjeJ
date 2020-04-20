@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330dp"
+    android:layout_height="389dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:elevation="5dp"
+    android:alpha="1"
+    android:background="@drawable/popup_notification"
+    android:visibility="gone"
+    android:id="@+id/transfer_unsuccessful_layout">
+
+    <ImageView
+        android:id="@+id/alert_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="116dp"
+        android:src="@mipmap/button_rounded_2" />
+
+    <TextView
+        android:id="@+id/txt_transfer_unsuccessuful"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alert_icon"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="57dp"
+        android:gravity="center_horizontal"
+        android:textColor="#222222"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/transfer_unsuccessful" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/txt_transfer_unsuccessuful"
+        android:layout_marginTop="10dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:id="@+id/txt_reference_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:lineSpacingExtra="3sp"
+        android:textColor="@color/blue_grey"
+        android:textSize="13sp"
+        android:text="@string/reference_number" />
+
+    <TextView
+        android:id="@+id/reference_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_reference_number"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorMidnight"
+        android:textSize="16sp"
+        android:text="@string/b3423424234" />
+
+    <TextView
+        android:id="@+id/txt_amount_sent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reference_number"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:lineSpacingExtra="3sp"
+        android:textColor="@color/blue_grey"
+        android:textSize="13sp"
+        android:text="@string/amount_sent" />
+
+    <TextView
+        android:id="@+id/txt_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reference_number"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/txt_amount_sent"
+        android:lineSpacingExtra="3sp"
+        android:textColor="@color/blue_grey"
+        android:textSize="13sp"
+        android:text="@string/balance" />
+
+    <TextView
+        android:id="@+id/amount_sent_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_amount_sent"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorMidnight"
+        android:textSize="16sp"
+        android:text="@string/_0_00" />
+
+    <TextView
+        android:id="@+id/balance_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_balance"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="28dp"
+        android:layout_toEndOf="@+id/amount_sent_note"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/_0_00"
+        android:textColor="@color/colorMidnight"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/try_again"
+        android:layout_width="262dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="32dp"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="10sp"
+        android:text="@string/try_again"
+        android:textColor="#ffffff"
+        android:textSize="14sp" />
+</RelativeLayout>

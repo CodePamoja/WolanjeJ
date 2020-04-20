@@ -15,9 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".Top_up"></activity>
+        <activity android:name=".TopupOtherNumber" />
+
         <activity android:name=".activity_15_Ewallet2_1"></activity>
         <activity android:name=".activity_15_Ewallet3_2" />
         <activity android:name=".activity_15_Ewallet2" />
+
         <activity android:name=".activity_05_reg" />
         <activity android:name=".activity_05_reg_1" />
         <activity android:name=".HomeTwo" />
