@@ -58,6 +58,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             this.sessionID = intentExtra.getStringExtra(LogIn.EXTRA_SESSION);
         }else if (className.equals("MainTransfer36")){
             this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+        }else if (className.equals("EnterPin")){
+            this.sessionID = intentExtra.getStringExtra(EnterPin.EXTRA_SESSION);
         }
 
 //     this  belongs to  screen 18

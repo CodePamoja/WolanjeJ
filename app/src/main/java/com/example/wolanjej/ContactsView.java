@@ -54,6 +54,9 @@ public class ContactsView extends AppCompatActivity {
         }else if (className.equals("TransferToBank44")){
             this.sessionID = intentExtra.getStringExtra(TransferToBank44.EXTRA_SESSION);
             this.classType = intentExtra.getStringExtra(TransferToBank44.EXTRA_CLASSTYPE);
+        }else if (className.equals("TopupOtherNumber")){
+            this.sessionID = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_SESSION);
+            this.classType = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_CLASSTYPE);
         }
 
 

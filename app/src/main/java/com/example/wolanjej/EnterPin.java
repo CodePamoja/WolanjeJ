@@ -76,6 +76,19 @@ public class EnterPin extends AppCompatActivity {
             String sendBranch = intentExtra.getStringExtra(TransferToBank44.EXTRA_BRANCHNAME);
             this.bankDetails = sendBank+"-"+sendBranch;
 
+        }else if (className.equals("TopupOtherNumber")){
+
+            this.phoneNumber = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_PHONENUMBER);
+            this.sessionID = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_SESSION);
+            this.amount = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_AMOUNT);
+            this.phoneName = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_PHONENAME);
+
+        }else if (className.equals("Top_up")){
+
+            this.phoneNumber = intentExtra.getStringExtra(Top_up.EXTRA_PHONENUMBER);
+            this.sessionID = intentExtra.getStringExtra(Top_up.EXTRA_SESSION);
+            this.amount = intentExtra.getStringExtra(Top_up.EXTRA_AMOUNT);
+
         }
 
         button = (Button)findViewById(R.id.confirm_pin);
@@ -117,6 +130,10 @@ public class EnterPin extends AppCompatActivity {
                         }
                     }else if (className.equals("TransferToBank44")){
                         Transfer(fullPin, "BANK_XFER", accNumber);
+                    }else if (className.equals("TopupOtherNumber")){
+                        Transfer(fullPin, "ATP", phoneNumber);
+                    }else if (className.equals("Top_up")){
+                        Transfer(fullPin, "ATP", phoneNumber);
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "Please Enter your Pin", Toast.LENGTH_LONG).show();
@@ -210,10 +227,24 @@ public class EnterPin extends AppCompatActivity {
     }
 
     public void movetoSuccess() {
-        Intent move = new Intent(this, MainTransfer36.class);
-        move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra("Class","EnterPin");
-        startActivity(move);
+        String className = getIntent().getStringExtra("Class");
+        if (className.equals("TopupOtherNumber")){
+            Intent move = new Intent(this, Home.class);
+            move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra("Class","EnterPin");
+            startActivity(move);
+        }else if (className.equals("Top_up")){
+            Intent move = new Intent(this, Home.class);
+            move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra("Class","EnterPin");
+            startActivity(move);
+        }else{
+            Intent move = new Intent(this, MainTransfer36.class);
+            move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra("Class","EnterPin");
+            startActivity(move);
+        }
+
     }
 
     public void Transfer(String pin, String productName, String refValue){
@@ -295,13 +326,20 @@ public class EnterPin extends AppCompatActivity {
         }else if (className.equals("TransferToPhone50")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText(phoneNumber);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
         }else if(className.equals("TransferToBank44")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText(bankDetails);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpBankName)).setText(accNumber);
-
+        }else if (className.equals("TopupOtherNumber")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
+        }else if (className.equals("Top_up")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
         }
 
         ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {
@@ -348,6 +386,18 @@ public class EnterPin extends AppCompatActivity {
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
             ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
 //            ((ImageView)popupView.findViewById(R.id.imageTrasfer)).setImageResource(Integer.parseInt("@mipmap/button_rounded_2"));
+        }else if (className.equals("TopupOtherNumber")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
+            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+        }else if (className.equals("Top_up")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
+            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+//            ((ImageView)popupView.findViewById(R.id.imageTrasfer)).set;
         }
 
         ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {

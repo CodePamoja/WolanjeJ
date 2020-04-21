@@ -107,6 +107,9 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         }else if (name.equals("bank")){
             Log.e("bank move", sessionID);
             movebackToBank();
+        }else if (name.equals("TopUpNumber")){
+            Log.e("Top Up Number move", sessionID);
+            movebackToTopUpNumber();
         }
     }
     public void movebackTotrasfer(){
@@ -135,6 +138,17 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         Log.e("session at contact", sessionID);
 //        Log.e("json at contact", jPhoneDetails.toString());
         Intent move = new Intent(context, TransferToBank44.class);
+        move.putExtra("Class","SelectUserAdapter");
+        move.putExtra(EXTRA_NAME, phoneName);
+        move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.putExtra(EXTRA_SESSION, sessionID);
+        context.startActivity(move);
+    }
+
+    public void movebackToTopUpNumber(){
+        Log.e("session at contact", sessionID);
+//        Log.e("json at contact", jPhoneDetails.toString());
+        Intent move = new Intent(context, TopupOtherNumber.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
         move.putExtra(EXTRA_PHONE, phoneNumber);
