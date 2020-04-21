@@ -1,6 +1,8 @@
 package com.example.wolanjej;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -61,7 +63,29 @@ public class HomeTwo extends AppCompatActivity {
     public void close_show_ple(View view) {
         findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
 
-        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+        findViewById(R.id.bottom_navigation_home_two).setVisibility(View.VISIBLE);
+
+    }
+    public void opensevrvices(MenuItem item) {
+        Intent intent = new Intent(this, services.class);
+        startActivity(intent);
+    }
+    public void openIncomingDetails(MenuItem item) {
+        Intent intent = new Intent(this, IncomeDetails.class);
+        startActivity(intent);
+    }
+    public void openLearningHub(MenuItem item) {
+        Log.e("Found","Troal");
+        Intent intent = new Intent(this, Hub.class);
+        startActivity(intent);
+    }
+    public void openProfile(MenuItem item) {
+        Intent intent = new Intent(this, profile.class);
+        startActivity(intent);
+    }
+    public void movetoSettings48(MenuItem item){
+        Intent intent = new Intent(this, Settings48.class);
+        startActivity(intent);
 
     }
 
