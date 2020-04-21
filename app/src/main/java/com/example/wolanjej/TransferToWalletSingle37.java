@@ -48,6 +48,8 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         Log.e("class Type className", className);
         if(className.equals("MainTransfer36")) {
             this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+        }else if(className.equals("TransferToWalletMultiple40")) {
+            this.sessionID = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_SESSION);
         }else if (className.equals("SelectUserAdapter")){
             this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
@@ -87,7 +89,15 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Log.e("session before contact", sessionID);
         Toast.makeText(getApplicationContext(),selectUser[position] , Toast.LENGTH_LONG).show();
+        if ("Multiple Users".equals(selectUser[position])){
+            Intent move = new Intent(this, TransferToWalletMultiple40.class);
+            move.putExtra("Class","TransferToWalletSingle37");
+            move.putExtra(EXTRA_SESSION, sessionID);
+            startActivity(move);
+        }
+
     }
 
     @Override

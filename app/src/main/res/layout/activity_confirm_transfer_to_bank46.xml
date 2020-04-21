@@ -49,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/bankToName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="John Doe"
@@ -56,6 +57,7 @@
                         android:textColor="@color/colorMidnight"
                         android:textSize="24sp"/>
                     <TextView
+                        android:id="@+id/dateBank"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="9:00 PM | 10/Jan/2020"
@@ -96,6 +98,7 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/userToName"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
@@ -121,6 +124,7 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/bankAccNumber"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
@@ -146,6 +150,7 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/AmountToBank"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
@@ -171,6 +176,7 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/bankMessage"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
@@ -196,6 +202,7 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/bankTransFee"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
@@ -226,6 +233,7 @@
                         android:textSize="18sp"
                         />
                     <TextView
+                        android:id="@+id/totBankToAmount"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:layout_weight="50"

@@ -51,9 +51,9 @@ public class ContactsView extends AppCompatActivity {
         }else if (className.equals("TransferToWalletSingle37")){
             this.sessionID = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
             this.classType = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_CLASSTYPE);
-        }else if (className.equals("ConfirmSingleTransfer40")){
-            this.sessionID = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
-            this.classType = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_CLASSTYPE);
+        }else if (className.equals("TransferToBank44")){
+            this.sessionID = intentExtra.getStringExtra(TransferToBank44.EXTRA_SESSION);
+            this.classType = intentExtra.getStringExtra(TransferToBank44.EXTRA_CLASSTYPE);
         }
 
 
