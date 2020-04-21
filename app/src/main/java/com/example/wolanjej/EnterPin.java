@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -329,18 +330,24 @@ public class EnterPin extends AppCompatActivity {
         if (className.equals("TransferToWalletSingle37")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
             ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+//            ((ImageView)popupView.findViewById(R.id.imageTrasfer)).set;
         }else if (className.equals("TransferToPhone50")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
             ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+//            ((ImageView)popupView.findViewById(R.id.imageTrasfer)).setImageResource(Integer.parseInt("@mipmap/button_rounded_2"));
         }else if(className.equals("TransferToBank44")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpBankName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
             ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+//            ((ImageView)popupView.findViewById(R.id.imageTrasfer)).setImageResource(Integer.parseInt("@mipmap/button_rounded_2"));
         }
 
         ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {

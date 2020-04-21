@@ -168,8 +168,7 @@
                                 <com.google.android.material.card.MaterialCardView
 
                                     android:id="@+id/cardBuyAirtime"
-
-                                    style="@style/Widget.MaterialComponents.CardView"
+style="@style/Widget.MaterialComponents.CardView"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/btnviewall"
