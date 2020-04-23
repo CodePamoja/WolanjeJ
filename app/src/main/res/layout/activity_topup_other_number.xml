@@ -24,8 +24,10 @@
             android:id="@+id/txt_balance3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="50dp"
+            android:layout_marginStart="298dp"
+            android:layout_marginEnd="40dp"
             android:text="@string/balance"
             android:textColor="@color/blue_grey"
             android:textSize="14sp" />
@@ -40,23 +42,25 @@
             android:layout_marginTop="23dp"
             android:text="@string/top_up"
             android:textColor="@color/colorMidnight"
-            android:textSize="28sp" />
+            android:textSize="26sp" />
 
         <TextView
             android:id="@+id/balance_layout_other-number"
-            android:layout_width="119dp"
-            android:layout_height="33dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/card_other_number1"
             android:layout_below="@+id/txt_balance3"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="134dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="119dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="52dp"
             android:layout_toEndOf="@+id/txt_top_up3"
             android:gravity="end"
             android:letterSpacing="0.03"
             android:text="Kes15,000"
             android:textColor="#18181c"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txt_select_recipient"
@@ -77,7 +81,7 @@
             android:layout_below="@+id/txt_select_recipient"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="33dp">
 
@@ -109,7 +113,7 @@
             android:layout_below="@+id/card_other_number1"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="47dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="21dp"
             android:layout_marginEnd="33dp">
 
@@ -138,36 +142,40 @@
                 <Button
                     android:id="@+id/button_scan_qr_other_number"
                     style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="135dp"
-                    android:layout_height="40dp"
+                    android:layout_width="143dp"
+                    android:layout_height="47dp"
+                    android:layout_below="@+id/transContactAmount"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="33dp"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="31dp"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginEnd="9dp"
+                    android:layout_marginBottom="11dp"
+                    android:layout_toStartOf="@+id/TranPhoneContactOtherNumber"
                     android:backgroundTint="@color/colorGreyBackground"
+                    android:drawableLeft="@mipmap/barcode_qr"
                     android:text="Scan QR"
                     android:textAllCaps="false"
                     android:textColor="@color/blue_grey"
-                    android:drawableLeft="@mipmap/barcode_qr"
                     android:textSize="14sp" />
 
                 <Button
                     android:id="@+id/TranPhoneContactOtherNumber"
                     style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="135dp"
-                    android:layout_height="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/transContactAmount"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="19dp"
-                    android:layout_marginBottom="32dp"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginEnd="39dp"
+                    android:layout_marginBottom="12dp"
                     android:backgroundTint="@color/colorGreyBackground"
+                    android:drawableLeft="@drawable/ic_baseline_contacts_24"
                     android:text="@string/contacts"
                     android:textAllCaps="false"
                     android:textColor="@color/blue_grey"
-                    android:drawableLeft="@drawable/ic_baseline_contacts_24"
                     android:textSize="14sp" />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -247,14 +255,16 @@
             android:layout_width="72dp"
             android:layout_height="32dp"
             android:layout_below="@+id/amount_layout_other_number"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="23dp"
+            android:layout_marginEnd="38dp"
             android:layout_toEndOf="@+id/amount_display3"
             android:background="@drawable/splash3"
             android:gravity="center"
+            android:text="500"
             android:textColor="#8484a9"
-            android:textSize="14sp"
-            android:text="500" />
+            android:textSize="14sp" />
 
 
         <Button

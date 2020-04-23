@@ -77,17 +77,18 @@
                                 android:layout_marginBottom="24dp"
                                 android:background="@drawable/gradient"
                                 android:backgroundTint="@color/colorAccent"
+                                android:onClick="maketoast02"
                                 android:text="@string/my_e_wallet" />
 
                             <Button
-                                android:id="@+id/transfer_money_button"
+                                android:id="@+id/transfer_money_button_hm2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/price_home_two"
                                 android:layout_marginStart="16dp"
                                 android:layout_toEndOf="@id/wallet_home_two"
-                                android:text="@string/transfer_money"
                                 android:backgroundTint="@color/colorWhite"
+                                android:text="@string/transfer_money"
                                 android:textColor="@color/colorAccent" />
 
                         </RelativeLayout>
@@ -355,6 +356,7 @@
                 app:menu="@menu/navigation_home_two"
                 android:layout_marginTop="20dp"/>
 
+            <include layout="@layout/activity_screen18" />
             <include layout="@layout/pop_up_my_wallet"/>
 
         </FrameLayout>

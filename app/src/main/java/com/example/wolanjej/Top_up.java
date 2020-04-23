@@ -9,8 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class Top_up extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
-    String[] selectnumber = {"My Number","Other Number"};
+public class Top_up extends AppCompatActivity implements View.OnClickListener {
 
 
     private Spinner spinner;
@@ -36,18 +35,4 @@ public class Top_up extends AppCompatActivity implements View.OnClickListener, A
     }
 }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
 }
