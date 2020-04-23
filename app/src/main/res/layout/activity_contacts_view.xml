@@ -9,32 +9,48 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#5b74a8"
+        android:background="@color/colorWhite"
         android:id="@+id/frag">
 
-        <TextView
-            android:id="@+id/srchHint"
+        <include layout="@layout/toolbar_contact_list"/>
+
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/searchContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frag">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card1"
+            style="@style/Widget.MaterialComponents.CardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search.."
-            android:textSize="16dp"
-            android:textColor="#000"
-            android:layout_gravity="center" />
+            android:background="@drawable/rounder"
+            android:layout_gravity="center">
 
         <SearchView
-            android:background="#5b74a8"
+            android:background="@color/colorWhite"
             android:padding="8dp"
+            android:gravity="center"
             android:id="@+id/searchView"
             android:drawableLeft="@android:drawable/ic_menu_search"
             android:layout_width="wrap_content"
+            android:queryHint="Search"
+            android:iconifiedByDefault="false"
             android:singleLine="true"
-            android:layout_gravity="right"
-            android:layout_height="wrap_content"></SearchView>
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+        </SearchView>
+        </com.google.android.material.card.MaterialCardView>
+
     </FrameLayout>
+
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_below="@+id/frag"
+            android:layout_below="@+id/searchContact"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/contacts_list"/>
+
 
 </RelativeLayout >

@@ -95,26 +95,24 @@
 
             <Spinner
                 android:id="@+id/select_number"
-                android:layout_width="254dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:drawSelectorOnTop="true"
-                android:dropDownWidth="wrap_content"
-                android:entries="@array/Select_number"
                 android:popupBackground="@android:color/holo_purple"
                 android:spinnerMode="dropdown"
                 tools:ignore="NestedWeights" />
 
-            <ImageButton
-                android:id="@+id/btn_my_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/colorWhite"
-                android:src="@drawable/ic_baseline_down" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_my_number"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                android:backgroundTint="@color/colorWhite"-->
+<!--                android:src="@drawable/ic_baseline_down" />-->
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -157,6 +155,7 @@
             android:layout_marginTop="23dp"
             android:background="@drawable/splash3"
             android:gravity="center"
+            android:onClick="addAmount1"
             android:textColor="#8484a9"
             android:textSize="14sp"
             android:text="50" />
@@ -171,6 +170,7 @@
             android:layout_toEndOf="@+id/amount_display01"
             android:background="@drawable/splash3"
             android:gravity="center"
+            android:onClick="addAmount2"
             android:textColor="#8484a9"
             android:textSize="14sp"
             android:text="100" />
@@ -185,6 +185,7 @@
             android:layout_toEndOf="@+id/amount_display02"
             android:background="@drawable/splash3"
             android:gravity="center"
+            android:onClick="addAmount3"
             android:textColor="#8484a9"
             android:textSize="14sp"
             android:text="250" />
@@ -202,6 +203,7 @@
             android:background="@drawable/splash3"
             android:gravity="center"
             android:text="500"
+            android:onClick="addAmount4"
             android:textColor="#8484a9"
             android:textSize="14sp" />
 
@@ -216,6 +218,7 @@
             android:layout_marginStart="37dp"
             android:layout_marginTop="158dp"
             android:layout_marginEnd="46dp"
+            android:onClick="moveToBuy"
             android:layout_marginBottom="95dp"
             android:text="Continue" />
     </RelativeLayout>

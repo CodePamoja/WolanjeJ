@@ -38,15 +38,22 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_home);
+
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
 
         // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        this.sessionID = intent.getStringExtra(LogIn.EXTRA_SESSION);
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        Log.e("class Type className", className);
+        if(className.equals("LogIn")) {
+            this.sessionID = intentExtra.getStringExtra(LogIn.EXTRA_SESSION);
+        }else if (className.equals("MainTransfer36")){
+            this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+        }else if (className.equals("EnterPin")){
+            this.sessionID = intentExtra.getStringExtra(EnterPin.EXTRA_SESSION);
+        }
 
 //     this  belongs to  screen 18
         RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
@@ -115,13 +122,26 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                     }
                 }
         );
-
-        findViewById(R.id.opentrans).setOnClickListener(
+        findViewById(R.id.mytopupcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(getBaseContext(), MainTransfer36.class);
-                        startActivity(i);
+                        Intent intent = new Intent(v.getContext(), activity_15_Ewallet2.class);
+                        intent.putExtra(EXTRA_SESSION, sessionID);
+                        intent.putExtra("Class","Home");
+                        startActivity(intent);
+                    }
+                }
+        );
+
+        findViewById(R.id.openFundTrasfer).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), MainTransfer36.class);
+                        intent.putExtra(EXTRA_SESSION, sessionID);
+                        intent.putExtra("Class","Home");
+                        startActivity(intent);
                   }
                 }
         );
@@ -232,7 +252,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
         findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
- findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
 
     }
 
@@ -265,7 +285,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             break;
             case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
             break;
-            case R.id.cardBuyAirtime: i = new Intent(this,Top_up.class);startActivity(i);
+            case R.id.cardBuyAirtime: i = new Intent(this,Top_up.class);
+                i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);
             break;
             case R.id.services: i = new Intent(this,Home.class);startActivity(i);
             break;

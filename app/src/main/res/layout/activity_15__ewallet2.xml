@@ -1,0 +1,173 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".activity_15_Ewallet2"
+    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="300dp"
+                        android:orientation="vertical"
+                        android:background="#5B3256">
+                        <include layout="@layout/toolbar_ewallet2" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="24dp"
+
+                            android:paddingTop="62.3dp">
+
+                            <TextView
+                                android:id="@+id/textbalance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/current_balance"
+                                android:textColor="#ffffff"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/textbalance"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center_horizontal"
+                                android:text="@string/_7800_00"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="40sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:layout_marginTop="40dp"
+                                android:textColor="#ffffff"
+                                android:layout_marginStart="170dp"
+                                tools:text=".46"
+                                />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#99000000">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            app:cardCornerRadius="30dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="250dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginStart="284dp"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/blue_grey"
+                android:gravity="end"
+                tools:text="Balance"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_marginTop="42dp"
+                android:layout_marginStart="24dp"
+                android:textColor="#0b0320"
+                tools:text="Wallet Top-Up"
+                />
+            <TextView
+                android:layout_width="134dp"
+                android:layout_height="29dp"
+                android:textSize="14sp"
+                android:layout_marginTop="45dp"
+                android:layout_marginStart="217dp"
+                android:textColor="#18181c"
+                android:letterSpacing="0.03"
+                android:gravity="end"
+                tools:text="kes 15.000"
+                />
+
+            <EditText
+                android:id="@+id/selecttype"
+                android:layout_width="328dp"
+                android:layout_height="48dp"
+                android:background="@drawable/textviewborder"
+                android:layout_marginTop="91dp"
+                android:layout_marginStart="23.5dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text= "   Select Type"
+
+
+                />
+            <EditText
+                android:id="@+id/mobilenumber"
+                android:layout_width="328dp"
+                android:layout_height="48dp"
+                android:background="@drawable/textviewborder"
+                android:layout_marginTop="155dp"
+
+                android:layout_marginStart="23.5dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text= "   Mobile Number"
+
+
+                />
+            <EditText
+                android:id="@+id/amount"
+                android:layout_width="328dp"
+                android:layout_height="48dp"
+                android:background="@drawable/textviewborder"
+                android:layout_marginTop="219dp"
+
+                android:layout_marginStart="23.5dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text= "   Amount"
+
+
+                />
+            <ImageView
+                android:id="@+id/path"
+                android:layout_marginTop="110dp"
+                android:layout_marginStart="296dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="40dp"
+                android:src="@drawable/ic_path" />
+
+
+
+            <Button
+                android:id="@+id/btn_continue"
+                android:layout_width="327dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="283dp"
+                android:backgroundTint="@color/colorPurple"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Continue"
+                android:onClick="btnTopUpWallet"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+            <TextView
+                android:layout_width="153dp"
+                android:layout_height="26dp"
+                android:textSize="16sp"
+                android:layout_marginTop="347dp"
+                android:layout_marginStart="111dp"
+                android:textColor="@color/blue_grey"
+                android:gravity="center_horizontal"
+                tools:text="Cancel" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</RelativeLayout>

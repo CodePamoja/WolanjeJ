@@ -1,7 +1,11 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -9,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,10 +30,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+// Do not change here because it checks if your are connected to the internet first
     public void movetoRegistration(View view) {
-        Intent move = new Intent(this,HomeTwo.class);
-        startActivity(move);
+        if (isNetworkAvailable()){
+            Intent move = new Intent(this,LogIn.class);
+            startActivity(move);
+        }else {
+            Toast.makeText(this, "Please connect to the Internet First", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
 
