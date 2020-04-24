@@ -216,7 +216,9 @@ style="@style/Widget.MaterialComponents.CardView"
                                     android:elevation="6dp"
                                     app:cardCornerRadius="8dp"
                                     app:strokeColor="#A8A8A8"
-                                    app:strokeWidth="1dp">
+                                    app:strokeWidth="1dp"
+                                    android:id="@+id/loanscard"
+                                    >
 
                                     <RelativeLayout
                                         android:layout_width="match_parent"
@@ -371,7 +373,10 @@ style="@style/Widget.MaterialComponents.CardView"
 
             <include layout="@layout/withdraw"/>
 
-
+            <include layout="@layout/loansapprovedview"/>
+            <include layout="@layout/pop_up_my_wallet"/>
+            <include layout="@layout/loan_application_pop_up"/>
+            <include layout="@layout/loan2"/>
 
         </FrameLayout>
 
