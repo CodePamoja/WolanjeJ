@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -33,8 +34,10 @@ public class EnterPin extends AppCompatActivity {
     private String phoneNumber;
     private String phoneName;
     private String amount;
+    private String accNumber;
     private String phoneProvider;
     private String message;
+    private String bankDetails;
     private EditText editText1, editText2;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
@@ -62,6 +65,30 @@ public class EnterPin extends AppCompatActivity {
             this.phoneName = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENAME);
             this.phoneProvider = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PROVIDER);
 
+        }else if (className.equals("TransferToBank44")){
+
+            this.phoneNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENUMBER);
+            this.sessionID = intentExtra.getStringExtra(TransferToBank44.EXTRA_SESSION);
+            this.amount = intentExtra.getStringExtra(TransferToBank44.EXTRA_AMOUNT);
+            this.phoneName = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENAME);
+            this.accNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_ACCOUNTNUMBER);
+            String sendBank = intentExtra.getStringExtra(TransferToBank44.EXTRA_BANKSELECTED);
+            String sendBranch = intentExtra.getStringExtra(TransferToBank44.EXTRA_BRANCHNAME);
+            this.bankDetails = sendBank+"-"+sendBranch;
+
+        }else if (className.equals("TopupOtherNumber")){
+
+            this.phoneNumber = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_PHONENUMBER);
+            this.sessionID = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_SESSION);
+            this.amount = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_AMOUNT);
+            this.phoneName = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_PHONENAME);
+
+        }else if (className.equals("Top_up")){
+
+            this.phoneNumber = intentExtra.getStringExtra(Top_up.EXTRA_PHONENUMBER);
+            this.sessionID = intentExtra.getStringExtra(Top_up.EXTRA_SESSION);
+            this.amount = intentExtra.getStringExtra(Top_up.EXTRA_AMOUNT);
+
         }
 
         button = (Button)findViewById(R.id.confirm_pin);
@@ -85,23 +112,28 @@ public class EnterPin extends AppCompatActivity {
                     Intent intentExtra = getIntent();
                     String className = getIntent().getStringExtra("Class");
                     if (className.equals("TransferToWalletSingle37")){
-                        Transfer(fullPin, "WALLET_XFER");
+                        Transfer(fullPin, "WALLET_XFER", phoneNumber);
                     }else if (className.equals("TransferToPhone50")){
                         switch(phoneProvider){
                             //Case statements
-                            case "safaricom": Transfer(fullPin, "MPESA_B2C");
+                            case "safaricom": Transfer(fullPin, "MPESA_B2C", phoneNumber);
                                 Toast.makeText(getApplicationContext(), "Sending via MPESA", Toast.LENGTH_LONG).show();
                                 break;
-                            case "airtel": Transfer(fullPin, "AIRTEL_B2C");
+                            case "airtel": Transfer(fullPin, "AIRTEL_B2C", phoneNumber);
                                 Toast.makeText(getApplicationContext(), "Sending via AIRTEL MONEY", Toast.LENGTH_LONG).show();
                                 break;
-                            case "telkom": Transfer(fullPin, "TKASH_B2C");
+                            case "telkom": Transfer(fullPin, "TKASH_B2C", phoneNumber);
                                 Toast.makeText(getApplicationContext(), "Sending via TKASH", Toast.LENGTH_LONG).show();
                                 break;
                             //Default case statement
                             default:System.out.println("Not an airtel, safaricom or telkom");
                         }
-
+                    }else if (className.equals("TransferToBank44")){
+                        Transfer(fullPin, "BANK_XFER", accNumber);
+                    }else if (className.equals("TopupOtherNumber")){
+                        Transfer(fullPin, "ATP", phoneNumber);
+                    }else if (className.equals("Top_up")){
+                        Transfer(fullPin, "ATP", phoneNumber);
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "Please Enter your Pin", Toast.LENGTH_LONG).show();
@@ -109,6 +141,7 @@ public class EnterPin extends AppCompatActivity {
 
             }
         });
+
         final EditText text1 = findViewById(R.id.pinValue1);
         final EditText text2 =findViewById(R.id.pinValue2);
         final EditText text3 = findViewById(R.id.pinValue3);
@@ -118,12 +151,10 @@ public class EnterPin extends AppCompatActivity {
         text1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -139,12 +170,10 @@ public class EnterPin extends AppCompatActivity {
         text2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -160,12 +189,10 @@ public class EnterPin extends AppCompatActivity {
         text3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -180,12 +207,10 @@ public class EnterPin extends AppCompatActivity {
         text4.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -194,7 +219,7 @@ public class EnterPin extends AppCompatActivity {
                 numbers[3]=s.toString();
                 //text4.setFocusable(false);
                 text4.setClickable(false);
-                Toast.makeText(EnterPin.this, ""+numbers[0]+""+numbers[1]+""+numbers[2]+""+numbers[3], Toast.LENGTH_SHORT).show();
+//                Toast.makeText(EnterPin.this, ""+numbers[0]+""+numbers[1]+""+numbers[2]+""+numbers[3], Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -202,13 +227,27 @@ public class EnterPin extends AppCompatActivity {
     }
 
     public void movetoSuccess() {
-        Intent move = new Intent(this, MainTransfer36.class);
-        move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra("Class","EnterPin");
-        startActivity(move);
+        String className = getIntent().getStringExtra("Class");
+        if (className.equals("TopupOtherNumber")){
+            Intent move = new Intent(this, Home.class);
+            move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra("Class","EnterPin");
+            startActivity(move);
+        }else if (className.equals("Top_up")){
+            Intent move = new Intent(this, Home.class);
+            move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra("Class","EnterPin");
+            startActivity(move);
+        }else{
+            Intent move = new Intent(this, MainTransfer36.class);
+            move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra("Class","EnterPin");
+            startActivity(move);
+        }
+
     }
 
-    public void Transfer(String pin, String productName){
+    public void Transfer(String pin, String productName, String refValue){
         String verifyResult;
 
         JSONArray jdataset = new JSONArray();
@@ -217,7 +256,7 @@ public class EnterPin extends AppCompatActivity {
             jdata.put("product_name", productName);
             jdata.put("amount", amount);
             jdata.put("phone", phoneNumber);
-            jdata.put("ref", phoneNumber);
+            jdata.put("ref", refValue);
             jdata.put("pin", pin);
             jdataset.put(jdata);
         } catch (JSONException e) {
@@ -261,6 +300,8 @@ public class EnterPin extends AppCompatActivity {
             try {
                 verifyResult = result.body().string();
                 Log.e("TAG", String.valueOf(result));
+//                Toast.makeText(EnterPin.this, "Please Try Again"+verifyResult, Toast.LENGTH_SHORT).show();
+                showPopupFail();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -285,7 +326,78 @@ public class EnterPin extends AppCompatActivity {
         }else if (className.equals("TransferToPhone50")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText(phoneNumber);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
+        }else if(className.equals("TransferToBank44")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText(bankDetails);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpBankName)).setText(accNumber);
+        }else if (className.equals("TopupOtherNumber")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
+        }else if (className.equals("Top_up")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
+        }
+
+        ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                movetoSuccess();
+            }
+        });
+
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+    }
+
+    public void showPopupFail() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.transfer_success_popup, (ViewGroup) findViewById(R.id.popup_element), false);
+
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+
+        // create the popup window
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        if (className.equals("TransferToWalletSingle37")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
+            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+//            ((ImageView)popupView.findViewById(R.id.imageTrasfer)).set;
+        }else if (className.equals("TransferToPhone50")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
+            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+//            ((ImageView)popupView.findViewById(R.id.imageTrasfer)).setImageResource(Integer.parseInt("@mipmap/button_rounded_2"));
+        }else if(className.equals("TransferToBank44")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpBankName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
+            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+//            ((ImageView)popupView.findViewById(R.id.imageTrasfer)).setImageResource(Integer.parseInt("@mipmap/button_rounded_2"));
+        }else if (className.equals("TopupOtherNumber")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
+            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+        }else if (className.equals("Top_up")){
+            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
+            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
+//            ((ImageView)popupView.findViewById(R.id.imageTrasfer)).set;
         }
 
         ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {

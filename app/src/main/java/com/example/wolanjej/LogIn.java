@@ -53,7 +53,7 @@ public class LogIn extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
-//adasd
+
         executor = ContextCompat.getMainExecutor(this);
         final BiometricManager biometricManager = BiometricManager.from(this);
 
@@ -108,8 +108,6 @@ public class LogIn extends AppCompatActivity {
 
             }
         });
-
-
 
 
 
@@ -188,6 +186,7 @@ public class LogIn extends AppCompatActivity {
                     Log.d("TAG test Session", sessionID.getString("session_token"));
                     Intent move = new Intent(this, Home.class);
                     move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
+                    move.putExtra("Class","LogIn");
                     startActivity(move);
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();

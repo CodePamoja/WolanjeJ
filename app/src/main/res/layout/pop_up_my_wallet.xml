@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:context="com.example.wolanjej.Home"
-        >
+    android:elevation="7dp"
+    tools:context="com.example.wolanjej.Home">
 
 
     <LinearLayout
@@ -91,7 +91,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-
                 android:id="@+id/mywithdrawcard"
                 android:layout_margin="8dp"
                 >
@@ -129,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:id="@+id/opentrans"
+                android:id="@+id/openFundTrasfer"
                 android:layout_margin="8dp"
                 >
 

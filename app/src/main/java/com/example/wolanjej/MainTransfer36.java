@@ -38,6 +38,10 @@ public class MainTransfer36 extends AppCompatActivity {
             this.sessionID = intentExtra.getStringExtra(TransferToPhone50.EXTRA_SESSION);
         }else if (className.equals("TransferToWalletSingle37")){
             this.sessionID = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
+        }else if (className.equals("TransferToWalletMultiple40")){
+            this.sessionID = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_SESSION);
+        }else if (className.equals("TransferToBank44")){
+            this.sessionID = intentExtra.getStringExtra(TransferToBank44.EXTRA_SESSION);
         }
 
         walletCard = (CardView)findViewById(R.id.transfer_to_wallet);
@@ -99,6 +103,8 @@ public class MainTransfer36 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        movetoLogo.putExtra("Class","MainTransfer36");
+                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
                         startActivity(movetoLogo);
                     }
                 }

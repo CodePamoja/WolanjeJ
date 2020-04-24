@@ -28,7 +28,7 @@
             android:id="@+id/services_home_two"
             android:title="@string/services"
             android:icon="@mipmap/pot"
-android:onClick="opensevrvices"
+            android:onClick="opensevrvices"
             />
 
         <item
@@ -61,7 +61,7 @@ android:onClick="opensevrvices"
             android:id="@+id/not_home_two"
             android:title="@string/notifications"
             android:icon="@mipmap/group6"
-
+            android:onClick="openNotifications52"
             />
         <item
             android:id="@+id/settings_nav_home_two"
@@ -73,6 +73,7 @@ android:onClick="opensevrvices"
             android:id="@+id/switch_account_nav_home_two"
             android:title="@string/switch_account"
             android:icon="@mipmap/group7"
+            android:onClick="chooseAnotherAccount"
 
             />
         <item

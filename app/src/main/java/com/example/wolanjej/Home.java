@@ -31,17 +31,10 @@ import java.util.ArrayList;
 public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     Toolbar tb;
     DrawerLayout drawer;
-    Button transferMoney, viewall;
     private String sessionID;
     private EditText text;
-    private MaterialCardView materialCardView;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-
-    RecyclerView mRecyclerView;
-    MyAdapter myAdapter;
-
-    private MaterialCardView  transfer101, income_details101, wallet101, services101, exchange101, crypto101;
 
 
     @Override
@@ -50,48 +43,55 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_home);
+
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
 
         // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        this.sessionID = intent.getStringExtra(LogIn.EXTRA_SESSION);
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        Log.e("class Type className", className);
+        if(className.equals("LogIn")) {
+            this.sessionID = intentExtra.getStringExtra(LogIn.EXTRA_SESSION);
+        }else if (className.equals("MainTransfer36")){
+            this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+        }else if (className.equals("EnterPin")){
+            this.sessionID = intentExtra.getStringExtra(EnterPin.EXTRA_SESSION);
+        }
 
 //     this  belongs to  screen 18
-        mRecyclerView = findViewById(R.id.recycler_view);
+        RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        myAdapter = new MyAdapter(this,getMylist());
+        MyAdapter myAdapter = new MyAdapter(this, getMylist());
         mRecyclerView.setAdapter(myAdapter);
 
-        materialCardView = findViewById(R.id.cardBuyAirtime);
+        MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
         materialCardView.setOnClickListener(this);
 
-        viewall = (Button)findViewById(R.id.btnviewall);
+        Button viewall = (Button) findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
 
-        transferMoney = (Button)findViewById(R.id.transfer_money_button);
+        Button transferMoney = (Button) findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
 
-        transfer101 = (MaterialCardView) findViewById(R.id.transfer101);
+        MaterialCardView transfer101 = (MaterialCardView) findViewById(R.id.transfer101);
         transfer101.setOnClickListener(this);
 
-        income_details101 = (MaterialCardView) findViewById(R.id.income_details101);
+        MaterialCardView income_details101 = (MaterialCardView) findViewById(R.id.income_details101);
         income_details101.setOnClickListener(this);
 
-        wallet101 = (MaterialCardView) findViewById(R.id.wallet101);
+        MaterialCardView wallet101 = (MaterialCardView) findViewById(R.id.wallet101);
         wallet101.setOnClickListener(this);
 
-        services101 = (MaterialCardView) findViewById(R.id.services101);
+        MaterialCardView services101 = (MaterialCardView) findViewById(R.id.services101);
         services101.setOnClickListener(this);
 
-        exchange101 = (MaterialCardView) findViewById(R.id.exchange101);
+        MaterialCardView exchange101 = (MaterialCardView) findViewById(R.id.exchange101);
         exchange101.setOnClickListener(this);
 
-        crypto101 = (MaterialCardView) findViewById(R.id.crypto101);
+        MaterialCardView crypto101 = (MaterialCardView) findViewById(R.id.crypto101);
         crypto101.setOnClickListener(this);
 
 
@@ -127,18 +127,30 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-
-        findViewById(R.id.opentrans).setOnClickListener(
+        findViewById(R.id.mytopupcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(getBaseContext(), MainTransfer36.class);
-                        startActivity(i);
+                        Intent intent = new Intent(v.getContext(), activity_15_Ewallet2.class);
+                        intent.putExtra(EXTRA_SESSION, sessionID);
+                        intent.putExtra("Class","Home");
+                        startActivity(intent);
+                    }
+                }
+        );
+
+        findViewById(R.id.openFundTrasfer).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), MainTransfer36.class);
+                        intent.putExtra(EXTRA_SESSION, sessionID);
+                        intent.putExtra("Class","Home");
+                        startActivity(intent);
                   }
                 }
         );
 
-        setToolBar();
         findViewById(R.id.mytopupcard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,6 +192,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
             }
         });
+
+        findViewById(R.id.btnviewall).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
+            }
+        });
+
+        setToolBar();
     }
 
     public void close_screen18(View view) {
@@ -266,7 +288,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
         findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
- findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
 
     }
 
@@ -284,7 +306,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     @Override
     public void onClick(View v) {
         Intent i;
-        Log.e("sessionID home activity",sessionID);
+//        Log.e("sessionID home activity",sessionID);
 
         switch (v.getId()){
             case R.id.income_details101: i = new Intent(this, IncomeDetails.class);startActivity(i);
@@ -299,7 +321,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             break;
             case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
             break;
-            case R.id.cardBuyAirtime: i = new Intent(this,Top_up.class);startActivity(i);
+            case R.id.cardBuyAirtime: i = new Intent(this,Top_up.class);
+                i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);
+            break;
+            case R.id.services: i = new Intent(this,Home.class);startActivity(i);
             break;
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
                 i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);
@@ -307,13 +332,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             default:break;
         }
 
-
-
-        switch (v.getId()){
-            case R.id.services: i = new Intent(this,Home.class);startActivity(i); break;
-            default:break;
-
-    }
 }
 
 

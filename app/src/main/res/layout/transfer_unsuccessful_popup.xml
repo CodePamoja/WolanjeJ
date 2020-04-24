@@ -72,7 +72,7 @@
         android:lineSpacingExtra="8sp"
         android:textColor="@color/colorMidnight"
         android:textSize="16sp"
-        android:text="@string/b3423424234" />
+        android:text="**********" />
 
     <TextView
         android:id="@+id/txt_amount_sent"
