@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             Intent move1 = new Intent(this,BulkPayments5.class);
             startActivity(move1);
         }else {
+            startActivity(new Intent(this,Registration05.class));
             Toast.makeText(this, "Please connect to the Internet First", Toast.LENGTH_LONG).show();
         }
 

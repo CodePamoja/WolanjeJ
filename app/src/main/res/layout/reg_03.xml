@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reg03Activity">
+    tools:context=".Reg03Activity"
+    android:orientation="vertical"
+    >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_weight="3"
         android:background="#1A2652"
         android:id="@+id/top"
         >
@@ -38,8 +41,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/top"
+        android:layout_height="0dp"
+        android:layout_weight="7"
         >
 
         <LinearLayout
@@ -146,22 +149,32 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_alignParentBottom="true"
-                android:textSize="15sp"
-                android:textColor="@color/colorWhite"
-                android:lineSpacingExtra="9sp"
-                android:text="Continue"
-                android:background="@drawable/businessbtncon"
-                android:onClick="movetoreg04"
-                />
+
         </LinearLayout>
 
     </ScrollView>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/warm_purple"
+        >
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:textSize="15sp"
+            android:textColor="@color/colorWhite"
+            android:lineSpacingExtra="9sp"
+            android:text="Continue"
+            android:background="@drawable/businessbtncon"
+            android:onClick="movetoreg04"
+            style="?android:attr/borderlessButtonStyle"
+            />
 
 
+    </RelativeLayout>
 
-</RelativeLayout>
+
+</LinearLayout>
