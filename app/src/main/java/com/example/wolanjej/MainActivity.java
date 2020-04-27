@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         Intent move = new Intent(this,Home.class);
         startActivity(move);
         if (isNetworkAvailable()){
-            Intent move1 = new Intent(this,LogIn.class);
+            Intent move1 = new Intent(this,BulkPayments5.class);
             startActivity(move1);
         }else {
             Toast.makeText(this, "Please connect to the Internet First", Toast.LENGTH_LONG).show();
