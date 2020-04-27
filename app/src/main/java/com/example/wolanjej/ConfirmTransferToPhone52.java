@@ -22,8 +22,10 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
     public String amount;
     private String phoneProvider;
     private TextView tvtext;
+    private String AGENTNO;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
@@ -40,6 +42,7 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
         this.sessionID = move.getStringExtra(TransferToPhone50.EXTRA_SESSION);
         this.phoneName = move.getStringExtra(TransferToPhone50.EXTRA_PHONENAME);
         this.amount = move.getStringExtra(TransferToPhone50.EXTRA_AMOUNT);
+        this.AGENTNO = move.getStringExtra(TransferToPhone50.EXTRA_AGENTNO);
         this.phoneProvider = move.getStringExtra(TransferToPhone50.EXTRA_PROVIDER);
 
         tvtext =  findViewById(R.id.PName);
@@ -81,6 +84,7 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
                         movetoLogo.putExtra("Class","ConfirmTransferToPhone52");
                         movetoLogo.putExtra(EXTRA_SESSION, sessionID);
                         movetoLogo.putExtra(EXTRA_PHONENAME, phoneName);
+                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
                         movetoLogo.putExtra(EXTRA_PHONENUMBER, phoneNumber);
                         movetoLogo.putExtra(EXTRA_AMOUNT, amount);
                         startActivity(movetoLogo);
@@ -93,6 +97,7 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
         Intent move = new Intent(this, EnterPin.class);
         move.putExtra("Class","TransferToPhone50");
         move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PROVIDER, phoneProvider);
         move.putExtra(EXTRA_PHONENAME, phoneName);
         move.putExtra(EXTRA_PHONENUMBER, phoneNumber);

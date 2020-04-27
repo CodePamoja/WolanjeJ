@@ -7,8 +7,10 @@ import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
@@ -37,6 +39,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 public class LogIn extends AppCompatActivity {
 
     private ImageView imageView;
+    public ProgressDialog prgBar;
     private Button button;
     public  JSONObject sessionID = null;
     private EditText textPhone;
@@ -45,6 +48,9 @@ public class LogIn extends AppCompatActivity {
     private  androidx.biometric.BiometricPrompt biometricPrompt;
     private Executor executor;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_ID = "com.example.wolanjej.ID";
+    public static final String EXTRA_USERNAME = "com.example.wolanjej.USERNAME";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     public Base64Encoder baseResult = new Base64Encoder();
     @Override
@@ -117,7 +123,7 @@ public class LogIn extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        sendHomeScreen();
+                        new UserLogin().execute();
                     }
                 }
         );
@@ -160,32 +166,58 @@ public class LogIn extends AppCompatActivity {
         startActivity(move);
     }
 
-    public void sendHomeScreen() {
-        textPhone = findViewById(R.id.phoneNoLogIN);
-        textPin = findViewById(R.id.pinLogIN);
+    public void FogtPssd(View view) {
+        Intent move = new Intent(this, Registration05.class);
+        startActivity(move);
+    }
 
-        String phone = textPhone.getText().toString();
-        String pin = textPin.getText().toString();
-        if(phone!=null && pin!=null){
-            String phonePin = "254"+phone+":"+pin; //adding a phone number and a pin together separating them using Full collon
-            Log.d("TAG", phonePin);
-            String results = baseResult.encodedValue(phonePin); // sending the phone number and pin for base 64 encoder for and getting the string value
-            Log.d("TAG", results);
-            String url = "/api/";
-            OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getLogin(url, results); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-            Log.d("TAG", String.valueOf(result));
+    public class UserLogin extends AsyncTask<Void, Void, Response> {
+        @Override
+        protected void onPreExecute() {
+            prgBar = new ProgressDialog(LogIn.this);
+            prgBar.setMessage("Please Wait");
+            prgBar.setIndeterminate(false);
+            prgBar.setCancelable(false);
+            prgBar .show();
+        }
 
+        @Override
+        protected Response doInBackground(Void... voids) {
+            Response result = null;
+            textPhone = findViewById(R.id.phoneNoLogIN);
+            textPin = findViewById(R.id.pinLogIN);
+
+            String phone = textPhone.getText().toString();
+            String pin = textPin.getText().toString();
+            if(phone!=null && pin!=null){
+                String phonePin = "254"+phone+":"+pin; //adding a phone number and a pin together separating them using Full collon
+                Log.d("TAG", phonePin);
+                String results = baseResult.encodedValue(phonePin); // sending the phone number and pin for base 64 encoder for and getting the string value
+                Log.d("TAG", results);
+                String url = "/api/";
+                OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
+                result = okConn.getLogin(url, results); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
+                Log.d("TAG", String.valueOf(result));
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Response result) {
             if ( result.code() == 200) {
+                prgBar.dismiss();
                 Toast.makeText(getApplicationContext(), "Your have been Loggedin successfuly", Toast.LENGTH_LONG).show();
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
                     sessionID = new JSONObject(test);
                     System.out.println("Response body json values are : " + sessionID);
-                    Log.d("TAG test Session", sessionID.getString("session_token"));
-                    Intent move = new Intent(this, Home.class);
-                    move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
+                    Log.d("TAG test Session", sessionID.getJSONObject("session").getString("session_token"));
+                    Intent move = new Intent(LogIn.this, Home.class);
+                    move.putExtra(EXTRA_SESSION, sessionID.getJSONObject("session").getString("session_token"));
+                    move.putExtra(EXTRA_ID, sessionID.getJSONObject("session").getString("id"));
+                    move.putExtra(EXTRA_USERNAME, sessionID.getJSONObject("session").getString("user_name"));
+                    move.putExtra(EXTRA_AGENTNO, sessionID.getJSONObject("session").getString("agentno"));
                     move.putExtra("Class","LogIn");
                     startActivity(move);
                 } catch (JSONException | IOException e) {
@@ -193,12 +225,11 @@ public class LogIn extends AppCompatActivity {
                 }
 
             }else if( result.code() != 201) {
+                prgBar.dismiss();
                 Log.d("TAG", String.valueOf(result));
                 Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
             }
         }
-
-//        Intent move2 = new Intent(this, LinkAccount11.class);
-//        startActivity(move2);
     }
+
 }

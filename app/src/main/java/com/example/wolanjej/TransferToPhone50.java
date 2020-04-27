@@ -32,14 +32,17 @@ public class TransferToPhone50 extends AppCompatActivity {
     private String phoneNumber = "phone1";
     private String sessionID;
     private String phoneName;
+    private String AGENTNO;
     private String phoneCompany;
     private String amount;
+
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +55,22 @@ public class TransferToPhone50 extends AppCompatActivity {
         Log.e("class Type className", className);
         if(className.equals("MainTransfer36")) {
             this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(MainTransfer36.EXTRA_AGENTNO);
         }else if(className.equals("ContactsView")) {
             this.sessionID = intentExtra.getStringExtra(ContactsView.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(ContactsView.EXTRA_AGENTNO);
         }else if (className.equals("SelectUserAdapter")){
             String CheckphoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
             this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
+            this.AGENTNO = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_AGENTNO);
 
             EditText tvtext =  findViewById(R.id.transContactAmount);
             tvtext.setText(CheckphoneNumber);
         }else if (className.equals("ConfirmTransferToPhone52")){
             String CheckphoneNumber = "+"+intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENUMBER);
             this.sessionID = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AGENTNO);
             this.phoneName = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENAME);
             String sendAmount = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AMOUNT);
 
@@ -88,6 +95,7 @@ public class TransferToPhone50 extends AppCompatActivity {
                     public void onClick(View v) {
                         Log.e("set toolbar sess", sessionID);
                         movetoLogo.putExtra(EXTRA_SESSION, sessionID);
+                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
                         movetoLogo.putExtra("Class","TransferToPhone50");
                         startActivity(movetoLogo);
                     }
@@ -101,6 +109,7 @@ public class TransferToPhone50 extends AppCompatActivity {
         Intent move = new Intent(this, ContactsView.class);
         move.putExtra("Class","TransferToPhone50");
         move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_CLASSTYPE, "phone");
         startActivity(move);
     }
@@ -127,6 +136,7 @@ public class TransferToPhone50 extends AppCompatActivity {
         move.putExtra(EXTRA_SESSION, sessionID);
         move.putExtra(EXTRA_PROVIDER, phoneCompany);
         move.putExtra(EXTRA_PHONENAME, phoneName);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);

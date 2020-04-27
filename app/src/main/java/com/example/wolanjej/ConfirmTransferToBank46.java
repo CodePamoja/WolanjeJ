@@ -26,6 +26,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
     private String amount;
     private String bankSelected;
     public String message;
+    private String AGENTNO;
     private TextView tvtext;
 
     public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
@@ -35,6 +36,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     public static final String EXTRA_HOLDERNAME = "com.example.wolanjej.HOLDERNAME";
     public static final String EXTRA_ACCOUNTNUMBER = "com.example.wolanjej.ACCOUNTNUMBER";
     public static final String EXTRA_BRANCHNAME = "com.example.wolanjej.BRANCHNAME";
@@ -52,6 +54,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         this.sessionID = move.getStringExtra(TransferToBank44.EXTRA_SESSION);
         this.phoneName = move.getStringExtra(TransferToBank44.EXTRA_PHONENAME);
         this.holderName = move.getStringExtra(TransferToBank44.EXTRA_HOLDERNAME);
+        this.AGENTNO = move.getStringExtra(TransferToBank44.EXTRA_AGENTNO);
         this.amount = move.getStringExtra(TransferToBank44.EXTRA_AMOUNT);
         this.message = move.getStringExtra(TransferToBank44.EXTRA_MESSAGE);
         this.branchName = move.getStringExtra(TransferToBank44.EXTRA_BRANCHNAME);
@@ -103,6 +106,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
                         movetoLogo.putExtra("Class","ConfirmTransferToBank46");
                         movetoLogo.putExtra(EXTRA_SESSION, sessionID);
                         movetoLogo.putExtra(EXTRA_MESSAGE, message);
+                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
                         movetoLogo.putExtra(EXTRA_PHONENAME, phoneName);
                         movetoLogo.putExtra(EXTRA_PHONENUMBER, phoneNumber);
                         movetoLogo.putExtra(EXTRA_HOLDERNAME, holderName);
@@ -124,6 +128,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         move.putExtra(EXTRA_MESSAGE, message);
         move.putExtra(EXTRA_ACCOUNTNUMBER, accNumber);
         move.putExtra(EXTRA_AMOUNT, amount);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_BRANCHNAME, branchName);
         move.putExtra(EXTRA_BANKSELECTED, bankSelected);
         move.putExtra(EXTRA_PHONENAME, phoneName);

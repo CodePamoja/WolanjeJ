@@ -34,16 +34,19 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
     private  String EXTRANumber = "phone1";
     private String sessionID;
     private String classType;
+    private String AGENTNO;
     JSONObject jPhoneDetails;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
     public static final String EXTRA_NAME = "com.example.wolanjej.NAME";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
 
-    public SelectUserAdapter(Context context, List<SelectUser> mainInfo, String sessionID, String classType) {
+    public SelectUserAdapter(Context context, List<SelectUser> mainInfo, String sessionID, String classType, String agentno) {
         this.mainInfo = mainInfo;
         this.classType = classType;
         this.context = context;
+        this.AGENTNO = agentno;
         this.sessionID = sessionID;
         this.arraylist = new ArrayList<>();
         this.arraylist.addAll(mainInfo);
@@ -118,6 +121,7 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         Intent move = new Intent(context, TransferToPhone50.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONE, phoneNumber);
         move.putExtra(EXTRA_SESSION, sessionID);
         context.startActivity(move);
@@ -129,6 +133,7 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         Intent move = new Intent(context, TransferToWalletSingle37.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONE, phoneNumber);
         move.putExtra(EXTRA_SESSION, sessionID);
         context.startActivity(move);
@@ -140,6 +145,7 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         Intent move = new Intent(context, TransferToBank44.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONE, phoneNumber);
         move.putExtra(EXTRA_SESSION, sessionID);
         context.startActivity(move);
@@ -151,6 +157,7 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         Intent move = new Intent(context, TopupOtherNumber.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONE, phoneNumber);
         move.putExtra(EXTRA_SESSION, sessionID);
         context.startActivity(move);

@@ -40,6 +40,9 @@ public class EnterPin extends AppCompatActivity {
     private String bankDetails;
     private EditText editText1, editText2;
 
+    private String AGENTNO;
+
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
 
     @Override
@@ -56,6 +59,7 @@ public class EnterPin extends AppCompatActivity {
             this.sessionID = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_SESSION);
             this.amount = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_AMOUNT);
             this.phoneName = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_PHONENAME);
+            this.AGENTNO = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_AGENTNO);
 
         }else if (className.equals("TransferToPhone50")){
 
@@ -63,6 +67,7 @@ public class EnterPin extends AppCompatActivity {
             this.sessionID = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_SESSION);
             this.amount = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AMOUNT);
             this.phoneName = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENAME);
+            this.AGENTNO = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AGENTNO);
             this.phoneProvider = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PROVIDER);
 
         }else if (className.equals("TransferToBank44")){
@@ -70,6 +75,7 @@ public class EnterPin extends AppCompatActivity {
             this.phoneNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENUMBER);
             this.sessionID = intentExtra.getStringExtra(TransferToBank44.EXTRA_SESSION);
             this.amount = intentExtra.getStringExtra(TransferToBank44.EXTRA_AMOUNT);
+            this.AGENTNO = intentExtra.getStringExtra(TransferToBank44.EXTRA_AGENTNO);
             this.phoneName = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENAME);
             this.accNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_ACCOUNTNUMBER);
             String sendBank = intentExtra.getStringExtra(TransferToBank44.EXTRA_BANKSELECTED);
@@ -80,14 +86,18 @@ public class EnterPin extends AppCompatActivity {
 
             this.phoneNumber = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_PHONENUMBER);
             this.sessionID = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_AGENTNO);
             this.amount = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_AMOUNT);
             this.phoneName = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_PHONENAME);
+            this.phoneProvider = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_PROVIDER);
 
         }else if (className.equals("Top_up")){
 
             this.phoneNumber = intentExtra.getStringExtra(Top_up.EXTRA_PHONENUMBER);
             this.sessionID = intentExtra.getStringExtra(Top_up.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(Top_up.EXTRA_AGENTNO);
             this.amount = intentExtra.getStringExtra(Top_up.EXTRA_AMOUNT);
+            this.phoneProvider = intentExtra.getStringExtra(Top_up.EXTRA_PROVIDER);
 
         }
 
@@ -131,9 +141,35 @@ public class EnterPin extends AppCompatActivity {
                     }else if (className.equals("TransferToBank44")){
                         Transfer(fullPin, "BANK_XFER", accNumber);
                     }else if (className.equals("TopupOtherNumber")){
-                        Transfer(fullPin, "ATP", phoneNumber);
+                        switch(phoneProvider){
+                            //Case statements
+                            case "safaricom": Transfer(fullPin, "SAF_ATP", phoneNumber);
+                                Toast.makeText(getApplicationContext(), "Sending via MPESA", Toast.LENGTH_LONG).show();
+                                break;
+                            case "airtel": Transfer(fullPin, "AIRTEL_ATP", phoneNumber);
+                                Toast.makeText(getApplicationContext(), "Sending via AIRTEL MONEY", Toast.LENGTH_LONG).show();
+                                break;
+                            case "telkom": Transfer(fullPin, "TKASH_ATP", phoneNumber);
+                                Toast.makeText(getApplicationContext(), "Sending via TKASH", Toast.LENGTH_LONG).show();
+                                break;
+                            //Default case statement
+                            default:System.out.println("Not an airtel, safaricom or telkom");
+                        }
                     }else if (className.equals("Top_up")){
-                        Transfer(fullPin, "ATP", phoneNumber);
+                        switch(phoneProvider){
+                            //Case statements
+                            case "safaricom": Transfer(fullPin, "SAF_ATP", phoneNumber);
+                                Toast.makeText(getApplicationContext(), "Sending via MPESA", Toast.LENGTH_LONG).show();
+                                break;
+                            case "airtel": Transfer(fullPin, "AIRTEL_ATP", phoneNumber);
+                                Toast.makeText(getApplicationContext(), "Sending via AIRTEL MONEY", Toast.LENGTH_LONG).show();
+                                break;
+                            case "telkom": Transfer(fullPin, "TKASH_ATP", phoneNumber);
+                                Toast.makeText(getApplicationContext(), "Sending via TKASH", Toast.LENGTH_LONG).show();
+                                break;
+                            //Default case statement
+                            default:System.out.println("Not an airtel, safaricom or telkom");
+                        }
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "Please Enter your Pin", Toast.LENGTH_LONG).show();
@@ -231,16 +267,19 @@ public class EnterPin extends AppCompatActivity {
         if (className.equals("TopupOtherNumber")){
             Intent move = new Intent(this, Home.class);
             move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra(EXTRA_AGENTNO, AGENTNO);
             move.putExtra("Class","EnterPin");
             startActivity(move);
         }else if (className.equals("Top_up")){
             Intent move = new Intent(this, Home.class);
             move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra(EXTRA_AGENTNO, AGENTNO);
             move.putExtra("Class","EnterPin");
             startActivity(move);
         }else{
             Intent move = new Intent(this, MainTransfer36.class);
             move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra(EXTRA_AGENTNO, AGENTNO);
             move.putExtra("Class","EnterPin");
             startActivity(move);
         }
@@ -266,7 +305,7 @@ public class EnterPin extends AppCompatActivity {
         JSONObject jMpesa = new JSONObject();
         try {
             jMpesa.put("ac_uname", "test");
-            jMpesa.put("sched", jdataset);
+            jMpesa.put("services", jdataset);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -323,23 +362,28 @@ public class EnterPin extends AppCompatActivity {
         if (className.equals("TransferToWalletSingle37")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Done!");
         }else if (className.equals("TransferToPhone50")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Done!");
         }else if(className.equals("TransferToBank44")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText(bankDetails);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpBankName)).setText(accNumber);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Done!");
         }else if (className.equals("TopupOtherNumber")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Airtime Topped Up!");
         }else if (className.equals("Top_up")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("My Number");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
+            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Airtime Topped Up!");
         }
 
         ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {

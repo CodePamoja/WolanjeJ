@@ -32,7 +32,10 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
     private String phoneCompany;
     private String phoneName;
     private String bankSelected;
+    private String AGENTNO;
 
+
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
@@ -56,15 +59,18 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
         Log.e("class Type className", className);
         if(className.equals("MainTransfer36")) {
             this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(MainTransfer36.EXTRA_AGENTNO);
         }else if (className.equals("SelectUserAdapter")){
             this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
             this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
             this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
+            this.AGENTNO = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_AGENTNO);
 
             EditText tvtext =  findViewById(R.id.holdName);
             tvtext.setText(userName);
         }else if (className.equals("ConfirmTransferToBank46")){
+            this.AGENTNO = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_AGENTNO);
             this.phoneNumber ="+"+ intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONENUMBER);
             String userName = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONENAME);
             this.sessionID = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_SESSION);

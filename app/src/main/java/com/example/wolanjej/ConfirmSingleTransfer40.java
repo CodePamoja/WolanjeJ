@@ -20,9 +20,11 @@ public class ConfirmSingleTransfer40 extends AppCompatActivity {
     private String phoneName;
     public String amount;
     public String message;
+    private String AGENTNO;
     private TextView tvtext;
 
     public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_PRODUCT_NAME = "com.example.wolanjej.PRODUCT_NAME";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
@@ -41,6 +43,7 @@ public class ConfirmSingleTransfer40 extends AppCompatActivity {
         this.sessionID = move.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
         this.phoneName = move.getStringExtra(TransferToWalletSingle37.EXTRA_PHONENAME);
         this.amount = move.getStringExtra(TransferToWalletSingle37.EXTRA_AMOUNT);
+        this.AGENTNO = move.getStringExtra(TransferToWalletSingle37.EXTRA_AGENTNO);
         this.message = move.getStringExtra(TransferToWalletSingle37.EXTRA_MESSAGE);
 
         tvtext =  findViewById(R.id.waltToName);
@@ -87,6 +90,7 @@ public class ConfirmSingleTransfer40 extends AppCompatActivity {
                         movetoLogo.putExtra(EXTRA_SESSION, sessionID);
                         movetoLogo.putExtra(EXTRA_MESSAGE, message);
                         movetoLogo.putExtra(EXTRA_PHONENAME, phoneName);
+                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
                         movetoLogo.putExtra(EXTRA_PHONENUMBER, phoneNumber);
                         movetoLogo.putExtra(EXTRA_AMOUNT, amount);
                         startActivity(movetoLogo);
@@ -100,6 +104,7 @@ public class ConfirmSingleTransfer40 extends AppCompatActivity {
         move.putExtra("Class","TransferToWalletSingle37");
         move.putExtra(EXTRA_SESSION, sessionID);
         move.putExtra(EXTRA_PHONENAME, phoneName);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONENUMBER, phoneNumber);
         move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);

@@ -1,6 +1,8 @@
 package com.example.wolanjej;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,17 +24,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Response;
 
 public class Home extends AppCompatActivity implements View.OnClickListener{
     Toolbar tb;
     DrawerLayout drawer;
     Button transferMoney, viewall;
     private String sessionID;
-    private EditText text;
+    private String USERID;
+    private String USERNAME;
+    private String AGENTNO;
+    private String USERBALANCE;
+    private EditText ettext;
+    private TextView tvtext;
     private MaterialCardView materialCardView;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_ID = "com.example.wolanjej.ID";
+    public static final String EXTRA_USERNAME = "com.example.wolanjej.USERNAME";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
@@ -55,11 +72,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         if(className.equals("LogIn")) {
+            new UserBalance().execute();
             this.sessionID = intentExtra.getStringExtra(LogIn.EXTRA_SESSION);
+            this.USERID = intentExtra.getStringExtra(LogIn.EXTRA_ID);
+            this.USERNAME = intentExtra.getStringExtra(LogIn.EXTRA_USERNAME);
+            this.AGENTNO = intentExtra.getStringExtra(LogIn.EXTRA_AGENTNO);
         }else if (className.equals("MainTransfer36")){
+            new UserBalance().execute();
             this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(MainTransfer36.EXTRA_AGENTNO);
         }else if (className.equals("EnterPin")){
+            new UserBalance().execute();
             this.sessionID = intentExtra.getStringExtra(EnterPin.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(EnterPin.EXTRA_AGENTNO);
         }
 
 //     this  belongs to  screen 18
@@ -135,6 +160,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                     public void onClick(View v) {
                         Intent intent = new Intent(v.getContext(), activity_15_Ewallet2.class);
                         intent.putExtra(EXTRA_SESSION, sessionID);
+                        intent.putExtra(EXTRA_AGENTNO, AGENTNO);
                         intent.putExtra("Class","Home");
                         startActivity(intent);
                     }
@@ -147,6 +173,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                     public void onClick(View v) {
                         Intent intent = new Intent(v.getContext(), MainTransfer36.class);
                         intent.putExtra(EXTRA_SESSION, sessionID);
+                        intent.putExtra(EXTRA_AGENTNO, AGENTNO);
                         intent.putExtra("Class","Home");
                         startActivity(intent);
                   }
@@ -170,6 +197,54 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         Log.e("yes","pressed");
         findViewById(R.id.screen_16).setVisibility(View.INVISIBLE);
 
+    }
+
+    public class UserBalance extends AsyncTask<Void, Void, Response> {
+
+        @Override
+        protected Response doInBackground(Void... voids) {
+
+            String url = "/api/balance";
+            OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
+            Response result = okConn.getBalance(url, sessionID); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
+            Log.d("TAG", String.valueOf(result));
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Response result) {
+            String verifyResult = null;
+            if ( result.code() == 200) {
+                try {
+                    String test = result.body().string();
+                    Log.d("TAG test", test);
+                    JSONObject JBalance = new JSONObject(test);
+                    System.out.println("Response body json values are : " + JBalance);
+                    String resultBalance = JBalance.getJSONObject("balance").getString("balance");
+
+                    tvtext = findViewById(R.id.MYBalance);
+                    tvtext.setText("KES "+resultBalance);
+
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+
+            }else if( result.code() != 201) {
+                try {
+                    verifyResult = result.body().string();
+                    JSONObject jBody = new JSONObject(verifyResult); // adding
+                    System.out.println("Response body json values are : " + verifyResult);
+                    Log.e("TAG", String.valueOf(verifyResult));
+//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
+//                    Log.e("TAG", String.valueOf(sendResutls));
+//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
+                    Log.e("TAG result value", String.valueOf(result));
+                    Log.e("TAG result body", verifyResult);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
 
@@ -284,7 +359,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
             break;
             case R.id.cardBuyAirtime: i = new Intent(this,Top_up.class);
-                i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);
+                i.putExtra(EXTRA_SESSION, sessionID);
+                i.putExtra(EXTRA_AGENTNO, AGENTNO);
+                i.putExtra("Class","Home");startActivity(i);
             break;
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
                 i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);

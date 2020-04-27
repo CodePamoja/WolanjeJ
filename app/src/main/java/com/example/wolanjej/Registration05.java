@@ -3,7 +3,9 @@ package com.example.wolanjej;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,10 +28,11 @@ import okhttp3.Response;
 public class Registration05 extends AppCompatActivity {
 
     private ImageView imageView;
+    public ProgressDialog prgBar;
     private EditText text;
     private JSONObject sessionID = null;
-    private String phone = null;
-    public Sendtover conn;
+    private String phoneNo = null;
+//    public Sendtover conn;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
     Toolbar tb ;
@@ -54,7 +57,7 @@ public class Registration05 extends AppCompatActivity {
 //                        text = findViewById(R.id.phoneNumber);
 //                        conn = new Sendtover(text.toString());
 //                        conn.sendToVerification();
-                        sendToVerification();
+                       new UserSendPhone().execute();
                     }
                 }
         );
@@ -94,80 +97,176 @@ public class Registration05 extends AppCompatActivity {
         startActivity(movetoLogo);
     }
 
-    public void sendToVerification() {
-        text = findViewById(R.id.phoneNumber);
-        phone = text.getText().toString();
-        Log.e("Test 1", phone);
-        System.out.println(phone);
-
-        JSONObject jPhone = new JSONObject();
-        try {
-            jPhone.put("phone", "254"+phone);
-            Log.e("jPhone",jPhone.toString());
-        } catch (JSONException e) {
-            Log.e("Error",e.toString());
-            e.printStackTrace();
-        }
-        String url = "/gapi/sendOTP";
-        OkhttpConnection okConn = new OkhttpConnection();
-        Response result = okConn.postRequest(url,jPhone.toString());
-
-        if ( result.code() == 201) {
-            System.out.println("Response body json values are : " + result);
-            Log.e("TAG", String.valueOf(result));
-            Toast.makeText(getApplicationContext(), "Phone number sent successfuly", Toast.LENGTH_LONG).show();
-            verifyOTP(phone);
-
-        }else if(result.code() != 201) {
-            Log.e("TAG", String.valueOf(result.body()));
+    public class UserSendPhone extends AsyncTask<Void, Void, Response> {
+        @Override
+        protected void onPreExecute() {
+            prgBar = new ProgressDialog(Registration05.this);
+            prgBar.setMessage("Please Wait... Sending Phone Number");
+            prgBar.setIndeterminate(false);
+            prgBar.setCancelable(false);
+            prgBar .show();
         }
 
-        //bypass the verification code and page for now since we are adding otp for testing
-//        Intent move = new Intent(this, Registration06.class);
-//        startActivity(move);
+        @Override
+        protected Response doInBackground(Void... voids) {
+            text = findViewById(R.id.phoneNumber);
+            phoneNo = text.getText().toString();
+            Log.e("Test 1", phoneNo);
+            System.out.println(phoneNo);
+
+            JSONObject jPhone = new JSONObject();
+            try {
+                jPhone.put("phone", "254"+phoneNo);
+                Log.e("jPhone",jPhone.toString());
+            } catch (JSONException e) {
+                Log.e("Error",e.toString());
+                e.printStackTrace();
+            }
+            String url = "/gapi/sendOTP";
+            OkhttpConnection okConn = new OkhttpConnection();
+            Response result = okConn.postRequest(url,jPhone.toString());
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Response result) {
+            if ( result.code() == 201) {
+                prgBar.dismiss();
+                System.out.println("Response body json values are : " + result);
+                Log.e("TAG", String.valueOf(result));
+                Toast.makeText(getApplicationContext(), "Phone number sent successfully", Toast.LENGTH_LONG).show();
+                new UserverifyOTP().execute();
+
+            }else if(result.code() != 201) {
+                prgBar.dismiss();
+                String value = null;
+                try {
+                    value = result.body().string();
+                    JSONObject jBody = new JSONObject(value); // adding
+                    System.out.println("Response body json values are : " + value);
+                    Log.e("TAG", String.valueOf(value));
+                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("action").getJSONArray(0).getString(2);
+                    Log.e("TAG", String.valueOf(sendResutls));
+                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+    }
     }
 
-    public void verifyOTP(String phone){
-        String verifyResult = null;
-        JSONObject jValue = new JSONObject();
-        try {
-            jValue.put("phone", "254"+phone);
-            jValue.put("otp", "12345678");
-            Log.e("JValues",jValue.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
+
+    public class UserverifyOTP extends AsyncTask<Void, Void, Response> {
+
+        @Override
+        protected void onPreExecute() {
+            prgBar = new ProgressDialog(Registration05.this);
+            prgBar.setMessage("Please Wait... Verifying OTP");
+            prgBar.setIndeterminate(false);
+            prgBar.setCancelable(false);
+            prgBar .show();
         }
-        String url = "/gapi/verifyOTP";
-        OkhttpConnection okConn = new OkhttpConnection();
-        Response result = okConn.postRequest(url, jValue.toString());
-        if (result.code() == 201) {
+
+        @Override
+        protected Response doInBackground(Void... voids) {
+            JSONObject jValue = new JSONObject();
             try {
-                verifyResult = result.body().string();
-                sessionID = new JSONObject(verifyResult); // adding
-                System.out.println("Response body json values are : " + verifyResult);
-                Log.e("TAG", String.valueOf(verifyResult));
+                jValue.put("phone", "254"+phoneNo);
+                jValue.put("otp", "12345678");
+                Log.e("JValues",jValue.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            String url = "/gapi/verifyOTP";
+            OkhttpConnection okConn = new OkhttpConnection();
+            Response result = okConn.postRequest(url, jValue.toString());
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Response result) {
+            String verifyResult = null;
+            if (result.code() == 201) {
+                prgBar.dismiss();
+                Toast.makeText(getApplicationContext(), "OTP verified successfully", Toast.LENGTH_LONG).show();
+                try {
+                    verifyResult = result.body().string();
+                    sessionID = new JSONObject(verifyResult); // adding
+                    System.out.println("Response body json values are : " + verifyResult);
+                    Log.e("TAG", String.valueOf(verifyResult));
 
 //                //bypass the verification code and page for now since we are adding otp for testing
-                Intent move = new Intent(this, Registration07.class);
-                move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
-                move.putExtra(EXTRA_PHONE, phone);
-                startActivity(move);
-            } catch (IOException | JSONException e) {
-                e.printStackTrace();
-            }
-        }else if(result.code() != 201) {
-            try {
-                verifyResult = result.body().string();
-                Log.e("TAG", String.valueOf(result));
-            } catch (IOException e) {
-                e.printStackTrace();
+                    Intent move = new Intent(Registration05.this, Registration07.class);
+                    move.putExtra(EXTRA_SESSION, sessionID.getJSONObject("session").getString("session_token"));
+                    move.putExtra(EXTRA_PHONE, phoneNo);
+                    startActivity(move);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }else if(result.code() != 201) {
+                prgBar.dismiss();
+                Toast.makeText(getApplicationContext(), "Error Occured", Toast.LENGTH_LONG).show();
+                try {
+                    verifyResult = result.body().string();
+                    JSONObject jBody = new JSONObject(verifyResult); // adding
+                    System.out.println("Response body json values are : " + verifyResult);
+                    Log.e("TAG", String.valueOf(verifyResult));
+                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
+                    Log.e("TAG", String.valueOf(sendResutls));
+                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
+                    Log.e("TAG result value", String.valueOf(result));
+                    Log.e("TAG result body", verifyResult);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
+
+//    public void verifyOTP(String phone){
+//        String verifyResult = null;
+//        JSONObject jValue = new JSONObject();
+//        try {
+//            jValue.put("phone", "254"+phone);
+//            jValue.put("otp", "12345678");
+//            Log.e("JValues",jValue.toString());
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        String url = "/gapi/verifyOTP";
+//        OkhttpConnection okConn = new OkhttpConnection();
+//        Response result = okConn.postRequest(url, jValue.toString());
+//        if (result.code() == 201) {
+//            Toast.makeText(getApplicationContext(), "OTP verified successfully", Toast.LENGTH_LONG).show();
+//            try {
+//                verifyResult = result.body().string();
+//                sessionID = new JSONObject(verifyResult); // adding
+//                System.out.println("Response body json values are : " + verifyResult);
+//                Log.e("TAG", String.valueOf(verifyResult));
+//
+////                //bypass the verification code and page for now since we are adding otp for testing
+//                Intent move = new Intent(this, Registration07.class);
+//                move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
+//                move.putExtra(EXTRA_PHONE, phone);
+//                startActivity(move);
+//            } catch (IOException | JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }else if(result.code() != 201) {
+//            Toast.makeText(getApplicationContext(), "Error Occured", Toast.LENGTH_LONG).show();
+//            try {
+//                verifyResult = result.body().string();
+//                Log.e("TAG", String.valueOf(result));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 
     public String getPhone(){
-        return phone;
+        return phoneNo;
     }
 
     public void createAccount(View view) {

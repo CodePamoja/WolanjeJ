@@ -19,10 +19,12 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
 
     private Button confirmButton;
     private String sessionID;
+    private String AGENTNO;
     private EditText text;
     private Spinner spin;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
 
     @Override
@@ -37,6 +39,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         Log.e("class Type className", className);
         if(className.equals("TransferToWalletSingle37")) {
             this.sessionID = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_AGENTNO);
         }
 
         spin = (Spinner) this.findViewById(R.id.select_multiple);
@@ -65,6 +68,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
             Intent move = new Intent(this, TransferToWalletSingle37.class);
             move.putExtra("Class","TransferToWalletMultiple40");
             move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra(EXTRA_AGENTNO, AGENTNO);
             startActivity(move);
         }
 
@@ -87,6 +91,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
                         Log.e("set toolbar sess", sessionID);
                         movetoLogo.putExtra("Class","TransferToWalletMultiple40");
                         movetoLogo.putExtra(EXTRA_SESSION, sessionID);
+                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
                         startActivity(movetoLogo);
                     }
                 }

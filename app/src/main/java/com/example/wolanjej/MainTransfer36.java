@@ -18,7 +18,9 @@ public class MainTransfer36 extends AppCompatActivity {
 
     private CardView walletCard, bankCard, phoneCard;
     private String sessionID;
+    private String AGENTNO;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +34,22 @@ public class MainTransfer36 extends AppCompatActivity {
         Log.e("class Type className", className);
         if(className.equals("Home")) {
             this.sessionID = intentExtra.getStringExtra(Home.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(Home.EXTRA_AGENTNO);
         }else if (className.equals("EnterPin")){
             this.sessionID = intentExtra.getStringExtra(EnterPin.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(EnterPin.EXTRA_AGENTNO);
         }else if (className.equals("TransferToPhone50")){
             this.sessionID = intentExtra.getStringExtra(TransferToPhone50.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(TransferToPhone50.EXTRA_AGENTNO);
         }else if (className.equals("TransferToWalletSingle37")){
             this.sessionID = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_AGENTNO);
         }else if (className.equals("TransferToWalletMultiple40")){
             this.sessionID = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_AGENTNO);
         }else if (className.equals("TransferToBank44")){
             this.sessionID = intentExtra.getStringExtra(TransferToBank44.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(TransferToBank44.EXTRA_AGENTNO);
         }
 
         walletCard = (CardView)findViewById(R.id.transfer_to_wallet);
@@ -76,6 +84,7 @@ public class MainTransfer36 extends AppCompatActivity {
         Intent move = new Intent(this, TransferToWalletSingle37.class);
         move.putExtra("Class","MainTransfer36");
         move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         startActivity(move);
     }
 
@@ -83,6 +92,7 @@ public class MainTransfer36 extends AppCompatActivity {
         Intent move = new Intent(this, TransferToBank44.class);
         move.putExtra("Class","MainTransfer36");
         move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         startActivity(move);
     }
 
@@ -90,6 +100,7 @@ public class MainTransfer36 extends AppCompatActivity {
         Log.e("sessionID to mpesa",sessionID);
         Intent move = new Intent(this,TransferToPhone50.class);
         move.putExtra("Class","MainTransfer36");
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_SESSION, sessionID);
         startActivity(move);
     }
@@ -105,6 +116,7 @@ public class MainTransfer36 extends AppCompatActivity {
                     public void onClick(View v) {
                         movetoLogo.putExtra("Class","MainTransfer36");
                         movetoLogo.putExtra(EXTRA_SESSION, sessionID);
+                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
                         startActivity(movetoLogo);
                     }
                 }

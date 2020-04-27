@@ -23,6 +23,7 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
     private Button button;
     private String phoneName;
     private String phoneNumber;
+    private String AGENTNO;
     private String sessionID;
     private String phoneCompany;
     private EditText text;
@@ -35,6 +36,7 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +48,13 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
         Log.e("class Type className", className);
         if(className.equals("Top_up")) {
             this.sessionID = intentExtra.getStringExtra(Top_up.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(Top_up.EXTRA_AGENTNO);
         }else if (className.equals("SelectUserAdapter")){
             this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             String userNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
             this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
+            this.AGENTNO = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_AGENTNO);
 
             EditText tvtext =  findViewById(R.id.transContactAmount);
             tvtext.setText(userNumber);
@@ -78,6 +82,7 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
             Toast.makeText(getApplicationContext(),selectNumber[position] , Toast.LENGTH_LONG).show();
             Intent move = new Intent(this, Top_up.class);
             move.putExtra("Class","TopupOtherNumber");
+            move.putExtra(EXTRA_AGENTNO, AGENTNO);
             move.putExtra(EXTRA_SESSION, sessionID);
             startActivity(move);
         }
@@ -200,6 +205,7 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
         move.putExtra("Class","TopupOtherNumber");
         move.putExtra(EXTRA_SESSION, sessionID);
         move.putExtra(EXTRA_PHONENAME, phoneName);
+        move.putExtra(EXTRA_PROVIDER, phoneCompany);
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);

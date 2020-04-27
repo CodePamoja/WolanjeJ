@@ -81,6 +81,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Forgot Password?"
+                            android:onClick="FogtPssd"
                             android:textAlignment="textStart"
                             style="@style/Widget.MaterialComponents.Button.TextButton"/>
 

@@ -64,13 +64,12 @@
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/price"
+                                android:id="@+id/MYBalance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/textbalance"
                                 android:layout_marginTop="16dp"
                                 android:gravity="center_horizontal"
-                                android:text="@string/_7800_00"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="40sp" />
 
@@ -78,7 +77,7 @@
                                 android:id="@+id/wallet"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/price"
+                                android:layout_below="@id/MYBalance"
                                 android:layout_marginBottom="24dp"
                                 android:background="@drawable/gradient"
                                 android:backgroundTint="@color/colorAccent"
@@ -89,7 +88,7 @@
                                 android:id="@+id/transfer_money_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/price"
+                                android:layout_below="@id/MYBalance"
                                 android:layout_marginStart="16dp"
                                 android:layout_toEndOf="@id/wallet"
                                 android:background="@drawable/gradient"

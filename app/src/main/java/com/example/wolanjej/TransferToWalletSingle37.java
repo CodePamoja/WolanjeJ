@@ -26,10 +26,12 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     private String phoneNumber;
     private String sessionID;
     private String phoneName;
+    private String AGENTNO;
     private String phoneCompany;
     private String amount;
 
     public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
@@ -48,13 +50,16 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         Log.e("class Type className", className);
         if(className.equals("MainTransfer36")) {
             this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(MainTransfer36.EXTRA_AGENTNO);
         }else if(className.equals("TransferToWalletMultiple40")) {
             this.sessionID = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_AGENTNO);
         }else if (className.equals("SelectUserAdapter")){
             this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
             this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
             this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
+            this.AGENTNO = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_AGENTNO);
 
             EditText tvtext =  findViewById(R.id.walluserName);
             tvtext.setText(userName);
@@ -62,6 +67,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
             this.phoneNumber ="+"+ intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_PHONENUMBER);
             String userName = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_PHONENAME);
             this.sessionID = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_SESSION);
+            this.AGENTNO = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_AGENTNO);
             this.phoneName = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_PHONENAME);
             String sendAmount = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_AMOUNT);
             String sendMessage = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_MESSAGE);
@@ -95,6 +101,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
             Intent move = new Intent(this, TransferToWalletMultiple40.class);
             move.putExtra("Class","TransferToWalletSingle37");
             move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra(EXTRA_AGENTNO, AGENTNO);
             startActivity(move);
         }
 
@@ -118,6 +125,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
                         Log.e("set toolbar sess", sessionID);
                         movetoLogo.putExtra("Class","TransferToWalletSingle37");
                         movetoLogo.putExtra(EXTRA_SESSION, sessionID);
+                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
                         startActivity(movetoLogo);
                     }
                 }
@@ -129,6 +137,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         Intent move = new Intent(this, ContactsView.class);
         move.putExtra("Class","TransferToWalletSingle37");
         move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_CLASSTYPE, "wallet");
         startActivity(move);
     }
@@ -167,6 +176,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         move.putExtra(EXTRA_SESSION, sessionID);
         move.putExtra(EXTRA_PHONENAME, phoneName);
         move.putExtra(EXTRA_MESSAGE, message);
+        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);
