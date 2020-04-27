@@ -80,7 +80,7 @@
                                 android:text="@string/my_e_wallet" />
 
                             <Button
-                                android:id="@+id/transfer_money_button"
+                                android:id="@+id/transfer_money_button_hm2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/price_home_two"
