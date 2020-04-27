@@ -53,9 +53,9 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         Button viewall = (Button) findViewById(R.id.btn_view_all_home_two);
         viewall.setOnClickListener((View.OnClickListener) this);
 
-        Button transferMoney = (Button) findViewById(R.id.transfer_money_button_hm2);
+        /*Button transferMoney = (Button) findViewById(R.id.transfer_money_button_hm2);
         transferMoney.setOnClickListener((View.OnClickListener) this);
-
+*/
         MaterialCardView transfer101 = (MaterialCardView) findViewById(R.id.transfer101);
         transfer101.setOnClickListener((View.OnClickListener) this);
 
@@ -243,7 +243,7 @@ findViewById(R.id.loansholder).setVisibility(View.VISIBLE);
                 break;
             case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
             break;
-            case R.id.transfer_money_button_hm2: i = new Intent(this,MainTransfer36.class);startActivity(i);
+            case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);startActivity(i);
                 break;
             default:break;
         }
