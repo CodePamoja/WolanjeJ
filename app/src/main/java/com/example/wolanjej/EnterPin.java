@@ -199,7 +199,7 @@ public class EnterPin extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
                 numbers[0] = s.toString();
-                text1.setFocusable(false);
+               // text1.setFocusable(false);
                 text1.setClickable(false);
                 text2.requestFocus();
 
@@ -219,7 +219,7 @@ public class EnterPin extends AppCompatActivity {
 
 
                 numbers[1] =s.toString();
-                text2.setFocusable(false);
+                //text2.setFocusable(false);
                 text2.setClickable(false);
                 text3.requestFocus();
             }
@@ -237,7 +237,7 @@ public class EnterPin extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
                 numbers[2]=s.toString();
-                text3.setFocusable(false);
+                //text3.setFocusable(false);
                 text3.setClickable(false);
                 text4.requestFocus();
             }
@@ -255,7 +255,7 @@ public class EnterPin extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
                 numbers[3]=s.toString();
-                text4.setFocusable(false);
+                //text4.setFocusable(false);
                 text4.setClickable(false);
 //                Toast.makeText(EnterPin.this, ""+numbers[0]+""+numbers[1]+""+numbers[2]+""+numbers[3], Toast.LENGTH_SHORT).show();
 
@@ -371,32 +371,32 @@ public class EnterPin extends AppCompatActivity {
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Done!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded);
+            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
         }else if (className.equals("TransferToPhone50")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Done!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded);
+            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
         }else if(className.equals("TransferToBank44")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText(bankDetails);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpBankName)).setText(accNumber);
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Done!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded);
+            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
         }else if (className.equals("TopupOtherNumber")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Airtime Topped Up!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded);
+            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
         }else if (className.equals("Top_up")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("My Number");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Airtime Topped Up!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded);
+            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
         }
 
         ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {
@@ -412,7 +412,7 @@ public class EnterPin extends AppCompatActivity {
 
     public void showPopupFail() {
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.transfer_success_popup, (ViewGroup) findViewById(R.id.popup_element), false);
+        View popupView = inflater.inflate(R.layout.toast_popup, (ViewGroup) findViewById(R.id.toast_popup_layout), false);
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
@@ -427,14 +427,14 @@ public class EnterPin extends AppCompatActivity {
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
             ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-           ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded_2);
+           ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
         }else if (className.equals("TransferToPhone50")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
             ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded_2);
+            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
         }else if(className.equals("TransferToBank44")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
@@ -442,20 +442,20 @@ public class EnterPin extends AppCompatActivity {
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpBankName)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
             ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded_2);
+            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
         }else if (className.equals("TopupOtherNumber")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
             ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded_2);
+            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
         }else if (className.equals("Top_up")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
             ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
             ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.image)).setImageResource(R.mipmap.button_rounded_2);
+            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
         }
 
         ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {

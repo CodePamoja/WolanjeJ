@@ -121,18 +121,17 @@
                             android:background="@color/blue_grey" />
                     </LinearLayout>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_business"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
+                        android:layout_height="58dp"
                         android:layout_marginVertical="10dp"
                         android:backgroundTint="#120d0229"
                         android:text="Create a Business Account"
                         android:textColor="#8484a9"
                         android:textSize="14sp"
-                        app:strokeColor="#120d0229"
-                        app:strokeWidth="0dp"
                         android:onClick="createAccount"
+                        style="?android:attr/borderlessButtonStyle"
                         />
 
                 </LinearLayout>

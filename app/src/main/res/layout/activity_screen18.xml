@@ -5,6 +5,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
+    android:id="@+id/screen_16"
+    android:elevation="7dp"
+    android:visibility="gone"
     tools:context="com.example.wolanjej.Home">
 
 <ScrollView
@@ -12,12 +15,10 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/screen_16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:alpha="1"
-        android:visibility="gone"
         android:background="@drawable/splash2"
         android:orientation="vertical"
         android:paddingHorizontal="16dp">

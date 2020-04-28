@@ -12,30 +12,33 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import okhttp3.Response;
 
-public class Home extends AppCompatActivity implements View.OnClickListener{
+public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     Toolbar tb;
     DrawerLayout drawer;
-    Button transferMoney, viewall;
     private String sessionID;
     private String USERID;
     private String USERNAME;
@@ -49,11 +52,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     public static final String EXTRA_ID = "com.example.wolanjej.ID";
     public static final String EXTRA_USERNAME = "com.example.wolanjej.USERNAME";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
-
-    RecyclerView mRecyclerView;
-    MyAdapter myAdapter;
-
-    private MaterialCardView  transfer101, income_details101, wallet101, services101, exchange101, crypto101;
 
 
     @Override
@@ -88,37 +86,37 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         }
 
 //     this  belongs to  screen 18
-        mRecyclerView = findViewById(R.id.recycler_view);
+        RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        myAdapter = new MyAdapter(this,getMylist());
+        MyAdapter myAdapter = new MyAdapter(this, getMylist());
         mRecyclerView.setAdapter(myAdapter);
 
-        materialCardView = findViewById(R.id.cardBuyAirtime);
+        MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
         materialCardView.setOnClickListener(this);
 
-        viewall = (Button)findViewById(R.id.btnviewall);
+        Button viewall = (Button) findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
 
-        transferMoney = (Button)findViewById(R.id.transfer_money_button);
+        Button transferMoney = (Button) findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
 
-        transfer101 = (MaterialCardView) findViewById(R.id.transfer101);
+        MaterialCardView transfer101 = (MaterialCardView) findViewById(R.id.transfer101);
         transfer101.setOnClickListener(this);
 
-        income_details101 = (MaterialCardView) findViewById(R.id.income_details101);
+        MaterialCardView income_details101 = (MaterialCardView) findViewById(R.id.income_details101);
         income_details101.setOnClickListener(this);
 
-        wallet101 = (MaterialCardView) findViewById(R.id.wallet101);
+        MaterialCardView wallet101 = (MaterialCardView) findViewById(R.id.wallet101);
         wallet101.setOnClickListener(this);
 
-        services101 = (MaterialCardView) findViewById(R.id.services101);
+        MaterialCardView services101 = (MaterialCardView) findViewById(R.id.services101);
         services101.setOnClickListener(this);
 
-        exchange101 = (MaterialCardView) findViewById(R.id.exchange101);
+        MaterialCardView exchange101 = (MaterialCardView) findViewById(R.id.exchange101);
         exchange101.setOnClickListener(this);
 
-        crypto101 = (MaterialCardView) findViewById(R.id.crypto101);
+        MaterialCardView crypto101 = (MaterialCardView) findViewById(R.id.crypto101);
         crypto101.setOnClickListener(this);
 
 
@@ -180,7 +178,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 }
         );
 
-        setToolBar();
         findViewById(R.id.mytopupcard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,6 +188,47 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
             }
         });
+        ViewPager2 vp2 = findViewById(R.id.viewpager2);
+        vp2.setAdapter(new LoansAdapter(this));
+        TabLayout tb = findViewById(R.id.tabs);
+        TabLayoutMediator tbmed = new TabLayoutMediator(tb, vp2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                switch (position){
+                    case 0:
+                        tab.setText("History");
+                        break;
+
+                    case 1:
+                        tab.setText("Paid");
+                        break;
+                    case 2:
+                        tab.setText("Failed");
+                        break;
+                }
+            }
+        });
+        tbmed.attach();
+
+
+        findViewById(R.id.loanscard).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.loansholder).setVisibility(View.VISIBLE);
+                findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+
+            }
+        });
+
+        findViewById(R.id.btnviewall).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
+            }
+        });
+
+        setToolBar();
     }
 
     public void close_screen18(View view) {
@@ -343,7 +381,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         Intent i;
-        Log.e("sessionID home activity",sessionID);
+//        Log.e("sessionID home activity",sessionID);
 
         switch (v.getId()){
             case R.id.income_details101: i = new Intent(this, IncomeDetails.class);startActivity(i);
@@ -363,19 +401,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 i.putExtra(EXTRA_AGENTNO, AGENTNO);
                 i.putExtra("Class","Home");startActivity(i);
             break;
+            case R.id.services: i = new Intent(this,Home.class);startActivity(i);
+            break;
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
                 i.putExtra(EXTRA_SESSION, sessionID);i.putExtra("Class","Home");startActivity(i);
                 break;
             default:break;
         }
 
-
-
-        switch (v.getId()){
-            case R.id.services: i = new Intent(this,Home.class);startActivity(i); break;
-            default:break;
-
-    }
 }
 
 
@@ -477,6 +510,41 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
         findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
         findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
+
+    }
+    public void displayPopUp(View view) {
+        PopupMenu popup = new PopupMenu(this,view);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.pop_up_menu_for_loan_reason);
+        popup.show();
+
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if(item.getItemId() == R.id.others){
+            findViewById(R.id.specific).setVisibility(View.VISIBLE);
+            return true;
+        }else{
+            return true;
+        }
+    }
+
+    public void openloanspop(View view) {
+        findViewById(R.id.loansholder).setVisibility(View.INVISIBLE);
+        findViewById(R.id.Loansbox).setVisibility(View.VISIBLE);
+    }
+
+    public void movotopin(View view) {
+        findViewById(R.id.Loansbox).setVisibility(View.INVISIBLE);
+        findViewById(R.id.loans2).setVisibility(View.VISIBLE);
+
+
+    }
+
+    public void close_poup_loans(View view) {
+        findViewById(R.id.Loansbox).setVisibility(View.INVISIBLE);
+        findViewById(R.id.bottom_navigation_home_two).setVisibility(View.VISIBLE);
 
     }
 }

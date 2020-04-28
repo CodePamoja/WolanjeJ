@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/emergency"
+        android:title="Emergency"/>
+    <item
+        android:id="@+id/medical"
+        android:title="Medical"/>
+    <item
+        android:id="@+id/schoolfees"
+        android:title="School fees"/>
+    <item
+        android:id="@+id/wokingcapital"
+        android:title="Working capital"/>
+    <item
+        android:id="@+id/startups"
+        android:title="Starups"/>
+    <item
+        android:id="@+id/others"
+        android:title="Other"/>
+</menu>

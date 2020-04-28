@@ -4,12 +4,14 @@
         android:id="@+id/my_wallet_home_two"
         android:icon="@mipmap/transfer_wallet"
         android:title="My wallet"
+        android:onClick="moveMyWallet"
         android:enabled="true" />
 
     <item
         android:id="@+id/payments_home_two"
         android:icon="@mipmap/hand"
         android:title="Payments"
+        android:onClick="moveBillManagerPayment"
         android:enabled="true" />
 
 
@@ -17,11 +19,13 @@
         android:id="@+id/billers_home_two"
         android:icon="@mipmap/combined_shape"
         android:title="Billers"
+        android:onClick="moveBillManagerBiller"
         android:enabled="true" />
 
     <item
         android:id="@+id/settings_home_two"
         android:icon="@mipmap/settings"
         android:title="Settings"
-        android:enabled="true" />
+        android:enabled="true"
+        android:onClick="movetoSettings48"/>
 </menu>

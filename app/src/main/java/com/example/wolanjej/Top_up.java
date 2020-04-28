@@ -25,7 +25,6 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
     private EditText text;
     private Spinner spin;
 
-
     public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
@@ -45,7 +44,7 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
-        if(className.equals("Home")) {
+        if (className.equals("Home")) {
             this.sessionID = intentExtra.getStringExtra(Home.EXTRA_SESSION);
             this.AGENTNO = intentExtra.getStringExtra(Home.EXTRA_AGENTNO);
         }else if (className.equals("TopupOtherNumber")){
@@ -53,11 +52,11 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
             this.AGENTNO = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_AGENTNO);
         }
 
-        spin = (Spinner) this.findViewById(R.id.select_number);
+        Spinner spin = (Spinner) this.findViewById(R.id.select_number);
         spin.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the country list
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,selectNumber);
+        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, selectNumber);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
@@ -78,11 +77,12 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
 //    }
 //}
 
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Log.e("session before contact", sessionID);
-        if ("Other Number".equals(selectNumber[position])){
-            Toast.makeText(getApplicationContext(),selectNumber[position] , Toast.LENGTH_LONG).show();
+        if ("Other Number".equals(selectNumber[position])) {
+            Toast.makeText(getApplicationContext(), selectNumber[position], Toast.LENGTH_LONG).show();
             Intent move = new Intent(this, TopupOtherNumber.class);
             move.putExtra("Class","Top_up");
             move.putExtra(EXTRA_AGENTNO, AGENTNO);
@@ -97,7 +97,7 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
     }
 
     public void moveToBuy(View view) {
-        text = findViewById(R.id.amount_top_up);
+        EditText text = findViewById(R.id.amount_top_up);
         String amount = text.getText().toString();
         int x =Integer.parseInt(amount);
         if (amount!=null){
@@ -107,12 +107,12 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
                 }else{
                     Toast.makeText(getApplicationContext(),"The Amount is above 70000" , Toast.LENGTH_LONG).show();
                 }
-            }else{
-                Toast.makeText(getApplicationContext(),"The Amount is below 100" , Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "The Amount is below 100", Toast.LENGTH_LONG).show();
             }
 
-        }else{
-            Toast.makeText(getApplicationContext(),"Enter Amount" , Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Enter Amount", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -199,7 +199,7 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
 
     public void movetoPin(String phone,String amount) {
         Intent move = new Intent(this, EnterPin.class);
-        move.putExtra("Class","Top_up");
+        move.putExtra("Class", "Top_up");
         move.putExtra(EXTRA_SESSION, sessionID);
         move.putExtra(EXTRA_PROVIDER, "safaricom");
         move.putExtra(EXTRA_PHONENUMBER, phone);
@@ -209,36 +209,35 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
 
     public void addAmount1(View view) {
 
-        TextView tvAdd =  findViewById(R.id.amount_display01);
+        TextView tvAdd = findViewById(R.id.amount_display01);
         String value = (String) tvAdd.getText();
 
-        EditText tvtext =  findViewById(R.id.amount_top_up);
+        EditText tvtext = findViewById(R.id.amount_top_up);
         tvtext.setText(value);
     }
 
     public void addAmount2(View view) {
-        TextView tvAdd =  findViewById(R.id.amount_display02);
+        TextView tvAdd = findViewById(R.id.amount_display02);
         String value = (String) tvAdd.getText();
 
-        EditText tvtext =  findViewById(R.id.amount_top_up);
+        EditText tvtext = findViewById(R.id.amount_top_up);
         tvtext.setText(value);
     }
 
     public void addAmount3(View view) {
-        TextView tvAdd =  findViewById(R.id.amount_display03);
+        TextView tvAdd = findViewById(R.id.amount_display03);
         String value = (String) tvAdd.getText();
 
-        EditText tvtext =  findViewById(R.id.amount_top_up);
+        EditText tvtext = findViewById(R.id.amount_top_up);
         tvtext.setText(value);
     }
 
     public void addAmount4(View view) {
-        TextView tvAdd =  findViewById(R.id.amount_display04);
+        TextView tvAdd = findViewById(R.id.amount_display04);
         String value = (String) tvAdd.getText();
 
-        EditText tvtext =  findViewById(R.id.amount_top_up);
+        EditText tvtext = findViewById(R.id.amount_top_up);
         tvtext.setText(value);
     }
-
 
 }
