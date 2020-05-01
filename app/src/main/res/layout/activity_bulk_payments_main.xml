@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BulkPaymentsMain"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:background="@color/color_Dark_Blue"
+        android:orientation="vertical">
+        <include layout="@layout/toolbarwithout2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="#ffffff"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:text="Bulk Payment"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/payrollcard"
+            android:layout_width="98dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="26dp"
+            android:backgroundTint="#912f91"
+            android:background="@drawable/curvedsplash"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/taxi"/>
+            <TextView
+                style="@style/TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:text="Payroll"
+                />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/Airtime_card"
+            android:layout_width="98dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="#cf345a"
+            android:background="@drawable/curvedsplash">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/phone_g"/>
+
+            <TextView
+                style="@style/TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_vertical"
+                android:text="Buy Airtime"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/PayBillCard"
+            android:layout_width="98dp"
+            android:layout_height="114dp"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="#479e3e"
+            android:background="@drawable/curvedsplash"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/bitcoin3"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:lineSpacingExtra="2sp"
+                android:gravity="center_horizontal"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_vertical"
+                android:text="Pay Bill"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</LinearLayout>

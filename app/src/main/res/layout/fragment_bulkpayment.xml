@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <View
+        android:visibility="invisible"
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorRed"/>
+
+    <com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_baseline_attach_file_24"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="25dp"
+                android:backgroundTint="#f8f8fa"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#9c7bfc"
+                    android:lineSpacingExtra="7sp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Upload CSV file"
+                    />
+
+                <TextView
+                    android:id="@+id/txtMerchantsFile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/blue_grey"
+                    android:lineSpacingExtra="12sp"
+                    android:layout_marginStart="10dp"
+                    android:text="MarchPayments.csv"
+                    />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/cancelCsvUpload"
+                android:visibility="gone"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="150dp"
+                android:src="@drawable/align_top_24"
+                android:background="@mipmap/group_x"/>
+
+            <ImageView
+                android:id="@+id/uploadCsvFile"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="150dp"
+                android:src="@drawable/align_top_24"
+                android:background="@drawable/backgroundblue"/>
+        </LinearLayout>
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+    <View
+        android:visibility="invisible"
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorRed"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/txt_amount_fb"
+            android:layout_gravity="center"
+            android:layout_width="327dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:hint="KES"
+            android:textColorHint="#3ca8b3"
+            android:inputType="number"
+            android:maxLength="9"
+            android:background="@drawable/textviewborder1"
+            android:padding="5dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="327dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:backgroundTint="#eaecec"
+                android:text="@string/Continue"
+                android:textColor="#8a7c7c" />
+
+            <Button
+                android:visibility="invisible"
+                android:layout_width="327dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:text="Processing"
+                android:backgroundTint="#fb6d3a"
+                android:textColor="@color/colorWhite" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
