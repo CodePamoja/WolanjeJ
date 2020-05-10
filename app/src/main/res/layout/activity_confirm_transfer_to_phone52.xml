@@ -100,7 +100,6 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
-                            android:text="User 01"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorMidnight"
                             android:textSize="18sp"
@@ -172,6 +171,7 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/senderMessage"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"

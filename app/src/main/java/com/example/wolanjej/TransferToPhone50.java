@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,18 +31,12 @@ public class TransferToPhone50 extends AppCompatActivity {
     private Button button;
     private EditText text;
     private String phoneNumber = "phone1";
-    private String sessionID;
     private String phoneName;
-    private String AGENTNO;
     private String phoneCompany;
-    private String amount;
+    private SharedPreferences pref;
 
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
-    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
-    public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     @Override
@@ -54,25 +49,23 @@ public class TransferToPhone50 extends AppCompatActivity {
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         if(className.equals("MainTransfer36")) {
-            this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(MainTransfer36.EXTRA_AGENTNO);
         }else if(className.equals("ContactsView")) {
-            this.sessionID = intentExtra.getStringExtra(ContactsView.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(ContactsView.EXTRA_AGENTNO);
         }else if (className.equals("SelectUserAdapter")){
             String CheckphoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
-            this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
             this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-            this.AGENTNO = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_AGENTNO);
 
             EditText tvtext =  findViewById(R.id.transContactAmount);
             tvtext.setText(CheckphoneNumber);
         }else if (className.equals("ConfirmTransferToPhone52")){
-            String CheckphoneNumber = "+"+intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENUMBER);
-            this.sessionID = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AGENTNO);
-            this.phoneName = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENAME);
-            String sendAmount = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AMOUNT);
+
+            //SharedPreferences values for TransferToPhone52 activity class eg token
+            pref=getApplication().getSharedPreferences("ConfirmTransferToPhone52", MODE_PRIVATE);
+            this.phoneNumber =  pref.getString("phone", "");
+            this.phoneName =  pref.getString("phoneName", "");
+            String sendAmount =  pref.getString("amount", "");
+            this.phoneCompany =  pref.getString("phoneCompany", "");
+
+            String CheckphoneNumber = "+"+ pref.getString("phone", "");
 
             EditText tvtext =  findViewById(R.id.transContactAmount);
             tvtext.setText(CheckphoneNumber);
@@ -93,9 +86,6 @@ public class TransferToPhone50 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.e("set toolbar sess", sessionID);
-                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
-                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
                         movetoLogo.putExtra("Class","TransferToPhone50");
                         startActivity(movetoLogo);
                     }
@@ -108,8 +98,6 @@ public class TransferToPhone50 extends AppCompatActivity {
 //        Log.e("session before contact", sessionID);
         Intent move = new Intent(this, ContactsView.class);
         move.putExtra("Class","TransferToPhone50");
-        move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_CLASSTYPE, "phone");
         startActivity(move);
     }
@@ -123,7 +111,7 @@ public class TransferToPhone50 extends AppCompatActivity {
 
         Log.e("TAG phone number check", "button pressed to transfer money");
         String phonenumber = changePhoneNo(phone, view);
-        Log.e("session after contact", sessionID);
+//        Log.e("session after contact", sessionID);
         Log.e("TAG phone number last", phonenumber);
         if(phonenumber!="Fasle"){
             valuesConferm(phonenumber, amount);
@@ -131,14 +119,24 @@ public class TransferToPhone50 extends AppCompatActivity {
     }
 
     public void valuesConferm(String phone, String amount){
-        Log.e("session before contact", sessionID);
+//        Log.e("session before contact", sessionID);
+
+        //SharedPreferences values for login eg token
+//        pref = getApplication().getSharedPreferences("ConfirmTransferToPhone52", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = pref.edit();
+
+        //adding values to SharedPreferences
+        // make sure that in the getsharedPreferences the key value should be the same as the intent putextra class value
+
+        pref = getApplicationContext().getSharedPreferences("ConfirmTransferToPhone52", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("phoneCompany", phoneCompany);
+        editor.putString("phoneName", phoneName);
+        editor.putString("phone", phone);
+        editor.putString("amount", amount);
+        editor.commit();
+
         Intent move = new Intent(this, ConfirmTransferToPhone52.class);
-        move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra(EXTRA_PROVIDER, phoneCompany);
-        move.putExtra(EXTRA_PHONENAME, phoneName);
-        move.putExtra(EXTRA_AGENTNO, AGENTNO);
-        move.putExtra(EXTRA_PHONENUMBER, phone);
-        move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);
     }
 

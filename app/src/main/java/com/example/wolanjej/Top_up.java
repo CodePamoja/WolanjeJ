@@ -2,6 +2,7 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,39 +19,24 @@ import java.util.regex.Pattern;
 
 public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSelectedListener  {
     String[] selectNumber = {"My Number","Other Number"};
-    private Button button;
-    private String sessionID;
     private String phoneCompany;
     private String AGENTNO;
-    private EditText text;
-    private Spinner spin;
 
-    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
+    private SharedPreferences pref;
+
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
-    public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_up);
-
-        // Get the Intent that started this activity and extract the string
-        Intent intentExtra = getIntent();
-        String className = getIntent().getStringExtra("Class");
-        Log.e("class Type className", className);
-        if (className.equals("Home")) {
-            this.sessionID = intentExtra.getStringExtra(Home.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(Home.EXTRA_AGENTNO);
-        }else if (className.equals("TopupOtherNumber")){
-            this.sessionID = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_AGENTNO);
-        }
+        //SharedPreferences values for login eg token, user registered number
+        pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
+//        this.sessionID = pref.getString("session_token", "");
+        this.AGENTNO =  pref.getString("agentno", "");
 
         Spinner spin = (Spinner) this.findViewById(R.id.select_number);
         spin.setOnItemSelectedListener(this);
@@ -61,32 +47,13 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
 
-//        Button button = findViewById(R.id.btn_continue_top_up);
-//        button.setOnClickListener((View.OnClickListener) this);
-
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        Intent intent;
-//        switch (v.getId()){
-//            case R.id.income_details101: intent = new Intent(this, IncomeDetails.class);startActivity(intent);
-//            break;
-//            case R.id.btn_continue_top_up:intent = new Intent(this,TopupOtherNumber.class);startActivity(intent);
-//            default:break;
-//    }
-//}
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.e("session before contact", sessionID);
         if ("Other Number".equals(selectNumber[position])) {
-            Toast.makeText(getApplicationContext(), selectNumber[position], Toast.LENGTH_LONG).show();
             Intent move = new Intent(this, TopupOtherNumber.class);
             move.putExtra("Class","Top_up");
-            move.putExtra(EXTRA_AGENTNO, AGENTNO);
-            move.putExtra(EXTRA_SESSION, sessionID);
             startActivity(move);
         }
     }
@@ -101,14 +68,17 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
         String amount = text.getText().toString();
         int x =Integer.parseInt(amount);
         if (amount!=null){
-            if (x>=100){
+            if (x>=50){
                 if (x<=70000){
-                    movetoPin(AGENTNO, amount);
+                    String phoneNumber = checkPhoneNo("+"+AGENTNO);
+                    if(phoneNumber!="Fasle"){
+                        movetoPin(AGENTNO, amount, phoneCompany);
+                    }
                 }else{
                     Toast.makeText(getApplicationContext(),"The Amount is above 70000" , Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(getApplicationContext(), "The Amount is below 100", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "The Amount is below 50", Toast.LENGTH_LONG).show();
             }
 
         } else {
@@ -117,7 +87,7 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
 
     }
 
-    public String changePhoneNo(String inputPhone, View view){
+    public String checkPhoneNo(String inputPhone){
         String validPhoneNo = "Fasle";
         String safaricom = "^(?:254|\\+254|0)?(7(?:(?:[129][0-9])|(?:0[0-9])|(?:6[8-9])|(?:5[7-9])|(?:4[5-6])|(?:4[8])|(4[0-3]))[0-9]{6})$";
         String telkom = "^(?:254|\\+254|0)?(7(?:(?:[7][0-9]))[0-9]{6})$";
@@ -197,11 +167,10 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
         return validPhoneNo;
     }
 
-    public void movetoPin(String phone,String amount) {
+    public void movetoPin(String phone,String amount, String provider) {
         Intent move = new Intent(this, EnterPin.class);
         move.putExtra("Class", "Top_up");
-        move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra(EXTRA_PROVIDER, "safaricom");
+        move.putExtra(EXTRA_PROVIDER, provider);
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);

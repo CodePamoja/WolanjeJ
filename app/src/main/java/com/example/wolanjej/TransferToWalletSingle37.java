@@ -49,17 +49,13 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         if(className.equals("MainTransfer36")) {
-            this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(MainTransfer36.EXTRA_AGENTNO);
         }else if(className.equals("TransferToWalletMultiple40")) {
             this.sessionID = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_SESSION);
             this.AGENTNO = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_AGENTNO);
         }else if (className.equals("SelectUserAdapter")){
             this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-            this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
             this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-            this.AGENTNO = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_AGENTNO);
 
             EditText tvtext =  findViewById(R.id.walluserName);
             tvtext.setText(userName);

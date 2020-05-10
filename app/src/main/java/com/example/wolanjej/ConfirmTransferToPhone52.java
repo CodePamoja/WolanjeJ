@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,8 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
     private String phoneProvider;
     private TextView tvtext;
     private String AGENTNO;
+    private String userName;
+    private SharedPreferences pref;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -37,19 +40,28 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_transfer_to_phone52);
         setToolBar();
 
-        Intent move = getIntent();
-        this.phoneNumber = move.getStringExtra(TransferToPhone50.EXTRA_PHONENUMBER);
-        this.sessionID = move.getStringExtra(TransferToPhone50.EXTRA_SESSION);
-        this.phoneName = move.getStringExtra(TransferToPhone50.EXTRA_PHONENAME);
-        this.amount = move.getStringExtra(TransferToPhone50.EXTRA_AMOUNT);
-        this.AGENTNO = move.getStringExtra(TransferToPhone50.EXTRA_AGENTNO);
-        this.phoneProvider = move.getStringExtra(TransferToPhone50.EXTRA_PROVIDER);
+        //SharedPreferences values for login activity class eg token
+        pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
+        this.userName= pref.getString("user_name", "");
+
+        //SharedPreferences values for TransferToPhone52 activity class eg token
+        pref=getApplication().getSharedPreferences("ConfirmTransferToPhone52", MODE_PRIVATE);
+        this.phoneNumber =  pref.getString("phone", "");
+        this.phoneName =  pref.getString("phoneName", "");
+        this.amount =  pref.getString("amount", "");
+        this.phoneProvider =  pref.getString("phoneCompany", "");
 
         tvtext =  findViewById(R.id.PName);
         tvtext.setText(phoneName);
 
+        tvtext =  findViewById(R.id.senderName);
+        tvtext.setText(userName);
+
         tvtext =  findViewById(R.id.transDateTime);
         tvtext.setText(dateTime());
+
+        tvtext =  findViewById(R.id.senderMessage);
+        tvtext.setText("Thank You Test");
 
         tvtext =  findViewById(R.id.PNumber);
         tvtext.setText("+"+phoneNumber);
@@ -82,11 +94,6 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         movetoLogo.putExtra("Class","ConfirmTransferToPhone52");
-                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
-                        movetoLogo.putExtra(EXTRA_PHONENAME, phoneName);
-                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
-                        movetoLogo.putExtra(EXTRA_PHONENUMBER, phoneNumber);
-                        movetoLogo.putExtra(EXTRA_AMOUNT, amount);
                         startActivity(movetoLogo);
                     }
                 }
@@ -96,12 +103,12 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
     public void movetoPin() {
         Intent move = new Intent(this, EnterPin.class);
         move.putExtra("Class","TransferToPhone50");
-        move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra(EXTRA_AGENTNO, AGENTNO);
-        move.putExtra(EXTRA_PROVIDER, phoneProvider);
-        move.putExtra(EXTRA_PHONENAME, phoneName);
-        move.putExtra(EXTRA_PHONENUMBER, phoneNumber);
-        move.putExtra(EXTRA_AMOUNT, amount);
+//        move.putExtra(EXTRA_SESSION, sessionID);
+//        move.putExtra(EXTRA_AGENTNO, AGENTNO);
+//        move.putExtra(EXTRA_PROVIDER, phoneProvider);
+//        move.putExtra(EXTRA_PHONENAME, phoneName);
+//        move.putExtra(EXTRA_PHONENUMBER, phoneNumber);
+//        move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);
     }
 

@@ -29,25 +29,17 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
     List<SelectUser> mainInfo;
     private ArrayList<SelectUser> arraylist;
     Context context;
-    String phoneNumber = "phone1";
+    String phoneNumber;
     String phoneName;
-    private  String EXTRANumber = "phone1";
-    private String sessionID;
     private String classType;
-    private String AGENTNO;
-    JSONObject jPhoneDetails;
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
     public static final String EXTRA_NAME = "com.example.wolanjej.NAME";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
 
-    public SelectUserAdapter(Context context, List<SelectUser> mainInfo, String sessionID, String classType, String agentno) {
+    public SelectUserAdapter(Context context, List<SelectUser> mainInfo, String classType) {
         this.mainInfo = mainInfo;
         this.classType = classType;
         this.context = context;
-        this.AGENTNO = agentno;
-        this.sessionID = sessionID;
         this.arraylist = new ArrayList<>();
         this.arraylist.addAll(mainInfo);
     }
@@ -70,18 +62,8 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
                 @Override
                 public void onClick(View v) {
                     final SelectUser selectUser = mainInfo.get(getAdapterPosition());
-//                    Toast.makeText(itemView.getContext(), "Hi, I'm " + selectUser.getName(), Toast.LENGTH_SHORT).show();
-                    phoneNumber = selectUser.getPhone();
                     phoneName = selectUser.getName();
-                    Toast.makeText(itemView.getContext(), "Hi,  " + classType, Toast.LENGTH_SHORT).show();
-//                    jPhoneDetails = new JSONObject();
-//                    try {
-//                        jPhoneDetails.put("phone", phoneNumber);
-//                        jPhoneDetails.put("name", phoneName);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-                    setEXTRANumber(phoneNumber);
+                    phoneNumber = selectUser.getPhone();
                     moversCheck(classType);
 
 
@@ -91,75 +73,46 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
 
     }
 
-    public void setEXTRANumber(String name) {
-        this.EXTRANumber = name;
-    }
-
-    public String getEXTRANumber() {
-        return EXTRA_PHONE;
-    }
-
     public void moversCheck(String name){
-        Log.e("session at contact", name);
         if(name.equals("phone")){
-            Log.e("phone move", sessionID);
-            movebackTotrasfer();
+            movebackToPhone();
         }else if (name.equals("wallet")){
-            Log.e("wallet move", sessionID);
             movebackTowalet();
         }else if (name.equals("bank")){
-            Log.e("bank move", sessionID);
             movebackToBank();
         }else if (name.equals("TopUpNumber")){
-            Log.e("Top Up Number move", sessionID);
             movebackToTopUpNumber();
         }
     }
-    public void movebackTotrasfer(){
-        Log.e("session move trasfer", sessionID);
-//        Log.e("json at contact", jPhoneDetails.toString());
+    public void movebackToPhone(){
         Intent move = new Intent(context, TransferToPhone50.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
-        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONE, phoneNumber);
-        move.putExtra(EXTRA_SESSION, sessionID);
         context.startActivity(move);
     }
 
     public void movebackTowalet(){
-        Log.e("session at contact", sessionID);
-//        Log.e("json at contact", jPhoneDetails.toString());
         Intent move = new Intent(context, TransferToWalletSingle37.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
-        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONE, phoneNumber);
-        move.putExtra(EXTRA_SESSION, sessionID);
         context.startActivity(move);
     }
 
     public void movebackToBank(){
-        Log.e("session at contact", sessionID);
-//        Log.e("json at contact", jPhoneDetails.toString());
         Intent move = new Intent(context, TransferToBank44.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
-        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONE, phoneNumber);
-        move.putExtra(EXTRA_SESSION, sessionID);
         context.startActivity(move);
     }
 
     public void movebackToTopUpNumber(){
-        Log.e("session at contact", sessionID);
-//        Log.e("json at contact", jPhoneDetails.toString());
         Intent move = new Intent(context, TopupOtherNumber.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
-        move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONE, phoneNumber);
-        move.putExtra(EXTRA_SESSION, sessionID);
         context.startActivity(move);
     }
 
@@ -174,9 +127,9 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
     public void onBindViewHolder(MyContactListViewHolder holder, int position) {
         String imagepath = mainInfo.get(position).getImagepath();
         if (imagepath == null) {
-            Picasso.with(context).load(R.drawable.image).into(holder.imageViewUserImage);
+            Picasso.get().load(R.drawable.image).into(holder.imageViewUserImage);
         }else {
-            Picasso.with(context).load(imagepath).into(holder.imageViewUserImage);
+            Picasso.get().load(imagepath).into(holder.imageViewUserImage);
         }
         holder.textViewShowName.setText(mainInfo.get(position).getName());
         holder.textViewPhoneNumber.setText(mainInfo.get(position).getPhone());

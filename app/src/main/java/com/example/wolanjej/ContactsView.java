@@ -30,39 +30,28 @@ public class ContactsView extends AppCompatActivity {
     RecyclerView recyclerView;
     SearchView search;
 
-    private String sessionID;
-    private String classType;
-    private String AGENTNO;
 
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
+    private String classType;
+    private  String className;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts_view);
 
-        setToolBar();
+//        setToolBar();
 
         Intent intentExtra = getIntent();
-        String className = getIntent().getStringExtra("Class");
+        className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         if(className.equals("TransferToPhone50")) {
-            this.sessionID = intentExtra.getStringExtra(TransferToPhone50.EXTRA_SESSION);
             this.classType = intentExtra.getStringExtra(TransferToPhone50.EXTRA_CLASSTYPE);
-            this.AGENTNO = intentExtra.getStringExtra(TransferToPhone50.EXTRA_AGENTNO);
         }else if (className.equals("TransferToWalletSingle37")){
-            this.sessionID = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_SESSION);
             this.classType = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_CLASSTYPE);
-            this.AGENTNO = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_AGENTNO);
         }else if (className.equals("TransferToBank44")){
-            this.sessionID = intentExtra.getStringExtra(TransferToBank44.EXTRA_SESSION);
             this.classType = intentExtra.getStringExtra(TransferToBank44.EXTRA_CLASSTYPE);
-            this.AGENTNO = intentExtra.getStringExtra(TransferToBank44.EXTRA_AGENTNO);
-        }else if (className.equals("TopupOtherNumber")){
-            this.sessionID = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_SESSION);
+        }else if (className.equals("TopUpOtherNumber")){
             this.classType = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_CLASSTYPE);
-            this.AGENTNO = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_AGENTNO);
         }
 
 
@@ -89,17 +78,25 @@ public class ContactsView extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,TransferToPhone50.class);
+
+
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.e("set toolbar sess", sessionID);
-                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
-                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
-                        movetoLogo.putExtra("Class","ContactsView");
-                        startActivity(movetoLogo);
-                        startActivity(movetoLogo);
+                        Intent movetoLogo = null;
+                        if(className.equals("TransferToPhone50")) {
+                            movetoLogo = new Intent(ContactsView.this,TransferToPhone50.class);
+                        }else if (className.equals("TransferToWalletSingle37")){
+                            movetoLogo = new Intent(ContactsView.this,TransferToWalletSingle37.class);
+                        }else if (className.equals("TransferToBank44")){
+                            movetoLogo = new Intent(ContactsView.this,TransferToBank44.class);
+                        }else if (className.equals("TopUpOtherNumber")){
+                            movetoLogo = new Intent(ContactsView.this,TopupOtherNumber.class);
+                        }
+                        final Intent finalMovetoLogo = movetoLogo;
+                        finalMovetoLogo.putExtra("Class","ContactsView");
+                        startActivity(finalMovetoLogo);
                     }
                 }
         );
@@ -121,7 +118,7 @@ public class ContactsView extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<SelectUser> selectUsers) {
             if (selectUsers.isEmpty()==false){
-                suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers, sessionID, classType, AGENTNO);
+                suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers, classType);
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(ContactsView.this));
                 recyclerView.setAdapter(suAdapter);
