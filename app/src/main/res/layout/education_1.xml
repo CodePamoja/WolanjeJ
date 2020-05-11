@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    android:visibility="gone"
+    android:id="@+id/edu1"
+    android:paddingTop="14dp">
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/small_left"
+        android:background="@color/colorWhite"
+android:layout_marginBottom="10dp"
+        android:onClick="Backtoeducation"
+        android:id="@+id/imageback"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:layout_marginTop="9dp"
+                android:textColor="@color/colorMidnight"
+                android:text="Tution Fee"
+                android:id="@+id/headertext"
+                />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="2dp"
+                android:id="@+id/cardCornfirm"
+                android:visibility="gone"
+                app:cardElevation="8dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    >
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:textColor="#18181c"
+                        android:layout_gravity="center"
+                        android:text="Pay Tuition Fee"
+                        android:layout_marginTop="24dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/blue_grey"
+                        android:layout_gravity="center"
+                        android:text="9:00 PM   |  10/Jan/2020"
+                        android:layout_marginBottom="22dp"
+                        android:layout_marginTop="4dp"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/blue_grey"
+                        android:letterSpacing="0.08"
+                        android:text="DETAILS"
+                        android:layout_marginVertical="19dp"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_alignParentStart="true"
+                            android:textColor="@color/blue_grey"
+                            android:text="School"
+                            android:id="@+id/sch"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorMidnight"
+                            android:layout_alignParentEnd="true"
+                            android:text="Kiota School"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_alignParentStart="true"
+                            android:textColor="@color/blue_grey"
+                            android:text="Fee Details"
+                            android:layout_below="@id/sch"
+                            android:id="@+id/fee"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/colorMidnight"
+                            android:gravity="end"
+                            android:text="Pay for trip"
+                            android:layout_below="@id/sch"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_alignParentStart="true"
+                            android:textColor="@color/blue_grey"
+                            android:text="Student’s name"
+                            android:layout_below="@id/fee"
+                            android:id="@+id/stuname"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorMidnight"
+                            android:layout_alignParentEnd="true"
+                            android:text="John Doe Jnr"
+                            android:layout_below="@id/fee"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_alignParentStart="true"
+                            android:textColor="@color/blue_grey"
+                            android:text="Student’s ID"
+                            android:layout_below="@id/stuname"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorMidnight"
+                            android:layout_alignParentEnd="true"
+                            android:text="A0RT001"
+                            android:layout_below="@id/stuname"
+                            android:layout_marginBottom="32dp"
+
+                            />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@android:color/darker_gray"
+                            android:layout_alignParentBottom="true"
+                            />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="40dp"
+
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_alignParentStart="true"
+                            android:textColor="@color/blue_grey"
+                            android:text="AMOUNT"
+                            android:layout_marginTop="32dp"
+
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="#3ca8b3"
+                            android:text="KES 50,000"
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="2dp"
+                android:id="@+id/cardtutionfee"
+                app:cardElevation="8dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorMidnight"
+                        android:text="Pay Tuition Fee"
+                        android:layout_marginVertical="20dp"
+                        />
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:text="Select County"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="#e7e7e7" style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textColor="@color/colorMidnight"
+                        android:onClick="displayPopUp1"
+                        android:textAlignment="textStart"
+                        android:backgroundTint="@android:color/transparent"
+android:drawableEnd="@drawable/ic_dropdown_arrow"
+
+                        />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:text="Select School"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="#e7e7e7" style="@style/Widget.MaterialComponents.Button.TextButton"
+
+                        android:textColor="@color/colorMidnight"
+                        android:onClick="displayPopUp1"
+                        android:textAlignment="textStart"
+                        android:backgroundTint="@android:color/transparent"
+                        android:drawableEnd="@drawable/ic_dropdown_arrow"
+                        />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:text="Fee Details"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="#e7e7e7" style="@style/Widget.MaterialComponents.Button.TextButton"
+
+                        android:textColor="@color/colorMidnight"
+                        android:onClick="displayPopUp1"
+                        android:textAlignment="textStart"
+                        android:backgroundTint="@android:color/transparent"
+                        android:drawableEnd="@drawable/ic_dropdown_arrow"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/blue_grey"
+                        android:letterSpacing="0.08"
+                        android:text="DETAILS"
+                        android:layout_marginVertical="20dp"
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Name of Student"
+                        android:inputType="textPersonName"
+                        android:paddingHorizontal="5dp"
+                        android:background="@drawable/textviewborder"
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Student ID"
+                        android:inputType="number"
+                        android:paddingHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="@drawable/textviewborder"
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Enter the Amount"
+                        android:inputType="number"
+                        android:paddingHorizontal="5dp"
+                        android:background="@drawable/textviewborder"
+                        />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="2dp"
+                android:id="@+id/cardDone"
+                android:visibility="gone"
+                app:cardElevation="8dp"
+                android:layout_marginBottom="32dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+<androidx.appcompat.widget.AppCompatImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@mipmap/button_rounded_1"
+    android:layout_centerInParent="true"
+    android:layout_marginVertical="29dp"
+    android:id="@+id/imgtop"
+    />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textColor="@color/colorMidnight"
+                            android:lineSpacingExtra="8sp"
+                            android:text="Transfer done!"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/imgtop"
+                            android:layout_marginBottom="12dp"
+                            />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@android:color/darker_gray"
+                            android:layout_alignParentBottom="true"
+                            />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textColor="@color/blue_grey"
+                            android:lineSpacingExtra="3sp"
+                            android:text="Reference number"
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/refno"
+                            android:layout_marginTop="12dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textColor="@color/blue_grey"
+                            android:lineSpacingExtra="3sp"
+                            android:text="Transfer Fee"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_marginTop="12dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorMidnight"
+                            android:lineSpacingExtra="8sp"
+                            android:text="#B3423424234"
+                            android:layout_below="@id/refno"
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/refnodata"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorMidnight"
+                            android:lineSpacingExtra="8sp"
+                            android:text="500.00"
+                            android:layout_below="@id/refno"
+                            android:layout_alignParentEnd="true"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textColor="@color/blue_grey"
+                            android:lineSpacingExtra="3sp"
+                            android:text="Amount sent"
+                            android:layout_below="@id/refnodata"
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/amountsent"
+                            android:layout_marginTop="12dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textColor="@color/blue_grey"
+                            android:lineSpacingExtra="3sp"
+                            android:text="Balance"
+                            android:layout_below="@id/refnodata"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="12dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorMidnight"
+                            android:lineSpacingExtra="8sp"
+                            android:text="50000.00"
+                            android:layout_below="@id/amountsent"
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/amountsentdata"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorMidnight"
+                            android:lineSpacingExtra="8sp"
+                            android:text="16,000.00"
+                            android:layout_below="@id/amountsent"
+                            android:layout_alignParentEnd="true"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textColor="@color/blue_grey"
+                            android:lineSpacingExtra="3sp"
+                            android:text="Recipient:"
+                            android:layout_below="@id/amountsentdata"
+                            android:id="@+id/recipient"
+                            android:layout_marginTop="12dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorMidnight"
+                            android:lineSpacingExtra="8sp"
+                            android:text="Kiota School - Nairobi"
+                            android:layout_below="@id/recipient"
+                            />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                        
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:text="Close"
+                            android:backgroundTint="#0bb8bb"
+                            />
+                    </RelativeLayout>
+     </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:text="Proceed"
+                android:onClick="confirmfeepayment"
+                android:backgroundTint="@color/colorAccent"
+                android:id="@+id/buttonproceed"
+
+                />
+        </LinearLayout>
+
+    </ScrollView>
+<include layout="@layout/loan2"/>
+</LinearLayout>

@@ -202,7 +202,9 @@
                 android:layout_alignParentTop="false"
                 android:layout_below="@id/card2"
                 android:layout_alignParentRight="true"
-                android:layout_margin="12dp">
+                android:layout_margin="12dp"
+                android:clickable="true"
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"

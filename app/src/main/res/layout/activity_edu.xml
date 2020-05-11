@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Education_50"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="@mipmap/rectangle_2"
+        android:paddingTop="10dp"
+        android:paddingHorizontal="7dp"
+        >
+        <include layout="@layout/toobarwithout"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="22dp"
+            android:paddingHorizontal="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#222222"
+                android:text="Quick Services"
+                android:id="@+id/headingtext"
+                android:paddingBottom="10dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/headingtext"
+                android:id="@+id/cardhold"
+                android:orientation="horizontal"
+                android:background="@color/colorWhite"
+                >
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="10dp"
+                    android:backgroundTint="@color/colorWhite"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:clickable="true"
+                    android:id="@+id/cardpayfee"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/colorWhite">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/btnpayfee"
+                            android:background="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_payfees" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/btnpayfee"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center_horizontal"
+                            android:text="Pay Fees"
+                            android:textColor="#444444"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="10dp"
+                    android:backgroundTint="@color/colorWhite"
+                    android:layout_marginVertical="5dp"
+                    android:clickable="true"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/colorWhite">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/btnscholarship"
+                            android:background="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_scholarship" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/btnscholarship"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center_horizontal"
+                            android:text="Scholarship"
+                            android:textColor="#444444"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="10dp"
+                    android:backgroundTint="@color/colorWhite"
+                    android:layout_marginHorizontal="10dp"
+                    android:clickable="true"
+                    android:layout_marginVertical="5dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/colorWhite">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/btnsponsor"
+                            android:background="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_sponsor" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/btnsponsor"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center_horizontal"
+                            android:text="Sponsor"
+                            android:textColor="#444444"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#222222"
+                android:layout_below="@id/cardhold"
+                android:layout_marginTop="29dp"
+                android:text="Recent Applications"
+                />
+        </RelativeLayout>
+    </ScrollView>
+    <include layout="@layout/education_1"/>
+</LinearLayout>

@@ -62,5 +62,6 @@ android:id="@+id/loans2"
     android:text="@string/Continue"
     android:layout_marginTop="15dp"
     android:layout_below="@id/layer2"
+    android:id="@+id/con"
     />
 </RelativeLayout>

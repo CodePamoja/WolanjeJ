@@ -12,7 +12,6 @@ import android.os.StrictMode;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
 // Do not change here because it checks if your are connected to the internet first
     public void movetoRegistration(View view) {
-        Intent move = new Intent(this,Home.class);
-        startActivity(move);
+       // Intent move = new Intent(this,Education_50.class);
+       // startActivity(move);
         if (isNetworkAvailable()){
             Intent move1 = new Intent(this,LogIn.class);
             startActivity(move1);

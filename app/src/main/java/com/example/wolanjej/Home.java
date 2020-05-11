@@ -68,7 +68,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         // Get the Intent that started this activity and extract the string
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
-        Log.e("class Type className", className);
+//        Log.e("class Type className", className);
         if(className.equals("LogIn")) {
             new UserBalance().execute();
             this.sessionID = intentExtra.getStringExtra(LogIn.EXTRA_SESSION);
