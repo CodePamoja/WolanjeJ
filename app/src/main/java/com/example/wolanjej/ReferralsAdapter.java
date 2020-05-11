@@ -56,9 +56,9 @@ public class ReferralsAdapter extends RecyclerView.Adapter<ReferralsAdapter.MyCo
     public void onBindViewHolder(MyContactListViewHolder holder, int position) {
         String imagepath = mainInfo.get(position).getImage();
         if (imagepath == null) {
-            Picasso.with(context).load(R.drawable.image).into(holder.imageViewUserImage);
+            Picasso.get().load(R.drawable.image).into(holder.imageViewUserImage);
         }else {
-            Picasso.with(context).load(imagepath).into(holder.imageViewUserImage);
+            Picasso.get().load(imagepath).into(holder.imageViewUserImage);
         }
         holder.textViewShowName.setText(mainInfo.get(position).getName());
         holder.textViewPhoneNumber.setText(mainInfo.get(position).getPhone());

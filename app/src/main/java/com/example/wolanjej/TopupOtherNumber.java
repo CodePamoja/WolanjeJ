@@ -20,41 +20,34 @@ import java.util.regex.Pattern;
 public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.OnItemSelectedListener  {
     String[] selectNumber = {"Other Number", "My Number"};
 
-    private Button button;
     private String phoneName;
     private String phoneNumber;
-    private String AGENTNO;
-    private String sessionID;
     private String phoneCompany;
     private EditText text;
     private Spinner spin;
 
-    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topup_other_number);
+
+
         // Get the Intent that started this activity and extract the string
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         if(className.equals("Top_up")) {
-            this.sessionID = intentExtra.getStringExtra(Top_up.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(Top_up.EXTRA_AGENTNO);
+            // todo here if there is any
         }else if (className.equals("SelectUserAdapter")){
             this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
             String userNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
-            this.sessionID = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_SESSION);
             this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-            this.AGENTNO = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_AGENTNO);
 
             EditText tvtext =  findViewById(R.id.transContactAmount);
             tvtext.setText(userNumber);
@@ -69,21 +62,13 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
 
-//        Button button = findViewById(R.id.btn_continue_top_up);
-//        button.setOnClickListener((View.OnClickListener) this);
 
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.e("session before contact", sessionID);
-
         if ("My Number".equals(selectNumber[position])){
-            Toast.makeText(getApplicationContext(),selectNumber[position] , Toast.LENGTH_LONG).show();
             Intent move = new Intent(this, Top_up.class);
-            move.putExtra("Class","TopupOtherNumber");
-            move.putExtra(EXTRA_AGENTNO, AGENTNO);
-            move.putExtra(EXTRA_SESSION, sessionID);
             startActivity(move);
         }
     }
@@ -94,10 +79,8 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
     }
 
     public void moveToContact(View view) {
-        Log.e("session before contact", sessionID);
         Intent move = new Intent(this, ContactsView.class);
-        move.putExtra("Class","TopupOtherNumber");
-        move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra("Class","TopUpOtherNumber");
         move.putExtra(EXTRA_CLASSTYPE, "TopUpNumber");
         startActivity(move);
     }
@@ -111,7 +94,6 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
 
         Log.e("TAG phone number check", "button pressed to transfer money" + phone);
         String phonenumber = changePhoneNo(phone, view);
-        Log.e("session after contact", sessionID);
         Log.e("TAG phone number last", phonenumber);
         if(phonenumber!="Fasle"){
             movetoPin(phonenumber, amount);
@@ -202,8 +184,7 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
 
     public void movetoPin(String phone,String amount) {
         Intent move = new Intent(this, EnterPin.class);
-        move.putExtra("Class","TopupOtherNumber");
-        move.putExtra(EXTRA_SESSION, sessionID);
+        move.putExtra("Class","TopUpOtherNumber");
         move.putExtra(EXTRA_PHONENAME, phoneName);
         move.putExtra(EXTRA_PROVIDER, phoneCompany);
         move.putExtra(EXTRA_PHONENUMBER, phone);

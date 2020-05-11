@@ -57,6 +57,8 @@ public class Referrals extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_referrals);
 
+        setToolBar();
+
         mydb  = new ReferralsDatabaseAdapter(getApplicationContext());
         recyclerView = (RecyclerView)findViewById(R.id.contacts_list);
 

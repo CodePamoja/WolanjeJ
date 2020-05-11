@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -213,11 +214,23 @@ public class LogIn extends AppCompatActivity {
                     sessionID = new JSONObject(test);
                     System.out.println("Response body json values are : " + sessionID);
                     Log.d("TAG test Session", sessionID.getJSONObject("session").getString("session_token"));
+
+                    //adding values to SharedPreferences
+                    // make sure that in the getsharedPreferences the key value should be the same as the intent putextra class value
+
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("session_token", sessionID.getJSONObject("session").getString("session_token"));
+                    editor.putString("id", sessionID.getJSONObject("session").getString("id"));
+                    editor.putString("role", sessionID.getJSONObject("session").getString("role"));
+                    editor.putString("user_name", sessionID.getJSONObject("session").getString("user_name"));
+                    editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
+                    editor.commit();
                     Intent move = new Intent(LogIn.this, Home.class);
-                    move.putExtra(EXTRA_SESSION, sessionID.getJSONObject("session").getString("session_token"));
-                    move.putExtra(EXTRA_ID, sessionID.getJSONObject("session").getString("id"));
-                    move.putExtra(EXTRA_USERNAME, sessionID.getJSONObject("session").getString("user_name"));
-                    move.putExtra(EXTRA_AGENTNO, sessionID.getJSONObject("session").getString("agentno"));
+//                    move.putExtra(EXTRA_SESSION, sessionID.getJSONObject("session").getString("session_token"));
+//                    move.putExtra(EXTRA_ID, sessionID.getJSONObject("session").getString("id"));
+//                    move.putExtra(EXTRA_USERNAME, sessionID.getJSONObject("session").getString("user_name"));
+//                    move.putExtra(EXTRA_AGENTNO, sessionID.getJSONObject("session").getString("agentno"));
                     move.putExtra("Class","LogIn");
                     startActivity(move);
                 } catch (JSONException | IOException e) {
