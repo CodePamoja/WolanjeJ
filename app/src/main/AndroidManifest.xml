@@ -17,7 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Education_50"></activity>
+        <activity android:name=".Scholarship1"></activity>
+        <activity android:name=".Scholarship2" />
+        <activity android:name=".Scholarship3" />
+        <activity android:name=".ScholarShip4" />
+        <activity android:name=".ScholarShip5" />
+        <activity android:name=".BookFlight10" />
+        <activity android:name=".BookFlight" />
+        <activity android:name=".Travel" />
+        <activity android:name=".Education_50" />
         <activity android:name=".Scholarship06" />
         <activity android:name=".PaymentsMain" />
         <activity android:name=".BulkPaymentsMain" />

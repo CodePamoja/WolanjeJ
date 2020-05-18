@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
+
+<!--<LinearLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:paddingHorizontal="10dp"-->
+<!--    android:paddingVertical="10dp"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".Scholarship1">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="20dp">-->
+
+<!--        <include layout="@layout/toobarwithout"/>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Scholarship"-->
+<!--            android:textStyle="bold"-->
+<!--            android:fontFamily="@font/poppins_semi_bold"-->
+<!--            android:textSize="28sp"-->
+<!--            android:textColor="#0b0320"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginTop="10dp"/>-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="#f8f8fa">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="New Application"-->
+<!--            android:fontFamily="@font/poppins_semi_bold"-->
+<!--            android:textSize="22sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="#0b0320"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginTop="18dp"/>-->
+<!--        <ImageView-->
+<!--            android:id="@+id/btn_capture_photo"-->
+<!--            android:layout_width="210dp"-->
+<!--            android:layout_height="3dp"-->
+<!--            android:layout_marginStart="14dp"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:src="@drawable/rectangle1" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_margin="10dp">-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/selectCountry"-->
+<!--            android:layout_width="260dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:layout_marginStart="15dp"-->
+<!--            android:background="@drawable/textviewborder"-->
+<!--            android:drawableEnd="@drawable/path"-->
+<!--            android:hint="Select Country"-->
+<!--            android:inputType="text"-->
+<!--            android:padding="5dp" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/selectCounty"-->
+<!--            android:layout_width="260dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:background="@drawable/textviewborder"-->
+<!--            android:drawableEnd="@drawable/path"-->
+<!--            android:hint="Select County"-->
+<!--            android:inputType="text"-->
+<!--            android:padding="5dp" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/enterLocation"-->
+<!--            android:layout_width="260dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:background="@drawable/textviewborder"-->
+<!--            android:hint="Enter Location"-->
+<!--            android:inputType="text"-->
+<!--            android:padding="5dp" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/selectInstitution"-->
+<!--            android:layout_width="260dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:background="@drawable/textviewborder"-->
+<!--            android:drawableEnd="@drawable/path"-->
+<!--            android:hint="Select Institution"-->
+<!--            android:inputType="text"-->
+<!--            android:padding="5dp" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/selectSponsor"-->
+<!--            android:layout_width="260dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:background="@drawable/textviewborder"-->
+<!--            android:drawableEnd="@drawable/path"-->
+<!--            android:hint="Select the Sponsor"-->
+<!--            android:inputType="text"-->
+<!--            android:padding="5dp" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/enterPurpose"-->
+<!--            android:layout_width="260dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:background="@drawable/textviewborder"-->
+<!--            android:hint="Enter Purpose"-->
+<!--            android:inputType="text"-->
+<!--            android:padding="5dp" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/poppins_regular"-->
+<!--            android:text="By clicking Continue you agree to our Terms and conditions as well as our privacy policy"-->
+<!--            android:textSize="12sp"/>-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp">-->
+<!--        <Button-->
+<!--            android:layout_width="327dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:backgroundTint="#0bb8bb"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="#ffffff"-->
+<!--            android:fontFamily="@font/poppins_medium"-->
+<!--            android:text="Continue" />-->
+<!--    </LinearLayout>-->
+<!--</LinearLayout>-->
+</ScrollView>

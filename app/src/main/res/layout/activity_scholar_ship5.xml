@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ScholarShip5">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:orientation="vertical"
+        android:background="#0bb8bb">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src=""
+                android:layout_marginTop="34dp"
+                android:layout_marginStart="24dp"/>
+            <TextView
+                android:layout_width="212dp"
+                android:layout_height="29dp"
+                android:text="Scholarship Application"
+                android:layout_marginStart="28dp"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/poppins_regular"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="375dp"
+        android:layout_height="639dp"
+        android:orientation="vertical"
+        android:background="#f6f8fa">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="202dp"
+                android:layout_height="29dp"
+                android:text="Uploaded documents"
+                android:textColor="#0b0320"
+                android:textSize="18sp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/poppins_semi_bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="375dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="17dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fee Structure"
+                android:textSize="15sp"
+                android:textColor="#9c7bfc"
+                android:layout_marginStart="74dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="107dp"
+                android:layout_marginTop="24dp"
+                android:src="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="375dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="14dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Result Slip"
+                android:textSize="15sp"
+                android:textColor="#9c7bfc"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="74dp"
+                android:fontFamily="@font/poppins_medium"/>
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="107dp"
+                android:layout_marginTop="70dp"
+                android:src="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="375dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="14dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="24dp"
+                android:text="Special Reference"
+                android:textColor="#9c7bfc"
+                android:textSize="15sp"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="74dp"
+                android:fontFamily="@font/poppins_medium"/>
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="95dp"
+                android:layout_marginTop="24dp"
+                android:src="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="278dp"
+                android:layout_height="30dp"
+                android:text="Letter explaining disability or other disadvantaged
+circumstances from chief, religious leaders"
+                android:textSize="11sp"
+                android:textColor="#222b45"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="17dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="159dp"
+            android:layout_height="40dp"
+            android:text="Save and Exit"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginTop="11dp"
+            android:backgroundTint="#d0d3d8"
+            android:textColor="#ffffff"
+            android:layout_marginStart="24dp"/>
+        <Button
+            android:layout_width="159dp"
+            android:layout_height="40dp"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="14sp"
+            android:layout_marginTop="11dp"
+            android:backgroundTint="#0bb8bb"
+            android:textColor="#ffffff"
+            android:layout_marginStart="9dp"/>
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>
