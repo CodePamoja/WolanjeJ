@@ -111,7 +111,6 @@ public class TransferToPhone50 extends AppCompatActivity {
 
         Log.e("TAG phone number check", "button pressed to transfer money");
         String phonenumber = changePhoneNo(phone, view);
-//        Log.e("session after contact", sessionID);
         Log.e("TAG phone number last", phonenumber);
         if(phonenumber!="Fasle"){
             valuesConferm(phonenumber, amount);

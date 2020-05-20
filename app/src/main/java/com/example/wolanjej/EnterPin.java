@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -40,6 +41,7 @@ public class EnterPin extends AppCompatActivity {
     private String accNumber;
     private String phoneProvider;
     private String message;
+    private String myBalance;
     private String bankDetails;
     private EditText editText1, editText2;
     private SharedPreferences pref;
@@ -73,14 +75,25 @@ public class EnterPin extends AppCompatActivity {
 
         }else if (className.equals("TransferToBank44")){
 
-            this.phoneNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENUMBER);
-            this.sessionID = intentExtra.getStringExtra(TransferToBank44.EXTRA_SESSION);
-            this.amount = intentExtra.getStringExtra(TransferToBank44.EXTRA_AMOUNT);
-            this.phoneName = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENAME);
-            this.accNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_ACCOUNTNUMBER);
-            String sendBank = intentExtra.getStringExtra(TransferToBank44.EXTRA_BANKSELECTED);
-            String sendBranch = intentExtra.getStringExtra(TransferToBank44.EXTRA_BRANCHNAME);
+            pref=getApplication().getSharedPreferences("ConfirmTransferToBank46", MODE_PRIVATE);
+            this.accNumber = pref.getString("accNumber", "");
+            this.phoneNumber = pref.getString("phone", "");
+            this.phoneName = pref.getString("phoneName", "");
+//            this.holderName = pref.getString("holderName", "");
+            this.amount = pref.getString("amount", "");
+            this.message = pref.getString("message", "");
+            String sendBranch = pref.getString("branchName", "");
+            String sendBank = pref.getString("bankSelected", "");
             this.bankDetails = sendBank+"-"+sendBranch;
+
+//            this.phoneNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENUMBER);
+//            this.sessionID = intentExtra.getStringExtra(TransferToBank44.EXTRA_SESSION);
+//            this.amount = intentExtra.getStringExtra(TransferToBank44.EXTRA_AMOUNT);
+//            this.phoneName = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENAME);
+//            this.accNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_ACCOUNTNUMBER);
+//            String sendBank = intentExtra.getStringExtra(TransferToBank44.EXTRA_BANKSELECTED);
+//            String sendBranch = intentExtra.getStringExtra(TransferToBank44.EXTRA_BRANCHNAME);
+//            this.bankDetails = sendBank+"-"+sendBranch;
 
         }else if (className.equals("TopUpOtherNumber")){
 
@@ -302,6 +315,7 @@ public class EnterPin extends AppCompatActivity {
         String url = "/api/transactions";
         OkhttpConnection okConn = new OkhttpConnection();
         Response result = okConn.postValue(url, jMpesa.toString(), sessionID);
+        System.out.println("Response body json values are : " + result);
         if (result.code() == 201) {
             try {
                 String value = result.body().string();
@@ -344,6 +358,55 @@ public class EnterPin extends AppCompatActivity {
         }
     }
 
+    public class UserBalance extends AsyncTask<Void, Void, Response> {
+
+        @Override
+        protected Response doInBackground(Void... voids) {
+
+            String url = "/api/balance";
+            OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
+            Response result = okConn.getBalance(url, sessionID); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
+            Log.d("TAG", String.valueOf(result));
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Response result) {
+            String verifyResult = null;
+            if ( result.code() == 200) {
+                try {
+                    String test = result.body().string();
+                    Log.d("TAG test", test);
+                    JSONObject JBalance = new JSONObject(test);
+                    System.out.println("Response body json values are : " + JBalance);
+
+                    String resultBalance = JBalance.getJSONArray("balance").getJSONObject(0).getString("balance");
+
+
+                    myBalance = "KSH "+resultBalance;
+
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+
+            }else if( result.code() != 201) {
+                try {
+                    verifyResult = result.body().string();
+                    JSONObject jBody = new JSONObject(verifyResult); // adding
+                    System.out.println("Response body json values are : " + verifyResult);
+                    Log.e("TAG", String.valueOf(verifyResult));
+//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
+//                    Log.e("TAG", String.valueOf(sendResutls));
+//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
+                    Log.e("TAG result value", String.valueOf(result));
+                    Log.e("TAG result body", verifyResult);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 
     public void showPopup(String sendAmount, String sendfee, String sendIDReference) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -351,6 +414,8 @@ public class EnterPin extends AppCompatActivity {
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
+
+        new UserBalance().execute();
 
         // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -366,7 +431,7 @@ public class EnterPin extends AppCompatActivity {
             ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
         }else if (className.equals("TransferToPhone50")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.refFee)).setText(sendfee);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText("0");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText(myBalance);
             ((TextView)popupWindow.getContentView().findViewById(R.id.refncNumber)).setText(sendIDReference);
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
@@ -385,7 +450,7 @@ public class EnterPin extends AppCompatActivity {
             ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
         }else if (className.equals("TopUpOtherNumber")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.refFee)).setText(sendfee);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText("0");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText(myBalance);
             ((TextView)popupWindow.getContentView().findViewById(R.id.refncNumber)).setText(sendIDReference);
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
@@ -394,7 +459,7 @@ public class EnterPin extends AppCompatActivity {
             ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
         }else if (className.equals("Top_up")){
             ((TextView)popupWindow.getContentView().findViewById(R.id.refFee)).setText(sendfee);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText("0");
+            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText(myBalance);
             ((TextView)popupWindow.getContentView().findViewById(R.id.refncNumber)).setText(sendIDReference);
             ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
             ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("My Number");
