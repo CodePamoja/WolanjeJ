@@ -103,12 +103,6 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
     public void movetoPin() {
         Intent move = new Intent(this, EnterPin.class);
         move.putExtra("Class","TransferToPhone50");
-//        move.putExtra(EXTRA_SESSION, sessionID);
-//        move.putExtra(EXTRA_AGENTNO, AGENTNO);
-//        move.putExtra(EXTRA_PROVIDER, phoneProvider);
-//        move.putExtra(EXTRA_PHONENAME, phoneName);
-//        move.putExtra(EXTRA_PHONENUMBER, phoneNumber);
-//        move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);
     }
 

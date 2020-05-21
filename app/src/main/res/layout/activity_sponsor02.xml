@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Sponsor02">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:orientation="vertical"
+        android:backgroundTint="#b3c2c8">
+        <include layout="@layout/toobarwithout"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sponsor Information"
+            android:layout_marginTop="20dp"
+            android:textSize="30sp"
+            android:textColor="@color/colorMidnight"
+            android:layout_marginStart="35dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="@color/colorMidnight"
+            tools:text="Select Student’s Academic level "
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+        
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_primary"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="102dp"
+            android:backgroundTint="#b3c2c8"
+            android:layout_height="70dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@mipmap/check_circle_copy"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/colorMidnight"
+                android:lineSpacingExtra="12sp"
+                android:gravity="center_horizontal"
+                android:text="Primary"
+                />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_secondary"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_width="102dp"
+            android:layout_height="70dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/colorMidnight"
+                android:lineSpacingExtra="12sp"
+                android:gravity="center_horizontal"
+                android:text="Secondary"
+                />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_tertiary"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_width="102dp"
+            android:layout_height="70dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/colorMidnight"
+                android:lineSpacingExtra="12sp"
+                android:gravity="center_horizontal"
+                android:text="Tertiary"
+                />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_VTI"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="102dp"
+            android:layout_height="70dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:textColor="@color/colorMidnight"
+                android:gravity="center_horizontal"
+                android:text="Vocational Training Institute"
+                />
+
+
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="238dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Question 1 of 7"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp">
+        <ProgressBar
+            android:id="@+id/progress_s02"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+ 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_1_s02"
+            android:layout_marginStart="50dp"
+            android:backgroundTint="#d0d3d8"
+            android:layout_marginTop="5dp"
+            android:layout_width="159dp"
+            android:layout_height="50dp"
+            android:text="Save and Exit"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_2_s02"
+            android:layout_marginStart="10.5dp"
+            android:backgroundTint="#0bb8bb"
+            android:layout_width="159dp"
+            android:layout_height="50dp"
+            android:text="Save and Continue"/>
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>

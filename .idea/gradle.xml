@@ -18,8 +18,11 @@
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+<<<<<<< HEAD
         <option name="testRunner" value="PLATFORM" />
         <option name="useQualifiedModuleNames" value="true" />
+=======
+>>>>>>> 7c515e39acd5323e3946a384f251b533499f4cb6
       </GradleProjectSettings>
     </option>
   </component>

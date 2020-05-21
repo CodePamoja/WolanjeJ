@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BookFlight">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:orientation="vertical"
+        android:background="@color/colorWarmpurple">
+        <include layout="@layout/toolbar_flight_details"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
+        <View
+            android:layout_marginTop="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/splash2"
+            android:backgroundTint="#f0f2f6">
+        </View>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="670dp"
+        android:background="#f0f2f6"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="475dp"
+            android:layout_marginStart="45dp"
+            android:background="@mipmap/combined_shape2"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_start_initials"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="40dp"
+                android:text="JKT"
+                android:textColor="@color/colorMidnight"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/txt_start_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_start_initials"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/blue_grey"
+                android:textSize="14sp"
+                android:text="Jakarta" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="26dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="77dp"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/txt_start_initials"
+                android:background="@color/colorMidnight" />
+
+            <ImageView
+                android:id="@+id/av_airplane"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="63dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/airplane_active_"
+                android:layout_toEndOf="@+id/divider" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="26dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="77dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/av_airplane"
+                android:background="@color/colorMidnight" />
+
+                <TextView
+                    android:id="@+id/txt_end_initials"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_toEndOf="@+id/divider1"
+                    android:text="SBY"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txt_end_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_start_initials"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toEndOf="@+id/divider1"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="14sp"
+                    android:text="Surabaya" />
+
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/dotted_line"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginEnd="0dp"
+                android:src="@mipmap/path_14_copy_2" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/airline_image_view"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="35dp"
+                    android:background="@color/colorMidnight"
+                    android:layout_marginTop="24dp"/>
+
+                <TextView
+                    android:id="@+id/txt_Airline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toEndOf="@+id/airline_image_view"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="Airline"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/airline_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_Airline"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="-2dp"
+                    android:layout_toEndOf="@+id/airline_image_view"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="Air Asia"
+                    android:textColor="@color/colorMidnight" />
+
+                <TextView
+                    android:id="@+id/txt_passangers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="51dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toEndOf="@+id/txt_Airline"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="Passengers"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/passengers_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_Airline"
+                    android:layout_marginStart="51dp"
+                    android:layout_marginTop="-2dp"
+                    android:layout_toEndOf="@+id/airline_id"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="John Doe"
+                    android:textColor="@color/colorMidnight" />
+            </RelativeLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_weight="1"
+                android:lineSpacingExtra="3sp"
+                android:text="Date"
+                android:textAlignment="textStart"
+                android:textColor="@color/blue_grey"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txt_gate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lineSpacingExtra="3sp"
+                android:text="Gate"
+                android:textColor="@color/blue_grey"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/txt_flight_number"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lineSpacingExtra="3sp"
+                android:text="Flight No."
+                android:textColor="@color/blue_grey"
+                android:textSize="16sp" />
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/set_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="35dp"
+                    android:lineSpacingExtra="3sp"
+                    android:text="8 May 2020"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/set_gate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="24A"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/set_flight_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="NNS24"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/txt_boarding_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:lineSpacingExtra="3sp"
+                    android:text="Boarding Time"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_seat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="seat"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/txt_class"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="Flight No."
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/boarding_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="35dp"
+                    android:lineSpacingExtra="3sp"
+                    android:text="8 May 2020"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/seat_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="24A"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/class_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="NNS24"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/dotted_line1"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginEnd="0dp"
+                android:src="@mipmap/path_14_copy_2" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="35dp"
+                    android:background="@color/colorMidnight"
+                    android:layout_marginStart="40dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="100dp"
+                    android:textSize="10sp"
+                    android:textColor="#313131"
+                    android:text="1234 5678 90AS 6543 21CV"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:layout_width="290dp"
+            android:layout_marginTop="46dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="@drawable/splash"
+            android:layout_marginVertical="20dp"
+            android:text="Save and Continue"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+
+    </LinearLayout>
+    
+</ScrollView>

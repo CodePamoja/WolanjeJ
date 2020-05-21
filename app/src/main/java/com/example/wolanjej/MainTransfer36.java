@@ -22,6 +22,10 @@ public class MainTransfer36 extends AppCompatActivity {
 
     private CardView walletCard, bankCard, phoneCard;
 
+
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

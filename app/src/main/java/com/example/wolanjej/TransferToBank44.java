@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,7 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
     private String phoneName;
     private String bankSelected;
     private String AGENTNO;
+    private SharedPreferences pref;
 
 
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -66,19 +68,20 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
             EditText tvtext =  findViewById(R.id.holdName);
             tvtext.setText(userName);
         }else if (className.equals("ConfirmTransferToBank46")){
-            this.AGENTNO = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_AGENTNO);
-            this.phoneNumber ="+"+ intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONENUMBER);
-            String userName = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONENAME);
-            this.sessionID = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_SESSION);
-            this.phoneName = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONENAME);
-            this.accNumber = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_ACCOUNTNUMBER);
-            this.branchName = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BRANCHNAME);
-            this.bankSelected = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BANKSELECTED);
-            String sendAmount = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_AMOUNT);
-            String sendMessage = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_MESSAGE);
-            String sendAccNumber = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_ACCOUNTNUMBER);
-            String sendBank = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BANKSELECTED);
-            String sendBranch = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BRANCHNAME);
+
+            pref=getApplication().getSharedPreferences("ConfirmTransferToBank46", MODE_PRIVATE);
+            this.accNumber = pref.getString("accNumber", "");
+            this.phoneNumber = "+"+ pref.getString("phone", "");
+            this.phoneName = pref.getString("phoneName", "");
+            this.branchName = pref.getString("branchName", "");
+            this.bankSelected = pref.getString("bankSelected", "");
+
+            String userName = pref.getString("holderName", "");
+            String sendAmount = pref.getString("amount", "");
+            String sendMessage = pref.getString("message", "");
+            String sendAccNumber = pref.getString("accNumber", "");
+            String sendBank =  pref.getString("bankSelected", "");
+            String sendBranch = pref.getString("branchName", "");
 
             EditText tvtext =  findViewById(R.id.holdName);
             tvtext.setText(userName);
@@ -141,25 +144,16 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.e("set toolbar sess", sessionID);
                         movetoLogo.putExtra("Class","TransferToBank44");
-                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
                         startActivity(movetoLogo);
                     }
                 }
         );
     }
 
-    public void movetoConfirm() {
-        Intent move = new Intent(this, ConfirmTransferToBank46.class);
-        startActivity(move);
-    }
-
     public void moveToContact(View view) {
-        Log.e("session before contact", sessionID);
         Intent move = new Intent(this, ContactsView.class);
         move.putExtra("Class","TransferToBank44");
-        move.putExtra(EXTRA_SESSION, sessionID);
         move.putExtra(EXTRA_CLASSTYPE, "bank");
         startActivity(move);
     }
@@ -169,7 +163,6 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
 
         Log.e("TAG phone number check", "button pressed to transfer money" + phone);
         String phonenumber = changePhoneNo(phone, view);
-        Log.e("session after contact", sessionID);
         Log.e("TAG phone number last", phonenumber);
         if(phonenumber!="Fasle"){
             Log.e("TAG phone number check", "button pressed to transfer money" + bankSelected);
@@ -200,17 +193,20 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
     }
 
     public void valuesConferm(String holderName, String amount, String message, String accNumber, String branchName,String bankSelect, String phone){
-        Log.e("session before contact", sessionID);
+
+        pref = getApplicationContext().getSharedPreferences("ConfirmTransferToBank46", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("holderName", holderName);
+        editor.putString("phoneName", phoneName);
+        editor.putString("phone", phone);
+        editor.putString("message", message);
+        editor.putString("accNumber", accNumber);
+        editor.putString("branchName", branchName);
+        editor.putString("bankSelect", bankSelect);
+        editor.putString("amount", amount);
+        editor.commit();
+
         Intent move = new Intent(this, ConfirmTransferToBank46.class);
-        move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra(EXTRA_HOLDERNAME, holderName);
-        move.putExtra(EXTRA_PHONENAME, phoneName);
-        move.putExtra(EXTRA_MESSAGE, message);
-        move.putExtra(EXTRA_PHONENUMBER, phone);
-        move.putExtra(EXTRA_ACCOUNTNUMBER, accNumber);
-        move.putExtra(EXTRA_AMOUNT, amount);
-        move.putExtra(EXTRA_BRANCHNAME, branchName);
-        move.putExtra(EXTRA_BANKSELECTED, bankSelect);
         startActivity(move);
     }
 

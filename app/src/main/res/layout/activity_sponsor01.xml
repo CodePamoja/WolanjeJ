@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Sponsor01">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:orientation="vertical"
+        android:backgroundTint="#e7e7e7">
+        <include layout="@layout/toobarwithout"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="New Application"
+            android:textSize="30sp"
+            android:textColor="@color/colorMidnight"
+            android:layout_marginStart="35dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/scholarship_name"
+            android:layout_width="327dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:hint="Enter Scholarship Name"
+            android:background="@drawable/textviewborder">
+        </EditText>
+
+    <EditText
+        android:layout_width="327dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:hint="Select Country"
+        android:drawableEnd="@drawable/ic_baseline_down"
+        android:background="@drawable/textviewborder"/>
+
+    <EditText
+        android:layout_width="327dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:hint="Enter Location"
+        android:background="@drawable/textviewborder"/>
+
+
+<LinearLayout
+    android:layout_width="327dp"
+    android:layout_height="50dp"
+    android:background="@drawable/textviewborder"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="50dp"
+    android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:hint="Type Of Sponsor"
+            android:textSize="17sp"
+            android:layout_marginStart="5dp" />
+
+        <Spinner
+            android:id="@+id/select_sponsor"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:drawSelectorOnTop="true"
+            android:popupBackground="@android:color/holo_purple"
+            android:spinnerMode="dropdown"
+            tools:ignore="NestedWeights" />
+    </LinearLayout>
+
+
+
+    <EditText
+        android:layout_width="327dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:hint="Select Institution"
+        android:drawableEnd="@drawable/ic_baseline_down"
+        android:background="@drawable/textviewborder"/>
+
+    <EditText
+        android:layout_width="327dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:hint="Enter a Purpose"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/textviewborder"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#f8f8fa"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="#222b45"
+            android:lineSpacingExtra="6sp"
+            android:gravity="center_horizontal"
+            android:text="By clicking “Continue you agree to our Terms and conditions as well as our privacy policy"
+            />
+        
+        <Button
+            android:layout_width="325dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#0bb8bb"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/Continue"/>
+        
+    </LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>

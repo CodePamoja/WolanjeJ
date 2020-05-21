@@ -8,8 +8,17 @@ buildscript {
        // classpath 'com.android.tools.build:gradle:3.5.3'
         //@mose when u change here just uncomment your gradle to be active while the other, comment it
 //        classpath 'com.android.tools.build:gradle:4.0.0-beta04'
+<<<<<<< HEAD
         classpath 'com.android.tools.build:gradle:4.1.0-alpha03'
 //        classpath 'com.android.tools.build:gradle:4.1.0-alpha09'
+=======
+
+        classpath 'com.android.tools.build:gradle:4.1.0-alpha02'
+//        classpath 'com.android.tools.build:gradle:4.1.0-alpha03'
+
+//        classpath 'com.android.tools.build:gradle:4.1.0-alpha09'
+
+>>>>>>> 7c515e39acd5323e3946a384f251b533499f4cb6
 
 
     }

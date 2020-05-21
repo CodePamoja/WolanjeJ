@@ -95,9 +95,24 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
         Log.e("TAG phone number check", "button pressed to transfer money" + phone);
         String phonenumber = changePhoneNo(phone, view);
         Log.e("TAG phone number last", phonenumber);
-        if(phonenumber!="Fasle"){
-            movetoPin(phonenumber, amount);
+        int x =Integer.parseInt(amount);
+        if (amount!=null){
+            if (x>=10){
+                if (x<=70000){
+                    if(phonenumber!="Fasle"){
+                        movetoPin(phonenumber, amount);
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(),"The Amount is above 70000" , Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "The Amount is below 10", Toast.LENGTH_LONG).show();
+            }
+
+        } else {
+            Toast.makeText(getApplicationContext(), "Enter Amount", Toast.LENGTH_LONG).show();
         }
+
     }
 
     public String changePhoneNo(String inputPhone, View view){

@@ -68,7 +68,7 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
         String amount = text.getText().toString();
         int x =Integer.parseInt(amount);
         if (amount!=null){
-            if (x>=50){
+            if (x>=10){
                 if (x<=70000){
                     String phoneNumber = checkPhoneNo("+"+AGENTNO);
                     if(phoneNumber!="Fasle"){
@@ -78,7 +78,7 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
                     Toast.makeText(getApplicationContext(),"The Amount is above 70000" , Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(getApplicationContext(), "The Amount is below 50", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "The Amount is below 10", Toast.LENGTH_LONG).show();
             }
 
         } else {
