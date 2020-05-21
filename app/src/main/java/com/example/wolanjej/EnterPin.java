@@ -46,7 +46,9 @@ public class EnterPin extends AppCompatActivity {
     private EditText editText1, editText2;
     private SharedPreferences pref;
 
+
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

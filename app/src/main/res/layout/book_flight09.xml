@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/popup_element"
+    android:layout_width="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:layout_gravity="center"
+    android:layout_marginStart="23dp"
+    android:layout_marginEnd="22dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="140dp"
+                android:layout_marginVertical="10dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/button_rounded"/>
+
+                <ImageButton
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginStart="110dp"
+                    android:src="@drawable/ic_x"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Success!"
+                android:textAlignment="center"
+                android:textColor="@color/colorMidnight"
+                android:textSize="26sp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#222b45"
+                    android:lineSpacingExtra="4sp"
+                    android:gravity="center_horizontal"
+                    android:text="Your flight has been booked successfully.
+                     A confirmation receipt will be sent to the email linked to your account. Safe Travels!"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/dismiss_success"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPurple"
+            android:layout_marginVertical="20dp"
+            android:text="View Receipt"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+

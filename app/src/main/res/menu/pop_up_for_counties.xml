@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    
+
+    android:title="Mombasa"
+
+    />
+    <item
+
+        android:title="Kwale"
+        /><item
+
+    android:title="Kilifi"
+    /><item
+
+    android:title="Mombasa"
+    /><item
+
+    android:title="Tana River"
+    /><item
+
+    android:title="Lamu"
+    /><item
+
+    android:title="Taita-Taveta"
+    /><item
+
+    android:title="Garissa"
+    /><item
+
+    android:title="wajir"
+    /><item
+
+    android:title="Mandera"
+    /><item
+
+    android:title="Marsabit"
+    /><item
+
+    android:title="Isiolo"
+    /><item
+
+    android:title="Meru"
+    /><item
+
+    android:title="Tharaka-Nithi"
+    /><item
+
+    android:title="Embu"
+    /><item
+
+    android:title="Kitui"
+    /><item
+
+    android:title="Machakos"
+    /><item
+
+    android:title="Makueni"
+    /><item
+
+    android:title="Nyandarua"
+    /><item
+
+    android:title="Nyeri"
+    /><item
+
+    android:title="Kirinyaga"
+    /><item
+
+    android:title="Murang'a"
+    /><item
+
+    android:title="Kiambu"
+    /><item
+
+    android:title="Turkana"
+    /><item
+
+    android:title="West Pokot"
+    /><item
+
+    android:title="Samburu"
+    /><item
+
+    android:title="Trans Nzoia"
+    /><item
+
+    android:title="Uasin Gishu"
+    /><item
+
+    android:title="Elgeyo-Marakwet"
+    /><item
+
+    android:title="Nandi"
+    /><item
+
+    android:title="Baringo"
+    /><item
+
+    android:title="Laikipia"
+    /><item
+
+    android:title="Nakuru"
+    /><item
+
+    android:title="Narok"
+    /><item
+
+    android:title="Kajiado"
+    /><item
+
+    android:title="Kericho"
+    /><item
+
+    android:title="Bomet"
+    /><item
+
+    android:title="Kakamega"
+    /><item
+
+    android:title="Vihiga"
+    /><item
+
+    android:title="Bungoma"
+    /><item
+
+    android:title="Busia"
+    /><item
+
+    android:title="Siaya"
+    /><item
+
+    android:title="Kisumu"
+    /><item
+
+    android:title="Homa Bay"
+    /><item
+
+    android:title="Migori"
+    /><item
+
+    android:title="Kisii"
+    /><item
+
+    android:title="Nyamira
+"
+    /><item
+
+    android:title="Nairobi City
+"
+    />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</menu>
