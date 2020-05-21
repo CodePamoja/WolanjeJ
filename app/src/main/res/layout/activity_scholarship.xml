@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Scholarship"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:navigationIcon="@mipmap/small_left"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:gravity="center"
+                android:textColor="@color/colorMidnight"
+                android:text="Scholarship"
+                />
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#f8f8fa"
+            android:paddingHorizontal="12dp"
+
+            >
+            <TextView
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Application"
+                android:layout_centerVertical="true"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/warm_purple"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="8dp"
+                >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingHorizontal="18dp"
+                    android:text="Select Country"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/blue_grey"
+                    android:layout_below="@id/selecttype"
+                    android:drawableEnd="@drawable/ic_dropdown_arrow"
+                    app:strokeColor="#E7E7E7"
+                    app:strokeWidth="1dp"
+
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingHorizontal="18dp"
+                    android:text="Select County"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/blue_grey"
+                    android:layout_below="@id/selecttype"
+                    android:drawableEnd="@drawable/ic_dropdown_arrow"
+                    app:strokeColor="#E7E7E7"
+                    app:strokeWidth="1dp"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="18dp"
+                    android:background="@drawable/textviewborder"
+                    android:hint="Enter Location"
+                    android:layout_below="@id/list_item_causes"
+
+                    />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingHorizontal="18dp"
+                    android:text="Select Institution"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/blue_grey"
+                    android:layout_below="@id/selecttype"
+                    android:drawableEnd="@drawable/ic_dropdown_arrow"
+                    app:strokeColor="#E7E7E7"
+                    app:strokeWidth="1dp"
+
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingHorizontal="18dp"
+                    android:text="Select the Sponsor"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/blue_grey"
+                    android:layout_below="@id/selecttype"
+                    android:drawableEnd="@drawable/ic_dropdown_arrow"
+                    app:strokeColor="#E7E7E7"
+                    app:strokeWidth="1dp"
+
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="18dp"
+                    android:background="@drawable/textviewborder"
+                    android:hint="Enter purpose"
+                    android:layout_below="@id/list_item_causes"
+
+                    />
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#222b45"
+            android:lineSpacingExtra="6sp"
+            android:gravity="center"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginVertical="32dp"
+            android:text="By clicking “Continue you agree to our Terms and conditions as well as our privacy policy"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="@string/Continue"
+            android:backgroundTint="#0bb8bb"
+            android:onClick="movetoscholar2"
+            android:layout_marginHorizontal="12dp"
+
+            />
+
+    </LinearLayout>
+
+
+</ScrollView>

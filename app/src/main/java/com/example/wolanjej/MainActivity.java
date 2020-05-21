@@ -31,12 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
 // Do not change here because it checks if your are connected to the internet first
     public void movetoRegistration(View view) {
-       // Intent move = new Intent(this,Education_50.class);
-       // startActivity(move);
         if (isNetworkAvailable()){
-            Intent move1 = new Intent(this,LogIn.class);
-            startActivity(move1);
+            //Intent move1 = new Intent(this,LogIn.class);
+            //startActivity(move1);
+            startActivity(new Intent(this,Sponsor04.class));
+
         }else {
+            startActivity(new Intent(this,Scholarship.class));
             Toast.makeText(this, "Please connect to the Internet First", Toast.LENGTH_LONG).show();
         }
 
