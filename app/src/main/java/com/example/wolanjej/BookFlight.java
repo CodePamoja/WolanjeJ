@@ -48,5 +48,8 @@ public class BookFlight extends AppCompatActivity {
             }
         });
     }
+    public void MoveToBookFlight02(View view) {
+        startActivity(new Intent(this,BookFlight02.class));
+    }
 
 }
