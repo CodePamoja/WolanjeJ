@@ -86,13 +86,12 @@ public class Sponsor02 extends AppCompatActivity {
         });
 
         setToolBar(tb);
-
     }
     private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
-        tb = findViewById(R.id.toolbarsponsor);
+        tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,Sponsor01.class);
+        final Intent moveToLogo = new Intent(this,Home.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -103,6 +102,7 @@ public class Sponsor02 extends AppCompatActivity {
         );
 
     }
+
     public void moveSponsor03(View view) {
         startActivity(new Intent(this,Sponsor03.class));
     }

@@ -14,7 +14,7 @@ public class services extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
 
-        startActivity(new Intent(this, Education_50.class));
+       // startActivity(new Intent(this, Education_50.class));
         findViewById(R.id.card4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,4 +23,5 @@ public class services extends AppCompatActivity {
             }
         });
     }
+
 }

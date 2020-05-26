@@ -66,49 +66,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
-<<<<<<< HEAD
-   // Get the Intent that started this activity and extract the string
-
-
         // Get the Intent that started this activity and extract the string
-=======
-
         transferListDetails();
-   // Get the Intent that started this activity and extract the string
-
-
-
         // Get the Intent that started this activity and extract the string
 
->>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
-        Intent intentExtra = getIntent();
-        String className = getIntent().getStringExtra("Class");
-//        Log.e("class Type className", className);
-       /* if(className.equals("LogIn")) {
-            new UserBalance().execute();
-            this.sessionID = intentExtra.getStringExtra(LogIn.EXTRA_SESSION);
-            this.USERID = intentExtra.getStringExtra(LogIn.EXTRA_ID);
-            this.USERNAME = intentExtra.getStringExtra(LogIn.EXTRA_USERNAME);
-            this.AGENTNO = intentExtra.getStringExtra(LogIn.EXTRA_AGENTNO);
-        }else if (className.equals("MainTransfer36")){
-            new UserBalance().execute();
-            this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(MainTransfer36.EXTRA_AGENTNO);
-        }else if (className.equals("EnterPin")){
-            new UserBalance().execute();
-            this.sessionID = intentExtra.getStringExtra(EnterPin.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(EnterPin.EXTRA_AGENTNO);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        }*/
 
-=======
-
-        }*
-        }/
-        */
-
->>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
+      //  Intent intentExtra = getIntent();
+        //String className = getIntent().getStringExtra("Class");
         //SharedPreferences values for login eg token, user registered number
         pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
@@ -116,27 +80,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         new UserBalance().execute();
         new UserServices().execute();
         new UserBills().execute();
-
-//        // Get the Intent that started this activity and extract the string
-//        Intent intentExtra = getIntent();
-//        String className = getIntent().getStringExtra("Class");
-//        Log.e("class Type className", className);
-//        if(className.equals("LogIn")) {
-//            new UserBalance().execute();
-////            this.USERID = intentExtra.getStringExtra(LogIn.EXTRA_ID);
-////            this.USERNAME = intentExtra.getStringExtra(LogIn.EXTRA_USERNAME);
-////            this.AGENTNO = intentExtra.getStringExtra(LogIn.EXTRA_AGENTNO);
-//        }else if (className.equals("MainTransfer36")){
-//            new UserBalance().execute();
-//        }else if (className.equals("EnterPin")){
-//            new UserBalance().execute();
-//        }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
 
 //     this  belongs to  screen 18
         RecyclerView mRecyclerView = findViewById(R.id.recycler_view);

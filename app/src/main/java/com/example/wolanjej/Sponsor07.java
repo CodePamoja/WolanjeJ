@@ -14,14 +14,13 @@ public class Sponsor07 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sponsor07);
-
         setToolBar(tb);
     }
-    private void setToolBar(Toolbar tb) {
-        tb = findViewById(R.id.toolbarsponsor);
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,HomeTwo.class);
+        final Intent moveToLogo = new Intent(this,Sponsor06.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override

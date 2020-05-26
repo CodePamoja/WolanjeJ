@@ -18,8 +18,8 @@
         app:layout_constraintVertical_weight="1">
 
 
-        <include layout="@layout/toolbarsponsorship"/>
-    </LinearLayout>
+
+        <include layout="@layout/toobarwithout"/>    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scroll03"
@@ -179,23 +179,13 @@
             android:text="@string/save_amp_exit" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_2_s03"
-<<<<<<< HEAD
-            android:layout_marginStart="10.5dp"
-            android:backgroundTint="#0bb8bb"
-            android:layout_width="159dp"
-            android:layout_height="50dp"
-            android:text="Save and Continue"
-            android:onClick="movetosponsor4"
-            />
-=======
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_weight="1"
             android:backgroundTint="@color/colorAccent"
             android:onClick="moveSponsor04"
             android:text="@string/Continue"/>
->>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
+/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
