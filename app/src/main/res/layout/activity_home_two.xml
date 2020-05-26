@@ -117,13 +117,21 @@
                                 android:backgroundTint="@color/colorWhite"
                                 android:textColor="@color/colorAccent"
                                 android:textSize="16sp" />
+                        </RelativeLayout>
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="24dp"
+                            android:paddingTop="24dp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/btn_add_new_home_two"
                                 android:layout_centerInParent="true"
-                                android:text="@string/no_transfers" />
+                                android:id="@+id/recyclerViewHomeTwo"/>
+
                         </RelativeLayout>
 
                         <RelativeLayout

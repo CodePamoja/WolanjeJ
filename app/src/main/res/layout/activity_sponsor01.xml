@@ -132,6 +132,7 @@
             android:layout_marginTop="15dp"
             android:backgroundTint="#0bb8bb"
             android:layout_gravity="center_horizontal"
+            android:onClick="moveSponsor02"
             android:text="@string/Continue"/>
         
     </LinearLayout>

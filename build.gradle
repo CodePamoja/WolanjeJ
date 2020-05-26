@@ -5,12 +5,17 @@ buildscript {
         jcenter()
     }
     dependencies {
+<<<<<<< HEAD
         classpath 'com.android.tools.build:gradle:3.5.3'
         //@mose when u change here just uncomment your gradle to be active while the other, comment it
 //        classpath 'com.android.tools.build:gradle:4.0.0-beta04'
         //classpath 'com.android.tools.build:gradle:4.1.0-alpha03'
 //        classpath 'com.android.tools.build:gradle:4.1.0-alpha09'
 
+=======
+        classpath 'com.android.tools.build:gradle:3.6.3'
+//        classpath 'com.android.tools.build:gradle:4.1.0-alpha09'
+>>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
 
     }
 }

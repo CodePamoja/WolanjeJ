@@ -49,6 +49,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private TextView tvtext;
     private MaterialCardView materialCardView;
     private SharedPreferences pref;
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -64,10 +66,21 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
+<<<<<<< HEAD
    // Get the Intent that started this activity and extract the string
 
 
         // Get the Intent that started this activity and extract the string
+=======
+
+        transferListDetails();
+   // Get the Intent that started this activity and extract the string
+
+
+
+        // Get the Intent that started this activity and extract the string
+
+>>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
 //        Log.e("class Type className", className);
@@ -86,8 +99,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             this.sessionID = intentExtra.getStringExtra(EnterPin.EXTRA_SESSION);
             this.AGENTNO = intentExtra.getStringExtra(EnterPin.EXTRA_AGENTNO);
 <<<<<<< HEAD
+<<<<<<< HEAD
         }*/
 
+=======
+
+        }*
+        }/
+        */
+
+>>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
         //SharedPreferences values for login eg token, user registered number
         pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
@@ -110,6 +131,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 //        }else if (className.equals("EnterPin")){
 //            new UserBalance().execute();
 //        }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
 
 //     this  belongs to  screen 18
         RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
@@ -668,6 +695,23 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public void close_poup_loans(View view) {
         findViewById(R.id.Loansbox).setVisibility(View.INVISIBLE);
         findViewById(R.id.bottom_navigation_home_two).setVisibility(View.VISIBLE);
+
+    }
+    private void transferListDetails(){
+
+//        mImage and mNames ArrayList go here
+//        mImageUrls.add("https://pixabay.com/photos/tree-sunset-amazing-beautiful-736885/");
+//        mNames.add("John");
+
+        initTransferRecyclerList();
+    }
+    private void initTransferRecyclerList(){
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(Home.this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewHome);
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerViewHomeAdapter adapter = new RecyclerViewHomeAdapter( mNames, mImageUrls, Home.this);
+        recyclerView.setAdapter(adapter);
 
     }
 }

@@ -17,6 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
         <activity android:name=".Sponsor07"/>
         <activity android:name=".Sponsor06" />
         <activity android:name=".Sponsor05" />
@@ -26,7 +30,12 @@
         <activity android:name=".scholarship3" />
         <activity android:name=".Scholarship02" />
         <activity android:name=".Scholarship" />
+<<<<<<< HEAD
         <activity android:name=".BookFlight02"/>
+=======
+
+            <activity android:name=".BookFlight02" />
+>>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
         <activity android:name=".Sponsor03" />
         <activity android:name=".Sponsor02" />
         <activity android:name=".Sponsor01" />
@@ -34,6 +43,10 @@
         <activity android:name=".BookFlight10" />
         <activity android:name=".BookFlight" />
         <activity android:name=".Travel" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 37c431205a75d9143c5d7ffefe77f76330dcef49
         <activity android:name=".Education_50" />
         <activity android:name=".Scholarship06" />
         <activity android:name=".PaymentsMain" />

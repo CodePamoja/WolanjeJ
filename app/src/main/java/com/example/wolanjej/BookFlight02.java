@@ -3,7 +3,9 @@ package com.example.wolanjej;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CalendarView;
 
 public class BookFlight02 extends AppCompatActivity {
@@ -22,5 +24,8 @@ public class BookFlight02 extends AppCompatActivity {
             }
         });
 
+    }
+    public void MovetoBookFlightO3(View view) {
+        startActivity(new Intent(this,BookFlight02.class));
     }
 }

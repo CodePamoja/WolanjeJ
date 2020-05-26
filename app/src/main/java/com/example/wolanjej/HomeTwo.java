@@ -29,6 +29,9 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     private DrawerLayout drawer;
     private Toolbar toolbar;
 
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,6 +138,8 @@ findViewById(R.id.loansholder).setVisibility(View.VISIBLE);
 
             }
         });
+
+        transferListDetails();
     }
     private void setToolBar() {
         setSupportActionBar(toolbar);
@@ -317,6 +322,24 @@ findViewById(R.id.Loansbox).setVisibility(View.VISIBLE);
     public void close_poup_loans(View view) {
         findViewById(R.id.Loansbox).setVisibility(View.INVISIBLE);
         findViewById(R.id.bottom_navigation_home_two).setVisibility(View.VISIBLE);
+
+    }
+
+    private void transferListDetails(){
+
+        //        mImage and mNames ArrayList go here
+//        mImageUrls.add("https://pixabay.com/photos/tree-sunset-amazing-beautiful-736885/");
+//        mNames.add("John");
+
+        initTransferRecyclerList();
+    }
+    private void initTransferRecyclerList(){
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(HomeTwo.this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewHomeTwo);
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerViewHomeAdapter adapter = new RecyclerViewHomeAdapter( mNames, mImageUrls, HomeTwo.this);
+        recyclerView.setAdapter(adapter);
 
     }
 }
