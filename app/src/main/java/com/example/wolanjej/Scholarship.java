@@ -11,6 +11,7 @@ import android.view.WindowManager;
 
 public class Scholarship extends AppCompatActivity {
 
+    private Toolbar tb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -18,13 +19,13 @@ public class Scholarship extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scholarship);
-        setToolBar();
+        setToolBar(tb);
     }
-    private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,HomeTwo.class);
+        final Intent moveToLogo = new Intent(this,Education_50.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override

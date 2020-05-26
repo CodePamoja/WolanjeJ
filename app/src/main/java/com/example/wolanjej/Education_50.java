@@ -1,6 +1,7 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
     TextView tx ;
     Button btnpro ;
     ImageButton btnback;
+    Toolbar tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,22 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
 
             }
         });
+        setToolBar(tb);
+    }
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent moveToLogo = new Intent(this,Home.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(moveToLogo);
+                    }
+                }
+        );
+
     }
     public void displayPopUp1(View view) {
         PopupMenu popup = new PopupMenu(this,view);

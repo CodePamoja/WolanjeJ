@@ -9,18 +9,18 @@ import android.view.View;
 
 public class Scholarship05 extends AppCompatActivity {
 
+    Toolbar tb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scholarship05);
-        setToolBar();
+        setToolBar(tb);
     }
-
-    private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbarscholarship);
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbarscholarship);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,HomeTwo.class);
+        final Intent moveToLogo = new Intent(this,Scholarship04.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -31,5 +31,6 @@ public class Scholarship05 extends AppCompatActivity {
         );
 
     }
+
 
 }

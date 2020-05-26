@@ -22,6 +22,14 @@ public class services extends AppCompatActivity {
 
             }
         });
+
+        findViewById(R.id.card1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), Travel.class));
+
+            }
+        });
     }
 
 }

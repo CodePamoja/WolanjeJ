@@ -58,7 +58,7 @@ public class Sponsor01 extends AppCompatActivity {
         tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,Sponsor01.class);
+        final Intent moveToLogo = new Intent(this,Sponsors00.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override

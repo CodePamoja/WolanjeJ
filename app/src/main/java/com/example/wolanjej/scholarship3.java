@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class scholarship3 extends AppCompatActivity {
 
+    Toolbar tb;
     TextView Toolbartitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,14 +18,13 @@ public class scholarship3 extends AppCompatActivity {
         setContentView(R.layout.activity_scholarship3);
         Toolbartitle = findViewById(R.id.scholartitle);
         Toolbartitle.setText("Institution Information");
-        setToolBar();
+        setToolBar(tb);
     }
-
-    private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbarscholarship);
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbarscholarship);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,HomeTwo.class);
+        final Intent moveToLogo = new Intent(this,Scholarship02.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -35,6 +35,7 @@ public class scholarship3 extends AppCompatActivity {
         );
 
     }
+
 
     public void movetostage3(View view) {
         startActivity(new Intent(this,Scholarship04.class));

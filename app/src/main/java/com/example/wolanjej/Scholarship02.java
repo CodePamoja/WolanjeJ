@@ -16,11 +16,11 @@ public class Scholarship02 extends AppCompatActivity {
         setContentView(R.layout.activity_scholarship02);
         setToolBar(tb);
     }
-    private void setToolBar(Toolbar tb) {
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
         tb = findViewById(R.id.toolbarscholarship);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,HomeTwo.class);
+        final Intent moveToLogo = new Intent(this,Scholarship.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -31,6 +31,7 @@ public class Scholarship02 extends AppCompatActivity {
         );
 
     }
+
 
     public void movetostage2(View view) {
 

@@ -13,6 +13,7 @@ import com.google.android.material.tabs.TabLayout;
 public class BookFlight extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
+    Toolbar tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,24 @@ public class BookFlight extends AppCompatActivity {
 
             }
         });
+        setToolBar(tb);
     }
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent moveToLogo = new Intent(this,Travel.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(moveToLogo);
+                    }
+                }
+        );
+
+    }
+
     public void MoveToBookFlight02(View view) {
         startActivity(new Intent(this,BookFlight02.class));
     }
