@@ -173,7 +173,9 @@
             android:backgroundTint="#0bb8bb"
             android:layout_width="159dp"
             android:layout_height="50dp"
-            android:text="Save and Continue"/>
+            android:text="Save and Continue"
+            android:onClick="movetosponsor4"
+            />
     </LinearLayout>
 
 </LinearLayout>

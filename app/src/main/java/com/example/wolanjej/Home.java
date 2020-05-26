@@ -64,13 +64,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
-<<<<<<< HEAD
    // Get the Intent that started this activity and extract the string
-=======
 
 
         // Get the Intent that started this activity and extract the string
->>>>>>> 7c515e39acd5323e3946a384f251b533499f4cb6
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
 //        Log.e("class Type className", className);
@@ -90,10 +87,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             this.AGENTNO = intentExtra.getStringExtra(EnterPin.EXTRA_AGENTNO);
 <<<<<<< HEAD
         }*/
-=======
-        }
 
->>>>>>> 7c515e39acd5323e3946a384f251b533499f4cb6
         //SharedPreferences values for login eg token, user registered number
         pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
@@ -116,10 +110,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 //        }else if (className.equals("EnterPin")){
 //            new UserBalance().execute();
 //        }
-<<<<<<< HEAD
-=======
-
->>>>>>> 7c515e39acd5323e3946a384f251b533499f4cb6
 
 //     this  belongs to  screen 18
         RecyclerView mRecyclerView = findViewById(R.id.recycler_view);

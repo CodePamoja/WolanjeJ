@@ -2,6 +2,7 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,9 +28,26 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
             @Override
             public void onClick(View v) {
                 findViewById(R.id.edu1).setVisibility(View.VISIBLE);
-                Toast.makeText(Education_50.this, "Cardpressed", Toast.LENGTH_SHORT).show();
             }
         });
+        findViewById(R.id.scholarshipOpener).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Education_50.this, "scholarship", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getBaseContext(),Scholarship.class));
+                //startActivity(new Intent(getParent(),Scholarship.class));
+            }
+        });
+        findViewById(R.id.SponsorOpener).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Education_50.this, "scholarship", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getBaseContext(),Sponsors00.class));
+            }
+        });
+
         btnpro = findViewById(R.id.buttonproceed);
         btnback = findViewById(R.id.imageback);
         tx = findViewById(R.id.headertext);
