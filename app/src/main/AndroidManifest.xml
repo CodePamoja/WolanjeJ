@@ -66,6 +66,7 @@
         <activity android:name=".ConfirmSingleTransfer40" />
         <activity android:name=".TransferToPhone50" />
         <activity android:name=".TransferToBank44" />
+        <activity android:name=".TransactionView"/>
         <activity android:name=".MainTransfer36" />
         <activity android:name=".TransferToWalletSingle37" />
         <activity android:name=".IdentifyCard51" />

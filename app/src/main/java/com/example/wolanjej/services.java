@@ -1,6 +1,7 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,5 +23,21 @@ public class services extends AppCompatActivity {
 
             }
         });
+        setToolBar();
+    }
+    private void setToolBar() {
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent movetoLogo = new Intent(this, Home.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(movetoLogo);
+                    }
+                }
+        );
+
     }
 }

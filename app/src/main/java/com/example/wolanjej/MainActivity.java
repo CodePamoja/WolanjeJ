@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         if (isNetworkAvailable()){
             //Intent move1 = new Intent(this,LogIn.class);
             //startActivity(move1);
-            startActivity(new Intent(this,LogIn.class));
+            startActivity(new Intent(this, TransactionView.class));
 
         }else {
             startActivity(new Intent(this,Scholarship.class));
