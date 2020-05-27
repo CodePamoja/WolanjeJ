@@ -57,6 +57,8 @@
         </SearchView>
     </RelativeLayout>
 
+
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +78,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:layout_margin="12dp"
                     >
 
@@ -86,9 +87,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:src="@drawable/ic_travel">
 
-                    </ImageView>
+                        android:src="@drawable/ic_travel"/>
+
+
 
                     <TextView
                         android:id="@+id/txt1"
@@ -98,9 +100,11 @@
                         android:layout_marginTop="70dp"
                         android:text="Travel"
                         android:textColor="#000000"
+
                         android:textSize="18sp"
 
                         />
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -118,6 +122,7 @@
                 android:layout_margin="12dp">
 
                 <RelativeLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -129,9 +134,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
+
                         android:src="@drawable/ic_medical">
 
                     </ImageView>
+
+
+                        android:src="@mipmap/medical"/>
 
                     <TextView
                         android:id="@+id/txtt"
@@ -141,9 +150,13 @@
                         android:layout_marginTop="70dp"
                         android:text="Medical"
                         android:textColor="#000000"
+
                         android:textSize="18sp"
 
                         />
+
+                        android:textSize="24sp"/>
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -162,7 +175,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:layout_margin="12dp">
 
                     <ImageView
@@ -171,9 +183,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
+
                         android:src="@drawable/ic_savings">
 
                     </ImageView>
+
+                        android:src="@mipmap/savings"/>
+
 
                     <TextView
                         android:id="@+id/savings"
@@ -183,9 +199,13 @@
                         android:layout_marginTop="70dp"
                         android:text="Savings"
                         android:textColor="#000000"
+
                         android:textSize="18sp"
 
                         />
+
+                        android:textSize="24sp"/>
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -216,9 +236,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
+
                         android:src="@drawable/ic_education">
 
                     </ImageView>
+
+                        android:src="@mipmap/education"/>
+
 
                     <TextView
                         android:id="@+id/txtttt"
@@ -228,9 +252,13 @@
                         android:layout_marginTop="70dp"
                         android:text="Education"
                         android:textColor="#000000"
+
                         android:textSize="18sp"
 
                         />
+
+                        android:textSize="24sp"/>
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -250,7 +278,6 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_margin="12dp">
 
                     <ImageView
@@ -259,9 +286,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
+
                         android:src="@drawable/ic_accomodation">
 
                     </ImageView>
+
+                        android:src="@mipmap/accomodation"/>
+
 
                     <TextView
 
@@ -271,9 +302,13 @@
                         android:layout_marginTop="70dp"
                         android:text="Accomodation"
                         android:textColor="#000000"
+
                         android:textSize="18sp"
 
                         />
+
+                        android:textSize="24sp"/>
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -293,7 +328,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:layout_margin="12dp">
 
                     <ImageView
@@ -302,9 +336,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
+
                         android:src="@drawable/ic_shopping">
 
                     </ImageView>
+
+                        android:src="@mipmap/food"/>
+
 
                     <TextView
 
@@ -314,9 +352,13 @@
                         android:layout_marginTop="70dp"
                         android:text="Food and Shopping"
                         android:textColor="#000000"
+
                         android:textSize="18sp"
 
                         />
+
+                        android:textSize="24sp"/>
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -337,7 +379,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:layout_margin="12dp">
 
                     <ImageView
@@ -346,9 +387,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
+
                         android:src="@drawable/ic_insuarance">
 
                     </ImageView>
+
+                        android:src="@mipmap/insurance"/>
+
 
                     <TextView
 
@@ -358,9 +403,12 @@
                         android:layout_marginTop="70dp"
                         android:text="Insurance"
                         android:textColor="#000000"
+
                         android:textSize="18sp"
 
                         />
+
+                        android:textSize="24sp"/>
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -380,18 +428,16 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:layout_margin="12dp">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:src="@drawable/ic_taxx">
 
-                    </ImageView>
+                        android:src="@drawable/ic_taxx"/>
 
                     <TextView
 
@@ -401,28 +447,17 @@
                         android:layout_marginTop="70dp"
                         android:text="Tax"
                         android:textColor="#000000"
+
                         android:textSize="18sp"
 
                         />
+
+                        android:textSize="24sp"/>
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
-
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/text33"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="250dp"-->
-            <!--                android:layout_alignParentTop="true"-->
-            <!--                android:padding="4sp"-->
-            <!--                android:text="Services"-->
-            <!--                android:textSize="18sp"-->
-            <!--                android:textStyle="bold"-->
-            <!--                android:layout_alignParentLeft="true"-->
-
-            <!--                >-->
-            <!--            </TextView>-->
 
 
         </RelativeLayout>

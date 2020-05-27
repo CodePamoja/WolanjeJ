@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="1">
 
-        <include layout="@layout/toolbarsponsorship"/>
+        <include layout="@layout/toobarwithout"/>
 
     </LinearLayout>
 

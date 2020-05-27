@@ -16,12 +16,11 @@ public class Sponsor05 extends AppCompatActivity {
         setContentView(R.layout.activity_sponsor05);
         setToolBar(tb);
     }
-
-    private void setToolBar(Toolbar tb) {
-        tb = findViewById(R.id.toolbarsponsor);
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,HomeTwo.class);
+        final Intent moveToLogo = new Intent(this,Sponsor04.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
