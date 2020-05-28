@@ -58,6 +58,7 @@ public class Registration05 extends AppCompatActivity {
 //                        conn = new Sendtover(text.toString());
 //                        conn.sendToVerification();
                        new UserSendPhone().execute();
+
                     }
                 }
         );

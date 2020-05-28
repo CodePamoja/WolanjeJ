@@ -61,7 +61,7 @@ public class LogIn extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
 
-        executor = ContextCompat.getMainExecutor(this);
+        /*executor = ContextCompat.getMainExecutor(this);
         final BiometricManager biometricManager = BiometricManager.from(this);
 
         biometricPrompt = new androidx.biometric.BiometricPrompt(LogIn.this,executor,new androidx.biometric.BiometricPrompt.AuthenticationCallback() {
@@ -114,12 +114,12 @@ public class LogIn extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
 
 
 
         // login button action
-        button = (Button)findViewById(R.id.btn_LogIn);
+        button = findViewById(R.id.btn_LogIn);
         button.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -130,7 +130,7 @@ public class LogIn extends AppCompatActivity {
         );
 
         setToolBar();
-        imageView = (ImageView)findViewById(R.id.image_holder);
+        imageView = findViewById(R.id.image_holder);
         imageView.setImageResource(R.drawable.ic_group_7);
     }
 
