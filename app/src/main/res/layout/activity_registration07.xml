@@ -72,7 +72,7 @@
                         <EditText
                             android:id="@+id/pin1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="58dp"
                             android:hint="4 digit Pin"
                             android:maxLength="4"
                             android:inputType="numberPassword"
@@ -85,7 +85,7 @@
                         <EditText
                             android:id="@+id/pin2"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="58dp"
                             android:hint="Repeat Pin"
                             android:maxLength="4"
                             android:inputType="numberPassword"
