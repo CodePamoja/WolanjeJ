@@ -51,7 +51,7 @@ public class BookFlight extends AppCompatActivity {
         setToolBar(tb);
     }
     private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
-        tb = findViewById(R.id.toolbar);
+        tb = findViewById(R.id.toolbar2);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
         final Intent moveToLogo = new Intent(this,Travel.class);

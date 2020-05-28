@@ -61,7 +61,7 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mMONTH = itemView.findViewById(R.id.TransMonth);
+            mMONTH = itemView.findViewById(R.id.TransMonth01);
             mDATE = itemView.findViewById(R.id.TransDate);
             mImageView = itemView.findViewById(R.id.pic_trans);
             mNAME = itemView.findViewById(R.id.TransName);
