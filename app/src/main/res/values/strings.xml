@@ -46,7 +46,6 @@
     <string name="loans">Loans</string>
     <string name="you_have_spent_this_month">You have spent this month</string>
     <string name="_5670">$5670</string>
-    <string name="todo">TODO</string>
     <string name="transfer_to_wallet">Transfer to Wallet</string>
     <string name="transfer_to_bank">Transfer to Bank</string>
     <string name="transfer_to_phone">Transfer to Phone</string>
@@ -97,4 +96,23 @@
     <string name="select_recipient">Select Recipient</string>
     <string name="top_up">Top-Up</string>
     <string name="balance">Balance</string>
+    <string name="step_01_of_03">Step 01 of 03</string>
+    <string name="save_amp_continue"><![CDATA[Save & Continue]]></string>
+    <string name="save_amp_exit"><![CDATA[Save & Exit]]></string>
+    <string name="todo">TODO</string>
+    <string name="if_one_both_are_parents_dead_please_attach_death_certificate">If one/both are parents dead, please attach death certificate</string>
+    <string name="upload_attachment">Upload attachment</string>
+    <string name="both_parents_dead">Both Parents Dead</string>
+    <string name="one_parent_alive">One Parent Alive</string>
+    <string name="both_parents_alive">Both Parents Alive</string>
+    <string name="parent_status">Parent Status:</string>
+    <string name="student_information">Student Information</string>
+    <string name="student_s_name">Student’s Name</string>
+    <string name="enter">Enter</string>
+    <string name="gender">Gender</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="select">Select</string>
+    <string name="_05_10_2000">05/10/2000</string>
+    <string name="state_any_special_need_if_any">State any special need (if any)</string>
+    <string name="step_02_of_03">step_02_of_03</string>
 </resources>

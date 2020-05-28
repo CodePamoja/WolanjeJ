@@ -49,6 +49,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private TextView tvtext;
     private MaterialCardView materialCardView;
     private SharedPreferences pref;
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -64,28 +66,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
-
-
         // Get the Intent that started this activity and extract the string
-        Intent intentExtra = getIntent();
-        String className = getIntent().getStringExtra("Class");
-//        Log.e("class Type className", className);
-        if(className.equals("LogIn")) {
-            new UserBalance().execute();
-            this.sessionID = intentExtra.getStringExtra(LogIn.EXTRA_SESSION);
-            this.USERID = intentExtra.getStringExtra(LogIn.EXTRA_ID);
-            this.USERNAME = intentExtra.getStringExtra(LogIn.EXTRA_USERNAME);
-            this.AGENTNO = intentExtra.getStringExtra(LogIn.EXTRA_AGENTNO);
-        }else if (className.equals("MainTransfer36")){
-            new UserBalance().execute();
-            this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(MainTransfer36.EXTRA_AGENTNO);
-        }else if (className.equals("EnterPin")){
-            new UserBalance().execute();
-            this.sessionID = intentExtra.getStringExtra(EnterPin.EXTRA_SESSION);
-            this.AGENTNO = intentExtra.getStringExtra(EnterPin.EXTRA_AGENTNO);
-        }
+        transferListDetails();
+        // Get the Intent that started this activity and extract the string
 
+
+      //  Intent intentExtra = getIntent();
+        //String className = getIntent().getStringExtra("Class");
         //SharedPreferences values for login eg token, user registered number
         pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
@@ -93,22 +80,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         new UserBalance().execute();
         new UserServices().execute();
         new UserBills().execute();
-
-//        // Get the Intent that started this activity and extract the string
-//        Intent intentExtra = getIntent();
-//        String className = getIntent().getStringExtra("Class");
-//        Log.e("class Type className", className);
-//        if(className.equals("LogIn")) {
-//            new UserBalance().execute();
-////            this.USERID = intentExtra.getStringExtra(LogIn.EXTRA_ID);
-////            this.USERNAME = intentExtra.getStringExtra(LogIn.EXTRA_USERNAME);
-////            this.AGENTNO = intentExtra.getStringExtra(LogIn.EXTRA_AGENTNO);
-//        }else if (className.equals("MainTransfer36")){
-//            new UserBalance().execute();
-//        }else if (className.equals("EnterPin")){
-//            new UserBalance().execute();
-//        }
-
 
 //     this  belongs to  screen 18
         RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
@@ -667,6 +638,23 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public void close_poup_loans(View view) {
         findViewById(R.id.Loansbox).setVisibility(View.INVISIBLE);
         findViewById(R.id.bottom_navigation_home_two).setVisibility(View.VISIBLE);
+
+    }
+    private void transferListDetails(){
+
+//        mImage and mNames ArrayList go here
+//        mImageUrls.add("https://pixabay.com/photos/tree-sunset-amazing-beautiful-736885/");
+//        mNames.add("John");
+
+        initTransferRecyclerList();
+    }
+    private void initTransferRecyclerList(){
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(Home.this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewHome);
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerViewHomeAdapter adapter = new RecyclerViewHomeAdapter( mNames, mImageUrls, Home.this);
+        recyclerView.setAdapter(adapter);
 
     }
 }

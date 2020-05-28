@@ -1,6 +1,7 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,8 +20,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Sponsor01 extends AppCompatActivity {
-    Spinner spinner;
-    EditText editText,editText1,editText2;
+    private Spinner spinner;
+    private EditText editText,editText1,editText2;
+    private Toolbar tb;
 
     String [] Sponsors = new String[]{"National Government","County/Local Government","Religious Groups","Foundation","Donor - OrganiZation that runs Funding","Companies","Individuals","Learning Institutions", "Others"};
 
@@ -50,7 +52,25 @@ public class Sponsor01 extends AppCompatActivity {
         //Setting the ArrayAdapter data on the Spinner
         spinner.setAdapter(aa);
 
+        setToolBar(tb);
+    }
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent moveToLogo = new Intent(this,Sponsors00.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(moveToLogo);
+                    }
+                }
+        );
 
+    }
+    public void moveSponsor02(View view) {
+        startActivity(new Intent(this,Sponsor02.class));
     }
 
 

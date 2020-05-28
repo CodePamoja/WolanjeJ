@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<!--    tools:context=".TransactionsView">-->
+    android:layout_height="match_parent"
+    tools:context=".TransactionView">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -35,10 +35,10 @@
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_below="@+id/linerarTrans1"
         android:id="@+id/tabLayoutTrans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/linerarTrans1"
         android:background="@color/colorWhite">
     </com.google.android.material.tabs.TabLayout>
 
@@ -47,20 +47,11 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/transaction_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
-            android:clickable="true"
-            android:scrollbars="vertical" />
-    </LinearLayout>
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:layout_below="@+id/tabLayoutTrans"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:id="@+id/contacts_list"/>-->
-
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/transaction_viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </androidx.viewpager.widget.ViewPager>
+        </LinearLayout>
 
 </RelativeLayout >

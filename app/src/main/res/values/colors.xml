@@ -20,5 +20,7 @@
     <color name="trans">#80000000</color>
     <color name="color_Dark_Blue">#32489a</color>
     <color name="colorRed">#ff0000</color>
+    <color name="purple_blue">#531edc</color>
+    <color name="purple_light">#26531edc</color>
 
 </resources>

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Sponsor06">
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#f8f8fa"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/scroll1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1">
+
+
+        <include layout="@layout/toobarwithout"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#f8f8fa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top"
+        app:layout_constraintVertical_weight="11">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <TextView
+                android:id="@+id/titlex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="Sponsor Information"
+                android:textColor="@color/colorMidnight"
+                android:textSize="28sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:textColor="@color/colorMidnight"
+                android:textSize="18sp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titlex"
+                android:text="Type of Scholarship"
+                android:id="@+id/gender"
+                />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/full"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/partial"
+                app:layout_constraintTop_toBottomOf="@id/gender">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    >
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_check_circle_copy"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:id="@+id/full_scholarship"
+                        android:visibility="gone"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#6b6f81"
+                        android:lineSpacingExtra="12sp"
+                        android:gravity="center_horizontal"
+                        android:text="Full scholarship"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="32dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:layout_constraintTop_toBottomOf="@id/gender"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/full"
+                android:id="@+id/partial"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_check_circle_copy"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:id="@+id/partial_scholarship"
+                        android:visibility="gone"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorMidnight"
+                        android:lineSpacingExtra="12sp"
+                        android:gravity="center_horizontal"
+                        android:text="Partial scholarship"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/blue_grey"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="2sp"
+                android:text="Select Percentage"
+                app:layout_constraintTop_toBottomOf="@id/partial"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="41dp"
+                android:layout_marginStart="32dp"
+                android:id="@+id/percentage"
+                />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/thirty"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/fifty"
+                app:layout_constraintTop_toBottomOf="@id/percentage"
+                android:clickable="false"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#6b6f81"
+                        android:lineSpacingExtra="12sp"
+                        android:gravity="center_horizontal"
+                        android:text="30%"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/fifty"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/thirty"
+                app:layout_constraintRight_toLeftOf="@id/seventyfive"
+                app:layout_constraintTop_toBottomOf="@id/percentage"
+                android:clickable="false"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#6b6f81"
+                        android:lineSpacingExtra="12sp"
+                        android:gravity="center_horizontal"
+                        android:text="50%"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/seventyfive"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/fifty"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/percentage"
+                android:clickable="false"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#6b6f81"
+                        android:lineSpacingExtra="12sp"
+                        android:gravity="center_horizontal"
+                        android:text="75%"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="32dp"
+                android:textColor="@color/blue_grey"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="2sp"
+                android:text="Question 5 0f 7"
+                app:layout_constraintTop_toBottomOf="@id/thirty"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/progresstitle"
+                />
+
+
+            <ProgressBar
+                android:id="@+id/determinateBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_height="5dp"
+                android:progress="71"
+                android:backgroundTint="#d8d8d8"
+                android:progressTint="@color/colorAccent"
+                app:layout_constraintTop_toBottomOf="@id/progresstitle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+
+                />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomlayer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:paddingHorizontal="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_weight="1">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:text="@string/save_amp_exit" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
+            android:onClick="movetosponsor7"
+            android:text="@string/Continue" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

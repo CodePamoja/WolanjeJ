@@ -92,6 +92,7 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_toEndOf="@id/wallet"
                                 android:background="@drawable/gradient"
+                                android:backgroundTint="@color/colorWhite"
                                 android:text="@string/transfer_money"
                                 android:textColor="@color/colorAccent" />
 
@@ -122,14 +123,22 @@
                                 android:textColor="#21c17a"
                                 android:textSize="16sp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/btnaddnew"
-                                android:layout_centerInParent="true"
-                                android:text="@string/no_transfers" />
                         </RelativeLayout>
 
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="24dp"
+                            android:paddingTop="24dp">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/recyclerViewHome"/>
+
+                        </RelativeLayout>
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

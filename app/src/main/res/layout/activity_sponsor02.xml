@@ -1,60 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".Sponsor02">
 
     <LinearLayout
+        android:id="@+id/top02"
         android:layout_width="match_parent"
-        android:layout_height="192dp"
+        android:layout_height="0dp"
+        android:background="#f8f8fa"
         android:orientation="vertical"
-        android:backgroundTint="#b3c2c8">
-        <include layout="@layout/toobarwithout"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sponsor Information"
-            android:layout_marginTop="20dp"
-            android:textSize="30sp"
-            android:textColor="@color/colorMidnight"
-            android:layout_marginStart="35dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:layout_constraintBottom_toTopOf="@+id/scroll03"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textSize="18sp"
-            android:textColor="@color/colorMidnight"
-            tools:text="Select Student’s Academic level "
-            />
+
+
+        <include layout="@layout/toobarwithout"/>
     </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll02"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#f8f8fa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top02"
+        app:layout_constraintVertical_weight="11">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_s02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="Sponsor Information"
+                android:textColor="@color/colorMidnight"
+                android:textSize="28sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_select_academic_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:lineSpacingExtra="8sp"
+                android:text="Select Student’s Academic level "
+                android:textColor="@color/colorMidnight"
+                android:textSize="18sp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_s02" />
+
+
     <LinearLayout
+        android:id="@+id/top_linear_02"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="23dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_select_academic_level">
         
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_primary"
             android:layout_marginTop="5dp"
             android:layout_marginStart="30dp"
             android:layout_width="102dp"
-            android:backgroundTint="#b3c2c8"
-            android:layout_height="70dp">
+            android:clickable="true"
+            app:cardBackgroundColor="@color/colorWhite"
+            android:layout_height="70dp"
+            android:focusable="true">
             <ImageView
+                android:id="@+id/tick_primary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:src="@mipmap/check_circle_copy"/>
+                android:src="@mipmap/check_circle_copy"
+                android:visibility="gone"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,7 +108,16 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="15dp"
             android:layout_width="102dp"
+            android:clickable="true"
+            app:cardBackgroundColor="@color/colorWhite"
             android:layout_height="70dp">
+            <ImageView
+                android:id="@+id/tick_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@mipmap/check_circle_copy"
+                android:visibility="gone"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -94,7 +138,17 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="15dp"
             android:layout_width="102dp"
+            android:clickable="true"
+            app:cardBackgroundColor="@color/colorWhite"
             android:layout_height="70dp">
+
+            <ImageView
+                android:id="@+id/tick_tertiary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@mipmap/check_circle_copy"
+                android:visibility="gone"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -111,18 +165,34 @@
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linear_top2"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="25dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_linear_02">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_VTI"
             android:layout_marginTop="5dp"
             android:layout_marginStart="30dp"
             android:layout_width="102dp"
-            android:layout_height="70dp">
+            android:clickable="true"
+            app:cardBackgroundColor="@color/colorWhite"
+            android:layout_height="70dp"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/tick_Vti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@mipmap/check_circle_copy"
+                android:visibility="gone"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,51 +208,68 @@
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="238dp">
+
         <TextView
+            android:id="@+id/txt_question1of7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="Question 1 of 7"/>
-    </LinearLayout>
+            android:layout_marginTop="195dp"
+            android:textColor="@color/colorMidnight"
+            android:text="Question 1 of 7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_top2"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="9dp">
+
         <ProgressBar
             android:id="@+id/progress_s02"
+            style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-    </LinearLayout>
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_height="5dp"
+            android:progress="20"
+            android:backgroundTint="#d8d8d8"
+            android:progressTint="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@id/txt_question1of7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/bottom_02"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:paddingHorizontal="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_weight="1">
  
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_1_s02"
-            android:layout_marginStart="50dp"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="5dp"
             android:backgroundTint="#d0d3d8"
-            android:layout_marginTop="5dp"
-            android:layout_width="159dp"
-            android:layout_height="50dp"
-            android:text="Save and Exit"/>
+            android:layout_weight="1"
+            android:text="@string/save_amp_exit" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_2_s02"
-            android:layout_marginStart="10.5dp"
-            android:backgroundTint="#0bb8bb"
-            android:layout_width="159dp"
-            android:layout_height="50dp"
-            android:text="Save and Continue"/>
-    </LinearLayout>
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
+            android:onClick="moveSponsor03"
+            android:text="@string/Continue"/>
 
-</LinearLayout>
-</ScrollView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
