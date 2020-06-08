@@ -536,7 +536,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
     public void openLearningHub(MenuItem item) {
-        Log.e("Found","Troal");
         Intent intent = new Intent(this, Hub.class);
         startActivity(intent);
     }

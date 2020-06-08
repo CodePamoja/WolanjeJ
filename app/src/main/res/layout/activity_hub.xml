@@ -198,7 +198,7 @@
                     android:textColor="@color/colorWhite"
                     android:letterSpacing="0.02"
                     android:id="@+id/txtfront4"
-android:layout_above="@id/txtmiddle4"
+                    android:layout_above="@id/txtmiddle4"
                     android:layout_centerHorizontal="true"
                     android:text="Innovation"
                     />
@@ -213,7 +213,7 @@ android:layout_above="@id/txtmiddle4"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="5sp"
                     android:id="@+id/txtmiddle4"
-                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
                     android:text="Ut enim ad minim veniam, quis nostrud"
                     />

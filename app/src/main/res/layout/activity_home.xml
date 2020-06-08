@@ -382,7 +382,6 @@
             <include layout="@layout/withdraw"/>
 
             <include layout="@layout/loansapprovedview"/>
-            <include layout="@layout/pop_up_my_wallet"/>
             <include layout="@layout/loan_application_pop_up"/>
             <include layout="@layout/loan2"/>
 
