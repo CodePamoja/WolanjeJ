@@ -232,14 +232,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 //    https://wolenjeafrica.com/wolenje/api/services
 
-    public class UserServices extends AsyncTask<Void, Void, Response> {
+    public  class UserServices extends AsyncTask<Void, Void, Response> {
 
         @Override
         protected Response doInBackground(Void... voids) {
 
             String url = "/api/services";
             OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, sessionID); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
+            Response result = okConn.getBalance(url, sessionID);// sending the url string and base 64 results to the okhttp connection and it's method is getLogin
             Log.d("TAG", String.valueOf(result));
             return result;
         }
@@ -251,8 +251,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
-                    JSONObject JBalance = new JSONObject(test);
-                    System.out.println("Response body json values  services are : " + JBalance);
+                    JSONObject JService= new JSONObject(test);
+                    System.out.println("Response body json values  services are : " + JService);
 //                    String resultBalance = JBalance.getJSONObject("balance").getString("balance");
 
 //                    tvtext = findViewById(R.id.MYBalance);
@@ -493,8 +493,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             break;
             case R.id.services: i = new Intent(this,Home.class);startActivity(i);
             break;
-            case R.id.TransferMain: i = new Intent(this,MainTransfer36.class);
-                i.putExtra("Class","Home");startActivity(i);
+            case R.id.TransferMain: i = new Intent(this,TransactionView.class);
+                i.putExtra("Class","transaction");startActivity(i);
                 break;
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
                 i.putExtra("Class","Home");startActivity(i);

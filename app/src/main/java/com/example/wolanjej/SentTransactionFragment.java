@@ -35,7 +35,7 @@ public class SentTransactionFragment extends Fragment {
         recyclerView.setAdapter(sentRecyclerAdapter);
         return v;
     }
-    
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
