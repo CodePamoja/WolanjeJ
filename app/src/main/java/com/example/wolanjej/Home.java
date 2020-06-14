@@ -26,12 +26,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.wolanjej.models.ServicesModel;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,7 +59,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -73,12 +71,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         // Get the Intent that started this activity and extract the string
 
 
-        //  Intent intentExtra = getIntent();
+      //  Intent intentExtra = getIntent();
         //String className = getIntent().getStringExtra("Class");
         //SharedPreferences values for login eg token, user registered number
-        pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
+        pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
-        this.AGENTNO = pref.getString("agentno", "");
+        this.AGENTNO =  pref.getString("agentno", "");
         new UserBalance().execute();
         new UserServices().execute();
         new UserBills().execute();
@@ -118,9 +116,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         crypto101.setOnClickListener(this);
 
 
-        //start of  registernew number for activity_new_number
+     //start of  registernew number for activity_new_number
         Button btn_sendinvite = findViewById(R.id.btn_sendinvite);
-        btn_sendinvite.setOnClickListener(new View.OnClickListener() {
+        btn_sendinvite.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -155,7 +153,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(v.getContext(), activity_15_Ewallet2.class);
-                        intent.putExtra("Class", "Home");
+                        intent.putExtra("Class","Home");
                         startActivity(intent);
                     }
                 }
@@ -168,9 +166,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                         Intent intent = new Intent(v.getContext(), MainTransfer36.class);
 //                        intent.putExtra(EXTRA_SESSION, sessionID);
 //                        intent.putExtra(EXTRA_AGENTNO, AGENTNO);
-                        intent.putExtra("Class", "Home");
+                        intent.putExtra("Class","Home");
                         startActivity(intent);
-                    }
+                  }
                 }
         );
 
@@ -190,7 +188,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         TabLayoutMediator tbmed = new TabLayoutMediator(tb, vp2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                switch (position) {
+                switch (position){
                     case 0:
                         tab.setText("History");
                         break;
@@ -216,7 +214,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             }
         });
 
-        findViewById(R.id.btnviewall).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnviewall).setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -228,44 +226,43 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
     public void close_screen18(View view) {
-        Log.e("yes", "pressed");
+        Log.e("yes","pressed");
         findViewById(R.id.screen_16).setVisibility(View.INVISIBLE);
 
     }
 //    https://wolenjeafrica.com/wolenje/api/services
 
-    public class UserServices extends AsyncTask<Void, Void, Response> {
+    public  class UserServices extends AsyncTask<Void, Void, Response> {
 
         @Override
         protected Response doInBackground(Void... voids) {
 
             String url = "/api/services";
             OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, sessionID); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-            Log.d("TAG Services", String.valueOf(result));
+            Response result = okConn.getBalance(url, sessionID);// sending the url string and base 64 results to the okhttp connection and it's method is getLogin
+            Log.d("TAG", String.valueOf(result));
             return result;
         }
 
         @Override
         protected void onPostExecute(Response result) {
             String verifyResult = null;
-            if (result.code() == 200) {
+            if ( result.code() == 200) {
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
-                    JSONObject jsonObject = new JSONObject(test);
-                    System.out.println("Response body json values  services are : " + jsonObject);
+                    JSONObject JService= new JSONObject(test);
+                    System.out.println("Response body json values  services are : " + JService);
+//                    String resultBalance = JBalance.getJSONObject("balance").getString("balance");
 
-                    String resultBalance = jsonObject.getJSONArray("amount").getJSONObject(0).getString("amount");
-
-                    TextView textView1 = findViewById(R.id.amount_sent_note);
-                    textView1.setText(resultBalance);
+//                    tvtext = findViewById(R.id.MYBalance);
+//                    tvtext.setText("KES "+resultBalance);
 
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
 
-            } else if (result.code() != 201) {
+            }else if( result.code() != 201) {
                 try {
                     verifyResult = result.body().string();
                     JSONObject jBody = new JSONObject(verifyResult); // adding
@@ -298,7 +295,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         @Override
         protected void onPostExecute(Response result) {
             String verifyResult = null;
-            if (result.code() == 200) {
+            if ( result.code() == 200) {
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
@@ -314,7 +311,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     e.printStackTrace();
                 }
 
-            } else if (result.code() != 201) {
+            }else if( result.code() != 201) {
                 try {
                     verifyResult = result.body().string();
                     JSONObject jBody = new JSONObject(verifyResult); // adding
@@ -347,7 +344,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         @Override
         protected void onPostExecute(Response result) {
             String verifyResult = null;
-            if (result.code() == 200) {
+            if ( result.code() == 200) {
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
@@ -357,13 +354,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     String resultBalance = JBalance.getJSONArray("balance").getJSONObject(0).getString("balance");
 
                     tvtext = findViewById(R.id.MYBalance);
-                    tvtext.setText("KSH " + resultBalance);
+                    tvtext.setText("KSH "+resultBalance);
 
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
 
-            } else if (result.code() != 201) {
+            }else if( result.code() != 201) {
                 try {
                     verifyResult = result.body().string();
                     JSONObject jBody = new JSONObject(verifyResult); // adding
@@ -382,44 +379,46 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
 
+
+
     //    close drawer on register new number
     private void closeMyDrawer1() {
         drawer.closeDrawer(GravityCompat.START);
     }
 
 
+
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if(drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        }else{
+            super.onBackPressed();}
     }
 
-    public void movetoSettings48(MenuItem item) {
+    public void movetoSettings48(MenuItem item){
         Intent intent = new Intent(this, Settings48.class);
         startActivity(intent);
 
     }
 
-    public void moveBillManagerPayment(MenuItem item) {
+    public void moveBillManagerPayment(MenuItem item){
         Intent intent = new Intent(this, BillManager.class);
         startActivity(intent);
 
     }
 
-    public void moveBillManagerBiller(MenuItem item) {
+    public void moveBillManagerBiller(MenuItem item){
         Intent intent = new Intent(this, BillManager.class);
         startActivity(intent);
     }
 
-    public void moveReferrals(MenuItem item) {
+    public void moveReferrals(MenuItem item){
         Intent intent = new Intent(this, Referrals.class);
         startActivity(intent);
     }
 
-    public void moveMyWallet(MenuItem item) {
+    public void moveMyWallet(MenuItem item){
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);
     }
@@ -469,63 +468,41 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
     public void open_screen16(View view) {
-        Log.e("yes", "pressed");
+        Log.e("yes","pressed");
         findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
     }
-
     @Override
     public void onClick(View v) {
         Intent i;
 
-        switch (v.getId()) {
-            case R.id.income_details101:
-                i = new Intent(this, IncomeDetails.class);
-                startActivity(i);
+        switch (v.getId()){
+            case R.id.income_details101: i = new Intent(this, IncomeDetails.class);startActivity(i);
+            break;
+            case R.id.wallet101: i = new Intent(this, Home.class);startActivity(i);
+            break;
+            case R.id.services101: i = new Intent(this, services.class);startActivity(i);
+            break;
+            case R.id.exchange101: i = new Intent(this, Home.class);startActivity(i);
+            break;
+            case R.id.crypto101: i = new Intent(this, CryptoBalance.class);startActivity(i);
+            break;
+            case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
+            break;
+            case R.id.cardBuyAirtime: i = new Intent(this,Top_up.class);
+                i.putExtra("Class","Home");startActivity(i);
+            break;
+            case R.id.services: i = new Intent(this,Home.class);startActivity(i);
+            break;
+            case R.id.TransferMain: i = new Intent(this,TransactionView.class);
+                i.putExtra("Class","transaction");startActivity(i);
                 break;
-            case R.id.wallet101:
-                i = new Intent(this, Home.class);
-                startActivity(i);
+            case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
+                i.putExtra("Class","Home");startActivity(i);
                 break;
-            case R.id.services101:
-                i = new Intent(this, services.class);
-                startActivity(i);
-                break;
-            case R.id.exchange101:
-                i = new Intent(this, Home.class);
-                startActivity(i);
-                break;
-            case R.id.crypto101:
-                i = new Intent(this, CryptoBalance.class);
-                startActivity(i);
-                break;
-            case R.id.transfer101:
-                i = new Intent(this, MainTransfer36.class);
-                startActivity(i);
-                break;
-            case R.id.cardBuyAirtime:
-                i = new Intent(this, Top_up.class);
-                i.putExtra("Class", "Home");
-                startActivity(i);
-                break;
-            case R.id.services:
-                i = new Intent(this, Home.class);
-                startActivity(i);
-                break;
-            case R.id.TransferMain:
-                i = new Intent(this, MainTransfer36.class);
-                i.putExtra("Class", "Home");
-                startActivity(i);
-                break;
-            case R.id.transfer_money_button:
-                i = new Intent(this, MainTransfer36.class);
-                i.putExtra("Class", "Home");
-                startActivity(i);
-                break;
-            default:
-                break;
+            default:break;
         }
 
-    }
+}
 
 
     public void close_wallet2(View view) {
@@ -559,7 +536,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
     public void openLearningHub(MenuItem item) {
-        Log.e("Found", "Troal");
+        Log.e("Found","Troal");
         Intent intent = new Intent(this, Hub.class);
         startActivity(intent);
     }
@@ -583,18 +560,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Intent intent = new Intent(this, LogIn.class);
         startActivity(intent);
     }
-
-    public void registerNewNumber(MenuItem item) {
+    public void registerNewNumber(MenuItem item){
         drawer.closeDrawer(GravityCompat.START);
         findViewById(R.id.show_newnumber).setVisibility(View.VISIBLE);
     }
-
-    public void closeRegisterNewNumber(View view) {
+    public void closeRegisterNewNumber(View view){
         findViewById(R.id.show_newnumber).setVisibility(View.INVISIBLE);
     }
-
     public ArrayList<Model> getMylist() {
-        ArrayList<Model> models = new ArrayList<>();
+        ArrayList<Model>models = new ArrayList<>();
         Model m = new Model();
         m.setTitle("Pay Tv");
         m.setImage(R.mipmap.group_18a);
@@ -631,9 +605,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
 
     }
-
     public void displayPopUp(View view) {
-        PopupMenu popup = new PopupMenu(this, view);
+        PopupMenu popup = new PopupMenu(this,view);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.pop_up_menu_for_loan_reason);
         popup.show();
@@ -642,10 +615,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        if (item.getItemId() == R.id.others) {
+        if(item.getItemId() == R.id.others){
             findViewById(R.id.specific).setVisibility(View.VISIBLE);
             return true;
-        } else {
+        }else{
             return true;
         }
     }
@@ -667,8 +640,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         findViewById(R.id.bottom_navigation_home_two).setVisibility(View.VISIBLE);
 
     }
-
-    private void transferListDetails() {
+    private void transferListDetails(){
 
 //        mImage and mNames ArrayList go here
 //        mImageUrls.add("https://pixabay.com/photos/tree-sunset-amazing-beautiful-736885/");
@@ -676,13 +648,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         initTransferRecyclerList();
     }
+    private void initTransferRecyclerList(){
 
-    private void initTransferRecyclerList() {
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(Home.this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(Home.this,LinearLayoutManager.HORIZONTAL,false);
         RecyclerView recyclerView = findViewById(R.id.recyclerViewHome);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewHomeAdapter adapter = new RecyclerViewHomeAdapter(mNames, mImageUrls, Home.this);
+        RecyclerViewHomeAdapter adapter = new RecyclerViewHomeAdapter( mNames, mImageUrls, Home.this);
         recyclerView.setAdapter(adapter);
 
     }
