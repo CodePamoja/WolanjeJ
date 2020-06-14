@@ -8,7 +8,7 @@
     android:id="@+id/screen_16"
     android:elevation="7dp"
     android:visibility="gone"
-    tools:context="com.example.wolanjej.Home">
+    tools:context=".Home">
 
 <ScrollView
     android:layout_width="match_parent"

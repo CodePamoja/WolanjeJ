@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="clip_horizontal"
     android:fitsSystemWindows="true"
-    tools:context="com.example.wolanjej.Home"
-    >
+    tools:context="com.example.wolanjej.Home">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,22 +21,21 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/whatblur"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="32dp"
-                android:orientation="vertical"
 
-                android:id="@+id/whatblur"
-                >
+                android:orientation="vertical">
 
                 <include layout="@layout/toolbarhome" />
 
 
                 <ScrollView
+                    android:id="@+id/myscroll"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fillViewport="true"
-                    android:id="@+id/myscroll"
                     tools:context=".Home"
 
                     >
@@ -131,14 +129,15 @@
                             android:paddingHorizontal="24dp"
                             android:paddingTop="24dp">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:id="@+id/recyclerViewHome"/>
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewHome"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal" />
 
                         </RelativeLayout>
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -161,11 +160,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:text="@string/view_all"
                                 android:clickable="true"
+                                android:focusable="true"
+                                android:text="@string/view_all"
                                 android:textColor="#21c17a"
-                                android:textSize="16sp"
-                                android:focusable="true" />
+                                android:textSize="16sp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -182,10 +181,10 @@
                                     android:layout_weight="1"
                                     android:clickable="true"
                                     android:elevation="6dp"
+                                    android:focusable="true"
                                     app:cardCornerRadius="8dp"
                                     app:strokeColor="#A8A8A8"
-                                    app:strokeWidth="1dp"
-                                    android:focusable="true">
+                                    app:strokeWidth="1dp">
 
                                     <RelativeLayout
                                         android:layout_width="match_parent"
@@ -214,6 +213,7 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/TransferMain"
                                     style="@style/Widget.MaterialComponents.CardView"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -225,9 +225,7 @@
                                     android:elevation="6dp"
                                     app:cardCornerRadius="8dp"
                                     app:strokeColor="#A8A8A8"
-                                    app:strokeWidth="1dp"
-                                    android:id="@+id/TransferMain"
-                                    >
+                                    app:strokeWidth="1dp">
 
                                     <RelativeLayout
                                         android:layout_width="match_parent"
@@ -257,8 +255,8 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
-                                    style="@style/Widget.MaterialComponents.CardView"
                                     android:id="@+id/loanscard"
+                                    style="@style/Widget.MaterialComponents.CardView"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/btnviewall"
@@ -373,18 +371,24 @@
                 android:background="@color/colorWhite"
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/navigation" />
-              <include layout="@layout/activity_screen18" />
 
-            <include layout="@layout/pop_up_my_wallet"/>
-            <include layout="@layout/activity_register_new_number"/>
-            <include layout="@layout/transfer_unsuccessful_popup"/>
-            <include layout="@layout/wallet_pop_up"/>
-            <include layout="@layout/withdraw"/>
+            <include layout="@layout/activity_screen18" />
 
-            <include layout="@layout/loansapprovedview"/>
-            <include layout="@layout/pop_up_my_wallet"/>
-            <include layout="@layout/loan_application_pop_up"/>
-            <include layout="@layout/loan2"/>
+            <include layout="@layout/pop_up_my_wallet" />
+
+            <include layout="@layout/activity_register_new_number" />
+
+            <include layout="@layout/wallet_pop_up" />
+
+            <include layout="@layout/withdraw" />
+
+            <include layout="@layout/loansapprovedview" />
+
+            <include layout="@layout/pop_up_my_wallet" />
+
+            <include layout="@layout/loan_application_pop_up" />
+
+            <include layout="@layout/loan2" />
 
         </FrameLayout>
 

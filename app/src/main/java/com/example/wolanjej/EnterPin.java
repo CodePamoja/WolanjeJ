@@ -24,6 +24,9 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wolanjej.dialogs.AirtimeSuccess;
+import com.example.wolanjej.dialogs.AirtimeUnsuccessful;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -360,6 +363,7 @@ public class EnterPin extends AppCompatActivity {
         }
     }
 
+
     public class UserBalance extends AsyncTask<Void, Void, Response> {
 
         @Override
@@ -425,49 +429,22 @@ public class EnterPin extends AppCompatActivity {
         boolean focusable = false; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
         if (className.equals("TransferToWalletSingle37")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refncNumber)).setText(sendIDReference);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refFee)).setText(sendfee);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Done!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
+            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
+            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
+
         }else if (className.equals("TransferToPhone50")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refFee)).setText(sendfee);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText(myBalance);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refncNumber)).setText(sendIDReference);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Done!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
+            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
+            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
         }else if(className.equals("TransferToBank44")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refFee)).setText(sendfee);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText("0");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refncNumber)).setText(sendIDReference);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText(bankDetails);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpBankName)).setText(accNumber);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Done!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
+            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
+            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
         }else if (className.equals("TopUpOtherNumber")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refFee)).setText(sendfee);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText(myBalance);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refncNumber)).setText(sendIDReference);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText(phoneName);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Airtime Topped Up!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
+            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
+            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
         }else if (className.equals("Top_up")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refFee)).setText(sendfee);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.transBalance)).setText(myBalance);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.refncNumber)).setText(sendIDReference);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText(sendAmount);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("My Number");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("+"+phoneNumber);
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Airtime Topped Up!");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded);
+            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
+            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
+
         }
 
         ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {
@@ -494,39 +471,20 @@ public class EnterPin extends AppCompatActivity {
         boolean focusable = true; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
         if (className.equals("TransferToWalletSingle37")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
-            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-           ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
+            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
+            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
         }else if (className.equals("TransferToPhone50")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
-            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
+            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
+            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
         }else if(className.equals("TransferToBank44")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpBankName)).setText("*******");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
-            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
+            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
+            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
         }else if (className.equals("TopupOtherNumber")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpNumber)).setText("*******");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
-            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
+            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
+            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
         }else if (className.equals("Top_up")){
-            ((TextView)popupWindow.getContentView().findViewById(R.id.amoutSent)).setText("0.00");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.recpName)).setText("*******");
-            ((TextView)popupWindow.getContentView().findViewById(R.id.trasferStatus)).setText("Transfer Unsuccessful");
-            ((Button)popupView.findViewById(R.id.dismiss_success)).setText("TRY AGAIN");
-            ((ImageView) popupWindow.getContentView().findViewById(R.id.imageTrasfer)).setImageResource(R.mipmap.button_rounded_2);
+            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
+            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
         }
 
         ((Button)popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {

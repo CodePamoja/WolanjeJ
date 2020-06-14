@@ -34,6 +34,7 @@
         <activity android:name=".Sponsors00" />
         <activity android:name=".BookFlight10" />
         <activity android:name=".BookFlight" />
+        <activity android:name=".utils.UserServicesutils"/>
         <activity android:name=".Travel" />
         <activity android:name=".Education_50" />
         <activity android:name=".Scholarship06" />
@@ -44,6 +45,7 @@
         <activity android:name=".TopupOtherNumber" />
         <activity android:name=".activity_05_reg" />
         <activity android:name=".activity_05_reg_1" />
+        <activity android:name=".Screen18"/>
         <activity android:name=".HomeTwo" />
         <activity android:name=".Reg_04" />
         <activity android:name=".Reg03Activity" />

@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/TransMonth01"
+                android:id="@+id/SentTransMonth"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@id/TransPayMethod"
@@ -30,7 +30,7 @@
                 android:textColor="@color/colorBlack"/>
 
             <TextView
-                android:id="@+id/TransDate"
+                android:id="@+id/SentTransDate"
                 android:layout_width="fill_parent"
                 android:layout_height="26dip"
                 android:text="22"

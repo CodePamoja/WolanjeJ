@@ -34,7 +34,7 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
-        holder.mMONTH.setText(mData.get(position).getmName());
+        holder.mMONTH.setText(mData.get(position).getmMonth());
         holder.mDATE.setText(mData.get(position).getmDate());
         holder.mImageView.setImageResource(mData.get(position).getmPic());
         holder.mNAME.setText(mData.get(position).getmName());
@@ -61,8 +61,8 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mMONTH = itemView.findViewById(R.id.TransMonth01);
-            mDATE = itemView.findViewById(R.id.TransDate);
+            mMONTH = itemView.findViewById(R.id.SentTransMonth);
+            mDATE = itemView.findViewById(R.id.SentTransDate);
             mImageView = itemView.findViewById(R.id.pic_trans);
             mNAME = itemView.findViewById(R.id.TransName);
             mPAYMENT_METHOD = itemView.findViewById(R.id.TransPayMethod);
