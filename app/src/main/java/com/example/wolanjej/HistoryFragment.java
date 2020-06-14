@@ -64,7 +64,7 @@ public class HistoryFragment extends Fragment {
         new UserServices().execute();
 
         historyList = new ArrayList<>();
-//        historyList.add(new TranasactionHistory("Aug", "33", "100", "30", "Status: Successful", "pending: 0" ));
+        historyList.add(new TranasactionHistory("Aug", "33", "100", "30", "Status: Successful", "pending: 0" ));
 //        historyList.add(new TranasactionHistory("Aug", "33", "100", "30", "Status: Successful", "pending: 0" ));
 //        historyList.add(new TranasactionHistory("Aug", "33", "100", "30", "Status: Successful", "pending: 0" ));
 //
