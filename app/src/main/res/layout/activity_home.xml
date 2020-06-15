@@ -213,19 +213,18 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/TransferMain"
+                                    android:id="@+id/CTransferMain"
                                     style="@style/Widget.MaterialComponents.CardView"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@id/btnviewall"
                                     android:layout_marginStart="8dp"
-                                    android:layout_toEndOf="@id/card1"
                                     android:layout_weight="1"
                                     android:clickable="true"
                                     android:elevation="6dp"
                                     app:cardCornerRadius="8dp"
                                     app:strokeColor="#A8A8A8"
-                                    app:strokeWidth="1dp">
+                                    app:strokeWidth="1dp"
+                                    android:focusable="true">
 
                                     <RelativeLayout
                                         android:layout_width="match_parent"

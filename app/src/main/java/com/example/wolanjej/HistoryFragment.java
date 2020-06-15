@@ -63,8 +63,8 @@ public class HistoryFragment extends Fragment {
 
         new UserServices().execute();
 
-        historyList = new ArrayList<>();
-        historyList.add(new TranasactionHistory("Aug", "33", "100", "30", "Status: Successful", "pending: 0" ));
+//        historyList = new ArrayList<>();
+//        historyList.add(new TranasactionHistory("Aug", "33", "100", "30", "Status: Successful", "pending: 0" ));
 //        historyList.add(new TranasactionHistory("Aug", "33", "100", "30", "Status: Successful", "pending: 0" ));
 //        historyList.add(new TranasactionHistory("Aug", "33", "100", "30", "Status: Successful", "pending: 0" ));
 //
@@ -95,14 +95,10 @@ public class HistoryFragment extends Fragment {
 
                     for(int i=0;i<services.length();i++){
                         JSONObject json_data = services.getJSONObject(i);
-//                        String amount = json_data.getJSONObject("amount");
                         historyList = new ArrayList<>();
                         historyList.add(new TranasactionHistory(json_data.getString("created_on"),json_data.getString("created_on"),json_data.getString("amount"), json_data.getString("fee"), json_data.getString("status"), json_data.getString("status")));
                     }
-//
 
-//                    tvtext = findViewById(R.id.MYBalance);
-//                    tvtext.setText("KES "+resultBalance);
 
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();

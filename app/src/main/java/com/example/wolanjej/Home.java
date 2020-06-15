@@ -115,6 +115,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         MaterialCardView crypto101 = (MaterialCardView) findViewById(R.id.crypto101);
         crypto101.setOnClickListener(this);
 
+        MaterialCardView TransferHome = findViewById(R.id.CTransferMain);
+        TransferHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),TransactionView.class);startActivity(intent);
+            }
+        });
+
 
      //start of  registernew number for activity_new_number
         Button btn_sendinvite = findViewById(R.id.btn_sendinvite);

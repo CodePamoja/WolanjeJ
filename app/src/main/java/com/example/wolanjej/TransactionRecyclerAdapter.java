@@ -15,10 +15,10 @@ import java.util.List;
 public class TransactionRecyclerAdapter extends RecyclerView.Adapter<TransactionRecyclerAdapter.viewHolder> {
 
 
-    Context mContext;
-    List<TranasactionHistory> mData;
+    private Context mContext;
+    private List<TranasactionHistory> mData;
 
-    public TransactionRecyclerAdapter(Context mContext, List<TranasactionHistory> mData) {
+    TransactionRecyclerAdapter(Context mContext, List<TranasactionHistory> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
