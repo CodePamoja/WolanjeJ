@@ -1,20 +1,20 @@
 package com.example.wolanjej.models;
 
 public class ServicesModel {
-    public String Id;
-    public int created_on;
-    public String created_by;
-    public int req_id;
-    public int ac_uname;
-    public String product_name;
-    public String vendor_name;
-    public int ref;
-    public int phoneNumber;
-    public String email;
-    public int amountTransaction;
-    public int transactionFee;
-    public String last_status;
-    public int receipt_id;
+    private String Id;
+    private int created_on;
+    private String created_by;
+    private int req_id;
+    private int ac_uname;
+    private String product_name;
+    private String vendor_name;
+    private int ref;
+    private int phoneNumber;
+    private String email;
+    private int amountTransaction;
+    private int transactionFee;
+    private String last_status;
+    private int receipt_id;
 
     public ServicesModel() {
     }
@@ -74,4 +74,5 @@ public class ServicesModel {
     public int getReceipt_id() {
         return receipt_id;
     }
+
 }

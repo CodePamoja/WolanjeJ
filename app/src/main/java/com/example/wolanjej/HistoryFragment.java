@@ -46,10 +46,6 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_history, container, false);
-        recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_history);
-        TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(getContext(), historyList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(transactionRecyclerAdapter);
         return v;
     }
 
@@ -98,6 +94,10 @@ public class HistoryFragment extends Fragment {
                         JSONObject json_data = services.getJSONObject(i);
                         historyList.add(new TranasactionHistory(json_data.getString("created_on"),json_data.getString("created_on"),json_data.getString("amount"), json_data.getString("fee"), json_data.getString("status"), json_data.getString("status")));
                     }
+                    recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_history);
+                    TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(getContext(), historyList);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    recyclerView.setAdapter(transactionRecyclerAdapter);
 
 
                 } catch (JSONException | IOException e) {

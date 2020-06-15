@@ -125,7 +125,7 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/try_again"
+        android:id="@+id/try_again_unsuccessful"
         android:layout_width="282dp"
         android:layout_height="45dp"
         android:layout_marginTop="44dp"

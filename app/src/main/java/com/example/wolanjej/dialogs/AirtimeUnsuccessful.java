@@ -1,9 +1,11 @@
 package com.example.wolanjej.dialogs;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.wolanjej.R;
+import com.example.wolanjej.Top_up;
 import com.example.wolanjej.models.ServicesModel;
 
 import java.util.Collections;
@@ -24,6 +27,7 @@ public class AirtimeUnsuccessful extends AppCompatDialogFragment {
     private List<ServicesModel> data= Collections.emptyList();
     private ServicesModel current;
     LayoutInflater inflater;
+    private Button button;
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -33,6 +37,13 @@ public class AirtimeUnsuccessful extends AppCompatDialogFragment {
         builder.setView(content);
 
 
+        button = content.findViewById(R.id.try_again_unsuccessful);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Top_up.class);startActivity(intent);
+            }
+        });
         textView1 = (TextView) content.findViewById(R.id.reference_number);
         textView2 = (TextView) content.findViewById(R.id.amount_sent_note);
         textView3 = (TextView) content.findViewById(R.id.balance_note);

@@ -10,15 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TransactionRecyclerAdapter extends RecyclerView.Adapter<TransactionRecyclerAdapter.viewHolder> {
 
 
     private Context mContext;
-    private List<TranasactionHistory> mData;
+    private List<TranasactionHistory> mData = Collections.emptyList();
 
-    public TransactionRecyclerAdapter(Context mContext, List<TranasactionHistory> mData) {
+    TransactionRecyclerAdapter(Context mContext, List<TranasactionHistory> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -35,12 +36,13 @@ public class TransactionRecyclerAdapter extends RecyclerView.Adapter<Transaction
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
-        holder.month.setText(mData.get(position).getmMONTHS());
-        holder.date.setText(mData.get(position).getmDATE());
-        holder.top_up_amount.setText(mData.get(position).getmTOP_UP_AMOUNT());
-        holder.transaction_fee.setText(mData.get(position).getmTRANSACTION_FEE());
-        holder.status.setText(mData.get(position).getmSTATUS());
-        holder.pending.setText(mData.get(position).getmPENDING());
+        TranasactionHistory current=mData.get(position);
+        holder.month.setText(current.getmMONTHS());
+        holder.date.setText(current.getmDATE());
+        holder.top_up_amount.setText(current.getmTOP_UP_AMOUNT());
+        holder.transaction_fee.setText(current.getmTRANSACTION_FEE());
+        holder.status.setText(current.getmSTATUS());
+        holder.pending.setText(current.getmPENDING());
 
     }
 
