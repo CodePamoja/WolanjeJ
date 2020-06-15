@@ -15,7 +15,7 @@ public class TranasactionHistory {
 
     }
 
-    public TranasactionHistory(String mMONTHS, String mDATE, String mTOP_UP_AMOUNT, String mTRANSACTION_FEE, String mSTATUS, String mPENDING) {
+    TranasactionHistory(String mMONTHS, String mDATE, String mTOP_UP_AMOUNT, String mTRANSACTION_FEE, String mSTATUS, String mPENDING) {
         this.mMONTHS = mMONTHS;
         this.mDATE = mDATE;
         this.mTOP_UP_AMOUNT = mTOP_UP_AMOUNT;
@@ -50,29 +50,4 @@ public class TranasactionHistory {
         return mPENDING;
     }
 
-//    setters
-
-    public void setmMONTHS(String mMONTHS) {
-        this.mMONTHS = mMONTHS;
-    }
-
-    public void setmDATE(String mDATE) {
-        this.mDATE = mDATE;
-    }
-
-    public void setmTOP_UP_AMOUNT(String mTOP_UP_AMOUNT) {
-        this.mTOP_UP_AMOUNT = mTOP_UP_AMOUNT;
-    }
-
-    public void setmTRANSACTION_FEE(String mTRANSACTION_FEE) {
-        this.mTRANSACTION_FEE = mTRANSACTION_FEE;
-    }
-
-    public void setmSTATUS(String mSTATUS) {
-        this.mSTATUS = mSTATUS;
-    }
-
-    public void setmPENDING(String mPENDING) {
-        this.mPENDING = mPENDING;
-    }
 }

@@ -117,6 +117,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         MaterialCardView crypto101 = (MaterialCardView) findViewById(R.id.crypto101);
         crypto101.setOnClickListener(this);
 
+        MaterialCardView TransferHome = findViewById(R.id.CTransferMain);
+        TransferHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),TransactionView.class);startActivity(intent);
+            }
+        });
+
 
      //start of  registernew number for activity_new_number
         Button btn_sendinvite = findViewById(R.id.btn_sendinvite);
@@ -234,14 +242,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 //    https://wolenjeafrica.com/wolenje/api/services
 
-    public class UserServices extends AsyncTask<Void, Void, Response> {
+    public  class UserServices extends AsyncTask<Void, Void, Response> {
 
         @Override
         protected Response doInBackground(Void... voids) {
 
             String url = "/api/services";
             OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, sessionID); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
+            Response result = okConn.getBalance(url, sessionID);// sending the url string and base 64 results to the okhttp connection and it's method is getLogin
             Log.d("TAG", String.valueOf(result));
             return result;
         }
@@ -253,8 +261,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
+<<<<<<< HEAD
                     JSONObject JBalance = new JSONObject(test);
                     System.out.println("Response body json values  services are : " + JBalance);
+=======
+                    JSONObject JService= new JSONObject(test);
+                    System.out.println("Response body json values  services are : " + JService);
+//                    String resultBalance = JBalance.getJSONObject("balance").getString("balance");
+
+//                    tvtext = findViewById(R.id.MYBalance);
+//                    tvtext.setText("KES "+resultBalance);
+>>>>>>> 85fd7c612a29690b1eecc45e805a6f121e2193ad
 
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
@@ -491,8 +508,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             break;
             case R.id.services: i = new Intent(this,Home.class);startActivity(i);
             break;
-            case R.id.TransferMain: i = new Intent(this,MainTransfer36.class);
-                i.putExtra("Class","Home");startActivity(i);
+            case R.id.TransferMain: i = new Intent(this,TransactionView.class);
+                i.putExtra("Class","transaction");startActivity(i);
                 break;
             case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
                 i.putExtra("Class","Home");startActivity(i);

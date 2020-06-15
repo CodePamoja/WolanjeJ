@@ -81,7 +81,7 @@
             android:layout_below="@+id/txt_select_recipient_Number"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="38dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="33dp">
             <TextView

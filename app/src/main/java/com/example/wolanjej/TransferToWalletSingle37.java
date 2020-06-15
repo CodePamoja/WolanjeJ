@@ -3,7 +3,9 @@ package com.example.wolanjej;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +31,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     private String AGENTNO;
     private String phoneCompany;
     private String amount;
+    private SharedPreferences pref;
 
     public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -44,6 +47,9 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_to_wallet_single37);
         setToolBar();
+        pref= getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
+        this.sessionID = pref.getString("session_token", "");
+        this.AGENTNO =  pref.getString("agentno", "");
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
