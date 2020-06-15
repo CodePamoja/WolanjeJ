@@ -34,7 +34,7 @@
             />
         <item
             android:id="@+id/referrals"
-            android:title="@string/referrals"
+            android:title="@string/loyalty_program"
             android:icon="@mipmap/group3"
             android:onClick="openreferalls"
 

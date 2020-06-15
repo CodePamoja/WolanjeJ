@@ -64,37 +64,20 @@
                 android:layout_marginBottom="8dp"
                 >
 
-                <Button
+                <Spinner
+                    android:id="@+id/spinnercountries"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingHorizontal="18dp" />
+                <Spinner
+                    android:id="@+id/spinnercounties"
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginTop="16dp"
                     android:paddingHorizontal="18dp"
-                    android:text="Select Country"
-                    android:backgroundTint="@android:color/transparent"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/blue_grey"
-                    android:layout_below="@id/selecttype"
-                    android:drawableEnd="@drawable/ic_dropdown_arrow"
                     app:strokeColor="#E7E7E7"
-                    app:strokeWidth="1dp"
-
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:layout_marginTop="16dp"
-                    android:paddingHorizontal="18dp"
-                    android:text="Select County"
-                    android:backgroundTint="@android:color/transparent"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/blue_grey"
-                    android:layout_below="@id/selecttype"
-                    android:drawableEnd="@drawable/ic_dropdown_arrow"
-                    app:strokeColor="#E7E7E7"
-                    app:strokeWidth="1dp"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    />
+                    app:strokeWidth="5dp"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -160,9 +143,10 @@
             android:textColor="#222b45"
             android:lineSpacingExtra="6sp"
             android:gravity="center"
+            android:textColorLink="@android:color/holo_blue_bright"
             android:layout_marginHorizontal="14dp"
             android:layout_marginVertical="32dp"
-            android:text="By clicking “Continue you agree to our Terms and conditions as well as our privacy policy"
+            android:text="@string/tlc"
             />
         <Button
             android:layout_width="match_parent"

@@ -88,7 +88,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.e("set toolbar sess", sessionID);
+//                        Log.e("set toolbar sess", sessionID);
                         movetoLogo.putExtra("Class","TransferToWalletMultiple40");
                         movetoLogo.putExtra(EXTRA_SESSION, sessionID);
                         movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);

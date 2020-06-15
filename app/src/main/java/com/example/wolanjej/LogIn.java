@@ -61,62 +61,8 @@ public class LogIn extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
 
-        /*executor = ContextCompat.getMainExecutor(this);
-        final BiometricManager biometricManager = BiometricManager.from(this);
-
-        biometricPrompt = new androidx.biometric.BiometricPrompt(LogIn.this,executor,new androidx.biometric.BiometricPrompt.AuthenticationCallback() {
-            @Override
-            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
-                //super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(LogIn.this,"Error"+errString, LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
-                //super.onAuthenticationSucceeded(result);
-                Toast.makeText(LogIn.this,"Succes"+result, LENGTH_SHORT).show();
-
-                startActivity(new Intent(getParent(),Home.class));
-            }
-
-            @Override
-            public void onAuthenticationFailed() {
-                //super.onAuthenticationFailed();
-                Toast.makeText(LogIn.this,"Failed", LENGTH_SHORT).show();
-            }
-        });
-
-        promptInfo = new androidx.biometric.BiometricPrompt.PromptInfo.Builder().setTitle("Biometric Registration")
-                .setSubtitle("Register using your biometric credential")
-                .setNegativeButtonText("Use account password")
-                .build();
-
-
-
-        //button = findViewById(R.id.button2);
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                switch (biometricManager.canAuthenticate()) {
-                    case BiometricManager.BIOMETRIC_SUCCESS:
-                        biometricPrompt.authenticate(promptInfo);
-                        break;
-                    case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
-                        Toast.makeText(LogIn.this,"No hardware", LENGTH_SHORT).show();
-                        break;
-                    case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
-                        Toast.makeText(LogIn.this,"Hardware unavailable", LENGTH_SHORT).show();
-                        break;
-                    case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
-                        Toast.makeText(LogIn.this,"No Bio Enrolled", LENGTH_SHORT).show();
-                        break;
-                }
-
-            }
-        });*/
-
-
+        textPhone = findViewById(R.id.phoneNoLogIN);
+        textPin = findViewById(R.id.pinLogIN);
 
         // login button action
         button = findViewById(R.id.btn_LogIn);
@@ -124,7 +70,7 @@ public class LogIn extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        new UserLogin().execute();
+                        new UserLogin(textPhone.getText().toString(),textPin.getText().toString()).execute();
                     }
                 }
         );
@@ -173,6 +119,15 @@ public class LogIn extends AppCompatActivity {
     }
 
     public class UserLogin extends AsyncTask<Void, Void, Response> {
+
+        private String phone ;
+        private String pin ;
+
+        UserLogin(String phone, String pin) {
+            this.phone = phone;
+            this.pin = pin;
+        }
+
         @Override
         protected void onPreExecute() {
             prgBar = new ProgressDialog(LogIn.this);
@@ -185,29 +140,29 @@ public class LogIn extends AppCompatActivity {
         @Override
         protected Response doInBackground(Void... voids) {
             Response result = null;
-            textPhone = findViewById(R.id.phoneNoLogIN);
-            textPin = findViewById(R.id.pinLogIN);
 
-            String phone = textPhone.getText().toString();
-            String pin = textPin.getText().toString();
             if(phone!=null && pin!=null){
                 String phonePin = "254"+phone+":"+pin; //adding a phone number and a pin together separating them using Full collon
-                Log.d("TAG", phonePin);
+                Log.e("TAG", phonePin);
                 String results = baseResult.encodedValue(phonePin); // sending the phone number and pin for base 64 encoder for and getting the string value
-                Log.d("TAG", results);
+                Log.e("TAG", results);
                 String url = "/api/";
                 OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
                 result = okConn.getLogin(url, results); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-                Log.d("TAG", String.valueOf(result));
+                Log.e("TAG", String.valueOf(result));
             }
             return result;
         }
 
         @Override
         protected void onPostExecute(Response result) {
+            prgBar.dismiss();
+            Log.e("All result","Result");
+
             if ( result.code() == 200) {
-                prgBar.dismiss();
                 Toast.makeText(getApplicationContext(), "Your have been Loggedin successfuly", Toast.LENGTH_LONG).show();
+
+
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
@@ -235,10 +190,9 @@ public class LogIn extends AppCompatActivity {
                     startActivity(move);
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
-                }
 
+                }
             }else if( result.code() != 201) {
-                prgBar.dismiss();
                 Log.d("TAG", String.valueOf(result));
                 Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
             }

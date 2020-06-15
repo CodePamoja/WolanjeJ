@@ -15,7 +15,11 @@ public class Reg_02 extends AppCompatActivity {
     }
 
     public void movetoreg3(View view) {
-        Intent movetoreg3 = new Intent(this,Reg03Activity.class);
-        startActivity(movetoreg3);
+
+        startActivity(new Intent(this,Reg03Activity.class));
+    }
+
+    public void loadCopyOfId(View view) {
+
     }
 }

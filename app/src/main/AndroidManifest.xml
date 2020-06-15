@@ -27,7 +27,7 @@
         <activity android:name=".Scholarship02" />
         <activity android:name=".Scholarship" />
         <activity android:name=".BookFlight02"/>
-
+        <activity android:name=".Notifications52"/>
         <activity android:name=".Sponsor03" />
         <activity android:name=".Sponsor02" />
         <activity android:name=".Sponsor01" />

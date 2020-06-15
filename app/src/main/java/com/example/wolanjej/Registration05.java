@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -32,6 +34,7 @@ public class Registration05 extends AppCompatActivity {
     private EditText text;
     private JSONObject sessionID = null;
     private String phoneNo = null;
+    private TextView tlc;
 //    public Sendtover conn;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
@@ -42,9 +45,13 @@ public class Registration05 extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_registration05);
+
+        tlc = (TextView) findViewById(R.id.tlc);
+        tlc.setMovementMethod(LinkMovementMethod.getInstance());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
          tb = (Toolbar) findViewById(R.id.toolbar);
 
+        text = findViewById(R.id.phoneNumber);
         setToolBar();
         imageView = (ImageView)findViewById(R.id.image_holder);
         imageView.setImageResource(R.drawable.ic_group_7);
@@ -54,22 +61,11 @@ public class Registration05 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        text = findViewById(R.id.phoneNumber);
-//                        conn = new Sendtover(text.toString());
-//                        conn.sendToVerification();
-                       new UserSendPhone().execute();
+                       new UserSendPhone(text.getText().toString()).execute();
 
                     }
                 }
         );
-       /* Button btn_business= findViewById(R.id.btn_business);
-        btn_business.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Registration05.this,HomeTwo.class));
-            }
-        });
-*/
     }
 
     private void setToolBar() {
@@ -99,6 +95,14 @@ public class Registration05 extends AppCompatActivity {
     }
 
     public class UserSendPhone extends AsyncTask<Void, Void, Response> {
+
+
+
+        public UserSendPhone(String phonenumber) {
+
+            phoneNo = phonenumber;
+        }
+
         @Override
         protected void onPreExecute() {
             prgBar = new ProgressDialog(Registration05.this);
@@ -110,8 +114,6 @@ public class Registration05 extends AppCompatActivity {
 
         @Override
         protected Response doInBackground(Void... voids) {
-            text = findViewById(R.id.phoneNumber);
-            phoneNo = text.getText().toString();
             Log.e("Test 1", phoneNo);
             System.out.println(phoneNo);
 

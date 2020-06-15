@@ -49,6 +49,59 @@
     <string name="transfer_to_wallet">Transfer to Wallet</string>
     <string name="transfer_to_bank">Transfer to Bank</string>
     <string name="transfer_to_phone">Transfer to Phone</string>
+    <string-array name="counties">
+        <item>Mombasa</item>
+        <item>Kwale</item>
+        <item>Kilifi</item>
+        <item>Mombasa</item>
+        <item>Tana River</item>
+        <item>Lamu</item>
+        <item>Taita-Taveta</item>
+        <item>Garissa</item>
+        <item>wajir</item>
+        <item> Mandera</item>
+        <item>Marsabit</item>
+        <item>Isiolo</item>
+        <item>Meru</item>
+        <item>Tharaka-Nithi</item>
+        <item>Embu</item>
+        <item>Kitui</item>
+        <item>Machakos</item>
+        <item>Makueni</item>
+        <item>Nyandarua</item>
+        <item>Nyeri</item>
+        <item>Kirinyaga</item>
+        <item>Murang'a</item>
+        <item>Kiambu</item>
+        <item>Turkana</item>
+        <item>West Pokot"</item>
+        <item>Samburu</item>
+        <item>Trans Nzoia"</item>
+        <item>Uasin Gishu</item>
+        <item>Elgeyo-Marakwet</item>
+        <item>Nandi</item>
+        <item>Baringo</item>
+        <item>Laikipia</item>
+        <item>Nakuru</item>
+        <item>Narok</item>
+        <item>Kajiado</item>
+        <item>Kericho</item>
+        <item>Bomet</item>
+        <item>Kakamega</item>
+        <item>Vihiga</item>
+        <item>Bungoma</item>
+        <item>Busia</item>
+        <item>Siaya</item>
+        <item>Kisumu</item>
+        <item>Homa Bay"</item>
+        <item>Migori</item>
+        <item>Kisii</item>
+        <item>Nyamira</item>
+        <item>Nairobi City</item>
+
+        />
+
+    </string-array>
     <string-array name="user_select">
         <item>Single User</item>
         <item>Multiple Users</item>
@@ -115,4 +168,6 @@
     <string name="_05_10_2000">05/10/2000</string>
     <string name="state_any_special_need_if_any">State any special need (if any)</string>
     <string name="step_02_of_03">step_02_of_03</string>
+    <string name="tlc">By clicking “Continue you agree to our  <b><i><u><a href="https://dakarenergylimited.co.ke/Leaf/"> Terms and conditions </a></u></i></b> as well as our <b><i><u><a href="https://dakarenergylimited.co.ke/Leaf/">privacy policy</a></u></i></b>  </string>
+    <string name="loyalty_program">Loyalty Program</string>
 </resources>

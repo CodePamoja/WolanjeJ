@@ -115,14 +115,15 @@
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="24dp"
+                    >
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_attach_file_24"
                         android:layout_centerVertical="true"
                         android:id="@+id/uploadbtn"
-                        android:layout_marginStart="43dp"
                         android:backgroundTint="@color/colorWhite"
                         />
                     <TextView
@@ -141,7 +142,6 @@
                         android:src="@drawable/ic_baseline_play_for_work_24"
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="43dp"
                         />
 
 

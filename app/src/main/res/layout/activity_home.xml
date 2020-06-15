@@ -131,12 +131,14 @@
                             android:paddingHorizontal="24dp"
                             android:paddingTop="24dp">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:id="@+id/recyclerViewHome"/>
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewHome"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal"
+                                android:overScrollMode="always"
+                                android:visibility="gone" />
 
                         </RelativeLayout>
                         <RelativeLayout
@@ -351,8 +353,83 @@
                                     android:layout_alignParentEnd="true"
                                     android:layout_centerVertical="true"
                                     android:layout_marginEnd="20dp"
+                                    android:background="@android:color/transparent"
                                     android:contentDescription="@string/todo"
                                     android:src="@mipmap/invalid_name" />
+
+                            </RelativeLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="24dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginBottom="24dp"
+                            app:strokeColor="#A8A8A8"
+                            app:strokeWidth="1dp"
+                            app:cardCornerRadius="0dp"
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@mipmap/sponsor_ad"
+                                android:paddingHorizontal="12dp"
+
+
+                                >
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textColor="#ffffff"
+                                    android:id="@+id/wolenjesponsor"
+                                    android:text="Wolenje Sponsporship"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:textColor="#ffffff"
+                                    android:text="It’s about doing the right thing!"
+                                    android:layout_below="@id/wolenjesponsor"
+                                    />
+                                <ImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@android:color/transparent"
+                                    android:contentDescription="@string/todo"
+                                    android:src="@drawable/invalid_name" />
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/oval"
+                                    android:id="@+id/ovalmain"
+                                    android:layout_alignParentBottom="true"
+                                    />
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/oval_copy_2"
+                                    android:id="@+id/ovalcopy"
+                                    android:layout_toEndOf="@id/ovalmain"
+                                    android:layout_alignParentBottom="true"
+                                    />
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/oval_copy_2"
+                                    android:layout_toEndOf="@id/ovalcopy"
+                                    android:layout_alignParentBottom="true"/>
 
                             </RelativeLayout>
                         </com.google.android.material.card.MaterialCardView>

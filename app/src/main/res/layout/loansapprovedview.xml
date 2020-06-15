@@ -8,7 +8,7 @@
     android:paddingHorizontal="16dp"
     android:paddingTop="24dp"
     android:background="@color/colorWhite"
-    android:visibility="visible"
+    android:visibility="gone"
     android:id="@+id/loansholder"
     >
 

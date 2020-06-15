@@ -56,7 +56,7 @@
                 android:textSize="18sp"
                 android:layout_marginTop="24dp"
                 android:layout_gravity="start"
-                android:layout_marginStart="50dp"
+                android:layout_marginHorizontal="24dp"
                 android:textColor="@color/colorMidnight"
                 tools:text="Upload Documents"
                 />
@@ -67,14 +67,14 @@
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="24dp">
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_attach_file_24"
                         android:layout_centerVertical="true"
                         android:id="@+id/uploadbtn"
-                        android:layout_marginStart="43dp"
                         android:backgroundTint="@color/colorWhite"
                         />
                     <TextView
@@ -93,7 +93,6 @@
                         android:src="@drawable/ic_baseline_play_for_work_24"
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="43dp"
                         />
 
 
@@ -104,17 +103,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="18dp"
+
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="24dp"
+                    >
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_attach_file_24"
                         android:layout_centerVertical="true"
                         android:id="@+id/uploadbtn1"
-                        android:layout_marginStart="43dp"
                         android:backgroundTint="@color/colorWhite"
                         />
                     <TextView
@@ -133,7 +134,6 @@
                         android:src="@drawable/ic_baseline_play_for_work_24"
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="43dp"
                         />
 
 
@@ -147,7 +147,7 @@
                 android:textColor="#222b45"
                 android:lineSpacingExtra="4sp"
                 android:layout_marginTop="8dp"
-                android:layout_marginHorizontal="50dp"
+                android:layout_marginHorizontal="48dp"
                 android:text="This authorizes utilization of Wolenje services by the
 CEO or Board members"
                 />
@@ -158,14 +158,15 @@ CEO or Board members"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingHorizontal="24dp"
+                >
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_attach_file_24"
                     android:layout_centerVertical="true"
                     android:id="@+id/uploadbtn2"
-                    android:layout_marginStart="43dp"
                     android:backgroundTint="@color/colorWhite"
                     />
                 <TextView
@@ -184,7 +185,6 @@ CEO or Board members"
                     android:src="@drawable/ic_baseline_play_for_work_24"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="43dp"
                     />
 
 
@@ -200,18 +200,21 @@ CEO or Board members"
                     android:layout_height="wrap_content"
                     android:id="@+id/mycheckbox"
                     />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textColor="#222b45"
-                    android:lineSpacingExtra="4sp"
-                    android:text="I have read and agree to the Terms &amp; Conditions "
-                    android:layout_toRightOf="@id/mycheckbox"
                     android:layout_marginTop="15dp"
-                    />
+                    android:layout_toRightOf="@id/mycheckbox"
+                    android:autoLink="web"
+                    android:lineSpacingExtra="4sp"
+                    android:linksClickable="true"
+                    android:text="I have read and agree to the Terms &amp; Conditions "
+                    android:textColor="#222b45"
+                    android:textSize="12sp" />
             </RelativeLayout>
             <TextView
+                android:id="@+id/mytlc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="70dp"
@@ -222,7 +225,9 @@ CEO or Board members"
                 android:layout_marginStart="43dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="10dp"
-                android:text="By clicking “Continue you agree to our Terms and conditions as well as our privacy policy"
+                android:text="@string/tlc"
+                android:layout_gravity="center_horizontal"
+                android:textColorLink="@color/colorBluepurple"
                 />
 
 

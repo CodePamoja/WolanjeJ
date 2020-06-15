@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="#80000000"
     android:elevation="7dp"
-    tools:context="com.example.wolanjej.Home">
+    tools:context="com.example.wolanjej.Home"
+    android:id="@+id/show_ple"
+    android:visibility="gone">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:alpha="1"
         android:background="@drawable/splash2"
         android:orientation="vertical"
-        android:visibility="gone"
-        android:id="@+id/show_ple"
         android:paddingHorizontal="16dp"
-        android:alpha="1"
         >
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/rectanglew"
-            android:layout_marginTop="8dp"
             android:layout_gravity="center_horizontal"
-            android:onClick="close_show_ple"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="29dp"
+            android:onClick="close_show_ple"
+            android:src="@mipmap/rectanglew"
 
             />
 
@@ -36,28 +35,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
             android:layout_marginTop="13dp"
-            android:textColor="@color/colorMidnight"
             android:text="My E-Wallet"
-            />
+            android:textColor="@color/colorMidnight"
+            android:textSize="22sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="15dp"
+            android:orientation="horizontal"
 
             >
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mytopupcard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:id="@+id/mytopupcard"
                 android:layout_margin="8dp"
-                >
+                android:layout_weight="1"
+                android:clickable="true">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -87,13 +85,12 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mywithdrawcard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:id="@+id/mywithdrawcard"
                 android:layout_margin="8dp"
-                >
+                android:layout_weight="1"
+                android:clickable="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -124,13 +121,12 @@
 
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/openFundTrasfer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:id="@+id/openFundTrasfer"
                 android:layout_margin="8dp"
-                >
+                android:layout_weight="1"
+                android:clickable="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -165,18 +161,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="100dp"
-            >
+            android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="true"
                 android:layout_margin="8dp"
-                >
+                android:layout_weight="1"
+                android:clickable="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -208,10 +202,9 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="true"
                 android:layout_margin="8dp"
-                >
+                android:layout_weight="1"
+                android:clickable="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -241,9 +234,7 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
         </LinearLayout>
-
 
 
     </LinearLayout>

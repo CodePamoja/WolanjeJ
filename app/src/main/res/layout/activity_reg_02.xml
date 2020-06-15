@@ -75,7 +75,7 @@
                         />
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="52dp"
                         android:background="@drawable/edittext"
                         android:layout_marginTop="17dp"
                         android:layout_marginHorizontal="20dp"
@@ -87,7 +87,7 @@
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="52dp"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="17dp"
                         android:background="@drawable/edittext"
@@ -99,7 +99,7 @@
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="52dp"
                         android:background="@drawable/edittext"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="17dp"
@@ -108,7 +108,7 @@
                         />
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="52dp"
                         android:background="@drawable/edittext"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="17dp"
@@ -135,6 +135,7 @@
                         android:id="@+id/uploadbtn"
                         android:layout_marginStart="43dp"
                         android:backgroundTint="@color/colorWhite"
+                        android:onClick="loadCopyOfId"
                         />
                     <TextView
                         android:layout_width="wrap_content"

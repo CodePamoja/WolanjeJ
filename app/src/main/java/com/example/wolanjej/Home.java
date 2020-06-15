@@ -1,6 +1,5 @@
 package com.example.wolanjej;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,19 +33,17 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.Response;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     Toolbar tb;
     DrawerLayout drawer;
     private String sessionID;
-    private String USERID;
-    private String USERNAME;
     private String AGENTNO;
-    private String USERBALANCE;
-    private EditText ettext;
     private TextView tvtext;
-    private MaterialCardView materialCardView;
     private SharedPreferences pref;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
@@ -71,8 +67,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         // Get the Intent that started this activity and extract the string
 
 
-      //  Intent intentExtra = getIntent();
-        //String className = getIntent().getStringExtra("Class");
         //SharedPreferences values for login eg token, user registered number
         pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
@@ -84,6 +78,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 //     this  belongs to  screen 18
         RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        findViewById(R.id.TransferMain).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(v.getContext(),MainTransfer36.class));
+            }
+        });
 
         MyAdapter myAdapter = new MyAdapter(this, getMylist());
         mRecyclerView.setAdapter(myAdapter);
@@ -253,10 +255,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     Log.d("TAG test", test);
                     JSONObject JBalance = new JSONObject(test);
                     System.out.println("Response body json values  services are : " + JBalance);
-//                    String resultBalance = JBalance.getJSONObject("balance").getString("balance");
-
-//                    tvtext = findViewById(R.id.MYBalance);
-//                    tvtext.setText("KES "+resultBalance);
 
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
@@ -302,10 +300,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     JSONObject JBills = new JSONObject(test);
                     System.out.println("Response body json values  for bills are : " + JBills);
 
-//                    String resultBalance = JBalance.getJSONArray("balance").getJSONObject(0).getString("balance");
-//
-//                    tvtext = findViewById(R.id.MYBalance);
-//                    tvtext.setText("KSH "+resultBalance);
+           //         String resultBalance = JBills.getJSONArray("balance").getJSONObject(0).getString("balance");
+           //         tvtext = findViewById(R.id.MYBalance);
+            //        tvtext.setText("KSH "+resultBalance);
 
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
@@ -423,6 +420,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         startActivity(intent);
     }
 
+
     private void setToolBar() {
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
@@ -486,7 +484,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             break;
             case R.id.crypto101: i = new Intent(this, CryptoBalance.class);startActivity(i);
             break;
-            case R.id.transfer101: i = new Intent(this, MainTransfer36.class);startActivity(i);
+            case R.id.transfer101:i = new Intent(this, MainTransfer36.class);startActivity(i);
             break;
             case R.id.cardBuyAirtime: i = new Intent(this,Top_up.class);
                 i.putExtra("Class","Home");startActivity(i);
@@ -657,3 +655,4 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     }
 }
+
