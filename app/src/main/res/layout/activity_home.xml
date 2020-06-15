@@ -134,13 +134,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
-<<<<<<< HEAD
                                 android:orientation="horizontal"
                                 android:overScrollMode="always"
-                                android:visibility="gone" />
-=======
-                                android:orientation="horizontal" />
->>>>>>> 85fd7c612a29690b1eecc45e805a6f121e2193ad
+                                android:visibility="visible" />
 
                         </RelativeLayout>
 
@@ -451,19 +447,7 @@
                 android:background="@color/colorWhite"
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/navigation" />
-<<<<<<< HEAD
-              <include layout="@layout/activity_screen18" />
 
-            <include layout="@layout/pop_up_my_wallet"/>
-            <include layout="@layout/activity_register_new_number"/>
-            <include layout="@layout/transfer_unsuccessful_popup"/>
-            <include layout="@layout/wallet_pop_up"/>
-            <include layout="@layout/withdraw"/>
-
-            <include layout="@layout/loansapprovedview"/>
-            <include layout="@layout/loan_application_pop_up"/>
-            <include layout="@layout/loan2"/>
-=======
 
             <include layout="@layout/activity_screen18" />
 
@@ -482,7 +466,6 @@
             <include layout="@layout/loan_application_pop_up" />
 
             <include layout="@layout/loan2" />
->>>>>>> 85fd7c612a29690b1eecc45e805a6f121e2193ad
 
         </FrameLayout>
 

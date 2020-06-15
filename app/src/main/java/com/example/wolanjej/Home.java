@@ -261,18 +261,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
-<<<<<<< HEAD
                     JSONObject JBalance = new JSONObject(test);
                     System.out.println("Response body json values  services are : " + JBalance);
-=======
                     JSONObject JService= new JSONObject(test);
                     System.out.println("Response body json values  services are : " + JService);
-//                    String resultBalance = JBalance.getJSONObject("balance").getString("balance");
-
-//                    tvtext = findViewById(R.id.MYBalance);
-//                    tvtext.setText("KES "+resultBalance);
->>>>>>> 85fd7c612a29690b1eecc45e805a6f121e2193ad
-
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
