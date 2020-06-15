@@ -31,8 +31,8 @@ public class HistoryFragment extends Fragment {
 
     View v;
     private RecyclerView recyclerView;
-    private List<TranasactionHistory> historyList;
     private SharedPreferences pref;
+    private List<TranasactionHistory> historyList = new ArrayList<>();
     private String sessionID;
     private String USERID;
     private String USERNAME;
@@ -60,6 +60,7 @@ public class HistoryFragment extends Fragment {
         pref= getActivity().getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO =  pref.getString("agentno", "");
+
 
         new UserServices().execute();
 
@@ -95,7 +96,6 @@ public class HistoryFragment extends Fragment {
 
                     for(int i=0;i<services.length();i++){
                         JSONObject json_data = services.getJSONObject(i);
-                        historyList = new ArrayList<>();
                         historyList.add(new TranasactionHistory(json_data.getString("created_on"),json_data.getString("created_on"),json_data.getString("amount"), json_data.getString("fee"), json_data.getString("status"), json_data.getString("status")));
                     }
 

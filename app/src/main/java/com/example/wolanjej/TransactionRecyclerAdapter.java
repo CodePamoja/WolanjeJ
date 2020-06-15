@@ -18,7 +18,7 @@ public class TransactionRecyclerAdapter extends RecyclerView.Adapter<Transaction
     private Context mContext;
     private List<TranasactionHistory> mData;
 
-    TransactionRecyclerAdapter(Context mContext, List<TranasactionHistory> mData) {
+    public TransactionRecyclerAdapter(Context mContext, List<TranasactionHistory> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
