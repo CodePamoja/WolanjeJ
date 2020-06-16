@@ -299,10 +299,11 @@
 
 
                         </RelativeLayout>
-
+                      
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
+
                             android:layout_marginHorizontal="24dp"
                             android:layout_marginTop="13dp"
                             android:layout_marginBottom="24dp"
@@ -335,6 +336,7 @@
                                     android:textColor="#ffffff"
                                     android:text="It’s about doing the right thing!"
                                     android:layout_below="@id/wolenjesponsor"
+                                    android:id="@+id/wolajeexp"
                                     />
                                 <ImageButton
                                     android:layout_width="wrap_content"
@@ -351,7 +353,7 @@
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/oval"
                                     android:id="@+id/ovalmain"
-                                    android:layout_alignParentBottom="true"
+                                    android:layout_below="@id/wolajeexp"
                                     />
                                 <ImageView
                                     android:layout_width="wrap_content"
@@ -359,14 +361,15 @@
                                     android:src="@drawable/oval_copy_2"
                                     android:id="@+id/ovalcopy"
                                     android:layout_toEndOf="@id/ovalmain"
-                                    android:layout_alignParentBottom="true"
+                                    android:layout_below="@id/wolajeexp"
                                     />
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/oval_copy_2"
                                     android:layout_toEndOf="@id/ovalcopy"
-                                    android:layout_alignParentBottom="true"/>
+                                    android:layout_below="@id/wolajeexp"
+                                    />
 
                             </RelativeLayout>
                         </com.google.android.material.card.MaterialCardView>

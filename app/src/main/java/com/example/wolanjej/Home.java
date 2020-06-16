@@ -27,6 +27,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -67,13 +68,36 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         // Get the Intent that started this activity and extract the string
 
 
+
         //SharedPreferences values for login eg token, user registered number
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
+
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.name_holder);
+        navUsername.setText(pref.getString("user_name", ""));
+
         new UserBalance().execute();
         new UserServices().execute();
         new UserBills().execute();
+
+//     this  belongs to  screen 18
+        RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        findViewById(R.id.CTransferMain).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(v.getContext(),MainTransfer36.class));
+            }
+        });
+
+        MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
+        materialCardView.setOnClickListener(this);
 
         Button viewall = (Button) findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
@@ -81,8 +105,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Button transferMoney = (Button) findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
 
-        MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
-        materialCardView.setOnClickListener(this);
 
         MaterialCardView TransferHome = findViewById(R.id.CTransferMain);
         TransferHome.setOnClickListener(new View.OnClickListener() {

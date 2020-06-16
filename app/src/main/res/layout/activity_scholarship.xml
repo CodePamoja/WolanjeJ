@@ -86,7 +86,6 @@
                     android:paddingStart="18dp"
                     android:background="@drawable/textviewborder"
                     android:hint="Enter Location"
-                    android:layout_below="@id/list_item_causes"
 
                     />
 
@@ -99,7 +98,6 @@
                     android:backgroundTint="@android:color/transparent"
                     android:textAlignment="viewStart"
                     android:textColor="@color/blue_grey"
-                    android:layout_below="@id/selecttype"
                     android:drawableEnd="@drawable/ic_dropdown_arrow"
                     app:strokeColor="#E7E7E7"
                     app:strokeWidth="1dp"
@@ -115,7 +113,6 @@
                     android:backgroundTint="@android:color/transparent"
                     android:textAlignment="viewStart"
                     android:textColor="@color/blue_grey"
-                    android:layout_below="@id/selecttype"
                     android:drawableEnd="@drawable/ic_dropdown_arrow"
                     app:strokeColor="#E7E7E7"
                     app:strokeWidth="1dp"
