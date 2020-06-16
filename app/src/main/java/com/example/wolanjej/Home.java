@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -67,10 +68,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         // Get the Intent that started this activity and extract the string
 
 
+
         //SharedPreferences values for login eg token, user registered number
         pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO =  pref.getString("agentno", "");
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.name_holder);
+        navUsername.setText(pref.getString("user_name", ""));
         new UserBalance().execute();
         new UserServices().execute();
         new UserBills().execute();
@@ -79,7 +86,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        findViewById(R.id.TransferMain).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.CTransferMain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

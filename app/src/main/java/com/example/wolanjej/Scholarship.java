@@ -46,7 +46,8 @@ public class Scholarship extends AppCompatActivity {
         setContentView(R.layout.activity_scholarship);
         setToolBar(tb);
 
-        spinnercounties = findViewById(R.id.spinnercountries);
+        spinnercounties = findViewById(R.id.spinnercounties);
+        myspinner = findViewById(R.id.spinnercountries);
 
 
         OkHttpClient client = new OkHttpClient();
@@ -86,7 +87,6 @@ public class Scholarship extends AppCompatActivity {
                     Scholarship.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            myspinner = (Spinner)findViewById(R.id.spinnercountries);
 
                             ArrayAdapter myadappter = new ArrayAdapter(Scholarship.this, android.R.layout.simple_spinner_item,allNames);
 
@@ -119,9 +119,19 @@ public class Scholarship extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter<String> counties = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,R.array.counties);
-        counties.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnercounties.setAdapter(counties);
+        //ArrayAdapter<String> counties = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,R.array.user_select);
+        //counties.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        //spinnercounties.setAdapter(counties);
+
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinnercounties);
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.counties_array, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinnercounties.setAdapter(adapter);
     }
     private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
         tb = findViewById(R.id.toolbar);

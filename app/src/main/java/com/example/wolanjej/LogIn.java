@@ -182,14 +182,11 @@ public class LogIn extends AppCompatActivity {
                     editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
                     editor.commit();
                     Intent move = new Intent(LogIn.this, Home.class);
-//                    move.putExtra(EXTRA_SESSION, sessionID.getJSONObject("session").getString("session_token"));
-//                    move.putExtra(EXTRA_ID, sessionID.getJSONObject("session").getString("id"));
-//                    move.putExtra(EXTRA_USERNAME, sessionID.getJSONObject("session").getString("user_name"));
-//                    move.putExtra(EXTRA_AGENTNO, sessionID.getJSONObject("session").getString("agentno"));
                     move.putExtra("Class","LogIn");
                     startActivity(move);
                 } catch (JSONException | IOException e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
+                    Toast.makeText(LogIn.this, "There is a problem with your internet connection.Please try again if not logged in.", LENGTH_SHORT).show();
 
                 }
             }else if( result.code() != 201) {
