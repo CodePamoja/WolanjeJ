@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/Ewallet2"
-    android:background="#80000000"
-    android:visibility="gone">
+    android:background="#80000000">
 
     <RelativeLayout
         android:layout_width="match_parent"
