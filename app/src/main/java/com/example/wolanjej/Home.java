@@ -84,17 +84,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         new UserServices().execute();
         new UserBills().execute();
 
-//     this  belongs to  screen 18
-        RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        findViewById(R.id.CTransferMain).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(v.getContext(),MainTransfer36.class));
-            }
-        });
 
         MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
         materialCardView.setOnClickListener(this);
