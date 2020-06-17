@@ -55,7 +55,7 @@
             android:textColor="#18181c"
             android:letterSpacing="0.03"
             android:gravity="end"
-            android:text="kes 15.000"
+            android:text="kes 0.000"
             android:layout_below="@id/balance"
             android:layout_alignParentRight="true"
             />

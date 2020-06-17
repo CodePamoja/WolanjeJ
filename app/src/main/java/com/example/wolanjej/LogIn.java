@@ -143,13 +143,12 @@ public class LogIn extends AppCompatActivity {
 
             if(phone!=null && pin!=null){
                 String phonePin = "254"+phone+":"+pin; //adding a phone number and a pin together separating them using Full collon
-                Log.e("TAG", phonePin);
                 String results = baseResult.encodedValue(phonePin); // sending the phone number and pin for base 64 encoder for and getting the string value
-                Log.e("TAG", results);
+
                 String url = "/api/";
                 OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
                 result = okConn.getLogin(url, results); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-                Log.e("TAG", String.valueOf(result));
+
             }
             return result;
         }
@@ -165,11 +164,7 @@ public class LogIn extends AppCompatActivity {
 
                 try {
                     String test = result.body().string();
-                    Log.d("TAG test", test);
                     sessionID = new JSONObject(test);
-                    System.out.println("Response body json values are : " + sessionID);
-                    Log.d("TAG test Session", sessionID.getJSONObject("session").getString("session_token"));
-
                     //adding values to SharedPreferences
                     // make sure that in the getsharedPreferences the key value should be the same as the intent putextra class value
 
@@ -190,7 +185,6 @@ public class LogIn extends AppCompatActivity {
 
                 }
             }else if( result.code() != 201) {
-                Log.d("TAG", String.valueOf(result));
                 Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
             }
         }

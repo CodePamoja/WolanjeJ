@@ -163,6 +163,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         setToolBar();
     }
 
+    public void close_screen18(View view) {
+        Log.e("yes","pressed");
+        findViewById(R.id.screen_16).setVisibility(View.INVISIBLE);
+
+    }
+
+
+
 //    https://wolenjeafrica.com/wolenje/api/services
 
     public class UserServices extends AsyncTask<Void, Void, Response> {
