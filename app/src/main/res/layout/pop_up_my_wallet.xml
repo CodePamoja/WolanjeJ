@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/AppTheme"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80000000"
     android:elevation="7dp"
     tools:context="com.example.wolanjej.Home"
-    android:id="@+id/show_ple"
-    android:visibility="gone">
+    android:id="@+id/show_ple">
 
 
     <LinearLayout
@@ -24,10 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/colorWhite"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="29dp"
             android:onClick="close_show_ple"
             android:src="@mipmap/rectanglew"
+            android:id="@+id/imgCloseWallet"
 
             />
 
@@ -170,7 +171,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:clickable="true">
+                android:clickable="true"
+                android:id="@+id/transactionHistCard">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -204,7 +206,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:clickable="true">
+                android:clickable="true"
+                android:id="@+id/pendingCommCard">
 
                 <RelativeLayout
                     android:layout_width="match_parent"

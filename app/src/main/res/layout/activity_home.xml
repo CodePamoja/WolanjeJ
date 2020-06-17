@@ -79,7 +79,6 @@
                                 android:layout_marginBottom="24dp"
                                 android:background="@drawable/gradient"
                                 android:backgroundTint="@color/colorAccent"
-                                android:onClick="maketoast"
                                 android:text="@string/my_e_wallet" />
 
                             <Button
@@ -300,11 +299,11 @@
 
 
                         </RelativeLayout>
-
                       
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+
                             android:layout_marginHorizontal="24dp"
                             android:layout_marginTop="13dp"
                             android:layout_marginBottom="24dp"
@@ -319,8 +318,7 @@
                                 android:background="@mipmap/sponsor_ad"
                                 android:paddingHorizontal="12dp"
                                 android:paddingTop="24dp"
-
-                                >
+ >
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -395,19 +393,15 @@
                 app:menu="@menu/navigation" />
 
 
-            <include layout="@layout/activity_screen18" />
 
-            <include layout="@layout/pop_up_my_wallet" />
 
-            <include layout="@layout/activity_register_new_number" />
+
 
             <include layout="@layout/wallet_pop_up" />
 
             <include layout="@layout/withdraw" />
 
             <include layout="@layout/loansapprovedview" />
-
-            <include layout="@layout/pop_up_my_wallet" />
 
             <include layout="@layout/loan_application_pop_up" />
 

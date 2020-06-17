@@ -1,298 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:theme="@style/AppTheme"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/screen_16"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
-    android:id="@+id/screen_16"
     android:elevation="7dp"
-    android:visibility="gone"
-    tools:context=".Home">
+    tools:context=".Screen16">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:alpha="1"
-        android:background="@drawable/splash2"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp">
+        android:layout_height="match_parent">
 
-     <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_height="0dp">
-
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/rectanglew"
-            android:layout_marginTop="8dp"
-            android:layout_gravity="center_horizontal"
-            android:onClick="close_screen18"
-            android:layout_marginBottom="29dp"
-            android:backgroundTint="@color/colorWhite"
-
-            />
-     </LinearLayout>
-    <!--    scroll view-->
-     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="0dp"
-        >
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:layout_marginStart="15dp"
-            android:textSize="20sp"
-            android:text="@string/billers" />
+            android:layout_gravity="bottom"
+            android:alpha="1"
+            android:background="@drawable/splash2"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp">
 
-     </LinearLayout>
-     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-     <!--    end scroll view-->
-     <!-- A CardView that contains a TextView -->
-     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            android:layout_marginStart="15dp"
-            android:text="@string/my_account" />
-
-     </LinearLayout>
-     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="5dp">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/transfer101"
-            android:layout_width="84dp"
-            android:layout_height="98dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="20dp"
-            app:cardElevation="5dp"
-            android:background="@drawable/splash"
-            android:clickable="true"
-            app:cardCornerRadius="15dp"
-            android:focusable="true">
-
-            <ImageView
-                android:id="@+id/image_18f"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/group_18f"
-                android:layout_marginTop="20dp" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/blue_grey"
-                android:gravity="end"
-                android:text="@string/transfer"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp" />
 
-        </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/income_details101"
-            android:layout_width="84dp"
-            android:layout_height="98dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            app:cardElevation="5dp"
-            android:background="@drawable/splash"
-            android:clickable="true"
-            app:cardCornerRadius="15dp"
-            android:focusable="true">
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="29dp"
+                    android:backgroundTint="@color/colorWhite"
+                    android:src="@mipmap/rectanglew"
+                    android:id="@+id/img_close16"
 
-            <ImageView
-                android:id="@+id/image_18e"
+                    />
+            </LinearLayout>
+            <!--    scroll view-->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/group_18e"
-                android:layout_marginTop="20dp" />
+                android:layout_height="30dp"
+                android:layout_marginTop="0dp">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/billers"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/blue_grey"
-                android:lineSpacingExtra="2sp"
-                android:gravity="center_horizontal"
-                android:text="@string/income_details"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp" />
+            </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/wallet101"
-            android:layout_width="84dp"
-            android:layout_height="98dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            app:cardElevation="5dp"
-            android:background="@drawable/splash"
-            android:clickable="true"
-            app:cardCornerRadius="15dp"
-            android:focusable="true">
-            <ImageView
-                android:id="@+id/image_18d"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/group_18d"
-                android:layout_marginTop="20dp" />
+                android:layout_height="wrap_content" />
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/blue_grey"
-                android:gravity="center_horizontal"
-                android:text="@string/wallet"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp" />
-
-        </com.google.android.material.card.MaterialCardView>
-     </LinearLayout>
-
-     <!--    text view value add-->
-     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            android:layout_marginStart="15dp"
-            android:text="@string/value_add" />
-
-     </LinearLayout>
-     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="65dp"
-        >
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/services101"
-            android:layout_width="84dp"
-            android:layout_height="98dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="20dp"
-            app:cardElevation="5dp"
-            android:background="@drawable/splash"
-            android:clickable="true"
-            app:cardCornerRadius="15dp"
-            android:focusable="true">
-            <ImageView
-                android:id="@+id/image_18c"
+            <!--    end scroll view-->
+            <!-- A CardView that contains a TextView -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/group_18c"
-                android:layout_marginTop="20dp" />
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/my_account"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
-                android:gravity="center_horizontal"
-                android:text="@string/services"
-                android:textColor="@color/blue_grey"
-                android:textSize="12sp" />
-        </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/exchange101"
-            android:layout_width="84dp"
-            android:layout_height="98dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            app:cardElevation="5dp"
-            android:background="@drawable/splash"
-            android:clickable="true"
-            app:cardCornerRadius="15dp"
-            android:focusable="true">
-            <ImageView
-                android:id="@+id/image_18a"
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/group_18a"
-                android:layout_marginTop="20dp" />
+                android:layout_height="140dp"
+                android:layout_marginTop="5dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/transfer101"
+                    android:layout_width="84dp"
+                    android:layout_height="98dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/splash"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:id="@+id/image_18f"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20dp"
+                        android:src="@mipmap/group_18f" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="60dp"
+                        android:gravity="end"
+                        android:text="@string/transfer"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/income_details101"
+                    android:layout_width="84dp"
+                    android:layout_height="98dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/splash"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:id="@+id/image_18e"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20dp"
+                        android:src="@mipmap/group_18e" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/blue_grey"
-                android:gravity="end"
-                android:text="@string/exchange"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="60dp"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="2sp"
+                        android:text="@string/income_details"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="12sp" />
 
-        </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/crypto101"
-            android:layout_width="84dp"
-            android:layout_height="98dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            app:cardElevation="5dp"
-            android:background="@drawable/splash"
-            android:clickable="true"
-            app:cardCornerRadius="15dp"
-            android:focusable="true">
-            <ImageView
-                android:id="@+id/image_18b"
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/wallet101"
+                    android:layout_width="84dp"
+                    android:layout_height="98dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/splash"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:id="@+id/image_18d"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20dp"
+                        android:src="@mipmap/group_18d" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="60dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/wallet"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!--    text view value add-->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/group_18b"
-                android:layout_marginTop="20dp" />
+                android:layout_height="30dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/blue_grey"
-                android:gravity="center_horizontal"
-                android:text="@string/crypto"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
-                />
-        </com.google.android.material.card.MaterialCardView>
-     </LinearLayout>
- </LinearLayout>
-</ScrollView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/value_add"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="65dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/services101"
+                    android:layout_width="84dp"
+                    android:layout_height="98dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/splash"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:id="@+id/image_18c"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20dp"
+                        android:src="@mipmap/group_18c" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="60dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/services"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="12sp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/exchange101"
+                    android:layout_width="84dp"
+                    android:layout_height="98dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/splash"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:id="@+id/image_18a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20dp"
+                        android:src="@mipmap/group_18a" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="60dp"
+                        android:gravity="end"
+                        android:text="@string/exchange"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/crypto101"
+                    android:layout_width="84dp"
+                    android:layout_height="98dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/splash"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:id="@+id/image_18b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20dp"
+                        android:src="@mipmap/group_18b" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="60dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/crypto"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="12sp" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

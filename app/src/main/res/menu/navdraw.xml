@@ -12,10 +12,10 @@
 
             />
         <item
-            android:id="@+id/my_e_wallet"
+            android:id="@+id/menu_e_wallet"
             android:title="@string/my_e_wallets"
             android:icon="@mipmap/group5"
-            android:onClick="maketoast"
+            android:onClick="OpenWalletM"
 
             />
         <item

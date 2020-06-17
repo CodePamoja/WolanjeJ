@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:theme="@style/AppTheme"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -58,6 +59,5 @@
             android:src="@drawable/floatbutton"
             app:backgroundTint="@color/colorWarmpurple" >
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
-        <include layout="@layout/pay_bill_now" />
     </FrameLayout>
 </LinearLayout>

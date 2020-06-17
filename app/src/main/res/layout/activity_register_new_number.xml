@@ -14,20 +14,19 @@
         android:layout_width="match_parent"
         android:layout_height="560dp"
         android:layout_gravity="bottom"
-        android:visibility="gone"
         android:alpha="1"
         android:background="@drawable/splash2"
         android:orientation="vertical"
         android:paddingHorizontal="16dp">
 
         <ImageButton
+            android:id="@+id/closeRegNew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="29dp"
             android:backgroundTint="@color/colorWhite"
-            android:onClick="closeRegisterNewNumber"
             android:src="@mipmap/rectanglew"
 
             />

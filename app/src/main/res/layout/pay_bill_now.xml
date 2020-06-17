@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/AppTheme"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/payBillNow"
     android:background="@android:color/transparent"
     tools:context=".AllFragment">
 
@@ -12,21 +14,20 @@
         android:layout_gravity="bottom"
         android:background="@drawable/splash2"
         android:orientation="vertical"
-        android:visibility="gone"
         android:id="@+id/show_pay_now"
         android:paddingHorizontal="16dp"
         android:alpha="1"
         >
 
         <ImageButton
+            android:id="@+id/closeBillNow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/rectanglew"
+            android:backgroundTint="@color/colorWhite"
             android:layout_marginTop="8dp"
             android:layout_gravity="center_horizontal"
-            android:onClick="close_pay_now"
-            android:layout_marginBottom="15dp"
-            tools:ignore="OnClick" />
+            android:layout_marginBottom="15dp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -246,7 +247,7 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp" />
             <Button
-                android:id="@+id/btn_cancel"
+                android:id="@+id/btnCancelBill"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="Cancel"

@@ -5,15 +5,16 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -35,8 +37,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
@@ -56,7 +56,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -70,9 +70,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
 
         //SharedPreferences values for login eg token, user registered number
-        pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
+        pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
-        this.AGENTNO =  pref.getString("agentno", "");
+        this.AGENTNO = pref.getString("agentno", "");
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
         View headerView = navigationView.getHeaderView(0);
@@ -83,20 +84,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         new UserServices().execute();
         new UserBills().execute();
 
-//     this  belongs to  screen 18
-        RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        findViewById(R.id.CTransferMain).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(v.getContext(),MainTransfer36.class));
-            }
-        });
-
-        MyAdapter myAdapter = new MyAdapter(this, getMylist());
-        mRecyclerView.setAdapter(myAdapter);
 
         MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
         materialCardView.setOnClickListener(this);
@@ -107,23 +94,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Button transferMoney = (Button) findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
 
-        MaterialCardView transfer101 = (MaterialCardView) findViewById(R.id.transfer101);
-        transfer101.setOnClickListener(this);
-
-        MaterialCardView income_details101 = (MaterialCardView) findViewById(R.id.income_details101);
-        income_details101.setOnClickListener(this);
-
-        MaterialCardView wallet101 = (MaterialCardView) findViewById(R.id.wallet101);
-        wallet101.setOnClickListener(this);
-
-        MaterialCardView services101 = (MaterialCardView) findViewById(R.id.services101);
-        services101.setOnClickListener(this);
-
-        MaterialCardView exchange101 = (MaterialCardView) findViewById(R.id.exchange101);
-        exchange101.setOnClickListener(this);
-
-        MaterialCardView crypto101 = (MaterialCardView) findViewById(R.id.crypto101);
-        crypto101.setOnClickListener(this);
 
         MaterialCardView TransferHome = findViewById(R.id.CTransferMain);
         TransferHome.setOnClickListener(new View.OnClickListener() {
@@ -134,79 +104,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         });
 
 
-     //start of  registernew number for activity_new_number
-        Button btn_sendinvite = findViewById(R.id.btn_sendinvite);
-        btn_sendinvite.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                System.out.println("Button Clicked");
-//                sendToVerification();
-            }
-        });
-
-
-        TextView cancel = findViewById(R.id.cancel_register_new);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("cancelled");
-                closeMyDrawer1();
-            }
-        });
-
-        findViewById(R.id.mywithdrawcard).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.Ewallet3).setVisibility(View.VISIBLE);
-
-                    }
-                }
-        );
-        findViewById(R.id.mytopupcard).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(), activity_15_Ewallet2.class);
-                        intent.putExtra("Class","Home");
-                        startActivity(intent);
-                    }
-                }
-        );
-
-        findViewById(R.id.openFundTrasfer).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(), MainTransfer36.class);
-//                        intent.putExtra(EXTRA_SESSION, sessionID);
-//                        intent.putExtra(EXTRA_AGENTNO, AGENTNO);
-                        intent.putExtra("Class","Home");
-                        startActivity(intent);
-                  }
-                }
-        );
-
-        findViewById(R.id.mytopupcard).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.closeDrawer(GravityCompat.START);
-
-                findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
-                findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
-                findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
-            }
-        });
         ViewPager2 vp2 = findViewById(R.id.viewpager2);
         vp2.setAdapter(new LoansAdapter(this));
         TabLayout tb = findViewById(R.id.tabs);
         TabLayoutMediator tbmed = new TabLayoutMediator(tb, vp2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         tab.setText("History");
                         break;
@@ -232,11 +136,18 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             }
         });
 
-        findViewById(R.id.btnviewall).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.btnviewall).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
+                OpenScreen16();
+            }
+        });
+
+        findViewById(R.id.wallet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenWallet();
             }
         });
 
@@ -251,14 +162,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
 
 
-
-
-
-
-
 //    https://wolenjeafrica.com/wolenje/api/services
 
-    public  class UserServices extends AsyncTask<Void, Void, Response> {
+    public class UserServices extends AsyncTask<Void, Void, Response> {
 
         @Override
         protected Response doInBackground(Void... voids) {
@@ -273,19 +179,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         @Override
         protected void onPostExecute(Response result) {
             String verifyResult = null;
-            if ( result.code() == 200) {
+            if (result.code() == 200) {
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
                     JSONObject JBalance = new JSONObject(test);
                     System.out.println("Response body json values  services are : " + JBalance);
-                    JSONObject JService= new JSONObject(test);
+                    JSONObject JService = new JSONObject(test);
                     System.out.println("Response body json values  services are : " + JService);
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
 
-            }else if( result.code() != 201) {
+            } else if (result.code() != 201) {
                 try {
                     verifyResult = result.body().string();
                     JSONObject jBody = new JSONObject(verifyResult); // adding
@@ -318,22 +224,22 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         @Override
         protected void onPostExecute(Response result) {
             String verifyResult = null;
-            if ( result.code() == 200) {
+            if (result.code() == 200) {
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
                     JSONObject JBills = new JSONObject(test);
                     System.out.println("Response body json values  for bills are : " + JBills);
 
-           //         String resultBalance = JBills.getJSONArray("balance").getJSONObject(0).getString("balance");
-           //         tvtext = findViewById(R.id.MYBalance);
-            //        tvtext.setText("KSH "+resultBalance);
+                    //         String resultBalance = JBills.getJSONArray("balance").getJSONObject(0).getString("balance");
+                    //         tvtext = findViewById(R.id.MYBalance);
+                    //        tvtext.setText("KSH "+resultBalance);
 
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
 
-            }else if( result.code() != 201) {
+            } else if (result.code() != 201) {
                 try {
                     verifyResult = result.body().string();
                     JSONObject jBody = new JSONObject(verifyResult); // adding
@@ -366,7 +272,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         @Override
         protected void onPostExecute(Response result) {
             String verifyResult = null;
-            if ( result.code() == 200) {
+            if (result.code() == 200) {
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
@@ -376,13 +282,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     String resultBalance = JBalance.getJSONArray("balance").getJSONObject(0).getString("balance");
 
                     tvtext = findViewById(R.id.MYBalance);
-                    tvtext.setText("KSH "+resultBalance);
+                    tvtext.setText("KES " + resultBalance);
 
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
 
-            }else if( result.code() != 201) {
+            } else if (result.code() != 201) {
                 try {
                     verifyResult = result.body().string();
                     JSONObject jBody = new JSONObject(verifyResult); // adding
@@ -401,46 +307,44 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
 
-
-
     //    close drawer on register new number
     private void closeMyDrawer1() {
         drawer.closeDrawer(GravityCompat.START);
     }
 
 
-
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();}
+        } else {
+            super.onBackPressed();
+        }
     }
 
-    public void movetoSettings48(MenuItem item){
+    public void movetoSettings48(MenuItem item) {
         Intent intent = new Intent(this, Settings48.class);
         startActivity(intent);
 
     }
 
-    public void moveBillManagerPayment(MenuItem item){
+    public void moveBillManagerPayment(MenuItem item) {
         Intent intent = new Intent(this, BillManager.class);
         startActivity(intent);
 
     }
 
-    public void moveBillManagerBiller(MenuItem item){
+    public void moveBillManagerBiller(MenuItem item) {
         Intent intent = new Intent(this, BillManager.class);
         startActivity(intent);
     }
 
-    public void moveReferrals(MenuItem item){
+    public void moveReferrals(MenuItem item) {
         Intent intent = new Intent(this, Referrals.class);
         startActivity(intent);
     }
 
-    public void moveMyWallet(MenuItem item){
+    public void moveMyWallet(MenuItem item) {
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);
     }
@@ -474,64 +378,33 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
 
-    public void maketoast(MenuItem item) {
-        drawer.closeDrawer(GravityCompat.START);
-
-        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
-        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
-        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
-
-    }
-
-    public void close_show_ple(View view) {
-        findViewById(R.id.show_ple).setVisibility(View.INVISIBLE);
-
-        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
-
-    }
-
-    public void open_screen16(View view) {
-        Log.e("yes","pressed");
-        findViewById(R.id.screen_16).setVisibility(View.VISIBLE);
-    }
     @Override
     public void onClick(View v) {
         Intent i;
 
-        switch (v.getId()){
-            case R.id.income_details101: i = new Intent(this, IncomeDetails.class);startActivity(i);
-            break;
-            case R.id.wallet101: i = new Intent(this, Home.class);startActivity(i);
-            break;
-            case R.id.services101: i = new Intent(this, services.class);startActivity(i);
-            break;
-            case R.id.exchange101: i = new Intent(this, Home.class);startActivity(i);
-            break;
-            case R.id.crypto101: i = new Intent(this, CryptoBalance.class);startActivity(i);
-            break;
-            case R.id.transfer101:i = new Intent(this, MainTransfer36.class);startActivity(i);
-            break;
-            case R.id.cardBuyAirtime: i = new Intent(this,Top_up.class);
-                i.putExtra("Class","Home");startActivity(i);
-            break;
-            case R.id.services: i = new Intent(this,Home.class);startActivity(i);
-            break;
-            case R.id.TransferMain: i = new Intent(this,TransactionView.class);
-                i.putExtra("Class","transaction");startActivity(i);
+        switch (v.getId()) {
+            case R.id.cardBuyAirtime:
+                i = new Intent(this, Top_up.class);
+                i.putExtra("Class", "Home");
+                startActivity(i);
                 break;
-            case R.id.transfer_money_button: i = new Intent(this,MainTransfer36.class);
-                i.putExtra("Class","Home");startActivity(i);
+            case R.id.services:
+                i = new Intent(this, Home.class);
+                startActivity(i);
                 break;
-            default:break;
+            case R.id.TransferMain:
+                i = new Intent(this, TransactionView.class);
+                i.putExtra("Class", "transaction");
+                startActivity(i);
+                break;
+            case R.id.transfer_money_button:
+                i = new Intent(this, MainTransfer36.class);
+                i.putExtra("Class", "Home");
+                startActivity(i);
+                break;
+            default:
+                break;
         }
-
-}
-
-
-    public void close_wallet2(View view) {
-        findViewById(R.id.Ewallet2).setVisibility(View.INVISIBLE);
-
-        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
 
     }
 
@@ -582,53 +455,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Intent intent = new Intent(this, LogIn.class);
         startActivity(intent);
     }
-    public void registerNewNumber(MenuItem item){
-        drawer.closeDrawer(GravityCompat.START);
-        findViewById(R.id.show_newnumber).setVisibility(View.VISIBLE);
-    }
-    public void closeRegisterNewNumber(View view){
-        findViewById(R.id.show_newnumber).setVisibility(View.INVISIBLE);
-    }
-    public ArrayList<Model> getMylist() {
-        ArrayList<Model>models = new ArrayList<>();
-        Model m = new Model();
-        m.setTitle("Pay Tv");
-        m.setImage(R.mipmap.group_18a);
-        models.add(m);
 
-        Model m3 = new Model();
-        m3.setTitle("Saved Billers");
-        m3.setImage(R.mipmap.group_18);
-        models.add(m3);
-
-        Model m1 = new Model();
-        m1.setTitle("Electricity");
-        m1.setImage(R.mipmap.group_18c);
-        models.add(m);
-
-        Model m2 = new Model();
-        m2.setTitle("Pay Internet");
-        m2.setImage(R.mipmap.group_18d);
-        models.add(m2);
-
-        Model m4 = new Model();
-        m4.setTitle("Buy Airtime");
-        m4.setImage(R.mipmap.group_18d);
-        models.add(m4);
-
-        return models;
-    }
-
-    public void maketoast(View view) {
-        drawer.closeDrawer(GravityCompat.START);
-
-        findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
-        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
-        findViewById(R.id.show_ple).setVisibility(View.VISIBLE);
-
-    }
     public void displayPopUp(View view) {
-        PopupMenu popup = new PopupMenu(this,view);
+        PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.pop_up_menu_for_loan_reason);
         popup.show();
@@ -637,10 +466,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        if(item.getItemId() == R.id.others){
+        if (item.getItemId() == R.id.others) {
             findViewById(R.id.specific).setVisibility(View.VISIBLE);
             return true;
-        }else{
+        } else {
             return true;
         }
     }
@@ -662,7 +491,191 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         findViewById(R.id.bottom_navigation_home_two).setVisibility(View.VISIBLE);
 
     }
-    private void transferListDetails(){
+    private void OpenScreen16(){
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                Home.this,R.style.BottomSheetDialogTheme
+        );
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.activity_screen18, (LinearLayout)findViewById(R.id.screen_16)
+                );
+        bottomSheetView.findViewById(R.id.img_close16).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+
+    }
+
+    private void OpenWallet(){
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                Home.this,R.style.BottomSheetDialogTheme
+        );
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.pop_up_my_wallet, (LinearLayout)findViewById(R.id.show_ple)
+                );
+        bottomSheetView.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetView.findViewById(R.id.mytopupcard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        TODO:
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.mywithdrawcard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        TODO: intent
+                    }
+                }
+        );
+
+        bottomSheetView.findViewById(R.id.openFundTrasfer).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), MainTransfer36.class);
+//                        intent.putExtra(EXTRA_SESSION, sessionID);
+//                        intent.putExtra(EXTRA_AGENTNO, AGENTNO);
+                        intent.putExtra("Class", "Home");
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.transactionHistCard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), TransactionView.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.pendingCommCard).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                TODO: intent
+
+            }
+        });
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+
+    }
+    public void OpenWalletM(MenuItem item) {
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                Home.this,R.style.BottomSheetDialogTheme
+        );
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.pop_up_my_wallet, (LinearLayout)findViewById(R.id.show_ple)
+                );
+        bottomSheetView.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetView.findViewById(R.id.mytopupcard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        TODO:
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.mywithdrawcard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        TODO: intent
+                    }
+                }
+        );
+
+        bottomSheetView.findViewById(R.id.openFundTrasfer).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), MainTransfer36.class);
+//                        intent.putExtra(EXTRA_SESSION, sessionID);
+//                        intent.putExtra(EXTRA_AGENTNO, AGENTNO);
+                        intent.putExtra("Class", "Home");
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.transactionHistCard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), TransactionView.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.pendingCommCard).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                TODO: intent
+
+            }
+        });
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+
+    }
+    public void registerNewNumber(MenuItem item) {
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                Home.this,R.style.BottomSheetDialogTheme
+        );
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.activity_register_new_number, (LinearLayout)findViewById(R.id.register_new_number)
+                );
+        bottomSheetView.findViewById(R.id.closeRegNew).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+        TextView textView = bottomSheetView.findViewById(R.id.newphoneNumber);
+
+        bottomSheetView.findViewById(R.id.btn_sendinvite).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        TODO:
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.cancel_register_new).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                    }
+                }
+        );
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+
+    }
+
+
+    private void transferListDetails() {
 
 //        mImage and mNames ArrayList go here
 //        mImageUrls.add("https://pixabay.com/photos/tree-sunset-amazing-beautiful-736885/");
@@ -670,12 +683,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         initTransferRecyclerList();
     }
-    private void initTransferRecyclerList(){
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(Home.this,LinearLayoutManager.HORIZONTAL,false);
+    private void initTransferRecyclerList() {
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(Home.this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerViewHome);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewHomeAdapter adapter = new RecyclerViewHomeAdapter( mNames, mImageUrls, Home.this);
+        RecyclerViewHomeAdapter adapter = new RecyclerViewHomeAdapter(mNames, mImageUrls, Home.this);
         recyclerView.setAdapter(adapter);
 
     }
