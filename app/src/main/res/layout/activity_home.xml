@@ -318,11 +318,9 @@
                                 android:layout_height="match_parent"
                                 android:background="@mipmap/sponsor_ad"
                                 android:paddingHorizontal="12dp"
-
+                                android:paddingTop="24dp"
 
                                 >
-
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -330,7 +328,6 @@
                                     android:textColor="#ffffff"
                                     android:id="@+id/wolenjesponsor"
                                     android:text="Wolenje Sponsporship"
-                                    android:layout_centerVertical="true"
                                     />
 
                                 <TextView
@@ -346,7 +343,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
                                     android:layout_marginEnd="20dp"
                                     android:layout_marginTop="5dp"
                                     android:background="@android:color/transparent"
@@ -358,6 +354,7 @@
                                     android:src="@drawable/oval"
                                     android:id="@+id/ovalmain"
                                     android:layout_below="@id/wolajeexp"
+                                    android:layout_marginTop="8dp"
                                     />
                                 <ImageView
                                     android:layout_width="wrap_content"
@@ -366,6 +363,7 @@
                                     android:id="@+id/ovalcopy"
                                     android:layout_toEndOf="@id/ovalmain"
                                     android:layout_below="@id/wolajeexp"
+                                    android:layout_marginTop="8dp"
                                     />
                                 <ImageView
                                     android:layout_width="wrap_content"
@@ -373,6 +371,7 @@
                                     android:src="@drawable/oval_copy_2"
                                     android:layout_toEndOf="@id/ovalcopy"
                                     android:layout_below="@id/wolajeexp"
+                                    android:layout_marginTop="8dp"
                                     />
 
                             </RelativeLayout>

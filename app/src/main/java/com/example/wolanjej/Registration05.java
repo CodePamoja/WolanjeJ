@@ -35,7 +35,6 @@ public class Registration05 extends AppCompatActivity {
     private JSONObject sessionID = null;
     private String phoneNo = null;
     private TextView tlc;
-//    public Sendtover conn;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
     Toolbar tb ;
@@ -46,17 +45,17 @@ public class Registration05 extends AppCompatActivity {
 
         setContentView(R.layout.activity_registration05);
 
-        tlc = (TextView) findViewById(R.id.tlc);
+        tlc = findViewById(R.id.tlc);
         tlc.setMovementMethod(LinkMovementMethod.getInstance());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-         tb = (Toolbar) findViewById(R.id.toolbar);
+         tb = findViewById(R.id.toolbar);
 
         text = findViewById(R.id.phoneNumber);
         setToolBar();
-        imageView = (ImageView)findViewById(R.id.image_holder);
+        imageView = findViewById(R.id.image_holder);
         imageView.setImageResource(R.drawable.ic_group_7);
 
-        Button btn = (Button)findViewById(R.id.btn_continue);
+        Button btn = findViewById(R.id.btn_continue);
         btn.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -114,15 +113,11 @@ public class Registration05 extends AppCompatActivity {
 
         @Override
         protected Response doInBackground(Void... voids) {
-            Log.e("Test 1", phoneNo);
-            System.out.println(phoneNo);
 
             JSONObject jPhone = new JSONObject();
             try {
                 jPhone.put("phone", "254"+phoneNo);
-                Log.e("jPhone",jPhone.toString());
-            } catch (JSONException e) {
-                Log.e("Error",e.toString());
+             } catch (JSONException e) {
                 e.printStackTrace();
             }
             String url = "/gapi/sendOTP";
@@ -135,8 +130,6 @@ public class Registration05 extends AppCompatActivity {
         protected void onPostExecute(Response result) {
             if ( result.code() == 201) {
                 prgBar.dismiss();
-                System.out.println("Response body json values are : " + result);
-                Log.e("TAG", String.valueOf(result));
                 Toast.makeText(getApplicationContext(), "Phone number sent successfully", Toast.LENGTH_LONG).show();
                 new UserverifyOTP().execute();
 
@@ -146,10 +139,7 @@ public class Registration05 extends AppCompatActivity {
                 try {
                     value = result.body().string();
                     JSONObject jBody = new JSONObject(value); // adding
-                    System.out.println("Response body json values are : " + value);
-                    Log.e("TAG", String.valueOf(value));
                     String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("action").getJSONArray(0).getString(2);
-                    Log.e("TAG", String.valueOf(sendResutls));
                     Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
@@ -177,7 +167,6 @@ public class Registration05 extends AppCompatActivity {
             try {
                 jValue.put("phone", "254"+phoneNo);
                 jValue.put("otp", "12345678");
-                Log.e("JValues",jValue.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -196,8 +185,6 @@ public class Registration05 extends AppCompatActivity {
                 try {
                     verifyResult = result.body().string();
                     sessionID = new JSONObject(verifyResult); // adding
-                    System.out.println("Response body json values are : " + verifyResult);
-                    Log.e("TAG", String.valueOf(verifyResult));
 
 //                //bypass the verification code and page for now since we are adding otp for testing
                     Intent move = new Intent(Registration05.this, Registration07.class);
@@ -213,59 +200,14 @@ public class Registration05 extends AppCompatActivity {
                 try {
                     verifyResult = result.body().string();
                     JSONObject jBody = new JSONObject(verifyResult); // adding
-                    System.out.println("Response body json values are : " + verifyResult);
-                    Log.e("TAG", String.valueOf(verifyResult));
                     String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
-                    Log.e("TAG", String.valueOf(sendResutls));
                     Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
-                    Log.e("TAG result value", String.valueOf(result));
-                    Log.e("TAG result body", verifyResult);
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-
-//    public void verifyOTP(String phone){
-//        String verifyResult = null;
-//        JSONObject jValue = new JSONObject();
-//        try {
-//            jValue.put("phone", "254"+phone);
-//            jValue.put("otp", "12345678");
-//            Log.e("JValues",jValue.toString());
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        String url = "/gapi/verifyOTP";
-//        OkhttpConnection okConn = new OkhttpConnection();
-//        Response result = okConn.postRequest(url, jValue.toString());
-//        if (result.code() == 201) {
-//            Toast.makeText(getApplicationContext(), "OTP verified successfully", Toast.LENGTH_LONG).show();
-//            try {
-//                verifyResult = result.body().string();
-//                sessionID = new JSONObject(verifyResult); // adding
-//                System.out.println("Response body json values are : " + verifyResult);
-//                Log.e("TAG", String.valueOf(verifyResult));
-//
-////                //bypass the verification code and page for now since we are adding otp for testing
-//                Intent move = new Intent(this, Registration07.class);
-//                move.putExtra(EXTRA_SESSION, sessionID.getString("session_token"));
-//                move.putExtra(EXTRA_PHONE, phone);
-//                startActivity(move);
-//            } catch (IOException | JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }else if(result.code() != 201) {
-//            Toast.makeText(getApplicationContext(), "Error Occured", Toast.LENGTH_LONG).show();
-//            try {
-//                verifyResult = result.body().string();
-//                Log.e("TAG", String.valueOf(result));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
 
 
     public String getPhone(){

@@ -3,108 +3,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/Ewallet2"
-    android:background="#80000000"
-    android:visibility="gone">
+    android:visibility="gone"
+    android:background="#80000000">
 
-    <RelativeLayout
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:background="@drawable/splash2"
+      android:paddingHorizontal="24dp"
+      android:paddingBottom="12dp">
+
+    <ImageButton
+        android:id="@+id/imagebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="29dp"
+        android:onClick="close_wallet2"
+        android:src="@mipmap/rectanglew" />
+
+    <TextView
+        android:id="@+id/wpp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/balance"
+        android:text="Wallet Top-Up"
+        android:textColor="@color/colorMidnight"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imagebtn"
+        android:layout_alignParentRight="true"
+        android:gravity="end"
+        android:text="Balance"
+        android:textColor="@color/blue_grey"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/balance"
+        android:layout_alignParentRight="true"
+        android:gravity="end"
+        android:letterSpacing="0.03"
+        android:text="kes 0.000"
+        android:textColor="#18181c"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/selecttype"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_below="@id/wpp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/wallet_pop_up_shape"
+        android:hint="Select Type"
+        android:paddingStart="18dp" />
+
+    <EditText
+        android:id="@+id/mobilenumber"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_below="@id/selecttype"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/wallet_pop_up_shape"
+        android:hint="Mobile Number"
+        android:paddingStart="18dp" />
+
+    <EditText
+        android:id="@+id/account"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_below="@id/mobilenumber"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/wallet_pop_up_shape"
+        android:hint="Account"
+        android:paddingStart="18dp" />
+
+    <Button
+        android:id="@+id/cont"
+        style="@style/TextStyle4"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/account"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/warm_purple"
+        android:text="@string/Continue" />
+
+    <Button
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/splash2"
-        android:paddingHorizontal="24dp"
-        android:paddingBottom="12dp">
+        android:layout_below="@id/cont"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/transparent"
+        android:text="Cancel"
+        android:textSize="16sp" />
 
-        <ImageButton
-            android:id="@+id/imagebtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="29dp"
-            android:onClick="close_wallet2"
-            android:src="@mipmap/rectanglew" />
-
-        <TextView
-            android:id="@+id/wpp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/balance"
-            android:text="Wallet Top-Up"
-            android:textColor="@color/colorMidnight"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/balance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imagebtn"
-            android:layout_alignParentRight="true"
-            android:gravity="end"
-            android:text="Balance"
-            android:textColor="@color/blue_grey"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/balance"
-            android:layout_alignParentRight="true"
-            android:gravity="end"
-            android:letterSpacing="0.03"
-            android:text="kes 15.000"
-            android:textColor="#18181c"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/selecttype"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_below="@id/wpp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:hint="Select Type"
-            android:paddingStart="18dp" />
-
-        <EditText
-            android:id="@+id/mobilenumber"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_below="@id/selecttype"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:hint="Mobile Number"
-            android:paddingStart="18dp" />
-
-        <EditText
-            android:id="@+id/account"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_below="@id/mobilenumber"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:hint="Account"
-            android:paddingStart="18dp" />
-
-        <Button
-            android:id="@+id/cont"
-            style="@style/TextStyle4"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_below="@id/account"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/warm_purple"
-            android:text="@string/Continue" />
-
-        <Button
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cont"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/transparent"
-            android:text="Cancel"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
+  </RelativeLayout>
 
 </RelativeLayout>

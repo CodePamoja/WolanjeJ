@@ -78,6 +78,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = (TextView) headerView.findViewById(R.id.name_holder);
         navUsername.setText(pref.getString("user_name", ""));
+
         new UserBalance().execute();
         new UserServices().execute();
         new UserBills().execute();
@@ -247,6 +248,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         findViewById(R.id.screen_16).setVisibility(View.INVISIBLE);
 
     }
+
+
+
+
+
+
+
+
 //    https://wolenjeafrica.com/wolenje/api/services
 
     public  class UserServices extends AsyncTask<Void, Void, Response> {
