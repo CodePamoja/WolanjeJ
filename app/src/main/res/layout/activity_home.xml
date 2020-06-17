@@ -47,9 +47,10 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
+                            android:background="#CCFF0000"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/colorWarmpurple"
+                            android:backgroundTint="@color/colorWarmpurple"
                             android:paddingHorizontal="24dp"
                             android:paddingTop="62.3dp">
 
@@ -73,7 +74,7 @@
 
                             <Button
                                 android:id="@+id/wallet"
-                                android:layout_width="wrap_content"
+                                android:layout_width="144dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/MYBalance"
                                 android:layout_marginBottom="24dp"
@@ -99,8 +100,8 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingHorizontal="24dp"
-                            android:paddingTop="24dp">
+                            android:paddingHorizontal="15dp"
+                            android:paddingTop="0dp">
 
                             <TextView
                                 android:id="@+id/trans"
@@ -109,13 +110,16 @@
                                 android:layout_marginTop="8dp"
                                 android:text="@string/recent_transfer"
                                 android:textColor="#222222"
-                                android:textSize="16sp" />
+                                android:textSize="18sp" />
 
                             <Button
                                 android:id="@+id/btnaddnew"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="13dp"
+                                android:backgroundTint="@color/colorWhite"
                                 android:text="@string/add_new"
                                 android:textColor="#21c17a"
                                 android:textSize="16sp" />
@@ -125,12 +129,13 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingHorizontal="24dp"
+                            android:paddingHorizontal="10dp"
                             android:paddingTop="24dp">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recyclerViewHome"
                                 android:layout_width="match_parent"
+                                android:layout_marginTop="25dp"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:orientation="horizontal"
@@ -142,8 +147,8 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingHorizontal="24dp"
-                            android:paddingTop="4dp"
+                            android:paddingHorizontal="10dp"
+                            android:paddingTop="0dp"
                             android:paddingBottom="16dp">
 
                             <TextView
@@ -153,7 +158,7 @@
                                 android:layout_marginTop="8dp"
                                 android:text="@string/quick_services"
                                 android:textColor="#222222"
-                                android:textSize="16sp" />
+                                android:textSize="18sp" />
 
                             <Button
                                 android:id="@+id/btnviewall"
@@ -177,9 +182,9 @@
 
                                     android:id="@+id/cardBuyAirtime"
                                     style="@style/Widget.MaterialComponents.CardView"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:layout_width="103dp"
+                                    android:layout_height="100dp"
+                                    android:layout_marginStart="20dp"
                                     android:clickable="true"
                                     android:elevation="6dp"
                                     android:focusable="true"
@@ -216,10 +221,9 @@
                                 <com.google.android.material.card.MaterialCardView
                                     android:id="@+id/CTransferMain"
                                     style="@style/Widget.MaterialComponents.CardView"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_weight="1"
+                                    android:layout_width="103dp"
+                                    android:layout_height="100dp"
+                                    android:layout_marginStart="16dp"
                                     android:clickable="true"
                                     android:elevation="6dp"
                                     app:cardCornerRadius="8dp"
@@ -257,11 +261,10 @@
                                 <com.google.android.material.card.MaterialCardView
                                     android:id="@+id/loanscard"
                                     style="@style/Widget.MaterialComponents.CardView"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="103dp"
+                                    android:layout_height="100dp"
                                     android:layout_below="@id/btnviewall"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_weight="1"
+                                    android:layout_marginStart="15dp"
                                     android:clickable="true"
                                     android:elevation="6dp"
                                     android:focusable="true"
@@ -301,15 +304,15 @@
                         </RelativeLayout>
                       
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
+                            android:layout_width="355dp"
+                            android:layout_height="100dp"
                             android:layout_marginHorizontal="24dp"
                             android:layout_marginTop="13dp"
                             android:layout_marginBottom="24dp"
                             app:strokeColor="#A8A8A8"
                             app:strokeWidth="1dp"
-                            app:cardCornerRadius="0dp"
+                            app:cardCornerRadius="8dp"
+                            android:id="@+id/cardTrans"
                             >
 
                             <RelativeLayout

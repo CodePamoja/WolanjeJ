@@ -99,7 +99,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         TransferHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),TransactionView.class);startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(),MainTransfer36.class);startActivity(intent);
+            }
+        });
+
+        MaterialCardView materialCardView1 = findViewById(R.id.cardTrans);
+        materialCardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), TransactionView.class);
+                startActivity(intent1);
             }
         });
 
@@ -670,8 +679,25 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private void transferListDetails() {
 
 //        mImage and mNames ArrayList go here
-//        mImageUrls.add("https://pixabay.com/photos/tree-sunset-amazing-beautiful-736885/");
-//        mNames.add("John");
+        mImageUrls.add("https://images.pexels.com/photos/4328961/pexels-photo-4328961.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        mNames.add("John");
+
+        mImageUrls.add("https://images.pexels.com/photos/2951142/pexels-photo-2951142.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        mNames.add("Lucy");
+
+        mImageUrls.add("https://images.pexels.com/photos/4015088/pexels-photo-4015088.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        mNames.add("ivy");
+
+        mImageUrls.add("https://images.pexels.com/photos/2954199/pexels-photo-2954199.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        mNames.add("Mark");
+
+        mImageUrls.add("https://images.pexels.com/photos/4015088/pexels-photo-4015088.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        mNames.add("ivy");
+
+
+        mImageUrls.add("https://images.pexels.com/photos/2954199/pexels-photo-2954199.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        mNames.add("Mark");
+
 
         initTransferRecyclerList();
     }
