@@ -51,10 +51,11 @@
 
         </LinearLayout>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatBill"
+            android:id="@+id/bmfloatBill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"
+            android:onClick="billBottomSheet"
             android:tint="#FFFFFF"
             android:src="@drawable/floatbutton"
             app:backgroundTint="@color/colorWarmpurple" >

@@ -20,17 +20,18 @@
         app:layout_constraintEnd_toEndOf="parent"
 />
     <RelativeLayout
+        android:background="#CCFF0000"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:backgroundTint="@color/colorPurple"
         app:layout_constraintVertical_weight="1"
-        android:background="@color/colorPurple"
         android:paddingBottom="24dp"
         android:id="@+id/bottomlayermain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imagesplash"
-        >
+        app:layout_constraintTop_toBottomOf="@id/imagesplash">
+
 
         <TextView
             android:id="@+id/intotext"

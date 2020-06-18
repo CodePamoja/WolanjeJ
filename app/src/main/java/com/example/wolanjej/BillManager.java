@@ -5,6 +5,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,21 +17,28 @@ import android.widget.TextView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
+import okhttp3.Response;
+
 public class BillManager extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Button button1, button2;
     private TextView textView;
+    private static String sessionID;
+    private String AGENTNO;
+    private SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_manager);
 
+        pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
+        this.sessionID = pref.getString("session_token", "");
+        this.AGENTNO = pref.getString("agentno", "");
+        
         button1 = findViewById(R.id.btnPayElectric);
         button2 = findViewById(R.id.btnCancelBill);
-
-
 
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -125,10 +134,69 @@ public class BillManager extends AppCompatActivity {
 
     }
 
-    public void close_pay_now(View view) {
-        findViewById(R.id.show_pay_now).setVisibility(View.INVISIBLE);
+    public void billBottomSheet(View view) {
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                BillManager.this, R.style.BottomSheetDialogTheme
+        );
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.billmanager28, (LinearLayout) findViewById(R.id.billManagerView)
+                );
+        bottomSheetView.findViewById(R.id.bmClose).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
 
-        findViewById(R.id.floatBill).setVisibility(View.VISIBLE);
 
+        TextView textView1 = bottomSheetView.findViewById(R.id.bmAccountName);
+        final String accountName = textView1.getText().toString();
+
+        TextView textView2 = bottomSheetView.findViewById(R.id.bmNickname);
+        final String nickName = textView2.getText().toString();
+
+        TextView textView3 = bottomSheetView.findViewById(R.id.bmAccountNo);
+        final String accountNumber = textView3.getText().toString();
+
+        TextView textView4 = bottomSheetView.findViewById(R.id.bmPayBillNo);
+        final String payBillNo = textView4.getText().toString();
+
+
+        bottomSheetView.findViewById(R.id.bmButtonSave).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new UserBill(accountName,nickName, accountNumber, payBillNo).execute();
+            }
+        });
+
+        bottomSheetView.findViewById(R.id.bmCancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+
+    }
+
+    public class UserBill extends AsyncTask<Void, Void, Response>{
+
+        private String accountName ;
+        private String nickName ;
+        private String accountNumber;
+        private String payBill;
+
+        public UserBill(String accountName, String nickName, String accountNumber, String payBill) {
+            this.accountName = accountName;
+            this.nickName = nickName;
+            this.accountNumber = accountNumber;
+            this.payBill = payBill;
+        }
+
+        @Override
+        protected Response doInBackground(Void... voids) {
+            return null;
+        }
     }
 }

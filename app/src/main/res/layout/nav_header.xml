@@ -7,7 +7,9 @@
     android:background="@color/colorWhite"
     android:gravity="center_vertical"
     android:padding="16dp"
-    tools:context=".Home">
+    android:onClick="moveToProfile"
+    android:id="@+id/profileNav"
+    tools:context="com.example.wolanjej.Home">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_holder"

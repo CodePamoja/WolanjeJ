@@ -1,5 +1,7 @@
 package com.example.wolanjej;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,9 @@ public class SentTransactionFragment extends Fragment {
     View v;
     private RecyclerView recyclerView;
     private List<SentTransactionHistory> sentList;
+    private String sessionID;
+    private String AGENTNO;
+    SharedPreferences pref;
 
     public SentTransactionFragment() {
 
@@ -39,6 +44,10 @@ public class SentTransactionFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        pref = getActivity().getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
+        this.sessionID = pref.getString("session_token", "");
+        this.AGENTNO = pref.getString("agentno", "");
 
         sentList = new ArrayList<>();
         sentList.add(new SentTransactionHistory("Aug", "04", R.mipmap.bulb_63_1, "John", "+254748188544","Credit Card", "1000", "10.00"));
