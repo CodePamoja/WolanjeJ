@@ -42,7 +42,7 @@ import okhttp3.Response;
 public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     Toolbar tb;
     DrawerLayout drawer;
-    private String sessionID;
+    private static String sessionID;
     private String AGENTNO;
     private TextView tvtext;
     private SharedPreferences pref;
@@ -163,12 +163,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         setToolBar();
     }
 
-    public void close_screen18(View view) {
-        Log.e("yes","pressed");
-        findViewById(R.id.screen_16).setVisibility(View.INVISIBLE);
-
+    public void moveToProfile(View view) {
+        Intent intent = new Intent(getApplicationContext(), profile.class);
+        startActivity(intent);
     }
-
 
 
 //    https://wolenjeafrica.com/wolenje/api/services
