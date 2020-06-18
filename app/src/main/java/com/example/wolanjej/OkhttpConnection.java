@@ -62,6 +62,29 @@ public class OkhttpConnection {
         return result;
     }
 
+    public  Response payBill(String url, String jsonBody, String sessionID){
+        Response result = null;
+        try {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
+            String allUrl = baseUrl + url;
+            Request request = new Request.Builder()
+                    .header("Authorization", "Bearer "+sessionID+"" )
+                    .url(allUrl)
+                    .post(body)
+                    .build();
+
+            Call call = client.newCall(request);
+            Response response = call.execute();
+            result  = response;
+
+        } catch (IOException ex) {
+            System.out.println("IO Error : " + ex);
+            Log.d("TAG", String.valueOf(ex));
+        }
+
+        return result;
+    }
+
     public  Response getLogin(String url, String base64Results){
         Response result = null;
         try {

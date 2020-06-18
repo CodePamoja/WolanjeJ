@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
@@ -60,6 +62,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        View bell = findViewById(R.id.bell_icon);
+
+        
 
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
