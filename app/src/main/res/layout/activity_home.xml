@@ -52,7 +52,7 @@
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/colorWarmpurple"
                             android:paddingHorizontal="24dp"
-                            android:paddingTop="62.3dp">
+                            android:paddingTop="22.3dp">
 
                             <TextView
                                 android:id="@+id/textbalance"

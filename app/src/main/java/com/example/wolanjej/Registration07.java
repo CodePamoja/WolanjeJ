@@ -46,12 +46,12 @@ public class Registration07 extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this, Registration06.class);
+ //       final Intent movetoLogo = new Intent(this, Registration06.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(movetoLogo);
+   //                     startActivity(movetoLogo);
                     }
                 }
         );
@@ -75,33 +75,33 @@ public class Registration07 extends AppCompatActivity {
 
         String pin1 = textPin1.getText().toString();
         String pin2 = textPin2.getText().toString();
-            if (pin1.equals(pin2)){
-                JSONObject jPin = new JSONObject();
-                try {
-                    jPin.put("phone", "254"+phoneNumber);
-                    jPin.put("pin", pin1);
-                    Log.e("jPhone",jPin.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                String url = "/api/";
-                OkhttpConnection okConn = new OkhttpConnection();
-                Response result = null;
-                result = okConn.postValue(url, jPin.toString(), sessionID);
-
-                int responseCode = 0;
-                if ((responseCode = result.code()) == 202) {
-                    System.out.println("Response body json values are : " + result);
-                    Log.d("TAG", String.valueOf(result));
-                    Toast.makeText(getApplicationContext(), "Your password has been changed successfuly", Toast.LENGTH_LONG).show();
-                    Intent move = new Intent(this, Registration08.class);
-                    startActivity(move);
-
-                }else if((responseCode = result.code()) != 201) {
-                    Log.d("TAG", String.valueOf(result));
-                    Toast.makeText(getApplicationContext(), "Access Denied to Resource", Toast.LENGTH_LONG).show();
-                }
+        if (pin1.equals(pin2)){
+            JSONObject jPin = new JSONObject();
+            try {
+                jPin.put("phone", "254"+phoneNumber);
+                jPin.put("pin", pin1);
+                Log.e("jPhone",jPin.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+            String url = "/api/";
+            OkhttpConnection okConn = new OkhttpConnection();
+            Response result = null;
+            result = okConn.postValue(url, jPin.toString(), sessionID);
+
+            int responseCode = 0;
+            if ((responseCode = result.code()) == 202) {
+                System.out.println("Response body json values are : " + result);
+                Log.d("TAG", String.valueOf(result));
+                Toast.makeText(getApplicationContext(), "Your password has been changed successfuly", Toast.LENGTH_LONG).show();
+                Intent move = new Intent(this, Registration08.class);
+                startActivity(move);
+
+            }else if((responseCode = result.code()) != 201) {
+                Log.d("TAG", String.valueOf(result));
+                Toast.makeText(getApplicationContext(), "Access Denied to Resource", Toast.LENGTH_LONG).show();
+            }
+        }
 
     }
 }

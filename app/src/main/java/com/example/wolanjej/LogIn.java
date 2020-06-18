@@ -15,6 +15,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -64,6 +66,19 @@ public class LogIn extends AppCompatActivity {
         textPhone = findViewById(R.id.phoneNoLogIN);
         textPin = findViewById(R.id.pinLogIN);
 
+        textPin.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if(hasFocus){
+                    textPin.setTransformationMethod(new HideReturnsTransformationMethod());
+
+                }else if(!hasFocus){
+                    textPin.setTransformationMethod(new PasswordTransformationMethod());
+
+                }
+            }
+        });
         // login button action
         button = findViewById(R.id.btn_LogIn);
         button.setOnClickListener(
@@ -84,7 +99,7 @@ public class LogIn extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this, Registration08.class);
+        final Intent movetoLogo = new Intent(this, Registration05.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
