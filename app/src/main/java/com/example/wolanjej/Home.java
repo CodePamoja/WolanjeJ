@@ -63,9 +63,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        View bell = findViewById(R.id.bell_icon);
 
-        
+
 
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);

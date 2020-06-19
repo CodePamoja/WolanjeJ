@@ -1,6 +1,9 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +24,7 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
     String[] selectNumber = {"My Number","Other Number"};
     private String phoneCompany;
     private String AGENTNO;
+    Toolbar tb;
 
     private SharedPreferences pref;
 
@@ -47,7 +51,25 @@ public class Top_up extends AppCompatActivity  implements AdapterView.OnItemSele
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
 
+        setToolBar();
     }
+    private void setToolBar() {
+        Toolbar tb = findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent movetoLogo = new Intent(this, Home.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(movetoLogo);
+                    }
+                }
+        );
+
+    }
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
