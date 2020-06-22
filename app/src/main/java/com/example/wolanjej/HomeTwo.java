@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -286,7 +288,8 @@ findViewById(R.id.loansholder).setVisibility(View.VISIBLE);
 
 
     public void backtohomevisibility(View view) {
-        findViewById(R.id.loansholder).setVisibility(View.INVISIBLE);
+        Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show();
+        //findViewById(R.id.loansholder).setVisibility(View.INVISIBLE);
     }
 
     public void displayPopUp(View view) {

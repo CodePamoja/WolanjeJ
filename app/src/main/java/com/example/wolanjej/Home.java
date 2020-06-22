@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,7 +51,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private SharedPreferences pref;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
-
+    View bottomSheetView;
+    BottomSheetDialog bottomSheetDialog;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
@@ -117,6 +119,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             }
         });
 
+        findViewById(R.id.imagebtn).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.show();
+                        findViewById(R.id.Ewallet2).setVisibility(View.INVISIBLE);
+
+                    }
+                }
+        );
 
         ViewPager2 vp2 = findViewById(R.id.viewpager2);
         vp2.setAdapter(new LoansAdapter(this));
@@ -171,6 +183,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public void moveToProfile(View view) {
         Intent intent = new Intent(getApplicationContext(), profile.class);
         startActivity(intent);
+    }
+
+    public void backtohomevisibility(View view) {
+        findViewById(R.id.loansholder).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
     }
 
 
@@ -421,9 +439,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
     public void close_wallet3(View view) {
+        bottomSheetDialog.show();
         findViewById(R.id.Ewallet3).setVisibility(View.INVISIBLE);
-
-        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
 
     }
 
@@ -504,10 +521,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     }
     private void OpenScreen16(){
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+      bottomSheetDialog = new BottomSheetDialog(
                 Home.this,R.style.BottomSheetDialogTheme
         );
-        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+       bottomSheetView = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.activity_screen18, (LinearLayout)findViewById(R.id.screen_16)
                 );
         bottomSheetView.findViewById(R.id.img_close16).setOnClickListener(new View.OnClickListener() {
@@ -523,12 +540,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
     private void OpenWallet(){
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+         bottomSheetDialog = new BottomSheetDialog(
                 Home.this,R.style.BottomSheetDialogTheme
         );
-        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+         bottomSheetView = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.pop_up_my_wallet, (LinearLayout)findViewById(R.id.show_ple)
                 );
+        bottomSheetDialog.setCanceledOnTouchOutside(false);
+        bottomSheetDialog.setDismissWithAnimation(true);
         bottomSheetView.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -539,16 +558,22 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        TODO:
+                        bottomSheetDialog.hide();
+         findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
+
                     }
                 }
         );
+
         bottomSheetView.findViewById(R.id.mywithdrawcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        TODO: intent
-                    }
+                        bottomSheetDialog.hide();
+                        findViewById(R.id.Ewallet3).setVisibility(View.VISIBLE);
+
+
+     }
                 }
         );
 
@@ -587,10 +612,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     }
     public void OpenWalletM(MenuItem item) {
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+        bottomSheetDialog = new BottomSheetDialog(
                 Home.this,R.style.BottomSheetDialogTheme
         );
-        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+         bottomSheetView = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.pop_up_my_wallet, (LinearLayout)findViewById(R.id.show_ple)
                 );
         bottomSheetView.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
@@ -603,7 +628,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        TODO:
+
+                        drawer.closeDrawer(GravityCompat.START);
+
+                        bottomSheetDialog.hide();
+                        findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
+
                     }
                 }
         );
@@ -611,7 +641,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        TODO: intent
+                        drawer.closeDrawer(GravityCompat.START);
+                        bottomSheetDialog.hide();
+                        findViewById(R.id.Ewallet3).setVisibility(View.VISIBLE);
                     }
                 }
         );
@@ -651,10 +683,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     }
     public void registerNewNumber(MenuItem item) {
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+         bottomSheetDialog = new BottomSheetDialog(
                 Home.this,R.style.BottomSheetDialogTheme
         );
-        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+         bottomSheetView = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.activity_register_new_number, (LinearLayout)findViewById(R.id.register_new_number)
                 );
         bottomSheetView.findViewById(R.id.closeRegNew).setOnClickListener(new View.OnClickListener() {
