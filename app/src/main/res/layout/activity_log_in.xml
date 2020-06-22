@@ -14,6 +14,32 @@
         android:orientation="vertical">
 
         <include layout="@layout/toobarwithout"/>
+        <LinearLayout
+            android:id="@+id/LoginNetAlert"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/colorConcRed"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Internet Connection"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="15dp"/>
+
+            <ImageView
+                android:id="@+id/closeNetAlert"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="180dp"
+                android:src="@drawable/ic_close_white"
+                />
+        </LinearLayout>
         <include layout="@layout/imageholder"
             android:layout_marginVertical="10dp"
             android:layout_height="wrap_content"

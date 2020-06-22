@@ -7,14 +7,19 @@ import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
+import android.accounts.NetworkErrorException;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
+import android.os.StrictMode;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -26,6 +31,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -41,7 +47,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class LogIn extends AppCompatActivity {
 
-    private ImageView imageView;
+    private ImageView imageView, imageView1;
     public ProgressDialog prgBar;
     private Button button;
     public  JSONObject sessionID = null;
@@ -63,6 +69,14 @@ public class LogIn extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
 
+        final LinearLayout linearLayout = findViewById(R.id.LoginNetAlert);
+        imageView1 = findViewById(R.id.closeNetAlert);
+        imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.setVisibility(View.GONE);
+            }
+        });
         textPhone = findViewById(R.id.phoneNoLogIN);
         textPin = findViewById(R.id.pinLogIN);
 
@@ -85,7 +99,12 @@ public class LogIn extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        new UserLogin(textPhone.getText().toString(),textPin.getText().toString()).execute();
+                        if (isNetworkAvailable()) {
+                            new UserLogin(textPhone.getText().toString(), textPin.getText().toString()).execute();
+                        }else{
+                            linearLayout.setVisibility(View.VISIBLE);
+                            Toast.makeText(getApplicationContext(), "No internet Available", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
         );
@@ -93,6 +112,10 @@ public class LogIn extends AppCompatActivity {
         setToolBar();
         imageView = findViewById(R.id.image_holder);
         imageView.setImageResource(R.drawable.ic_group_7);
+        if(Build.VERSION.SDK_INT >8){
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
     }
 
     private void setToolBar() {
@@ -203,6 +226,11 @@ public class LogIn extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
             }
         }
+    }
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
 }
