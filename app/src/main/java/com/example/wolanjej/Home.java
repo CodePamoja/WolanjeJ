@@ -177,6 +177,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             }
         });
 
+
         setToolBar();
     }
 
@@ -533,6 +534,66 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 bottomSheetDialog.dismiss();
             }
         });
+        bottomSheetView.findViewById(R.id.income_details101).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(v.getContext(), IncomeDetails.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.wallet101).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(v.getContext(), Home.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.services101).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(v.getContext(), services.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.exchange101).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(v.getContext(), Home.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.crypto101).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(v.getContext(), CryptoBalance.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.transfer101).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(v.getContext(), MainTransfer36.class);
+                        startActivity(intent);
+                    }
+                }
+        );
 
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();
@@ -573,17 +634,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                         findViewById(R.id.Ewallet3).setVisibility(View.VISIBLE);
 
 
-     }
-                }
-        );
+                    }
+
+                });
 
         bottomSheetView.findViewById(R.id.openFundTrasfer).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
                         Intent intent = new Intent(v.getContext(), MainTransfer36.class);
-//                        intent.putExtra(EXTRA_SESSION, sessionID);
-//                        intent.putExtra(EXTRA_AGENTNO, AGENTNO);
                         intent.putExtra("Class", "Home");
                         startActivity(intent);
                     }
@@ -593,6 +653,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
                         Intent intent = new Intent(v.getContext(), TransactionView.class);
                         startActivity(intent);
                     }

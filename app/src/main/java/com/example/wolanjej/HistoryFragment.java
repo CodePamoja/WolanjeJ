@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -22,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,6 +43,7 @@ public class HistoryFragment extends Fragment {
     private String USERID;
     private String USERNAME;
     private String AGENTNO;
+    private TextView textView;
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -63,8 +66,8 @@ public class HistoryFragment extends Fragment {
 
 
         new UserServices().execute();
-    }
 
+    }
     public class UserServices extends AsyncTask<Void, Void, Response> {
 
         @Override
@@ -96,8 +99,9 @@ public class HistoryFragment extends Fragment {
                         String Month = gettingMonth(date);
                         String Day = gettingDay(date);
                         String NewStatus = getTheStatus(status);
+                        String pending = pendingStatus(status);
 
-                        historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: "+NewStatus, json_data.getString("status")));
+                        historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending));
                     }
                     recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_history);
                     TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(getContext(), historyList);
@@ -151,6 +155,8 @@ public class HistoryFragment extends Fragment {
 
     private String getTheStatus(String status) {
         String TRX_OK, TRX_ASYNC, TRX_SCHED;
+
+
         String newStatus = null;
         try {
             if (status.equals("TRX_OK")) {
@@ -165,16 +171,39 @@ public class HistoryFragment extends Fragment {
                 newStatus = "queued";
                 return newStatus;
             }
-            if(status.equals("TRX_INSUFFICIENT_BALANCE")){
+            if (status.equals("TRX_INSUFFICIENT_BALANCE")) {
                 newStatus = "Insufficient Funds";
                 return newStatus;
-            }else{
+            } else {
                 newStatus = "failed";
                 return newStatus;
             }
-        }catch (Exception e){
-            Toast.makeText(getActivity(),"something went wrong"+ e.getMessage(), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "something went wrong" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return newStatus;
+    }
+
+    private String pendingStatus(String status) {
+        String TRX_OK, TRX_SCHED;
+
+        String Pending_status = null;
+        try {
+            if (status.equals("TRX_OK")) {
+                Pending_status = "0";
+                return Pending_status;
+            }
+            if (status.equals("TRX_SCHED")) {
+                Pending_status = "1";
+                return Pending_status;
+            }else
+            {
+                Pending_status = "0";
+                return Pending_status;
+            }
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "something went wrong" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        return Pending_status;
     }
 }

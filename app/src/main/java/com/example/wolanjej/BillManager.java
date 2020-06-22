@@ -36,7 +36,7 @@ public class BillManager extends AppCompatActivity {
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
-        
+
         button1 = findViewById(R.id.btnPayElectric);
         button2 = findViewById(R.id.btnCancelBill);
 
