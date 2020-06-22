@@ -1,6 +1,7 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +26,6 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
     private String phoneCompany;
     private EditText text;
     private Spinner spin;
-
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
@@ -64,6 +64,8 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
 
 
     }
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

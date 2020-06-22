@@ -2,33 +2,23 @@
 <ScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".TopupOtherNumber"
-    android:orientation="vertical">
-
-    <include layout="@layout/toobarwithout"
-        android:layout_marginTop="9dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="24dp">
 
         <TextView
             android:id="@+id/txt_balance3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="298dp"
-            android:layout_marginEnd="40dp"
             android:text="@string/balance"
+            android:layout_marginVertical="24dp"
+            android:layout_alignParentTop="true"
             android:textColor="@color/blue_grey"
             android:textSize="14sp" />
 
@@ -37,10 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="39dp"
-            android:layout_marginTop="23dp"
             android:text="@string/top_up"
+            android:layout_below="@id/txt_balance3"
             android:textColor="@color/colorMidnight"
             android:textSize="26sp" />
 
@@ -49,17 +37,10 @@
             android:id="@+id/balance_layout_other-number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/card_other_number1"
             android:layout_below="@+id/txt_balance3"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="119dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="52dp"
-            android:layout_toEndOf="@+id/txt_top_up3"
-            android:gravity="end"
             android:letterSpacing="0.03"
-            android:text="Kes15,000"
+            android:text="Kes 0.00"
             android:textColor="#18181c"
             android:textSize="20sp" />
 
@@ -69,22 +50,17 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_top_up3"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="43dp"
-            android:layout_marginTop="25dp"
             android:text="@string/select_recipient"
             android:textColor="@color/blue_grey"
+            android:layout_marginVertical="24dp"
             android:textSize="16sp" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_other_number1"
-            android:layout_width="328dp"
-            android:layout_height="73dp"
-            android:layout_below="@+id/txt_select_recipient"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="33dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_below="@+id/txt_select_recipient">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:text="Select Number"
                 android:textSize="14sp"
+                android:layout_marginVertical="12dp"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/colorPurple"/>
 
@@ -99,6 +76,7 @@
                 android:id="@+id/select_other_number"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginVertical="12dp"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:drawSelectorOnTop="true"
@@ -111,31 +89,22 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_other_number2"
             android:layout_width="match_parent"
-            android:layout_height="151dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="24dp"
             android:layout_below="@+id/card_other_number1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="33dp">
+        >
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
 
 
                 <EditText
                     android:id="@+id/transContactAmount"
-                    android:layout_width="287dp"
+                    android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginVertical="5dp"
-                    android:layout_marginStart="21dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="22dp"
+                    android:layout_marginVertical="24dp"
+                    android:layout_marginHorizontal="12dp"
                     android:background="@drawable/textviewborder"
                     android:hint="Enter Phone No."
                     android:inputType="phone"
@@ -188,96 +157,86 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/card_other_number2"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="35dp"
             android:textColor="@color/blue_grey"
             android:textSize="16sp"
             tools:text="Amount" />
 
         <EditText
             android:id="@+id/amount_layout_other_number"
-            android:layout_width="287dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_below="@+id/txtAmount"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginVertical="5dp"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="32dp"
             android:background="@drawable/textviewborder"
             android:hint="Enter Amount."
             android:inputType="phone"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:layout_marginVertical="24dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/amount_layout_other_number"
+            android:orientation="horizontal"
+            android:id="@+id/amuntdis2"
+            >
 
-        <TextView
-            android:id="@+id/amount_display1"
-            android:layout_width="72dp"
-            android:layout_height="32dp"
-            android:layout_below="@+id/amount_layout_other_number"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="37dp"
-            android:layout_marginTop="23dp"
-            android:background="@drawable/splash3"
-            android:gravity="center"
-            android:onClick="addAmount1"
-            android:textColor="#8484a9"
-            android:textSize="14sp"
-            android:text="50" />
+            <TextView
+                android:id="@+id/amount_display1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="32dp"
+                android:background="@drawable/splash3"
+                android:onClick="addAmount1"
+                android:textColor="#8484a9"
+                android:textSize="14sp"
+                android:text="50"
+                android:gravity="center" />
 
-        <TextView
-            android:id="@+id/amount_display2"
-            android:layout_width="72dp"
-            android:layout_height="32dp"
-            android:layout_below="@+id/amount_layout_other_number"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="23dp"
-            android:layout_toEndOf="@+id/amount_display1"
-            android:background="@drawable/splash3"
-            android:gravity="center"
-            android:textColor="#8484a9"
-            android:onClick="addAmount2"
-            android:textSize="14sp"
-            android:text="100" />
+            <TextView
+                android:id="@+id/amount_display2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="32dp"
+                android:background="@drawable/splash3"
+                android:textColor="#8484a9"
+                android:onClick="addAmount2"
+                android:textSize="14sp"
+                android:text="100"
+                android:gravity="center" />
 
-        <TextView
-            android:id="@+id/amount_display3"
-            android:layout_width="72dp"
-            android:layout_height="32dp"
-            android:layout_below="@+id/amount_layout_other_number"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="23dp"
-            android:layout_toEndOf="@+id/amount_display2"
-            android:background="@drawable/splash3"
-            android:gravity="center"
-            android:onClick="addAmount3"
-            android:textColor="#8484a9"
-            android:textSize="14sp"
-            android:text="250" />
+            <TextView
+                android:id="@+id/amount_display3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="32dp"
+                android:background="@drawable/splash3"
+                android:onClick="addAmount3"
+                android:textColor="#8484a9"
+                android:textSize="14sp"
+                android:text="250"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/amount_display4"
-            android:layout_width="72dp"
-            android:layout_height="32dp"
-            android:layout_below="@+id/amount_layout_other_number"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginEnd="38dp"
-            android:layout_toEndOf="@+id/amount_display3"
-            android:background="@drawable/splash3"
-            android:gravity="center"
-            android:text="500"
-            android:onClick="addAmount4"
-            android:textColor="#8484a9"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/amount_display4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="32dp"
+                android:background="@drawable/splash3"
+                android:text="500"
+                android:gravity="center"
+                android:onClick="addAmount4"
+                android:textColor="#8484a9"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
 
 
         <Button
             android:id="@+id/continue_top_up_other_number"
             android:layout_width="327dp"
             android:layout_height="48dp"
-            android:layout_below="@+id/amount_display3"
+            android:layout_below="@+id/amuntdis2"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="42dp"
@@ -287,5 +246,4 @@
             android:layout_marginBottom="74dp"
             android:text="Continue" />
     </RelativeLayout>
-</LinearLayout>
 </ScrollView>

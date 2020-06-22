@@ -395,10 +395,6 @@
                 app:menu="@menu/navigation" />
 
 
-
-
-
-
             <include layout="@layout/wallet_pop_up" />
 
             <include layout="@layout/withdraw" />
