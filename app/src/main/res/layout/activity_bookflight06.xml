@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Bookflight06"
+    android:background="@color/colorWarmpurple"
+    >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/displayflightfeatures"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@mipmap/small_left2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/flight_information"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/displayflightfeatures"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/splash2"
+        android:backgroundTint="#f0f2f6"
+        android:paddingBottom="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/btnnewxtholder"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="24dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/flighticon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="40dp"
+                    android:src="@mipmap/favorites_2" />
+
+                <TextView
+                    android:id="@+id/flightagency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:lineSpacingExtra="14sp"
+                    android:text="@string/emirates_airlines"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/flightduration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/flightagency"
+                    android:layout_marginStart="80dp"
+                    android:lineSpacingExtra="11sp"
+                    android:text="@string/_8h_12m_1_stop"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/filghtcharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="14sp"
+                    android:text="@string/usd_643"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/flighttickets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/filghtcharge"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="11sp"
+                    android:text="10 tickets left"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/countryfrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/flighticon"
+                    android:layout_marginStart="24dp"
+                    android:lineSpacingExtra="10sp"
+                    android:text="AUS"
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/depature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/countryfrom"
+                    android:layout_marginStart="24dp"
+                    android:lineSpacingExtra="8sp"
+                    android:text="5:15 PM"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/countryto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/flighticon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="24dp"
+                    android:lineSpacingExtra="10sp"
+                    android:text="BNA"
+                    android:textColor="#5b3b5d"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/arrival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/countryto"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="8sp"
+                    android:text="11:15 PM"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="12sp" />
+
+                <View
+                    android:id="@+id/separatorone"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/arrival"
+                    android:layout_marginVertical="24dp"
+                    android:background="#585C63" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_margin="24dp"
+                    android:id="@+id/conttitle"
+                    android:layout_below="@id/separatorone"
+                    android:textColor="@color/colorMidnight"
+                    android:lineSpacingExtra="14sp"
+                    android:text="Contact Info"
+                    />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/conttitle"
+                    android:id="@+id/phonenum"
+                    android:hint="+254"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:maxLength="9"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/phonenum"
+                    android:id="@+id/email"
+                    android:layout_marginVertical="24dp"
+                    android:hint="Enter you email to receive info "
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/email"
+                    android:hint="Promo Code"
+                    android:layout_marginBottom="56dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnnewxtholder"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:background="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:text="Go to Payment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

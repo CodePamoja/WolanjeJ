@@ -9,50 +9,421 @@
     >
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:navigationIcon="@mipmap/small_left"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/displayflightfeatures"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="30dp"
-        >
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@mipmap/small_left2">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="#ffffff"
             android:layout_gravity="center"
-            android:text="Flight Information"
-            />
+            android:text="@string/flight_information"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="76dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    android:background="@color/colorWhite"
-    >
-
-    <com.google.android.material.button.MaterialButton
+    <RelativeLayout
+        android:id="@+id/displayflightfeatures"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Next"
+        android:layout_height="wrap_content"
+        android:background="@drawable/splash2"
+        android:backgroundTint="#f0f2f6"
+        android:paddingBottom="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/btnnewxtholder"
         >
 
-    </com.google.android.material.button.MaterialButton>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="24dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/flighticon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="40dp"
+                    android:src="@mipmap/bus" />
+
+                <TextView
+                    android:id="@+id/flightagency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:lineSpacingExtra="14sp"
+                    android:text="@string/emirates_airlines"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/flightduration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/flightagency"
+                    android:layout_marginStart="80dp"
+                    android:lineSpacingExtra="11sp"
+                    android:text="@string/_8h_12m_1_stop"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/filghtcharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="14sp"
+                    android:text="@string/usd_643"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/flighttickets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/filghtcharge"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="11sp"
+                    android:text="10 tickets left"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/countryfrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/flighticon"
+                    android:layout_marginStart="24dp"
+                    android:lineSpacingExtra="10sp"
+                    android:text="AUS"
+                    android:layout_marginTop="24dp"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/depature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/countryfrom"
+                    android:layout_marginStart="24dp"
+                    android:lineSpacingExtra="8sp"
+                    android:text="5:15 PM"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/countryto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/flighticon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="24dp"
+                    android:lineSpacingExtra="10sp"
+                    android:text="BNA"
+                    android:textColor="#5b3b5d"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/arrival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/countryto"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="8sp"
+                    android:text="11:15 PM"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="12sp" />
+
+                <View
+                    android:id="@+id/separatorone"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/arrival"
+                    android:layout_marginVertical="24dp"
+                    android:background="#585C63" />
+
+                <TextView
+                    android:id="@+id/puncuality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separatorone"
+                    android:layout_marginStart="24dp"
+                    android:lineSpacingExtra="8sp"
+                    android:text="80%"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/delay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separatorone"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="8sp"
+                    android:text="12 m"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/puntime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/puncuality"
+                    android:layout_marginStart="24dp"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Puncuality"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/puncuality"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Delayed on average by"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="13sp" />
+
+                <View
+                    android:id="@+id/separatortwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/puntime"
+                    android:layout_marginVertical="24dp"
+                    android:background="#585C63" />
+
+                <TextView
+                    android:id="@+id/aircradftdetailstitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separatortwo"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="12dp"
+                    android:lineSpacingExtra="14sp"
+                    android:text="Aircraft Details"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aircradftdetailstitle"
+                    android:layout_marginHorizontal="24dp"
+                    app:cardBackgroundColor="#fbfbfc">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp"
+                            android:paddingTop="24dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Model"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Airbus 787-900"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Type"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Twin - aisle"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Meal"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Yes"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Wi-Fi"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Available"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Power Outlet"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Unknown"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6" />
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnnewxtholder"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:background="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="movetobook5"
+            android:text="Next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
