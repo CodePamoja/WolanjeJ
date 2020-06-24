@@ -30,7 +30,7 @@
                 android:layout_marginStart="140dp"
                 android:layout_marginVertical="10dp"
                 android:layout_centerInParent="true"
-                android:src="@mipmap/button_rounded"/>
+                android:src="@drawable/ic_button_roun"/>
 
                 <ImageButton
                     android:layout_width="26dp"

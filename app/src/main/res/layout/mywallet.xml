@@ -20,7 +20,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/close_copy_4"
+                android:src="@drawable/ic_close_copy_4"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/image1"
                 />
@@ -40,7 +40,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/close_copy_4"
+                android:src="@drawable/ic_close_copy_4"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/image2"
                 />
@@ -62,7 +62,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/close_copy_4"
+                android:src="@drawable/ic_close_copy_4"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/image3"
                 />

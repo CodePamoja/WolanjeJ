@@ -1,16 +1,10 @@
 package com.example.wolanjej;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.biometric.BiometricManager;
-import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
 
-import android.accounts.NetworkErrorException;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -18,7 +12,6 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CancellationSignal;
 import android.os.StrictMode;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -39,7 +32,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 import okhttp3.Response;
 
@@ -55,6 +47,7 @@ public class LogIn extends AppCompatActivity {
     private EditText textPin;
     private  androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
     private  androidx.biometric.BiometricPrompt biometricPrompt;
+    private ConnectivityManager connectivityManager;
     private Executor executor;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_ID = "com.example.wolanjej.ID";
@@ -66,7 +59,7 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
 
         final LinearLayout linearLayout = findViewById(R.id.LoginNetAlert);
@@ -110,12 +103,13 @@ public class LogIn extends AppCompatActivity {
         );
 
         setToolBar();
-        imageView = findViewById(R.id.image_holder);
-        imageView.setImageResource(R.drawable.ic_group_7);
+//        imageView = findViewById(R.id.image_holder);
+//        imageView.setImageResource(R.drawable.ic_groupwall);
         if(Build.VERSION.SDK_INT >8){
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
     private void setToolBar() {
@@ -228,7 +222,6 @@ public class LogIn extends AppCompatActivity {
         }
     }
     public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }

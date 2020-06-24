@@ -20,6 +20,9 @@ import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.example.wolanjej.models.SelectUser;
+import com.example.wolanjej.recyclerAdapters.SelectUserAdapter;
+
 import java.util.List;
 
 public class ContactsView extends AppCompatActivity {

@@ -7,6 +7,8 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.wolanjej.models.Contacts;
+
 import java.util.ArrayList;
 import java.util.List;
 

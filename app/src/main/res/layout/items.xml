@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
-        android:src="@mipmap/group_18f" />
+        android:src="@drawable/ic_transfer" />
     <TextView
         android:id="@+id/item_title"
         android:layout_width="wrap_content"

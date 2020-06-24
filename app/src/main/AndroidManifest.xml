@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Bookflight04"></activity>
+        <activity android:name=".UserProfileDetails"></activity>
         <activity android:name=".Sponsor07" />
         <activity android:name=".Sponsor06" />
         <activity android:name=".Sponsor05" />

@@ -28,7 +28,6 @@
             android:backgroundTint="@color/colorWhite"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="29dp"
-            android:onClick="close_show_ple"
             android:src="@mipmap/rectanglew"
             android:id="@+id/imgCloseWallet"
 
@@ -72,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:src="@mipmap/group7w" />
+                        android:src="@drawable/ic_groupwall" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -108,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:src="@mipmap/group7w" />
+                        android:src="@drawable/ic_withdraw" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -144,7 +143,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:src="@mipmap/group7w2" />
+                        android:src="@drawable/ic_fundtransfer" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -189,7 +188,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:src="@mipmap/groupth" />
+                        android:src="@drawable/ic_transactionhistory" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -224,7 +223,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:src="@mipmap/grouppc" />
+                        android:src="@drawable/ic_pendingcommision" />
 
                     <TextView
                         android:layout_width="wrap_content"

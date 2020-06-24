@@ -58,7 +58,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center"
-            android:src="@mipmap/bulb_63_1"
+            android:src="@drawable/ic_bulb"
             />
         </com.google.android.material.card.MaterialCardView>
 
@@ -76,11 +76,6 @@
                 android:id="@+id/TransName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@id/no"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignWithParentIfMissing="true"
-                android:layout_toRightOf="@id/pic"
                 android:gravity="center_vertical"
                 android:text="Name"
                 android:textSize="16sp"
@@ -90,9 +85,6 @@
                 android:id="@+id/TransPayMethod"
                 android:layout_width="fill_parent"
                 android:layout_height="26dip"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/pic"
                 android:ellipsize="marquee"
                 android:text="Phone Number"
                 android:textSize="12sp"

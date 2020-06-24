@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.wolanjej.pagerAdapters.PaymentsAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class PaymentsMain extends AppCompatActivity {

@@ -3,12 +3,13 @@ package com.example.wolanjej;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.wolanjej.models.Model;
+import com.example.wolanjej.recyclerAdapters.MyAdapter;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
@@ -82,7 +83,7 @@ public class Screen16 extends AppCompatActivity implements View.OnClickListener 
         ArrayList<Model>models = new ArrayList<>();
         Model m = new Model();
         m.setTitle("Pay Tv");
-        m.setImage(R.mipmap.group_18a);
+        m.setImage(R.drawable.ic_exchange);
         models.add(m);
 
         Model m3 = new Model();
@@ -92,17 +93,17 @@ public class Screen16 extends AppCompatActivity implements View.OnClickListener 
 
         Model m1 = new Model();
         m1.setTitle("Electricity");
-        m1.setImage(R.mipmap.group_18c);
+        m1.setImage(R.drawable.ic_services);
         models.add(m);
 
         Model m2 = new Model();
         m2.setTitle("Pay Internet");
-        m2.setImage(R.mipmap.group_18d);
+        m2.setImage(R.drawable.ic_wallet);
         models.add(m2);
 
         Model m4 = new Model();
         m4.setTitle("Buy Airtime");
-        m4.setImage(R.mipmap.group_18d);
+        m4.setImage(R.drawable.ic_wallet);
         models.add(m4);
 
         return models;

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:theme="@style/AppTheme"
+        tools:context=".UserProfileDetails">
+
+
+        <EditText
+            android:id="@+id/fNamep"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="first Name"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/lNamep"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Last Name"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/oNamep"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="other Names"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/address1p"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Address1"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/address2p"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Address2"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/townp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Town"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/statep"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="state"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/cityp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="City"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/districtp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="District"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/countyp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="County"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/provincep"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Province"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/countryp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="country"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/dobp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/date_of_birth"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/genderp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Gender"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/passportp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Passport No."
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/nationalidp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="National id"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/facebookp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Facebook"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <EditText
+            android:id="@+id/twitterp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/wallet_pop_up_shape"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="twitter"
+            android:paddingHorizontal="12dp"
+            android:textColorLink="#00CE6363" />
+
+        <Button
+            android:id="@+id/buttonP"
+            android:layout_width="100dp"
+            android:layout_gravity="center_horizontal"
+            android:text="send"
+            android:onClick="sendDetails"
+            android:layout_height="50dp"/>
+    </LinearLayout>
+</ScrollView>

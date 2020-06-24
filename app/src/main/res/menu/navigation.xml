@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
       android:id="@+id/my_wallet"
-      android:icon="@mipmap/transfer_wallet"
+      android:icon="@drawable/ic_transfer_to_wallet"
       android:title="My wallet"
       android:enabled="true"
       android:onClick="moveMyWallet"
@@ -34,7 +34,7 @@
 
   <item
       android:id="@+id/settings"
-      android:icon="@mipmap/settings"
+      android:icon="@drawable/ic_settings"
       android:title="Settings"
       android:enabled="true"
       android:onClick="movetoSettings48"

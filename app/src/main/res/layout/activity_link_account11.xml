@@ -55,7 +55,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@mipmap/worldpay" />
+                            android:src="@drawable/ic_worldpay" />
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
@@ -72,7 +72,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@mipmap/unionpay" />
+                            android:src="@drawable/ic_unionpay" />
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
@@ -89,7 +89,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@mipmap/western_union" />
+                            android:src="@drawable/ic_western_union" />
                     </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
@@ -151,7 +151,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@mipmap/visa_1" />
+                            android:src="@drawable/ic_visa" />
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
@@ -168,7 +168,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@mipmap/paypal_1" />
+                            android:src="@drawable/ic_paypal" />
                     </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.wolanjej;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.CalendarView;
 
 public class BookFlight02 extends AppCompatActivity {
     CalendarView calendarView;
+    private Toolbar tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,22 @@ public class BookFlight02 extends AppCompatActivity {
 
             }
         });
+
+        setToolBar(tb);
+    }
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbar2);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent moveToLogo = new Intent(this,BookFlight.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(moveToLogo);
+                    }
+                }
+        );
 
     }
     public void MovetoBookFlightO3(View view) {

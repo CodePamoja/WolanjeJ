@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".PaidFragment">
+    tools:context=".fragments.PaidFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -41,7 +41,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@mipmap/bulb_63_1" />
+                        android:src="@drawable/ic_bulb" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@mipmap/drops" />
+                        android:src="@drawable/ic_drops" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@mipmap/drops" />
+                        android:src="@drawable/ic_drops" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -239,7 +239,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@mipmap/phone" />
+                        android:src="@drawable/ic_phone" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -309,7 +309,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@mipmap/wifi_1" />
+                        android:src="@drawable/ic_wifi" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -373,7 +373,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@mipmap/bulb_63_1" />
+                        android:src="@drawable/ic_bulb" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,8 +51,8 @@ public class Registration05 extends AppCompatActivity {
 
         text = findViewById(R.id.phoneNumber);
         setToolBar();
-        imageView = findViewById(R.id.image_holder);
-        imageView.setImageResource(R.drawable.ic_group_7);
+//        imageView = findViewById(R.id.image_holder);
+//        imageView.setImageResource(R.drawable.ic_groupwall);
 
         Button btn = findViewById(R.id.btn_continue);
         btn.setOnClickListener(

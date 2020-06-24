@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:onClick="closeMyDrawer"
-        app:icon="@mipmap/close_copy_4"
+        app:icon="@drawable/ic_close_copy_4"
         app:iconGravity="end" />
 
 

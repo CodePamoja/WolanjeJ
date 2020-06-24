@@ -103,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="20dp"
-                        android:src="@mipmap/group_18f" />
+                        android:src="@drawable/ic_transfer" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -135,7 +135,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="20dp"
-                        android:src="@mipmap/group_18e" />
+                        android:src="@drawable/ic_incomedetails" />
 
 
                     <TextView
@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="20dp"
-                        android:src="@mipmap/group_18d" />
+                        android:src="@drawable/ic_wallet" />
 
 
                     <TextView
@@ -224,7 +224,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="20dp"
-                        android:src="@mipmap/group_18c" />
+                        android:src="@drawable/ic_services" />
 
 
                     <TextView
@@ -256,7 +256,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="20dp"
-                        android:src="@mipmap/group_18a" />
+                        android:src="@drawable/ic_exchange" />
 
 
                     <TextView
@@ -289,7 +289,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="20dp"
-                        android:src="@mipmap/group_18b" />
+                        android:src="@drawable/ic_crypto" />
 
                     <TextView
                         android:layout_width="wrap_content"
