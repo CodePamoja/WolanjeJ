@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.wolanjej.fragments.FailedloansFragment;
+import com.example.wolanjej.fragments.HistoryFragment;
+import com.example.wolanjej.fragments.PaidLoansFragment;
+
 public class LoansAdapter extends FragmentStateAdapter {
     public LoansAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);

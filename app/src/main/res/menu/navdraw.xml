@@ -8,27 +8,27 @@
         <item
             android:id="@+id/home"
             android:title="@string/home"
-            android:icon="@mipmap/group_3"
+            android:icon="@drawable/ic_homeh"
 
             />
         <item
             android:id="@+id/menu_e_wallet"
             android:title="@string/my_e_wallets"
-            android:icon="@mipmap/group5"
+            android:icon="@drawable/ic_my_e_walonje"
             android:onClick="OpenWalletM"
 
             />
         <item
             android:id="@+id/biling"
             android:title="@string/biling"
-            android:icon="@mipmap/receipt_list_43"
+            android:icon="@drawable/ic_receipt_list_43"
             android:onClick="openBillManager"
 
             />
         <item
             android:id="@+id/services"
             android:title="@string/services"
-            android:icon="@mipmap/pot"
+            android:icon="@drawable/ic_walleth"
             android:onClick="opensevrvices"
 
             />
@@ -42,48 +42,48 @@
         <item
             android:id="@+id/income"
             android:title="@string/income_details"
-            android:icon="@mipmap/group_12"
+            android:icon="@drawable/ic_incomed"
             android:onClick="openIncomingDetails"
 
             />
         <item
             android:id="@+id/repor"
             android:title="@string/reports"
-            android:icon="@mipmap/group8"
+            android:icon="@drawable/ic_reports"
 
             />
         <item
             android:id="@+id/lernhub"
             android:title="@string/learning_hub"
-            android:icon="@mipmap/fill_1"
+            android:icon="@drawable/ic_fill_1"
             android:onClick="openLearningHub"
 
             />
         <item
             android:id="@+id/profile"
             android:title="@string/profile"
-            android:icon="@mipmap/group5"
+            android:icon="@drawable/ic_profile"
             android:onClick="openProfile"
 
             />
         <item
             android:id="@+id/not"
             android:title="@string/notifications"
-            android:icon="@mipmap/group6"
+            android:icon="@drawable/ic_notification"
             android:onClick="openNotifications52"
 
             />
         <item
             android:id="@+id/settings"
             android:title="@string/settings"
-            android:icon="@mipmap/set_1"
+            android:icon="@drawable/ic_settingsh"
             android:onClick="movetoSettings48"
 
             />
         <item
             android:id="@+id/swacc"
             android:title="@string/switch_account"
-            android:icon="@mipmap/group7"
+            android:icon="@drawable/ic_switchaccount"
             android:onClick="chooseAnotherAccount"
 
             />

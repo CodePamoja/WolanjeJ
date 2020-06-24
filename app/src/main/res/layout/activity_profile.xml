@@ -86,7 +86,7 @@
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
-                            android:src="@mipmap/graph"
+                            android:src="@drawable/ic_graph"
                             >
 
                         </ImageView>
@@ -129,7 +129,7 @@
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
-                            android:src="@mipmap/gears">
+                            android:src="@drawable/ic_gears">
                         </ImageView>
 
                         <TextView
@@ -169,7 +169,7 @@
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
-                            android:src="@mipmap/support">
+                            android:src="@drawable/ic_support">
                         </ImageView>
 
                         <TextView

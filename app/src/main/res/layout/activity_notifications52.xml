@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:text="Transaction"
                 android:drawablePadding="5dp"
-                android:drawableStart="@mipmap/group_18f"
+                android:drawableStart="@drawable/ic_transfer"
                 android:textSize="28sp"
                 />
 

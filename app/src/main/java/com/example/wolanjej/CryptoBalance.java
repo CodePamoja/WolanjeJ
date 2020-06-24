@@ -9,6 +9,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.wolanjej.models.Model2;
+import com.example.wolanjej.recyclerAdapters.MyAdapter2;
 import com.github.mikephil.charting.charts.LineChart;
 
 import java.util.ArrayList;
@@ -58,7 +60,7 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
         m.setTitle2("9.88032");
         m.setTitle3("BTC");
         m.setTitle4("+1243(13%)");
-        m.setImage(R.mipmap.bitcoin2);
+        m.setImage(R.drawable.ic_bitcoin);
         m.setBackgroundColor(getResources().getColor(R.color.colorWarmpurple));
         models.add(m);
 
@@ -67,7 +69,7 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
         m1.setTitle2("5.80112");
         m1.setTitle3("ETH");
         m1.setTitle4("+1243(13%)");
-        m1.setImage(R.mipmap.etherium);
+        m1.setImage(R.drawable.ic_etherium);
         m1.setBackgroundColor(getResources().getColor(R.color.reddish_orange));
         models.add(m1);
 
@@ -76,7 +78,7 @@ public class CryptoBalance extends AppCompatActivity implements View.OnClickList
         m2.setTitle2("5.80112");
         m2.setTitle3("ETH");
         m2.setTitle4("+1243(13%)");
-        m2.setImage(R.mipmap.bitcoin2);
+        m2.setImage(R.drawable.ic_bitcoin);
         m2.setBackgroundColor(getResources().getColor(R.color.colorGreenBlue));
         models.add(m2);
 

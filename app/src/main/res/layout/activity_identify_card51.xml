@@ -156,8 +156,8 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableRight="@mipmap/calendar_date"
-                        android:drawableEnd="@mipmap/calendar_date"
+                        android:drawableRight="@drawable/ic_calendar_date"
+                        android:drawableEnd="@drawable/ic_calendar_date"
                         android:drawablePadding="5dp"
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="30dp"

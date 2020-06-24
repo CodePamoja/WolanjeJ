@@ -20,7 +20,7 @@
         android:layout_marginStart="116dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="116dp"
-        android:src="@mipmap/button_rounded_2" />
+        android:src="@drawable/ic_button_rounded" />
 
     <TextView
         android:id="@+id/txt_transfer_unsuccessuful"

@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="29dp"
-                android:src="@mipmap/education"/>
+                android:src="@drawable/ic_education"/>
 
             <TextView
                 android:layout_width="wrap_content"

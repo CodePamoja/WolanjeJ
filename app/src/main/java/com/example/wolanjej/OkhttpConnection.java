@@ -62,6 +62,8 @@ public class OkhttpConnection {
         return result;
     }
 
+
+
     public  Response payBill(String url, String jsonBody, String sessionID){
         Response result = null;
         try {
@@ -123,6 +125,27 @@ public class OkhttpConnection {
             Response response = call.execute();
 //            String test = response.body().string();
 //            Log.d("TAG", test);
+            result  = response;
+
+        } catch (IOException ex) {
+            System.out.println("IO Error : " + ex);
+            Log.d("TAG", String.valueOf(ex));
+        }
+
+        return result;
+    }
+
+    public Response setProfileDetails(String url,  String jsonBody, String sessionID){
+        Response result = null;
+        try{
+            String allUrl = baseUrl + url;
+            Request request = new Request.Builder()
+                    .header("Authorization", "Bearer" + sessionID+ "")
+                    .get()
+                    .url(allUrl)
+                    .build();
+            Call call = client.newCall(request);
+            Response response = call.execute();
             result  = response;
 
         } catch (IOException ex) {

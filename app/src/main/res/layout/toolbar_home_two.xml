@@ -38,7 +38,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="31dp"
-                android:src="@mipmap/bell_shape" />
+                android:src="@drawable/ic_shape" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 

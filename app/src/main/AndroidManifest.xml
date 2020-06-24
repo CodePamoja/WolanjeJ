@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Sponsor07"/>
+        <activity android:name=".UserProfileDetails"></activity>
+        <activity android:name=".Sponsor07" />
         <activity android:name=".Sponsor06" />
         <activity android:name=".Sponsor05" />
         <activity android:name=".Sponsor04" />
@@ -26,8 +27,8 @@
         <activity android:name=".scholarship3" />
         <activity android:name=".Scholarship02" />
         <activity android:name=".Scholarship" />
-        <activity android:name=".BookFlight02"/>
-        <activity android:name=".Notifications52"/>
+        <activity android:name=".BookFlight02" />
+        <activity android:name=".Notifications52" />
         <activity android:name=".Sponsor03" />
         <activity android:name=".Sponsor02" />
         <activity android:name=".Sponsor01" />
@@ -44,7 +45,7 @@
         <activity android:name=".TopupOtherNumber" />
         <activity android:name=".activity_05_reg" />
         <activity android:name=".activity_05_reg_1" />
-        <activity android:name=".Screen16"/>
+        <activity android:name=".Screen16" />
         <activity android:name=".HomeTwo" />
         <activity android:name=".Reg_04" />
         <activity android:name=".Reg03Activity" />
@@ -65,7 +66,7 @@
         <activity android:name=".ConfirmSingleTransfer40" />
         <activity android:name=".TransferToPhone50" />
         <activity android:name=".TransferToBank44" />
-        <activity android:name=".TransactionView"/>
+        <activity android:name=".TransactionView" />
         <activity android:name=".MainTransfer36" />
         <activity android:name=".TransferToWalletSingle37" />
         <activity android:name=".IdentifyCard51" />
@@ -79,11 +80,11 @@
         <activity android:name=".profile" />
         <activity android:name=".CardLink" />
         <activity android:name=".Home" />
-        <activity android:name=".LinkCardSuccessfully"/>
+        <activity android:name=".LinkCardSuccessfully" />
         <activity android:name=".LogIn" />
         <activity android:name=".Registration05" />
         <activity android:name=".Registration08" />
-        <activity android:name=".Registration06"/>
+        <activity android:name=".Registration06" />
 
         <meta-data
             android:name="com.google.android.actions"

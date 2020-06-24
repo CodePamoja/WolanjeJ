@@ -42,7 +42,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@mipmap/ticket"
+            android:src="@drawable/ticket"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"/>
         <TextView
@@ -144,7 +144,7 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@mipmap/taxi_1"
+                android:src="@drawable/ic_taxi_1"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"/>
             <TextView
