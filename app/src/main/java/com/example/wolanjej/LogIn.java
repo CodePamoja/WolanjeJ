@@ -47,6 +47,7 @@ public class LogIn extends AppCompatActivity {
     private EditText textPin;
     private  androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
     private  androidx.biometric.BiometricPrompt biometricPrompt;
+    private ConnectivityManager connectivityManager;
     private Executor executor;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_ID = "com.example.wolanjej.ID";
@@ -108,6 +109,7 @@ public class LogIn extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
     private void setToolBar() {
@@ -220,7 +222,6 @@ public class LogIn extends AppCompatActivity {
         }
     }
     public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }

@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.wolanjej.fragments.FailedloansFragment;
-import com.example.wolanjej.fragments.HistoryFragment;
+import com.example.wolanjej.fragments.LoansHistoryFragment;
 import com.example.wolanjej.fragments.PaidLoansFragment;
 
 public class LoansAdapter extends FragmentStateAdapter {
@@ -19,7 +19,7 @@ public class LoansAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new HistoryFragment();
+                return new LoansHistoryFragment();
             case 1:
                 return new PaidLoansFragment();
             default:
