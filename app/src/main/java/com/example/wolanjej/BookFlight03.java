@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -70,6 +71,9 @@ public class BookFlight03 extends AppCompatActivity {
                 }
         );
 
+    }
+    public  void moveTobK04(View V){
+        startActivity(new Intent(this,Bookflight04.class));
     }
 //    TODO: get filght details
 }

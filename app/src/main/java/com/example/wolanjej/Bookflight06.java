@@ -32,4 +32,7 @@ public class Bookflight06 extends AppCompatActivity {
         );
 
     }
+    public void MoveToBkPin(View view){
+        startActivity(new Intent(this,BookFlightPin.class));
+    }
 }
