@@ -64,8 +64,8 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/CardTransport"
-                    android:layout_width="160dp"
-                    android:layout_height="180dp"
+                    android:layout_width="152dp"
+                    android:layout_height="162dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="4dp"
                     android:layout_margin="12dp"
@@ -82,6 +82,7 @@
                         <ImageView
                             android:id="@+id/transport"
                             android:layout_width="wrap_content"
+                            android:layout_marginTop="41dp"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="true"
@@ -96,9 +97,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
-                            android:text="Repurchase"
+                            android:layout_centerInParent="true"
+                            android:gravity="center_horizontal"
+                            android:text="Repurchase Report"
                             android:textColor="#000000"
-                            android:textSize="24sp"
+                            android:layout_marginBottom="0dp"
+                            android:textSize="20sp"
 
                             />
                     </RelativeLayout>
@@ -107,8 +111,8 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card2Prof"
-                    android:layout_width="160dp"
-                    android:layout_height="180dp"
+                    android:layout_width="152dp"
+                    android:layout_height="162dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="4dp"
                     android:layout_margin="12dp"
@@ -126,6 +130,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="41dp"
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
@@ -138,9 +143,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerInParent="true"
+                            android:layout_marginBottom="15dp"
                             android:text="Settings"
                             android:textColor="#000000"
-                            android:textSize="24sp"
+                            android:textSize="20sp"
 
                             />
                     </RelativeLayout>
@@ -148,8 +154,8 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card3"
-                    android:layout_width="160dp"
-                    android:layout_height="180dp"
+                    android:layout_width="152dp"
+                    android:layout_height="162dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="4dp"
                     android:layout_margin="12dp"
@@ -166,6 +172,7 @@
 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="41dp"
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
@@ -178,9 +185,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerInParent="true"
+                            android:layout_marginBottom="15dp"
                             android:text="Support"
                             android:textColor="#000000"
-                            android:textSize="24sp"
+                            android:textSize="20sp"
 
                             />
                     </RelativeLayout>

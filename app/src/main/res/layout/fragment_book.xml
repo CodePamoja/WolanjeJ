@@ -1,295 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="190dp"
-        android:layout_height="110dp">
 
-        <ImageView
-            android:id="@+id/img_travelers"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:background="@drawable/splash3"
-            android:src="@drawable/person_outline_av" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txt_view_travellers"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="27dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="190dp"
+                android:layout_height="100dp">
+
+                <ImageView
+                    android:id="@+id/img_travelers"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/splash3"
+                    android:gravity="center"
+                    android:src="@drawable/person_outline_av" />
+
+                <TextView
+                    android:id="@+id/txt_view_travellers"
+                    android:layout_width="56dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_toEndOf="@+id/img_travelers"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Travellers"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_view_travellers"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@+id/img_travelers"
+                    android:text="1 Passenger"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="190dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/img_prefferd_class"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/splash3"
+                    android:gravity="center"
+                    android:src="@drawable/airline_seat_recline_av" />
+
+                <TextView
+                    android:id="@+id/txt_view_economy"
+                    android:layout_width="79dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_toEndOf="@+id/img_prefferd_class"
+                    android:lineSpacingExtra="8sp"
+                    android:text="prefferd class"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_view_economy"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/img_prefferd_class"
+                    android:layout_marginTop="10dp"
+                    android:text="Economy"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:background="@color/blue_grey" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:layout_gravity="end"
             android:layout_marginEnd="35dp"
-            android:layout_toEndOf="@+id/img_travelers"
-            android:lineSpacingExtra="8sp"
-            android:text="Travellers"
-            android:textColor="@color/colorMidnight"
-            android:textSize="12sp" />
+            android:background="@color/blue_grey" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_view_travellers"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="25dp"
-            android:text="1 Passenger"
-            android:textColor="@color/blue_grey"
-            android:textSize="16sp" />
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:lineSpacingExtra="6sp"
+            android:text="Flight Details"
+            android:textColor="#202224"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="352dp"
+            android:layout_height="95dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/img_where_from"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/splash3"
+                android:gravity="center"
+                android:src="@drawable/flight_takeoff_24" />
 
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/flightFromB00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="26dp"
+                android:text="Where From ?"
+                android:textColor="@color/colorMidnight"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txt_where_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/flightFromB00"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="8sp"
+                android:text="City or Airport"
+                android:textColor="@color/blue_grey"
+                android:textSize="16sp" />
 
 
-    <RelativeLayout
-        android:layout_width="190dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="20dp">
+        </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/img_prefferd_class"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:background="@drawable/splash3"
-            android:src="@drawable/airline_seat_recline_av" />
+        <View
+            android:id="@+id/view7"
+            android:layout_width="352dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/blue_grey" />
 
-        <TextView
-            android:id="@+id/txt_view_economy"
-            android:layout_width="79dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="27dp"
-            android:layout_marginEnd="12dp"
-            android:layout_toEndOf="@+id/img_prefferd_class"
-            android:lineSpacingExtra="8sp"
-            android:text="prefferd class"
-            android:textColor="@color/colorMidnight"
-            android:textSize="12sp" />
+        <RelativeLayout
+            android:layout_width="352dp"
+            android:layout_height="95dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_view_economy"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:text="Economy"
-            android:textColor="@color/blue_grey"
-            android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/img_where_to"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/splash3"
+                android:gravity="center"
+                android:src="@drawable/flight_land_24" />
+
+            <TextView
+                android:id="@+id/FlightTo00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="26dp"
+                android:text="Where To?"
+                android:textColor="@color/colorMidnight"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txt_where_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FlightTo00"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="8sp"
+                android:text="City or Airport"
+                android:textColor="@color/blue_grey"
+                android:textSize="16sp" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
+        <View
+            android:id="@+id/view8"
+            android:layout_width="352dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/blue_grey" />
 
-</LinearLayout>
-    <View
-        android:id="@+id/view5"
-        android:layout_width="150dp"
-        android:layout_marginStart="24dp"
-        android:layout_height="1dp"
-        android:background="@color/blue_grey"/>
-    <View
-        android:id="@+id/view6"
-        android:layout_width="150dp"
-        android:layout_height="1dp"
-        android:layout_marginEnd="35dp"
-        android:background="@color/blue_grey"
-        android:layout_gravity="end"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="24dp"
-        android:textSize="14sp"
-        android:textColor="#202224"
-        android:lineSpacingExtra="6sp"
-        android:text="Flight Details"
-        />
-    <RelativeLayout
-        android:layout_width="352dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:id="@+id/img_where_from"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:background="@drawable/splash3"
-            android:src="@drawable/flight_takeoff_24" />
-
-        <TextView
-            android:id="@+id/txt_where_from"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
+        <RelativeLayout
+            android:layout_width="352dp"
+            android:layout_height="95dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="57dp"
-            android:layout_marginEnd="193dp"
-            android:lineSpacingExtra="8sp"
-            android:text="Where From"
-            android:textColor="@color/colorMidnight"
-            android:textSize="12sp" />
+            android:layout_marginTop="15dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="164dp"
-            android:text="City or Airport"
-            android:textColor="@color/blue_grey"
-            android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/img_select_dep"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/splash3"
+                android:gravity="center"
+                android:src="@drawable/event_note_av" />
 
-    </RelativeLayout>
-    <View
-        android:id="@+id/view7"
-        android:layout_width="352dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_height="1dp"
-        android:background="@color/blue_grey"/>
-    <RelativeLayout
-        android:layout_width="352dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="24dp">
+            <TextView
+                android:id="@+id/txt_view_select_dep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="26dp"
+                android:lineSpacingExtra="8sp"
+                android:text="Select Departure/Return Dte"
+                android:textColor="@color/colorMidnight"
+                android:textSize="12sp" />
 
-        <ImageView
-            android:id="@+id/img_where_to"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="30dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_view_select_dep"
+                android:layout_marginStart="100dp"
+                android:text="23 sep 2020"
+                android:textColor="@color/blue_grey"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view9"
+            android:layout_width="352dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/blue_grey" />
+
+
+        <Button
+            android:layout_width="327dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20dp"
+            android:layout_marginTop="46dp"
+            android:background="@drawable/splash"
+            android:fontFamily="@font/poppins_medium"
             android:gravity="center"
-            android:background="@drawable/splash3"
-            android:src="@drawable/flight_land_24" />
+            android:onClick="MoveToBookFlight02"
+            android:text="Search"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
 
-
-        <TextView
-            android:id="@+id/txt_where_to"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="57dp"
-            android:layout_marginEnd="180dp"
-            android:lineSpacingExtra="8sp"
-            android:text="Where To"
-            android:textColor="@color/colorMidnight"
-            android:textSize="12sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="157dp"
-            android:text="City or Airport"
-            android:textColor="@color/blue_grey"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
-    <View
-        android:id="@+id/view8"
-        android:layout_width="352dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_height="1dp"
-        android:background="@color/blue_grey"/>
-    <RelativeLayout
-        android:layout_width="352dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="24dp">
-
-        <ImageView
-            android:id="@+id/img_select_dep"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:background="@drawable/splash3"
-            android:src="@drawable/event_note_av" />
-
-        <TextView
-            android:id="@+id/txt_view_select_dep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="116dp"
-            android:lineSpacingExtra="8sp"
-            android:text="Select Departure/Return Dte"
-            android:textColor="@color/colorMidnight"
-            android:textSize="12sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_view_select_dep"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="161dp"
-            android:text="1 Passenger"
-            android:textColor="@color/blue_grey"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
-    <View
-        android:id="@+id/view9"
-        android:layout_width="352dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_height="1dp"
-        android:background="@color/blue_grey"/>
-
-
-    <Button
-        android:layout_width="327dp"
-        android:layout_marginTop="46dp"
-        android:layout_height="56dp"
-        android:layout_gravity="center"
-        android:background="@drawable/splash"
-        android:layout_marginVertical="20dp"
-        android:onClick="MoveToBookFlight02"
-        android:text="Search"
-        android:gravity="center"
-        android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        />
-
-</LinearLayout>
+    </LinearLayout>
 </ScrollView>

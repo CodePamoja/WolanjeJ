@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -44,6 +45,7 @@ public class BookFlight02 extends AppCompatActivity {
 
     }
     public void MovetoBookFlightO3(View view) {
-        startActivity(new Intent(this,BookFlight02.class));
+        startActivity(new Intent(this,BookFlightPin.class));
+
     }
 }

@@ -7,6 +7,7 @@
     android:layout_gravity="center"
     android:layout_marginStart="23dp"
     android:layout_marginEnd="22dp"
+    android:padding="16dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -33,6 +34,7 @@
                 android:src="@drawable/ic_button_roun"/>
 
                 <ImageButton
+                    android:id="@+id/dismissbk09"
                     android:layout_width="26dp"
                     android:layout_height="26dp"
                     android:layout_marginEnd="1dp"
@@ -68,8 +70,7 @@
                     android:textColor="#222b45"
                     android:lineSpacingExtra="4sp"
                     android:gravity="center_horizontal"
-                    android:text="Your flight has been booked successfully.
-                     A confirmation receipt will be sent to the email linked to your account. Safe Travels!"
+                    android:text="Your flight has been booked successfully.A confirmation receipt will be sent to the email linked to your account. Safe Travels!"
                     />
 
             </LinearLayout>
