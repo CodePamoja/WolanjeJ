@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Wolenje Arica</string>
+    <string name="app_name">Wolenje Africa</string>
     <string name="Link_Accoount">Link Accoount</string>
     <string name="app_intro">Wolenje, Lipa kwa urahisi</string>
     <string name="button_intro">Get Started</string>
@@ -167,4 +167,8 @@
     <string name="step_02_of_03">step_02_of_03</string>
     <string name="tlc">By clicking “Continue you agree to our  <b><i><u><a href="https://dakarenergylimited.co.ke/Leaf/"> Terms and conditions </a></u></i></b> as well as our <b><i><u><a href="https://dakarenergylimited.co.ke/Leaf/">privacy policy</a></u></i></b>  </string>
     <string name="loyalty_program">Loyalty Program</string>
+    <string name="flight_information">Flight Information</string>
+    <string name="emirates_airlines">Emirates Airlines</string>
+    <string name="_8h_12m_1_stop">8h 12m (1 Stop)</string>
+    <string name="usd_643">USD 643</string>
 </resources>
