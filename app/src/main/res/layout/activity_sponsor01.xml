@@ -1,142 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Sponsor01">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="192dp"
-        android:orientation="vertical"
-        android:backgroundTint="#e7e7e7">
-        <include layout="@layout/toobarwithout"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="New Application"
-            android:textSize="30sp"
-            android:textColor="@color/colorMidnight"
-            android:layout_marginStart="35dp"/>
-    </LinearLayout>
+    tools:context=".Sponsor01"
+    >
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <EditText
-            android:id="@+id/scholarship_name"
-            android:layout_width="327dp"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="30dp"
-            android:hint="Enter Scholarship Name"
-            android:background="@drawable/textviewborder">
-        </EditText>
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/scollview"
+        android:background="#f8f8fa"
+        >
 
-    <EditText
-        android:layout_width="327dp"
-        android:layout_height="50dp"
-        android:padding="5dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:hint="Select Country"
-        android:drawableEnd="@drawable/ic_baseline_down"
-        android:background="@drawable/textviewborder"/>
+        <include layout="@layout/toobarwithout" />
 
-    <EditText
-        android:layout_width="327dp"
-        android:layout_height="50dp"
-        android:padding="5dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:hint="Enter Location"
-        android:background="@drawable/textviewborder"/>
-
-
-<LinearLayout
-    android:layout_width="327dp"
-    android:layout_height="50dp"
-    android:background="@drawable/textviewborder"
-    android:layout_marginTop="20dp"
-    android:layout_marginStart="50dp"
-    android:orientation="vertical">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_weight="50"
-            android:layout_height="wrap_content"
-            android:hint="Type Of Sponsor"
-            android:textSize="17sp"
-            android:layout_marginStart="5dp" />
-
-        <Spinner
-            android:id="@+id/select_sponsor"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:drawSelectorOnTop="true"
-            android:popupBackground="@android:color/holo_purple"
-            android:spinnerMode="dropdown"
-            tools:ignore="NestedWeights" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginVertical="24dp"
+            android:text="New Application"
+            android:textColor="@color/colorMidnight"
+            android:textSize="30sp" />
     </LinearLayout>
 
-
-
-    <EditText
-        android:layout_width="327dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:padding="5dp"
-        android:hint="Select Institution"
-        android:drawableEnd="@drawable/ic_baseline_down"
-        android:background="@drawable/textviewborder"/>
-
-    <EditText
-        android:layout_width="327dp"
-        android:layout_height="50dp"
-        android:padding="5dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:hint="Enter a Purpose"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/textviewborder"/>
-    </LinearLayout>
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scollview"
         android:layout_width="match_parent"
-        android:layout_height="156dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#f8f8fa"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/linearLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="24dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:paddingHorizontal="12dp"
+                android:hint="Enter Scholarship Name"
+                android:background="@drawable/textviewborder"
+                />
+
+            <Spinner
+                android:id="@+id/spinnercountries"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/myspinner"
+                android:spinnerMode="dropdown"
+                android:paddingHorizontal="18dp" />
+            <Spinner
+                android:id="@+id/spinnercounties"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginVertical="16dp"
+                android:paddingHorizontal="18dp"
+                android:background="@drawable/myspinner"
+                android:spinnerMode="dropdown"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:hint="Enter Location"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/textviewborder"
+                />
+            <Spinner
+                android:id="@+id/select_sponsor"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginVertical="16dp"
+                android:paddingHorizontal="18dp"
+                android:background="@drawable/myspinner"
+                android:spinnerMode="dropdown"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:hint="Enter Location"
+                android:background="@drawable/textviewborder"
+                android:drawableEnd="@drawable/ic_dropdown_arrow"
+                android:paddingHorizontal="12dp"
+                android:layout_marginVertical="16dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:hint="Enter Purpose"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="80dp"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/textviewborder"
+                />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#f8f8fa"
+        app:layout_constraintStart_toStartOf="parent">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="24dp"
-            android:textSize="12sp"
-            android:textColor="#222b45"
-            android:lineSpacingExtra="6sp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="36dp"
             android:gravity="center_horizontal"
-            android:text="By clicking “Continue you agree to our Terms and conditions as well as our privacy policy"
-            />
-        
+            android:lineSpacingExtra="6sp"
+            android:textColorLink="@color/colorBluepurple"
+            android:text="@string/tlc"
+            android:textColor="#222b45"
+            android:textSize="12sp" />
+
         <Button
             android:layout_width="325dp"
             android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:backgroundTint="#0bb8bb"
-            android:layout_gravity="center_horizontal"
             android:onClick="moveSponsor02"
-            android:text="@string/Continue"/>
-        
+            android:text="@string/Continue" />
+
     </LinearLayout>
 
 
-</LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
