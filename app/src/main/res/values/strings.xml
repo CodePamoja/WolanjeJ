@@ -107,6 +107,7 @@
         <item>My Number</item>
         <item>Other Number</item>
     </string-array>
+
     <string name="registration">Registration</string>
     <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number, then we will send OTP to verify</string>
     <string name="bill_manager">Bill Manager</string>

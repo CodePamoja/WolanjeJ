@@ -128,4 +128,13 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
 
         }
     }
+
+    public void displayPopUpfee(View view) {
+
+        PopupMenu popup = new PopupMenu(this,view);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.popup_for_fee_details);
+        popup.show();
+
+    }
 }

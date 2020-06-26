@@ -69,6 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginTop="16dp"
+                    android:background="@drawable/textviewborder"
                     android:paddingHorizontal="18dp" />
                 <Spinner
                     android:id="@+id/spinnercounties"
@@ -76,8 +77,8 @@
                     android:layout_height="58dp"
                     android:layout_marginTop="16dp"
                     android:paddingHorizontal="18dp"
-                    app:strokeColor="#E7E7E7"
-                    app:strokeWidth="5dp"/>
+                    android:background="@drawable/spinner_background"
+                    />
 
                 <EditText
                     android:layout_width="match_parent"

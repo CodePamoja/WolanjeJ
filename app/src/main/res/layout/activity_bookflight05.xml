@@ -29,7 +29,7 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <RelativeLayout
+    <ScrollView
         android:id="@+id/displayflightfeatures"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,10 +41,6 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="@id/btnnewxtholder"
         >
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -97,10 +93,11 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
                     android:id="@+id/sepone"
                     android:layout_below="@id/airlinetxt"
-                    android:layout_marginVertical="24dp"/>
+                    android:layout_marginVertical="24dp"
+                    android:background="#585C63"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -125,10 +122,11 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
                     android:id="@+id/septwo"
                     android:layout_below="@id/carrytxt"
-                    android:layout_marginVertical="24dp"/>
+                    android:layout_marginVertical="24dp"
+                    android:background="#585C63"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,10 +151,11 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
                     android:id="@+id/septhree"
                     android:layout_below="@id/bagonetxt"
-                    android:layout_marginVertical="24dp"/>
+                    android:layout_marginVertical="24dp"
+                    android:background="#585C63"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -181,18 +180,18 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
                     android:id="@+id/sepfour"
                     android:layout_below="@id/bagtwotxt"
                     android:layout_marginTop="24dp"
-                    android:layout_marginBottom="56dp"
+                    android:layout_marginBottom="100dp"
+                    android:background="#585C63"
                     />
 
             </RelativeLayout>
-        </ScrollView>
 
 
-    </RelativeLayout>
+    </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnnewxtholder"
