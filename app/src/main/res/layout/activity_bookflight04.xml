@@ -51,16 +51,16 @@
                 >
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/flighticon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/flighticonBf04"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="40dp"
                     android:src="@mipmap/favorites_2" />
 
                 <TextView
-                    android:id="@+id/flightagency"
+                    android:id="@+id/flightAgencyBf04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
@@ -73,7 +73,7 @@
                     android:id="@+id/flightduration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/flightagency"
+                    android:layout_below="@id/flightAgencyBf04"
                     android:layout_marginStart="80dp"
                     android:lineSpacingExtra="11sp"
                     android:text="@string/_8h_12m_1_stop"
@@ -107,7 +107,7 @@
                     android:id="@+id/countryfrom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/flighticon"
+                    android:layout_below="@id/flighticonBf04"
                     android:layout_marginStart="24dp"
                     android:lineSpacingExtra="10sp"
                     android:text="AUS"
@@ -116,7 +116,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/depature"
+                    android:id="@+id/depatureBf04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/countryfrom"
@@ -130,7 +130,7 @@
                     android:id="@+id/countryto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/flighticon"
+                    android:layout_below="@id/flighticonBf04"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
                     android:layout_marginTop="24dp"
@@ -140,7 +140,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/arrival"
+                    android:id="@+id/arrivalBf04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/countryto"
@@ -155,7 +155,7 @@
                     android:id="@+id/separatorone"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@id/arrival"
+                    android:layout_below="@id/arrivalBf04"
                     android:layout_marginVertical="24dp"
                     android:background="#585C63" />
 

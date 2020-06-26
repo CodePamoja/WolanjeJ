@@ -1,9 +1,12 @@
 package com.example.wolanjej.models;
 
 
-public class AvailableFlights  {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    private int mAirwayImg;
+public class AvailableFlights implements Parcelable {
+
+    private String mAirwayImg;
     private String mAirWaysId;
     private String mFlightHour;
     private String mFlightMin;
@@ -18,7 +21,7 @@ public class AvailableFlights  {
     public AvailableFlights() {
     }
 
-    public AvailableFlights(int mAirwayImg, String mAirWaysId, String mFlightHour, String mFlightMin, String mFlightStops, String mFlightCosts, String mTicketsLeft, String mFlightFrom, String mFlightDepTime, String mFlightTo, String mFlightArrivalTime) {
+    public AvailableFlights(String mAirwayImg, String mAirWaysId, String mFlightHour, String mFlightMin, String mFlightStops, String mFlightCosts, String mTicketsLeft, String mFlightFrom, String mFlightDepTime, String mFlightTo, String mFlightArrivalTime) {
         this.mAirwayImg = mAirwayImg;
         this.mAirWaysId = mAirWaysId;
         this.mFlightHour = mFlightHour;
@@ -32,7 +35,33 @@ public class AvailableFlights  {
         this.mFlightArrivalTime = mFlightArrivalTime;
     }
 
-    public int getmAirwayImg() {
+    protected AvailableFlights(Parcel in) {
+        mAirwayImg = in.readString();
+        mAirWaysId = in.readString();
+        mFlightHour = in.readString();
+        mFlightMin = in.readString();
+        mFlightStops = in.readString();
+        mFlightCosts = in.readString();
+        mTicketsLeft = in.readString();
+        mFlightFrom = in.readString();
+        mFlightDepTime = in.readString();
+        mFlightTo = in.readString();
+        mFlightArrivalTime = in.readString();
+    }
+
+    public static final Creator<AvailableFlights> CREATOR = new Creator<AvailableFlights>() {
+        @Override
+        public AvailableFlights createFromParcel(Parcel in) {
+            return new AvailableFlights(in);
+        }
+
+        @Override
+        public AvailableFlights[] newArray(int size) {
+            return new AvailableFlights[size];
+        }
+    };
+
+    public String getmAirwayImg() {
         return mAirwayImg;
     }
 
@@ -74,5 +103,25 @@ public class AvailableFlights  {
 
     public String getmFlightArrivalTime() {
         return mFlightArrivalTime;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mAirwayImg);
+        dest.writeString(mAirWaysId);
+        dest.writeString(mFlightHour);
+        dest.writeString(mFlightMin);
+        dest.writeString(mFlightStops);
+        dest.writeString(mFlightCosts);
+        dest.writeString(mTicketsLeft);
+        dest.writeString(mFlightFrom);
+        dest.writeString(mFlightDepTime);
+        dest.writeString(mFlightTo);
+        dest.writeString(mFlightArrivalTime);
     }
 }

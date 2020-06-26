@@ -7,10 +7,10 @@
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:logo="@mipmap/small_left">
+        app:logo="@drawable/ic_small_left">
 
         <TextView
             android:layout_width="wrap_content"

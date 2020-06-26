@@ -1,13 +1,19 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
@@ -26,6 +32,8 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
     private static String sessionID;
     private static String AGENTNO;
     private static TextView tvtext;
+    private MaterialCardView materialCardView, materialCardView1;
+    private Toolbar tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +46,41 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
 
+        materialCardView1 =findViewById(R.id.card2Prof);
+        materialCardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Settings48.class);
+                startActivity(intent);
+            }
+        });
+
+        materialCardView = findViewById(R.id.CardRepurchaseReport);
+        materialCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ShowDialog();
+            }
+        });
+
         new UserProfile().execute();
+        setToolBar(tb);
+    }
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbar_account);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent moveToLogo = new Intent(this,Home.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(moveToLogo);
+                    }
+                }
+        );
+
     }
 
     public static class UserProfile extends AsyncTask<Void, Void, Response> {
@@ -88,14 +130,36 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        v.findViewById(R.id.card2Prof).setOnClickListener(new View.OnClickListener() {
+    private void ShowDialog() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.repurchase_report_dialog, null);
+
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+
+        ImageView dismiss = view.findViewById(R.id.img_report_dlg);
+        dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Settings48.class);
+                alertDialog.dismiss();
+            }
+        });
+        TextView textView1 = view.findViewById(R.id.txt_received_report_dlg);
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TransactionView.class);
                 startActivity(intent);
             }
         });
+
+        alertDialog.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
