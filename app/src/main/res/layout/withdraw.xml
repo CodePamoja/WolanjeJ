@@ -68,6 +68,7 @@
             android:paddingStart="18dp"
             android:background="@drawable/wallet_pop_up_shape"
             android:id="@+id/selecttype"
+            android:drawableEnd="@drawable/ic_baseline_down"
             android:layout_below="@id/wpp"
             />
         <EditText

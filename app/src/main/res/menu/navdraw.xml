@@ -50,7 +50,7 @@
             android:id="@+id/repor"
             android:title="@string/reports"
             android:icon="@drawable/ic_reports"
-
+            android:onClick="openHistory"
             />
         <item
             android:id="@+id/lernhub"

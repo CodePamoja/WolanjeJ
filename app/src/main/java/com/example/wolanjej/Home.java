@@ -467,6 +467,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     }
 
+    public void openHistory(MenuItem item) {
+        Intent intent1 = new Intent(getApplicationContext(), TransactionView.class);
+        startActivity(intent1);
+    }
     public void openLearningHub(MenuItem item) {
         Intent intent = new Intent(this, Hub.class);
         startActivity(intent);
@@ -627,8 +631,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
-                        Intent intent = new Intent(v.getContext(), Top_up.class);
-                        startActivity(intent);
+                       // Intent intent = new Intent(v.getContext(), Top_up.class);
+                        //startActivity(intent);
+                        bottomSheetDialog.hide();
+                        findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
 
                     }
                 }
