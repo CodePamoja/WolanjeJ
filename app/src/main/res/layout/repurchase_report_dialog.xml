@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="327dp"
+    android:layout_height="345dp"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/img_report_dlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_x" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Filter"
+        android:textColor="@color/colorMidnight"
+        android:textSize="18sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txt_from_r_dialog"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:text="From" />
+
+        <EditText
+            android:id="@+id/edit_from_r_dialog"
+            android:layout_width="219dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_toEndOf="@id/txt_from_r_dialog"
+            android:background="@drawable/textviewborder"
+            android:drawableEnd="@drawable/ic_calendar_date"
+            android:textColor="@color/colorMidnight"
+            android:hint="05/10/2019"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp">
+
+        <TextView
+            android:id="@+id/txt_to_r_dialog"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:text="To" />
+
+        <EditText
+            android:id="@+id/edit_to_r_dialog"
+            android:layout_width="219dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/txt_to_r_dialog"
+            android:background="@drawable/textviewborder"
+            android:drawableEnd="@drawable/ic_calendar_date"
+            android:textColor="@color/colorMidnight"
+            android:hint="15/10/2019"
+            android:textSize="18sp"
+            android:padding="10dp" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Payment Tags"
+        android:layout_marginStart="24dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/amuntdis"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/txt_received_report_dlg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="32dp"
+            android:background="@drawable/splash3"
+            android:backgroundTint="#26531edc"
+            android:gravity="center"
+            android:textColor="#531edc"
+            android:textSize="14sp"
+            android:text="received" />
+
+        <TextView
+            android:id="@+id/txt_sent_report_dlg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="32dp"
+            android:background="@drawable/splash3"
+            android:backgroundTint="#26e6344a"
+            android:layout_marginStart="12dp"
+            android:gravity="center"
+            android:textColor="#e6344a"
+            android:textSize="14sp"
+            android:text="sent" />
+
+        <TextView
+            android:id="@+id/txt_pending_dlg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="32dp"
+            android:background="@drawable/splash3"
+            android:layout_marginStart="12dp"
+            android:gravity="center"
+            android:textColor="#8484a9"
+            android:textSize="14sp"
+            android:text="pending" />
+    </LinearLayout>
+</LinearLayout>

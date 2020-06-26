@@ -7,10 +7,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#932777">
+    android:id="@+id/profile_activity"
+    android:background="#932777"
+    tools:context=".profile">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:logo="@drawable/ic_small_left">
 
-    <include layout="@layout/toobar_account"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account"
+            android:id="@+id/toolbarTextView"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            />
 
+
+    </androidx.appcompat.widget.Toolbar>
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,7 +85,7 @@
                 </LinearLayout>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/CardTransport"
+                    android:id="@+id/CardRepurchaseReport"
                     android:layout_width="152dp"
                     android:layout_height="162dp"
                     app:cardCornerRadius="12dp"
@@ -161,7 +183,7 @@
                     android:layout_margin="12dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="false"
-                    android:layout_below="@id/CardTransport">
+                    android:layout_below="@id/CardRepurchaseReport">
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

@@ -19,12 +19,14 @@ import java.util.List;
 
 public class BookFlight03Adapter extends RecyclerView.Adapter<BookFlight03Adapter.viewHolder> {
 
-    Context context;
-    List<AvailableFlights> mData;
+    private Context context;
+    private List<AvailableFlights> mData;
+    private OnFlightListener mOnFlightListener;
 
-    public BookFlight03Adapter(Context context, List<AvailableFlights> mData) {
+    public BookFlight03Adapter(Context context, List<AvailableFlights> mData, OnFlightListener onFlightListener) {
         this.context = context;
         this.mData = mData;
+        this.mOnFlightListener = onFlightListener;
     }
 
     @NonNull
@@ -33,13 +35,13 @@ public class BookFlight03Adapter extends RecyclerView.Adapter<BookFlight03Adapte
 
         View view;
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_flight_03_items, parent, false);
-        return new BookFlight03Adapter.viewHolder(view);
+        return new BookFlight03Adapter.viewHolder(view, mOnFlightListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
-        Picasso.get().load(String.valueOf(mData.get(position))).into(holder.mImageView);
+        Picasso.get().load(String.valueOf(mData.get(position).getmAirwayImg())).into(holder.mImageView);
         holder.mAirWaysId.setText(mData.get(position).getmAirWaysId());
         holder.mFlightHour.setText(mData.get(position).getmFlightHour());
         holder.mFlightMin.setText(mData.get(position).getmFlightMin());
@@ -58,7 +60,7 @@ public class BookFlight03Adapter extends RecyclerView.Adapter<BookFlight03Adapte
         return mData.size();
     }
 
-    static class viewHolder extends RecyclerView.ViewHolder {
+    static class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView mImageView;
         private TextView mAirWaysId;
@@ -72,11 +74,12 @@ public class BookFlight03Adapter extends RecyclerView.Adapter<BookFlight03Adapte
         private TextView mFlightTo;
         private TextView mFlightArrivalTime;
 
+        OnFlightListener onFlightListener;
 
-        viewHolder(@NonNull View itemView) {
+        viewHolder(@NonNull View itemView, OnFlightListener onFlightListener) {
             super(itemView);
 
-            mImageView = itemView.findViewById(R.id.imageItem03);
+            mImageView = itemView.findViewById(R.id.imageItemBf03);
             mAirWaysId = itemView.findViewById(R.id.AirWaysId);
             mFlightHour = itemView.findViewById(R.id.flightHrItem);
             mFlightMin = itemView.findViewById(R.id.flightMinItem);
@@ -87,6 +90,17 @@ public class BookFlight03Adapter extends RecyclerView.Adapter<BookFlight03Adapte
             mFlightDepTime = itemView.findViewById(R.id.depTimeItem);
             mFlightTo = itemView.findViewById(R.id.flightToItem);
             mFlightArrivalTime = itemView.findViewById(R.id.arrivalTimeItems);
+
+            this.onFlightListener = onFlightListener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onFlightListener.OnFlightClick(getAdapterPosition());
+        }
+    }
+    public interface OnFlightListener{
+        void OnFlightClick(int position);
     }
 }
