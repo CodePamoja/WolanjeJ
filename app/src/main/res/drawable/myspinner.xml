@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector  xmlns:android="http://schemas.android.com/apk/res/android">
-
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item>
         <layer-list>
@@ -9,10 +8,15 @@
                     <solid android:color="@android:color/white" />
                     <corners android:radius="4dp" />
                     <stroke android:width="1dip" android:color="#E7E7E7"/>
+                    <padding android:right="24dp"/>
                 </shape>
-                <bitmap android:src="@drawable/ic_baseline_down" android:gravity="center|end"/>
             </item>
-        </layer-list>
-    </item>
+            <item
+            android:drawable="@drawable/ic_dropdown_arrow"
+            android:gravity="end|center_vertical">
 
+        </item>
+        </layer-list>
+
+    </item>
 </selector>
