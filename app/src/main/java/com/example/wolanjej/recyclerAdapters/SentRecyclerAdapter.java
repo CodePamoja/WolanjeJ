@@ -30,7 +30,7 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_row_item, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_row_electrcbill_item, parent, false);
         return new SentRecyclerAdapter.viewHolder(view);
     }
 
