@@ -27,6 +27,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,8 +45,7 @@ public class LogIn extends AppCompatActivity {
     public ProgressDialog prgBar;
     private Button button;
     public  JSONObject sessionID = null;
-    private EditText textPhone;
-    private EditText textPin;
+    private TextInputLayout textPhone,textPin;
     private  androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
     private  androidx.biometric.BiometricPrompt biometricPrompt;
     private ConnectivityManager connectivityManager;
@@ -73,19 +74,6 @@ public class LogIn extends AppCompatActivity {
         textPhone = findViewById(R.id.phoneNoLogIN);
         textPin = findViewById(R.id.pinLogIN);
 
-        textPin.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
-                if(hasFocus){
-                    textPin.setTransformationMethod(new HideReturnsTransformationMethod());
-
-                }else if(!hasFocus){
-                    textPin.setTransformationMethod(new PasswordTransformationMethod());
-
-                }
-            }
-        });
         // login button action
         button = findViewById(R.id.btn_LogIn);
         button.setOnClickListener(
@@ -93,7 +81,7 @@ public class LogIn extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if (isNetworkAvailable()) {
-                            new UserLogin(textPhone.getText().toString(), textPin.getText().toString()).execute();
+                            new UserLogin(textPhone.getEditText().getText().toString(), textPin.getEditText().getText().toString()).execute();
                         }else{
                             linearLayout.setVisibility(View.VISIBLE);
                             Toast.makeText(getApplicationContext(), "No internet Available", Toast.LENGTH_LONG).show();

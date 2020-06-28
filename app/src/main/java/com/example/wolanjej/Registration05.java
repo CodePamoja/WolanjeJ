@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,7 +32,7 @@ public class Registration05 extends AppCompatActivity {
 
     private ImageView imageView;
     public ProgressDialog prgBar;
-    private EditText text;
+    private TextInputLayout text;
     private JSONObject sessionID = null;
     private String phoneNo = null;
     private TextView tlc;
@@ -59,7 +61,7 @@ public class Registration05 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                       new UserSendPhone(text.getText().toString()).execute();
+                       new UserSendPhone(text.getEditText().getText().toString()).execute();
 
                     }
                 }

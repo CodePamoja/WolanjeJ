@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,8 +23,7 @@ import okhttp3.Response;
 public class Registration07 extends AppCompatActivity {
     private ImageView imageView;
     private String sessionID = null;
-    private EditText textPin1;
-    private EditText textPin2;
+    private TextInputLayout textPin1,textPin2;
     private String phoneNumber;
 
     @Override
@@ -33,13 +34,10 @@ public class Registration07 extends AppCompatActivity {
         setContentView(R.layout.activity_registration07);
 
         setToolBar();
-        imageView = (ImageView)findViewById(R.id.image_holder);
-        imageView.setImageResource(R.drawable.ic_group_7__2_);
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         this.phoneNumber = intent.getStringExtra(Registration05.EXTRA_PHONE);
         this.sessionID = intent.getStringExtra(Registration05.EXTRA_SESSION);
-
     }
 
     private void setToolBar() {
@@ -59,28 +57,23 @@ public class Registration07 extends AppCompatActivity {
     }
 
 
-//    public void sendtoFingerPrint(View view) {
-//        Intent move = new Intent(this, registration08.class);
-//        startActivity(move);
-//
-//    }
 
     public void sendPin(View view) {
-        sendPinServer();
+           sendPinServer();
     }
 
     public void sendPinServer() {
         textPin1 = findViewById(R.id.pin1);
         textPin2 = findViewById(R.id.pin2);
 
-        String pin1 = textPin1.getText().toString();
-        String pin2 = textPin2.getText().toString();
-        if (pin1.equals(pin2)){
+        String pin1 = String.valueOf(textPin1.getEditText().getText());
+        String pin2 = String.valueOf(textPin2.getEditText().getText());
+        if (pin1.equals(pin2) || pin1.length() > 3 || pin2.length() > 3){
             JSONObject jPin = new JSONObject();
             try {
                 jPin.put("phone", "254"+phoneNumber);
                 jPin.put("pin", pin1);
-                Log.e("jPhone",jPin.toString());
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -101,6 +94,9 @@ public class Registration07 extends AppCompatActivity {
                 Log.d("TAG", String.valueOf(result));
                 Toast.makeText(getApplicationContext(), "Access Denied to Resource", Toast.LENGTH_LONG).show();
             }
+        }
+        else {
+            Toast.makeText(this, "Requirements not meet", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -2,12 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
         android:id="@+id/action_login"
         android:orderInCategory="300"
-        android:title="Login"
+        android:title="@string/login"
         app:showAsAction="always"
-        android:onClick="movetoLog"
-       />
-
+        android:onClick="movetoLog"/>
 </menu>

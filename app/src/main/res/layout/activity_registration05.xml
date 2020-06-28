@@ -1,185 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Registration05">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="20dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <include layout="@layout/toobarwithout"/>
-        <include layout="@layout/imageholder"
-            android:layout_marginVertical="10dp"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingHorizontal="4dp"
-            android:orientation="vertical">
+
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@id/image_holder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@mipmap/small_left" />
+
+        <ImageView
+            android:id="@+id/image_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_group_7__2_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toTopOf="@id/titlereg"
+            />
+
+        <TextView
+            android:id="@+id/titlereg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registration"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorMidnight"
+            android:textSize="22sp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_holder"
+            app:layout_constraintBottom_toTopOf="@id/descreg"
+            />
+
+        <TextView
+            android:id="@+id/descreg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/please_enter_your_mobile_number_then_we_will_send_otp_to_verify"
+            android:textAlignment="center"
+            android:paddingHorizontal="40dp"
+            android:textColor="@color/blue_grey"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/descreg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_holder" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="12dp"
+            android:elevation="12dp"
+            android:id="@+id/cardreg"
+            app:layout_constraintBottom_toTopOf="@id/tlc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descreg"
+            android:backgroundTint="@color/colorWhite">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/registration"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="22sp"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:textAlignment="center"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/please_enter_your_mobile_number_then_we_will_send_otp_to_verify"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="14sp"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_regular"
-                    android:paddingVertical="10dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:textAlignment="center" />
-
-            </LinearLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="10dp"
                 android:layout_marginVertical="12dp"
-                android:elevation="12dp"
-                android:backgroundTint="@color/colorWhite">
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="16dp"
+                    android:hint="@string/kenya_number"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="9"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:drawablePadding="5dp"
+                        android:drawableStart="@drawable/ic_kenya_flag"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="16dp"
+                    android:hint="@string/mail_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:drawablePadding="5dp"
+                        android:drawableStart="@drawable/ic_baseline_mail_24"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_continue"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginVertical="10dp"
+                    android:backgroundTint="@color/colorPurple"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Continue"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:elevation="10dp"
-                    android:layout_marginVertical="12dp"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/phoneNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:layout_marginVertical="10dp"
-                        android:background="@drawable/wallet_pop_up_shape"
-                        android:drawableStart="@mipmap/bitmap"
-                        android:fontFamily="@font/poppins_regular"
-                        android:hint="  KEN   |   725 000 000"
-                        android:inputType="number"
-                        android:maxLength="9"
-                        android:paddingHorizontal="12dp"
-                        android:textColorLink="#00CE6363"
-                        android:textStyle="bold" />
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:layout_marginVertical="10dp"
-                        android:background="@drawable/wallet_pop_up_shape"
-                        android:fontFamily="@font/poppins_regular"
-                        android:hint="Email address"
-                        android:inputType="textEmailAddress"
-                        android:paddingHorizontal="12dp"
-                        android:textColorLink="#00CE6363"
-                        android:textStyle="bold" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="2"
+                        android:background="@color/blue_grey" />
 
-
-                    <Button
-                        android:id="@+id/btn_continue"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_marginVertical="10dp"
-                        android:backgroundTint="@color/colorPurple"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Continue"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="14sp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:letterSpacing="0.08"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="16sp"
+                        android:text="OR" />
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="2dp"
-                            android:layout_marginTop="12dp"
-                            android:layout_weight="2"
-                            android:background="@color/blue_grey" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:letterSpacing="0.08"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp"
-                            android:text="OR" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="2dp"
-                            android:layout_marginTop="12dp"
-                            android:layout_weight="2"
-                            android:background="@color/blue_grey" />
-                    </LinearLayout>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_business"
-                        android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:layout_marginVertical="10dp"
-                        android:backgroundTint="#120d0229"
-                        android:text="Create a Business Account"
-                        android:textColor="#8484a9"
-                        android:textSize="14sp"
-                        android:onClick="createAccount"
-                        style="?android:attr/borderlessButtonStyle"
-                        />
-
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="2"
+                        android:background="@color/blue_grey" />
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_business"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginVertical="10dp"
+                    android:backgroundTint="#120d0229"
+                    android:text="Create a Business Account"
+                    android:textColor="#8484a9"
+                    android:textSize="14sp"
+                    android:onClick="createAccount"
+                    style="?android:attr/borderlessButtonStyle"
+                    />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:paddingHorizontal="30dp">
-                <TextView
-                    android:id="@+id/tlc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#222b45"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:lineSpacingExtra="6sp"
-                    android:textAlignment="center"
-                    android:text="@string/tlc"
-                    android:layout_gravity="center_horizontal"
-                    android:textColorLink="@color/colorBluepurple" />
             </LinearLayout>
 
-        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/tlc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#222b45"
+            android:textSize="10sp"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="6sp"
+            android:textAlignment="center"
+            android:text="@string/tlc"
+            android:layout_gravity="center_horizontal"
+            android:textColorLink="@color/colorBluepurple"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardreg"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

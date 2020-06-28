@@ -107,13 +107,15 @@
         <item>My Number</item>
         <item>Other Number</item>
     </string-array>
-
+    <string name="login"><font color="#303F9F">Login</font></string>
     <string name="registration">Registration</string>
     <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number, then we will send OTP to verify</string>
     <string name="bill_manager">Bill Manager</string>
     <string name="all">All</string>
     <string name="unpaid">Unpaid</string>
     <string name="paid">Paid</string>
+    <string name="kenya_number"><b><font color="#000000"></font>  KEN   |   725 000 000</b></string>
+    <string name="mail_text"><b><font color="#000000"></font>  Email address</b></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
