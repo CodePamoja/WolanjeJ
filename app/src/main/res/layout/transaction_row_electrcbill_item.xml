@@ -48,7 +48,7 @@
             app:cardBackgroundColor="@color/colorWhite"
             android:layout_marginStart="8dp"
             app:cardCornerRadius="8dp"
-            android:id="@+id/TransferElectMain"
+            android:id="@+id/TransferMain"
             >
 
         <ImageView
