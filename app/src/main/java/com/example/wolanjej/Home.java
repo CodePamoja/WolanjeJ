@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.wolanjej.pagerAdapters.LoansAdapter;
 import com.example.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.badge.BadgeUtils;
@@ -140,34 +141,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 }
         );
 
-        ViewPager2 vp2 = findViewById(R.id.viewpager2);
-        vp2.setAdapter(new LoansAdapter(this));
-        TabLayout tb = findViewById(R.id.tabs);
-        TabLayoutMediator tbmed = new TabLayoutMediator(tb, vp2, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                switch (position) {
-                    case 0:
-                        tab.setText("History");
-                        break;
-
-                    case 1:
-                        tab.setText("Paid");
-                        break;
-                    case 2:
-                        tab.setText("Failed");
-                        break;
-                }
-            }
-        });
-        tbmed.attach();
-
 
         findViewById(R.id.loanscard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                findViewById(R.id.loansholder).setVisibility(View.VISIBLE);
-                findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+                startActivity(new Intent(getApplicationContext(), Loans.class));
 
             }
         });
@@ -202,12 +180,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public void moveToProfile(View view) {
         Intent intent = new Intent(getApplicationContext(), profile.class);
         startActivity(intent);
-    }
-
-    public void backtohomevisibility(View view) {
-        findViewById(R.id.loansholder).setVisibility(View.INVISIBLE);
-
-        findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
     }
 
 
@@ -526,10 +498,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         }
     }
 
-    public void openloanspop(View view) {
-        findViewById(R.id.loansholder).setVisibility(View.INVISIBLE);
-        findViewById(R.id.Loansbox).setVisibility(View.VISIBLE);
-    }
 
     public void movotopin(View view) {
         findViewById(R.id.Loansbox).setVisibility(View.INVISIBLE);

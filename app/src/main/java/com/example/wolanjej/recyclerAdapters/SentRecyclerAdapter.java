@@ -30,7 +30,7 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_row_item, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_row_electrcbill_item, parent, false);
         return new SentRecyclerAdapter.viewHolder(view);
     }
 
@@ -64,13 +64,13 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mMONTH = itemView.findViewById(R.id.SentTransMonth);
-            mDATE = itemView.findViewById(R.id.SentTransDate);
-            mImageView = itemView.findViewById(R.id.pic_trans);
-            mNAME = itemView.findViewById(R.id.TransName);
-            mPAYMENT_METHOD = itemView.findViewById(R.id.TransPayMethod);
-            mTRANSACTION_AMOUNT = itemView.findViewById(R.id.TransactionAmount);
-            mTRANSACTION_FEES = itemView.findViewById(R.id.TransactionFees);
+            mMONTH = itemView.findViewById(R.id.SentElectTransMonth);
+            mDATE = itemView.findViewById(R.id.SentElectTransDate);
+            mImageView = itemView.findViewById(R.id.Elect_pic_trans);
+            mNAME = itemView.findViewById(R.id.ElectTransName);
+            mPAYMENT_METHOD = itemView.findViewById(R.id.ElectTransPayMethod);
+            mTRANSACTION_AMOUNT = itemView.findViewById(R.id.ElectTransactionAmount);
+            mTRANSACTION_FEES = itemView.findViewById(R.id.ElectTransactionFees);
         }
     }
 

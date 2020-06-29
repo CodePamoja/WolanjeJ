@@ -20,17 +20,16 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/SentTransMonth"
+                android:id="@+id/NetSentTransMonth"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@id/TransPayMethod"
                 android:gravity="center_vertical"
                 android:text="oct"
                 android:textSize="17sp"
                 android:textColor="@color/colorBlack"/>
 
             <TextView
-                android:id="@+id/SentTransDate"
+                android:id="@+id/NetSentTransDate"
                 android:layout_width="fill_parent"
                 android:layout_height="26dip"
                 android:text="22"
@@ -49,21 +48,21 @@
             app:cardBackgroundColor="@color/colorWhite"
             android:layout_marginStart="8dp"
             app:cardCornerRadius="8dp"
-            android:id="@+id/TransferMain"
+            android:id="@+id/NetTransferMain"
             >
 
-        <ImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/pic_trans"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_bulb"
-            />
+            <ImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/Net_pic_trans"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_bulb"
+                />
         </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
-            android:id="@+id/billValues"
+            android:id="@+id/Net_billValues"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -73,7 +72,7 @@
             android:paddingLeft="10dp">
 
             <TextView
-                android:id="@+id/TransName"
+                android:id="@+id/NetTransName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -82,7 +81,7 @@
                 android:textColor="@color/colorBlack"/>
 
             <TextView
-                android:id="@+id/TransPayMethod"
+                android:id="@+id/NetTransPayMethod"
                 android:layout_width="fill_parent"
                 android:layout_height="26dip"
                 android:ellipsize="marquee"
@@ -100,10 +99,9 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/TransactionAmount"
+                android:id="@+id/NetTransactionAmount"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@id/TransPayMethod"
                 android:gravity="center_vertical"
                 android:text= "1,500.00"
                 android:textStyle="bold"
@@ -111,7 +109,7 @@
                 android:textColor="@color/colorBlack"/>
 
             <TextView
-                android:id="@+id/TransactionFees"
+                android:id="@+id/NetTransactionFees"
                 android:layout_width="fill_parent"
                 android:layout_height="26dip"
                 android:text=""

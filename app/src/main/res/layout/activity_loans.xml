@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Loans">
+
+    <LinearLayout
+        android:id="@+id/linerLoans1"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbarwithsearch"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loans"
+            android:textColor="@color/colorBlack"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="start"
+            />
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutLoans"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linerLoans1"
+        android:background="#f8f8fa">
+    </com.google.android.material.tabs.TabLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/tabLayoutLoans"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/loansV_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
+</RelativeLayout>
