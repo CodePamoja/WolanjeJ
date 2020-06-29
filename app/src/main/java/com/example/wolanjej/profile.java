@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -65,10 +63,10 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
         });
 
         new UserProfile().execute();
-        setToolBar(tb);
+        setToolBar();
     }
-    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
-        tb = findViewById(R.id.toolbar_account);
+    private void setToolBar() {
+        Toolbar tb = findViewById(R.id.toolbar_account);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
         final Intent moveToLogo = new Intent(this,Home.class);

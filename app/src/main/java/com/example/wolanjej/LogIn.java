@@ -177,6 +177,8 @@ public class LogIn extends AppCompatActivity {
         protected void onPostExecute(Response result) {
             prgBar.dismiss();
             Log.e("All result","Result");
+            String myc = String.valueOf(result.code());
+            Toast.makeText(LogIn.this, myc, LENGTH_SHORT).show();
 
             if ( result.code() == 200) {
                 Toast.makeText(getApplicationContext(), "Your have been Loggedin successfuly", Toast.LENGTH_LONG).show();

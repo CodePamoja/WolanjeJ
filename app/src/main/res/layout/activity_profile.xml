@@ -17,7 +17,7 @@
         android:id="@+id/toolbar_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:logo="@drawable/ic_small_left">
+        app:navigationIcon="@drawable/ic_small_left">
 
         <TextView
             android:layout_width="wrap_content"
