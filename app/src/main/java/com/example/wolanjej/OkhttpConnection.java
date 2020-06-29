@@ -138,10 +138,11 @@ public class OkhttpConnection {
     public Response setProfileDetails(String url,  String jsonBody, String sessionID){
         Response result = null;
         try{
+            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
             String allUrl = baseUrl + url;
             Request request = new Request.Builder()
-                    .header("Authorization", "Bearer" + sessionID+ "")
-                    .get()
+                    .header("Authorization", "Bearer" + sessionID)
+                    .post(body)
                     .url(allUrl)
                     .build();
             Call call = client.newCall(request);
