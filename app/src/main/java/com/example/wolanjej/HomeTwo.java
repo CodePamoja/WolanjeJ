@@ -17,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.wolanjej.models.Model;
+import com.example.wolanjej.pagerAdapters.LoansAdapter;
 import com.example.wolanjej.recyclerAdapters.MyAdapter;
 import com.example.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -103,43 +104,43 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
 
 
-        findViewById(R.id.loanactivator).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                findViewById(R.id.bottom_navigation_home_two).setVisibility(View.INVISIBLE);
-
-                findViewById(R.id.loansholder).setVisibility(View.VISIBLE);
-            }
-        });
-        ViewPager2 vp2 = findViewById(R.id.viewpager2);
-        vp2.setAdapter(new LoansAdapter(this));
-        TabLayout tb = findViewById(R.id.tabs);
-        TabLayoutMediator tbmed = new TabLayoutMediator(tb, vp2, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                switch (position){
-                    case 0:
-                        tab.setText("History");
-                        break;
-
-                    case 1:
-                        tab.setText("Paid");
-                        break;
-                    case 2:
-                        tab.setText("Failed");
-                        break;
-                }
-            }
-        });
-        tbmed.attach();
+//        findViewById(R.id.loanactivator).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                findViewById(R.id.bottom_navigation_home_two).setVisibility(View.INVISIBLE);
+//
+//                findViewById(R.id.loansholder).setVisibility(View.VISIBLE);
+//            }
+//        });
+//        ViewPager2 vp2 = findViewById(R.id.viewpager2);
+//        vp2.setAdapter(new LoansAdapter(this));
+//        TabLayout tb = findViewById(R.id.tabs);
+//        TODO: SET VIEWPAGER
+//        TabLayoutMediator tbmed = new TabLayoutMediator(tb, vp2, new TabLayoutMediator.TabConfigurationStrategy() {
+//            @Override
+//            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+//                switch (position){
+//                    case 0:
+//                        tab.setText("History");
+//                        break;
+//
+//                    case 1:
+//                        tab.setText("Paid");
+//                        break;
+//                    case 2:
+//                        tab.setText("Failed");
+//                        break;
+//                }
+//            }
+//        });
+//        tbmed.attach();
 
 
         findViewById(R.id.loanscard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-findViewById(R.id.loansholder).setVisibility(View.VISIBLE);
-                findViewById(R.id.bottom_navigation_home_two).setVisibility(View.INVISIBLE);
+//                TODO  ---> LOANS
 
             }
         });
@@ -314,7 +315,8 @@ return true;
     }
 
     public void openloanspop(View view) {
-        findViewById(R.id.loansholder).setVisibility(View.INVISIBLE);
+//        findViewById(R.id.loansholder).setVisibility(View.INVISIBLE);
+//        TODO DELETE
 findViewById(R.id.Loansbox).setVisibility(View.VISIBLE);
     }
 

@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserProfileDetails"/>
+        <activity android:name=".Loans"></activity>
+        <activity android:name=".UserProfileDetails" />
         <activity android:name=".Sponsor07" />
         <activity android:name=".Sponsor06" />
         <activity android:name=".Sponsor05" />
@@ -35,11 +36,11 @@
         <activity android:name=".Sponsors00" />
         <activity android:name=".BookFlight10" />
         <activity android:name=".BookFlight" />
-        <activity android:name=".BookFlightPin"/>
-        <activity android:name=".BookFlight03"/>
-        <activity android:name=".Bookflight04"/>
-        <activity android:name=".Bookflight05"/>
-        <activity android:name=".Bookflight06"/>
+        <activity android:name=".BookFlightPin" />
+        <activity android:name=".BookFlight03" />
+        <activity android:name=".Bookflight04" />
+        <activity android:name=".Bookflight05" />
+        <activity android:name=".Bookflight06" />
         <activity android:name=".Travel" />
         <activity android:name=".Education_50" />
         <activity android:name=".Scholarship06" />

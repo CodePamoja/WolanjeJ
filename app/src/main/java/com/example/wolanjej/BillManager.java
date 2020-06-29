@@ -18,14 +18,20 @@ import com.example.wolanjej.pagerAdapters.BillManagerAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.ref.WeakReference;
+
 import okhttp3.Response;
 
 public class BillManager extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Button button1, button2;
-    private TextView textView;
-    private static String sessionID;
+    private TextView textView, textView1, textView2, textView3, textView4;
+    private JSONObject jsonObject;
+    private String sessionID;
     private String AGENTNO;
     private SharedPreferences pref;
 
@@ -33,6 +39,8 @@ public class BillManager extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_manager);
+        SetViewPager();
+        setToolBar();
 
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
@@ -42,6 +50,26 @@ public class BillManager extends AppCompatActivity {
         button2 = findViewById(R.id.btnCancelBill);
 
 
+    }
+
+    private void setToolBar() {
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+
+        final Intent moveToLogo = new Intent(this, Home.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(moveToLogo);
+                    }
+                }
+        );
+
+    }
+
+    private void SetViewPager() {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
@@ -71,25 +99,6 @@ public class BillManager extends AppCompatActivity {
 
             }
         });
-        setToolBar();
-
-    }
-
-    private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(tb);
-        getSupportActionBar().setTitle("");
-
-        final Intent moveToLogo = new Intent(this, Home.class);
-        tb.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(moveToLogo);
-                    }
-                }
-        );
-
     }
 
     public void payContinue(View v) {
@@ -135,6 +144,7 @@ public class BillManager extends AppCompatActivity {
 
     }
 
+
     public void billBottomSheet(View view) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                 BillManager.this, R.style.BottomSheetDialogTheme
@@ -149,24 +159,10 @@ public class BillManager extends AppCompatActivity {
             }
         });
 
-
-        TextView textView1 = bottomSheetView.findViewById(R.id.bmAccountName);
-        final String accountName = textView1.getText().toString();
-
-        TextView textView2 = bottomSheetView.findViewById(R.id.bmNickname);
-        final String nickName = textView2.getText().toString();
-
-        TextView textView3 = bottomSheetView.findViewById(R.id.bmAccountNo);
-        final String accountNumber = textView3.getText().toString();
-
-        TextView textView4 = bottomSheetView.findViewById(R.id.bmPayBillNo);
-        final String payBillNo = textView4.getText().toString();
-
-
         bottomSheetView.findViewById(R.id.bmButtonSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new UserBill(accountName,nickName, accountNumber, payBillNo).execute();
+                NewUserBill();
             }
         });
 
@@ -180,24 +176,56 @@ public class BillManager extends AppCompatActivity {
         bottomSheetDialog.show();
 
     }
+    private void NewUserBill(){
+        View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.billmanager28, (LinearLayout) findViewById(R.id.billManagerView)
+                );
 
-    public class UserBill extends AsyncTask<Void, Void, Response>{
+        textView1 = bottomSheetView.findViewById(R.id.bmAccountName);
+        final String accountName = textView1.getText().toString();
 
-        private String accountName ;
-        private String nickName ;
-        private String accountNumber;
-        private String payBill;
+        textView2 = bottomSheetView.findViewById(R.id.bmNickname);
+        final String nickName = textView2.getText().toString();
 
-        public UserBill(String accountName, String nickName, String accountNumber, String payBill) {
-            this.accountName = accountName;
-            this.nickName = nickName;
-            this.accountNumber = accountNumber;
-            this.payBill = payBill;
+        textView3 = bottomSheetView.findViewById(R.id.bmAccountNo);
+        final String accountNumber = textView3.getText().toString();
+
+        textView4 = bottomSheetView.findViewById(R.id.bmPayBillNo);
+        final String payBillNo = textView4.getText().toString();
+
+        jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("product_name",nickName);
+            jsonObject.put("account_no", accountNumber);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        UserBill userBill = new UserBill(this);
+        userBill.execute();
+    }
+
+    public static class UserBill extends AsyncTask<Void, Void, Response> {
+
+        private WeakReference<BillManager> weakReference;
+        public UserBill(BillManager billManager) {
+            weakReference = new WeakReference<>(billManager);
         }
 
         @Override
         protected Response doInBackground(Void... voids) {
-            return null;
+            BillManager billManager = weakReference.get();
+            String url = "/bills";
+            OkhttpConnection okConn = new OkhttpConnection();
+            Response result = null;
+            result = okConn.setProfileDetails(url, billManager.jsonObject.toString(),billManager. sessionID);
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Response response) {
+            super.onPostExecute(response);
+            System.out.println("BillManager RESPONSE !!" + response);
         }
     }
 }

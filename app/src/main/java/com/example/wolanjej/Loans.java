@@ -1,32 +1,32 @@
 package com.example.wolanjej;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import com.example.wolanjej.pagerAdapters.LoansAdapter;
 import com.example.wolanjej.pagerAdapters.TransactionViewAdapter;
 import com.google.android.material.tabs.TabLayout;
 
-public class TransactionView extends AppCompatActivity {
+public class Loans extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Toolbar tb;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transactions_view);
-        CreateViewPager(); // init viewpager
-        setToolBar(tb);    // init toolbar
+        setContentView(R.layout.activity_loans);
+
+        createViewPager(); //init viewpager on loans view
+        setToolBar(tb);
 
     }
-
     private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
         tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
@@ -42,18 +42,18 @@ public class TransactionView extends AppCompatActivity {
         );
 
     }
-    private void CreateViewPager(){
+    private void createViewPager(){
 
-        tabLayout = findViewById(R.id.tabLayoutTrans);
-        viewPager = findViewById(R.id.transaction_viewPager);
+        tabLayout = findViewById(R.id.tabLayoutLoans);
+        viewPager = findViewById(R.id.loansV_viewPager);
 
-
-        tabLayout.addTab(tabLayout.newTab().setText("Sent"));
-        tabLayout.addTab(tabLayout.newTab().setText("Received"));
+        tabLayout.addTab(tabLayout.newTab().setText("History"));
+        tabLayout.addTab(tabLayout.newTab().setText("Paid"));
+        tabLayout.addTab(tabLayout.newTab().setText("Failed"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final TransactionViewAdapter adapter = new TransactionViewAdapter(getSupportFragmentManager(), this,tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
+        final LoansAdapter loansAdapter = new LoansAdapter(getSupportFragmentManager(), this,tabLayout.getTabCount());
+        viewPager.setAdapter(loansAdapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -73,8 +73,5 @@ public class TransactionView extends AppCompatActivity {
 
             }
         });
-
-
     }
-
 }
