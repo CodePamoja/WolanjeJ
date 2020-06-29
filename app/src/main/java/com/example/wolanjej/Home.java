@@ -1,5 +1,6 @@
 package com.example.wolanjej;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -26,6 +27,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
@@ -55,6 +58,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -185,6 +189,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
 
         setToolBar();
+
+//        MenuItem item = findViewById(R.id.bell_icon);
+
+  //      BadgeDrawable badgeDrawable = BadgeDrawable.create(getApplicationContext());
+    //    BadgeUtils.attachBadgeDrawable(badgeDrawable, (View) item, null);
+
+
+
     }
 
     public void moveToProfile(View view) {
@@ -411,7 +423,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu,
                 menu);
-        return super.onCreateOptionsMenu(menu);
+   return super.onCreateOptionsMenu(menu);
     }
 
 

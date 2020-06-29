@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:backgroundTint="@color/colorWarmpurple"
-    android:background="#CCFF0000"
+    android:background="#451238"
     >
 
     <androidx.appcompat.widget.Toolbar

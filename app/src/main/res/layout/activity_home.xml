@@ -12,7 +12,9 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="24dp"
+            >
 
             <LinearLayout
                 android:id="@+id/whatblur"
@@ -28,51 +30,69 @@
                     android:id="@+id/myscroll"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fillViewport="true"
 
                     >
-
-
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content">
 
-                        <RelativeLayout
-                            android:background="#CCFF0000"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorWarmpurple"
-                            android:paddingHorizontal="24dp"
-                            android:paddingTop="22.3dp">
+                            android:background="@color/home_purple"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
 
                             <TextView
                                 android:id="@+id/textbalance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/poppins_regular"
+
                                 android:text="@string/current_balance"
                                 android:textColor="@color/colorWhite"
-                                android:textSize="14sp" />
+
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toTopOf="@id/MYBalance"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
                                 android:id="@+id/MYBalance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/textbalance"
-                                android:layout_marginTop="16dp"
+                                android:layout_marginVertical="24dp"
+                                android:layout_marginStart="24dp"
+                                android:fontFamily="@font/poppins_regular"
                                 android:gravity="center_horizontal"
+                                android:text="KSH 0.00"
                                 android:textColor="@color/colorWhite"
-                                android:textSize="40sp" />
+                                android:textSize="40sp"
+                                app:layout_constraintBottom_toTopOf="@+id/wallet"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/textbalance" />
 
                             <Button
                                 android:id="@+id/wallet"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/MYBalance"
+                                android:layout_marginStart="24dp"
                                 android:layout_marginBottom="24dp"
                                 android:background="@drawable/gradient"
                                 android:backgroundTint="@color/colorAccent"
-                                android:text="@string/my_e_wallet" />
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="@string/my_e_wallet"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/transfer_money_button"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/MYBalance" />
 
                             <Button
                                 android:id="@+id/transfer_money_button"
@@ -80,284 +100,313 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/MYBalance"
                                 android:layout_marginStart="16dp"
+                                android:layout_marginTop="24dp"
+                                android:layout_marginBottom="24dp"
                                 android:layout_toEndOf="@id/wallet"
                                 android:background="@drawable/gradient"
                                 android:backgroundTint="@color/colorWhite"
+                                android:fontFamily="@font/poppins_medium"
                                 android:text="@string/transfer_money"
-                                android:textColor="@color/colorAccent" />
+                                android:textColor="@color/colorAccent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/wallet"
+                                app:layout_constraintTop_toBottomOf="@id/MYBalance" />
 
-                        </RelativeLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/trans"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/recent_transfer"
+                            android:textColor="#222222"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
+
+                        <Button
+                            android:id="@+id/btnaddnew"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="24dp"
+                            android:backgroundTint="@color/colorWhite"
+                            android:text="@string/add_new"
+                            android:textColor="#21c17a"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
 
 
-                        <RelativeLayout
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewHome"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingHorizontal="15dp"
-                            android:paddingTop="0dp">
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal"
+                            android:overScrollMode="always"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/trans" />
 
-                            <TextView
-                                android:id="@+id/trans"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="@string/recent_transfer"
-                                android:textColor="#222222"
-                                android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/quick"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/recyclerViewHome"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/quick_services"
+                            android:textColor="#222222"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toTopOf="@+id/cardBuyAirtime"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/recyclerViewHome" />
 
-                            <Button
-                                android:id="@+id/btnaddnew"
-                                style="@style/Widget.MaterialComponents.Button.TextButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignEnd="@id/trans"
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginEnd="13dp"
-                                android:backgroundTint="@color/colorWhite"
-                                android:text="@string/add_new"
-                                android:textColor="#21c17a"
-                                android:textSize="16sp" />
-
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recyclerViewHome"
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="25dp"
-                                android:layout_below="@id/trans"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:orientation="horizontal"
-                                android:overScrollMode="always" />
-
-                            <TextView
-                                android:id="@+id/quick"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:layout_below="@id/recyclerViewHome"
-                                android:text="@string/quick_services"
-                                android:textColor="#222222"
-                                android:textSize="18sp" />
-
-                            <Button
-                                android:id="@+id/btnviewall"
-                                style="@style/Widget.MaterialComponents.Button.TextButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignEnd="@id/quick"
-                                android:layout_below="@id/recyclerViewHome"
-                                android:clickable="true"
-                                android:focusable="true"
-                                android:text="@string/view_all"
-                                android:textColor="#21c17a"
-                                android:textSize="16sp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/btnviewall"
-                                android:orientation="horizontal">
-
-                                <com.google.android.material.card.MaterialCardView
-
-                                    android:id="@+id/cardBuyAirtime"
-                                    style="@style/Widget.MaterialComponents.CardView"
-                                    android:layout_width="103dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginStart="20dp"
-                                    android:clickable="true"
-                                    android:elevation="6dp"
-                                    android:focusable="true"
-                                    app:cardCornerRadius="8dp"
-                                    app:strokeColor="#A8A8A8"
-                                    app:strokeWidth="1dp">
-
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
-
-                                        <ImageView
-                                            android:id="@+id/airtime"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerHorizontal="true"
-                                            android:layout_marginTop="25dp"
-                                            android:layout_marginBottom="8dp"
-                                            android:src="@drawable/ic_credit_card_1" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_below="@id/airtime"
-                                            android:layout_centerHorizontal="true"
-                                            android:layout_marginBottom="8dp"
-                                            android:text="@string/buy_airtime"
-                                            android:textColor="#444444"
-                                            android:textSize="12sp" />
-
-                                    </RelativeLayout>
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/CTransferMain"
-                                    style="@style/Widget.MaterialComponents.CardView"
-                                    android:layout_width="103dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginStart="16dp"
-                                    android:clickable="true"
-                                    android:elevation="6dp"
-                                    app:cardCornerRadius="8dp"
-                                    app:strokeColor="#A8A8A8"
-                                    app:strokeWidth="1dp"
-                                    android:focusable="true">
-
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
-
-                                        <ImageView
-                                            android:id="@+id/transfer"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerHorizontal="true"
-                                            android:layout_marginTop="23dp"
-                                            android:layout_marginBottom="8dp"
-                                            android:contentDescription="@string/todo"
-                                            android:src="@drawable/ic_money" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_below="@id/transfer"
-                                            android:layout_centerHorizontal="true"
-                                            android:layout_marginBottom="6dp"
-                                            android:text="@string/transfers"
-                                            android:textColor="#444444"
-                                            android:textSize="12sp" />
-
-                                    </RelativeLayout>
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/loanscard"
-                                    style="@style/Widget.MaterialComponents.CardView"
-                                    android:layout_width="103dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginStart="15dp"
-                                    android:clickable="true"
-                                    android:elevation="6dp"
-                                    android:focusable="true"
-                                    app:cardCornerRadius="8dp"
-                                    app:strokeColor="#A8A8A8"
-                                    app:strokeWidth="1dp">
-
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
-
-                                        <ImageView
-                                            android:id="@+id/loans"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerInParent="true"
-                                            android:layout_marginTop="30dp"
-                                            android:contentDescription="@string/todo"
-                                            android:src="@drawable/ic_money_bags" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_below="@id/loans"
-                                            android:layout_centerHorizontal="true"
-                                            android:layout_marginBottom="8dp"
-                                            android:text="@string/loans"
-                                            android:textColor="#444444"
-                                            android:textSize="12sp" />
-
-                                    </RelativeLayout>
-                                </com.google.android.material.card.MaterialCardView>
-
-                            </LinearLayout>
-
-                        </RelativeLayout>
+                        <Button
+                            android:id="@+id/btnviewall"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/recyclerViewHome"
+                            android:layout_alignEnd="@id/quick"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="24dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:text="@string/view_all"
+                            android:textColor="#21c17a"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/recyclerViewHome" />
 
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="355dp"
+
+                            android:id="@+id/cardBuyAirtime"
+                            style="@style/Widget.MaterialComponents.CardView"
+                            android:layout_width="0dp"
                             android:layout_height="100dp"
-                            android:layout_marginHorizontal="24dp"
-                            android:layout_marginTop="13dp"
-                            android:layout_marginBottom="24dp"
-                            app:strokeColor="#A8A8A8"
-                            app:strokeWidth="1dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="24dp"
+                            android:clickable="true"
+                            android:elevation="24dp"
+                            android:focusable="true"
                             app:cardCornerRadius="8dp"
+                            app:layout_constraintEnd_toStartOf="@id/CTransferMain"
+                            app:layout_constraintHorizontal_weight="1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/quick"
+                            app:strokeColor="#A8A8A8"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/airtime"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="25dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:src="@drawable/ic_credit_card_1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/airtime"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginBottom="8dp"
+                                    android:text="@string/buy_airtime"
+                                    android:textColor="#444444"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/CTransferMain"
+                            style="@style/Widget.MaterialComponents.CardView"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="16dp"
+                            android:clickable="true"
+                            android:elevation="6dp"
+                            android:focusable="true"
+                            app:cardCornerRadius="8dp"
+                            app:layout_constraintEnd_toStartOf="@id/loanscard"
+                            app:layout_constraintHorizontal_weight="1"
+                            app:layout_constraintStart_toEndOf="@id/cardBuyAirtime"
+                            app:layout_constraintTop_toBottomOf="@id/quick"
+                            app:strokeColor="#A8A8A8"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/transfer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="23dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:contentDescription="@string/todo"
+                                    android:src="@drawable/ic_money" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/transfer"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginBottom="6dp"
+                                    android:text="@string/transfers"
+                                    android:textColor="#444444"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/loanscard"
+                            style="@style/Widget.MaterialComponents.CardView"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:clickable="true"
+                            android:elevation="6dp"
+                            android:focusable="true"
+                            app:cardCornerRadius="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="1"
+                            app:layout_constraintStart_toEndOf="@id/CTransferMain"
+                            app:layout_constraintTop_toBottomOf="@id/quick"
+                            app:strokeColor="#A8A8A8"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/loans"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="30dp"
+                                    android:contentDescription="@string/todo"
+                                    android:src="@drawable/ic_money_bags" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/loans"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginBottom="8dp"
+                                    android:text="@string/loans"
+                                    android:textColor="#444444"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
                             android:id="@+id/cardTrans"
-                            >
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginBottom="32dp"
+                            app:cardCornerRadius="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cardBuyAirtime"
+                            app:strokeColor="#A8A8A8"
+                            app:strokeWidth="1dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@mipmap/sponsor_ad"
                                 android:paddingHorizontal="12dp"
-                                android:paddingTop="24dp"
- >
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:textColor="#ffffff"
-                                    android:id="@+id/wolenjesponsor"
-                                    android:text="Wolenje Sponsporship"
-                                    />
+                                android:paddingTop="24dp">
 
                                 <TextView
+                                    android:id="@+id/wolenjesponsor"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="12sp"
+                                    android:text="Wolenje Sponsporship"
                                     android:textColor="#ffffff"
-                                    android:text="It’s about doing the right thing!"
-                                    android:layout_below="@id/wolenjesponsor"
+                                    android:textSize="16sp" />
+
+                                <TextView
                                     android:id="@+id/wolajeexp"
-                                    />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/wolenjesponsor"
+                                    android:text="It’s about doing the right thing!"
+                                    android:textColor="#ffffff"
+                                    android:textSize="12sp" />
+
                                 <ImageButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
-                                    android:layout_marginEnd="20dp"
                                     android:layout_marginTop="5dp"
+                                    android:layout_marginEnd="20dp"
                                     android:background="@android:color/transparent"
                                     android:contentDescription="@string/todo"
                                     android:src="@drawable/invalid_name" />
+
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/oval"
                                     android:id="@+id/ovalmain"
-                                    android:layout_below="@id/wolajeexp"
-                                    android:layout_marginTop="8dp"
-                                    />
-                                <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/oval_copy_2"
+                                    android:layout_below="@id/wolajeexp"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginEnd="12dp"
+                                    android:src="@drawable/oval" />
+
+                                <ImageView
                                     android:id="@+id/ovalcopy"
-                                    android:layout_toEndOf="@id/ovalmain"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:layout_below="@id/wolajeexp"
                                     android:layout_marginTop="8dp"
-                                    />
+                                    android:layout_marginEnd="12dp"
+                                    android:layout_toEndOf="@id/ovalmain"
+                                    android:src="@drawable/oval_copy_2" />
+
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/oval_copy_2"
-                                    android:layout_toEndOf="@id/ovalcopy"
                                     android:layout_below="@id/wolajeexp"
                                     android:layout_marginTop="8dp"
-                                    android:contentDescription="TODO" />
+                                    android:layout_marginEnd="12dp"
+                                    android:layout_toEndOf="@id/ovalcopy"
+                                    android:contentDescription="TODO"
+                                    android:src="@drawable/oval_copy_2" />
 
                             </RelativeLayout>
                         </com.google.android.material.card.MaterialCardView>
 
 
-                    </LinearLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
                 </ScrollView>

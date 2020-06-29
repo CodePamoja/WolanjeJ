@@ -22,5 +22,6 @@
     <color name="colorRed">#ff0000</color>
     <color name="purple_blue">#531edc</color>
     <color name="purple_light">#26531edc</color>
+    <color name="home_purple">#451238</color>
 
 </resources>

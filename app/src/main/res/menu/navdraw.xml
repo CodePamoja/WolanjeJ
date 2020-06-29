@@ -10,7 +10,7 @@
             android:title="@string/home"
             android:icon="@drawable/ic_homeh"
 
-            />
+            >@font/poppins_regular</item>
         <item
             android:id="@+id/menu_e_wallet"
             android:title="@string/my_e_wallets"
