@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,7 +40,10 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import okhttp3.Response;
@@ -68,6 +72,29 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.name_holder);
+
+
+        try (FileReader reader = new FileReader("package-lock.json"))
+        {
+            //Read JSON file
+            JSONObject object = new JSONObject(String.valueOf(reader));
+            Toast.makeText(this, object.getJSONObject("UserDetails").getString("Name"), Toast.LENGTH_SHORT).show();
+
+            navUsername.setText(object.getJSONObject("UserDetails").getString("Name"));
+
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
         Button button4 = findViewById(R.id.btnaddnew);
         button4.setOnClickListener(new View.OnClickListener() {
@@ -93,10 +120,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         this.AGENTNO = pref.getString("agentno", "");
 
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
-        View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = (TextView) headerView.findViewById(R.id.name_holder);
-        navUsername.setText(pref.getString("user_name", ""));
+        //navUsername.setText(pref.getString("user_name", ""));
 
         new UserBalance().execute();
         new UserServices().execute();
