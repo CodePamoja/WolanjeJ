@@ -13,24 +13,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.wolanjej.RetrofitUtils.ApiJsonObjects;
+import com.example.wolanjej.RetrofitUtils.JsonPlaceHolders;
+import com.example.wolanjej.RetrofitUtils.RetrofitClient;
+import com.example.wolanjej.models.ModelUserDetails;
 import com.google.android.material.card.MaterialCardView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
 public class profile extends AppCompatActivity implements View.OnClickListener {
 
     private SharedPreferences pref;
-    private static String sessionID;
-    private static String AGENTNO;
-    private static TextView tvtext;
+    private String sessionID;
+    private  String AGENTNO;
+    private  TextView tvtext;
     private MaterialCardView materialCardView, materialCardView1;
+    private List<ModelUserDetails> modelUserDetails = new ArrayList<>();
     private Toolbar tb;
 
     @Override
@@ -62,8 +75,8 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
             }
         });
 
-        new UserProfile().execute();
         setToolBar();
+        RetrieveUserInfo();
     }
     private void setToolBar() {
         Toolbar tb = findViewById(R.id.toolbar_account);
@@ -81,51 +94,37 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    public static class UserProfile extends AsyncTask<Void, Void, Response> {
+    private void RetrieveUserInfo(){
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Bearer " + sessionID + "");
 
-        @Override
-        protected Response doInBackground(Void... voids) {
+        Retrofit retrofit = RetrofitClient.getInstance();
+        JsonPlaceHolders jsonPlaceHolder = retrofit.create(JsonPlaceHolders.class);
+        Call<ApiJsonObjects> call = jsonPlaceHolder.getProfile(headers);
 
-            String url = "/api/profiles";
-            OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, sessionID); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-            Log.d("TAG", String.valueOf(result));
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response result) {
-            String verifyResult = null;
-            if (result.code() == 200) {
-                try {
-                    String test = result.body().string();
-                    Log.d("TAG test", test);
-                    JSONObject JProfile = new JSONObject(test);
-                    System.out.println("Response body json values  for profiles are : " + JProfile);
-
-//                    String resultProfile = JBills.getJSONArray("profiles").getJSONObject(0).getString("name");
-//                    tvtext.setText( resultProfile);
-
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
+        call.enqueue(new Callback<ApiJsonObjects>() {
+            @Override
+            public void onResponse(Call<ApiJsonObjects> call, Response<ApiJsonObjects> response) {
+                if (!response.isSuccessful()){
+                    Toast.makeText(profile.this, "code" + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                modelUserDetails = response.body().getUserDetails();
+                for (ModelUserDetails modelUserDetails1 : modelUserDetails){
+                    String USER_NAME =  modelUserDetails1.getFIRST_NAME() + modelUserDetails1.getLAST_NAME();
+                    tvtext.setText(USER_NAME);
                 }
 
-            } else if (result.code() != 201) {
-                try {
-                    verifyResult = result.body().string();
-                    JSONObject jBody = new JSONObject(verifyResult); // adding
-                    System.out.println("Response body json values are : " + verifyResult);
-                    Log.e("TAG", String.valueOf(verifyResult));
-//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
-//                    Log.e("TAG", String.valueOf(sendResutls));
-//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
-                    Log.e("TAG result value", String.valueOf(result));
-                    Log.e("TAG result body", verifyResult);
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
             }
-        }
+
+            @Override
+            public void onFailure(Call<ApiJsonObjects> call, Throwable t) {
+
+                Toast.makeText(profile.this, "code" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     private void ShowDialog() {
