@@ -18,32 +18,21 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
-
-import com.example.wolanjej.pagerAdapters.LoansAdapter;
 import com.example.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
-import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 import okhttp3.Response;
@@ -72,28 +61,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
+        NavigationView navigationView = findViewById(R.id.mynav);
         View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = (TextView) headerView.findViewById(R.id.name_holder);
-
-
-        try (FileReader reader = new FileReader("package-lock.json"))
-        {
-            //Read JSON file
-            JSONObject object = new JSONObject(String.valueOf(reader));
-            Toast.makeText(this, object.getJSONObject("UserDetails").getString("Name"), Toast.LENGTH_SHORT).show();
-
-            navUsername.setText(object.getJSONObject("UserDetails").getString("Name"));
-
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        TextView navUsername = headerView.findViewById(R.id.name_holder);
 
 
         Button button4 = findViewById(R.id.btnaddnew);
@@ -130,10 +100,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
         materialCardView.setOnClickListener(this);
 
-        Button viewall = (Button) findViewById(R.id.btnviewall);
+        Button viewall = findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
 
-        Button transferMoney = (Button) findViewById(R.id.transfer_money_button);
+        Button transferMoney = findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
 
 
@@ -209,7 +179,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
 //    https://wolenjeafrica.com/wolenje/api/services
 
-    public class UserServices extends AsyncTask<Void, Void, Response> {
+    public static class UserServices extends AsyncTask<Void, Void, Response> {
 
         @Override
         protected Response doInBackground(Void... voids) {
@@ -254,7 +224,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         }
     }
 
-    public class UserBills extends AsyncTask<Void, Void, Response> {
+    public static class UserBills extends AsyncTask<Void, Void, Response> {
 
         @Override
         protected Response doInBackground(Void... voids) {
@@ -302,6 +272,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class UserBalance extends AsyncTask<Void, Void, Response> {
 
         @Override
@@ -327,10 +298,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     String resultBalance = JBalance.getJSONArray("balance").getJSONObject(0).getString("balance");
 
                     tvtext = findViewById(R.id.MYBalance);
-                    tvtext.setText("KES " + resultBalance);
+                    tvtext.setText("KSH " + resultBalance +".00");
 
                 } catch (JSONException | IOException e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
+                    Toast.makeText(Home.this, "Balance will show", Toast.LENGTH_SHORT).show();
                 }
 
             } else if (result.code() != 201) {
@@ -339,9 +311,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     JSONObject jBody = new JSONObject(verifyResult); // adding
                     System.out.println("Response body json values are : " + verifyResult);
                     Log.e("TAG", String.valueOf(verifyResult));
-//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
-//                    Log.e("TAG", String.valueOf(sendResutls));
-//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
                     Log.e("TAG result value", String.valueOf(result));
                     Log.e("TAG result body", verifyResult);
                 } catch (IOException | JSONException e) {
@@ -362,8 +331,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
     }
 
