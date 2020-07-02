@@ -4,14 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.ProgressDialog;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,16 +23,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.ref.WeakReference;
+import java.util.Objects;
 
 import okhttp3.Response;
 
 public class BillManager extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private Button button1, button2;
     private TextView textView, textView1, textView2, textView3, textView4;
-    private JSONObject jsonObject;
     private String sessionID;
     private String AGENTNO;
     private SharedPreferences pref;
@@ -49,8 +46,6 @@ public class BillManager extends AppCompatActivity {
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
 
-        button1 = findViewById(R.id.btnPayElectric);
-        button2 = findViewById(R.id.btnCancelBill);
 
 
     }
@@ -58,7 +53,7 @@ public class BillManager extends AppCompatActivity {
     private void setToolBar() {
         Toolbar tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
-        getSupportActionBar().setTitle("");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("");
 
         final Intent moveToLogo = new Intent(this, Home.class);
         tb.setNavigationOnClickListener(
@@ -185,59 +180,24 @@ public class BillManager extends AppCompatActivity {
                 );
 
         textView1 = bottomSheetView.findViewById(R.id.bmAccountName);
-        final String accountName = textView1.getText().toString();
+        String accountName = textView1.getText().toString();
 
         textView2 = bottomSheetView.findViewById(R.id.bmNickname);
-        final String nickName = textView2.getText().toString();
+        String nickName = textView2.getText().toString();
 
         textView3 = bottomSheetView.findViewById(R.id.bmAccountNo);
-        final String accountNumber = textView3.getText().toString();
+        String accountNumber = textView3.getText().toString();
 
         textView4 = bottomSheetView.findViewById(R.id.bmPayBillNo);
-        final String payBillNo = textView4.getText().toString();
+        String payBillNo = textView4.getText().toString();
 
-
-        // Your class
-        jsonObject = new JSONObject();
-
-        try {
-            jsonObject.put("product_name",nickName);
-            jsonObject.put("account_no", accountNumber);
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
-        UserBill userBill = new UserBill(this);
-        userBill.execute();
 
         //My class
         new AddNewBill(accountName,nickName,accountNumber,payBillNo,sessionID);
 
     }
 
-    public static class UserBill extends AsyncTask<Void, Void, Response> {
-
-        private WeakReference<BillManager> weakReference;
-        public UserBill(BillManager billManager) {
-            weakReference = new WeakReference<>(billManager);
-        }
-
-        @Override
-        protected Response doInBackground(Void... voids) {
-            BillManager billManager = weakReference.get();
-            String url = "/bills";
-            OkhttpConnection okConn = new OkhttpConnection();
-            Response result = null;
-            result = okConn.setProfileDetails(url, billManager.jsonObject.toString(),billManager. sessionID);
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response response) {
-            super.onPostExecute(response);
-            System.out.println("BillManager RESPONSE !!" + response);
-        }
-    }
-
+    @SuppressLint("StaticFieldLeak")
     public class AddNewBill extends AsyncTask<Void, Void, Response>{
 
 
@@ -267,7 +227,7 @@ public class BillManager extends AppCompatActivity {
 
         @Override
         protected Response doInBackground(Void... voids) {
-            Response result = null;
+            Response result;
             String url = "/bills";
             OkhttpConnection okConn = new OkhttpConnection();
             result = okConn.setProfileDetails(url, savebill.toString(),id);
@@ -277,7 +237,7 @@ public class BillManager extends AppCompatActivity {
    try {
                 new MaterialAlertDialogBuilder(getApplicationContext())
                         .setTitle(Account_Name)
-                        .setMessage(response.body().string())
+                        .setMessage(Objects.requireNonNull(response.body()).string())
                         .show();
             } catch (IOException e) {
                 e.printStackTrace();
