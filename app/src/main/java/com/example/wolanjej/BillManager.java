@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -16,11 +17,13 @@ import android.widget.TextView;
 
 import com.example.wolanjej.pagerAdapters.BillManagerAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 import okhttp3.Response;
@@ -53,7 +56,7 @@ public class BillManager extends AppCompatActivity {
     }
 
     private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
 
@@ -70,8 +73,8 @@ public class BillManager extends AppCompatActivity {
     }
 
     private void SetViewPager() {
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        tabLayout =  findViewById(R.id.tabLayout);
+        viewPager =  findViewById(R.id.viewPager);
 
         tabLayout.addTab(tabLayout.newTab().setText("All"));
         tabLayout.addTab(tabLayout.newTab().setText("Unpaid"));
@@ -193,6 +196,8 @@ public class BillManager extends AppCompatActivity {
         textView4 = bottomSheetView.findViewById(R.id.bmPayBillNo);
         final String payBillNo = textView4.getText().toString();
 
+
+        // Your class
         jsonObject = new JSONObject();
 
         try {
@@ -203,6 +208,10 @@ public class BillManager extends AppCompatActivity {
         }
         UserBill userBill = new UserBill(this);
         userBill.execute();
+
+        //My class
+        new AddNewBill(accountName,nickName,accountNumber,payBillNo,sessionID);
+
     }
 
     public static class UserBill extends AsyncTask<Void, Void, Response> {
@@ -226,6 +235,54 @@ public class BillManager extends AppCompatActivity {
         @Override
         protected void onPostExecute(Response response) {
             super.onPostExecute(response);
+            System.out.println("BillManager RESPONSE !!" + response);
+        }
+    }
+
+    public class AddNewBill extends AsyncTask<Void, Void, Response>{
+
+
+        String Account_Name,Add_Nickname,Enter_Account_No,Enter_Paybill_No,id;
+        JSONObject savebill  = new JSONObject();
+
+        public AddNewBill(String account_Name, String add_Nickname, String enter_Account_No, String enter_Paybill_No, String id) {
+            Account_Name = account_Name;
+            Add_Nickname = add_Nickname;
+            Enter_Account_No = enter_Account_No;
+            Enter_Paybill_No = enter_Paybill_No;
+            this.id = id;
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+            try {
+                savebill.put("",Account_Name);
+                savebill.put("", Add_Nickname);
+                savebill.put("",Enter_Account_No);
+                savebill.put("", Enter_Paybill_No);
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected Response doInBackground(Void... voids) {
+            Response result = null;
+            String url = "/bills";
+            OkhttpConnection okConn = new OkhttpConnection();
+            result = okConn.setProfileDetails(url, savebill.toString(),id);
+            return result;        }
+        @Override
+        protected void onPostExecute(Response response) {
+   try {
+                new MaterialAlertDialogBuilder(getApplicationContext())
+                        .setTitle(Account_Name)
+                        .setMessage(response.body().string())
+                        .show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.println("BillManager RESPONSE !!" + response);
         }
     }
