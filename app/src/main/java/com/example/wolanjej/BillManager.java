@@ -207,6 +207,7 @@ public class BillManager extends AppCompatActivity {
 
     public static class UserBill extends AsyncTask<Void, Void, Response> {
 
+//        POST BILLS
         private WeakReference<BillManager> weakReference;
         public UserBill(BillManager billManager) {
             weakReference = new WeakReference<>(billManager);
