@@ -18,24 +18,42 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.wolanjej.RetrofitUtils.ApiJsonObjects;
+import com.example.wolanjej.RetrofitUtils.JsonPlaceHolders;
+import com.example.wolanjej.RetrofitUtils.RetrofitClient;
+import com.example.wolanjej.models.BalanceModel;
+import com.example.wolanjej.pagerAdapters.LoansAdapter;
 import com.example.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     Toolbar tb;
@@ -46,6 +64,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private SharedPreferences pref;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
+    private List<BalanceModel> balanceModel = new ArrayList<>();
     View bottomSheetView;
     BottomSheetDialog bottomSheetDialog;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
@@ -60,10 +79,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        NavigationView navigationView = findViewById(R.id.mynav);
-        View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = headerView.findViewById(R.id.name_holder);
 
 
         Button button4 = findViewById(R.id.btnaddnew);
@@ -83,27 +98,33 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         // Get the Intent that started this activity and extract the string
 
 
-
         //SharedPreferences values for login eg token, user registered number
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
 
 
-        //navUsername.setText(pref.getString("user_name", ""));
+        NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.name_holder);
+        navUsername.setText(pref.getString("user_name", ""));
 
-        new UserBalance().execute();
+
+
+        RetrieveWalletBalance();
         new UserServices().execute();
         new UserBills().execute();
 
 
+        tvtext = findViewById(R.id.MYBalance);
+
         MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
         materialCardView.setOnClickListener(this);
 
-        Button viewall = findViewById(R.id.btnviewall);
+        Button viewall = (Button) findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
 
-        Button transferMoney = findViewById(R.id.transfer_money_button);
+        Button transferMoney = (Button) findViewById(R.id.transfer_money_button);
         transferMoney.setOnClickListener(this);
 
 
@@ -111,7 +132,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         TransferHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),MainTransfer36.class);startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), MainTransfer36.class);
+                startActivity(intent);
             }
         });
 
@@ -164,9 +186,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
 //        MenuItem item = findViewById(R.id.bell_icon);
 
-  //      BadgeDrawable badgeDrawable = BadgeDrawable.create(getApplicationContext());
-    //    BadgeUtils.attachBadgeDrawable(badgeDrawable, (View) item, null);
-
+        //      BadgeDrawable badgeDrawable = BadgeDrawable.create(getApplicationContext());
+        //    BadgeUtils.attachBadgeDrawable(badgeDrawable, (View) item, null);
 
 
     }
@@ -179,7 +200,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
 //    https://wolenjeafrica.com/wolenje/api/services
 
-    public static class UserServices extends AsyncTask<Void, Void, Response> {
+    public class UserServices extends AsyncTask<Void, Void, Response> {
 
         @Override
         protected Response doInBackground(Void... voids) {
@@ -212,6 +233,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     JSONObject jBody = new JSONObject(verifyResult); // adding
                     System.out.println("Response body json values are : " + verifyResult);
                     Log.e("TAG", String.valueOf(verifyResult));
+//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
+//                    Log.e("TAG", String.valueOf(sendResutls));
+//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
                     Log.e("TAG result value", String.valueOf(result));
                     Log.e("TAG result body", verifyResult);
                 } catch (IOException | JSONException e) {
@@ -221,7 +245,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         }
     }
 
-    public static class UserBills extends AsyncTask<Void, Void, Response> {
+    public class UserBills extends AsyncTask<Void, Void, Response> {
 
         @Override
         protected Response doInBackground(Void... voids) {
@@ -269,54 +293,38 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         }
     }
 
-    @SuppressLint("StaticFieldLeak")
-    public class UserBalance extends AsyncTask<Void, Void, Response> {
+    private void RetrieveWalletBalance() {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Bearer " + sessionID + "");
 
-        @Override
-        protected Response doInBackground(Void... voids) {
+        Retrofit retrofit = RetrofitClient.getInstance();  //        Getting Retrofit Instance
+        JsonPlaceHolders jsonPlaceHolders = retrofit.create(JsonPlaceHolders.class);
 
-            String url = "/api/balance";
-            OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, sessionID); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-            Log.d("TAG", String.valueOf(result));
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response result) {
-            String verifyResult = null;
-            if (result.code() == 200) {
-                try {
-                    String test = result.body().string();
-                    Log.d("TAG test", test);
-                    JSONObject JBalance = new JSONObject(test);
-                    System.out.println("Response body json values are : " + JBalance);
-
-                    String resultBalance = JBalance.getJSONArray("balance").getJSONObject(0).getString("balance");
-
-                    tvtext = findViewById(R.id.MYBalance);
-                    tvtext.setText("KSH " + resultBalance +".00");
-
-                } catch (JSONException | IOException e) {
-                    //e.printStackTrace();
-                    Toast.makeText(Home.this, "Balance will show", Toast.LENGTH_SHORT).show();
+        Call<ApiJsonObjects> call = jsonPlaceHolders.getBalance(headers);
+        call.enqueue(new Callback<ApiJsonObjects>() {
+            @Override
+            public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
+                if (!response.isSuccessful()){
+                    Toast.makeText(Home.this, "code" + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
-            } else if (result.code() != 201) {
-                try {
-                    verifyResult = result.body().string();
-                    JSONObject jBody = new JSONObject(verifyResult); // adding
-                    System.out.println("Response body json values are : " + verifyResult);
-                    Log.e("TAG", String.valueOf(verifyResult));
-                    Log.e("TAG result value", String.valueOf(result));
-                    Log.e("TAG result body", verifyResult);
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
+                balanceModel = response.body().getBalances();
+                for (BalanceModel balanceModel : balanceModel){
+                    String MY_BALANCE = balanceModel.getBalance();
+
+                    tvtext.setText("KES " + MY_BALANCE);
                 }
+                tvtext = findViewById(R.id.MYBalance);
+
             }
-        }
-    }
 
+            @Override
+            public void onFailure(Call<ApiJsonObjects> call, Throwable t) {
+                Toast.makeText(Home.this, "error" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     //    close drawer on register new number
     private void closeMyDrawer1() {
@@ -328,6 +336,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
@@ -383,7 +393,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu,
                 menu);
-   return super.onCreateOptionsMenu(menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
 
@@ -443,6 +453,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Intent intent1 = new Intent(getApplicationContext(), TransactionView.class);
         startActivity(intent1);
     }
+
     public void openLearningHub(MenuItem item) {
         Intent intent = new Intent(this, Hub.class);
         startActivity(intent);
@@ -499,12 +510,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         findViewById(R.id.bottom_navigation_home_two).setVisibility(View.VISIBLE);
 
     }
-    private void OpenScreen16(){
-      bottomSheetDialog = new BottomSheetDialog(
-                Home.this,R.style.BottomSheetDialogTheme
+
+    private void OpenScreen16() {
+        bottomSheetDialog = new BottomSheetDialog(
+                Home.this, R.style.BottomSheetDialogTheme
         );
-       bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.activity_screen18, (LinearLayout)findViewById(R.id.screen_16)
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.activity_screen18, (LinearLayout) findViewById(R.id.screen_16)
                 );
         bottomSheetView.findViewById(R.id.img_close16).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -578,12 +590,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     }
 
-    private void OpenWallet(){
-         bottomSheetDialog = new BottomSheetDialog(
-                Home.this,R.style.BottomSheetDialogTheme
+    private void OpenWallet() {
+        bottomSheetDialog = new BottomSheetDialog(
+                Home.this, R.style.BottomSheetDialogTheme
         );
-         bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.pop_up_my_wallet, (LinearLayout)findViewById(R.id.show_ple)
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.pop_up_my_wallet, (LinearLayout) findViewById(R.id.show_ple)
                 );
         bottomSheetDialog.setCanceledOnTouchOutside(false);
         bottomSheetDialog.setDismissWithAnimation(true);
@@ -599,7 +611,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
-                       // Intent intent = new Intent(v.getContext(), Top_up.class);
+                        // Intent intent = new Intent(v.getContext(), Top_up.class);
                         //startActivity(intent);
                         bottomSheetDialog.hide();
                         findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
@@ -654,12 +666,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog.show();
 
     }
+
     public void OpenWalletM(MenuItem item) {
         bottomSheetDialog = new BottomSheetDialog(
-                Home.this,R.style.BottomSheetDialogTheme
+                Home.this, R.style.BottomSheetDialogTheme
         );
-         bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.pop_up_my_wallet, (LinearLayout)findViewById(R.id.show_ple)
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.pop_up_my_wallet, (LinearLayout) findViewById(R.id.show_ple)
                 );
         bottomSheetView.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -725,12 +738,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog.show();
 
     }
+
     public void registerNewNumber(MenuItem item) {
-         bottomSheetDialog = new BottomSheetDialog(
-                Home.this,R.style.BottomSheetDialogTheme
+        bottomSheetDialog = new BottomSheetDialog(
+                Home.this, R.style.BottomSheetDialogTheme
         );
-         bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.activity_register_new_number, (LinearLayout)findViewById(R.id.register_new_number)
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.activity_register_new_number, (LinearLayout) findViewById(R.id.register_new_number)
                 );
         bottomSheetView.findViewById(R.id.closeRegNew).setOnClickListener(new View.OnClickListener() {
             @Override

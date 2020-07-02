@@ -197,6 +197,7 @@ public class BillManager extends AppCompatActivity {
 
     }
 
+
     @SuppressLint("StaticFieldLeak")
     public class AddNewBill extends AsyncTask<Void, Void, Response>{
 

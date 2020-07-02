@@ -73,6 +73,7 @@ public class HistoryFragment extends Fragment {
         UserServices userServices = new UserServices(this);
         userServices.execute();
     }
+
     public static class UserServices extends AsyncTask<Void, Void, Response> {
         private WeakReference<HistoryFragment> weakReference;
 
@@ -208,8 +209,7 @@ public class HistoryFragment extends Fragment {
             if (status.equals("TRX_SCHED")) {
                 Pending_status = "1";
                 return Pending_status;
-            }else
-            {
+            } else {
                 Pending_status = "0";
                 return Pending_status;
             }
