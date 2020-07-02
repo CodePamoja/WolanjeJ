@@ -212,9 +212,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     JSONObject jBody = new JSONObject(verifyResult); // adding
                     System.out.println("Response body json values are : " + verifyResult);
                     Log.e("TAG", String.valueOf(verifyResult));
-//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
-//                    Log.e("TAG", String.valueOf(sendResutls));
-//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
                     Log.e("TAG result value", String.valueOf(result));
                     Log.e("TAG result body", verifyResult);
                 } catch (IOException | JSONException e) {
