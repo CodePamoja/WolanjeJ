@@ -28,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -69,23 +70,30 @@ public class HistoryFragment extends Fragment {
         this.AGENTNO = pref.getString("agentno", "");
 
 
-        new UserServices().execute();
-
+        UserServices userServices = new UserServices(this);
+        userServices.execute();
     }
-    public class UserServices extends AsyncTask<Void, Void, Response> {
+    public static class UserServices extends AsyncTask<Void, Void, Response> {
+        private WeakReference<HistoryFragment> weakReference;
+
+        UserServices(HistoryFragment historyFragment) {
+            weakReference = new WeakReference<>(historyFragment);
+        }
 
         @Override
         protected Response doInBackground(Void... voids) {
 
+            HistoryFragment historyFragment = weakReference.get();
             String url = "/api/services";
             OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, sessionID);// sending the url string and base 64 results to the okhttp connection and it's method is getLogin
+            Response result = okConn.getBalance(url, historyFragment.sessionID);// sending the url string and base 64 results to the okhttp connection and it's method is getLogin
             Log.d("TAG", String.valueOf(result));
             return result;
         }
 
         @Override
         protected void onPostExecute(Response result) {
+            HistoryFragment historyFragment = weakReference.get();
             String verifyResult = null;
             if (result.code() == 200) {
                 try {
@@ -100,17 +108,17 @@ public class HistoryFragment extends Fragment {
                         String date = json_data.getString("created_on");
                         String status = json_data.getString("status");
 
-                        String Month = gettingMonth(date);
-                        String Day = gettingDay(date);
-                        String NewStatus = getTheStatus(status);
-                        String pending = pendingStatus(status);
+                        String Month = historyFragment.gettingMonth(date);
+                        String Day = historyFragment.gettingDay(date);
+                        String NewStatus = historyFragment.getTheStatus(status);
+                        String pending = historyFragment.pendingStatus(status);
 
-                        historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending));
+                        historyFragment.historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending));
                     }
-                    recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_history);
-                    TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(getContext(), historyList);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    recyclerView.setAdapter(transactionRecyclerAdapter);
+                    historyFragment.recyclerView = (RecyclerView) historyFragment.v.findViewById(R.id.recyclerview_history);
+                    TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(historyFragment.getContext(), historyFragment.historyList);
+                    historyFragment.recyclerView.setLayoutManager(new LinearLayoutManager(historyFragment.getActivity()));
+                    historyFragment.recyclerView.setAdapter(transactionRecyclerAdapter);
 
 
                 } catch (JSONException | IOException e) {
