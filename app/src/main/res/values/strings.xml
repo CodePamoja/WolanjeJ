@@ -107,6 +107,16 @@
         <item>My Number</item>
         <item>Other Number</item>
     </string-array>
+    <string-array name="gender_array" >
+        <item> Male </item>
+        <item> Female </item>
+        <item> Other </item>
+    </string-array>
+    <string-array name="bill_products" >
+        <item> MPESA_B2C </item>
+        <item> TKASH_B2C </item>
+        <item> AIRTEL_B2C </item>
+    </string-array>
     <string name="login"><font color="#303F9F">Login</font></string>
     <string name="registration">Registration</string>
     <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number, then we will send OTP to verify</string>
