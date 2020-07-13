@@ -58,7 +58,7 @@ import retrofit2.Retrofit;
 public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     Toolbar tb;
     DrawerLayout drawer;
-    private static String sessionID;
+    private String sessionID;
     private String AGENTNO;
     private TextView tvtext;
     private SharedPreferences pref;

@@ -198,6 +198,7 @@ public class LogIn extends AppCompatActivity {
                     Intent move = new Intent(LogIn.this, Home.class);
                     move.putExtra("Class","LogIn");
                     startActivity(move);
+                    finish();
                 } catch (JSONException | IOException e) {
                     //e.printStackTrace();
                     Toast.makeText(LogIn.this, "There is a problem with your internet connection.Please try again if not logged in.", LENGTH_SHORT).show();

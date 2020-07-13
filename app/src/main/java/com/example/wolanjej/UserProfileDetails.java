@@ -70,7 +70,7 @@ public class UserProfileDetails extends AppCompatActivity {
          tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this, Registration05.class);
+        final Intent movetoLogo = new Intent(this, Registration08.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -91,6 +91,7 @@ public class UserProfileDetails extends AppCompatActivity {
 
         editText_email = findViewById(R.id.UserP_mail);
         String EMAIL = editText_email.getEditText().getText().toString().trim();
+//        TODO: add email address
 
         editText1 = findViewById(R.id.UserNameP);
         String USER_NAME = editText1.getEditText().getText().toString().toUpperCase().trim();
