@@ -94,6 +94,11 @@
             android:onClick="registerNewNumber"
 
             />
+        <item
+            android:id="@+id/logout"
+            android:title="logout"
+            android:onClick="LogoutAccount"
+            />
 
 
 

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         //SharedPreferences values for login eg token, user registered number
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
-        this.sessionID = pref.getString("session_token", "");
+        this.sessionID = pref.getString("session_token", null);
         this.AGENTNO = pref.getString("agentno", "");
 
     }
@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (!sessionID.isEmpty()) {
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(intent);
-        }else{
+        if (sessionID == null) {
             Intent intent = new Intent(getApplicationContext(), LogIn.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(getApplicationContext(), Home.class);
             startActivity(intent);
         }
         finish();

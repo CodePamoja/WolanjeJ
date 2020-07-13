@@ -30,6 +30,7 @@ public class Referrals extends AppCompatActivity {
     public static final int PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     RecyclerView recyclerView;
     SearchView search;
+    Toolbar tb;
 
 
     @Override
@@ -37,7 +38,7 @@ public class Referrals extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_referrals);
 
-        setToolBar();
+        setToolBar(tb);
 
         mydb  = new ReferralsDatabaseAdapter(getApplicationContext());
         recyclerView = (RecyclerView)findViewById(R.id.contacts_list);
@@ -74,7 +75,7 @@ public class Referrals extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<Contacts> contactsUsers) {
-            if (contactsUsers.isEmpty()==false){
+            if (!contactsUsers.isEmpty()){
                 suAdapter = new ReferralsAdapter(Referrals.this, contactsUsers);
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(Referrals.this));
@@ -137,8 +138,8 @@ public class Referrals extends AppCompatActivity {
         }
     }
 
-    private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+    private void setToolBar(Toolbar tb) {
+        tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this,Home.class);

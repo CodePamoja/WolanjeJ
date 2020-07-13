@@ -811,5 +811,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         recyclerView.setAdapter(adapter);
 
     }
+    public void LogoutAccount(MenuItem item) {
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("session_token", null);
+        editor.apply();
+        Intent move = new Intent(getApplicationContext(), LogIn.class);
+        startActivity(move);
+        finish();
+
+    }
 }
 
