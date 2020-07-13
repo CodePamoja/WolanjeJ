@@ -1,221 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
+    tools:context=".UserProfileDetails">
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:theme="@style/AppTheme"
-        tools:context=".UserProfileDetails">
+        android:layout_height="wrap_content">
 
-
-        <EditText
-            android:id="@+id/fNamep"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="first Name"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
+            android:layout_height="wrap_content"
 
-        <EditText
-            android:id="@+id/lNamep"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toTopOf="@id/image_holder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@mipmap/small_left" />
+
+        <ImageView
+            android:id="@+id/image_holder"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Last Name"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/reg_vec"
+            app:layout_constraintBottom_toTopOf="@id/titlereg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <EditText
-            android:id="@+id/oNamep"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="other Names"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
+        <TextView
+            android:id="@+id/titlereg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/registration"
+            android:textAlignment="center"
+            android:textColor="@color/colorMidnight"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toTopOf="@id/descreg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_holder" />
 
-        <EditText
-            android:id="@+id/address1p"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Address1"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/address2p"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Address2"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/townp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Town"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/statep"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="state"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/cityp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="City"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/districtp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="District"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/countyp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="County"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/provincep"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Province"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/countryp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="country"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/dobp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="@string/date_of_birth"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/genderp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Gender"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/passportp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Passport No."
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/nationalidp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="National id"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/facebookp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Facebook"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <EditText
-            android:id="@+id/twitterp"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="twitter"
-            android:paddingHorizontal="12dp"
-            android:textColorLink="#00CE6363" />
-
-        <Button
-            android:id="@+id/buttonP"
-            android:layout_width="100dp"
+        <TextView
+            android:id="@+id/descreg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="send"
-            android:onClick="sendDetails"
-            android:layout_height="50dp"/>
-    </LinearLayout>
+            android:fontFamily="@font/poppins_regular"
+            android:paddingHorizontal="40dp"
+            android:text="@string/please_enter_your_mobile_number_then_we_will_send_otp_to_verify"
+            android:textAlignment="center"
+            android:textColor="@color/blue_grey"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/descreg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_holder" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardreg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="12dp"
+            android:backgroundTint="@color/colorWhite"
+            android:elevation="12dp"
+            app:layout_constraintBottom_toTopOf="@id/layout_below_p"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descreg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="12dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="10dp"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/UserP_mail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="16dp"
+                    android:hint="@string/mail_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_mail_24"
+                        android:drawablePadding="5dp"
+                        android:inputType="textEmailAddress" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nationalidp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="16dp"
+                    android:hint="ID Number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/UserNameP"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="16dp"
+                    android:hint="First and Last name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/myspinner"
+                    android:paddingHorizontal="18dp"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/layout_below_p"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardreg"
+            android:paddingHorizontal="24dp">
+
+            <Button
+                android:id="@+id/buttonP"
+                android:layout_width="200dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:onClick="userDetails"
+                android:text="@string/Continue" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
+
