@@ -18,28 +18,21 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.wolanjej.RetrofitUtils.ApiJsonObjects;
 import com.example.wolanjej.RetrofitUtils.JsonPlaceHolders;
 import com.example.wolanjej.RetrofitUtils.RetrofitClient;
 import com.example.wolanjej.models.BalanceModel;
-import com.example.wolanjej.pagerAdapters.LoansAdapter;
 import com.example.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
-import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.json.JSONException;
 import org.json.JSONObject;

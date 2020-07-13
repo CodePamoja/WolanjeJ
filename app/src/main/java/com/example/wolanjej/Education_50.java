@@ -3,6 +3,7 @@ package com.example.wolanjej;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -79,7 +80,7 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
         tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,Home.class);
+        final Intent moveToLogo = new Intent(this, Service.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -106,7 +107,7 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
     public void Backtoeducation(View view) {
-        findViewById(R.id.edu1).setVisibility(View.INVISIBLE);
+        findViewById(R.id.edu1).setVisibility(View.GONE);
     }
 
     public void confirmfeepayment(View view) {
