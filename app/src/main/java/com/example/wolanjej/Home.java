@@ -306,6 +306,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
                 if (!response.isSuccessful()){
                     Toast.makeText(Home.this, "code" + response.code(), Toast.LENGTH_SHORT).show();
+
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("session_token", null);
+                    editor.apply();
+                    Intent move = new Intent(getApplicationContext(), LogIn.class);
+                    startActivity(move);
+                    finish();
                     return;
                 }
 
