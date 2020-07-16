@@ -44,10 +44,10 @@ public class LogIn extends AppCompatActivity {
     private ImageView imageView, imageView1;
     public ProgressDialog prgBar;
     private Button button;
-    public  JSONObject sessionID = null;
-    private TextInputLayout textPhone,textPin;
-    private  androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
-    private  androidx.biometric.BiometricPrompt biometricPrompt;
+    public JSONObject sessionID = null;
+    private TextInputLayout textPhone, textPin;
+    private androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
+    private androidx.biometric.BiometricPrompt biometricPrompt;
     private ConnectivityManager connectivityManager;
     private Executor executor;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
@@ -56,11 +56,12 @@ public class LogIn extends AppCompatActivity {
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     public Base64Encoder baseResult = new Base64Encoder();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
 
         final LinearLayout linearLayout = findViewById(R.id.LoginNetAlert);
@@ -82,7 +83,7 @@ public class LogIn extends AppCompatActivity {
                     public void onClick(View v) {
                         if (isNetworkAvailable()) {
                             new UserLogin(textPhone.getEditText().getText().toString(), textPin.getEditText().getText().toString()).execute();
-                        }else{
+                        } else {
                             linearLayout.setVisibility(View.VISIBLE);
                             Toast.makeText(getApplicationContext(), "No internet Available", Toast.LENGTH_LONG).show();
                         }
@@ -93,7 +94,7 @@ public class LogIn extends AppCompatActivity {
         setToolBar();
 //        imageView = findViewById(R.id.image_holder);
 //        imageView.setImageResource(R.drawable.ic_groupwall);
-        if(Build.VERSION.SDK_INT >8){
+        if (Build.VERSION.SDK_INT > 8) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
@@ -140,8 +141,8 @@ public class LogIn extends AppCompatActivity {
 
     public class UserLogin extends AsyncTask<Void, Void, Response> {
 
-        private String phone ;
-        private String pin ;
+        private String phone;
+        private String pin;
 
         UserLogin(String phone, String pin) {
             this.phone = phone;
@@ -154,15 +155,15 @@ public class LogIn extends AppCompatActivity {
             prgBar.setMessage("Please Wait");
             prgBar.setIndeterminate(false);
             prgBar.setCancelable(false);
-            prgBar .show();
+            prgBar.show();
         }
 
         @Override
         protected Response doInBackground(Void... voids) {
             Response result = null;
 
-            if(phone!=null && pin!=null){
-                String phonePin = "254"+phone+":"+pin; //adding a phone number and a pin together separating them using Full collon
+            if (phone != null && pin != null) {
+                String phonePin = "254" + phone + ":" + pin; //adding a phone number and a pin together separating them using Full collon
                 String results = baseResult.encodedValue(phonePin); // sending the phone number and pin for base 64 encoder for and getting the string value
 
                 String url = "/api/";
@@ -176,8 +177,8 @@ public class LogIn extends AppCompatActivity {
         @Override
         protected void onPostExecute(Response result) {
             prgBar.dismiss();
-            Log.e("All result","Result");
-            if ( result.code() == 200) {
+            Log.e("All result", "Result");
+            if (result.code() == 200) {
                 Toast.makeText(getApplicationContext(), "Your have been Loggedin successfuly", Toast.LENGTH_LONG).show();
 
 
@@ -196,7 +197,7 @@ public class LogIn extends AppCompatActivity {
                     editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
                     editor.commit();
                     Intent move = new Intent(LogIn.this, Home.class);
-                    move.putExtra("Class","LogIn");
+                    move.putExtra("Class", "LogIn");
                     startActivity(move);
                     finish();
                 } catch (JSONException | IOException e) {
@@ -204,12 +205,13 @@ public class LogIn extends AppCompatActivity {
                     Toast.makeText(LogIn.this, "There is a problem with your internet connection.Please try again if not logged in.", LENGTH_SHORT).show();
 
                 }
-            }else if( result.code() != 201) {
+            } else if (result.code() != 201) {
                 Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
             }
         }
     }
-    public boolean isNetworkAvailable() {
+
+    private boolean isNetworkAvailable() {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }

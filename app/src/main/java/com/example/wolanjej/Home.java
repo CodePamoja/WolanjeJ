@@ -1,8 +1,11 @@
 package com.example.wolanjej;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +41,7 @@ import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -56,8 +60,8 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
-    Toolbar tb;
-    DrawerLayout drawer;
+    private Toolbar tb;
+    private DrawerLayout drawer;
     private String sessionID;
     private String AGENTNO;
     private TextView tvtext;
@@ -65,8 +69,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private List<BalanceModel> balanceModel = new ArrayList<>();
-    View bottomSheetView;
-    BottomSheetDialog bottomSheetDialog;
+    private ConnectivityManager connectivityManager;
+    private View bottomSheetView;
+    private BottomSheetDialog bottomSheetDialog;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
@@ -106,14 +111,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
         View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = (TextView) headerView.findViewById(R.id.name_holder);
-        navUsername.setText(pref.getString("user_name", ""));
-
-
-
-        RetrieveWalletBalance();
-        new UserServices().execute();
-        new UserBills().execute();
+        TextView navUsernumber = (TextView) headerView.findViewById(R.id.phone_number_nav_header);
+        TextView UserName = headerView.findViewById(R.id.name_holder);
+        UserName.setText(pref.getString("agentno", ""));
+        navUsernumber.setText("+" + pref.getString("user_name", ""));
 
 
         tvtext = findViewById(R.id.MYBalance);
@@ -180,6 +181,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 OpenWallet();
             }
         });
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE); //check Connectivity to internet services
 
 
         setToolBar();
@@ -190,6 +192,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         //    BadgeUtils.attachBadgeDrawable(badgeDrawable, (View) item, null);
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+            RetrieveWalletBalance();
+            new UserServices().execute();
+            new UserBills().execute();
     }
 
     public void moveToProfile(View view) {
@@ -304,7 +315,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         call.enqueue(new Callback<ApiJsonObjects>() {
             @Override
             public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
-                if (!response.isSuccessful()){
+                if (!response.isSuccessful()) {
                     Toast.makeText(Home.this, "code" + response.code(), Toast.LENGTH_SHORT).show();
 
                     SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
@@ -318,7 +329,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 }
 
                 balanceModel = response.body().getBalances();
-                for (BalanceModel balanceModel : balanceModel){
+                for (BalanceModel balanceModel : balanceModel) {
                     String MY_BALANCE = balanceModel.getBalance();
 
                     tvtext.setText("KES " + MY_BALANCE);
@@ -819,6 +830,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         recyclerView.setAdapter(adapter);
 
     }
+
     public void LogoutAccount(MenuItem item) {
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
@@ -830,5 +842,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         finish();
 
     }
+
 }
 

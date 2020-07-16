@@ -1,6 +1,7 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
     private String phoneCompany;
     private EditText text;
     private Spinner spin;
+    private Toolbar tb;
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
@@ -62,6 +64,22 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
 
+        setToolBar(tb);
+
+    }
+    private void setToolBar(Toolbar tb) {
+        tb = findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent movetoLogo = new Intent(this, Top_up.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(movetoLogo);
+                    }
+                }
+        );
 
     }
 

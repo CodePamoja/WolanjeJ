@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.Network;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +23,7 @@ import com.example.wolanjej.RetrofitUtils.JsonPlaceHolders;
 import com.example.wolanjej.RetrofitUtils.RetrofitClient;
 import com.example.wolanjej.models.ModelUserDetails;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,11 +44,12 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
 
     private SharedPreferences pref;
     private String sessionID;
-    private  String AGENTNO;
-    private  TextView tvtext;
+    private String AGENTNO;
+    private TextView tvtext;
     private MaterialCardView materialCardView, materialCardView1;
     private List<ModelUserDetails> modelUserDetails = new ArrayList<>();
     private Toolbar tb;
+    private ConnectivityManager connectivityManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +58,15 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
 
         tvtext = findViewById(R.id.txtProfName);
 
+
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
 
-        materialCardView1 =findViewById(R.id.card2Prof);
+        TextView textView = findViewById(R.id.txt_phone_profile);
+        textView.setText("+" + AGENTNO);
+
+        materialCardView1 = findViewById(R.id.card2Prof);
         materialCardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,15 +83,24 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
                 ShowDialog();
             }
         });
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE); //check Connectivity to internet services
 
         setToolBar();
-        RetrieveUserInfo();
+
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+            RetrieveUserInfo();
+
+    }
+
     private void setToolBar() {
         Toolbar tb = findViewById(R.id.toolbar_account);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,Home.class);
+        final Intent moveToLogo = new Intent(this, Home.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -94,7 +112,7 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    private void RetrieveUserInfo(){
+    private void RetrieveUserInfo() {
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + sessionID + "");
 
@@ -105,13 +123,13 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
         call.enqueue(new Callback<ApiJsonObjects>() {
             @Override
             public void onResponse(Call<ApiJsonObjects> call, Response<ApiJsonObjects> response) {
-                if (!response.isSuccessful()){
+                if (!response.isSuccessful()) {
                     Toast.makeText(profile.this, "code" + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 modelUserDetails = response.body().getUserDetails();
-                for (ModelUserDetails modelUserDetails1 : modelUserDetails){
-                    String USER_NAME =  modelUserDetails1.getFIRST_NAME() + modelUserDetails1.getLAST_NAME();
+                for (ModelUserDetails modelUserDetails1 : modelUserDetails) {
+                    String USER_NAME = modelUserDetails1.getFIRST_NAME() + modelUserDetails1.getLAST_NAME();
                     tvtext.setText(USER_NAME);
                 }
 
