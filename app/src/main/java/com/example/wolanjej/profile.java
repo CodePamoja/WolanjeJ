@@ -50,6 +50,7 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
     private List<ModelUserDetails> modelUserDetails = new ArrayList<>();
     private Toolbar tb;
     private ConnectivityManager connectivityManager;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,14 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_profile);
 
         tvtext = findViewById(R.id.txtProfName);
-
+        imageView = findViewById(R.id.edit_my_profile);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Profile49.class);
+                startActivity(intent);
+            }
+        });
 
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
@@ -92,7 +100,7 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onStart() {
         super.onStart();
-            RetrieveUserInfo();
+        RetrieveUserInfo();
 
     }
 

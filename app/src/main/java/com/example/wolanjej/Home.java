@@ -71,6 +71,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private List<BalanceModel> balanceModel = new ArrayList<>();
     private ConnectivityManager connectivityManager;
     private View bottomSheetView;
+    private  Button buttonWallet, transferMoney;
     private BottomSheetDialog bottomSheetDialog;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -125,8 +126,29 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Button viewall = (Button) findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
 
-        Button transferMoney = (Button) findViewById(R.id.transfer_money_button);
-        transferMoney.setOnClickListener(this);
+        transferMoney = (Button) findViewById(R.id.transfer_money_button);
+        transferMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonWallet.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+                buttonWallet.setTextColor(getResources().getColor(R.color.colorAccent));
+                transferMoney.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                transferMoney.setTextColor(getResources().getColor(R.color.colorWhite));
+
+            }
+        });
+
+        buttonWallet = findViewById(R.id.wallet);
+        buttonWallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonWallet.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                buttonWallet.setTextColor(getResources().getColor(R.color.colorWhite));
+                transferMoney.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+                transferMoney.setTextColor(getResources().getColor(R.color.colorAccent));
+                OpenWallet();
+            }
+        });
 
 
         MaterialCardView TransferHome = findViewById(R.id.CTransferMain);
@@ -175,12 +197,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             }
         });
 
-        findViewById(R.id.wallet).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OpenWallet();
-            }
-        });
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE); //check Connectivity to internet services
 
 

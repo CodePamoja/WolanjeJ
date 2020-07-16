@@ -13,7 +13,7 @@
             >@font/poppins_regular</item>
         <item
             android:id="@+id/menu_e_wallet"
-            android:title="@string/my_e_wallets"
+            android:title="My E-Wallet"
             android:icon="@drawable/ic_my_e_walonje"
             android:onClick="OpenWalletM"
 

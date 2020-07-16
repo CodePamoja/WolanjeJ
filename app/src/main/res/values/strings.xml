@@ -107,12 +107,12 @@
         <item>My Number</item>
         <item>Other Number</item>
     </string-array>
-    <string-array name="gender_array" >
+    <string-array name="gender_array">
         <item> Male </item>
         <item> Female </item>
         <item> Other </item>
     </string-array>
-    <string-array name="bill_products" >
+    <string-array name="bill_products">
         <item> MPESA_B2C </item>
         <item> TKASH_B2C </item>
         <item> AIRTEL_B2C </item>
