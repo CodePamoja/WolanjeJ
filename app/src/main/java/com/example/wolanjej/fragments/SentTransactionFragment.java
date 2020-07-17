@@ -56,5 +56,7 @@ public class SentTransactionFragment extends Fragment {
         sentList = new ArrayList<>();
         sentList.add(new SentTransactionHistory("Aug", "04", R.drawable.ic_bulb, "John", "+254748188544","Credit Card", "1000", "10.00"));
         sentList.add(new SentTransactionHistory("Nov", "24", R.drawable.ic_bulb, "Ivy", "+254748188544","Credit Card", "2000", "20.00"));
+        sentList.add(new SentTransactionHistory("Aug", "04", R.drawable.ic_bulb, "John", "+254748188544","Credit Card", "1000", "10.00"));
+        sentList.add(new SentTransactionHistory("Nov", "24", R.drawable.ic_bulb, "Ivy", "+254748188544","Credit Card", "2000", "20.00"));
     }
 }

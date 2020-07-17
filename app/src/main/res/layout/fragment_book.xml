@@ -29,10 +29,11 @@
 
                 <TextView
                     android:id="@+id/txt_view_travellers"
-                    android:layout_width="56dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="15dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_marginTop="27dp"
                     android:layout_toEndOf="@+id/img_travelers"
                     android:lineSpacingExtra="8sp"
@@ -45,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_view_travellers"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@+id/img_travelers"
                     android:text="1 Passenger"
@@ -78,6 +80,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_marginTop="27dp"
                     android:layout_marginEnd="12dp"
                     android:layout_toEndOf="@+id/img_prefferd_class"
@@ -92,6 +95,7 @@
                     android:layout_below="@+id/txt_view_economy"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_toEndOf="@+id/img_prefferd_class"
                     android:layout_marginTop="10dp"
                     android:text="Economy"
@@ -126,6 +130,7 @@
             android:layout_marginTop="24dp"
             android:lineSpacingExtra="6sp"
             android:text="Flight Details"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="#202224"
             android:textSize="14sp" />
 
@@ -153,6 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="26dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Where From ?"
                 android:textColor="@color/colorMidnight"
                 android:textSize="12sp" />
@@ -164,6 +170,7 @@
                 android:layout_below="@id/flightFromB00"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
                 android:lineSpacingExtra="8sp"
                 android:text="City or Airport"
                 android:textColor="@color/blue_grey"
@@ -203,6 +210,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="26dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Where To?"
                 android:textColor="@color/colorMidnight"
                 android:textSize="12sp" />
@@ -213,6 +221,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/FlightTo00"
                 android:layout_marginStart="100dp"
+                android:fontFamily="@font/poppins_medium"
                 android:layout_marginTop="10dp"
                 android:lineSpacingExtra="8sp"
                 android:text="City or Airport"
@@ -254,6 +263,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="26dp"
+                android:fontFamily="@font/poppins_medium"
                 android:lineSpacingExtra="8sp"
                 android:text="Select Departure/Return Dte"
                 android:textColor="@color/colorMidnight"
@@ -265,6 +275,7 @@
                 android:layout_below="@+id/txt_view_select_dep"
                 android:layout_marginStart="100dp"
                 android:text="23 sep 2020"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/blue_grey"
                 android:textSize="16sp" />
 
@@ -289,7 +300,7 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:onClick="MoveToBookFlight02"
-            android:text="Search"
+            android:text="@string/search"
             android:textColor="@color/colorWhite"
             android:textSize="18sp" />
 

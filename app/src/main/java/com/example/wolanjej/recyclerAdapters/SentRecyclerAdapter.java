@@ -43,7 +43,6 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
         holder.mNAME.setText(mData.get(position).getmName());
         holder.mPAYMENT_METHOD.setText(mData.get(position).getmPaymentMethod());
         holder.mTRANSACTION_AMOUNT.setText(mData.get(position).getmTransactionAmount());
-        holder.mTRANSACTION_FEES.setText(mData.get(position).getmTransactionFees());
     }
 
     @Override
@@ -59,7 +58,6 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
         private TextView mNAME;
         private TextView mPAYMENT_METHOD;
         private TextView mTRANSACTION_AMOUNT;
-        private TextView mTRANSACTION_FEES;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,7 +68,6 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
             mNAME = itemView.findViewById(R.id.ElectTransName);
             mPAYMENT_METHOD = itemView.findViewById(R.id.ElectTransPayMethod);
             mTRANSACTION_AMOUNT = itemView.findViewById(R.id.ElectTransactionAmount);
-            mTRANSACTION_FEES = itemView.findViewById(R.id.ElectTransactionFees);
         }
     }
 

@@ -26,6 +26,7 @@
                 android:gravity="center_vertical"
                 android:paddingHorizontal="20dp"
                 android:text="Transfer to bank"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/colorMidnight"
                 android:textSize="28sp" />
 
@@ -60,12 +61,14 @@
                             android:layout_height="wrap_content"
                             android:text="Wallet"
                             android:textSize="14sp"
+                            android:fontFamily="@font/poppins_regular"
                             android:textColor="@color/colorPurple"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
                             android:textAlignment="textEnd"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Balance"
                             android:textSize="14sp"
                             android:textColor="@color/blue_grey"/>
@@ -80,6 +83,7 @@
                             android:layout_weight="50"
                             android:layout_height="wrap_content"
                             android:text="Wolenje 01"
+                            android:fontFamily="@font/poppins_regular"
                             android:textSize="16sp"
                             android:textColor="@color/colorMidnight"/>
                         <TextView
@@ -87,6 +91,7 @@
                             android:layout_weight="50"
                             android:textAlignment="textEnd"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Kes 15,000"
                             android:textSize="22sp"
                             android:textColor="@color/colorMidnight"/>
@@ -112,43 +117,24 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="15dp"
                         android:text="Transfer detail"
+                        android:fontFamily="@font/poppins_regular"
                         android:textSize="20sp"
                         android:textAlignment="center"
                         android:textColor="@color/colorMidnight"/>
-
-<!--                    <EditText-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginVertical="5dp"-->
-<!--                        android:inputType="textPersonName"-->
-<!--                        android:hint="Bank"-->
-<!--                        android:padding="10dp"-->
-<!--                        android:background="@drawable/textviewborder"/>-->
                     <Spinner
                         android:id="@+id/selectBank"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
+                        android:layout_height="48dp"
                         android:padding="10dp"
+                        android:background="@drawable/myspinner"
                         android:drawSelectorOnTop="true"
+                        android:layout_marginBottom="16dp"
                         android:dropDownWidth="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:popupBackground="@android:color/holo_purple"
                         android:spinnerMode="dropdown"
                         android:textAlignment="textStart"
                         tools:ignore="NestedWeights" />
-
-<!--                    <Spinner-->
-<!--                        android:id="@+id/selectBranch"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginVertical="5dp"-->
-<!--                        android:padding="10dp"-->
-<!--                        android:drawSelectorOnTop="true"-->
-<!--                        android:dropDownWidth="wrap_content"-->
-<!--                        android:popupBackground="@android:color/holo_purple"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        android:textAlignment="textStart"-->
-<!--                        tools:ignore="NestedWeights" />-->
 
                     <EditText
                         android:id="@+id/branchName"
@@ -157,6 +143,7 @@
                         android:layout_marginVertical="5dp"
                         android:inputType="textPersonName"
                         android:hint="Branch"
+                        android:fontFamily="@font/poppins_regular"
                         android:padding="10dp"
                         android:background="@drawable/textviewborder"/>
 
@@ -172,6 +159,7 @@
                             android:layout_marginRight="20dp"
                             android:text="Scan QR"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/poppins_regular"
                             android:textSize="14sp"
                             android:textColor="@color/blue_grey"
                             style="?android:attr/borderlessButtonStyle"
@@ -184,6 +172,7 @@
                             android:text="Contacts"
                             android:onClick="moveToContact"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/poppins_regular"
                             android:textSize="14sp"
                             android:textColor="@color/blue_grey"
                             style="?android:attr/borderlessButtonStyle"
@@ -196,6 +185,7 @@
                         android:layout_marginTop="30dp"
                         android:text="DETAILS"
                         android:autoSizeMinTextSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:textAlignment="textStart"
                         android:textColor="@color/blue_grey"/>
 
@@ -204,6 +194,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins_regular"
                         android:inputType="number"
                         android:hint="Account number"
                         android:padding="10dp"
@@ -216,6 +207,7 @@
                         android:layout_marginTop="20dp"
                         android:inputType="text"
                         android:hint="Holder name"
+                        android:fontFamily="@font/poppins_regular"
                         android:padding="10dp"
                         android:background="@drawable/textviewborder"/>
 
@@ -225,6 +217,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:inputType="number"
+                        android:fontFamily="@font/poppins_regular"
                         android:hint="Amount"
                         android:padding="10dp"
                         android:background="@drawable/textviewborder"/>
@@ -235,6 +228,7 @@
                         android:layout_height="70dp"
                         android:layout_marginVertical="20dp"
                         android:inputType="text|textMultiLine"
+                        android:fontFamily="@font/poppins_regular"
                         android:padding="10dp"
                         android:hint="Message"
                         android:background="@drawable/textviewborder"/>
@@ -258,6 +252,7 @@
                 android:backgroundTint="@color/colorPurple"
                 android:padding="15dp"
                 android:onClick="bankTransfer"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Continue"
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>

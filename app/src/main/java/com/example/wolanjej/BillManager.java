@@ -73,8 +73,8 @@ public class BillManager extends AppCompatActivity {
     }
 
     private void SetViewPager() {
-        tabLayout =  findViewById(R.id.tabLayout);
-        viewPager =  findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
 
         tabLayout.addTab(tabLayout.newTab().setText("All"));
         tabLayout.addTab(tabLayout.newTab().setText("Unpaid"));
@@ -104,15 +104,6 @@ public class BillManager extends AppCompatActivity {
         });
     }
 
-    public void payContinue(View v) {
-        switch (v.getId()) {
-            case R.id.btn_continue_pay:
-                final Intent moveToPin = new Intent(this, EnterPinPay.class);
-                startActivity(moveToPin);
-                break;
-        }
-    }
-
     public void payNowElectric(View v) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                 BillManager.this, R.style.BottomSheetDialogTheme
@@ -130,7 +121,9 @@ public class BillManager extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        TODO:
+                        Intent moveToPin = new Intent(getApplicationContext(), EnterPinPay.class);
+                        startActivity(moveToPin);
+                        bottomSheetDialog.dismiss();
                     }
                 }
         );
@@ -138,7 +131,7 @@ public class BillManager extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        TODO: intent
+                        bottomSheetDialog.dismiss();
                     }
                 }
         );
@@ -179,7 +172,8 @@ public class BillManager extends AppCompatActivity {
         bottomSheetDialog.show();
 
     }
-    private void NewUserBill(){
+
+    private void NewUserBill() {
         View bottomSheetView = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.billmanager28, (LinearLayout) findViewById(R.id.billManagerView)
                 );
@@ -203,17 +197,17 @@ public class BillManager extends AppCompatActivity {
         String PRODUCT = spinner.getSelectedItem().toString();
 
 
-        new AddNewBill(ACCOUNT_NAME, NICK_NAME, ACCOUNT_NUMBER,  PRODUCT,sessionID);
+        new AddNewBill(ACCOUNT_NAME, NICK_NAME, ACCOUNT_NUMBER, PRODUCT, sessionID);
 
     }
 
 
     @SuppressLint("StaticFieldLeak")
-    public class AddNewBill extends AsyncTask<Void, Void, Response>{
+    public class AddNewBill extends AsyncTask<Void, Void, Response> {
 
 
-        String Account_Name,Add_Nickname,Enter_Account_No,Enter_Paybill_No,id;
-        JSONObject savebill  = new JSONObject();
+        String Account_Name, Add_Nickname, Enter_Account_No, Enter_Paybill_No, id;
+        JSONObject savebill = new JSONObject();
 
         public AddNewBill(String account_Name, String add_Nickname, String enter_Account_No, String enter_Paybill_No, String id) {
             Account_Name = account_Name;
@@ -227,11 +221,11 @@ public class BillManager extends AppCompatActivity {
         protected void onPreExecute() {
 
             try {
-                savebill.put("",Account_Name);
+                savebill.put("", Account_Name);
                 savebill.put("", Add_Nickname);
-                savebill.put("",Enter_Account_No);
+                savebill.put("", Enter_Account_No);
                 savebill.put("", Enter_Paybill_No);
-            }catch (JSONException e){
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
@@ -241,11 +235,13 @@ public class BillManager extends AppCompatActivity {
             Response result;
             String url = "/bills";
             OkhttpConnection okConn = new OkhttpConnection();
-            result = okConn.setProfileDetails(url, savebill.toString(),id);
-            return result;        }
+            result = okConn.setProfileDetails(url, savebill.toString(), id);
+            return result;
+        }
+
         @Override
         protected void onPostExecute(Response response) {
-   try {
+            try {
                 new MaterialAlertDialogBuilder(getApplicationContext())
                         .setTitle(Account_Name)
                         .setMessage(Objects.requireNonNull(response.body()).string())

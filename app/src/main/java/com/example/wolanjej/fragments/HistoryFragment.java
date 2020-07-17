@@ -106,7 +106,7 @@ public class HistoryFragment extends Fragment {
 
                     for (int i = 0; i < services.length(); i++) {
                         JSONObject json_data = services.getJSONObject(i);
-                        String date = json_data.getString("created_on");
+                        String date = json_data.getString("created_on");//,"created_on":"2020-07-17 12:25:50"
                         String status = json_data.getString("status");
 
                         String Month = historyFragment.gettingMonth(date);
@@ -146,24 +146,23 @@ public class HistoryFragment extends Fragment {
 
     private String gettingMonth(String date) {
 
-        long datelong = Long.parseLong(date);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String[] formattedDate = sdf.format(new Date(datelong)).split("/");
-
-        String Month = formattedDate[1];
-        int monthInt = Integer.parseInt(Month.trim());
-        String monthInName = new DateFormatSymbols().getShortMonths()[monthInt - 1];
-        String Date = formattedDate[0];
-
-        return monthInName;
+        char chara1 = date.charAt(5);
+        char chara2 = date.charAt(6);
+        StringBuilder sb = new StringBuilder();
+        sb.append(chara1);
+        sb.append(chara2);
+        int monthInt = Integer.parseInt(sb.toString());
+        DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
+        return dateFormatSymbols.getShortMonths()[monthInt - 1];
     }
 
     private String gettingDay(String date) {
-
-        long datelong = Long.parseLong(date);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String[] formattedDate = sdf.format(new Date(datelong)).split("/");
-        return formattedDate[0];
+        char chara1 = date.charAt(8);
+        char chara2 = date.charAt(9);
+        StringBuilder sb = new StringBuilder();
+        sb.append(chara1);
+        sb.append(chara2);
+        return sb.toString();
     }
 
     private String getTheStatus(String status) {
