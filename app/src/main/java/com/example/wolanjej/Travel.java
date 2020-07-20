@@ -1,7 +1,9 @@
 package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +30,23 @@ public class Travel extends AppCompatActivity  implements View.OnClickListener {
         materialCardView3 = findViewById(R.id.bus_ticket_card);
         materialCardView4 = findViewById(R.id.booking_ticket_card);
 
+        setToolBar();
     }
+    private void setToolBar() {
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent movetoLogo = new Intent(this, Service.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(movetoLogo);
+                    }
+                }
+        );
+    }
+
 
     @Override
     public void onClick(View v) {

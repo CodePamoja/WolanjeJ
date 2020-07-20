@@ -76,7 +76,6 @@ public class TransferToPhone50 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        movetoLogo.putExtra("Class","TransferToPhone50");
                         startActivity(movetoLogo);
                     }
                 }
