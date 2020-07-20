@@ -61,7 +61,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private List<BalanceModel> balanceModel = new ArrayList<>();
     private ConnectivityManager connectivityManager;
     private View bottomSheetView;
-    private  Button buttonWallet, transferMoney;
+    private Button buttonWallet, transferMoney;
     private BottomSheetDialog bottomSheetDialog;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -203,10 +203,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     @Override
     protected void onStart() {
         super.onStart();
-
+        if (isNetworkAvailable()) {
             RetrieveWalletBalance();
             new UserServices().execute();
             new UserBills().execute();
+
+        } else {
+            Snackbar.make(findViewById(R.id.drawer_layout), "No Internet Connection", Snackbar.LENGTH_LONG).show();
+        }
     }
 
     public void moveToProfile(View view) {
@@ -847,6 +851,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         startActivity(move);
         finish();
 
+    }
+
+    private boolean isNetworkAvailable() {
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
 }
