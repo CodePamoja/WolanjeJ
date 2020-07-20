@@ -48,7 +48,7 @@ public class Registration05 extends AppCompatActivity {
 
         tlc = findViewById(R.id.tlc);
         tlc.setMovementMethod(LinkMovementMethod.getInstance());
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
          tb = findViewById(R.id.toolbar);
 
         text = findViewById(R.id.phoneNumber);

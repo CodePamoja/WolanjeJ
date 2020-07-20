@@ -107,12 +107,12 @@
         <item>My Number</item>
         <item>Other Number</item>
     </string-array>
-    <string-array name="gender_array" >
+    <string-array name="gender_array">
         <item> Male </item>
         <item> Female </item>
         <item> Other </item>
     </string-array>
-    <string-array name="bill_products" >
+    <string-array name="bill_products">
         <item> MPESA_B2C </item>
         <item> TKASH_B2C </item>
         <item> AIRTEL_B2C </item>
@@ -178,11 +178,12 @@
     <string name="_05_10_2000">05/10/2000</string>
     <string name="state_any_special_need_if_any">State any special need (if any)</string>
     <string name="step_02_of_03">step_02_of_03</string>
-    <string name="tlc">By clicking “Continue you agree to our  <b><i><u><a href="https://dakarenergylimited.co.ke/Leaf/"> Terms and conditions </a></u></i></b> as well as our <b><i><u><a href="https://dakarenergylimited.co.ke/Leaf/">privacy policy</a></u></i></b>  </string>
+    <string name="tlc">By clicking “Continue you agree to our  <b><u><a href="https://dakarenergylimited.co.ke/Leaf/"> Terms and conditions </a></u></b> as well as our <b><u><a href="https://dakarenergylimited.co.ke/Leaf/">privacy policy</a></u></b>  </string>
     <string name="loyalty_program">Loyalty Program</string>
     <string name="flight_information">Flight Information</string>
     <string name="emirates_airlines">Emirates Airlines</string>
     <string name="_8h_12m_1_stop">8h 12m (1 Stop)</string>
     <string name="usd_643">USD 643</string>
     <string name="btncancel">Cancel</string>
+    <string name="search">Search</string>
 </resources>

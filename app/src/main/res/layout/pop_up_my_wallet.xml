@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:theme="@style/AppTheme"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/show_ple"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:elevation="7dp"
-    tools:context="com.example.wolanjej.Home"
-    android:id="@+id/show_ple"
-    >
+    android:theme="@style/AppTheme"
+    tools:context="com.example.wolanjej.Home">
 
 
     <LinearLayout
@@ -18,18 +17,17 @@
         android:alpha="1"
         android:background="@drawable/splash2"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        >
+        android:paddingHorizontal="16dp">
 
         <ImageButton
+            android:id="@+id/imgCloseWallet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="@color/colorWhite"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="29dp"
+            android:backgroundTint="@color/colorWhite"
             android:src="@mipmap/rectanglew"
-            android:id="@+id/imgCloseWallet"
 
             />
 
@@ -37,7 +35,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="13dp"
+            android:fontFamily="@font/poppins_regular"
             android:text="My E-Wallet"
             android:textColor="@color/colorMidnight"
             android:textSize="22sp" />
@@ -52,10 +52,10 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mytopupcard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="98dp"
+                android:layout_height="114dp"
+                app:cardCornerRadius="8dp"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
                 android:clickable="true">
 
                 <RelativeLayout
@@ -78,6 +78,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/imagetop"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/poppins_regular"
                         android:gravity="center_horizontal"
                         android:text="Top Up"
                         android:textColor="@color/blue_grey"
@@ -88,10 +90,10 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mywithdrawcard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="98dp"
+                android:layout_height="114dp"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
                 android:clickable="true">
 
                 <RelativeLayout
@@ -114,6 +116,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/imagetop2"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Withdraw"
                         android:textColor="@color/blue_grey"
                         android:textSize="14sp" />
@@ -124,10 +128,10 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/openFundTrasfer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="98dp"
+                android:layout_height="114dp"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
+                app:cardCornerRadius="6dp"
                 android:clickable="true">
 
                 <RelativeLayout
@@ -149,8 +153,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/imagetop3"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
                         android:layout_centerHorizontal="true"
-                        android:text="Fund Transfer"
+                        android:text="Fund  Transfer"
                         android:textColor="@color/blue_grey"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -168,12 +175,12 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/transactionHistCard"
+                android:layout_width="98dp"
+                android:layout_height="114dp"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:id="@+id/transactionHistCard">
+                app:cardCornerRadius="6dp"
+                android:clickable="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -195,6 +202,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/imagetop4"
                         android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:layout_marginTop="7dp"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Transaction History"
                         android:textColor="@color/blue_grey"
                         android:textSize="14sp" />
@@ -203,12 +213,12 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/pendingCommCard"
+                android:layout_width="98dp"
+                android:layout_height="114dp"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:id="@+id/pendingCommCard">
+                app:cardCornerRadius="6dp"
+                android:clickable="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -230,7 +240,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/imagetop5"
                         android:layout_centerHorizontal="true"
-                        android:text="Pending Commision"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Points pending"
                         android:textColor="@color/blue_grey"
                         android:textSize="14sp" />
                 </RelativeLayout>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f8f8fa"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,49 +17,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_marginStart="24dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/SentWaterTransMonth"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:gravity="center_vertical"
                 android:text="oct"
-                android:textSize="17sp"
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/SentWaterTransDate"
                 android:layout_width="fill_parent"
                 android:layout_height="26dip"
+                android:fontFamily="@font/poppins_regular"
+                android:singleLine="true"
                 android:text="22"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:textColor="@color/colorBlack"
-                android:singleLine="true" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/TransferWaterMain"
             style="@style/Widget.MaterialComponents.CardView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/colorWhite"
+            android:layout_margin="17dp"
             android:layout_marginStart="8dp"
-            app:cardCornerRadius="8dp"
-            android:id="@+id/TransferWaterMain"
-            >
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardCornerRadius="8dp">
 
-            <ImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+            <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/pic_water_trans"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_drops"
-                />
+                android:src="@drawable/ic_drops" />
         </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
@@ -75,19 +75,22 @@
                 android:id="@+id/WaterTransName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:gravity="center_vertical"
                 android:text="Name"
-                android:textSize="16sp"
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/WaterTransPayMethod"
                 android:layout_width="fill_parent"
-                android:layout_height="26dip"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:ellipsize="marquee"
+                android:fontFamily="@font/poppins_regular"
+                android:singleLine="true"
                 android:text="Phone Number"
-                android:textSize="12sp"
-                android:singleLine="true" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -102,24 +105,33 @@
                 android:id="@+id/WaterTransactionAmount"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:gravity="center_vertical"
-                android:text= "1,500.00"
-                android:textStyle="bold"
+                android:text="1,500.00"
+                android:textColor="@color/colorBlack"
                 android:textSize="17sp"
-                android:textColor="@color/colorBlack"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/WaterTransactionFees"
                 android:layout_width="fill_parent"
                 android:layout_height="26dip"
+                android:fontFamily="@font/poppins_regular"
+                android:singleLine="true"
                 android:text=""
-                android:textSize="20sp"
                 android:textColor="@color/colorBlack"
-                android:singleLine="true" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
 
     </LinearLayout>
+
+    <View
+        android:layout_width="357dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="#e7e7e7" />
 
 </LinearLayout>

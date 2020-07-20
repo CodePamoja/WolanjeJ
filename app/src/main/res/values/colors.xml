@@ -23,5 +23,7 @@
     <color name="purple_blue">#531edc</color>
     <color name="purple_light">#26531edc</color>
     <color name="home_purple">#451238</color>
+    <color name="gray2">#f4f3ee</color>
+
 
 </resources>

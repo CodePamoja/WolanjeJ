@@ -22,7 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TransferToWalletSingle37 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String[] selectUser = { "Single User", "Multiple Users"};
+    String[] selectUser = { "Single Transfers", "Multiple Transfers"};
 
     private Button button;
     private Spinner spin;
@@ -101,7 +101,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //Log.e("session before contact", sessionID);
         Toast.makeText(getApplicationContext(),selectUser[position] , Toast.LENGTH_LONG).show();
-        if ("Multiple Users".equals(selectUser[position])){
+        if ("Multiple Transfers".equals(selectUser[position])){
             Intent move = new Intent(this, TransferToWalletMultiple40.class);
             move.putExtra("Class","TransferToWalletSingle37");
             move.putExtra(EXTRA_SESSION, sessionID);
@@ -162,6 +162,12 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
 
         text = findViewById(R.id.walltMessage);
         String message = text.getText().toString();
+
+        if(amount.isEmpty()){
+            text.requestFocus();
+            return;
+        }
+
 
         String phone = phoneNumber;
 

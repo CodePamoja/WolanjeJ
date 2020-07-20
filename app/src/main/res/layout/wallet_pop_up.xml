@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:background="@color/colorWhite"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="29dp"
         android:src="@mipmap/rectanglew" />
@@ -30,6 +31,7 @@
         android:layout_below="@id/balance"
         android:text="Wallet Top-Up"
         android:textColor="@color/colorMidnight"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="22sp" />
 
     <TextView
@@ -38,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imagebtn"
         android:layout_alignParentRight="true"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="end"
         android:text="Balance"
         android:textColor="@color/blue_grey"
@@ -48,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/balance"
         android:layout_alignParentRight="true"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="end"
         android:letterSpacing="0.03"
         android:text="kes 0.000"
@@ -60,6 +64,7 @@
         android:layout_height="52dp"
         android:layout_below="@id/wpp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins_regular"
         android:background="@drawable/wallet_pop_up_shape"
         android:hint="Select Type"
         android:drawableEnd="@drawable/ic_baseline_down"
@@ -71,6 +76,7 @@
         android:layout_height="52dp"
         android:layout_below="@id/selecttype"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_regular"
         android:background="@drawable/wallet_pop_up_shape"
         android:hint="Mobile Number"
         android:paddingStart="18dp" />
@@ -81,8 +87,9 @@
         android:layout_height="52dp"
         android:layout_below="@id/mobilenumber"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_regular"
         android:background="@drawable/wallet_pop_up_shape"
-        android:hint="Account"
+        android:hint="Amount"
         android:paddingStart="18dp" />
 
     <Button
@@ -92,6 +99,7 @@
         android:layout_height="48dp"
         android:layout_below="@id/account"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_regular"
         android:backgroundTint="@color/warm_purple"
         android:text="@string/Continue" />
 
@@ -100,6 +108,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/cont"
+        android:fontFamily="@font/poppins_regular"
         android:layout_marginTop="16dp"
         android:backgroundTint="@android:color/transparent"
         android:text="Cancel"

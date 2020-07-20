@@ -14,8 +14,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@id/image_holder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_group_7__2_"
+            android:src="@mipmap/group_5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -74,7 +72,7 @@
             android:layout_marginVertical="12dp"
             android:elevation="12dp"
             android:id="@+id/cardreg"
-            app:layout_constraintBottom_toTopOf="@id/tlc"
+            app:layout_constraintBottom_toTopOf="@id/tlccon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/descreg"
@@ -134,6 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginVertical="10dp"
+                    android:layout_marginHorizontal="12dp"
                     android:backgroundTint="@color/colorPurple"
                     android:fontFamily="@font/poppins_medium"
                     android:text="Continue"
@@ -143,7 +142,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp"
+                    >
 
                     <View
                         android:layout_width="0dp"
@@ -174,6 +175,7 @@
                     android:id="@+id/btn_business"
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
+                    android:layout_marginHorizontal="12dp"
                     android:layout_marginVertical="10dp"
                     android:backgroundTint="#120d0229"
                     android:text="Create a Business Account"
@@ -187,25 +189,34 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <RelativeLayout
+            android:id="@+id/tlccon"
 
-        <TextView
-            android:id="@+id/tlc"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#222b45"
-            android:textSize="10sp"
-            android:fontFamily="@font/poppins_regular"
-            android:lineSpacingExtra="6sp"
-            android:textAlignment="center"
-            android:text="@string/tlc"
-            android:layout_gravity="center_horizontal"
-            android:textColorLink="@color/colorBluepurple"
-
+            android:layout_height="match_parent"
+            android:paddingHorizontal="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardreg"
-            />
+            >
+            <TextView
+                android:id="@+id/tlc"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#222b45"
+                android:textSize="10sp"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingExtra="6sp"
+                android:textAlignment="center"
+                android:text="@string/tlc"
+                android:textColorLink="@color/colorBluepurple"
+                />
+
+        </RelativeLayout>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
