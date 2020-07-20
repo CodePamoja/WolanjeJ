@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wolanjej.pagerAdapters.BillManagerAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -148,6 +149,16 @@ public class BillManager extends AppCompatActivity {
         View bottomSheetView = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.billmanager28, (LinearLayout) findViewById(R.id.billManagerView)
                 );
+
+        textView1 = bottomSheetView.findViewById(R.id.bmAccountName);
+        textView2 = bottomSheetView.findViewById(R.id.bmNickname);
+        textView3 = bottomSheetView.findViewById(R.id.bmAccountNo);
+        spinner = bottomSheetView.findViewById(R.id.spinner_bill);
+
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.bill_products, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
         bottomSheetView.findViewById(R.id.bmClose).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,6 +170,7 @@ public class BillManager extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 NewUserBill();
+                Toast.makeText(BillManager.this, "Sorry Not available ", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -181,21 +193,12 @@ public class BillManager extends AppCompatActivity {
         textView1 = bottomSheetView.findViewById(R.id.bmAccountName);
         String ACCOUNT_NAME = textView1.getText().toString();
 
-        textView2 = bottomSheetView.findViewById(R.id.bmNickname);
+
         String NICK_NAME = textView2.getText().toString();
 
-        textView3 = bottomSheetView.findViewById(R.id.bmAccountNo);
         String ACCOUNT_NUMBER = textView3.getText().toString();
 
-        spinner = bottomSheetView.findViewById(R.id.spinner_bill);
-
-        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
-                R.array.bill_products, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
         String PRODUCT = spinner.getSelectedItem().toString();
-
 
         new AddNewBill(ACCOUNT_NAME, NICK_NAME, ACCOUNT_NUMBER, PRODUCT, sessionID);
 
