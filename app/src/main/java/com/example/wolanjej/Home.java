@@ -36,6 +36,8 @@ import com.example.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
@@ -43,6 +45,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import okhttp3.Response;
 import retrofit2.Call;
@@ -356,9 +359,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
     //    close drawer on register new number
-    private void closeMyDrawer1() {
+    /*private void closeMyDrawer1() {
         drawer.closeDrawer(GravityCompat.START);
-    }
+    }*/
 
 
     @Override
@@ -366,7 +369,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            Toast.makeText(this, "Log out to exit", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -400,7 +403,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     private void setToolBar() {
         setSupportActionBar(tb);
-        getSupportActionBar().setTitle("");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("");
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -520,10 +523,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public boolean onMenuItemClick(MenuItem item) {
         if (item.getItemId() == R.id.others) {
             findViewById(R.id.specific).setVisibility(View.VISIBLE);
-            return true;
-        } else {
-            return true;
         }
+        return true;
     }
 
 
@@ -781,7 +782,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 bottomSheetDialog.dismiss();
             }
         });
-        TextView textView = bottomSheetView.findViewById(R.id.newphoneNumber);
+        //TextView textView = bottomSheetView.findViewById(R.id.newphoneNumber);
 
         bottomSheetView.findViewById(R.id.btn_sendinvite).setOnClickListener(
                 new View.OnClickListener() {
