@@ -117,9 +117,9 @@
         <item> TKASH_B2C </item>
         <item> AIRTEL_B2C </item>
     </string-array>
-    <string name="login"><font color="#303F9F">Login</font></string>
+    <string name="login"><font color="#531edc">Log in</font></string>
     <string name="registration">Registration</string>
-    <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number, then we will send OTP to verify</string>
+    <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number,\nthen we will send OTP to verify</string>
     <string name="bill_manager">Bill Manager</string>
     <string name="all">All</string>
     <string name="unpaid">Unpaid</string>
@@ -178,7 +178,7 @@
     <string name="_05_10_2000">05/10/2000</string>
     <string name="state_any_special_need_if_any">State any special need (if any)</string>
     <string name="step_02_of_03">step_02_of_03</string>
-    <string name="tlc">By clicking “Continue you agree to our  <b><u><a href="https://dakarenergylimited.co.ke/Leaf/"> Terms and conditions </a></u></b> as well as our <b><u><a href="https://dakarenergylimited.co.ke/Leaf/">privacy policy</a></u></b>  </string>
+    <string name="tlc">By clicking “Continue you agree to our <b><u><a href="https://dakarenergylimited.co.ke/Leaf/"><font color="#249af3"> Terms and conditions </font></a></u></b> as well as our <b><u><a href="https://dakarenergylimited.co.ke/Leaf/"><font color="#249af3">privacy policy</font></a></u></b>  </string>
     <string name="loyalty_program">Loyalty Program</string>
     <string name="flight_information">Flight Information</string>
     <string name="emirates_airlines">Emirates Airlines</string>

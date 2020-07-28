@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Profile49"></activity>
+        <activity android:name=".Registration051"></activity>
+        <activity android:name=".Profile49" />
         <activity android:name=".Loans" />
         <activity android:name=".UserProfileDetails" />
         <activity android:name=".Sponsor07" />

@@ -8,5 +8,7 @@
         android:orderInCategory="300"
         android:title="@string/login"
         app:showAsAction="always"
-        android:onClick="movetoLog"/>
+        android:onClick="movetoLog"
+
+        />
 </menu>

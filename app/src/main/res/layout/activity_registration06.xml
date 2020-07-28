@@ -77,6 +77,7 @@
                                 android:inputType="number"
                                 android:layout_weight="1"
                                 android:id="@+id/edittext"
+                                android:text="1"
                                 />
                             <EditText
                                 android:layout_width="wrap_content"
@@ -86,6 +87,7 @@
                                 android:inputType="number"
                                 android:layout_weight="1"
                                 android:id="@+id/inp2"
+                                android:text="2"
                                 />
                             <EditText
                                 android:layout_width="wrap_content"
@@ -95,6 +97,7 @@
                                 android:inputType="number"
                                 android:layout_weight="1"
                                 android:id="@+id/inp3"
+                                android:text="3"
                                 />
                             <EditText
                                 android:layout_width="wrap_content"
@@ -103,7 +106,9 @@
                                 android:inputType="number"
                                 android:maxLength="1"
                                 android:layout_weight="1"
-                                android:id="@+id/inp4"/>
+                                android:id="@+id/inp4"
+                                android:text="4"
+                                />
                         </LinearLayout>
 
                         <Button

@@ -2,34 +2,21 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.example.wolanjej.RetrofitUtils.JsonPlaceHolders;
 import com.example.wolanjej.RetrofitUtils.RetrofitClient;
 import com.example.wolanjej.models.ModelUserDetails;
 import com.google.android.material.textfield.TextInputLayout;
-
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

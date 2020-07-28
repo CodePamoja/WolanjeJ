@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Registration05">
+    tools:context=".Registration051">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -51,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/poppins_regular"
-                android:text="@string/please_enter_your_mobile_number_then_we_will_send_otp_to_verify"
+                android:text="Complete the fields below to continue"
                 android:textAlignment="center"
                 android:paddingHorizontal="40dp"
                 android:textColor="@color/blue_grey"
@@ -68,12 +69,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="12dp"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/colorWhite"
                 android:elevation="12dp"
+                android:outlineAmbientShadowColor="#120d0229"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="8dp"
-                android:outlineAmbientShadowColor="#120d0229"
-                app:layout_constraintBottom_toTopOf="@id/tlccon"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/descreg">
@@ -86,15 +88,15 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/phoneNumber"
+                        android:id="@+id/kenyanid"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:layout_marginHorizontal="12dp"
                         android:layout_marginVertical="16dp"
-                        android:hint="@string/kenya_number"
+                        android:hint="ID Number"
                         app:counterEnabled="true"
-                        app:counterMaxLength="9">
+                        app:counterMaxLength="8">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -106,112 +108,85 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mail"
+                        android:id="@+id/first_name"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:layout_marginHorizontal="12dp"
                         android:layout_marginVertical="16dp"
-                        android:hint="@string/mail_text">
+                        android:hint="First Name">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_baseline_mail_24"
+                            android:drawableStart="@drawable/ic_baseline_account_circle_24"
                             android:drawablePadding="5dp"
-                            android:inputType="textEmailAddress" />
+                            android:inputType="textPersonName" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <Button
-                        android:id="@+id/btn_continue"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_marginHorizontal="12dp"
-                        android:layout_marginVertical="10dp"
-                        android:backgroundTint="@color/colorPurple"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Continue"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="14sp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="12dp">
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="12dp"
-                            android:layout_weight="2"
-                            android:background="#979797" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:letterSpacing="0.08"
-                            android:text="OR"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="12dp"
-                            android:layout_weight="2"
-                            android:background="#979797" />
-                    </LinearLayout>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_business"
-                        style="?android:attr/borderlessButtonStyle"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/last_name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:layout_marginHorizontal="12dp"
-                        android:layout_marginVertical="10dp"
-                        android:backgroundTint="#120d0229"
-                        android:onClick="createAccount"
-                        android:text="Create a Business Account"
-                        android:textColor="#8484a9"
-                        android:textSize="14sp" />
+                        android:layout_marginVertical="16dp"
+                        android:hint="Last Name">
 
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_baseline_account_circle_24"
+                            android:drawablePadding="5dp"
+                            android:inputType="textPersonName" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/mygender"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginVertical="16dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Male"
+                            android:inputType="none" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
             <RelativeLayout
-                android:id="@+id/tlccon"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="16dp"
-                android:paddingHorizontal="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardreg">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardreg"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="16dp"
+                >
 
-                <TextView
-                    android:id="@+id/tlc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:lineSpacingExtra="6sp"
-                    android:text="@string/tlc"
-                    android:textAlignment="center"
-                    android:textColor="#222b45"
-                    android:textSize="10sp" />
-
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:onClick="askForOtp"
+                    android:text="@string/Continue"
+                    />
             </RelativeLayout>
 
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
+
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_height="wrap_content"
@@ -225,24 +200,22 @@
             android:layout_height="wrap_content"
             app:navigationIcon="@mipmap/small_left"
             app:layout_scrollFlags="scroll|enterAlways">
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-           <com.google.android.material.button.MaterialButton
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_alignParentEnd="true"
-               android:text="@string/login"
-               android:textAllCaps="false"
-               android:onClick="movetoLogin"
-               android:backgroundTint="@android:color/transparent"
-               style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-               />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/login"
+                    android:textAllCaps="false"
+                    android:onClick="movetoLogin"
+                    android:backgroundTint="@android:color/transparent"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    />
 
-       </RelativeLayout>
+            </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-

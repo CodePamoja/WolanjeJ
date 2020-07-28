@@ -87,7 +87,8 @@ public class Registration07 extends AppCompatActivity {
                 System.out.println("Response body json values are : " + result);
                 Log.d("TAG", String.valueOf(result));
                 Toast.makeText(getApplicationContext(), "Your password has been changed successfuly", Toast.LENGTH_LONG).show();
-                Intent move = new Intent(this, UserProfileDetails.class);
+                //Intent move = new Intent(this, UserProfileDetails.class);
+                Intent move = new Intent(this, LogIn.class);
                 startActivity(move);
 
             }else if((responseCode = result.code()) != 201) {
