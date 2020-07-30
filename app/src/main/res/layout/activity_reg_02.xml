@@ -1,190 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reg_02"
     android:orientation="vertical"
-    >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:orientation="vertical"
-        android:background="#1A2652"
-        android:id="@+id/top"
-        >
-        <include layout="@layout/toolbarbusiness"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/colorWhite"
-            android:lineSpacingExtra="6sp"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="Step 01 of 03"
-            />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/indicator"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="36dp"
-            />
-    </LinearLayout>
+    tools:context=".Reg_02">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        >
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            >
-            <com.google.android.material.card.MaterialCardView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
-                android:layout_marginHorizontal="24dp"
-                app:cardElevation="32dp"
-                >
-                <LinearLayout
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:background="#1A2652"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include layout="@layout/toolbarbusiness" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="6sp"
+                    android:text="Step 01 of 03"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="36dp"
+                    android:src="@mipmap/indicator" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/colorWhite"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="29dp"
+                    app:cardElevation="32dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:layout_marginTop="24dp"
-                        android:layout_gravity="center"
-                        android:textColor="@color/colorMidnight"
-                        tools:text="Company contact person"
-                        />
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:background="@drawable/edittext"
-                        android:layout_marginTop="17dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/blue_grey"
-                        android:hint="Name"
-                        android:paddingStart="12dp"
-                        />
+                        android:background="@color/colorWhite"
+                        android:orientation="vertical">
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginTop="17dp"
-                        android:background="@drawable/edittext"
-                        android:drawableStart="@mipmap/bitmap"
-                        android:drawablePadding="12dp"
-                        android:hint="KEN |   Phone No"
-                        android:paddingStart="12dp"
-                        />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Company contact person"
+                            android:textColor="@color/colorMidnight"
+                            android:textSize="18sp" />
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:background="@drawable/edittext"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginTop="17dp"
-                        android:hint="Email"
-                        android:paddingStart="12dp"
-                        />
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:background="@drawable/edittext"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginTop="17dp"
-                        android:layout_marginBottom="27dp"
-                        android:hint="ID Number"
-                        android:paddingStart="12dp"
-                        />
-                </LinearLayout>
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="17dp"
+                            android:background="@drawable/edittext"
+                            android:hint="Name"
+                            android:paddingStart="12dp"
+                            android:textColor="@color/blue_grey"
+                            android:textSize="16sp" />
 
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="18dp"
-                >
-                <RelativeLayout
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="17dp"
+                            android:background="@drawable/edittext"
+                            android:drawableStart="@mipmap/bitmap"
+                            android:drawablePadding="12dp"
+                            android:hint="KEN |   Phone No"
+                            android:paddingStart="12dp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="17dp"
+                            android:background="@drawable/edittext"
+                            android:hint="Email"
+                            android:paddingStart="12dp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="17dp"
+                            android:layout_marginBottom="27dp"
+                            android:background="@drawable/edittext"
+                            android:hint="ID Number"
+                            android:paddingStart="12dp" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_attach_file_24"
-                        android:layout_centerVertical="true"
-                        android:id="@+id/uploadbtn"
-                        android:layout_marginStart="43dp"
-                        android:backgroundTint="@color/colorWhite"
-                        android:onClick="loadCopyOfId"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:textColor="#9c7bfc"
-                        android:lineSpacingExtra="7sp"
-                        android:text="Upload copy of ID"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/uploadbtn"
-                        android:id="@+id/myidupload"
-                        />
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_play_for_work_24"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="43dp"
-                        />
+                    android:layout_height="70dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="143dp"
+                    android:backgroundTint="@color/colorWhite"
+                    app:cardElevation="32dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/uploadbtn"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="43dp"
+                            android:background="@drawable/splash3"
+                            android:onClick="loadCopyOfId"
+                            android:src="@drawable/ic_baseline_attach_file_24" />
+
+                        <TextView
+                            android:id="@+id/myidupload"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="9dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/uploadbtn"
+                            android:fontFamily="@font/poppins_regular"
+                            android:lineSpacingExtra="7sp"
+                            android:text="Upload copy of ID"
+                            android:textColor="#9c7bfc"
+                            android:textSize="15sp" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="43dp"
+                            android:background="@drawable/backgroundblue"
+                            android:src="@drawable/align_top_24" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="43dp"
+                            android:src="@drawable/ic_group_x"
+                            android:visibility="gone" />
 
 
-                </RelativeLayout>
+                    </RelativeLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
     </ScrollView>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="55dp"
         android:layout_weight="1"
         android:background="@color/warm_purple"
-        >
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.button.MaterialButton
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:textSize="15sp"
-            android:textColor="@color/colorWhite"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/poppins_regular"
             android:lineSpacingExtra="9sp"
-            android:text="Continue"
             android:onClick="movetoreg3"
-            style="?android:attr/borderlessButtonStyle"
-            />
+            android:text="Continue"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp" />
     </RelativeLayout>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

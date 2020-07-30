@@ -50,21 +50,17 @@ public class MainActivity extends AppCompatActivity {
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", null);
         this.AGENTNO = pref.getString("agentno", "");
-
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (sessionID == null) {
-            Intent intent = new Intent(getApplicationContext(), LogIn.class);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(intent);
-        }
-        finish();
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        if (sessionID != null) {
+//            Intent intent = new Intent(getApplicationContext(), Home.class);
+//            startActivity(intent);
+//        }
+//        finish();
+//    }
 
     // Do not change here because it checks if your are connected to the internet first
     public void movetoRegistration(final View view) {

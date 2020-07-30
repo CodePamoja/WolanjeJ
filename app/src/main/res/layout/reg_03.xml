@@ -1,68 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reg03Activity"
     android:orientation="vertical"
-    >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="3"
-        android:background="#1A2652"
-        android:id="@+id/top"
-        >
-        <include layout="@layout/toolbarbusiness"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/colorWhite"
-            android:lineSpacingExtra="6sp"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="Step 02 of 03"
-            />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_indicator2"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="36dp"
-            />
-    </LinearLayout>
+    tools:context=".Reg03Activity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            >
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/top"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:background="#1A2652"
+                android:orientation="vertical">
+
+                <include layout="@layout/toolbarbusiness" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="6sp"
+                    android:text="Step 02 of 03"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="36dp"
+                    android:src="@drawable/ic_indicator2" />
+            </LinearLayout>
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
                 android:layout_marginHorizontal="24dp"
-                app:cardElevation="32dp"
-                >
+                android:layout_marginTop="29dp"
+                app:cardElevation="32dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:background="@color/colorWhite"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -70,81 +72,86 @@
                         android:layout_gravity="start"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="24dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Company CEO"
                         android:textColor="@color/colorMidnight"
-                        android:textSize="18sp"
-                        tools:text="Company CEO" />
+                        android:textSize="18sp" />
 
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext"
-                        android:layout_marginTop="17dp"
                         android:layout_marginHorizontal="20dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/blue_grey"
+                        android:layout_marginTop="17dp"
+                        android:background="@drawable/edittext"
                         android:hint="Name"
                         android:paddingStart="12dp"
-                        />
+                        android:textColor="@color/blue_grey"
+                        android:textSize="16sp" />
 
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="17dp"
+                        android:background="@drawable/edittext"
                         android:hint="Email"
-                        android:paddingStart="12dp"
-                        />
+                        android:paddingStart="12dp" />
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="17dp"
                         android:layout_marginBottom="27dp"
+                        android:background="@drawable/edittext"
                         android:hint="ID Number"
-                        android:paddingStart="12dp"
-                        />
+                        android:paddingStart="12dp" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="18dp"
-                >
+                android:layout_marginBottom="143dp"
+                android:backgroundTint="@color/colorWhite"
+                app:cardElevation="32dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="24dp"
-                    >
+                    android:paddingHorizontal="24dp">
+
                     <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_attach_file_24"
-                        android:layout_centerVertical="true"
                         android:id="@+id/uploadbtn"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/splash3"
                         android:onClick="uploadid"
-                        android:backgroundTint="@color/colorWhite"
-                        />
+                        android:src="@drawable/ic_baseline_attach_file_24" />
+
                     <TextView
+                        android:id="@+id/filetxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:textColor="#9c7bfc"
-                        android:lineSpacingExtra="7sp"
-                        android:text="Upload copy of ID"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@id/uploadbtn"
-                        android:id="@+id/filetxt"
-                        />
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="7sp"
+                        android:layout_marginStart="9dp"
+                        android:text="Upload copy of ID"
+                        android:textColor="#9c7bfc"
+                        android:textSize="15sp" />
+
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_play_for_work_24"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
-                        />
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/backgroundblue"
+                        android:src="@drawable/align_top_24" />
 
 
                 </RelativeLayout>
@@ -153,30 +160,31 @@
 
 
         </LinearLayout>
-
     </ScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="55dp"
         android:layout_weight="1"
         android:background="@color/warm_purple"
-        >
+        app:layout_constraintBottom_toBottomOf="parent">
+
         <com.google.android.material.button.MaterialButton
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:textSize="15sp"
-            android:textColor="@color/colorWhite"
-            android:lineSpacingExtra="9sp"
-            android:text="Continue"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:background="@drawable/businessbtncon"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="9sp"
             android:onClick="movetoreg04"
-            style="?android:attr/borderlessButtonStyle"
-            />
+            android:text="Continue"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

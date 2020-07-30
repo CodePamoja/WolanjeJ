@@ -2,6 +2,7 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -99,6 +100,7 @@ public class LogIn extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        setActionBarColor();
     }
 
     private void setToolBar() {
@@ -116,6 +118,20 @@ public class LogIn extends AppCompatActivity {
         );
 
     }
+    private void setActionBarColor(){
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorWhite));
+    }
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.register, menu);
@@ -137,6 +153,11 @@ public class LogIn extends AppCompatActivity {
     public void FogtPssd(View view) {
         Intent move = new Intent(this, Registration05.class);
         startActivity(move);
+    }
+    private void moveToreg5(View view){
+        Intent intent = new Intent(getApplicationContext(), Registration05.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     public class UserLogin extends AsyncTask<Void, Void, Response> {

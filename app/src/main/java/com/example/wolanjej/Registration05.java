@@ -93,7 +93,7 @@ public class Registration05 extends AppCompatActivity {
     private void setToolBar() {
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,MainActivity.class);
+        final Intent movetoLogo = new Intent(this,LogIn.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override

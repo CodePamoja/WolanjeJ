@@ -24,6 +24,9 @@
     <color name="purple_light">#26531edc</color>
     <color name="home_purple">#451238</color>
     <color name="gray2">#f4f3ee</color>
+    <color name="light_blue">#8caef7</color>
+    <color name="gray3">#66000000</color>
+    <color name="gray4">#e0e0e0 </color>
 
 
 </resources>

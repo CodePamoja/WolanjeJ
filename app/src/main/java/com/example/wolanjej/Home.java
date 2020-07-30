@@ -848,7 +848,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("session_token", null);
         editor.apply();
-        Intent move = new Intent(getApplicationContext(), LogIn.class);
+        Intent move = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(move);
         finish();
 
