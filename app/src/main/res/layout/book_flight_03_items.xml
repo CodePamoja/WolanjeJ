@@ -2,9 +2,12 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="327dp"
     android:layout_height="147dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="45dp"
     android:layout_marginBottom="20dp"
-    android:elevation="5dp"
+    app:cardElevation="3dp"
+    app:cardPreventCornerOverlap="true"
+    android:background="@color/colorWhite"
     android:theme="@style/AppTheme">
 
     <LinearLayout
@@ -36,6 +39,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:text="United AirLines"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/colorMidnight" />
 
                 <LinearLayout
@@ -48,12 +53,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
+                        android:fontFamily="@font/poppins_medium"
                         android:text="7h" />
 
                     <TextView
                         android:id="@+id/flightMinItem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
                         android:layout_marginStart="5dp"
                         android:text="30min" />
 
@@ -61,6 +68,7 @@
                         android:id="@+id/flightStopsItem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
                         android:layout_marginStart="5dp"
                         android:text="(1 Stop)" />
                 </LinearLayout>
@@ -77,12 +85,15 @@
                     android:id="@+id/flightCostItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="USD 450"
                     android:textColor="@color/colorMidnight" />
 
                 <TextView
                     android:id="@+id/TicketLeftItem"
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_height="wrap_content"
                     android:text="13 Tickets Left" />
             </LinearLayout>
@@ -103,6 +114,7 @@
                     android:id="@+id/flightFormItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_marginStart="16dp"
                     android:text="AUS"
                     android:textColor="@color/colorMidnight" />
@@ -111,12 +123,13 @@
                     android:id="@+id/depTimeItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_marginStart="16dp"
                     android:text="5:15 pm" />
             </LinearLayout>
 
             <ImageView
-                android:layout_width="191dp"
+                android:layout_width="198dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/ic_trending_flat"/>
@@ -131,12 +144,14 @@
                     android:id="@+id/flightToItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="NYC"
                     android:textColor="@color/colorMidnight" />
 
                 <TextView
                     android:id="@+id/arrivalTimeItems"
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_height="wrap_content"
                     android:text="11:15 pm" />
             </LinearLayout>

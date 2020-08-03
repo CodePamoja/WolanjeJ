@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,6 +33,8 @@ import com.example.wolanjej.RetrofitUtils.ApiJsonObjects;
 import com.example.wolanjej.RetrofitUtils.JsonPlaceHolders;
 import com.example.wolanjej.RetrofitUtils.RetrofitClient;
 import com.example.wolanjej.models.BalanceModel;
+import com.example.wolanjej.models.Model;
+import com.example.wolanjej.recyclerAdapters.MyAdapter;
 import com.example.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
@@ -548,6 +551,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetView = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.activity_screen18, (LinearLayout) findViewById(R.id.screen_16)
                 );
+
+        //bottomSheet16 recyclerview
+        RecyclerView mRecyclerView = bottomSheetView.findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        MyAdapter myAdapter = new MyAdapter(this, getMylist());
+        mRecyclerView.setAdapter(myAdapter);
         bottomSheetView.findViewById(R.id.img_close16).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -852,6 +861,35 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         startActivity(move);
         finish();
 
+    }
+    public ArrayList<Model> getMylist() {
+        ArrayList<Model>models = new ArrayList<>();
+        Model m = new Model();
+        m.setTitle("Pay Tv");
+        m.setImage(R.drawable.ic_exchange);
+        models.add(m);
+
+        Model m3 = new Model();
+        m3.setTitle("Saved Billers");
+        m3.setImage(R.mipmap.group_18);
+        models.add(m3);
+
+        Model m1 = new Model();
+        m1.setTitle("Electricity");
+        m1.setImage(R.drawable.ic_services);
+        models.add(m);
+
+        Model m2 = new Model();
+        m2.setTitle("Pay Internet");
+        m2.setImage(R.drawable.ic_wallet);
+        models.add(m2);
+
+        Model m4 = new Model();
+        m4.setTitle("Buy Airtime");
+        m4.setImage(R.drawable.ic_wallet);
+        models.add(m4);
+
+        return models;
     }
 
     private boolean isNetworkAvailable() {

@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorWarmpurple"
-        android:background="#cc000000"
+        android:backgroundTint="@color/home_purple"
+        android:background="@color/home_purple"
         android:orientation="vertical">
 
         <include
@@ -30,7 +30,9 @@
                 android:id="@+id/fromBook03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
                 android:layout_marginTop="9dp"
                 android:text="AUS"
                 android:textColor="@color/colorWhite"
@@ -46,6 +48,8 @@
                 android:id="@+id/toBook03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="9dp"
                 android:text="NYC"
@@ -64,6 +68,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="9dp"
                 android:text="3, september,"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp" />
 
@@ -74,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="9dp"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_marginStart="5dp"
                 android:text="1 Traveller"
                 android:textColor="@color/colorWhite"
@@ -99,8 +105,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="26dp"
+                android:layout_marginStart="32dp"
                 android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Available Flights"
                 android:textColor="@color/colorMidnight"
                 android:textSize="20sp" />
@@ -112,12 +120,6 @@
         android:layout_height="match_parent"
         android:background="#f0f2f6"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="No Flights Available"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewBookFlight03"
             android:layout_width="match_parent"

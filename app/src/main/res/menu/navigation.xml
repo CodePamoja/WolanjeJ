@@ -5,6 +5,7 @@
       android:icon="@drawable/ic_transfer_to_wallet"
       android:title="My wallet"
       android:enabled="true"
+      android:fontFamily="@font/poppins_regular"
       android:onClick="moveMyWallet"
       android:iconTint="@color/colorBlack"/>
 
@@ -13,6 +14,7 @@
       android:icon="@mipmap/hand"
       android:title="Payments"
       android:enabled="true"
+      android:fontFamily="@font/poppins_regular"
       android:onClick="moveBillManagerPayment"
       android:iconTint="@color/colorBlack"/>
 
@@ -21,6 +23,7 @@
       android:icon="@mipmap/group2"
       android:title="Loyalty"
       android:enabled="true"
+      android:fontFamily="@font/poppins_regular"
       android:onClick="moveReferrals"
       android:iconTint="@color/colorBlack"/>
 
@@ -29,6 +32,7 @@
       android:icon="@mipmap/combined_shape"
       android:title="Billers"
       android:enabled="true"
+      android:fontFamily="@font/poppins_regular"
       android:onClick="moveBillManagerBiller"
       android:iconTint="@color/colorBlack"/>
 
@@ -37,6 +41,7 @@
       android:icon="@drawable/ic_settings"
       android:title="Settings"
       android:enabled="true"
+      android:fontFamily="@font/poppins_regular"
       android:onClick="movetoSettings48"
       android:iconTint="@color/colorBlack"/>
 </menu>

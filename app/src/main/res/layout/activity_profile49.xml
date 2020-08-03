@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:textSize="28sp"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/colorMidnight"
             android:text="Profile"/>
     </LinearLayout>
@@ -63,6 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Personal Info"
                     android:textColor="@color/colorMidnight"
                     android:textSize="18sp" />
@@ -169,6 +171,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginTop="16dp"
                     android:text="Identity Card Informaton"
                     android:textColor="@color/colorMidnight"
@@ -266,6 +269,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="25dp"
             android:text="save changes"
+            android:fontFamily="@font/poppins_regular"
+            android:textAllCaps="false"
             android:onClick="MoveToProfile"
             android:layout_gravity="center_horizontal" />
 

@@ -2,36 +2,42 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_gravity="center_horizontal"
     android:background="#f8f8fa"
     android:layout_height="120dp">
-<LinearLayout
-    android:id="@+id/layout_1"
-    android:layout_width="60dp"
-    android:layout_height="100dp"
-    android:gravity="center_vertical"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/transaction_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/blue_grey"
-        android:textSize="16sp"
-        android:text="Oct"/>
-    <TextView
-        android:id="@+id/transaction_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/poppins_regular"
-        android:textStyle="bold"
-        android:textColor="@color/colorMidnight"
-        android:textSize="18sp"
-        android:text="22"/>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_1"
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/transaction_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Oct"
+            android:textColor="@color/blue_grey"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/transaction_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="22"
+            android:textColor="@color/colorMidnight"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_02"
@@ -45,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:fontFamily="@font/poppins_regular"
             android:text="Top Up - Admin"
             android:textColor="@color/colorMidnight"
@@ -55,7 +61,7 @@
             android:id="@+id/transaction_top_up_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="95dp"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/colorMidnight"
@@ -78,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/blue_grey"
             android:text="Transaction Fee:"
@@ -88,7 +94,7 @@
             android:id="@+id/transaction_feeAmount"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="95dp"
             android:fontFamily="@font/poppins_regular"
             android:gravity="end"
             android:text="0.00"
@@ -110,7 +116,7 @@
             android:id="@+id/txt_transaction_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:text="Status: Completed "
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/blue_grey"
@@ -119,18 +125,17 @@
         <View
             android:layout_width="1dp"
             android:layout_height="15dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:background="@color/blue_grey"/>
 
         <TextView
             android:id="@+id/txt_transaction_pending"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="12dp"
             android:textSize="16sp"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/blue_grey"
-            android:gravity="end"
             android:text="Pending: 0  "
             />
     </LinearLayout>

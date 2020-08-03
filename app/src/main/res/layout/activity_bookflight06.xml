@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Bookflight06"
-    android:background="@color/colorWarmpurple"
+    android:background="@color/home_purple"
     >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
             android:text="@string/flight_information"
             android:textColor="#ffffff"
             android:textSize="18sp" />
@@ -62,6 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
                     android:lineSpacingExtra="14sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="@string/emirates_airlines"
                     android:textColor="@color/colorMidnight"
                     android:textSize="16sp" />
@@ -73,6 +75,7 @@
                     android:layout_below="@id/flightagency"
                     android:layout_marginStart="80dp"
                     android:lineSpacingExtra="11sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="@string/_8h_12m_1_stop"
                     android:textColor="@color/blue_grey"
                     android:textSize="13sp" />
@@ -84,6 +87,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
                     android:lineSpacingExtra="14sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="@string/usd_643"
                     android:textColor="@color/colorMidnight"
                     android:textSize="16sp" />
@@ -95,6 +99,7 @@
                     android:layout_below="@id/filghtcharge"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="11sp"
                     android:text="10 tickets left"
                     android:textColor="@color/blue_grey"
@@ -105,6 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/flighticon"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginStart="24dp"
                     android:lineSpacingExtra="10sp"
                     android:text="AUS"
@@ -117,6 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/countryfrom"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginStart="24dp"
                     android:lineSpacingExtra="8sp"
                     android:text="5:15 PM"
@@ -129,6 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/flighticon"
                     android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginEnd="24dp"
                     android:layout_marginTop="24dp"
                     android:lineSpacingExtra="10sp"
@@ -143,6 +151,7 @@
                     android:layout_below="@id/countryto"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="8sp"
                     android:text="11:15 PM"
                     android:textColor="@color/blue_grey"
@@ -161,6 +170,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:layout_margin="24dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/conttitle"
                     android:layout_below="@id/separatorone"
                     android:textColor="@color/colorMidnight"
@@ -173,6 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/conttitle"
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/phonenum"
                     android:layout_marginHorizontal="24dp"
                     android:hint="+254"
@@ -192,6 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/phonenum"
                     android:id="@+id/email"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_margin="24dp"
                     android:hint="Enter you email to receive info "
                     >
@@ -210,6 +222,7 @@
                     android:layout_below="@id/email"
                     android:hint="Promo Code"
                     android:layout_marginHorizontal="24dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginBottom="100dp"
                     >
 
@@ -241,6 +254,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="8dp"
             android:onClick="MoveToBkPin"
             android:text="Go to Payment"

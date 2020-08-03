@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Wolenje"
             android:textSize="22sp"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/colorWhite"
             android:gravity="center_horizontal"
             android:layout_gravity="center"

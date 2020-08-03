@@ -52,7 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         return models.size();
     }
 
-    public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyHolder extends RecyclerView.ViewHolder{
         Context context = itemView.getContext();
         @SuppressLint("StaticFieldLeak")
         public  TextView mTitle;
@@ -66,31 +66,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
 
             mImageView = itemView.findViewById(R.id.item_image);
             mTitle = itemView.findViewById(R.id.item_title);
-            itemView.setClickable(true);
-            itemView.setOnClickListener((View.OnClickListener) this);
         }
 
-        @Override
-        public void onClick(View v) {
-            final Intent intent;
-            switch (getAdapterPosition()) {
-                case 0:
-                    intent = new Intent(context, Home.class);
-                    break;
-
-                case 1:
-                    intent = new Intent(context, Registration06.class);
-                    break;
-                case 2:
-                    intent = new Intent(context, Home.class);
-                    break;
-
-                default:
-                    intent = new Intent(context, Registration07.class);
-                    break;
-            }
-            context.startActivity(intent);
-        }
 
     }
 }

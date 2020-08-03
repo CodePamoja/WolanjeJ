@@ -67,7 +67,7 @@
                             android:layout_below="@id/textbalance"
                             android:layout_marginVertical="24dp"
                             android:layout_marginStart="24dp"
-                            android:fontFamily="@font/poppins_regular"
+                            android:fontFamily="@font/poppins_semi_bold"
                             android:gravity="center_horizontal"
                             android:text="KSH 0.00"
                             android:textColor="@color/colorWhite"
@@ -86,6 +86,8 @@
                             android:backgroundTint="@color/colorAccent"
                             android:fontFamily="@font/poppins_medium"
                             android:text="@string/my_e_wallet"
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/transfer_money_button"
                             app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +106,7 @@
                             android:backgroundTint="@color/colorWhite"
                             android:fontFamily="@font/poppins_medium"
                             android:text="@string/transfer_money"
+                            android:textAllCaps="false"
                             android:textColor="@color/colorAccent"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@id/wallet"
@@ -118,6 +121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="16dp"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="@string/recent_transfer"
                         android:textColor="#222222"
                         android:textSize="18sp"
@@ -132,9 +136,12 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="24dp"
                         android:backgroundTint="@color/colorWhite"
-                        android:text="@string/add_new"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Add new "
+                        android:textAllCaps="false"
                         android:textColor="#21c17a"
                         android:textSize="16sp"
+                        android:textStyle="normal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
 
@@ -143,7 +150,7 @@
                         android:id="@+id/recyclerViewHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="18dp"
                         android:orientation="horizontal"
                         android:overScrollMode="always"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -157,6 +164,7 @@
                         android:layout_below="@id/recyclerViewHome"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="@string/quick_services"
                         android:textColor="#222222"
                         android:textSize="18sp"
@@ -175,9 +183,12 @@
                         android:layout_marginEnd="24dp"
                         android:clickable="true"
                         android:focusable="true"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="@string/view_all"
+                        android:textAllCaps="false"
                         android:textColor="#21c17a"
                         android:textSize="16sp"
+                        android:textStyle="normal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/recyclerViewHome" />
 
@@ -197,7 +208,7 @@
                         app:layout_constraintHorizontal_weight="1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/quick"
-                        app:strokeColor="#A8A8A8"
+                        app:strokeColor="@color/colorGreyBackground"
                         app:strokeWidth="1dp">
 
                         <RelativeLayout
@@ -219,6 +230,7 @@
                                 android:layout_below="@id/airtime"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginBottom="8dp"
+                                android:fontFamily="@font/poppins_regular"
                                 android:text="@string/buy_airtime"
                                 android:textColor="#444444"
                                 android:textSize="12sp" />
@@ -243,7 +255,7 @@
                         app:layout_constraintHorizontal_weight="1"
                         app:layout_constraintStart_toEndOf="@id/cardBuyAirtime"
                         app:layout_constraintTop_toBottomOf="@id/quick"
-                        app:strokeColor="#A8A8A8"
+                        app:strokeColor="@color/colorGreyBackground"
                         app:strokeWidth="1dp">
 
                         <RelativeLayout
@@ -266,6 +278,7 @@
                                 android:layout_below="@id/transfer"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginBottom="6dp"
+                                android:fontFamily="@font/poppins_regular"
                                 android:text="@string/transfers"
                                 android:textColor="#444444"
                                 android:textSize="12sp" />
@@ -288,7 +301,7 @@
                         app:layout_constraintHorizontal_weight="1"
                         app:layout_constraintStart_toEndOf="@id/CTransferMain"
                         app:layout_constraintTop_toBottomOf="@id/quick"
-                        app:strokeColor="#A8A8A8"
+                        app:strokeColor="@color/colorGreyBackground"
                         app:strokeWidth="1dp">
 
                         <RelativeLayout
@@ -310,6 +323,7 @@
                                 android:layout_below="@id/loans"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginBottom="8dp"
+                                android:fontFamily="@font/poppins_regular"
                                 android:text="@string/loans"
                                 android:textColor="#444444"
                                 android:textSize="12sp" />
@@ -320,7 +334,7 @@
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/cardTrans"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="110dp"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="13dp"
                         android:layout_marginEnd="24dp"
@@ -344,6 +358,7 @@
                                 android:id="@+id/wolenjesponsor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
                                 android:text="Wolenje Sponsporship"
                                 android:textColor="#ffffff"
                                 android:textSize="16sp" />
@@ -353,6 +368,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/wolenjesponsor"
+                                android:fontFamily="@font/poppins_regular"
                                 android:text="It’s about doing the right thing!"
                                 android:textColor="#ffffff"
                                 android:textSize="12sp" />
@@ -361,10 +377,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="10dp"
                                 android:layout_marginEnd="20dp"
                                 android:background="@android:color/transparent"
                                 android:contentDescription="@string/todo"
+                                android:fontFamily="@font/poppins_regular"
                                 android:src="@drawable/invalid_name" />
 
                             <ImageView
@@ -374,6 +391,7 @@
                                 android:layout_below="@id/wolajeexp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="12dp"
+                                android:fontFamily="@font/poppins_regular"
                                 android:src="@drawable/oval" />
 
                             <ImageView
@@ -384,6 +402,7 @@
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="12dp"
                                 android:layout_toEndOf="@id/ovalmain"
+                                android:fontFamily="@font/poppins_regular"
                                 android:src="@drawable/oval_copy_2" />
 
                             <ImageView
@@ -394,6 +413,7 @@
                                 android:layout_marginEnd="12dp"
                                 android:layout_toEndOf="@id/ovalcopy"
                                 android:contentDescription="TODO"
+                                android:fontFamily="@font/poppins_regular"
                                 android:src="@drawable/oval_copy_2" />
 
                         </RelativeLayout>
@@ -413,6 +433,7 @@
             android:layout_gravity="bottom"
             android:layout_marginTop="20dp"
             android:background="@color/colorWhite"
+            android:fontFamily="@font/poppins_regular"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/navigation" />
 
@@ -432,6 +453,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:fontFamily="@font/poppins_regular"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/navdraw" />
 </androidx.drawerlayout.widget.DrawerLayout>

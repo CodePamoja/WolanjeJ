@@ -72,7 +72,7 @@
                 android:backgroundTint="@color/colorWhite"
                 android:elevation="12dp"
                 android:outlineAmbientShadowColor="#120d0229"
-                app:cardCornerRadius="4dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

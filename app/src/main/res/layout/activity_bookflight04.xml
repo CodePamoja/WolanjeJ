@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Bookflight04"
-    android:background="@color/warm_purple"
+    android:background="@color/home_purple"
     >
 
     <androidx.appcompat.widget.Toolbar
@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/displayflightfeatures"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -24,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
             android:text="@string/flight_information"
             android:textColor="#ffffff"
             android:textSize="18sp" />
@@ -64,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="14sp"
                     android:text="@string/emirates_airlines"
                     android:textColor="@color/colorMidnight"
@@ -76,6 +77,7 @@
                     android:layout_below="@id/flightAgencyBf04"
                     android:layout_marginStart="80dp"
                     android:lineSpacingExtra="11sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="@string/_8h_12m_1_stop"
                     android:textColor="@color/blue_grey"
                     android:textSize="13sp" />
@@ -87,6 +89,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
                     android:lineSpacingExtra="14sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="@string/usd_643"
                     android:textColor="@color/colorMidnight"
                     android:textSize="16sp" />
@@ -99,6 +102,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
                     android:lineSpacingExtra="11sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="10 tickets left"
                     android:textColor="@color/blue_grey"
                     android:textSize="13sp" />
@@ -111,6 +115,7 @@
                     android:layout_marginStart="24dp"
                     android:lineSpacingExtra="10sp"
                     android:text="AUS"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginTop="24dp"
                     android:textColor="@color/colorMidnight"
                     android:textSize="14sp" />
@@ -122,6 +127,7 @@
                     android:layout_below="@id/countryfrom"
                     android:layout_marginStart="24dp"
                     android:lineSpacingExtra="8sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="5:15 PM"
                     android:textColor="@color/blue_grey"
                     android:textSize="12sp" />
@@ -133,6 +139,7 @@
                     android:layout_below="@id/flighticonBf04"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_marginTop="24dp"
                     android:lineSpacingExtra="10sp"
                     android:text="BNA"
@@ -147,6 +154,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
                     android:lineSpacingExtra="8sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="11:15 PM"
                     android:textColor="@color/blue_grey"
                     android:textSize="12sp" />
@@ -166,6 +174,7 @@
                     android:layout_below="@id/separatorone"
                     android:layout_marginStart="24dp"
                     android:lineSpacingExtra="8sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="80%"
                     android:textColor="@color/colorMidnight"
                     android:textSize="22sp" />
@@ -178,6 +187,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
                     android:lineSpacingExtra="8sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="12 m"
                     android:textColor="@color/colorMidnight"
                     android:textSize="22sp" />
@@ -189,6 +199,7 @@
                     android:layout_below="@id/puncuality"
                     android:layout_marginStart="24dp"
                     android:lineSpacingExtra="11sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Puncuality"
                     android:textColor="@color/blue_grey"
                     android:textSize="13sp" />
@@ -200,6 +211,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="24dp"
                     android:lineSpacingExtra="11sp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Delayed on average by"
                     android:textColor="@color/blue_grey"
                     android:textSize="13sp" />
@@ -219,6 +231,7 @@
                     android:layout_below="@id/separatortwo"
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="12dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="14sp"
                     android:text="Aircraft Details"
                     android:textColor="@color/colorMidnight"
@@ -248,6 +261,7 @@
                                 android:layout_height="wrap_content"
                                 android:lineSpacingExtra="10sp"
                                 android:text="Model"
+                                android:fontFamily="@font/poppins_regular"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
 
@@ -256,6 +270,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:lineSpacingExtra="10sp"
+                                android:fontFamily="@font/poppins_regular"
                                 android:text="Airbus 787-900"
                                 android:textColor="@color/colorMidnight"
                                 android:textSize="14sp" />
@@ -278,6 +293,7 @@
                                 android:layout_height="wrap_content"
                                 android:lineSpacingExtra="10sp"
                                 android:text="Type"
+                                android:fontFamily="@font/poppins_regular"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
 
@@ -286,6 +302,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:lineSpacingExtra="10sp"
+                                android:fontFamily="@font/poppins_regular"
                                 android:text="Twin - aisle"
                                 android:textColor="@color/colorMidnight"
                                 android:textSize="14sp" />
@@ -295,6 +312,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
                             android:layout_below="@id/puntime"
+                            android:fontFamily="@font/poppins_regular"
                             android:layout_marginVertical="24dp"
                             android:background="#f0f2f6"/>
 
@@ -308,6 +326,7 @@
                                 android:layout_height="wrap_content"
                                 android:lineSpacingExtra="10sp"
                                 android:text="Meal"
+                                android:fontFamily="@font/poppins_regular"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
 
@@ -317,6 +336,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:lineSpacingExtra="10sp"
                                 android:text="Yes"
+                                android:fontFamily="@font/poppins_regular"
                                 android:textColor="@color/colorMidnight"
                                 android:textSize="14sp" />
                         </RelativeLayout>
@@ -338,6 +358,7 @@
                                 android:layout_height="wrap_content"
                                 android:lineSpacingExtra="10sp"
                                 android:text="Wi-Fi"
+                                android:fontFamily="@font/poppins_regular"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
 
@@ -347,6 +368,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:lineSpacingExtra="10sp"
                                 android:text="Available"
+                                android:fontFamily="@font/poppins_regular"
                                 android:textColor="@color/colorMidnight"
                                 android:textSize="14sp" />
                         </RelativeLayout>
@@ -368,6 +390,7 @@
                                 android:layout_height="wrap_content"
                                 android:lineSpacingExtra="10sp"
                                 android:text="Power Outlet"
+                                android:fontFamily="@font/poppins_regular"
                                 android:textColor="@color/blue_grey"
                                 android:textSize="14sp" />
 
@@ -377,6 +400,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:lineSpacingExtra="10sp"
                                 android:text="Unknown"
+                                android:fontFamily="@font/poppins_regular"
                                 android:textColor="@color/colorMidnight"
                                 android:textSize="14sp" />
                         </RelativeLayout>

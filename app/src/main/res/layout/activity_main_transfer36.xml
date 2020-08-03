@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="20dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text="@string/transfer"
                 android:textColor="@color/colorMidnight"
                 android:textSize="28sp" />
@@ -76,6 +77,7 @@
                             android:text="@string/transfer_to_wallet"
                             android:textColor="@color/colorWhite"
                             android:textSize="20sp"
+                            android:fontFamily="@font/poppins_regular"
                             android:layout_marginStart="20dp"
                             app:fontFamily="@font/poppins_medium"/>
 
@@ -122,6 +124,7 @@
                             android:text="@string/transfer_to_bank"
                             android:textColor="@color/colorWhite"
                             android:textSize="20sp"
+                            android:fontFamily="@font/poppins_regular"
                             android:layout_marginStart="20dp"
                             app:fontFamily="@font/poppins_medium"/>
 
@@ -166,6 +169,7 @@
                             android:text="@string/transfer_to_phone"
                             android:textColor="@color/colorWhite"
                             android:textSize="20sp"
+                            android:fontFamily="@font/poppins_regular"
                             android:layout_marginStart="20dp"
                             app:fontFamily="@font/poppins_medium"/>
 
