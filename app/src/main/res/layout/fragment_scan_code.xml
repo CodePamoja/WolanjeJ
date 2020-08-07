@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.fragment_scan_code">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="327dp"
+        android:layout_height="364dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/scan_qr_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="86dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="84dp"
+                android:src="@drawable/ic_scancode" />
+
+            <TextView
+                android:id="@+id/scanntext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/scan_qr_main"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="51dp"
+                android:text="Scanning" />
+
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/aviloder"
+                style="@style/AVLoadingIndicatorView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/scanntext"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="67dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="25dp"
+                android:visibility="invisible"
+                app:indicatorColor="@color/gray4"
+                app:indicatorName="BallPulseIndicator" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
