@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Top_up"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    tools:context=".Top_up">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            app:navigationIcon="@mipmap/small_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            app:navigationIcon="@mipmap/small_left"
 
             />
+
         <TextView
             android:id="@+id/txt_balance_top_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_below="@id/toolbar"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/balance"
-android:layout_marginEnd="24dp"
             android:textColor="@color/blue_grey"
             android:textSize="14sp" />
 
@@ -36,10 +37,11 @@ android:layout_marginEnd="24dp"
             android:id="@+id/txt_top_up03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_below="@id/txt_balance_top_up"
-            android:text="@string/top_up"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/top_up"
             android:textColor="@color/colorMidnight"
             android:textSize="26sp" />
 
@@ -50,9 +52,10 @@ android:layout_marginEnd="24dp"
             android:layout_above="@+id/card_other_number01"
             android:layout_below="@+id/txt_balance_top_up"
             android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/txt_top_up03"
-            android:gravity="end"
             android:layout_marginEnd="24dp"
+            android:layout_toEndOf="@+id/txt_top_up03"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="end"
             android:letterSpacing="0.03"
             android:text="Kes 0.00"
             android:textColor="#18181c"
@@ -64,9 +67,10 @@ android:layout_marginEnd="24dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_top_up03"
             android:layout_alignParentStart="true"
-            android:text="@string/select_recipient"
-            android:layout_marginVertical="24dp"
             android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/select_recipient"
             android:textColor="@color/blue_grey"
             android:textSize="16sp" />
 
@@ -74,27 +78,21 @@ android:layout_marginEnd="24dp"
             android:id="@+id/card_other_number01"
             android:layout_width="328dp"
             android:layout_height="73dp"
-            android:layout_marginHorizontal="24dp"
             android:layout_below="@+id/txt_select_recipient_Number"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_weight="50"
-                android:layout_height="wrap_content"
-                android:text="Select Number"
-                android:textSize="14sp"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/colorPurple"/>
+
 
             <Spinner
                 android:id="@+id/select_number"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:drawSelectorOnTop="true"
+                android:fontFamily="@font/poppins_medium"
                 android:spinnerMode="dropdown"
                 tools:ignore="NestedWeights" />
 
@@ -106,10 +104,11 @@ android:layout_marginEnd="24dp"
             android:id="@+id/txtAmountTopUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
             android:layout_below="@+id/card_other_number01"
             android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="35dp"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/blue_grey"
             android:textSize="16sp"
             tools:text="Amount" />
@@ -118,71 +117,76 @@ android:layout_marginEnd="24dp"
             android:id="@+id/amount_top_up"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginHorizontal="24dp"
             android:layout_below="@+id/txtAmountTopUp"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="16dp"
+            android:autofillHints=""
             android:background="@drawable/textviewborder"
+            android:fontFamily="@font/poppins_medium"
             android:hint="Amount Number."
             android:inputType="phone"
-            android:padding="10dp"
-            android:autofillHints="" />
+            android:padding="10dp" />
 
         <LinearLayout
+            android:id="@+id/amuntdis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/amount_top_up"
-            android:id="@+id/amuntdis"
             android:layout_marginHorizontal="24dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/amount_display01"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="32dp"
+                android:layout_weight="1"
                 android:background="@drawable/splash3"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:onClick="addAmount1"
+                android:text="50"
                 android:textColor="#8484a9"
-                android:textSize="14sp"
-                android:text="50" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/amount_display02"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="32dp"
                 android:layout_marginStart="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/splash3"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:onClick="addAmount2"
+                android:text="100"
                 android:textColor="#8484a9"
-                android:textSize="14sp"
-                android:text="100" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/amount_display03"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="32dp"
                 android:layout_marginStart="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/splash3"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:onClick="addAmount3"
+                android:text="250"
                 android:textColor="#8484a9"
-                android:textSize="14sp"
-                android:text="250" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/amount_display04"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="32dp"
                 android:layout_marginStart="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/splash3"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
-                android:text="500"
                 android:onClick="addAmount4"
+                android:text="500"
                 android:textColor="#8484a9"
                 android:textSize="14sp" />
 
@@ -190,15 +194,16 @@ android:layout_marginEnd="24dp"
         </LinearLayout>
 
 
-
         <Button
             android:id="@+id/btn_continue_top_up"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_below="@+id/amuntdis"
-            android:onClick="moveToBuy"
             android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="90dp"
-            android:text="Continue" />
+            android:fontFamily="@font/poppins_medium"
+            android:onClick="moveToBuy"
+            android:text="Continue"
+            android:textAllCaps="false" />
     </RelativeLayout>
 </ScrollView>

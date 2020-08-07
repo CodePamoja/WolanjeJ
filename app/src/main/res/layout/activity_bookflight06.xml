@@ -184,6 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/conttitle"
                     android:fontFamily="@font/poppins_regular"
+                    android:background="@android:color/transparent"
                     android:id="@+id/phonenum"
                     android:layout_marginHorizontal="24dp"
                     android:hint="+254"
@@ -191,6 +192,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
+                        android:background="@android:color/transparent"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
                         android:maxLength="9"
@@ -203,6 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/phonenum"
                     android:id="@+id/email"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/poppins_regular"
                     android:layout_margin="24dp"
                     android:hint="Enter you email to receive info "
@@ -210,6 +213,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
+                        android:background="@android:color/transparent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
                         />
@@ -230,6 +234,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
+                        android:background="@android:color/transparent"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>

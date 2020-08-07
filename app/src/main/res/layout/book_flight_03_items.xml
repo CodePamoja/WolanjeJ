@@ -38,8 +38,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
+                    android:lineSpacingExtra="14sp"
+                    android:textSize="16sp"
                     android:text="United AirLines"
-                    android:textStyle="bold"
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/colorMidnight" />
 
@@ -85,7 +86,8 @@
                     android:id="@+id/flightCostItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="14sp"
                     android:fontFamily="@font/poppins_medium"
                     android:text="USD 450"
                     android:textColor="@color/colorMidnight" />
@@ -116,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
                     android:layout_marginStart="16dp"
+                    android:textSize="14dp"
                     android:text="AUS"
                     android:textColor="@color/colorMidnight" />
 
@@ -144,6 +147,7 @@
                     android:id="@+id/flightToItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="14dp"
                     android:fontFamily="@font/poppins_medium"
                     android:text="NYC"
                     android:textColor="@color/colorMidnight" />

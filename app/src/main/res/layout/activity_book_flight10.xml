@@ -382,7 +382,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="10dp">
                 <ImageView
                     android:layout_width="250dp"
                     android:layout_height="35dp"
@@ -413,6 +413,7 @@
             android:layout_marginVertical="20dp"
             android:text="Save and Continue"
             android:gravity="center"
+            android:textAllCaps="false"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"

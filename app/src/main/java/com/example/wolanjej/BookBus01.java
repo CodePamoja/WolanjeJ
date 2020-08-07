@@ -8,25 +8,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.wolanjej.pagerAdapters.BookABusAdapter;
 import com.example.wolanjej.pagerAdapters.BookFlightAdapter;
 import com.google.android.material.tabs.TabLayout;
 
-public class BookFlight extends AppCompatActivity {
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    Toolbar tb;
+public class BookBus01 extends AppCompatActivity {
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private Toolbar tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_flight);
+        setContentView(R.layout.activity_book_bus01);
 
-        tabLayout = findViewById(R.id.tabLayout_book_flight);
-        viewPager = findViewById(R.id.bookFlightViewPager);
+
+        tabLayout = findViewById(R.id.tabLayout_book_bus);
+        viewPager = findViewById(R.id.bookBusViewPager);
 
         tabLayout.addTab(tabLayout.newTab().setText("Book"));
         tabLayout.addTab(tabLayout.newTab().setText("My Bookings"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
         setViewPager();
         setToolBar(tb);
     }
@@ -46,11 +50,8 @@ public class BookFlight extends AppCompatActivity {
 
     }
 
-    public void MoveToBookFlight02(View view) {
-        startActivity(new Intent(this,BookFlight02.class));
-    }
     private void setViewPager(){
-        final BookFlightAdapter adapter = new BookFlightAdapter(this,getSupportFragmentManager(), tabLayout.getTabCount());
+        final BookABusAdapter adapter = new BookABusAdapter(this,getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -72,5 +73,8 @@ public class BookFlight extends AppCompatActivity {
             }
         });
     }
-
+    public void MoveToBookBusSelectedDate(View view) {
+        Intent intent = new Intent(this, BookBusSelectedDate02.class);
+        startActivity(intent);
+    }
 }

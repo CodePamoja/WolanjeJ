@@ -28,6 +28,13 @@ public class Travel extends AppCompatActivity  implements View.OnClickListener {
         });
         materialCardView2 = findViewById(R.id.train_ticket_card);
         materialCardView3 = findViewById(R.id.bus_ticket_card);
+        materialCardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BookBus01.class);
+                startActivity(intent);
+            }
+        });
         materialCardView4 = findViewById(R.id.booking_ticket_card);
 
         setToolBar();

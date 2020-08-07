@@ -11,14 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class BookFlight10 extends AppCompatActivity {
-
+public class BookBus09 extends AppCompatActivity {
     private Toolbar tb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_flight10);
-
+        setContentView(R.layout.activity_book_bus09);
         setToolBar(tb);
     }
 
@@ -30,21 +29,21 @@ public class BookFlight10 extends AppCompatActivity {
 
     private void ShowDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
-        View view = inflater.inflate(R.layout.book_bus_success_dialog, null);
+        View view = inflater.inflate(R.layout.book_flight09, null);
 
 
         final AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setView(view)
                 .create();
 
-        ImageButton dismiss = view.findViewById(R.id.dismissbusSuccess09);
+        ImageButton dismiss = view.findViewById(R.id.dismissbk09);
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
             }
         });
-        Button btnViewReceipt = view.findViewById(R.id.dismiss_bus_success);
+        Button btnViewReceipt = view.findViewById(R.id.dismiss_success);
         btnViewReceipt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,11 +53,12 @@ public class BookFlight10 extends AppCompatActivity {
 
         alertDialog.show();
     }
+
     private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
-        tb = findViewById(R.id.toolbar2);
+        tb = findViewById(R.id.toolbarBookBus09);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,BookFlightPin.class);
+        final Intent moveToLogo = new Intent(this, BookBus01.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -68,5 +68,10 @@ public class BookFlight10 extends AppCompatActivity {
                 }
         );
 
+    }
+
+    public void MoveToTravelScreen(View view) {
+        Intent intent = new Intent(getApplicationContext(), Travel.class);
+        startActivity(intent);
     }
 }

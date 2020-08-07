@@ -64,22 +64,6 @@ public class TopupOtherNumber extends AppCompatActivity  implements AdapterView.
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
 
-        setToolBar(tb);
-
-    }
-    private void setToolBar(Toolbar tb) {
-        tb = findViewById(R.id.toolbar);
-        setSupportActionBar(tb);
-        getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this, Top_up.class);
-        tb.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(movetoLogo);
-                    }
-                }
-        );
 
     }
 

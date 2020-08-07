@@ -119,6 +119,7 @@
                                     android:layout_height="wrap_content"
                                     android:drawableStart="@drawable/ic_kenya_flag"
                                     android:drawablePadding="5dp"
+                                    android:layout_gravity="bottom"
                                     android:inputType="number" />
 
                             </com.google.android.material.textfield.TextInputLayout>

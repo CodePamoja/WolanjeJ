@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f0f2f6"
+    tools:context=".BusInfo04">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/home_purple"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/home_purple"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:navigationIcon="@mipmap/small_left2">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Bus_information"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                </androidx.appcompat.widget.Toolbar>
+
+
+                <RelativeLayout
+                    android:id="@+id/tabLayout_book_bus"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@drawable/splash2"
+                    android:backgroundTint="#f0f2f6"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/flightIconBusInfo04"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@mipmap/favorites_2" />
+
+                    <TextView
+                        android:id="@+id/TextBusInfo01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_toEndOf="@+id/flightIconBusInfo04"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="14sp"
+                        android:text="Easy Coach"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/flightDurationText02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/TextBusInfo01"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_toEndOf="@+id/flightIconBusInfo04"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="11sp"
+                        android:text="@string/_8h_12m_1_stop"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/Textfilghtcharge03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/flightticketsBus04"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="140dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="14sp"
+                        android:text="KES 643"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/flightticketsBus04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="11sp"
+                        android:layout_marginEnd="24dp"
+                        android:text="10 tickets left"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="13sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+                <LinearLayout
+                    android:id="@+id/linearbinfo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="24dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/townBusFrom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="10sp"
+                        android:text="AUS"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/depatureBInfo04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="8sp"
+                        android:text="5:15 PM"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageArrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="129dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="128dp"
+                    android:layout_toStartOf="@+id/linearbinfo2"
+                    android:layout_toEndOf="@+id/linearbinfo1"
+                    android:src="@drawable/ic_trending_flat" />
+
+                <LinearLayout
+                    android:id="@+id/linearbinfo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="25dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/TownBusTo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="10sp"
+                        android:text="BNA"
+                        android:textColor="#5b3b5d"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/arrivalBInfo04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="8sp"
+                        android:text="11:15 PM"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/separatorone"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/imageArrow"
+                    android:layout_marginVertical="24dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/gray4" />
+
+                <TextView
+                    android:id="@+id/puncuality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separatorone"
+                    android:layout_marginStart="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="8sp"
+                    android:text="80%"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/delay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separatorone"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="8sp"
+                    android:text="12 m"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/puntime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/puncuality"
+                    android:layout_marginStart="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Puncuality"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/puncuality"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Delayed on average by"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="13sp" />
+
+                <View
+                    android:id="@+id/separatortwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/puntime"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/gray4" />
+
+
+                <TextView
+                    android:id="@+id/aircradftdetailstitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separatortwo"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="12dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="14sp"
+                    android:text="Aircraft Details"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aircradftdetailstitle"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginBottom="200dp"
+                    app:cardBackgroundColor="#fbfbfc">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp"
+                            android:paddingTop="24dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Model"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Airbus 787-900"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Type"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Twin - aisle"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6"
+                            android:fontFamily="@font/poppins_regular" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Meal"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Yes"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Wi-Fi"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Available"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Power Outlet"
+                                android:textColor="@color/blue_grey"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/poppins_regular"
+                                android:lineSpacingExtra="10sp"
+                                android:text="Unknown"
+                                android:textColor="@color/colorMidnight"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/puntime"
+                            android:layout_marginVertical="24dp"
+                            android:background="#f0f2f6" />
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnnewxtholder"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:background="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="MoveToBus05"
+            android:text="Next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

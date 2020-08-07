@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".BookBusSelectedDate02">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/home_purple"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/toolbarwithout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="9dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Book a Bus"
+                android:textColor="@color/colorWhite"
+                android:textSize="30sp" />
+
+            <LinearLayout
+                android:id="@+id/tabLayout_book_flight"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10.8dp"
+                android:background="@drawable/splash2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:text="Select Date"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <CalendarView
+            android:id="@+id/calender_for_bus"
+            style="@style/AppTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="58dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calender_for_bus">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingExtra="6sp"
+                android:text="Departure Date"
+                android:textColor="@color/blue_grey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="82dp"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingExtra="6sp"
+                android:text="Return Date"
+                android:textColor="@color/blue_grey"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout6">
+
+            <TextView
+                android:id="@+id/dep_ate_bus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingExtra="14sp"
+                android:text="Tue 8 May"
+                android:textColor="@color/colorMidnight"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/return_date_bus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingExtra="14sp"
+                android:text="Sat 12 May"
+                android:textColor="@color/colorMidnight"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_book_bus02"
+            android:layout_width="327dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Done"
+            android:onClick="MoveToBookBus03"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -24,8 +24,8 @@
                 android:layout_width="43dp"
                 android:layout_height="48dp"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="10dp"
                 android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/splash3"
                 android:gravity="center">
@@ -52,6 +52,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/travellersAirFlight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txt_view_travellers"
@@ -117,6 +118,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/prefClassAirFlight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txt_view_economy"
@@ -177,7 +179,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_alignParentStart="true"
-                    android:src="@drawable/flight_takeoff_24" />
+                    android:src="@drawable/ic_baseline_directions_bus_24" />
 
 
             </LinearLayout>
@@ -195,7 +197,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/txt_where_from_fbb"
+                android:id="@+id/txt_where_from_flightAir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/flightFromB00"
@@ -204,7 +206,7 @@
                 android:layout_toEndOf="@id/thisLinLayout1"
                 android:fontFamily="@font/poppins_medium"
                 android:lineSpacingExtra="8sp"
-                android:text="City or AirPort"
+                android:text="Select City"
                 android:textColor="@color/blue_grey"
                 android:textSize="16sp" />
 
@@ -248,7 +250,7 @@
                     android:id="@+id/img_where_to"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/flight_land_24" />
+                    android:src="@drawable/ic_baseline_directions_bus_24" />
             </LinearLayout>
 
 
@@ -264,7 +266,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/txt_where_to_fbb"
+                android:id="@+id/txt_where_to_flightAir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/FlightTo00"
@@ -273,7 +275,7 @@
                 android:layout_toEndOf="@id/thisLinLayout2"
                 android:fontFamily="@font/poppins_medium"
                 android:lineSpacingExtra="8sp"
-                android:text="City or Airport"
+                android:text="Select City"
                 android:textColor="@color/blue_grey"
                 android:textSize="16sp" />
 
@@ -333,7 +335,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/dep_return_date_fbb"
+                android:id="@+id/dep_return_date_flightAir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txt_view_select_dep"
@@ -362,14 +364,14 @@
 
 
         <Button
-            android:id="@+id/button_book_a_flight"
+            android:id="@+id/button_book_a_bus"
             android:layout_width="327dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="46dp"
             android:background="@drawable/splash"
             android:fontFamily="@font/poppins_medium"
-            android:onClick="MoveToBookFlight02"
+            android:onClick="MoveToBookBusSelectedDate"
             android:gravity="center"
             android:text="@string/search"
             android:textAllCaps="false"
