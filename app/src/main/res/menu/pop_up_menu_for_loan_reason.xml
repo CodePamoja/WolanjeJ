@@ -3,20 +3,26 @@
 
     <item
         android:id="@+id/emergency"
+        android:fontFamily="@font/poppins_regular"
         android:title="Emergency"/>
     <item
         android:id="@+id/medical"
+        android:fontFamily="@font/poppins_regular"
         android:title="Medical"/>
     <item
         android:id="@+id/schoolfees"
+        android:fontFamily="@font/poppins_regular"
         android:title="School fees"/>
     <item
         android:id="@+id/wokingcapital"
+        android:fontFamily="@font/poppins_regular"
         android:title="Working capital"/>
     <item
         android:id="@+id/startups"
+        android:fontFamily="@font/poppins_regular"
         android:title="Starups"/>
     <item
         android:id="@+id/others"
+        android:fontFamily="@font/poppins_regular"
         android:title="Other"/>
 </menu>

@@ -9,6 +9,7 @@
     tools:context=".BookFlight">
 
     <LinearLayout
+        android:id="@+id/linearLayout5bk"
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:orientation="vertical"
@@ -40,7 +41,11 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/bookFlightViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5bk"
+        >
     </androidx.viewpager.widget.ViewPager>
 
 

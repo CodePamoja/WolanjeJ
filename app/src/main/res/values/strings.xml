@@ -186,4 +186,13 @@
     <string name="usd_643">USD 643</string>
     <string name="btncancel">Cancel</string>
     <string name="search">Search</string>
+    <string name="getting_started">Getting Started</string>
+    <string name="account_and_payment">Account and Payment</string>
+    <string name="legal_and_privacy_policy">Legal and Privacy Policy</string>
+    <string name="follow_us">Follow Us</string>
+    <string name="account">Account</string>
+    <string name="repurchase_report">Repurchase Report</string>
+    <string name="support">Support</string>
+    <string name="need_support">Need Support?</string>
+    <string name="i_can_t_login_to_the_merchant">I can’t login to the merchant</string>
 </resources>

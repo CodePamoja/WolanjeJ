@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginTop="30dp"
     android:background="@color/colorWhite"
@@ -14,8 +14,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_holder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:src="@mipmap/recta" />
 
     <TextView
@@ -23,13 +23,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/image_holder"
         android:fontFamily="@font/poppins_regular"
         android:letterSpacing="0.02"
         android:lineSpacingExtra="2sp"
         android:text="@string/mr_mof"
         android:textColor="#000000"
-        android:textSize="20sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/phone_number_nav_header"
@@ -43,18 +44,18 @@
         android:lineSpacingExtra="5sp"
         android:text="@string/_0725_000_000"
         android:textColor="#acb1c0"
-        android:textSize="15sp" />
+        android:textSize="14sp" />
 
 
     <Button
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="45dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/name_holder"
         android:onClick="closeMyDrawer"
-        app:icon="@drawable/ic_close_copy_4"
-        app:iconGravity="end" />
+        app:icon="@drawable/ic_close_copy_4" />
 
 
 </RelativeLayout>

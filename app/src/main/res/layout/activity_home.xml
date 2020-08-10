@@ -65,9 +65,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/textbalance"
-                            android:layout_marginVertical="24dp"
+                            android:layout_marginVertical="15dp"
                             android:layout_marginStart="24dp"
-                            android:fontFamily="@font/poppins_semi_bold"
+                            android:fontFamily="@font/poppins_regular"
                             android:gravity="center_horizontal"
                             android:text="KSH 0.00"
                             android:textColor="@color/colorWhite"
@@ -78,7 +78,7 @@
 
                         <Button
                             android:id="@+id/wallet"
-                            android:layout_width="144dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="45dp"
                             android:layout_below="@id/MYBalance"
                             android:layout_marginStart="24dp"
@@ -88,6 +88,7 @@
                             android:text="@string/my_e_wallet"
                             android:textAllCaps="false"
                             android:textStyle="normal"
+                            android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/transfer_money_button"
                             app:layout_constraintStart_toStartOf="parent"
@@ -98,8 +99,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="45dp"
                             android:layout_below="@id/MYBalance"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="24dp"
+                            android:layout_marginStart="12dp"
                             android:layout_marginBottom="24dp"
                             android:layout_toEndOf="@id/wallet"
                             android:background="@drawable/gradient"
@@ -108,9 +108,11 @@
                             android:text="@string/transfer_money"
                             android:textAllCaps="false"
                             android:textColor="@color/colorAccent"
+                            android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@id/wallet"
-                            app:layout_constraintTop_toBottomOf="@id/MYBalance" />
+                            app:layout_constraintTop_toBottomOf="@id/MYBalance"
+                            app:layout_constraintVertical_bias="1.0" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -124,7 +126,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/recent_transfer"
                         android:textColor="#222222"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
 
@@ -140,7 +142,7 @@
                         android:text="Add new "
                         android:textAllCaps="false"
                         android:textColor="#21c17a"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         android:textStyle="normal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
@@ -150,7 +152,6 @@
                         android:id="@+id/recyclerViewHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
                         android:orientation="horizontal"
                         android:overScrollMode="always"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -167,7 +168,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="@string/quick_services"
                         android:textColor="#222222"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/cardBuyAirtime"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/recyclerViewHome" />
@@ -187,7 +188,7 @@
                         android:text="@string/view_all"
                         android:textAllCaps="false"
                         android:textColor="#21c17a"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         android:textStyle="normal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/recyclerViewHome" />
@@ -335,7 +336,7 @@
                         android:id="@+id/cardTrans"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
-                        android:layout_marginStart="24dp"
+                        android:layout_marginStart="25dp"
                         android:layout_marginTop="13dp"
                         android:layout_marginEnd="24dp"
                         android:layout_marginBottom="32dp"

@@ -224,6 +224,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         startActivity(intent);
     }
 
+    public void OpenNotifications(MenuItem item) {
+        Intent intent = new Intent(this, Notifications52.class);
+        startActivity(intent);
+    }
+
 
 //    https://wolenjeafrica.com/wolenje/api/services
 

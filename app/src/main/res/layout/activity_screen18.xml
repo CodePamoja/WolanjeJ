@@ -99,25 +99,28 @@
                     android:focusable="true"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/image_18f"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_transfer" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="60dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:gravity="end"
+                        android:layout_below="@id/image_18f"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
                         android:text="@string/transfer"
                         android:textColor="@color/blue_grey"
                         android:textSize="12sp" />
+                    </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -132,27 +135,30 @@
                     android:focusable="true"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/image_18e"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_incomedetails" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="20dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:gravity="center_horizontal"
+                        android:layout_below="@id/image_18e"
                         android:lineSpacingExtra="2sp"
                         android:text="@string/income_details"
                         android:textColor="@color/blue_grey"
                         android:textSize="12sp" />
+                    </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -167,26 +173,29 @@
                     android:focusable="true"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/image_18d"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_wallet" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@id/image_18d"
                         android:fontFamily="@font/poppins_regular"
-                        android:gravity="center_horizontal"
+                        android:layout_marginStart="20dp"
                         android:text="@string/wallet"
                         android:textColor="@color/blue_grey"
                         android:textSize="12sp" />
+                    </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
@@ -224,26 +233,29 @@
                     android:focusable="true"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/image_18c"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_services" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:gravity="center_horizontal"
+                        android:layout_marginStart="15dp"
+                        android:layout_below="@id/image_18c"
                         android:text="@string/services"
                         android:textColor="@color/blue_grey"
                         android:textSize="12sp" />
+                    </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -257,27 +269,29 @@
                     android:focusable="true"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/image_18a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_exchange" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:gravity="end"
+                        android:layout_below="@id/image_18a"
+                        android:layout_marginStart="9dp"
                         android:text="@string/exchange"
                         android:textColor="@color/blue_grey"
                         android:textSize="12sp" />
-
+                    </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -291,25 +305,28 @@
                     android:focusable="true"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/image_18b"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_crypto" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:gravity="center_horizontal"
+                        android:layout_marginStart="20dp"
+                        android:layout_below="@id/image_18b"
                         android:text="@string/crypto"
                         android:textColor="@color/blue_grey"
                         android:textSize="12sp" />
+                    </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>

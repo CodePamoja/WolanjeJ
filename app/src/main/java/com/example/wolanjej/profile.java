@@ -50,6 +50,7 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
     private List<ModelUserDetails> modelUserDetails = new ArrayList<>();
     private Toolbar tb;
     private ConnectivityManager connectivityManager;
+    private MaterialCardView materialCardView2;
     private ImageView imageView;
 
     @Override
@@ -58,6 +59,14 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_profile);
 
         tvtext = findViewById(R.id.txtProfName);
+        materialCardView2 = findViewById(R.id.card3Profile);
+        materialCardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), NeedSupport.class);
+                startActivity(intent);
+            }
+        });
         imageView = findViewById(R.id.edit_my_profile);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

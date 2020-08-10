@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GettingStarted">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/textViewNeedSupport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/getting_started"
+                android:textColor="@color/colorMidnight"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RelativeLayout
+                android:id="@+id/rel1GettingStarted"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.38"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewNeedSupport">
+
+                <TextView
+                    android:id="@+id/txtICantLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="I can’t login to the merchant "
+                    android:textColor="#0e1b42"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnGettingStarted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="OpenLoginGettingStarted"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_baseline_down" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnUpGettingStarted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="4dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="CloseLoginGettingStarted"
+                    android:src="@drawable/ic_baseline_expand_less_24"
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:id="@+id/txtDetailsLogin"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtICantLogin"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                    android:textColor="#4c5980"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel2GettingStarted"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.38"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rel1GettingStarted">
+
+                <TextView
+                    android:id="@+id/txtChangeAccountSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Changing account settings"
+                    android:textColor="#0e1b42"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnChangeAccountSet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="OpenLoginChangeAccountSettings"
+                    android:src="@drawable/ic_baseline_down" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnUpChangeAccountSet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="CloseChangeAccountSettings"
+                    android:src="@drawable/ic_baseline_expand_less_24"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtDetailsChangeAccountSettings"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_below="@id/txtChangeAccountSettings"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                    android:textColor="#4c5980"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel3GettingStarted"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.38"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rel2GettingStarted">
+
+
+                <TextView
+                    android:id="@+id/txtPaymentOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Payment Options"
+                    android:textColor="#0e1b42"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnPaymentOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="OpenPaymentOptions"
+                    android:src="@drawable/ic_baseline_down" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnUpPaymentOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="ClosePaymentOptions"
+                    android:src="@drawable/ic_baseline_expand_less_24"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtDetailsPaymentOptions"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtPaymentOptions"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                    android:textColor="#4c5980"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel4GettingStarted"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.38"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rel3GettingStarted">
+
+
+                <TextView
+                    android:id="@+id/txtResetting_my_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Resetting my password"
+                    android:textColor="#0e1b42"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnResetting_my_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="OpenResttingPassword"
+                    android:src="@drawable/ic_baseline_down" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnUpResetting_my_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="CloseResettingPassword"
+                    android:src="@drawable/ic_baseline_expand_less_24"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtDetailsResetting_my_password"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtResetting_my_password"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                    android:textColor="#4c5980"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel5GettingStarted"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.38"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rel4GettingStarted">
+
+
+                <TextView
+                    android:id="@+id/txtReceiving_notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Receiving notifications"
+                    android:textColor="#0e1b42"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnReceiving_notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="OpenReceivingNotifications"
+                    android:src="@drawable/ic_baseline_down" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnUpReceiving_notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="CloseReceivingNotifications"
+                    android:src="@drawable/ic_baseline_expand_less_24"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtDetailsReceiving_notifications"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_below="@id/txtReceiving_notifications"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                    android:textColor="#4c5980"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel6GettingStarted"
+                android:layout_width="327dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.38"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rel5GettingStarted">
+
+
+                <TextView
+                    android:id="@+id/txtLoyaltyProgram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Loyalty Program"
+                    android:textColor="#0e1b42"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnLoyaltyProgram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="OpenLoyaltyPrograms"
+                    android:src="@drawable/ic_baseline_down" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnUpLoyaltyProgram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="0dp"
+                    android:background="@color/colorWhite"
+                    android:onClick="CloseLoyaltyPrograms"
+                    android:src="@drawable/ic_baseline_expand_less_24"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtDetailsLoyaltyProgram"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtLoyaltyProgram"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="8sp"
+                    android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries."
+                    android:textColor="#4c5980"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorWhite">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarGettingStarted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/displayflightfeatures"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@mipmap/small_left">
+
+            <SearchView
+                android:id="@+id/searchViewToolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:drawableLeft="@mipmap/ic_search_black_24dp"
+                android:padding="8dp"
+                android:singleLine="true" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

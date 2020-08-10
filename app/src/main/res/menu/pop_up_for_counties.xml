@@ -4,150 +4,196 @@
     
 
     android:title="Mombasa"
+    android:fontFamily="@font/poppins_regular"
 
     />
     <item
 
         android:title="Kwale"
+        android:fontFamily="@font/poppins_regular"
         /><item
 
     android:title="Kilifi"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Mombasa"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Tana River"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Lamu"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Taita-Taveta"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Garissa"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="wajir"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Mandera"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Marsabit"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Isiolo"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Meru"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Tharaka-Nithi"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Embu"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Kitui"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Machakos"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Makueni"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Nyandarua"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Nyeri"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Kirinyaga"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Murang'a"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Kiambu"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Turkana"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="West Pokot"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Samburu"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Trans Nzoia"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Uasin Gishu"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Elgeyo-Marakwet"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Nandi"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Baringo"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Laikipia"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Nakuru"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Narok"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Kajiado"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Kericho"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Bomet"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Kakamega"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Vihiga"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Bungoma"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Busia"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Siaya"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Kisumu"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Homa Bay"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Migori"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
     android:title="Kisii"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
-    android:title="Nyamira
-"
+    android:title="Nyamira"
+    android:fontFamily="@font/poppins_regular"
     /><item
 
-    android:title="Nairobi City
-"
+    android:title="Nairobi City"
+    android:fontFamily="@font/poppins_regular"
     />
 </menu>

@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Qr_code22"></activity>
+        <activity android:name=".GettingStarted"></activity>
+        <activity android:name=".NeedSupport" />
+        <activity android:name=".Qr_code22" />
         <activity android:name=".BookBus09" />
         <activity android:name=".BookBus06" />
         <activity android:name=".BusChooseSeat05" />

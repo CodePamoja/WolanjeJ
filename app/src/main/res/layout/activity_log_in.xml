@@ -107,7 +107,7 @@
                                 android:id="@+id/phoneNoLogIN"
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="match_parent"
-                                android:layout_height="52dp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="12dp"
                                 android:layout_marginVertical="10dp"
                                 android:hint="@string/kenya_number"
@@ -118,8 +118,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:drawableStart="@drawable/ic_kenya_flag"
-                                    android:drawablePadding="5dp"
-                                    android:layout_gravity="bottom"
                                     android:inputType="number" />
 
                             </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +126,7 @@
                                 android:id="@+id/pinLogIN"
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="match_parent"
-                                android:layout_height="52dp"
+                                android:layout_height="match_parent"
                                 android:layout_marginHorizontal="12dp"
                                 android:hint="Enter Pin"
                                 app:endIconMode="password_toggle">
@@ -151,6 +149,7 @@
                                 android:fontFamily="@font/poppins_medium"
                                 android:onClick="FogtPssd"
                                 android:textAllCaps="false"
+                                android:textSize="14sp"
                                 android:textStyle="normal"
                                 android:text="Forgot Password?"
                                 android:textAlignment="textStart" />
@@ -166,7 +165,7 @@
                                 android:text="Log in"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorWhite"
-                                android:textSize="16sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>

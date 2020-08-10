@@ -97,7 +97,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="Travel"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
 
                         />
 
@@ -144,7 +144,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="Medical"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
 
                         />
                 </RelativeLayout>
@@ -186,7 +186,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="Savings"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -216,7 +216,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-
                         android:src="@drawable/ic_education">
 
                     </ImageView>
@@ -231,7 +230,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="Education"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
 
                         />
                 </RelativeLayout>
@@ -261,7 +260,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-
                         android:src="@drawable/ic_accomodation">
 
                     </ImageView>
@@ -271,11 +269,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_marginTop="70dp"
+                        android:layout_marginTop="60dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="Accomodation"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -313,11 +311,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_marginTop="70dp"
+                        android:layout_marginTop="60dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="Food and Shopping"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -359,7 +357,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="Insurance"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -387,7 +385,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-
                         android:src="@drawable/ic_taxx" />
 
                     <TextView
@@ -399,7 +396,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="Tax"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>

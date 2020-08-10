@@ -8,12 +8,12 @@
         <item
             android:id="@+id/home"
             android:title="@string/home"
-            android:icon="@drawable/ic_homeh"
-
-            >@font/poppins_regular</item>
+            android:fontFamily="@font/poppins_regular"
+            android:icon="@drawable/ic_homeh" />
         <item
             android:id="@+id/menu_e_wallet"
             android:title="My E-Wallet"
+            android:fontFamily="@font/poppins_regular"
             android:icon="@drawable/ic_my_e_walonje"
             android:onClick="OpenWalletM"
 
@@ -21,6 +21,7 @@
         <item
             android:id="@+id/biling"
             android:title="@string/biling"
+            android:fontFamily="@font/poppins_regular"
             android:icon="@drawable/ic_receipt_list_43"
             android:onClick="openBillManager"
 
@@ -28,6 +29,7 @@
         <item
             android:id="@+id/services"
             android:title="@string/services"
+            android:fontFamily="@font/poppins_regular"
             android:icon="@drawable/ic_walleth"
             android:onClick="opensevrvices"
 
@@ -37,6 +39,7 @@
             android:title="@string/loyalty_program"
             android:icon="@mipmap/group3"
             android:onClick="openreferalls"
+            android:fontFamily="@font/poppins_regular"
 
             />
         <item
@@ -44,18 +47,21 @@
             android:title="@string/income_details"
             android:icon="@drawable/ic_incomed"
             android:onClick="openIncomingDetails"
+            android:fontFamily="@font/poppins_regular"
 
             />
         <item
             android:id="@+id/repor"
             android:title="@string/reports"
             android:icon="@drawable/ic_reports"
+            android:fontFamily="@font/poppins_regular"
             android:onClick="openHistory"
             />
         <item
             android:id="@+id/lernhub"
             android:title="@string/learning_hub"
             android:icon="@drawable/ic_fill_1"
+            android:fontFamily="@font/poppins_regular"
             android:onClick="openLearningHub"
 
             />
@@ -63,6 +69,7 @@
             android:id="@+id/profile"
             android:title="@string/profile"
             android:icon="@drawable/ic_profile"
+            android:fontFamily="@font/poppins_regular"
             android:onClick="openProfile"
 
             />
@@ -71,11 +78,13 @@
             android:title="@string/notifications"
             android:icon="@drawable/ic_notification"
             android:onClick="openNotifications52"
+            android:fontFamily="@font/poppins_regular"
 
             />
         <item
             android:id="@+id/settings"
             android:title="@string/settings"
+            android:fontFamily="@font/poppins_regular"
             android:icon="@drawable/ic_settingsh"
             android:onClick="movetoSettings48"
 
@@ -84,6 +93,7 @@
             android:id="@+id/swacc"
             android:title="@string/switch_account"
             android:icon="@drawable/ic_switchaccount"
+            android:fontFamily="@font/poppins_regular"
             android:onClick="chooseAnotherAccount"
 
             />
@@ -91,12 +101,14 @@
             android:id="@+id/fav"
             android:title="@string/register_new_member"
             android:icon="@mipmap/favorites_2"
+            android:fontFamily="@font/poppins_regular"
             android:onClick="registerNewNumber"
 
             />
         <item
             android:id="@+id/logout"
             android:title="logout"
+            android:fontFamily="@font/poppins_regular"
             android:onClick="LogoutAccount"
             />
 

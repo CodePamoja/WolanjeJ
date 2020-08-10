@@ -82,7 +82,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/imagetop"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/poppins_regular"
                         android:gravity="center_horizontal"
                         android:text="Top Up"
@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/imagetop2"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="Withdraw"
                         android:textColor="@color/blue_grey"
@@ -150,7 +150,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="15dp"
-                    android:paddingBottom="18dp"
 
                     >
 
@@ -165,11 +164,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/imagetop3"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/poppins_regular"
                         android:gravity="center"
                         android:layout_centerHorizontal="true"
-                        android:text="Fund  Transfer"
+                        android:text="Fund Transfer"
                         android:textColor="@color/blue_grey"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -201,8 +200,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="18dp"
+                    android:paddingTop="5dp"
 
                     >
 
@@ -210,7 +208,7 @@
                         android:id="@+id/imagetop4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="30dp"
                         android:src="@drawable/ic_transactionhistory" />
 
                     <TextView
@@ -242,8 +240,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="18dp"
+                    android:paddingTop="5dp"
 
                     >
 
@@ -251,7 +248,7 @@
                         android:id="@+id/imagetop5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="30dp"
                         android:src="@drawable/ic_pendingcommision" />
 
                     <TextView
