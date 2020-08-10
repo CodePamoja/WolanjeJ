@@ -216,6 +216,7 @@ CEO or Board members"
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
                     android:layout_marginHorizontal="50dp">
 
                     <com.google.android.material.checkbox.MaterialCheckBox
@@ -226,7 +227,6 @@ CEO or Board members"
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
                         android:layout_toRightOf="@id/mycheckbox"
                         android:autoLink="web"
                         android:fontFamily="@font/poppins_regular"
@@ -280,8 +280,10 @@ CEO or Board members"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
+            android:backgroundTint="@color/warm_purple"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="0dp"
+            android:textAllCaps="false"
             android:fontFamily="@font/poppins_regular"
             android:lineSpacingExtra="9sp"
             android:onClick="movetoLogin"

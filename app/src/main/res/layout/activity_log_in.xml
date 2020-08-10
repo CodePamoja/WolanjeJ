@@ -149,6 +149,7 @@
                                 android:fontFamily="@font/poppins_medium"
                                 android:onClick="FogtPssd"
                                 android:textAllCaps="false"
+                                android:textColor="@color/warm_purple"
                                 android:textSize="14sp"
                                 android:textStyle="normal"
                                 android:text="Forgot Password?"

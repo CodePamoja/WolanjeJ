@@ -1,23 +1,26 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+
 public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-    TextView tx ;
-    Button btnpro ;
+    TextView tx;
+    Button btnpro;
     ImageButton btnback;
     Toolbar tb;
 
@@ -38,7 +41,7 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
             public void onClick(View v) {
                 Toast.makeText(Education_50.this, "scholarship", Toast.LENGTH_SHORT).show();
 
-                startActivity(new Intent(getBaseContext(),Scholarship.class));
+                startActivity(new Intent(getBaseContext(), Scholarship.class));
                 //startActivity(new Intent(getParent(),Scholarship.class));
             }
         });
@@ -47,7 +50,7 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
             public void onClick(View v) {
                 Toast.makeText(Education_50.this, "scholarship", Toast.LENGTH_SHORT).show();
 
-                startActivity(new Intent(getBaseContext(),Sponsors00.class));
+                startActivity(new Intent(getBaseContext(), Sponsors00.class));
             }
         });
 
@@ -75,12 +78,28 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         });
         setToolBar(tb);
+        setActionBarColor();
     }
+
+    private void setActionBarColor() {
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorWhite));
+    }
+
     private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
-        tb = findViewById(R.id.toolbar);
+        tb = findViewById(R.id.toolbarEducation);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this, Service.class);
+        final Intent moveToLogo = new Intent(this,services.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -91,8 +110,9 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
         );
 
     }
+
     public void displayPopUp1(View view) {
-        PopupMenu popup = new PopupMenu(this,view);
+        PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.pop_up_for_counties);
         popup.show();
@@ -113,7 +133,7 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
     public void confirmfeepayment(View view) {
         btnpro = findViewById(R.id.buttonproceed);
         tx = findViewById(R.id.headertext);
-        if(!btnpro.getText().equals("Continue")){
+        if (!btnpro.getText().equals("Continue")) {
 
             findViewById(R.id.cardtutionfee).setVisibility(View.GONE);
             findViewById(R.id.cardCornfirm).setVisibility(View.VISIBLE);
@@ -122,7 +142,7 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
             btnpro.setText("Continue");
 
 
-        }else if(btnpro.getText().equals("Continue")){
+        } else if (btnpro.getText().equals("Continue")) {
             findViewById(R.id.loans2).setVisibility(View.VISIBLE);
             findViewById(R.id.scroll).setVisibility(View.GONE);
             findViewById(R.id.imageback).setVisibility(View.GONE);
@@ -132,7 +152,7 @@ public class Education_50 extends AppCompatActivity implements PopupMenu.OnMenuI
 
     public void displayPopUpfee(View view) {
 
-        PopupMenu popup = new PopupMenu(this,view);
+        PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.popup_for_fee_details);
         popup.show();

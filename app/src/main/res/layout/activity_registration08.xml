@@ -74,6 +74,8 @@
                 android:text="continue"
                 android:layout_gravity="center_horizontal"
                 android:onClick="sendtoLogin"
+                android:backgroundTint="@color/warm_purple"
+                android:textAllCaps="false"
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp"
@@ -84,6 +86,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Skip For Now"
+                android:textColor="@color/warm_purple"
+                android:textAllCaps="false"
                 android:onClick="sendtoLogin"
                 android:layout_marginVertical="5dp"
                 style="@style/Widget.MaterialComponents.Button.TextButton"/>

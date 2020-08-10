@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/Ewallet3"
-    android:background="#80000000"
-    android:visibility="gone"
     >
 
     <RelativeLayout
@@ -21,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/rectanglew"
+            android:background="@color/colorWhite"
             android:layout_marginTop="8dp"
             android:layout_centerHorizontal="true"
             android:onClick="close_wallet3"
@@ -33,6 +32,7 @@
             android:layout_height="wrap_content"
             android:textSize="22sp"
             android:textColor="@color/colorMidnight"
+            android:fontFamily="@font/poppins_bold"
             android:text="Withdraw"
             android:id="@+id/wpp"
             android:layout_below="@id/balance"
@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="@color/blue_grey"
+            android:fontFamily="@font/poppins_regular"
             android:gravity="end"
             android:text="Balance"
             android:id="@+id/balance"
@@ -52,6 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="#18181c"
             android:letterSpacing="0.03"
             android:gravity="end"
@@ -64,6 +66,7 @@
             android:layout_width="match_parent"
             android:hint="Select Type"
             android:layout_height="52dp"
+            android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="12dp"
             android:paddingStart="18dp"
             android:background="@drawable/wallet_pop_up_shape"
@@ -76,6 +79,7 @@
             android:layout_height="52dp"
             android:layout_marginTop="16dp"
             android:paddingStart="18dp"
+            android:fontFamily="@font/poppins_regular"
             android:background="@drawable/wallet_pop_up_shape"
             android:hint="Mobile Number"
             android:id="@+id/mobilenumber"
@@ -85,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_regular"
             android:paddingStart="18dp"
             android:background="@drawable/wallet_pop_up_shape"
             android:hint="Account"
@@ -94,8 +99,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:id="@+id/cont"
+            android:id="@+id/btn_sendWithdrawRequest"
+            android:fontFamily="@font/poppins_regular"
             style="@style/TextStyle4"
+            android:textAllCaps="false"
             android:backgroundTint="@color/warm_purple"
             android:layout_below="@id/account"
             android:layout_marginTop="16dp"
@@ -103,10 +110,15 @@
             />
         <Button
             style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/cancelWithdraw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cont"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_below="@id/btn_sendWithdrawRequest"
             android:textSize="16sp"
+            android:layout_marginBottom="100dp"
+            android:textColor="#8c8a9a"
+            android:textAllCaps="false"
             android:backgroundTint="@android:color/transparent"
             android:layout_marginTop="16dp"
             android:text="Cancel"
@@ -114,4 +126,4 @@
 
 
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

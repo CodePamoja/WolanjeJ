@@ -96,6 +96,7 @@
             android:onClick="payEnter"
             android:layout_marginTop="5dp"
             android:layout_marginRight="55dp"
+            android:textAllCaps="false"
             android:layout_marginLeft="55dp"
             android:fontFamily="@font/poppins_medium"
             android:backgroundTint="@color/colorPurple"

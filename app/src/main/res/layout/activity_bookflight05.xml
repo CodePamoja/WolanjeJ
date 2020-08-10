@@ -46,7 +46,6 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="36dp"
                 android:paddingHorizontal="24dp"
                 >
 
@@ -56,9 +55,9 @@
                     android:textSize="16sp"
                     android:textColor="@color/colorMidnight"
                     android:lineSpacingExtra="14sp"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/poppins_medium"
                     android:id="@+id/baggaefeetitle"
-                    android:text="Baggae Fee Information"
+                    android:text="Baggage Fee Information"
                     android:layout_marginVertical="24dp"
                     />
                 <TextView
@@ -221,6 +220,7 @@
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/warm_purple"
             android:text="@string/Continue"
             android:onClick="movetobook6"
             app:layout_constraintBottom_toBottomOf="parent"

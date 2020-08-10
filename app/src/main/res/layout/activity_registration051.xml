@@ -161,6 +161,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/poppins_regular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardreg"
@@ -172,6 +173,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
+                    android:backgroundTint="@color/warm_purple"
                     android:onClick="askForOtp"
                     android:text="@string/Continue"
                     android:textAllCaps="false"

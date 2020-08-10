@@ -1,9 +1,12 @@
 package com.example.wolanjej;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -23,7 +26,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,6 +45,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,7 +84,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
 
         Button button4 = findViewById(R.id.btnaddnew);
         button4.setOnClickListener(new View.OnClickListener() {
@@ -165,17 +167,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             }
         });
 
-        findViewById(R.id.imagebtn).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bottomSheetDialog.show();
-                        findViewById(R.id.Ewallet2).setVisibility(View.INVISIBLE);
-
-                    }
-                }
-        );
-
 
         findViewById(R.id.loanscard).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,6 +209,24 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             Snackbar.make(findViewById(R.id.drawer_layout), "No Internet Connection", Snackbar.LENGTH_LONG).show();
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        if (className != null) {
+            Log.e("class Type className", className);
+            switch (className) {
+                case "Ewallet2_1":
+                    ShowWalletTopUpConfDialog();
+                    break;
+                case "Ewallet3_1":
+                    withdrawConfirmationDialog();
+            }
+        }
+    }
+
 
     public void moveToProfile(View view) {
         Intent intent = new Intent(getApplicationContext(), profile.class);
@@ -655,10 +664,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
-                        // Intent intent = new Intent(v.getContext(), Top_up.class);
-                        //startActivity(intent);
-                        bottomSheetDialog.hide();
-                        findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
+                        openEwalletPopUp();
 
                     }
                 }
@@ -669,7 +675,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
-                        findViewById(R.id.Ewallet3).setVisibility(View.VISIBLE);
+                        OpenWithdrawBottomSheet();
 
 
                     }
@@ -709,6 +715,66 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();
 
+    }
+
+    private void OpenWithdrawBottomSheet() {
+        bottomSheetDialog = new BottomSheetDialog(
+                Home.this, R.style.BottomSheetDialogTheme
+        );
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.withdraw, (LinearLayout) findViewById(R.id.Ewallet3)
+                );
+        bottomSheetView.findViewById(R.id.btn_sendWithdrawRequest).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(getApplicationContext(), Ewallet3_1.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.cancelWithdraw).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                    }
+                }
+        );
+
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+    }
+
+    private void openEwalletPopUp() {
+        bottomSheetDialog = new BottomSheetDialog(
+                Home.this, R.style.BottomSheetDialogTheme
+        );
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.wallet_pop_up, (LinearLayout) findViewById(R.id.Ewallet2)
+                );
+        bottomSheetView.findViewById(R.id.contWalletPop).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(getApplicationContext(), Ewallet2_1.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.cancelWalletTopUp).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                    }
+                }
+        );
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
     }
 
     public void OpenWalletM(MenuItem item) {
@@ -782,6 +848,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog.show();
 
     }
+
 
     public void registerNewNumber(MenuItem item) {
         bottomSheetDialog = new BottomSheetDialog(
@@ -867,8 +934,38 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         finish();
 
     }
+
+    private void ShowWalletTopUpConfDialog() {
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.wallet_top_up_confirmation_dialog, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        alertDialog.show();
+    }
+    private void withdrawConfirmationDialog() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.success_withdraw_confirmation, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btn= view.findViewById(R.id.confDialogSuccessful);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+
     public ArrayList<Model> getMylist() {
-        ArrayList<Model>models = new ArrayList<>();
+        ArrayList<Model> models = new ArrayList<>();
         Model m = new Model();
         m.setTitle("Pay Tv");
         m.setImage(R.drawable.ic_exchange);

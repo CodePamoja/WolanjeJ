@@ -607,6 +607,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/warm_purple"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
             android:onClick="MoveToBookBus06"

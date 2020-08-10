@@ -494,6 +494,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/warm_purple"
             android:onClick="MoveToBus05"
             android:text="Next"
             app:layout_constraintBottom_toBottomOf="parent"

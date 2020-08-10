@@ -369,6 +369,7 @@
             android:layout_marginTop="46dp"
             android:background="@drawable/splash"
             android:fontFamily="@font/poppins_medium"
+            android:backgroundTint="@color/warm_purple"
             android:onClick="MoveToBookFlight02"
             android:gravity="center"
             android:text="@string/search"

@@ -442,12 +442,13 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="290dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
                     android:layout_marginVertical="20dp"
                     android:layout_marginTop="46dp"
+                    android:backgroundTint="@color/warm_purple"
                     android:background="@drawable/splash"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"

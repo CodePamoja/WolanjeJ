@@ -85,7 +85,7 @@
                             android:layout_marginBottom="24dp"
                             android:backgroundTint="@color/colorAccent"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="@string/my_e_wallet"
+                            android:text="My E-wallet"
                             android:textAllCaps="false"
                             android:textStyle="normal"
                             android:textSize="12sp"
@@ -437,11 +437,6 @@
             android:fontFamily="@font/poppins_regular"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/navigation" />
-
-
-        <include layout="@layout/wallet_pop_up" />
-
-        <include layout="@layout/withdraw" />
 
         <include layout="@layout/loan_application_pop_up" />
 

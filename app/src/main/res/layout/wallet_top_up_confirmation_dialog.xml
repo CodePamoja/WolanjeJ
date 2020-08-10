@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="330dp"
+    android:layout_height="389dp"
+    android:background="@drawable/popup_notification"
+    android:layout_gravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/alert_iconWalletD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="29dp"
+        android:src="@drawable/ic_button_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTransferUnD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="8sp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Transfer Unsuccessful!"
+        android:textColor="@color/colorMidnight"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alert_iconWalletD" />
+
+
+    <ImageView
+        android:id="@+id/img_UnsuccessfulDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@mipmap/path_14_copy_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtTransferUnD" />
+
+    <TextView
+        android:id="@+id/textView3UnsuccessD"
+        android:layout_width="109dp"
+        android:layout_height="13dp"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="24dp"
+        android:lineSpacingExtra="3sp"
+        android:text="Reference number"
+        android:textColor="#8c8a9a"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_UnsuccessfulDialog" />
+
+    <TextView
+        android:id="@+id/refNumberUnsuccessD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:lineSpacingExtra="8sp"
+        android:textColor="@color/colorMidnight"
+        android:layout_marginStart="22dp"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3UnsuccessD"
+        android:text="#B3423424234" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="29dp"
+        android:lineSpacingExtra="3sp"
+        android:text="Amount sent"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="#8c8a9a"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refNumberUnsuccessD" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginEnd="103dp"
+        android:lineSpacingExtra="3sp"
+        android:text="Balance"
+        android:textColor="#8c8a9a"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refNumberUnsuccessD" />
+
+    <TextView
+        android:id="@+id/amountUnsuccessD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:lineSpacingExtra="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="0.00"
+        android:layout_marginStart="22dp"
+        android:textColor="@color/colorMidnight"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/balanceUnSuccessd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:lineSpacingExtra="8sp"
+        android:text="0.00"
+        android:textColor="@color/colorMidnight"
+        android:textSize="16sp"
+        android:layout_marginEnd="103dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/confDialogUnsuccessful"
+        android:layout_width="282dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/warm_purple"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="42dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Try Again"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountUnsuccessD" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

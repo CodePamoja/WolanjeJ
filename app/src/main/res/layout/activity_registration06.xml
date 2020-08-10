@@ -161,6 +161,7 @@
                         style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="327dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/warm_purple"
                         android:textAllCaps="false"
                         android:fontFamily="@font/poppins_medium"
                         android:text="Resend" />

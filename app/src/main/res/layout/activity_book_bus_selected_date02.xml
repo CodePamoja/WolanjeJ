@@ -138,6 +138,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Done"
             android:onClick="MoveToBookBus03"
+            android:backgroundTint="@color/warm_purple"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

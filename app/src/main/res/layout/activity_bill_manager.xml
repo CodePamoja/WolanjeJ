@@ -55,9 +55,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"
+            android:layout_marginBottom="31dp"
+            android:layout_marginEnd="27dp"
             android:onClick="billBottomSheet"
             android:src="@drawable/floatbutton"
-            app:backgroundTint="@color/colorWarmpurple" >
+            app:backgroundTint="#f5b403" >
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
     </FrameLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

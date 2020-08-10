@@ -3,6 +3,7 @@
     android:layout_width="327dp"
     android:layout_height="345dp"
     android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
     android:padding="10dp">
 
     <ImageView
@@ -15,6 +16,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="center_horizontal"
         android:text="Filter"
         android:textColor="@color/colorMidnight"
@@ -28,6 +30,7 @@
             android:id="@+id/txt_from_r_dialog"
             android:layout_width="wrap_content"
             android:layout_marginStart="24dp"
+            android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="15dp"
             android:layout_height="wrap_content"
             android:text="From" />
@@ -58,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_regular"
             android:layout_height="wrap_content"
             android:text="To" />
 
@@ -79,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Payment Tags"
+        android:fontFamily="@font/poppins_regular"
         android:layout_marginStart="24dp"/>
 
     <LinearLayout
@@ -97,6 +102,7 @@
             android:layout_height="32dp"
             android:background="@drawable/splash3"
             android:backgroundTint="#26531edc"
+            android:fontFamily="@font/poppins_regular"
             android:gravity="center"
             android:textColor="#531edc"
             android:textSize="14sp"
@@ -109,6 +115,7 @@
             android:layout_height="32dp"
             android:background="@drawable/splash3"
             android:backgroundTint="#26e6344a"
+            android:fontFamily="@font/poppins_regular"
             android:layout_marginStart="12dp"
             android:gravity="center"
             android:textColor="#e6344a"
@@ -123,6 +130,7 @@
             android:background="@drawable/splash3"
             android:layout_marginStart="12dp"
             android:gravity="center"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="#8484a9"
             android:textSize="14sp"
             android:text="pending" />

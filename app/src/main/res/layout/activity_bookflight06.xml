@@ -23,8 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/flight_information"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Review &amp; Book"
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/splash2"
         android:backgroundTint="#f0f2f6"
+        android:layout_marginTop="46dp"
         android:paddingBottom="12dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -50,8 +51,8 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/flighticon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="40dp"
@@ -163,7 +164,7 @@
                     android:layout_height="1dp"
                     android:layout_below="@id/arrival"
                     android:layout_marginVertical="24dp"
-                    android:background="#585C63" />
+                    android:background="@color/gray4" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -261,6 +262,8 @@
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/poppins_regular"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/warm_purple"
+            android:textAllCaps="false"
             android:onClick="MoveToBkPin"
             android:text="Go to Payment"
             app:layout_constraintBottom_toBottomOf="parent"

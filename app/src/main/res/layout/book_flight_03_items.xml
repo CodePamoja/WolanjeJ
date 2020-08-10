@@ -1,164 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="327dp"
-    android:layout_height="147dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="45dp"
-    android:layout_marginBottom="20dp"
-    app:cardElevation="3dp"
-    app:cardPreventCornerOverlap="true"
-    android:background="@color/colorWhite"
-    android:theme="@style/AppTheme">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:background="@color/colorWhite"
+        android:layout_marginVertical="15sp"
+        android:theme="@style/AppTheme"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/LinearLtop"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageItemBf03"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="16dp" />
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="23dp" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/AirWaysId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@+id/imageItemBf03"
+                android:fontFamily="@font/poppins_medium"
+                android:lineSpacingExtra="14sp"
+                android:text="United AirLines"
+                android:textColor="@color/colorMidnight"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/AirWaysId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:lineSpacingExtra="14sp"
-                    android:textSize="16sp"
-                    android:text="United AirLines"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/colorMidnight" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/flightHrItem"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="7h" />
-
-                    <TextView
-                        android:id="@+id/flightMinItem"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:layout_marginStart="5dp"
-                        android:text="30min" />
-
-                    <TextView
-                        android:id="@+id/flightStopsItem"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:layout_marginStart="5dp"
-                        android:text="(1 Stop)" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/flightHrItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:gravity="end"
-                android:orientation="vertical">
+                android:layout_below="@+id/AirWaysId"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@+id/imageItemBf03"
+                android:fontFamily="@font/poppins_medium"
+                android:text="7h"
+                android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/flightCostItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:lineSpacingExtra="14sp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="USD 450"
-                    android:textColor="@color/colorMidnight" />
-
-                <TextView
-                    android:id="@+id/TicketLeftItem"
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_height="wrap_content"
-                    android:text="13 Tickets Left" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/flightMinItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_below="@+id/AirWaysId"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@+id/flightHrItem"
+                android:fontFamily="@font/poppins_medium"
+                android:text="30min"
+                android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/flightFormItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_marginStart="16dp"
-                    android:textSize="14dp"
-                    android:text="AUS"
-                    android:textColor="@color/colorMidnight" />
+            <TextView
+                android:id="@+id/flightStopsItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/AirWaysId"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@+id/flightMinItem"
+                android:fontFamily="@font/poppins_medium"
+                android:text="(1 Stop)"
+                android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/depTimeItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_marginStart="16dp"
-                    android:text="5:15 pm" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/flightCostItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:lineSpacingExtra="14sp"
+                android:text="USD 450"
+                android:textColor="@color/colorMidnight"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/TicketLeftItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/flightCostItem"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="13 Tickets Left"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/flightFormItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageItemBf03"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="AUS"
+                android:textColor="@color/colorMidnight"
+                android:textSize="14dp" />
+
+
+            <TextView
+                android:id="@+id/depTimeItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/flightFormItem"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="5:15 pm" />
 
             <ImageView
                 android:layout_width="198dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_trending_flat"/>
+                android:layout_below="@+id/flightStopsItem"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="29dp"
+                android:src="@drawable/ic_trending_flat" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/flightToItem"
                 android:layout_width="wrap_content"
-                android:gravity="end"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_below="@+id/TicketLeftItem"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="NYC"
+                android:textColor="@color/colorMidnight"
+                android:textSize="14dp" />
 
-                <TextView
-                    android:id="@+id/flightToItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="NYC"
-                    android:textColor="@color/colorMidnight" />
-
-                <TextView
-                    android:id="@+id/arrivalTimeItems"
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_height="wrap_content"
-                    android:text="11:15 pm" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/arrivalTimeItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/flightToItem"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="11:15 pm" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

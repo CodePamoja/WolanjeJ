@@ -5,6 +5,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,11 +34,10 @@ public class BookFlight10 extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.book_bus_success_dialog, null);
 
-
         final AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setView(view)
                 .create();
-
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         ImageButton dismiss = view.findViewById(R.id.dismissbusSuccess09);
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
