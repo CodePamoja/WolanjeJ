@@ -85,6 +85,20 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        if (className != null) {
+            Log.e("class Type className", className);
+            switch (className) {
+                case "Ewallet2_1":
+                    ShowWalletTopUpConfDialog();
+                    break;
+                case "Ewallet3_1":
+                    withdrawConfirmationDialog();
+                    break;
+            }
+        }
+
         Button button4 = findViewById(R.id.btnaddnew);
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,23 +221,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         } else {
             Snackbar.make(findViewById(R.id.drawer_layout), "No Internet Connection", Snackbar.LENGTH_LONG).show();
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Intent intentExtra = getIntent();
-        String className = getIntent().getStringExtra("Class");
-        if (className != null) {
-            Log.e("class Type className", className);
-            switch (className) {
-                case "Ewallet2_1":
-                    ShowWalletTopUpConfDialog();
-                    break;
-                case "Ewallet3_1":
-                    withdrawConfirmationDialog();
-            }
         }
     }
 
