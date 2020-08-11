@@ -17,7 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Ewallet3_1"></activity>
+        <activity android:name=".TvSubscriptions"></activity>
+        <activity android:name=".PayElectricity2" />
+        <activity android:name=".PayInternet2Pin" />
+        <activity android:name=".Ewallet3_1" />
         <activity android:name=".Ewallet2_1" />
         <activity android:name=".GettingStarted" />
         <activity android:name=".NeedSupport" />
@@ -57,6 +60,7 @@
         <activity android:name=".Bookflight06" />
         <activity android:name=".Travel" />
         <activity android:name=".Education_50" />
+        <activity android:name=".Education1" />
         <activity android:name=".Scholarship06" />
         <activity android:name=".PaymentsMain" />
         <activity android:name=".BulkPaymentsMain" />
@@ -65,7 +69,6 @@
         <activity android:name=".TopupOtherNumber" />
         <activity android:name=".activity_05_reg" />
         <activity android:name=".activity_05_reg_1" />
-        <activity android:name=".Screen16" />
         <activity android:name=".HomeTwo" />
         <activity android:name=".Reg_04" />
         <activity android:name=".Reg03Activity" />

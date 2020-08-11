@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -32,6 +33,8 @@ import okhttp3.Response;
 public class Registration051 extends AppCompatActivity implements AdapterView.OnItemClickListener {
     Toolbar tb ;
     ProgressDialog prgBar;
+    private Spinner spinner;
+    private  ArrayAdapter adapter;
     TextInputLayout kenyanid,firstname,lastname,mygender;
     AutoCompleteTextView autoCompleteTextView;
     String[] gender = {
@@ -59,14 +62,12 @@ public class Registration051 extends AppCompatActivity implements AdapterView.On
 
 // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorWhite));
+        spinner = (Spinner) findViewById(R.id.spinner_gender);
 
-
-        autoCompleteTextView =  findViewById(R.id.gender);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, gender);
-
-        autoCompleteTextView.setAdapter(adapter);
-        autoCompleteTextView.setOnItemClickListener(this);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.gender_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
 
     }
@@ -101,18 +102,16 @@ public class Registration051 extends AppCompatActivity implements AdapterView.On
         kenyanid = findViewById(R.id.kenyanid);
         firstname = findViewById(R.id.first_name);
         lastname = findViewById(R.id.last_name);
-        mygender = findViewById(R.id.mygender);
 
-        if(TextUtils.isEmpty(kenyanid.getEditText().getText().toString()) ||TextUtils.isEmpty(firstname.getEditText().getText().toString()) ||TextUtils.isEmpty(lastname.getEditText().getText().toString()) ||TextUtils.isEmpty(mygender.getEditText().getText().toString())  ){
-
-
+        if(TextUtils.isEmpty(kenyanid.getEditText().getText().toString()) ||TextUtils.isEmpty(firstname.getEditText().getText().toString()) ||TextUtils.isEmpty(lastname.getEditText().getText().toString()) ||TextUtils.isEmpty(spinner.getSelectedItem().toString())  ){
+            Toast.makeText(getApplicationContext(), "Please provide the details", Toast.LENGTH_SHORT).show();
         }else{
             SharedPreferences fromreg2 = getSharedPreferences("Registration_details",MODE_PRIVATE);
             SharedPreferences.Editor editor = fromreg2.edit();
             editor.putString("Kenyan_id", kenyanid.getEditText().getText().toString());
             editor.putString("First_Name", firstname.getEditText().getText().toString());
             editor.putString("Last_Name",lastname.getEditText().getText().toString());
-            editor.putString("Gender",mygender.getEditText().getText().toString());
+            editor.putString("Gender",spinner.getSelectedItem().toString());
             editor.commit();
 
              new UserSendPhone(fromreg2.getString("Phone_Number","")).execute();

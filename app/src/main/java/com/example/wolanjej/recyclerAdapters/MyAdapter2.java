@@ -14,10 +14,10 @@ import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.wolanjej.models.Model2;
 import com.example.wolanjej.R;
 import com.example.wolanjej.Registration07;
 import com.example.wolanjej.cryptomarket;
+import com.example.wolanjej.models.Model2;
 
 import java.util.ArrayList;
 
@@ -55,14 +55,14 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyHolder2> {
     }
 
     public class MyHolder2 extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public  CardView mColor;
+        public CardView mColor;
         public View View;
         Context context = itemView.getContext();
-        public  TextView mtitle;
-        public  TextView mtitle2;
-        public  TextView mtitle3;
-        public  TextView mtitle4;
-        public  ImageView mImageView;
+        public TextView mtitle;
+        public TextView mtitle2;
+        public TextView mtitle3;
+        public TextView mtitle4;
+        public ImageView mImageView;
 
         public MyHolder2(@NonNull View itemView) {
             super(itemView);

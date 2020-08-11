@@ -1,9 +1,5 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +10,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,10 +17,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -83,7 +80,13 @@ public class LogIn extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if (isNetworkAvailable()) {
-                            new UserLogin(textPhone.getEditText().getText().toString(), textPin.getEditText().getText().toString()).execute();
+                            String phone = textPhone.getEditText().getText().toString();
+                            String pin = textPin.getEditText().getText().toString();
+                            if (phone.isEmpty() || pin.isEmpty()) {
+                                Toast.makeText(getApplicationContext(), "Please Fill ", LENGTH_SHORT).show();
+                                return;
+                            }
+                            new UserLogin(phone, pin).execute();
                         } else {
                             linearLayout.setVisibility(View.VISIBLE);
                             Toast.makeText(getApplicationContext(), "No internet Available", Toast.LENGTH_LONG).show();
@@ -118,7 +121,8 @@ public class LogIn extends AppCompatActivity {
         );
 
     }
-    private void setActionBarColor(){
+
+    private void setActionBarColor() {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
@@ -129,7 +133,7 @@ public class LogIn extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorWhite));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorWhite));
     }
 
 
@@ -154,7 +158,8 @@ public class LogIn extends AppCompatActivity {
         Intent move = new Intent(this, Registration05.class);
         startActivity(move);
     }
-    private void moveToreg5(View view){
+
+    private void moveToreg5(View view) {
         Intent intent = new Intent(getApplicationContext(), Registration05.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -217,7 +222,7 @@ public class LogIn extends AppCompatActivity {
                     editor.putString("user_name", sessionID.getJSONObject("session").getString("user_name"));
                     editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
                     editor.commit();
-                    Intent move = new Intent(LogIn.this, Home.class);
+                    Intent move = new Intent(LogIn.this, LinkAccount11.class);
                     move.putExtra("Class", "LogIn");
                     startActivity(move);
                     finish();

@@ -2,6 +2,7 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
@@ -147,11 +148,11 @@ public class BillManager extends AppCompatActivity {
                 BillManager.this, R.style.BottomSheetDialogTheme
         );
         View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.billmanager28, (LinearLayout) findViewById(R.id.billManagerView)
+                .inflate(R.layout.billmanager28, (ConstraintLayout) findViewById(R.id.billManagerView)
                 );
 
-        textView1 = bottomSheetView.findViewById(R.id.bmAccountName);
-        textView2 = bottomSheetView.findViewById(R.id.bmNickname);
+        textView1 = bottomSheetView.findViewById(R.id.bmAccountSaveBillName);
+        textView2 = bottomSheetView.findViewById(R.id.bmAccountNickName);
         textView3 = bottomSheetView.findViewById(R.id.bmAccountNo);
         spinner = bottomSheetView.findViewById(R.id.spinner_bill);
 
@@ -190,7 +191,7 @@ public class BillManager extends AppCompatActivity {
                 .inflate(R.layout.billmanager28, (LinearLayout) findViewById(R.id.billManagerView)
                 );
 
-        textView1 = bottomSheetView.findViewById(R.id.bmAccountName);
+        textView1 = bottomSheetView.findViewById(R.id.bmAccountSaveBillName);
         String ACCOUNT_NAME = textView1.getText().toString();
 
 

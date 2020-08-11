@@ -104,6 +104,11 @@ public class TopupOtherNumber extends AppCompatActivity implements AdapterView.O
         Log.e("TAG phone number check", "button pressed to transfer money" + phone);
         String phonenumber = changePhoneNo(phone, view);
         Log.e("TAG phone number last", phonenumber);
+        if (amount.isEmpty() || phone.isEmpty()) {
+            text.requestFocus();
+            Toast.makeText(getApplicationContext(), "please provide Amount", Toast.LENGTH_LONG).show();
+            return;
+        }
         int x = Integer.parseInt(amount);
         if (amount != null) {
             if (x >= 10) {

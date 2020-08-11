@@ -138,21 +138,18 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mygender"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    <Spinner
+                        android:id="@+id/spinner_gender"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="12dp">
+                        android:layout_height="58dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/myspinner"
+                        android:paddingHorizontal="18dp"
+                        android:spinnerMode="dropdown" />
 
-                        <AutoCompleteTextView
-                            android:id="@+id/gender"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Male"
-                            android:inputType="none" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>

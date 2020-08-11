@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
       android:id="@+id/my_wallet"
-      android:icon="@drawable/ic_transfer_to_wallet"
+      android:icon="@drawable/ic_group_5"
       android:title="My wallet"
       android:enabled="true"
       android:fontFamily="@font/poppins_regular"

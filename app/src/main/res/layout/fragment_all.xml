@@ -37,6 +37,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
@@ -47,6 +49,8 @@
                         android:text="Electric bill"
                         android:textColor="@color/colorBlack"
                         android:textSize="16sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
                         android:textStyle="bold"
                         android:layout_gravity="left"
                         android:layout_marginTop="10dp"
@@ -59,22 +63,27 @@
                         android:textColor="@color/blue_grey"
                         android:textSize="14sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
                         android:layout_gravity="left"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         />
+
                     <Button
                         android:id="@+id/btnPayElectric"
-                        android:text="Pay Now"
-                        android:textSize="12sp"
-                        android:letterSpacing="0.08"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:onClick="payNowElectric"
-                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
+                        android:backgroundTint="@color/warm_purple"
+                        android:layout_marginBottom="10dp"
+                        android:letterSpacing="0.08"
+                        android:text="Pay Now"
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -135,7 +144,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:onClick="billBottomSheet"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginBottom="10dp"/>
@@ -266,6 +274,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
+                        android:backgroundTint="@color/warm_purple"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginBottom="10dp"/>
@@ -333,6 +344,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
+                        android:backgroundTint="@color/warm_purple"
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginBottom="10dp"/>

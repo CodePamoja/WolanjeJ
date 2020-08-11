@@ -39,7 +39,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="200dp"
                         android:background="@color/home_purple"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -78,18 +78,17 @@
 
                         <Button
                             android:id="@+id/wallet"
-                            android:layout_width="wrap_content"
+                            android:layout_width="144dp"
                             android:layout_height="45dp"
                             android:layout_below="@id/MYBalance"
                             android:layout_marginStart="24dp"
-                            android:layout_marginBottom="24dp"
+                            android:layout_marginBottom="32dp"
                             android:backgroundTint="@color/colorAccent"
                             android:fontFamily="@font/poppins_medium"
                             android:text="My E-wallet"
                             android:textAllCaps="false"
                             android:textStyle="normal"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/transfer_money_button"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/MYBalance" />
@@ -100,7 +99,7 @@
                             android:layout_height="45dp"
                             android:layout_below="@id/MYBalance"
                             android:layout_marginStart="12dp"
-                            android:layout_marginBottom="24dp"
+                            android:layout_marginBottom="32dp"
                             android:layout_toEndOf="@id/wallet"
                             android:background="@drawable/gradient"
                             android:backgroundTint="@color/colorWhite"
@@ -109,11 +108,19 @@
                             android:textAllCaps="false"
                             android:textColor="@color/colorAccent"
                             android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@id/wallet"
                             app:layout_constraintTop_toBottomOf="@id/MYBalance"
                             app:layout_constraintVertical_bias="1.0" />
 
+                        <LinearLayout
+                            android:id="@+id/linearLayout9"
+                            android:layout_width="match_parent"
+                            android:layout_height="15dp"
+                            android:background="@color/warm_purple"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

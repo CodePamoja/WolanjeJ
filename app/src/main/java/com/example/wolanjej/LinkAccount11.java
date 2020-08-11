@@ -52,10 +52,6 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
 //        );
 
     }
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.skip, menu);
-        return true;
-    }
 
     @Override
     public void onClick(View v) {
@@ -69,8 +65,9 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void moveToHome(MenuItem item) {
+    public void moveToHome(View view) {
         Intent movetohome = new Intent(this,Home.class);
+        movetohome.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(movetohome);
     }
 }

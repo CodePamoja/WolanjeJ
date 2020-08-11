@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,6 +40,7 @@ import com.example.wolanjej.models.Model;
 import com.example.wolanjej.recyclerAdapters.MyAdapter;
 import com.example.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -96,6 +98,25 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 case "Ewallet3_1":
                     withdrawConfirmationDialog();
                     break;
+
+                case "MyAdapterCard3":
+                    PayInternetBottomSheet();
+                    break;
+                case "PayInternet2Pin":
+                    PayInternetorWaterDialog();
+                    break;
+                case "MyAdapterCard2":
+                    PayElectricityToken();
+                    break;
+                case "PayElectricity2":
+                    PayElectricityTokenDialog();
+                    break;
+                case "MyAdapterCard1":
+                    PayTvSubsriptionBottomSheet();
+                    break;
+                case "TvSubscriptions":
+                    payTvSubscriptionDialog();
+                    break;
             }
         }
 
@@ -146,6 +167,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 buttonWallet.setTextColor(getResources().getColor(R.color.colorAccent));
                 transferMoney.setBackgroundColor(getResources().getColor(R.color.colorAccent));
                 transferMoney.setTextColor(getResources().getColor(R.color.colorWhite));
+                Intent intent = new Intent(getApplicationContext(), MainTransfer36.class);
+                startActivity(intent);
 
             }
         });
@@ -210,6 +233,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
 
     }
+
 
     @Override
     protected void onStart() {
@@ -568,6 +592,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         MyAdapter myAdapter = new MyAdapter(this, getMylist());
         mRecyclerView.setAdapter(myAdapter);
+
         bottomSheetView.findViewById(R.id.img_close16).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -883,6 +908,101 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     }
 
+    public void PayInternetBottomSheet() {
+        bottomSheetDialog = new BottomSheetDialog(
+                Home.this, R.style.BottomSheetDialogTheme
+        );
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.pay_internet_bottom_sheet, (LinearLayout) findViewById(R.id.register_new_number)
+                );
+        bottomSheetView.findViewById(R.id.imagebtn_pay_netSheet).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                    }
+                }
+        );
+        bottomSheetView.findViewById(R.id.buttonPayNetSheet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PayInternet2Pin.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetView.findViewById(R.id.cancelPayNetSheet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+    }
+
+    private void PayElectricityToken() {
+        bottomSheetDialog = new BottomSheetDialog(
+                Home.this, R.style.BottomSheetDialogTheme
+        );
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.buy_electricity_token_sheet, (ConstraintLayout) findViewById(R.id.buyElectricityToken)
+                );
+        bottomSheetView.findViewById(R.id.buttonBuyTokenSheet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PayElectricity2.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetView.findViewById(R.id.cancelBuyTokenSheetSheet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+    }
+
+    private void PayTvSubsriptionBottomSheet() {
+        bottomSheetDialog = new BottomSheetDialog(
+                Home.this, R.style.BottomSheetDialogTheme
+        );
+        bottomSheetView = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.pay_tv_subscription_sheet, (LinearLayout) findViewById(R.id.register_new_number)
+                );
+
+        bottomSheetView.findViewById(R.id.imagebtn_pay_tvSheet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetView.findViewById(R.id.buttonPayTvSheet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TvSubscriptions.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetView.findViewById(R.id.cancelPayTvSheet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+    }
+
 
     private void transferListDetails() {
 
@@ -940,9 +1060,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 .setView(view)
                 .create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
+        MaterialButton button = view.findViewById(R.id.confDialogUnsuccessful);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
         alertDialog.show();
     }
+
     private void withdrawConfirmationDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.success_withdraw_confirmation, null);
@@ -950,7 +1077,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 .setView(view)
                 .create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        Button btn= view.findViewById(R.id.confDialogSuccessful);
+        Button btn = view.findViewById(R.id.confDialogSuccessful);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -960,6 +1087,60 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         alertDialog.show();
     }
+
+    private void PayInternetorWaterDialog() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.payment_successfull, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btn = view.findViewById(R.id.btn_continue_pay);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    private void PayElectricityTokenDialog() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.success_withdraw_confirmation, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btn = view.findViewById(R.id.confDialogSuccessful);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+    private void payTvSubscriptionDialog() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.success_withdraw_confirmation, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btn = view.findViewById(R.id.confDialogSuccessful);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+
 
     public ArrayList<Model> getMylist() {
         ArrayList<Model> models = new ArrayList<>();
@@ -976,7 +1157,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Model m1 = new Model();
         m1.setTitle("Electricity");
         m1.setImage(R.drawable.ic_services);
-        models.add(m);
+        models.add(m1);
 
         Model m2 = new Model();
         m2.setTitle("Pay Internet");
