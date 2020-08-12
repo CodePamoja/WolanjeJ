@@ -89,9 +89,10 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/pin1"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="287dp"
-                        android:layout_height="52dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:layout_marginHorizontal="12dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/poppins_regular"
@@ -100,7 +101,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:inputType="numberPassword"
                             android:maxLength="4"
 
@@ -111,9 +112,10 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/pin2"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="287dp"
-                        android:layout_height="52dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:layout_marginHorizontal="12dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="10dp"
                         android:fontFamily="@font/poppins_regular"
@@ -122,7 +124,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:inputType="numberPassword"
                             android:maxLength="4"
 

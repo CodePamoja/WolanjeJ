@@ -23,7 +23,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class UserProfileDetails extends AppCompatActivity {
-    private String sessionID = null;
+    private String sessionID ;
     private SharedPreferences pref;
     private Intent intent;
     private Button button;

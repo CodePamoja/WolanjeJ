@@ -241,7 +241,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         if (isNetworkAvailable()) {
             RetrieveWalletBalance();
             new UserServices().execute();
-            new UserBills().execute();
 
         } else {
             Snackbar.make(findViewById(R.id.drawer_layout), "No Internet Connection", Snackbar.LENGTH_LONG).show();
@@ -307,53 +306,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         }
     }
 
-    public class UserBills extends AsyncTask<Void, Void, Response> {
-
-        @Override
-        protected Response doInBackground(Void... voids) {
-
-            String url = "/api/bills";
-            OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, sessionID); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-            Log.d("TAG", String.valueOf(result));
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response result) {
-            String verifyResult = null;
-            if (result.code() == 200) {
-                try {
-                    String test = result.body().string();
-                    Log.d("TAG test", test);
-                    JSONObject JBills = new JSONObject(test);
-                    System.out.println("Response body json values  for bills are : " + JBills);
-
-                    //         String resultBalance = JBills.getJSONArray("balance").getJSONObject(0).getString("balance");
-                    //         tvtext = findViewById(R.id.MYBalance);
-                    //        tvtext.setText("KSH "+resultBalance);
-
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
-
-            } else if (result.code() != 201) {
-                try {
-                    verifyResult = result.body().string();
-                    JSONObject jBody = new JSONObject(verifyResult); // adding
-                    System.out.println("Response body json values are : " + verifyResult);
-                    Log.e("TAG", String.valueOf(verifyResult));
-//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
-//                    Log.e("TAG", String.valueOf(sendResutls));
-//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
-                    Log.e("TAG result value", String.valueOf(result));
-                    Log.e("TAG result body", verifyResult);
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 
     private void RetrieveWalletBalance() {
         Map<String, String> headers = new HashMap<>();
@@ -670,7 +622,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 Home.this, R.style.BottomSheetDialogTheme
         );
         bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.pop_up_my_wallet, (LinearLayout) findViewById(R.id.show_ple)
+                .inflate(R.layout.pop_up_my_wallet, (ConstraintLayout) findViewById(R.id.show_ple)
                 );
         bottomSheetDialog.setCanceledOnTouchOutside(false);
         bottomSheetDialog.setDismissWithAnimation(true);

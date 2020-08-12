@@ -1,15 +1,9 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.viewpager.widget.ViewPager;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,18 +12,28 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.wolanjej.RetrofitUtils.JsonPlaceHolders;
+import com.example.wolanjej.RetrofitUtils.RetrofitClient;
+import com.example.wolanjej.models.NewBillmodel;
 import com.example.wolanjej.pagerAdapters.BillManagerAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.tabs.TabLayout;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class BillManager extends AppCompatActivity {
     private TabLayout tabLayout;
@@ -39,8 +43,11 @@ public class BillManager extends AppCompatActivity {
     private String AGENTNO;
     private SharedPreferences pref;
     private ArrayAdapter adapter;
+    private NewBillmodel newBillmodel;
     private Spinner spinner;
     Toolbar tb;
+    private BottomSheetDialog bottomSheetDialogNeWBill;
+    private View bottomSheetViewNewBill;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +57,13 @@ public class BillManager extends AppCompatActivity {
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
-
-
+        newBillmodel = new NewBillmodel();
+        bottomSheetDialogNeWBill = new BottomSheetDialog(
+                BillManager.this, R.style.BottomSheetDialogTheme
+        );
+        bottomSheetViewNewBill = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.billmanager28, (ConstraintLayout) findViewById(R.id.billManagerView)
+                );
         SetViewPager();
         setToolBar(tb);
 
@@ -144,116 +156,74 @@ public class BillManager extends AppCompatActivity {
 
 
     public void billBottomSheet(View view) {
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
-                BillManager.this, R.style.BottomSheetDialogTheme
-        );
-        View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.billmanager28, (ConstraintLayout) findViewById(R.id.billManagerView)
-                );
-
-        textView1 = bottomSheetView.findViewById(R.id.bmAccountSaveBillName);
-        textView2 = bottomSheetView.findViewById(R.id.bmAccountNickName);
-        textView3 = bottomSheetView.findViewById(R.id.bmAccountNo);
-        spinner = bottomSheetView.findViewById(R.id.spinner_bill);
+        textView1 = bottomSheetViewNewBill.findViewById(R.id.bmAccountSaveBillName);
+        textView2 = bottomSheetViewNewBill.findViewById(R.id.bmAccountNickName);
+        textView3 = bottomSheetViewNewBill.findViewById(R.id.bmAccountNo);
+        spinner = bottomSheetViewNewBill.findViewById(R.id.spinner_bill);
 
         adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
                 R.array.bill_products, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        bottomSheetView.findViewById(R.id.bmClose).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewNewBill.findViewById(R.id.bmClose).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bottomSheetDialog.dismiss();
+                bottomSheetDialogNeWBill.dismiss();
             }
         });
 
-        bottomSheetView.findViewById(R.id.bmButtonSave).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewNewBill.findViewById(R.id.bmButtonSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NewUserBill();
-                Toast.makeText(BillManager.this, "Sorry Not available ", Toast.LENGTH_SHORT).show();
+                createANewBill();
             }
         });
 
-        bottomSheetView.findViewById(R.id.bmCancel).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewNewBill.findViewById(R.id.bmCancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bottomSheetDialog.dismiss();
+                bottomSheetDialogNeWBill.dismiss();
             }
         });
-        bottomSheetDialog.setContentView(bottomSheetView);
-        bottomSheetDialog.show();
+        bottomSheetDialogNeWBill.setContentView(bottomSheetViewNewBill);
+        bottomSheetDialogNeWBill.show();
 
     }
 
-    private void NewUserBill() {
-        View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.billmanager28, (LinearLayout) findViewById(R.id.billManagerView)
-                );
-
-        textView1 = bottomSheetView.findViewById(R.id.bmAccountSaveBillName);
-        String ACCOUNT_NAME = textView1.getText().toString();
+    public void createANewBill() {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Bearer " + sessionID + "");
 
 
-        String NICK_NAME = textView2.getText().toString();
+        String account_number = textView3.getText().toString();
+        newBillmodel.setAccount_no(account_number);
+        String product = spinner.getSelectedItem().toString();
+        newBillmodel.setProduct_name(product);
+        Retrofit retrofit = RetrofitClient.getInstance();
+        JsonPlaceHolders jsonPlaceHolders = retrofit.create(JsonPlaceHolders.class);
+        Call<NewBillmodel> call = jsonPlaceHolders.createNewBill(newBillmodel, headers);
 
-        String ACCOUNT_NUMBER = textView3.getText().toString();
+        call.enqueue(new Callback<NewBillmodel>() {
+            @Override
+            public void onResponse(Call<NewBillmodel> call, @NotNull Response<NewBillmodel> response) {
 
-        String PRODUCT = spinner.getSelectedItem().toString();
-
-        new AddNewBill(ACCOUNT_NAME, NICK_NAME, ACCOUNT_NUMBER, PRODUCT, sessionID);
-
-    }
-
-
-    @SuppressLint("StaticFieldLeak")
-    public class AddNewBill extends AsyncTask<Void, Void, Response> {
-
-
-        String Account_Name, Add_Nickname, Enter_Account_No, Enter_Paybill_No, id;
-        JSONObject savebill = new JSONObject();
-
-        public AddNewBill(String account_Name, String add_Nickname, String enter_Account_No, String enter_Paybill_No, String id) {
-            Account_Name = account_Name;
-            Add_Nickname = add_Nickname;
-            Enter_Account_No = enter_Account_No;
-            Enter_Paybill_No = enter_Paybill_No;
-            this.id = id;
-        }
-
-        @Override
-        protected void onPreExecute() {
-
-            try {
-                savebill.put("", Account_Name);
-                savebill.put("", Add_Nickname);
-                savebill.put("", Enter_Account_No);
-                savebill.put("", Enter_Paybill_No);
-            } catch (JSONException e) {
-                e.printStackTrace();
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "code" + response.code(), Toast.LENGTH_LONG).show();
+                    String result = response.body().toString();
+                    Log.d("TAG test CODE", result);
+                    return;
+                }
+                Toast.makeText(getApplicationContext(), "Successfully Created A Bill" , Toast.LENGTH_LONG).show();
+                String result = response.body().toString();
+                Log.d("TAG test SUCCESS", result);
             }
-        }
 
-        @Override
-        protected Response doInBackground(Void... voids) {
-            Response result;
-            String url = "/bills";
-            OkhttpConnection okConn = new OkhttpConnection();
-            result = okConn.setProfileDetails(url, savebill.toString(), id);
-            return result;
-        }
+            @Override
+            public void onFailure(Call<NewBillmodel> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "error" + t.getMessage(), Toast.LENGTH_LONG).show();
 
-        @Override
-        protected void onPostExecute(Response response) {
-            try {
-                new MaterialAlertDialogBuilder(getApplicationContext())
-                        .setTitle(Account_Name)
-                        .setMessage(Objects.requireNonNull(response.body()).string())
-                        .show();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-            System.out.println("BillManager RESPONSE !!" + response);
-        }
+        });
     }
+
 }

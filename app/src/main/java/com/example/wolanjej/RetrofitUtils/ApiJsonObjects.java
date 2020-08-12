@@ -1,6 +1,7 @@
 package com.example.wolanjej.RetrofitUtils;
 
 import com.example.wolanjej.models.BalanceModel;
+import com.example.wolanjej.models.ListUserBills;
 import com.example.wolanjej.models.ModelUserDetails;
 import com.example.wolanjej.models.TranasactionHistory;
 import com.google.gson.annotations.Expose;
@@ -21,10 +22,15 @@ public class ApiJsonObjects {
     @Expose
     private List<TranasactionHistory> tranasactionHistories;
 
-    public ApiJsonObjects(List<BalanceModel> balances, List<ModelUserDetails> userDetails, List<TranasactionHistory> tranasactionHistories) {
+    @SerializedName("bills")
+    @Expose
+    private List<ListUserBills> listUserBills;
+
+    public ApiJsonObjects(List<ListUserBills> listUserBills,List<BalanceModel> balances, List<ModelUserDetails> userDetails, List<TranasactionHistory> tranasactionHistories) {
         this.balances = balances;
         this.userDetails = userDetails;
         this.tranasactionHistories = tranasactionHistories;
+        this.listUserBills = listUserBills;
     }
 
     public List<BalanceModel> getBalances() {
@@ -37,5 +43,9 @@ public class ApiJsonObjects {
 
     public List<TranasactionHistory> getHistory(){
         return tranasactionHistories;
+    }
+
+    public List<ListUserBills> getListUserBills(){
+        return listUserBills;
     }
 }

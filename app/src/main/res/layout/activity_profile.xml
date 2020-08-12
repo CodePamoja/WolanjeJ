@@ -94,8 +94,8 @@
                     android:layout_below="@id/cardy"
                     android:layout_alignParentTop="false"
                     android:layout_margin="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
+                    app:cardCornerRadius="11dp"
+                    app:cardElevation="20dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -140,8 +140,8 @@
                     android:layout_alignParentTop="false"
                     android:layout_alignParentRight="true"
                     android:layout_margin="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
+                    app:cardCornerRadius="11dp"
+                    app:cardElevation="20dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -182,8 +182,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="false"
                     android:layout_margin="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
+                    app:cardCornerRadius="11dp"
+                    app:cardElevation="20dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
