@@ -89,13 +89,13 @@
             android:id="@+id/txt_numberEWallet2_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/colorMidnight"
-            android:layout_marginTop="7dp"
             android:layout_below="@id/txt_saf_eWallet2_1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="52dp"
-            android:text="070048188532" />
+            android:fontFamily="@font/poppins_regular"
+            android:text="0700481885"
+            android:textColor="@color/colorMidnight" />
         <TextView
             android:id="@+id/txt_amount_EWallet_2_1"
             android:layout_width="wrap_content"
