@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/gray4"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:text="@string/transfer_to_phone"
+                android:textColor="@color/colorMidnight"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/transWalletCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:cardElevation="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingVertical="5dp">
+
+                        <TextView
+                            android:id="@+id/select_wallet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Wallet"
+                            android:textColor="#531edc"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Balance"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/blue_grey"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/select_user"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawSelectorOnTop="true"
+                            android:dropDownWidth="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:popupBackground="@android:color/holo_purple"
+                            android:spinnerMode="dropdown"
+                            android:textAlignment="textStart"
+                            tools:ignore="NestedWeights" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Kes 15,000"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorMidnight"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:id="@+id/walletTransaCard2"
+                android:layout_width="match_parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardElevation="10dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/transWalletCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Transfer detail"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/walluserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:background="@drawable/textviewborder"
+                        android:hint="Enter Phone No."
+                        android:inputType="textPersonName"
+                        android:padding="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_weight="50"
+                            android:backgroundTint="@color/colorGreyBackground"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Scan QR"
+                            android:textAllCaps="false"
+                            android:textColor="@color/blue_grey"
+                            android:textSize="14sp" />
+
+                        <Button
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_weight="50"
+                            android:backgroundTint="@color/colorGreyBackground"
+                            android:fontFamily="@font/poppins_regular"
+                            android:onClick="moveToContact"
+                            android:text="Contacts"
+                            android:textAllCaps="false"
+                            android:textColor="@color/blue_grey"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:autoSizeMinTextSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="DETAILS"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/blue_grey" />
+
+                    <EditText
+                        android:id="@+id/walltAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/textviewborder"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Amount"
+                        android:inputType="number"
+                        android:padding="10dp" />
+
+                    <EditText
+                        android:id="@+id/walltMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@drawable/textviewborder"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Message"
+                        android:inputType="text|textMultiLine"
+                        android:padding="10dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <Button
+                android:id="@+id/continue_wallet_transfer"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/colorPurple"
+                android:fontFamily="@font/poppins_regular"
+                android:onClick="transferMoney"
+                android:padding="15dp"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/walletTransaCard2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/colorWhite">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@mipmap/small_left"
+            app:layout_scrollFlags="scroll|enterAlways">
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
