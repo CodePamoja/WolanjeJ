@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:fontFamily="@font/poppins_bold"
                 android:paddingHorizontal="20dp"
                 android:text="Confirm"
                 android:textColor="@color/colorMidnight"
@@ -53,6 +54,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="John Doe"
+                        android:fontFamily="@font/poppins_regular"
                         android:textAlignment="center"
                         android:textColor="@color/colorMidnight"
                         android:textSize="24sp"/>
@@ -60,6 +62,7 @@
                         android:id="@+id/waltDateTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="9:00 PM | 10/Jan/2020"
                         android:textAlignment="center"
                         android:textColor="@color/blue_grey"
@@ -79,6 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="DETAILS"
                         android:textAlignment="textStart"
                         android:textColor="@color/blue_grey"
@@ -92,6 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="From"
                             android:textAlignment="textStart"
                             android:textColor="@color/blue_grey"
@@ -100,6 +105,7 @@
                         <TextView
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
                             android:layout_weight="50"
                             android:text="User 01"
                             android:textAlignment="textEnd"
@@ -117,6 +123,7 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="To"
                             android:textAlignment="textStart"
                             android:textColor="@color/blue_grey"
@@ -126,6 +133,7 @@
                             android:id="@+id/waltToName"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
                             android:layout_weight="50"
                             android:text="John Doe"
                             android:textAlignment="textEnd"
@@ -142,6 +150,7 @@
                         <TextView
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
                             android:layout_weight="50"
                             android:text="Amount"
                             android:textAlignment="textStart"
@@ -153,6 +162,7 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="KES 1,000"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorMidnight"
@@ -169,6 +179,7 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Message"
                             android:textAlignment="textStart"
                             android:textColor="@color/blue_grey"
@@ -179,6 +190,7 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Thank you"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorMidnight"
@@ -197,6 +209,7 @@
                             android:layout_weight="50"
                             android:text="Tansaction fee"
                             android:textAlignment="textStart"
+                            android:fontFamily="@font/poppins_regular"
                             android:textColor="@color/blue_grey"
                             android:textSize="16sp"
                             />
@@ -205,6 +218,7 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="0.00"
                             android:textAlignment="textEnd"
                             android:textColor="@color/colorMidnight"
@@ -216,7 +230,7 @@
 
                 <View style="@style/Divider"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="5dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -229,6 +243,7 @@
                         android:text="TOTAL"
                         android:textAlignment="textStart"
                         android:textColor="@color/blue_grey"
+                        android:fontFamily="@font/poppins_medium"
                         android:textSize="18sp"
                         />
                     <TextView
@@ -236,6 +251,7 @@
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:layout_weight="50"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="KES 1,000"
                         android:textAlignment="textEnd"
                         android:textColor="@color/colorGreenBlue"
@@ -259,6 +275,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPurple"
+                android:fontFamily="@font/poppins_regular"
+                android:textAllCaps="false"
                 android:padding="15dp"
                 android:text="Continue"
                 android:textColor="@color/colorWhite"/>

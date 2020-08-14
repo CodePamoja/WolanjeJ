@@ -1,28 +1,24 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.wolanjej.dialogs.AirtimeSuccess;
 import com.example.wolanjej.dialogs.AirtimeUnsuccessful;
@@ -42,12 +38,17 @@ public class EnterPin extends AppCompatActivity {
     private String phoneName;
     private String amount;
     private String accNumber;
+    private String sendIDReference;
     private String phoneProvider;
     private String message;
+    private String sendAmount;
     private String myBalance;
+    private String resultBalance;
     private String bankDetails;
     private EditText editText1, editText2;
     private SharedPreferences pref;
+    private final String TAG = "EnterPin";
+    private ProgressBar progressBar;
 
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
@@ -61,6 +62,7 @@ public class EnterPin extends AppCompatActivity {
         //SharedPreferences values for login eg token
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
+        progressBar = (ProgressBar) findViewById(R.id.progressBarEnterPin);
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
@@ -321,7 +323,7 @@ public class EnterPin extends AppCompatActivity {
         }
 
     }
-
+    
     public void Transfer(String pin, String productName, String refValue) {
         String verifyResult;
 
@@ -353,26 +355,31 @@ public class EnterPin extends AppCompatActivity {
         Response result = okConn.postValue(url, jMpesa.toString(), sessionID);
         System.out.println("Response body json values are : " + result);
         if (result.code() == 201) {
+            progressBar.setVisibility(View.GONE);
             try {
                 String value = result.body().string();
                 verifyResult = value;
                 JSONObject jBody = new JSONObject(value); // adding
-                System.out.println("Response body json values are : " + verifyResult);
+                System.out.println(TAG + "Response body json values are service : " + verifyResult);
                 Log.e("TAG", String.valueOf(verifyResult));
-                String sendAmount = jBody.getJSONArray("services").getJSONObject(0).getString("amount");
+                sendAmount = jBody.getJSONArray("services").getJSONObject(0).getString("amount");
                 String sendfee = jBody.getJSONArray("services").getJSONObject(0).getString("fee");
                 String sendNumber = jBody.getJSONArray("services").getJSONObject(0).getString("ref");
-                String sendIDReference = jBody.getJSONArray("services").getJSONObject(0).getString("id");
+                sendIDReference = jBody.getJSONArray("services").getJSONObject(0).getString("id");
                 String statusResulsts = jBody.getJSONArray("services").getJSONObject(0).getString("status");
                 Log.e("TAG", sendAmount);
 
                 if (phoneNumber.equals(sendNumber) && statusResulsts.equals("TRX_ASYNC")) {
-                    showPopup(sendAmount, sendfee, sendIDReference);
+                    showPopup();
                 } else if (statusResulsts.equals("TRX_OK")) {
-                    showPopup(sendAmount, sendfee, sendIDReference);
+                    showPopup();
                 } else if (statusResulsts.equals("TRX_INSUFFICIENT_BALANCE")) {
                     Toast.makeText(getApplicationContext(), "You have insufficient balance on your wallet", Toast.LENGTH_LONG).show();
                     showPopupFail();
+                } else if (statusResulsts.equals("TRX_VERIFY")) {
+                    Toast.makeText(this, "the transaction is being verified", Toast.LENGTH_SHORT).show();
+                    showPopup();
+
                 } else {
                     Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
                     showPopupFail();
@@ -382,6 +389,7 @@ public class EnterPin extends AppCompatActivity {
                 e.printStackTrace();
             }
         } else if (result.code() != 201) {
+            progressBar.setVisibility(View.GONE);
             String statusResults = "unsuccessful";
             try {
                 verifyResult = result.body().string();
@@ -417,7 +425,7 @@ public class EnterPin extends AppCompatActivity {
                     JSONObject JBalance = new JSONObject(test);
                     System.out.println("Response body json values are : " + JBalance);
 
-                    String resultBalance = JBalance.getJSONArray("balance").getJSONObject(0).getString("balance");
+                    resultBalance = JBalance.getJSONArray("balance").getJSONObject(0).getString("balance");
 
 
                     myBalance = "KSH " + resultBalance;
@@ -445,87 +453,125 @@ public class EnterPin extends AppCompatActivity {
     }
 
 
-    public void showPopup(String sendAmount, String sendfee, String sendIDReference) {
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.toast_popup, (ViewGroup) findViewById(R.id.toast_popup_layout), false);
-
+    public void showPopup() {
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
 
         new UserBalance().execute();
 
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = false; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-        if (className.equals("TransferToWalletSingle37")) {
-            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
-            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
-
-        } else if (className.equals("TransferToPhone50")) {
-            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
-            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
-        } else if (className.equals("TransferToBank44")) {
-            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
-            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
-        } else if (className.equals("TopUpOtherNumber")) {
-            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
-            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
-        } else if (className.equals("Top_up")) {
-            AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
-            airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
-
-        }
-
-        ((Button) popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-                movetoSuccess();
+        switch (className) {
+            case "TransferToWalletSingle37": {
+                ShowDialogSuccess();
+                break;
             }
-        });
+            case "TransferToPhone50": {
+                ShowDialogSuccess();
+                break;
+            }
+            case "TransferToBank44": {
+                AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
+                airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
+                break;
+            }
+            case "TopUpOtherNumber": {
+                AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
+                airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
+                break;
+            }
+            case "Top_up": {
+                AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
+                airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
 
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+                break;
+            }
+        }
     }
 
     public void showPopupFail() {
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.toast_popup, (ViewGroup) findViewById(R.id.toast_popup_layout), false);
-
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
 
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-        if (className.equals("TransferToWalletSingle37")) {
-            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
-            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
-        } else if (className.equals("TransferToPhone50")) {
-            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
-            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
-        } else if (className.equals("TransferToBank44")) {
-            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
-            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
-        } else if (className.equals("TopupOtherNumber")) {
-            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
-            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
-        } else if (className.equals("Top_up")) {
-            AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
-            airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
+        switch (className) {
+            case "TransferToWalletSingle37": {
+                ShowDialogWalletFail();
+                break;
+            }
+            case "TransferToPhone50": {
+                ShowDialogWalletFail();
+                break;
+            }
+            case "TransferToBank44": {
+                AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
+                airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
+                break;
+            }
+            case "TopupOtherNumber": {
+                AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
+                airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
+                break;
+            }
+            case "Top_up": {
+                AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
+                airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
+                break;
+            }
         }
 
-        ((Button) popupView.findViewById(R.id.dismiss_success)).setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void ShowDialogSuccess() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.transfer_success_popup, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btn = view.findViewById(R.id.dismiss_success);
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow.dismiss();
-                movetoSuccess();
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("Class", "EnterPin");
+                startActivity(intent);
+                finish();
+                alertDialog.dismiss();
             }
         });
+        TextView textView = view.findViewById(R.id.refNumberSuccess);
+        textView.setText(sendIDReference);
+        TextView textView1 = view.findViewById(R.id.amountSentSuccess);
+        textView1.setText(sendAmount);
 
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+        alertDialog.show();
+
+    }
+
+    private void ShowDialogWalletFail() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.transfer_unsuccessful_popup, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btn = view.findViewById(R.id.try_again_unsuccessful);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TransferToWalletSingle37.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("Class", "EnterPin");
+                startActivity(intent);
+                finish();
+                alertDialog.dismiss();
+            }
+        });
+        TextView textView = view.findViewById(R.id.amount_sent_note);
+        TextView textView1 = view.findViewById(R.id.balance_note2);
+        TextView textView2 = view.findViewById(R.id.reference_numberTra);
+        textView2.setText(sendIDReference);
+        textView.setText(sendAmount);
+
+        alertDialog.show();
     }
 }

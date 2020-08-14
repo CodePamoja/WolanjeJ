@@ -369,6 +369,7 @@
         android:layout_height="52dp"
         android:layout_weight="1"
         android:textAllCaps="false"
+        android:paddingHorizontal="5dp"
         android:text="@string/save_amp_continue"
         android:backgroundTint="@color/colorAccent"
         android:onClick="movetostage2"

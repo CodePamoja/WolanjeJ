@@ -1,9 +1,7 @@
 package com.example.wolanjej.RetrofitUtils;
 
-import com.example.wolanjej.models.ListUserBills;
 import com.example.wolanjej.models.ModelUserDetails;
 import com.example.wolanjej.models.NewBillmodel;
-import com.example.wolanjej.models.TranasactionHistory;
 
 import java.util.Map;
 
@@ -35,4 +33,6 @@ public interface JsonPlaceHolders {
 
     @GET("bills")
     Call<ApiJsonObjects> getListOfBills(@HeaderMap Map<String, String> headers);
+
+
 }

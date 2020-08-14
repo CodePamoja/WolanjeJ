@@ -44,9 +44,9 @@ public class AirtimeUnsuccessful extends AppCompatDialogFragment {
                 Intent intent = new Intent(getContext(), Top_up.class);startActivity(intent);
             }
         });
-        textView1 = (TextView) content.findViewById(R.id.reference_number);
+        textView1 = (TextView) content.findViewById(R.id.reference_numberTra);
         textView2 = (TextView) content.findViewById(R.id.amount_sent_note);
-        textView3 = (TextView) content.findViewById(R.id.balance_note);
+        textView3 = (TextView) content.findViewById(R.id.balance_note2);
 
         ServicesModel servicesModel = new ServicesModel();
 //        textView1.setText(servicesModel.product_name);

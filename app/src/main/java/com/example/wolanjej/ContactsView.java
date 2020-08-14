@@ -70,6 +70,11 @@ public class ContactsView extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String stext) {
+                if (stext == null){
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
                 suAdapter.filter(stext);
                 return false;
             }

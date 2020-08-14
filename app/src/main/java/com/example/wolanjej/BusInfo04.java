@@ -35,27 +35,46 @@ public class BusInfo04 extends AppCompatActivity {
         Intent intent = getIntent();
         AvailableBuses availableBuses = intent.getParcelableExtra("Bus Details");
 
-        String mImage = availableBuses.getmBusCompanyImg();
-        String mAirWaysId = availableBuses.getmBusCompanyId();
-        String mFlightHour = availableBuses.getmBusFlightHour();
-        String mFlightMin = availableBuses.getmBusFlightMin();
-        String mFlightStops = availableBuses.getmBusFlightStops();
-        String mFlightCosts = availableBuses.getmBusFlightCosts();
-        String mTicketsLeft = availableBuses.getmBusTicketsLeft();
-        String mFlightFrom = availableBuses.getmBusFlightFrom();
-        String mFlightDepTime = availableBuses.getmBusFlightDepTime();
-        String mFlightTo = availableBuses.getmBusFlightTo();
-        String mFlightArrivalTime = availableBuses.getmBusFlightArrivalTime();
+        if (availableBuses != null) {
+            String mImage = availableBuses.getmBusCompanyImg();
+            String mAirWaysId = availableBuses.getmBusCompanyId();
+            String mFlightHour = availableBuses.getmBusFlightHour();
+            String mFlightMin = availableBuses.getmBusFlightMin();
+            String mFlightStops = availableBuses.getmBusFlightStops();
+            String mFlightCosts = availableBuses.getmBusFlightCosts();
+            String mTicketsLeft = availableBuses.getmBusTicketsLeft();
+            String mFlightFrom = availableBuses.getmBusFlightFrom();
+            String mFlightDepTime = availableBuses.getmBusFlightDepTime();
+            String mFlightTo = availableBuses.getmBusFlightTo();
+            String mFlightArrivalTime = availableBuses.getmBusFlightArrivalTime();
 
-        Picasso.get().load(String.valueOf(mImage)).into(imageView);
-        textView1.setText(mAirWaysId);
-        textView2.setText(mFlightHour);
-        textView3.setText(mFlightCosts);
-        textView4.setText(mTicketsLeft);
-        textView5.setText(mFlightFrom);
-        textView6.setText(mFlightDepTime);
-        textView7.setText(mFlightTo);
-        textView8.setText(mFlightArrivalTime);
+            Picasso.get().load(String.valueOf(mImage)).into(imageView);
+            textView1.setText(mAirWaysId);
+            textView2.setText(mFlightHour);
+            textView3.setText(mFlightCosts);
+            textView4.setText(mTicketsLeft);
+            textView5.setText(mFlightFrom);
+            textView6.setText(mFlightDepTime);
+            textView7.setText(mFlightTo);
+            textView8.setText(mFlightArrivalTime);
+        }
+        setToolBar(tb);
+    }
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbarBusInfo);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent moveToLogo = new Intent(this,BookBus03.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        moveToLogo.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(moveToLogo);
+                    }
+                }
+        );
+
     }
 
     public void MoveToBus05(View view) {

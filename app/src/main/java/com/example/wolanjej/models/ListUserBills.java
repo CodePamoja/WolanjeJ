@@ -102,6 +102,14 @@ public class ListUserBills {
         return imageDrawable;
     }
 
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public void setCreated_on(String created_on) {
+        this.created_on = created_on;
+    }
+
     public void setImageDrawable(int imageDrawable) {
         this.imageDrawable = imageDrawable;
     }

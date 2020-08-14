@@ -12,15 +12,15 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class OkhttpConnection {
-    String baseUrl= "https://wolenjeafrica.com/wolenje";
+    String baseUrl = "https://wolenjeafrica.com/wolenje";
     OkHttpClient client = new OkHttpClient();
 
-    public  Response postRequest(String url, String jsonBody){
+    public Response postRequest(String url, String jsonBody) {
         Response result = null;
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
             String allUrl = baseUrl + url;
-            Log.e("TAG", allUrl );
+            Log.e("TAG", allUrl);
             Request request = new Request.Builder()
                     .url(allUrl)
                     .post(body)
@@ -29,7 +29,7 @@ public class OkhttpConnection {
             Call call = client.newCall(request);
             Response response = call.execute();
             Log.e("TAG", String.valueOf(response.code()));
-            result  = response;
+            result = response;
 
         } catch (IOException ex) {
             System.out.println("IO Error : " + ex);
@@ -39,20 +39,20 @@ public class OkhttpConnection {
         return result;
     }
 
-    public  Response postValue(String url, String jsonBody, String sessionID){
+    public Response postValue(String url, String jsonBody, String sessionID) {
         Response result = null;
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
             String allUrl = baseUrl + url;
             Request request = new Request.Builder()
-                    .header("Authorization", "Bearer "+sessionID+"" )
+                    .header("Authorization", "Bearer " + sessionID + "")
                     .url(allUrl)
                     .post(body)
                     .build();
 
             Call call = client.newCall(request);
             Response response = call.execute();
-            result  = response;
+            result = response;
 
         } catch (IOException ex) {
             System.out.println("IO Error : " + ex);
@@ -63,21 +63,20 @@ public class OkhttpConnection {
     }
 
 
-
-    public  Response payBill(String url, String jsonBody, String sessionID){
+    public Response payBill(String url, String jsonBody, String sessionID) {
         Response result = null;
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
             String allUrl = baseUrl + url;
             Request request = new Request.Builder()
-                    .header("Authorization", "Bearer "+sessionID+"" )
+                    .header("Authorization", "Bearer " + sessionID + "")
                     .url(allUrl)
                     .post(body)
                     .build();
 
             Call call = client.newCall(request);
             Response response = call.execute();
-            result  = response;
+            result = response;
 
         } catch (IOException ex) {
             System.out.println("IO Error : " + ex);
@@ -87,12 +86,12 @@ public class OkhttpConnection {
         return result;
     }
 
-    public  Response getLogin(String url, String base64Results){
+    public Response getLogin(String url, String base64Results) {
         Response result = null;
         try {
             String allUrl = baseUrl + url;
             Request request = new Request.Builder()
-                    .header("Authorization", "Basic "+base64Results+"" )
+                    .header("Authorization", "Basic " + base64Results + "")
                     .get()
                     .url(allUrl)
                     .build();
@@ -101,7 +100,7 @@ public class OkhttpConnection {
             Response response = call.execute();
 //            String test = response.body().string();
 //            Log.d("TAG", test);
-            result  = response;
+            result = response;
 
         } catch (IOException ex) {
             System.out.println("IO Error : " + ex);
@@ -111,12 +110,12 @@ public class OkhttpConnection {
         return result;
     }
 
-    public  Response getBalance(String url, String sessionID){
+    public Response getBalance(String url, String sessionID) {
         Response result = null;
         try {
             String allUrl = baseUrl + url;
             Request request = new Request.Builder()
-                    .header("Authorization", "Bearer "+sessionID+"" )
+                    .header("Authorization", "Bearer " + sessionID + "")
                     .get()
                     .url(allUrl)
                     .build();
@@ -125,7 +124,7 @@ public class OkhttpConnection {
             Response response = call.execute();
 //            String test = response.body().string();
 //            Log.d("TAG", test);
-            result  = response;
+            result = response;
 
         } catch (IOException ex) {
             System.out.println("IO Error : " + ex);
@@ -135,9 +134,9 @@ public class OkhttpConnection {
         return result;
     }
 
-    public Response setProfileDetails(String url,  String jsonBody, String sessionID){
+    public Response setProfileDetails(String url, String jsonBody, String sessionID) {
         Response result = null;
-        try{
+        try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
             String allUrl = baseUrl + url;
             Request request = new Request.Builder()
@@ -147,7 +146,7 @@ public class OkhttpConnection {
                     .build();
             Call call = client.newCall(request);
             Response response = call.execute();
-            result  = response;
+            result = response;
 
         } catch (IOException ex) {
             System.out.println("IO Error : " + ex);

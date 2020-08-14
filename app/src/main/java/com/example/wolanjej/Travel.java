@@ -43,11 +43,12 @@ public class Travel extends AppCompatActivity  implements View.OnClickListener {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this, Service.class);
+        final Intent movetoLogo = new Intent(this, services.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        movetoLogo.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(movetoLogo);
                     }
                 }

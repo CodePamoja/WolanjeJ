@@ -72,19 +72,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="Mr.mof"
+                        android:text=""
+                        android:hint="Account Name"
                         android:textColor="#000000"
-                        android:textSize="24sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
-
                     <TextView
                         android:id="@+id/txt_phone_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="234567899874"
+                        android:text=""
+                        android:hint="+254 *** ***"
                         android:textColor="#000000"
-                        android:textSize="24sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <com.google.android.material.card.MaterialCardView
@@ -95,7 +96,7 @@
                     android:layout_alignParentTop="false"
                     android:layout_margin="12dp"
                     app:cardCornerRadius="11dp"
-                    app:cardElevation="20dp">
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -108,7 +109,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="true"
-                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="20dp"
                             android:src="@drawable/ic_graph">
 
@@ -118,16 +119,20 @@
                             android:id="@+id/txt1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/transport"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
-                            android:layout_centerInParent="true"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="0dp"
                             android:layout_marginBottom="0dp"
                             android:fontFamily="@font/poppins_regular"
-                            android:gravity="center_horizontal"
+                            android:gravity="center"
+                            android:paddingHorizontal="5dp"
                             android:text="Repurchase Report"
                             android:textColor="#000000"
-                            android:textSize="20sp"
-
-                            />
+                            android:textSize="16sp" />
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -141,7 +146,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_margin="12dp"
                     app:cardCornerRadius="11dp"
-                    app:cardElevation="20dp">
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -150,11 +155,12 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/imgSettings"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="true"
-                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="20dp"
                             android:src="@drawable/ic_gears" />
 
@@ -162,15 +168,19 @@
                             android:id="@+id/txt2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/imgSettings"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
-                            android:layout_centerInParent="true"
-                            android:layout_marginBottom="15dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="0dp"
+                            android:layout_marginBottom="0dp"
                             android:fontFamily="@font/poppins_regular"
                             android:text="Settings"
                             android:textColor="#000000"
-                            android:textSize="20sp"
-
-                            />
+                            android:textSize="16sp" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -183,7 +193,7 @@
                     android:layout_alignParentTop="false"
                     android:layout_margin="12dp"
                     app:cardCornerRadius="11dp"
-                    app:cardElevation="20dp">
+                    app:cardElevation="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -192,12 +202,12 @@
                         android:orientation="vertical">
 
                         <ImageView
-
+                            android:id="@+id/imgSupport"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="false"
                             android:layout_alignParentTop="true"
-                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="20dp"
                             android:src="@drawable/ic_support" />
 
@@ -205,15 +215,19 @@
                             android:id="@+id/txt3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/imgSupport"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
-                            android:layout_centerInParent="true"
-                            android:layout_marginBottom="15dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="0dp"
+                            android:gravity="center"
+                            android:layout_marginBottom="0dp"
                             android:fontFamily="@font/poppins_regular"
                             android:text="Support"
                             android:textColor="#000000"
-                            android:textSize="20sp"
-
-                            />
+                            android:textSize="16sp" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
             </RelativeLayout>

@@ -11,22 +11,34 @@
     android:focusable="true"
     app:cardElevation="5dp"
     android:padding="7dp">
-
-    <ImageView
-        android:id="@+id/item_image"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_transfer" />
-    <TextView
-        android:id="@+id/item_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Item Title"
-        android:layout_marginTop="60dp"
-        android:textColor="@color/blue_grey"
-        android:gravity="end"
-        android:textSize="12sp" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_transfer" />
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_image"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:text="Item Title"
+            android:textColor="@color/blue_grey"
+            android:textSize="12sp" />
+    </RelativeLayout>
 </com.google.android.material.card.MaterialCardView >

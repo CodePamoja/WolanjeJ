@@ -596,7 +596,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnnewxtholder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="76dp"
         android:background="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

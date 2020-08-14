@@ -337,7 +337,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
                     tvtext.setText("KES " + MY_BALANCE);
                 }
-                tvtext = findViewById(R.id.MYBalance);
+
 
             }
 
@@ -770,9 +770,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     public void onClick(View v) {
 
                         drawer.closeDrawer(GravityCompat.START);
-
-                        bottomSheetDialog.hide();
-                        findViewById(R.id.Ewallet2).setVisibility(View.VISIBLE);
+                        Intent intent = new Intent(getApplicationContext(), Ewallet2_1.class);
+                        startActivity(intent);
+                        bottomSheetDialog.dismiss();
 
                     }
                 }
@@ -783,7 +783,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     public void onClick(View v) {
                         drawer.closeDrawer(GravityCompat.START);
                         bottomSheetDialog.hide();
-                        findViewById(R.id.Ewallet3).setVisibility(View.VISIBLE);
                     }
                 }
         );
@@ -1097,7 +1096,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public ArrayList<Model> getMylist() {
         ArrayList<Model> models = new ArrayList<>();
         Model m = new Model();
-        m.setTitle("Pay Tv");
+        m.setTitle("PayTv");
         m.setImage(R.drawable.ic_exchange);
         models.add(m);
 

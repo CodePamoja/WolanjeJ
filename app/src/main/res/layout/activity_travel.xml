@@ -44,27 +44,41 @@
                 android:layout_marginTop="3dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/ticket" />
+                    <ImageView
+                        android:id="@+id/imgflight"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="62dp"
+                        android:src="@drawable/ticket" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="bottom"
-                    android:layout_marginStart="33dp"
-                    android:layout_marginBottom="45dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:gravity="center_horizontal"
-                    android:text="Flight ticket"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgflight"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="22dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center_horizontal"
+                        android:text="Flight ticket"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="16sp" />
+                </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
@@ -73,44 +87,57 @@
                 android:layout_height="162dp"
                 android:layout_marginStart="23dp"
                 android:layout_marginTop="3dp"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/img_trainTravel"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="50dp"
-                    android:src="@drawable/subway" />
+                    <ImageView
+                        android:id="@+id/img_trainTravel"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="62dp"
+                        android:src="@drawable/subway" />
 
-                <TextView
-                    android:id="@+id/txtTrain_ticket"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/img_trainTravel"
-                    android:layout_marginStart="33dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:gravity="center_horizontal"
-                    android:text="Train ticket"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/txtTrain_ticket"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/img_trainTravel"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center_horizontal"
+                        android:text="Train ticket"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/comminsoon1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/txtTrain_ticket"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Coming Soon"
-                    android:textColor="@color/colorBluepurple"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/comminsoon1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTrain_ticket"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center_horizontal"
+                        android:text="Coming Soon"
+                        android:textColor="@color/colorBluepurple"
+                        android:textSize="16sp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
@@ -126,47 +153,59 @@
                 android:layout_height="162dp"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="4dp"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/img_busTravel"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/ic_bus" />
+                    <ImageView
+                        android:id="@+id/img_busTravel"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="62dp"
+                        android:src="@drawable/ic_bus" />
 
-                <TextView
-                    android:id="@+id/TxtBusTicketTravel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="33dp"
-                    android:layout_below="@id/img_busTravel"
-                    android:fontFamily="@font/poppins_medium"
-                    android:gravity="center_horizontal"
-                    android:text="Bus ticket"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/TxtBusTicketTravel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/img_busTravel"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center_horizontal"
+                        android:text="Bus ticket"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/TxtComingSoon2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_below="@id/TxtBusTicketTravel"
-                    android:fontFamily="@font/poppins_medium"
-                    android:gravity="center_horizontal"
-                    android:text="Coming Soon"
-                    android:textColor="@color/colorBluepurple"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/TxtComingSoon2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/TxtBusTicketTravel"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center_horizontal"
+                        android:text="Coming Soon"
+                        android:textColor="@color/colorBluepurple"
+                        android:textSize="16sp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -176,48 +215,59 @@
                 android:layout_height="162dp"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="4dp"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imgTaxiTravel"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/ic_taxi_1" />
+                    <ImageView
+                        android:id="@+id/imgTaxiTravel"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="62dp"
+                        android:src="@drawable/ic_taxi_1" />
 
-                <TextView
-                    android:id="@+id/txtTaxiBooking"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
+                    <TextView
+                        android:id="@+id/txtTaxiBooking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imgTaxiTravel"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center_horizontal"
+                        android:text="Booking ticket"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="16sp" />
 
-                    android:layout_marginStart="20dp"
-                    android:layout_below="@id/imgTaxiTravel"
-                    android:fontFamily="@font/poppins_medium"
-                    android:gravity="center_horizontal"
-                    android:text="Booking ticket"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/ComingSoon3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/txtTaxiBooking"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:gravity="center_horizontal"
-                    android:text="Coming Soon"
-                    android:textColor="@color/colorBluepurple"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/ComingSoon3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTaxiBooking"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center_horizontal"
+                        android:text="Coming Soon"
+                        android:textColor="@color/colorBluepurple"
+                        android:textSize="16sp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

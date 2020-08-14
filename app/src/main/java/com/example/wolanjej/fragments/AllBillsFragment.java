@@ -20,7 +20,10 @@ import com.example.wolanjej.RetrofitUtils.RetrofitClient;
 import com.example.wolanjej.models.ListUserBills;
 import com.example.wolanjej.recyclerAdapters.AllBillRecyclerAdapter;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,10 +79,12 @@ public class AllBillsFragment extends Fragment {
                 listUserBills = response.body().getListUserBills();
                 for (ListUserBills mListUserBills : listUserBills) {
                     String ProductName = mListUserBills.getProduct_name().toString();
+                    String date = mListUserBills.getCreated_on();
                     if (ProductName.equals("MPESA_B2C") || ProductName.equals("AIRTEL_B2C") || ProductName.equals("TKASH_B2C"))
-                        mListUserBills.setImageDrawable(R.drawable.ic_phone);
+                        mListUserBills.setProduct_name("Phone Bill");
+                    mListUserBills.setImageDrawable(R.drawable.ic_phone);
                     Log.d("TAG101", ProductName);
-
+                    mListUserBills.setCreated_on(ChangeDate(date));
 
                     AllBillRecyclerAdapter allBillRecyclerAdapter = new AllBillRecyclerAdapter(getContext(), listUserBills);
                     int numberOfColumns = 2;
@@ -94,6 +99,13 @@ public class AllBillsFragment extends Fragment {
                 Toast.makeText(getActivity(), "error" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private String ChangeDate(String date) {
+        long date1 = Long.parseLong(date);
+        Date date2 = new Date((long) date1 * 1000);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        return String.valueOf(dateFormat.format(date2).substring(0, 11));
     }
 
 }
