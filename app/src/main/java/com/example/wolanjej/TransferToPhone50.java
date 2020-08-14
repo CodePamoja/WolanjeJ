@@ -1,8 +1,5 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.wolanjej.recyclerAdapters.SelectUserAdapter;
 
@@ -38,31 +38,38 @@ public class TransferToPhone50 extends AppCompatActivity {
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
-        if(className.equals("MainTransfer36")) {
-        }else if(className.equals("ContactsView")) {
-        }else if (className.equals("SelectUserAdapter")){
-            String CheckphoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
-            this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
+        switch (className) {
+            case "MainTransfer36":
+                break;
+            case "ContactsView":
+                break;
+            case "SelectUserAdapter": {
+                String CheckphoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
+                this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
 
-            EditText tvtext =  findViewById(R.id.transContactAmount);
-            tvtext.setText(CheckphoneNumber);
-        }else if (className.equals("ConfirmTransferToPhone52")){
+                EditText tvtext = findViewById(R.id.transContactAmount);
+                tvtext.setText(CheckphoneNumber);
+                break;
+            }
+            case "ConfirmTransferToPhone52": {
 
-            //SharedPreferences values for TransferToPhone52 activity class eg token
-            pref=getApplication().getSharedPreferences("ConfirmTransferToPhone52", MODE_PRIVATE);
-            this.phoneNumber =  pref.getString("phone", "");
-            this.phoneName =  pref.getString("phoneName", "");
-            String sendAmount =  pref.getString("amount", "");
-            this.phoneCompany =  pref.getString("phoneCompany", "");
+                //SharedPreferences values for TransferToPhone52 activity class eg token
+                pref = getApplication().getSharedPreferences("ConfirmTransferToPhone52", MODE_PRIVATE);
+                this.phoneNumber = pref.getString("phone", "");
+                this.phoneName = pref.getString("phoneName", "");
+                String sendAmount = pref.getString("amount", "");
+                this.phoneCompany = pref.getString("phoneCompany", "");
 
-            String CheckphoneNumber = "+"+ pref.getString("phone", "");
+                String CheckphoneNumber = "+" + pref.getString("phone", "");
 
-            EditText tvtext =  findViewById(R.id.transContactAmount);
-            tvtext.setText(CheckphoneNumber);
+                EditText tvtext = findViewById(R.id.transContactAmount);
+                tvtext.setText(CheckphoneNumber);
 
-            tvtext = findViewById(R.id.transAmountPhone);
-            tvtext.setText(sendAmount);
+                tvtext = findViewById(R.id.transAmountPhone);
+                tvtext.setText(sendAmount);
 
+                break;
+            }
         }
 
     }
@@ -71,7 +78,7 @@ public class TransferToPhone50 extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,MainTransfer36.class);
+        final Intent movetoLogo = new Intent(this, MainTransfer36.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -86,7 +93,7 @@ public class TransferToPhone50 extends AppCompatActivity {
     public void moveToContact(View view) {
 //        Log.e("session before contact", sessionID);
         Intent move = new Intent(this, ContactsView.class);
-        move.putExtra("Class","TransferToPhone50");
+        move.putExtra("Class", "TransferToPhone50");
         move.putExtra(EXTRA_CLASSTYPE, "phone");
         startActivity(move);
     }
@@ -101,12 +108,12 @@ public class TransferToPhone50 extends AppCompatActivity {
         Log.e("TAG phone number check", "button pressed to transfer money");
         String phonenumber = changePhoneNo(phone, view);
         Log.e("TAG phone number last", phonenumber);
-        if(phonenumber!="Fasle"){
+        if (phonenumber != "Fasle") {
             valuesConferm(phonenumber, amount);
         }
     }
 
-    public void valuesConferm(String phone, String amount){
+    public void valuesConferm(String phone, String amount) {
 //        Log.e("session before contact", sessionID);
 
         //SharedPreferences values for login eg token
@@ -128,7 +135,7 @@ public class TransferToPhone50 extends AppCompatActivity {
         startActivity(move);
     }
 
-    public String changePhoneNo(String inputPhone, View view){
+    public String changePhoneNo(String inputPhone, View view) {
         String validPhoneNo = "Fasle";
         String safaricom = "^(?:254|\\+254|0)?(7(?:(?:[129][0-9])|(?:0[0-9])|(?:6[8-9])|(?:5[7-9])|(?:4[5-6])|(?:4[8])|(4[0-3]))[0-9]{6})$";
         String telkom = "^(?:254|\\+254|0)?(7(?:(?:[7][0-9]))[0-9]{6})$";
@@ -144,16 +151,16 @@ public class TransferToPhone50 extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
                 String replPhone3 = "null";
                 phoneCompany = "safaricom";
-                if(replPhone2.startsWith("0")){
+                if (replPhone2.startsWith("0")) {
                     replPhone3 = replPhone2.replaceFirst("0", "\\254");
                     Log.e("TAG phone starts 0", replPhone3);
                     validPhoneNo = replPhone3;
-                }else if(replPhone2.startsWith("7")){
+                } else if (replPhone2.startsWith("7")) {
                     replPhone3 = replPhone2.replaceFirst("7", "\\254");
                     Log.e("TAG phone starts 7", replPhone3);
                     validPhoneNo = replPhone3;
-                }else if(replPhone2.startsWith("+")){
-                    validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]","");
+                } else if (replPhone2.startsWith("+")) {
+                    validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
                     Log.e("TAG phone number +", validPhoneNo);
                 }
             } else {
@@ -163,38 +170,38 @@ public class TransferToPhone50 extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Airtel Number", Toast.LENGTH_LONG).show();
                     String replPhone3 = "null";
                     phoneCompany = "airtel";
-                    if(replPhone2.startsWith("0")){
+                    if (replPhone2.startsWith("0")) {
                         replPhone3 = replPhone2.replaceFirst("0", "\\254");
                         Log.e("TAG phone starts 0", replPhone3);
                         validPhoneNo = replPhone3;
-                    }else if(replPhone2.startsWith("7")){
+                    } else if (replPhone2.startsWith("7")) {
                         replPhone3 = replPhone2.replaceFirst("7", "\\254");
                         Log.e("TAG phone starts 7", replPhone3);
                         validPhoneNo = replPhone3;
-                    }else if(replPhone2.startsWith("+")){
-                        validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]","");
+                    } else if (replPhone2.startsWith("+")) {
+                        validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
                         Log.e("TAG phone number +", validPhoneNo);
                     }
-                }else {
+                } else {
                     patt = Pattern.compile(telkom);
                     match = patt.matcher(replPhone2);
                     if (match.find()) {
                         Toast.makeText(getApplicationContext(), "Telkom Number", Toast.LENGTH_LONG).show();
                         String replPhone3 = "null";
                         phoneCompany = "telkom";
-                        if(replPhone2.startsWith("0")){
+                        if (replPhone2.startsWith("0")) {
                             replPhone3 = replPhone2.replaceFirst("0", "\\254");
                             Log.e("TAG phone starts 0", replPhone3);
                             validPhoneNo = replPhone3;
-                        }else if(replPhone2.startsWith("7")){
+                        } else if (replPhone2.startsWith("7")) {
                             replPhone3 = replPhone2.replaceFirst("7", "\\254");
                             Log.e("TAG phone starts 7", replPhone3);
                             validPhoneNo = replPhone3;
-                        }else if(replPhone2.startsWith("+")){
-                            validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]","");
+                        } else if (replPhone2.startsWith("+")) {
+                            validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
                             Log.e("TAG phone number +", validPhoneNo);
                         }
-                    }else {
+                    } else {
                         Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
                         Log.e("TAG phone No not check", replPhone2);
                         moveToContact(view);

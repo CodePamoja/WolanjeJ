@@ -1,13 +1,5 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +11,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wolanjej.models.SelectUser;
 import com.example.wolanjej.recyclerAdapters.SelectUserAdapter;
@@ -35,7 +35,7 @@ public class ContactsView extends AppCompatActivity {
 
 
     private String classType;
-    private  String className;
+    private String className;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,21 +47,21 @@ public class ContactsView extends AppCompatActivity {
         Intent intentExtra = getIntent();
         className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
-        if(className.equals("TransferToPhone50")) {
+        if (className.equals("TransferToPhone50")) {
             this.classType = intentExtra.getStringExtra(TransferToPhone50.EXTRA_CLASSTYPE);
-        }else if (className.equals("TransferToWalletSingle37")){
+        } else if (className.equals("TransferToWalletSingle37")) {
             this.classType = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_CLASSTYPE);
-        }else if (className.equals("TransferToBank44")){
+        } else if (className.equals("TransferToBank44")) {
             this.classType = intentExtra.getStringExtra(TransferToBank44.EXTRA_CLASSTYPE);
-        }else if (className.equals("TopUpOtherNumber")){
+        } else if (className.equals("TopUpOtherNumber")) {
             this.classType = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_CLASSTYPE);
         }
 
 
-        mydb  = new DatabaseAdapter(getApplicationContext());
-        recyclerView = (RecyclerView)findViewById(R.id.contacts_list);
+        mydb = new DatabaseAdapter(getApplicationContext());
+        recyclerView = (RecyclerView) findViewById(R.id.contacts_list);
         requestContactPermission();
-        search = (SearchView)findViewById(R.id.searchView);
+        search = (SearchView) findViewById(R.id.searchView);
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -70,10 +70,16 @@ public class ContactsView extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String stext) {
-                if (stext == null){
+                if (stext == null) {
                     Intent intent = new Intent(getApplicationContext(), Home.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                }
+                if (stext == null) {
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
                 }
                 suAdapter.filter(stext);
                 return false;
@@ -93,17 +99,17 @@ public class ContactsView extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent movetoLogo = null;
-                        if(className.equals("TransferToPhone50")) {
-                            movetoLogo = new Intent(ContactsView.this,TransferToPhone50.class);
-                        }else if (className.equals("TransferToWalletSingle37")){
-                            movetoLogo = new Intent(ContactsView.this,TransferToWalletSingle37.class);
-                        }else if (className.equals("TransferToBank44")){
-                            movetoLogo = new Intent(ContactsView.this,TransferToBank44.class);
-                        }else if (className.equals("TopUpOtherNumber")){
-                            movetoLogo = new Intent(ContactsView.this,TopupOtherNumber.class);
+                        if (className.equals("TransferToPhone50")) {
+                            movetoLogo = new Intent(ContactsView.this, TransferToPhone50.class);
+                        } else if (className.equals("TransferToWalletSingle37")) {
+                            movetoLogo = new Intent(ContactsView.this, TransferToWalletSingle37.class);
+                        } else if (className.equals("TransferToBank44")) {
+                            movetoLogo = new Intent(ContactsView.this, TransferToBank44.class);
+                        } else if (className.equals("TopUpOtherNumber")) {
+                            movetoLogo = new Intent(ContactsView.this, TopupOtherNumber.class);
                         }
                         final Intent finalMovetoLogo = movetoLogo;
-                        finalMovetoLogo.putExtra("Class","ContactsView");
+                        finalMovetoLogo.putExtra("Class", "ContactsView");
                         startActivity(finalMovetoLogo);
                     }
                 }
@@ -125,7 +131,7 @@ public class ContactsView extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<SelectUser> selectUsers) {
-            if (selectUsers.isEmpty()==false){
+            if (selectUsers.isEmpty() == false) {
                 suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers, classType);
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(ContactsView.this));

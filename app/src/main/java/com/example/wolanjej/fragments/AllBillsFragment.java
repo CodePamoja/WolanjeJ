@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -38,8 +39,7 @@ public class AllBillsFragment extends Fragment {
     private RecyclerView recyclerView;
     private SharedPreferences pref;
     private String sessionID;
-
-
+    private ProgressBar progressBar;
     public AllBillsFragment() {
         // Required empty public constructor
     }
@@ -49,7 +49,6 @@ public class AllBillsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         pref = getActivity().getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
-        UserBillsMain();
     }
 
     @Override
@@ -58,8 +57,10 @@ public class AllBillsFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_all, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerViewAllBills);
+        progressBar = (ProgressBar) v.findViewById(R.id.progressIdFragAll);
+        progressBar.setVisibility(View.VISIBLE);
+        UserBillsMain();
         return v;
-
     }
 
     private void UserBillsMain() {
@@ -90,6 +91,7 @@ public class AllBillsFragment extends Fragment {
                     int numberOfColumns = 2;
                     recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
                     recyclerView.setAdapter(allBillRecyclerAdapter);
+                    progressBar.setVisibility(View.GONE);
                 }
 
             }

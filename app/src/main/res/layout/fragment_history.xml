@@ -7,16 +7,30 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.HistoryFragment">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_history"
+
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_hist">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressHistoryFrag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/progress"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-</ScrollView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/bottom_hist"
@@ -25,9 +39,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintVertical_weight="1"
+        android:layout_marginBottom="22dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
         android:background="@color/purple_light">
 
         <TextView

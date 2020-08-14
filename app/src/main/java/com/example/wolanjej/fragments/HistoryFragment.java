@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +41,8 @@ import okhttp3.Response;
 
 public class HistoryFragment extends Fragment {
 
-    View v;
+    private View v;
+    private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private SharedPreferences pref;
     private List<TranasactionHistory> historyList = new ArrayList<>();
@@ -58,6 +60,10 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_history, container, false);
+        progressBar = v.findViewById(R.id.progressHistoryFrag);
+        progressBar.setVisibility(View.VISIBLE);
+        UserServices userServices = new UserServices(this);
+        userServices.execute();
         return v;
     }
 
@@ -68,10 +74,6 @@ public class HistoryFragment extends Fragment {
         pref = getActivity().getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
-
-
-        UserServices userServices = new UserServices(this);
-        userServices.execute();
     }
 
     public static class UserServices extends AsyncTask<Void, Void, Response> {
@@ -82,9 +84,17 @@ public class HistoryFragment extends Fragment {
         }
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            HistoryFragment historyFragment = weakReference.get();
+            historyFragment.progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
         protected Response doInBackground(Void... voids) {
 
             HistoryFragment historyFragment = weakReference.get();
+            historyFragment.progressBar.setVisibility(View.VISIBLE);
             String url = "/api/services";
             OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
             Response result = okConn.getBalance(url, historyFragment.sessionID);// sending the url string and base 64 results to the okhttp connection and it's method is getLogin
@@ -95,6 +105,7 @@ public class HistoryFragment extends Fragment {
         @Override
         protected void onPostExecute(Response result) {
             HistoryFragment historyFragment = weakReference.get();
+            historyFragment.progressBar.setVisibility(View.GONE);
             String verifyResult = null;
             if (result.code() == 200) {
                 try {

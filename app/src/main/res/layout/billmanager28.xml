@@ -74,6 +74,7 @@
         android:background="@drawable/wallet_pop_up_shape"
         android:fontFamily="@font/poppins_regular"
         app:counterEnabled="true"
+        android:paddingHorizontal="10dp"
         android:inputType="number"
         android:hint="Account No."
         android:layout_marginTop="16sp"

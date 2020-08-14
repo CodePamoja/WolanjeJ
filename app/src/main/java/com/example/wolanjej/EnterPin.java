@@ -152,21 +152,21 @@ public class EnterPin extends AppCompatActivity {
                             startActivity(intent);
                             break;
                         case "TransferToWalletSingle37":
-                            Transfer(fullPin, "WALLET_XFER", phoneNumber);
+                            new Transfer(fullPin, "WALLET_XFER", phoneNumber).execute();
                             break;
                         case "TransferToPhone50":
                             switch (phoneProvider) {
                                 //Case statements
                                 case "safaricom":
-                                    Transfer(fullPin, "MPESA_B2C", phoneNumber);
+                                    new Transfer(fullPin, "MPESA_B2C", phoneNumber).execute();
                                     Toast.makeText(getApplicationContext(), "Sending via MPESA", Toast.LENGTH_LONG).show();
                                     break;
                                 case "airtel":
-                                    Transfer(fullPin, "AIRTEL_B2C", phoneNumber);
+                                    new Transfer(fullPin, "AIRTEL_B2C", phoneNumber).execute();
                                     Toast.makeText(getApplicationContext(), "Sending via AIRTEL MONEY", Toast.LENGTH_LONG).show();
                                     break;
                                 case "telkom":
-                                    Transfer(fullPin, "TKASH_B2C", phoneNumber);
+                                    new Transfer(fullPin, "TKASH_B2C", phoneNumber).execute();
                                     Toast.makeText(getApplicationContext(), "Sending via TKASH", Toast.LENGTH_LONG).show();
                                     break;
                                 //Default case statement
@@ -175,21 +175,21 @@ public class EnterPin extends AppCompatActivity {
                             }
                             break;
                         case "TransferToBank44":
-                            Transfer(fullPin, "BANK_XFER", accNumber);
+                            new Transfer(fullPin, "BANK_XFER", accNumber).execute();
                             break;
                         case "TopUpOtherNumber":
                             switch (phoneProvider) {
                                 //Case statements
                                 case "safaricom":
-                                    Transfer(fullPin, "SAF_ATP", phoneNumber);
+                                    new Transfer(fullPin, "SAF_ATP", phoneNumber).execute();
                                     Toast.makeText(getApplicationContext(), "Top up via MPESA", Toast.LENGTH_LONG).show();
                                     break;
                                 case "airtel":
-                                    Transfer(fullPin, "AIRTEL_ATP", phoneNumber);
+                                    new Transfer(fullPin, "AIRTEL_ATP", phoneNumber).execute();
                                     Toast.makeText(getApplicationContext(), "Top up via AIRTEL MONEY", Toast.LENGTH_LONG).show();
                                     break;
                                 case "telkom":
-                                    Transfer(fullPin, "TKASH_ATP", phoneNumber);
+                                    new Transfer(fullPin, "TKASH_ATP", phoneNumber).execute();
                                     Toast.makeText(getApplicationContext(), "Top up via TKASH", Toast.LENGTH_LONG).show();
                                     break;
                                 //Default case statement
@@ -201,15 +201,15 @@ public class EnterPin extends AppCompatActivity {
                             switch (phoneProvider) {
                                 //Case statements
                                 case "safaricom":
-                                    Transfer(fullPin, "SAF_ATP", phoneNumber);
+                                    new Transfer(fullPin, "SAF_ATP", phoneNumber).execute();
                                     Toast.makeText(getApplicationContext(), "Top up via MPESA", Toast.LENGTH_LONG).show();
                                     break;
                                 case "airtel":
-                                    Transfer(fullPin, "AIRTEL_ATP", phoneNumber);
+                                    new Transfer(fullPin, "AIRTEL_ATP", phoneNumber).execute();
                                     Toast.makeText(getApplicationContext(), "Top up via AIRTEL MONEY", Toast.LENGTH_LONG).show();
                                     break;
                                 case "telkom":
-                                    Transfer(fullPin, "TKASH_ATP", phoneNumber);
+                                    new Transfer(fullPin, "TKASH_ATP", phoneNumber).execute();
                                     Toast.makeText(getApplicationContext(), "Top up via TKASH", Toast.LENGTH_LONG).show();
                                     break;
                                 //Default case statement
@@ -309,99 +309,110 @@ public class EnterPin extends AppCompatActivity {
 
     }
 
-    public void movetoSuccess() {
-        String className = getIntent().getStringExtra("Class");
-        if (className.equals("TopUpOtherNumber")) {
-            Intent move = new Intent(this, Home.class);
-            startActivity(move);
-        } else if (className.equals("Top_up")) {
-            Intent move = new Intent(this, Home.class);
-            startActivity(move);
-        } else {
-            Intent move = new Intent(this, MainTransfer36.class);
-            startActivity(move);
+    public class Transfer extends AsyncTask<Void, Void, Response> {
+        String pin;
+        String productName;
+        String refValue;
+
+        public Transfer(String pin, String productName, String refValue) {
+            this.pin = pin;
+            this.productName = productName;
+            this.refValue = refValue;
         }
 
-    }
-    
-    public void Transfer(String pin, String productName, String refValue) {
-        String verifyResult;
-
-        JSONArray jdataset = new JSONArray();
-        JSONObject jdata = new JSONObject();
-        try {
-            jdata.put("product_name", productName);
-            jdata.put("amount", amount);
-            jdata.put("phone", phoneNumber);
-            jdata.put("ref", refValue);
-            jdata.put("pin", pin);
-            jdataset.put(jdata);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
         }
 
-        JSONObject jMpesa = new JSONObject();
-        try {
-            jMpesa.put("ac_uname", "test");
-            jMpesa.put("services", jdataset);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        @Override
+        protected Response doInBackground(Void... voids) {
+            progressBar.setVisibility(View.VISIBLE);
+            JSONArray jdataset = new JSONArray();
+            JSONObject jdata = new JSONObject();
 
-        Log.e("TAG", String.valueOf(jMpesa));
 
-        String url = "/api/transactions";
-        OkhttpConnection okConn = new OkhttpConnection();
-        Response result = okConn.postValue(url, jMpesa.toString(), sessionID);
-        System.out.println("Response body json values are : " + result);
-        if (result.code() == 201) {
-            progressBar.setVisibility(View.GONE);
             try {
-                String value = result.body().string();
-                verifyResult = value;
-                JSONObject jBody = new JSONObject(value); // adding
-                System.out.println(TAG + "Response body json values are service : " + verifyResult);
-                Log.e("TAG", String.valueOf(verifyResult));
-                sendAmount = jBody.getJSONArray("services").getJSONObject(0).getString("amount");
-                String sendfee = jBody.getJSONArray("services").getJSONObject(0).getString("fee");
-                String sendNumber = jBody.getJSONArray("services").getJSONObject(0).getString("ref");
-                sendIDReference = jBody.getJSONArray("services").getJSONObject(0).getString("id");
-                String statusResulsts = jBody.getJSONArray("services").getJSONObject(0).getString("status");
-                Log.e("TAG", sendAmount);
+                jdata.put("product_name", productName);
+                jdata.put("amount", amount);
+                jdata.put("phone", phoneNumber);
+                jdata.put("ref", refValue);
+                jdata.put("pin", pin);
+                jdataset.put(jdata);
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
 
-                if (phoneNumber.equals(sendNumber) && statusResulsts.equals("TRX_ASYNC")) {
-                    showPopup();
-                } else if (statusResulsts.equals("TRX_OK")) {
-                    showPopup();
-                } else if (statusResulsts.equals("TRX_INSUFFICIENT_BALANCE")) {
-                    Toast.makeText(getApplicationContext(), "You have insufficient balance on your wallet", Toast.LENGTH_LONG).show();
-                    showPopupFail();
-                } else if (statusResulsts.equals("TRX_VERIFY")) {
-                    Toast.makeText(this, "the transaction is being verified", Toast.LENGTH_SHORT).show();
-                    showPopup();
+            JSONObject jMpesa = new JSONObject();
+            try {
+                jMpesa.put("ac_uname", "test");
+                jMpesa.put("services", jdataset);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.e("TAG", String.valueOf(jMpesa));
 
-                } else {
-                    Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
-                    showPopupFail();
+            String url = "/api/transactions";
+            OkhttpConnection okConn = new OkhttpConnection();
+            Response result = okConn.postValue(url, jMpesa.toString(), sessionID);
+            System.out.println("Response body json values are : " + result);
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Response response) {
+            super.onPostExecute(response);
+            progressBar.setVisibility(View.GONE);
+            if (response.code() == 201) {
+                try {
+                    String value = response.body().string();
+                    JSONObject jBody = new JSONObject(value); // adding
+                    System.out.println(TAG + "Response body json values are service : " + value);
+                    Log.e("TAG", String.valueOf(value));
+                    sendAmount = jBody.getJSONArray("services").getJSONObject(0).getString("amount");
+                    String sendfee = jBody.getJSONArray("services").getJSONObject(0).getString("fee");
+                    String sendNumber = jBody.getJSONArray("services").getJSONObject(0).getString("ref");
+                    sendIDReference = jBody.getJSONArray("services").getJSONObject(0).getString("id");
+                    String statusResulsts = jBody.getJSONArray("services").getJSONObject(0).getString("status");
+                    Log.e("TAG", sendAmount);
+
+                    if (phoneNumber.equals(sendNumber) && statusResulsts.equals("TRX_ASYNC")) {
+                        showPopup();
+                    } else if (statusResulsts.equals("TRX_OK")) {
+                        showPopup();
+                    } else if (statusResulsts.equals("TRX_INSUFFICIENT_BALANCE")) {
+                        Toast.makeText(getApplicationContext(), "You have insufficient balance on your wallet", Toast.LENGTH_LONG).show();
+                        showPopupFail();
+                    } else if (statusResulsts.equals("TRX_VERIFY")) {
+                        Toast.makeText(getApplicationContext(), "the transaction is being verified", Toast.LENGTH_SHORT).show();
+                        showPopup();
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
+                        showPopupFail();
+                    }
+
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (response.code() != 201) {
+                {
+                    progressBar.setVisibility(View.GONE);
+                    String statusResults = "unsuccessful";
+                    try {
+                        String result = response.body().string();
+                        Log.e("TAG", String.valueOf(result));
+//                Toast.makeText(EnterPin.this, "Please Try Again"+verifyResult, Toast.LENGTH_SHORT).show();
+                        showPopupFail();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
 
-            } catch (JSONException | IOException e) {
-                e.printStackTrace();
-            }
-        } else if (result.code() != 201) {
-            progressBar.setVisibility(View.GONE);
-            String statusResults = "unsuccessful";
-            try {
-                verifyResult = result.body().string();
-                Log.e("TAG", String.valueOf(result));
-//                Toast.makeText(EnterPin.this, "Please Try Again"+verifyResult, Toast.LENGTH_SHORT).show();
-                showPopupFail();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }
-
 
     public class UserBalance extends AsyncTask<Void, Void, Response> {
 
@@ -450,6 +461,7 @@ public class EnterPin extends AppCompatActivity {
                 }
             }
         }
+
     }
 
 
