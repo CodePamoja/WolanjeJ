@@ -269,6 +269,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="25dp"
             android:text="save changes"
+            android:backgroundTint="@color/warm_purple"
             android:fontFamily="@font/poppins_regular"
             android:textAllCaps="false"
             android:onClick="MoveToProfile"

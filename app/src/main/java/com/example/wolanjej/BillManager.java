@@ -59,12 +59,6 @@ public class BillManager extends AppCompatActivity {
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
         newBillmodel = new NewBillmodel();
-        bottomSheetDialogNeWBill = new BottomSheetDialog(
-                BillManager.this, R.style.BottomSheetDialogTheme
-        );
-        bottomSheetViewNewBill = LayoutInflater.from(getApplicationContext())
-                .inflate(R.layout.billmanager28, (ConstraintLayout) findViewById(R.id.billManagerView)
-                );
         SetViewPager();
         setToolBar(tb);
 
@@ -157,9 +151,13 @@ public class BillManager extends AppCompatActivity {
 
 
     public void billBottomSheet(View view) {
-        if (bottomSheetDialogNeWBill != null){
-             bottomSheetDialogNeWBill.dismiss();
-        }
+
+        bottomSheetDialogNeWBill = new BottomSheetDialog(
+                BillManager.this, R.style.BottomSheetDialogTheme
+        );
+        bottomSheetViewNewBill = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.billmanager28, (ConstraintLayout) findViewById(R.id.billManagerView)
+                );
         textView1 = bottomSheetViewNewBill.findViewById(R.id.bmAccountSaveBillName);
         textView2 = bottomSheetViewNewBill.findViewById(R.id.bmAccountNickName);
         textView3 = bottomSheetViewNewBill.findViewById(R.id.bmAccountNo);
@@ -198,7 +196,8 @@ public class BillManager extends AppCompatActivity {
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + sessionID + "");
 
-
+        String AccountName = textView1.getText().toString();
+        String NickName = textView2.getText().toString();
         String account_number = textView3.getText().toString();
         newBillmodel.setAccount_no(account_number);
         String product = spinner.getSelectedItem().toString();

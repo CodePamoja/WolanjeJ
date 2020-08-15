@@ -116,6 +116,9 @@
         <item> MPESA_B2C </item>
         <item> TKASH_B2C </item>
         <item> AIRTEL_B2C </item>
+        <item>KPLC_BILLPAY</item>
+        <item>NCWSC_BILLPAY</item>
+        <item>KIWASCO_BILLPAY</item>
     </string-array>
     <string-array name="tv_service_products">
         <item>ZUKU PayBill</item>

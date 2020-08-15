@@ -83,9 +83,17 @@ public class AllBillsFragment extends Fragment {
                 for (ListUserBills mListUserBills : listUserBills) {
                     String ProductName = mListUserBills.getProduct_name().toString();
                     String date = mListUserBills.getCreated_on();
-                    if (ProductName.equals("MPESA_B2C") || ProductName.equals("AIRTEL_B2C") || ProductName.equals("TKASH_B2C"))
+                    if (ProductName.equals("MPESA_B2C") || ProductName.equals("AIRTEL_B2C") || ProductName.equals("TKASH_B2C")) {
                         mListUserBills.setProduct_name("Phone Bill");
-                    mListUserBills.setImageDrawable(R.drawable.ic_phone);
+                        mListUserBills.setImageDrawable(R.drawable.ic_phone);
+                    }else if (ProductName.equals("KPLC_BILLPAY")){
+                        mListUserBills.setProduct_name("Electricity Bill");
+                        mListUserBills.setImageDrawable(R.drawable.ic_bulb);
+                    }else if (ProductName.equals("NCWSC_BILLPAY") || ProductName.equals("KIWASCO_BILLPAY")){
+                        mListUserBills.setProduct_name("Water Bill");
+                        mListUserBills.setImageDrawable(R.drawable.ic_drops);
+                    }
+
                     Log.d("TAG101", ProductName);
                     mListUserBills.setCreated_on(ChangeDate(date));
 
