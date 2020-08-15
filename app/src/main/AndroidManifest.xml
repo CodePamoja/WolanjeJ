@@ -19,7 +19,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".TvSubscriptions"></activity>
         <activity android:name=".PayInternet2Pin" />
-        <activity android:name=".Ewallet3_1" />
         <activity android:name=".Ewallet2_1" />
         <activity android:name=".GettingStarted" />
         <activity android:name=".NeedSupport" />

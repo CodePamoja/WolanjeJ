@@ -56,6 +56,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.Response;
 import retrofit2.Call;
@@ -71,8 +73,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private String amount;
     private String AGENTNO;
     private Spinner spinner;
+    private String phoneCompany;
     private ArrayAdapter adapter;
-    private TextView tvtext, txtAccounNoPayNetSheet, txtamountPyNetSheet, txtTokenAccountNumber, txtAmountPayTvSheet, txtAmountToken, txtPaytvAccountNoSheet;
+    private TextView tvtext, txtAccounNoPayNetSheet, txtAmountWithdraw, txtamountPyNetSheet, txtMobileNumberWithdraw, txtAmountTopUpWallet, txtMobilenumber, txtTokenAccountNumber, txtAmountPayTvSheet, txtAmountToken, txtPaytvAccountNoSheet;
     private SharedPreferences pref;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
@@ -667,8 +670,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
                         OpenWithdrawBottomSheet();
-
-
                     }
 
                 });
@@ -715,13 +716,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetViewOpenWithdraw = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.withdraw, (LinearLayout) findViewById(R.id.Ewallet3)
                 );
+        spinner = bottomSheetViewOpenWithdraw.findViewById(R.id.selectypeWithdraw);
+        txtMobileNumberWithdraw = bottomSheetViewOpenWithdraw.findViewById(R.id.mobileNumberWithdraw);
+        txtAmountWithdraw = bottomSheetViewOpenWithdraw.findViewById(R.id.amountWithdraw);
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.wallet_top_up_services, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
         bottomSheetViewOpenWithdraw.findViewById(R.id.btn_sendWithdrawRequest).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
-                        Intent intent = new Intent(getApplicationContext(), Ewallet3_1.class);
-                        startActivity(intent);
+                        MoveToConfirmWithdraw();
                     }
                 }
         );
@@ -739,6 +746,59 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog.show();
     }
 
+    private void MoveToConfirmWithdraw() {
+        String productName = spinner.getSelectedItem().toString();
+        if (productName.equals("Safaricom")) {
+            productName = "SAF_ATP";
+
+        }
+        if (productName.equals("Airtel")) {
+            productName = "AIRTEL_ATP";
+
+        }
+        if (productName.equals("Telkom")) {
+            productName = "TELKOM_ATP";
+
+        }
+        String amount = txtAmountWithdraw.getText().toString().trim();
+        String phoneNumber = txtMobileNumberWithdraw.getText().toString().trim();
+        String key = "";
+        String value = "";
+        if (phoneNumber.isEmpty() || amount.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "please provide a the inputs", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (Integer.parseInt(amount) > 100000) {
+            Toast.makeText(this, "Amount should be less than 100000", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Map<String, String> map = checkPhoneNo(phoneNumber);
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            key = entry.getKey();
+            value = entry.getValue();
+        }
+        if (key.equals("safaricom") && !productName.equals("SAF_ATP")) {
+            Toast.makeText(this, "select Safaricom", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (key.equals("airtel") && !productName.equals("AIRTEL_ATP")) {
+            Toast.makeText(this, "select Airtel", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (key.equals("telkom") && productName.equals("TELKOM_ATP")) {
+            Toast.makeText(this, "select Telkom", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(getApplicationContext(), TvSubscriptions.class);
+        intent.putExtra("Class", "HomeWithdraw");
+        intent.putExtra(EXTRA_PRODUCT_NAME, productName);
+        intent.putExtra(EXTRA_AMOUNT, amount);
+        intent.putExtra(EXTRA_ACCOUNTNUMBER, value);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
     private void openEwalletPopUp() {
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
@@ -746,13 +806,18 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetViewopenEwalletPopUp = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.wallet_pop_up, (LinearLayout) findViewById(R.id.Ewallet2)
                 );
+        spinner = bottomSheetViewopenEwalletPopUp.findViewById(R.id.selecttype);
+        txtMobilenumber = bottomSheetViewopenEwalletPopUp.findViewById(R.id.mobilenumber);
+        txtAmountTopUpWallet = bottomSheetViewopenEwalletPopUp.findViewById(R.id.amountTopUpWallet);
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.wallet_top_up_services, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
         bottomSheetViewopenEwalletPopUp.findViewById(R.id.contWalletPop).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        bottomSheetDialog.dismiss();
-                        Intent intent = new Intent(getApplicationContext(), Ewallet2_1.class);
-                        startActivity(intent);
+                        MoveToTopUpWallet();
                     }
                 }
         );
@@ -766,6 +831,44 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         );
         bottomSheetDialog.setContentView(bottomSheetViewopenEwalletPopUp);
         bottomSheetDialog.show();
+    }
+
+    private void MoveToTopUpWallet() {
+        String productName = spinner.getSelectedItem().toString();
+        if (productName.equals("Safaricom")) {
+            productName = "SAF_ATP";
+
+        }
+        if (productName.equals("Airtel")) {
+            productName = "AIRTEL_ATP";
+
+        }
+        if (productName.equals("Telkom")) {
+            productName = "TELKOM_ATP";
+
+        }
+        String amount = txtAmountTopUpWallet.getText().toString().trim();
+        String phoneNumber = txtMobilenumber.getText().toString().trim();
+        if (phoneNumber.isEmpty() || amount.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "please provide a the inputs", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (Integer.parseInt(amount) > 100000) {
+            Toast.makeText(this, "Amount should be less than 100000", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+//        String typePhoneNumber = checkPhoneNo(phoneNumber);
+//        Toast.makeText(getApplicationContext(), "number" + typePhoneNumber, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), TvSubscriptions.class);
+        intent.putExtra("Class", "HomePayWalletTopUp");
+        intent.putExtra(EXTRA_PRODUCT_NAME, productName);
+        intent.putExtra(EXTRA_AMOUNT, amount);
+        intent.putExtra(EXTRA_ACCOUNTNUMBER, phoneNumber);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
+
     }
 
     public void OpenWalletM(MenuItem item) {
@@ -995,6 +1098,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             @Override
             public void onClick(View v) {
                 MoveToPayTvSubcription();
+                bottomSheetDialog.dismiss();
             }
         });
         bottomSheetViewPayTvSubsription.findViewById(R.id.cancelPayTvSheet).setOnClickListener(new View.OnClickListener() {
@@ -1025,11 +1129,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             productName = "GOTV_BILLPAY";
 
         }
-        Toast.makeText(this, "" + productName, Toast.LENGTH_SHORT).show();
+        String amount = txtAmountPayTvSheet.getText().toString().trim();
 
-
+        if (Integer.parseInt(amount) > 100000) {
+            Toast.makeText(this, "Amount should be less than 100000", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String AccountNumber = txtPaytvAccountNoSheet.getText().toString();
-        String amount = txtAmountPayTvSheet.getText().toString();
         Intent intent = new Intent(getApplicationContext(), TvSubscriptions.class);
         intent.putExtra("Class", "HomePayTvSubscription");
         intent.putExtra(EXTRA_PRODUCT_NAME, productName);
@@ -1156,7 +1262,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         final AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setView(view)
                 .create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView txtReference_number = view.findViewById(R.id.reference_numberTra);
         TextView txtAmount_sent_note = view.findViewById(R.id.amount_sent_note);
         TextView txtBalance_note2 = view.findViewById(R.id.balance_note2);
@@ -1241,6 +1347,87 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         models.add(m4);
 
         return models;
+    }
+
+    public Map<String, String> checkPhoneNo(String inputPhone) {
+        String validPhoneNo = "Fasle";
+        Map<String, String> map = new HashMap<>();
+        String safaricom = "^(?:254|\\+254|0)?(7(?:(?:[129][0-9])|(?:0[0-9])|(?:6[8-9])|(?:5[7-9])|(?:4[5-6])|(?:4[8])|(4[0-3]))[0-9]{6})$";
+        String telkom = "^(?:254|\\+254|0)?(7(?:(?:[7][0-9]))[0-9]{6})$";
+        String airtel = "^(?:254|\\+254|0)?(7(?:(?:[3][0-9])|(?:5[0-6])|(?:6[2])|(8[0-9]))[0-9]{6})$";
+        Pattern patt;
+        Matcher match;
+        if (!inputPhone.isEmpty()) {
+            String replPhone1 = inputPhone.trim();
+            String replPhone2 = replPhone1.replaceAll("\\s", "");
+            patt = Pattern.compile(safaricom);
+            match = patt.matcher(replPhone2);
+            if (match.find()) {
+                Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
+                String replPhone3 = "null";
+                phoneCompany = "safaricom";
+                if (replPhone2.startsWith("0")) {
+                    replPhone3 = replPhone2.replaceFirst("0", "\\254");
+                    Log.e("TAG phone starts 0", replPhone3);
+                    validPhoneNo = replPhone3;
+                } else if (replPhone2.startsWith("7")) {
+                    replPhone3 = replPhone2.replaceFirst("7", "\\254");
+                    Log.e("TAG phone starts 7", replPhone3);
+                    validPhoneNo = replPhone3;
+                } else if (replPhone2.startsWith("+")) {
+                    validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
+                    Log.e("TAG phone number +", validPhoneNo);
+                }
+            } else {
+                patt = Pattern.compile(airtel);
+                match = patt.matcher(replPhone2);
+                if (match.find()) {
+                    Toast.makeText(getApplicationContext(), "Airtel Number", Toast.LENGTH_LONG).show();
+                    String replPhone3 = "null";
+                    phoneCompany = "airtel";
+                    if (replPhone2.startsWith("0")) {
+                        replPhone3 = replPhone2.replaceFirst("0", "\\254");
+                        Log.e("TAG phone starts 0", replPhone3);
+                        validPhoneNo = replPhone3;
+                    } else if (replPhone2.startsWith("7")) {
+                        replPhone3 = replPhone2.replaceFirst("7", "\\254");
+                        Log.e("TAG phone starts 7", replPhone3);
+                        validPhoneNo = replPhone3;
+                    } else if (replPhone2.startsWith("+")) {
+                        validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
+                        Log.e("TAG phone number +", validPhoneNo);
+                    }
+                } else {
+                    patt = Pattern.compile(telkom);
+                    match = patt.matcher(replPhone2);
+                    if (match.find()) {
+                        Toast.makeText(getApplicationContext(), "Telkom Number", Toast.LENGTH_LONG).show();
+                        String replPhone3 = "null";
+                        phoneCompany = "telkom";
+                        if (replPhone2.startsWith("0")) {
+                            replPhone3 = replPhone2.replaceFirst("0", "\\254");
+                            Log.e("TAG phone starts 0", replPhone3);
+                            validPhoneNo = replPhone3;
+                        } else if (replPhone2.startsWith("7")) {
+                            replPhone3 = replPhone2.replaceFirst("7", "\\254");
+                            Log.e("TAG phone starts 7", replPhone3);
+                            validPhoneNo = replPhone3;
+                        } else if (replPhone2.startsWith("+")) {
+                            validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
+                            Log.e("TAG phone number +", validPhoneNo);
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
+                        Log.e("TAG phone No not check", replPhone2);
+                    }
+                }
+
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Please enter a mobile number ", Toast.LENGTH_LONG).show();
+        }
+        map.put(phoneCompany, validPhoneNo);
+        return map;
     }
 
     private boolean isNetworkAvailable() {

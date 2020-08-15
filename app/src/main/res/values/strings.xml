@@ -123,6 +123,11 @@
         <item>DSTV PayBill</item>
         <item> GOTV PayBill</item>
     </string-array>
+    <string-array name="wallet_top_up_services">
+        <item>Safaricom</item>
+        <item>Airtel</item>
+        <item>Telkom</item>
+    </string-array>
 
     <string name="login"><font color="#531edc">Log in</font></string>
     <string name="registration">Registration</string>

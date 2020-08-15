@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/Ewallet2">
 
   <RelativeLayout
@@ -57,17 +58,16 @@
         android:textColor="#18181c"
         android:textSize="14sp" />
 
-    <EditText
+    <Spinner
         android:id="@+id/selecttype"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_below="@id/wpp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/wallet_pop_up_shape"
-        android:hint="Select Type"
+        android:background="@drawable/myspinner"
         android:drawableEnd="@drawable/ic_baseline_down"
-        android:paddingStart="18dp" />
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Select Type" />
 
     <EditText
         android:id="@+id/mobilenumber"
@@ -75,17 +75,23 @@
         android:layout_height="52dp"
         android:layout_below="@id/selecttype"
         android:layout_marginTop="16dp"
+        android:inputType="number"
+        app:counterEnabled="true"
+        android:maxLength="9"
         android:fontFamily="@font/poppins_regular"
         android:background="@drawable/wallet_pop_up_shape"
         android:hint="Mobile Number"
         android:paddingStart="18dp" />
 
     <EditText
-        android:id="@+id/account"
+        android:id="@+id/amountTopUpWallet"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_below="@id/mobilenumber"
         android:layout_marginTop="16dp"
+        android:maxLength="6"
+        android:inputType="number"
+        android:lines="1"
         android:fontFamily="@font/poppins_regular"
         android:background="@drawable/wallet_pop_up_shape"
         android:hint="Amount"
@@ -96,7 +102,7 @@
         style="@style/TextStyle4"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@id/account"
+        android:layout_below="@id/amountTopUpWallet"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_regular"
         android:textAllCaps="false"

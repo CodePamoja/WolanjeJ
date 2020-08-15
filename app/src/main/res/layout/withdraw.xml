@@ -61,16 +61,15 @@
             android:layout_alignParentRight="true"
             />
 
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:hint="Select Type"
             android:layout_height="52dp"
             android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="12dp"
             android:paddingStart="18dp"
-            android:background="@drawable/wallet_pop_up_shape"
-            android:id="@+id/selecttype"
-            android:drawableEnd="@drawable/ic_baseline_down"
+            android:background="@drawable/myspinner"
+            android:id="@+id/selectypeWithdraw"
             android:layout_below="@id/wpp"
             />
         <EditText
@@ -83,9 +82,9 @@
             android:hint="Mobile Number"
             android:inputType="number"
             app:counterEnabled="true"
-            app:counterMaxLength="9"
-            android:id="@+id/mobilenumber"
-            android:layout_below="@id/selecttype"
+            android:maxLength="9"
+            android:id="@+id/mobileNumberWithdraw"
+            android:layout_below="@id/selectypeWithdraw"
             />
         <EditText
             android:layout_width="match_parent"
@@ -94,9 +93,12 @@
             android:fontFamily="@font/poppins_regular"
             android:paddingStart="18dp"
             android:background="@drawable/wallet_pop_up_shape"
-            android:hint="Account"
-            android:id="@+id/account"
-            android:layout_below="@id/mobilenumber"
+            android:hint="Amount"
+            android:id="@+id/amountWithdraw"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="6"
+            android:layout_below="@id/mobileNumberWithdraw"
             />
         <Button
             android:layout_width="match_parent"
@@ -106,7 +108,7 @@
             style="@style/TextStyle4"
             android:textAllCaps="false"
             android:backgroundTint="@color/warm_purple"
-            android:layout_below="@id/account"
+            android:layout_below="@id/amountWithdraw"
             android:layout_marginTop="16dp"
             android:text="Send Withdwal Request"
             />

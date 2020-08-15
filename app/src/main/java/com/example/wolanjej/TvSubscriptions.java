@@ -72,7 +72,26 @@ public class TvSubscriptions extends AppCompatActivity {
                 textView4.setText("Confirmation: Tv Subscription");
                 getProceedIntent();
                 break;
-
+            case "HomePayWalletTopUp":
+                this.ProductName = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
+                this.amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
+                this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);
+                textView1.setText(ProductName);
+                textView2.setText(AccountNumber);
+                textView3.setText(amount);
+                textView4.setText("Confirmation: Top up Subscription");
+                getProceedIntent();
+                break;
+            case "HomeWithdraw":
+                this.ProductName = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
+                this.amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
+                this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);
+                textView1.setText(ProductName);
+                textView2.setText(AccountNumber);
+                textView3.setText(amount);
+                textView4.setText("Withdraw Confirmation");
+                getProceedIntent();
+                break;
 
         }
         initPinEntry();
@@ -185,6 +204,8 @@ public class TvSubscriptions extends AppCompatActivity {
                 if (className != null)
                     switch (className) {
                         case "HomePayTvSubscription":
+                        case "HomePayWalletTopUp":
+                        case "HomeWithdraw":
                             new Transfer(fullPin, ProductName, amount, AccountNumber).execute();
                             break;
                         default:
