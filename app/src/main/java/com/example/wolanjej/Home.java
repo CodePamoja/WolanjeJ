@@ -18,9 +18,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,19 +66,26 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private Toolbar tb;
     private DrawerLayout drawer;
     private String sessionID;
+    private String sendFee;
+    private String refrenceNumber;
+    private String amount;
     private String AGENTNO;
-    private TextView tvtext;
+    private Spinner spinner;
+    private ArrayAdapter adapter;
+    private TextView tvtext, txtAccounNoPayNetSheet, txtamountPyNetSheet, txtTokenAccountNumber, txtAmountPayTvSheet, txtAmountToken, txtPaytvAccountNoSheet;
     private SharedPreferences pref;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private List<BalanceModel> balanceModel = new ArrayList<>();
     private ConnectivityManager connectivityManager;
-    private View bottomSheetView;
+    private View bottomSheetViewPayInternet, bottomSheetViewOpenWalletM, bottomSheetViewPayElectricity, bottomSheetViewopenEwalletPopUp, bottomSheetViewOpenWithdraw, bottomSheetViewOpenWalle, bottomSheetViewOpenScreen16, bottomSheetViewPayTvSubsription, bottomSheetViewregisterNewNumber;
     private Button buttonWallet, transferMoney;
     private BottomSheetDialog bottomSheetDialog;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
-
+    public static final String EXTRA_ACCOUNTNUMBER = "com.example.wolanjej.ACCOUNTNUMBER";
+    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_PRODUCT_NAME = "com.example.wolanjej.PRODUCT";
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -102,8 +111,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 case "MyAdapterCard3":
                     PayInternetBottomSheet();
                     break;
-                case "PayInternet2Pin":
+                case "PayInternet2PinSuccess":
+                    this.sendFee = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_SEND_FEE);
+                    this.amount = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_AMOUNT);
+                    this.refrenceNumber = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_REFERENCE_NUMBER);
                     PayInternetorWaterDialog();
+                    break;
+                case "payInternet2pinUnsuccessful":
+                    this.sendFee = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_SEND_FEE);
+                    this.amount = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_AMOUNT);
+                    this.refrenceNumber = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_REFERENCE_NUMBER);
+                    PayTransactions();
                     break;
                 case "MyAdapterCard2":
                     PayElectricityToken();
@@ -223,7 +241,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE); //check Connectivity to internet services
 
-
         setToolBar();
 
 //        MenuItem item = findViewById(R.id.bell_icon);
@@ -276,7 +293,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         @Override
         protected void onPostExecute(Response result) {
             String verifyResult = null;
-            if (result.code() == 200) {
+            if (result != null && result.code() == 200) {
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
@@ -535,23 +552,23 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
-        bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetViewOpenScreen16 = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.activity_screen18, (LinearLayout) findViewById(R.id.screen_16)
                 );
 
         //bottomSheet16 recyclerview
-        RecyclerView mRecyclerView = bottomSheetView.findViewById(R.id.recycler_view);
+        RecyclerView mRecyclerView = bottomSheetViewOpenScreen16.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         MyAdapter myAdapter = new MyAdapter(this, getMylist());
         mRecyclerView.setAdapter(myAdapter);
 
-        bottomSheetView.findViewById(R.id.img_close16).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewOpenScreen16.findViewById(R.id.img_close16).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
-        bottomSheetView.findViewById(R.id.income_details101).setOnClickListener(
+        bottomSheetViewOpenScreen16.findViewById(R.id.income_details101).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -561,7 +578,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.wallet101).setOnClickListener(
+        bottomSheetViewOpenScreen16.findViewById(R.id.wallet101).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -571,7 +588,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.services101).setOnClickListener(
+        bottomSheetViewOpenScreen16.findViewById(R.id.services101).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -581,7 +598,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.exchange101).setOnClickListener(
+        bottomSheetViewOpenScreen16.findViewById(R.id.exchange101).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -591,7 +608,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.crypto101).setOnClickListener(
+        bottomSheetViewOpenScreen16.findViewById(R.id.crypto101).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -601,7 +618,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.transfer101).setOnClickListener(
+        bottomSheetViewOpenScreen16.findViewById(R.id.transfer101).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -612,7 +629,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 }
         );
 
-        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.setContentView(bottomSheetViewOpenScreen16);
         bottomSheetDialog.show();
 
     }
@@ -621,19 +638,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
-        bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetViewOpenWalle = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.pop_up_my_wallet, (ConstraintLayout) findViewById(R.id.show_ple)
                 );
         bottomSheetDialog.setCanceledOnTouchOutside(false);
         bottomSheetDialog.setDismissWithAnimation(true);
-        bottomSheetView.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewOpenWalle.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
 
-        bottomSheetView.findViewById(R.id.mytopupcard).setOnClickListener(
+        bottomSheetViewOpenWalle.findViewById(R.id.mytopupcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -644,7 +661,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 }
         );
 
-        bottomSheetView.findViewById(R.id.mywithdrawcard).setOnClickListener(
+        bottomSheetViewOpenWalle.findViewById(R.id.mywithdrawcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -656,7 +673,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
                 });
 
-        bottomSheetView.findViewById(R.id.openFundTrasfer).setOnClickListener(
+        bottomSheetViewOpenWalle.findViewById(R.id.openFundTrasfer).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -667,7 +684,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.transactionHistCard).setOnClickListener(
+        bottomSheetViewOpenWalle.findViewById(R.id.transactionHistCard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -677,7 +694,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.pendingCommCard).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewOpenWalle.findViewById(R.id.pendingCommCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -686,7 +703,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             }
         });
 
-        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.setContentView(bottomSheetViewOpenWalle);
         bottomSheetDialog.show();
 
     }
@@ -695,10 +712,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
-        bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetViewOpenWithdraw = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.withdraw, (LinearLayout) findViewById(R.id.Ewallet3)
                 );
-        bottomSheetView.findViewById(R.id.btn_sendWithdrawRequest).setOnClickListener(
+        bottomSheetViewOpenWithdraw.findViewById(R.id.btn_sendWithdrawRequest).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -708,7 +725,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.cancelWithdraw).setOnClickListener(
+        bottomSheetViewOpenWithdraw.findViewById(R.id.cancelWithdraw).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -718,7 +735,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         );
 
 
-        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.setContentView(bottomSheetViewOpenWithdraw);
         bottomSheetDialog.show();
     }
 
@@ -726,10 +743,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
-        bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetViewopenEwalletPopUp = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.wallet_pop_up, (LinearLayout) findViewById(R.id.Ewallet2)
                 );
-        bottomSheetView.findViewById(R.id.contWalletPop).setOnClickListener(
+        bottomSheetViewopenEwalletPopUp.findViewById(R.id.contWalletPop).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -739,7 +756,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.cancelWalletTopUp).setOnClickListener(
+        bottomSheetViewopenEwalletPopUp.findViewById(R.id.cancelWalletTopUp).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -747,7 +764,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.setContentView(bottomSheetViewopenEwalletPopUp);
         bottomSheetDialog.show();
     }
 
@@ -755,16 +772,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
-        bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetViewOpenWalletM = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.pop_up_my_wallet, (LinearLayout) findViewById(R.id.show_ple)
                 );
-        bottomSheetView.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewOpenWalletM.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
-        bottomSheetView.findViewById(R.id.mytopupcard).setOnClickListener(
+        bottomSheetViewOpenWalletM.findViewById(R.id.mytopupcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -777,7 +794,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.mywithdrawcard).setOnClickListener(
+        bottomSheetViewOpenWalletM.findViewById(R.id.mywithdrawcard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -787,7 +804,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 }
         );
 
-        bottomSheetView.findViewById(R.id.openFundTrasfer).setOnClickListener(
+        bottomSheetViewOpenWalletM.findViewById(R.id.openFundTrasfer).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -799,7 +816,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.transactionHistCard).setOnClickListener(
+        bottomSheetViewOpenWalletM.findViewById(R.id.transactionHistCard).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -808,7 +825,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.pendingCommCard).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewOpenWalletM.findViewById(R.id.pendingCommCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -817,7 +834,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             }
         });
 
-        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.setContentView(bottomSheetViewOpenWalletM);
         bottomSheetDialog.show();
 
     }
@@ -827,10 +844,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
-        bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetViewregisterNewNumber = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.activity_register_new_number, (LinearLayout) findViewById(R.id.register_new_number)
                 );
-        bottomSheetView.findViewById(R.id.closeRegNew).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewregisterNewNumber.findViewById(R.id.closeRegNew).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
@@ -838,7 +855,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         });
         //TextView textView = bottomSheetView.findViewById(R.id.newphoneNumber);
 
-        bottomSheetView.findViewById(R.id.btn_sendinvite).setOnClickListener(
+        bottomSheetViewregisterNewNumber.findViewById(R.id.btn_sendinvite).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -846,7 +863,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.cancel_register_new).setOnClickListener(
+        bottomSheetViewregisterNewNumber.findViewById(R.id.cancel_register_new).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -854,7 +871,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.setContentView(bottomSheetViewregisterNewNumber);
         bottomSheetDialog.show();
 
     }
@@ -863,10 +880,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
-        bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetViewPayInternet = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.pay_internet_bottom_sheet, (LinearLayout) findViewById(R.id.register_new_number)
                 );
-        bottomSheetView.findViewById(R.id.imagebtn_pay_netSheet).setOnClickListener(
+        bottomSheetViewPayInternet.findViewById(R.id.imagebtn_pay_netSheet).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -874,84 +891,153 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
-        bottomSheetView.findViewById(R.id.buttonPayNetSheet).setOnClickListener(new View.OnClickListener() {
+        txtAccounNoPayNetSheet = bottomSheetViewPayInternet.findViewById(R.id.AccounNoPayNetSheet);
+        txtamountPyNetSheet = bottomSheetViewPayInternet.findViewById(R.id.amountPyNetSheet);
+        bottomSheetViewPayInternet.findViewById(R.id.buttonPayNetSheet).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PayInternet2Pin.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                bottomSheetDialog.dismiss();
+                moveToPayNet();
             }
         });
-        bottomSheetView.findViewById(R.id.cancelPayNetSheet).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewPayInternet.findViewById(R.id.cancelPayNetSheet).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
 
-        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.setContentView(bottomSheetViewPayInternet);
         bottomSheetDialog.show();
+    }
+
+    private void moveToPayNet() {
+        String produt_name = "ZUKU_BILLPAY";
+        String AccountNumber = txtAccounNoPayNetSheet.getText().toString();
+        String AmountPayable = txtamountPyNetSheet.getText().toString();
+        Intent move = new Intent(getApplicationContext(), PayInternet2Pin.class);
+        move.putExtra("Class", "HomePayNet");
+        move.putExtra(EXTRA_PRODUCT_NAME, produt_name);
+        move.putExtra(EXTRA_ACCOUNTNUMBER, AccountNumber);
+        move.putExtra(EXTRA_AMOUNT, AmountPayable);
+        startActivity(move);
+        bottomSheetDialog.dismiss();
+        Toast.makeText(Home.this, "" + AmountPayable + AccountNumber, Toast.LENGTH_SHORT).show();
     }
 
     private void PayElectricityToken() {
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
-        bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetViewPayElectricity = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.buy_electricity_token_sheet, (ConstraintLayout) findViewById(R.id.buyElectricityToken)
                 );
-        bottomSheetView.findViewById(R.id.buttonBuyTokenSheet).setOnClickListener(new View.OnClickListener() {
+        txtTokenAccountNumber = bottomSheetViewPayElectricity.findViewById(R.id.TokenNumberSheet);
+        txtAmountToken = bottomSheetViewPayElectricity.findViewById(R.id.amountBuyTokenSheet);
+
+        bottomSheetViewPayElectricity.findViewById(R.id.buttonBuyTokenSheet).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PayElectricity2.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                bottomSheetDialog.dismiss();
+                MoveToPayElectricityToken();
             }
         });
-        bottomSheetView.findViewById(R.id.cancelBuyTokenSheetSheet).setOnClickListener(new View.OnClickListener() {
+        bottomSheetViewPayElectricity.findViewById(R.id.cancelBuyTokenSheetSheet).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
 
-        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.setContentView(bottomSheetViewPayElectricity);
         bottomSheetDialog.show();
     }
 
+    private void MoveToPayElectricityToken() {
+        String productName = "KPLC_BILLPAY ";
+        String AccountNumber = txtTokenAccountNumber.getText().toString();
+        String amount = txtAmountToken.getText().toString();
+        Intent intent = new Intent(getApplicationContext(), PayInternet2Pin.class);
+        intent.putExtra("Class", "HomePayElectricity");
+        intent.putExtra(EXTRA_PRODUCT_NAME, productName);
+        intent.putExtra(EXTRA_AMOUNT, amount);
+        intent.putExtra(EXTRA_ACCOUNTNUMBER, AccountNumber);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
     private void PayTvSubsriptionBottomSheet() {
+        if (bottomSheetDialog != null) {
+            bottomSheetDialog.dismiss();
+        }
+
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
-        bottomSheetView = LayoutInflater.from(getApplicationContext())
+        bottomSheetViewPayTvSubsription = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.pay_tv_subscription_sheet, (LinearLayout) findViewById(R.id.register_new_number)
                 );
+        spinner = bottomSheetViewPayTvSubsription.findViewById(R.id.selectServiceProviderTvSheet);
 
-        bottomSheetView.findViewById(R.id.imagebtn_pay_tvSheet).setOnClickListener(new View.OnClickListener() {
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.tv_service_products, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        txtPaytvAccountNoSheet = bottomSheetViewPayTvSubsription.findViewById(R.id.PaytvAccountNoSheet);
+        txtAmountPayTvSheet = bottomSheetViewPayTvSubsription.findViewById(R.id.amountPayTvSheet);
+        bottomSheetViewPayTvSubsription.findViewById(R.id.imagebtn_pay_tvSheet).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
-        bottomSheetView.findViewById(R.id.buttonPayTvSheet).setOnClickListener(new View.OnClickListener() {
+        MaterialButton button = bottomSheetViewPayTvSubsription.findViewById(R.id.buttonPayTvSheet2);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), TvSubscriptions.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                MoveToPayTvSubcription();
+            }
+        });
+        bottomSheetViewPayTvSubsription.findViewById(R.id.cancelPayTvSheet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 bottomSheetDialog.dismiss();
             }
         });
-        bottomSheetView.findViewById(R.id.cancelPayTvSheet).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetDialog.dismiss();
-            }
-        });
-        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.setContentView(bottomSheetViewPayTvSubsription);
         bottomSheetDialog.show();
+    }
+
+    private void MoveToPayTvSubcription() {
+        String productName = spinner.getSelectedItem().toString();
+        if (productName.equals("ZUKU PayBill")) {
+            productName = "ZUKU_BILLPAY";
+
+        }
+        if (productName.equals("STARTIMES PayBill")) {
+            productName = "STARTIMES_BILLPAY";
+
+        }
+        if (productName.equals("DSTV PayBill")) {
+            productName = "DSTV_BILLPAY";
+
+        }
+        if (productName.equals("GOTV_BILLPAY")) {
+            productName = "GOTV_BILLPAY";
+
+        }
+        Toast.makeText(this, "" + productName, Toast.LENGTH_SHORT).show();
+
+
+        String AccountNumber = txtPaytvAccountNoSheet.getText().toString();
+        String amount = txtAmountPayTvSheet.getText().toString();
+        Intent intent = new Intent(getApplicationContext(), TvSubscriptions.class);
+        intent.putExtra("Class", "HomePayTvSubscription");
+        intent.putExtra(EXTRA_PRODUCT_NAME, productName);
+        intent.putExtra(EXTRA_AMOUNT, amount);
+        intent.putExtra(EXTRA_ACCOUNTNUMBER, AccountNumber);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
     }
 
 
@@ -1046,6 +1132,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 .setView(view)
                 .create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        TextView txtRefNumberSuccess = view.findViewById(R.id.refNumberSuccessD);
+        TextView txtAmountSuccessPay = view.findViewById(R.id.amountSuccessDPay);
+        TextView txtBalanceSuccess = view.findViewById(R.id.balanceSuccessD);
+
+        txtAmountSuccessPay.setText(amount);
+        txtBalanceSuccess.setText(sendFee);
+        txtRefNumberSuccess.setText(refrenceNumber);
         Button btn = view.findViewById(R.id.btn_continue_pay);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1055,6 +1148,32 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         });
 
         alertDialog.show();
+    }
+
+    private void PayTransactions() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.transfer_unsuccessful_popup, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        TextView txtReference_number = view.findViewById(R.id.reference_numberTra);
+        TextView txtAmount_sent_note = view.findViewById(R.id.amount_sent_note);
+        TextView txtBalance_note2 = view.findViewById(R.id.balance_note2);
+
+        txtReference_number.setText(refrenceNumber);
+        txtAmount_sent_note.setText(amount);
+        txtBalance_note2.setText(sendFee);
+        Button btn = view.findViewById(R.id.try_again_unsuccessful);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+
     }
 
     private void PayElectricityTokenDialog() {
@@ -1074,6 +1193,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         alertDialog.show();
     }
+
     private void payTvSubscriptionDialog() {
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.success_withdraw_confirmation, null);

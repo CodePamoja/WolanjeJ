@@ -117,6 +117,13 @@
         <item> TKASH_B2C </item>
         <item> AIRTEL_B2C </item>
     </string-array>
+    <string-array name="tv_service_products">
+        <item>ZUKU PayBill</item>
+        <item>STARTIMES PayBill</item>
+        <item>DSTV PayBill</item>
+        <item> GOTV PayBill</item>
+    </string-array>
+
     <string name="login"><font color="#531edc">Log in</font></string>
     <string name="registration">Registration</string>
     <string name="please_enter_your_mobile_number_then_we_will_send_otp_to_verify">Please enter your mobile number,\nthen we will send OTP to verify</string>

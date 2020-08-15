@@ -40,6 +40,7 @@ public class AllBillsFragment extends Fragment {
     private SharedPreferences pref;
     private String sessionID;
     private ProgressBar progressBar;
+
     public AllBillsFragment() {
         // Required empty public constructor
     }
@@ -73,6 +74,7 @@ public class AllBillsFragment extends Fragment {
         call.enqueue(new Callback<ApiJsonObjects>() {
             @Override
             public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
+                progressBar.setVisibility(View.GONE);
                 if (!response.isSuccessful()) {
                     Toast.makeText(getActivity(), "code" + response.code(), Toast.LENGTH_SHORT).show();
                     return;
@@ -87,11 +89,12 @@ public class AllBillsFragment extends Fragment {
                     Log.d("TAG101", ProductName);
                     mListUserBills.setCreated_on(ChangeDate(date));
 
-                    AllBillRecyclerAdapter allBillRecyclerAdapter = new AllBillRecyclerAdapter(getContext(), listUserBills);
-                    int numberOfColumns = 2;
-                    recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
-                    recyclerView.setAdapter(allBillRecyclerAdapter);
-                    progressBar.setVisibility(View.GONE);
+                    if (getActivity() != null) {
+                        AllBillRecyclerAdapter allBillRecyclerAdapter = new AllBillRecyclerAdapter(getActivity(), listUserBills);
+                        int numberOfColumns = 2;
+                        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
+                        recyclerView.setAdapter(allBillRecyclerAdapter);
+                    }
                 }
 
             }

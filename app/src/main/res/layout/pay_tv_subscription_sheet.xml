@@ -65,15 +65,15 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_balance_pay_tv_sheet" />
 
 
-    <EditText
+    <Spinner
         android:id="@+id/selectServiceProviderTvSheet"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background="@drawable/wallet_pop_up_shape"
         android:fontFamily="@font/poppins_regular"
         app:counterEnabled="true"
         app:counterMaxLength="9"
-        android:hint="Select Service Provider"
+        android:background="@drawable/myspinner"
+        android:spinnerMode="dropdown"
         android:drawableEnd="@drawable/ic_baseline_down"
         android:layout_marginTop="16sp"
         android:layout_marginStart="24dp"
@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@+id/PaytvAccountNoSheet" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonPayTvSheet"
+        android:id="@+id/buttonPayTvSheet2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Make Payments"
@@ -144,6 +144,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPayTvSheet" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonPayTvSheet2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

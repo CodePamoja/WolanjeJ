@@ -139,7 +139,7 @@
         android:layout_marginBottom="42dp"
         android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Try Again"
+        android:text="Close"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amountSuccessDPay" />

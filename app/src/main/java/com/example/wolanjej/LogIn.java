@@ -48,6 +48,7 @@ public class LogIn extends AppCompatActivity {
     private androidx.biometric.BiometricPrompt biometricPrompt;
     private ConnectivityManager connectivityManager;
     private Executor executor;
+    private String TAG = "Login";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_ID = "com.example.wolanjej.ID";
     public static final String EXTRA_USERNAME = "com.example.wolanjej.USERNAME";
@@ -204,7 +205,7 @@ public class LogIn extends AppCompatActivity {
         protected void onPostExecute(Response result) {
             prgBar.dismiss();
             Log.e("All result", "Result");
-            if (result.code() == 200) {
+            if (result != null && result.code() == 200) {
                 Toast.makeText(getApplicationContext(), "Your have been Loggedin successfuly", Toast.LENGTH_LONG).show();
 
 
@@ -221,7 +222,8 @@ public class LogIn extends AppCompatActivity {
                     editor.putString("role", sessionID.getJSONObject("session").getString("role"));
                     editor.putString("user_name", sessionID.getJSONObject("session").getString("user_name"));
                     editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
-                    editor.commit();
+                    System.out.println(TAG+sessionID.getJSONObject("session").getString("agentno"));
+                    editor.apply();
                     Intent move = new Intent(LogIn.this, LinkAccount11.class);
                     move.putExtra("Class", "LogIn");
                     startActivity(move);
