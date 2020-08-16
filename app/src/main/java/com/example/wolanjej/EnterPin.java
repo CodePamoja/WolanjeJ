@@ -19,10 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.wolanjej.dialogs.AirtimeSuccess;
-import com.example.wolanjej.dialogs.AirtimeUnsuccessful;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
