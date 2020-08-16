@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -262,7 +261,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         super.onStart();
         if (isNetworkAvailable()) {
             RetrieveWalletBalance();
-            new UserServices().execute();
 
         } else {
             Snackbar.make(findViewById(R.id.drawer_layout), "No Internet Connection", Snackbar.LENGTH_LONG).show();
@@ -279,55 +277,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Intent intent = new Intent(this, Notifications52.class);
         startActivity(intent);
     }
-
-
-//    https://wolenjeafrica.com/wolenje/api/services
-
-    public class UserServices extends AsyncTask<Void, Void, Response> {
-
-        @Override
-        protected Response doInBackground(Void... voids) {
-
-            String url = "/api/services";
-            OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, sessionID);// sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-            Log.d("TAG", String.valueOf(result));
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response result) {
-            String verifyResult = null;
-            if (result != null && result.code() == 200) {
-                try {
-                    String test = result.body().string();
-                    Log.d("TAG test", test);
-                    JSONObject JBalance = new JSONObject(test);
-                    System.out.println("Response body json values  services are : " + JBalance);
-                    JSONObject JService = new JSONObject(test);
-                    System.out.println("Response body json values  services are : " + JService);
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
-
-            } else if (result.code() != 201) {
-                try {
-                    verifyResult = result.body().string();
-                    JSONObject jBody = new JSONObject(verifyResult); // adding
-                    System.out.println("Response body json values are : " + verifyResult);
-                    Log.e("TAG", String.valueOf(verifyResult));
-//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
-//                    Log.e("TAG", String.valueOf(sendResutls));
-//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
-                    Log.e("TAG result value", String.valueOf(result));
-                    Log.e("TAG result body", verifyResult);
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
 
     private void RetrieveWalletBalance() {
         Map<String, String> headers = new HashMap<>();
