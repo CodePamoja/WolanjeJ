@@ -138,6 +138,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 case "TvSubscriptions":
                     payTvSubscriptionDialog();
                     break;
+                case "EnterPin":
+                    break;
             }
         }
 

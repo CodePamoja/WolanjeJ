@@ -386,7 +386,7 @@ public class EnterPin extends AppCompatActivity {
                         showPopupFail();
                     } else if (statusResulsts.equals("TRX_VERIFY")) {
                         Toast.makeText(getApplicationContext(), "the transaction is being verified", Toast.LENGTH_SHORT).show();
-                        showPopup();
+                        ShowDialogWalletFail();
 
                     } else {
                         Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
@@ -472,28 +472,12 @@ public class EnterPin extends AppCompatActivity {
         new UserBalance().execute();
 
         switch (className) {
-            case "TransferToWalletSingle37": {
-                ShowDialogSuccess();
-                break;
-            }
+            case "TransferToWalletSingle37":
+            case "Top_up":
+            case "TopUpOtherNumber":
+            case "TransferToBank44":
             case "TransferToPhone50": {
                 ShowDialogSuccess();
-                break;
-            }
-            case "TransferToBank44": {
-                AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
-                airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
-                break;
-            }
-            case "TopUpOtherNumber": {
-                AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
-                airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
-                break;
-            }
-            case "Top_up": {
-                AirtimeSuccess airtimeSuccess = new AirtimeSuccess();
-                airtimeSuccess.show(getSupportFragmentManager(), "Top_up");
-
                 break;
             }
         }
@@ -504,27 +488,12 @@ public class EnterPin extends AppCompatActivity {
         String className = getIntent().getStringExtra("Class");
 
         switch (className) {
-            case "TransferToWalletSingle37": {
-                ShowDialogWalletFail();
-                break;
-            }
-            case "TransferToPhone50": {
-                ShowDialogWalletFail();
-                break;
-            }
-            case "TransferToBank44": {
-                AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
-                airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
-                break;
-            }
-            case "TopupOtherNumber": {
-                AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
-                airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
-                break;
-            }
+            case "TransferToWalletSingle37":
+            case "TransferToPhone50":
+            case "TransferToBank44":
+            case "TopupOtherNumber":
             case "Top_up": {
-                AirtimeUnsuccessful airtimeUnsuccessful = new AirtimeUnsuccessful();
-                airtimeUnsuccessful.show(getSupportFragmentManager(), "Top_up");
+                ShowDialogWalletFail();
                 break;
             }
         }
@@ -570,7 +539,7 @@ public class EnterPin extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), TransferToWalletSingle37.class);
+                Intent intent = new Intent(getApplicationContext(), Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("Class", "EnterPin");
                 startActivity(intent);
