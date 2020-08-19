@@ -46,10 +46,6 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,12 +54,18 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
+    public static final String EXTRA_ACCOUNTNUMBER = "com.example.wolanjej.ACCOUNTNUMBER";
+    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_PRODUCT_NAME = "com.example.wolanjej.PRODUCT";
+    public static final String EXTRA_MYBALANCE = "com.example.wolanjej.MYBALANCE";
+    private static final String TAG ="HOME";
     private Toolbar tb;
     private DrawerLayout drawer;
     private String sessionID;
@@ -72,6 +74,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private String amount;
     private String AGENTNO;
     private Spinner spinner;
+    private String MY_BALANCE;
     private String phoneCompany;
     private ArrayAdapter adapter;
     private TextView tvtext, txtAccounNoPayNetSheet, txtAmountWithdraw, txtamountPyNetSheet, txtMobileNumberWithdraw, txtAmountTopUpWallet, txtMobilenumber, txtTokenAccountNumber, txtAmountPayTvSheet, txtAmountToken, txtPaytvAccountNoSheet;
@@ -83,11 +86,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private View bottomSheetViewPayInternet, bottomSheetViewOpenWalletM, bottomSheetViewPayElectricity, bottomSheetViewopenEwalletPopUp, bottomSheetViewOpenWithdraw, bottomSheetViewOpenWalle, bottomSheetViewOpenScreen16, bottomSheetViewPayTvSubsription, bottomSheetViewregisterNewNumber;
     private Button buttonWallet, transferMoney;
     private BottomSheetDialog bottomSheetDialog;
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
-    public static final String EXTRA_ACCOUNTNUMBER = "com.example.wolanjej.ACCOUNTNUMBER";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
-    public static final String EXTRA_PRODUCT_NAME = "com.example.wolanjej.PRODUCT";
+
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -304,7 +303,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
                 balanceModel = response.body().getBalances();
                 for (BalanceModel balanceModel : balanceModel) {
-                    String MY_BALANCE = balanceModel.getBalance();
+                    MY_BALANCE = balanceModel.getBalance();
 
                     tvtext.setText("KES " + MY_BALANCE);
                 }

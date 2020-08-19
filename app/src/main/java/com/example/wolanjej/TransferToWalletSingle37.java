@@ -70,7 +70,6 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
-        assert className != null;
         Log.e("class Type className", className);
         switch (className) {
             case "EnterPin":

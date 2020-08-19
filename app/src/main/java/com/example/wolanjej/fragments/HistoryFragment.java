@@ -59,6 +59,7 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_history, container, false);
         progressBar = v.findViewById(R.id.progressHistoryFrag);
+        textView = (TextView) v.findViewById(R.id.txt_hist_amount);
         progressBar.setVisibility(View.VISIBLE);
         UserServices userServices = new UserServices(this);
         userServices.execute();

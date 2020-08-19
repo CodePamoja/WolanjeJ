@@ -28,9 +28,7 @@ public class Profile49 extends AppCompatActivity {
     private Toolbar tb;
     private SharedPreferences pref;
     private String sessionID;
-    private Spinner spinner;
     private ModelUserDetails modelUserDetail;
-    private ArrayAdapter adapter;
     private TextInputLayout editText, editText1, editText2, editText3, editText4, editText5, editText6;
 
     @Override
@@ -39,12 +37,8 @@ public class Profile49 extends AppCompatActivity {
         setContentView(R.layout.activity_profile49);
         modelUserDetail = new ModelUserDetails();
 
-        spinner = (Spinner) findViewById(R.id.spinner_gender);
-
-        adapter = ArrayAdapter.createFromResource(this,
-                R.array.gender_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
+        this.sessionID = pref.getString("session_token", "");
 
         editText = findViewById(R.id.name_profile2);
         editText1 = findViewById(R.id.username_prof2);
@@ -54,13 +48,8 @@ public class Profile49 extends AppCompatActivity {
         editText5 = findViewById(R.id.country_prof2);
         editText6 = findViewById(R.id.date_profile2);
         setToolBar(tb);
-        getUserInput();
     }
 
-    public void MoveToProfile(View view) {
-        Intent intent = new Intent(getApplicationContext(), profile.class);
-        startActivity(intent);
-    }
 
     private void setToolBar(Toolbar tb) {
         tb = findViewById(R.id.toolbar);
@@ -77,32 +66,24 @@ public class Profile49 extends AppCompatActivity {
         );
 
     }
-
-    private void getUserInput() {
-        String FullName = editText.getEditText().getText().toString();
-
-        String UserName = editText1.getEditText().getText().toString();
-        String Email = editText2.getEditText().toString();
-        String phoneNumber = editText3.getEditText().toString();
-        String IdNo = editText4.getEditText().getText().toString();
-        String Country = editText5.getEditText().toString();
-        String Date = editText6.getEditText().toString();
-    }
-
     public void userDetails(View view) {
 
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + sessionID + "");
 
 
-        String FullName = editText.getEditText().getText().toString();
-
-        String UserName = editText1.getEditText().getText().toString();
+        String FirstName = editText.getEditText().getText().toString();
+        modelUserDetail.setFIRST_NAME(FirstName);
+        String LastName = editText1.getEditText().getText().toString();
+        modelUserDetail.setLAST_NAME(LastName);
         String Email = editText2.getEditText().toString();
         String phoneNumber = editText3.getEditText().toString();
         String IdNo = editText4.getEditText().getText().toString();
+        modelUserDetail.setNATIONAL_ID(IdNo);
         String Country = editText5.getEditText().toString();
+        modelUserDetail.setCOUNTRY(Country);
         String Date = editText6.getEditText().toString();
+        modelUserDetail.setDATE_OF_BIRTH(Date);
 
 
         Retrofit retrofit = RetrofitClient.getInstance();
@@ -117,6 +98,10 @@ public class Profile49 extends AppCompatActivity {
                     return;
                 }
                 Toast.makeText(getApplicationContext(), "success" + response.code(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), profile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
 
 

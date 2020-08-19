@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/constarintPayInternet2"
     android:layout_height="match_parent"
     tools:context=".PayInternet2Pin">
     <TextView
@@ -23,12 +24,14 @@
         android:id="@+id/progressInternet2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@drawable/progress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/progress"
-        android:visibility="gone"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338" />
 
     <ImageView
         android:id="@+id/img_e_wallet3_1"

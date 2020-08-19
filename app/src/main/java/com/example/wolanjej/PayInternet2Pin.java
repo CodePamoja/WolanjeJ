@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -285,7 +287,7 @@ public class PayInternet2Pin extends AppCompatActivity {
         protected void onPostExecute(Response response) {
             progressBar.setVisibility(View.GONE);
             super.onPostExecute(response);
-            if (response.code() == 201) {
+            if (response != null && response.code() == 201) {
                 try {
                     String value = response.body().string();
                     JSONObject jBody = new JSONObject(value); // adding
@@ -319,7 +321,7 @@ public class PayInternet2Pin extends AppCompatActivity {
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
-            } else if (response.code() != 201) {
+            } else if (response != null && response.code() != 201) {
                 {
                     String statusResults = "unsuccessful";
                     try {
@@ -332,6 +334,8 @@ public class PayInternet2Pin extends AppCompatActivity {
                     }
                 }
 
+            }else {
+                Snackbar.make(PayInternet2Pin.this.findViewById(R.id.constarintPayInternet2), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }
     }

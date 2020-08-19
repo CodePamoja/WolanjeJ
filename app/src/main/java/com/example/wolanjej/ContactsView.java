@@ -33,7 +33,6 @@ public class ContactsView extends AppCompatActivity {
     RecyclerView recyclerView;
     SearchView search;
 
-
     private String classType;
     private String className;
 
@@ -47,14 +46,25 @@ public class ContactsView extends AppCompatActivity {
         Intent intentExtra = getIntent();
         className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
-        if (className.equals("TransferToPhone50")) {
-            this.classType = intentExtra.getStringExtra(TransferToPhone50.EXTRA_CLASSTYPE);
-        } else if (className.equals("TransferToWalletSingle37")) {
-            this.classType = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_CLASSTYPE);
-        } else if (className.equals("TransferToBank44")) {
-            this.classType = intentExtra.getStringExtra(TransferToBank44.EXTRA_CLASSTYPE);
-        } else if (className.equals("TopUpOtherNumber")) {
-            this.classType = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_CLASSTYPE);
+        switch (className) {
+            case "TransferToPhone50":
+                this.classType = intentExtra.getStringExtra(TransferToPhone50.EXTRA_CLASSTYPE);
+                break;
+            case "TransferToWalletSingle37":
+                this.classType = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_CLASSTYPE);
+                break;
+            case "TransferToBank44":
+                this.classType = intentExtra.getStringExtra(TransferToBank44.EXTRA_CLASSTYPE);
+                break;
+            case "TopUpOtherNumber":
+                this.classType = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_CLASSTYPE);
+                break;
+            case "TransferToWalletMultiple":
+                this.classType = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_CLASSTYPE);
+                break;
+            case "TransferToWalletMultiple2":
+                this.classType = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_CLASSTYPE);
+                    break;
         }
 
 
@@ -99,14 +109,23 @@ public class ContactsView extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent movetoLogo = null;
-                        if (className.equals("TransferToPhone50")) {
-                            movetoLogo = new Intent(ContactsView.this, TransferToPhone50.class);
-                        } else if (className.equals("TransferToWalletSingle37")) {
-                            movetoLogo = new Intent(ContactsView.this, TransferToWalletSingle37.class);
-                        } else if (className.equals("TransferToBank44")) {
-                            movetoLogo = new Intent(ContactsView.this, TransferToBank44.class);
-                        } else if (className.equals("TopUpOtherNumber")) {
-                            movetoLogo = new Intent(ContactsView.this, TopupOtherNumber.class);
+                        switch (className) {
+                            case "TransferToPhone50":
+                                movetoLogo = new Intent(ContactsView.this, TransferToPhone50.class);
+                                break;
+                            case "TransferToWalletSingle37":
+                                movetoLogo = new Intent(ContactsView.this, TransferToWalletSingle37.class);
+                                break;
+                            case "TransferToBank44":
+                                movetoLogo = new Intent(ContactsView.this, TransferToBank44.class);
+                                break;
+                            case "TopUpOtherNumber":
+                                movetoLogo = new Intent(ContactsView.this, TopupOtherNumber.class);
+                                break;
+                            case "TransferToWalletMultiple":
+                            case "TransferToWalletMultiple2":
+                                movetoLogo = new Intent(ContactsView.this, TransferToWalletMultiple40.class);
+                                break;
                         }
                         final Intent finalMovetoLogo = movetoLogo;
                         finalMovetoLogo.putExtra("Class", "ContactsView");
@@ -131,7 +150,7 @@ public class ContactsView extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<SelectUser> selectUsers) {
-            if (selectUsers.isEmpty() == false) {
+            if (!selectUsers.isEmpty()) {
                 suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers, classType);
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(ContactsView.this));

@@ -117,6 +117,7 @@
         <item> TKASH_B2C </item>
         <item> AIRTEL_B2C </item>
         <item>KPLC_BILLPAY</item>
+        <item>ZUKU_BILLPAY </item>
         <item>NCWSC_BILLPAY</item>
         <item>KIWASCO_BILLPAY</item>
     </string-array>
@@ -130,6 +131,22 @@
         <item>Safaricom</item>
         <item>Airtel</item>
         <item>Telkom</item>
+    </string-array>
+    <string-array name="select_bank">
+        <item>Equity Bank</item>
+        <item>Barclays Bank</item>
+        <item>CfC Stanbic Bank</item>
+        <item>Co-operative Bank</item>
+        <item>Chase Bank</item>
+        <item>Citibank</item>
+    </string-array>
+    <string-array name="select_bank_branch">
+        <item>Awendo Branch</item>
+        <item>Bomet Branch</item>
+        <item>Bondo Branch</item>
+        <item>Bungoma Branch</item>
+        <item>Corporate Branch</item>
+        <item>Eldoret Branch</item>
     </string-array>
 
     <string name="login"><font color="#531edc">Log in</font></string>

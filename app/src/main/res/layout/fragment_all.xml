@@ -7,6 +7,17 @@
     android:theme="@style/AppTheme"
     tools:context=".fragments.AllBillsFragment">
 
+    <TextView
+        android:id="@+id/textCreateBill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create A Bill"
+        android:fontFamily="@font/poppins_medium"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <ProgressBar
         android:id="@+id/progressIdFragAll"
         android:layout_width="wrap_content"

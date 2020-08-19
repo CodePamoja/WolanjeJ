@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wolanjej.R;
+import com.example.wolanjej.TransferToWalletMultiple40;
 import com.example.wolanjej.models.SelectUser;
 import com.example.wolanjej.TopupOtherNumber;
 import com.example.wolanjej.TransferToBank44;
@@ -71,21 +72,53 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
     }
 
     public void moversCheck(String name){
-        if(name.equals("phone")){
-            movebackToPhone();
-        }else if (name.equals("wallet")){
-            movebackTowalet();
-        }else if (name.equals("bank")){
-            movebackToBank();
-        }else if (name.equals("TopUpNumber")){
-            movebackToTopUpNumber();
+        switch (name) {
+            case "phone":
+                movebackToPhone();
+                break;
+            case "wallet":
+                movebackTowalet();
+                break;
+            case "bank":
+                movebackToBank();
+                break;
+            case "TopUpNumber":
+                movebackToTopUpNumber();
+                break;
+            case  "walletMultiple":
+                moveTomultipleTransfers();
+                break;
+            case  "walletMultiple2":
+                moveTomultipleTransfers2();
+                break;
+
         }
     }
+
+    private void moveTomultipleTransfers2() {
+        Intent move = new Intent(context, TransferToWalletMultiple40.class);
+        move.putExtra("Class","SelectUserAdapter2");
+        move.putExtra(EXTRA_NAME, phoneName);
+        move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(move);
+    }
+
+    private void moveTomultipleTransfers() {
+        Intent move = new Intent(context, TransferToWalletMultiple40.class);
+        move.putExtra("Class","SelectUserAdapter");
+        move.putExtra(EXTRA_NAME, phoneName);
+        move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(move);
+    }
+
     public void movebackToPhone(){
         Intent move = new Intent(context, TransferToPhone50.class);
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
         move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(move);
     }
 
@@ -94,6 +127,7 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
         move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(move);
     }
 
@@ -102,6 +136,7 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
         move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(move);
     }
 
@@ -110,6 +145,7 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         move.putExtra("Class","SelectUserAdapter");
         move.putExtra(EXTRA_NAME, phoneName);
         move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(move);
     }
 

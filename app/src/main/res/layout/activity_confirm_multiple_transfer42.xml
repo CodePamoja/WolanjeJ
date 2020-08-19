@@ -54,6 +54,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/confirmMultipleName1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="John Doe"
@@ -61,6 +62,7 @@
                             android:textColor="@color/colorMidnight"
                             android:textSize="24sp"/>
                         <TextView
+                            android:id="@+id/dateConfirmMultiple1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="9:00 PM | 10/Jan/2020"
@@ -101,6 +103,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/fromConfirmMultiple"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -126,6 +129,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/toConfirmMultiple1"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -151,6 +155,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/amountConfirmMultiple1"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -176,6 +181,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/messageConfirm1"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -201,6 +207,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/Confirm1transactionFee"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -231,6 +238,7 @@
                             android:textSize="18sp"
                             />
                         <TextView
+                            android:id="@+id/totalAmountConfirm1"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
@@ -257,6 +265,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/confirmName2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Jane X Max"
@@ -264,6 +273,7 @@
                             android:textColor="@color/colorMidnight"
                             android:textSize="24sp"/>
                         <TextView
+                            android:id="@+id/dataConfirm2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="9:00 PM | 10/Jan/2020"
@@ -304,6 +314,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/fromUserConfirm01"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -329,6 +340,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/NameconfirmTo2"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -354,6 +366,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/amountConfirm2"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -379,6 +392,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/messageConfirmMultiple2"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -404,6 +418,7 @@
                                 android:textSize="16sp"
                                 />
                             <TextView
+                                android:id="@+id/transactionFeeConfirmMultiple2"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="50"
@@ -434,6 +449,7 @@
                             android:textSize="18sp"
                             />
                         <TextView
+                            android:id="@+id/totalAmountConfirm2"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
@@ -461,6 +477,7 @@
                 android:id="@+id/confirm_multiple_transfer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAllCaps="false"
                 android:backgroundTint="@color/colorPurple"
                 android:padding="15dp"
                 android:text="Continue"

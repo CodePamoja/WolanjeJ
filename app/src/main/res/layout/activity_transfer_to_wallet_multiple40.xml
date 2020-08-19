@@ -1,108 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
     tools:context=".TransferToWalletMultiple40">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:backgroundTint="@color/gray4"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/toobarwithout"/>
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="25dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
+
 
             <TextView
+                android:id="@+id/textView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="20dp"
                 android:text="@string/transfer_to_wallet"
                 android:textColor="@color/colorMidnight"
-                android:textSize="28sp" />
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="20dp">
-
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/multiple40Card1"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView15">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:paddingVertical="10dp"
-                    android:paddingHorizontal="20dp">
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_weight="1"
+                        android:orientation="horizontal"
                         android:paddingVertical="5dp">
+
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_weight="50"
                             android:layout_height="wrap_content"
+                            android:layout_weight="50"
                             android:text="Select User"
-                            android:textSize="14sp"
-                            android:textColor="@color/colorPurple"/>
+                            android:textColor="@color/colorPurple"
+                            android:textSize="14sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_weight="50"
-                            android:textAlignment="textEnd"
                             android:layout_height="wrap_content"
+                            android:layout_weight="50"
                             android:text="Balance"
-                            android:textSize="14sp"
-                            android:textColor="@color/blue_grey"/>
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/blue_grey"
+                            android:textSize="14sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/select_multiple"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:drawSelectorOnTop="true"
                             android:dropDownWidth="wrap_content"
                             android:popupBackground="@android:color/holo_purple"
                             android:spinnerMode="dropdown"
                             android:textAlignment="textStart"
                             tools:ignore="NestedWeights" />
+
                         <TextView
                             android:layout_width="wrap_content"
-                            android:textAlignment="textEnd"
                             android:layout_height="wrap_content"
                             android:text="Kes 15,000"
-                            android:textSize="22sp"
-                            android:textColor="@color/colorMidnight"/>
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/colorMidnight"
+                            android:textSize="22sp" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp">
+                android:id="@+id/multiple40Card2"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/multiple40Card1"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -115,111 +129,127 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="15dp"
                         android:text="Transfer detail"
-                        android:textSize="20sp"
                         android:textAlignment="center"
-                        android:textColor="@color/colorMidnight"/>
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="20sp" />
 
                     <EditText
+                        android:id="@+id/editTxtWalletMultiple"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="5dp"
-                        android:inputType="textPersonName"
+                        android:background="@drawable/textviewborder"
                         android:hint="Enter Username / Mobile No."
-                        android:padding="10dp"
-                        android:background="@drawable/textviewborder"/>
+                        android:inputType="textPersonName"
+                        android:padding="10dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
                         <Button
+                            style="?android:attr/borderlessButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="50"
                             android:layout_marginRight="20dp"
+                            android:layout_weight="50"
+                            android:backgroundTint="@color/colorGreyBackground"
                             android:text="Scan QR"
                             android:textAllCaps="false"
-                            android:textSize="14sp"
                             android:textColor="@color/blue_grey"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:backgroundTint="@color/colorGreyBackground"/>
+                            android:textSize="14sp" />
+
                         <Button
+                            android:id="@+id/buttonContactsMultiple1"
+                            style="?android:attr/borderlessButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="50"
                             android:layout_marginLeft="20dp"
+                            android:layout_weight="50"
+                            android:backgroundTint="@color/colorGreyBackground"
+                            android:onClick="MoveToContacts"
                             android:text="Contacts"
                             android:textAllCaps="false"
-                            android:textSize="14sp"
                             android:textColor="@color/blue_grey"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:backgroundTint="@color/colorGreyBackground"/>
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
-                        android:text="DETAILS"
                         android:autoSizeMinTextSize="12sp"
+                        android:text="DETAILS"
                         android:textAlignment="textStart"
-                        android:textColor="@color/blue_grey"/>
+                        android:textColor="@color/blue_grey" />
 
                     <EditText
+                        android:id="@+id/amountMultipleTransfer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:inputType="number"
+                        android:background="@drawable/textviewborder"
                         android:hint="Amount"
-                        android:padding="10dp"
-                        android:background="@drawable/textviewborder"/>
+                        android:inputType="number"
+                        android:padding="10dp" />
 
                     <EditText
+                        android:id="@+id/messageMultipleTransfers"
                         android:layout_width="match_parent"
                         android:layout_height="79dp"
                         android:layout_marginTop="20dp"
-                        android:inputType="text|textMultiLine"
-                        android:padding="10dp"
+                        android:background="@drawable/textviewborder"
                         android:hint="Message"
-                        android:background="@drawable/textviewborder"/>
+                        android:inputType="text|textMultiLine"
+                        android:padding="10dp" />
 
                     <Button
+                        android:id="@+id/buttonContactsMultiple2"
+                        style="?android:attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
-                        android:text="Add User"
+                        android:backgroundTint="@color/colorGreyBackground"
+                        android:onClick="MoveToContacts2"
                         android:padding="10dp"
+                        android:text="Add User"
                         android:textAllCaps="false"
-                        android:textSize="14sp"
                         android:textColor="@color/blue_grey"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:backgroundTint="@color/colorGreyBackground"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginVertical="50dp"
-            android:paddingHorizontal="20dp">
             <Button
                 android:id="@+id/continue_multiple_transfer"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPurple"
+                android:onClick="Maketransfer"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="24dp"
                 android:padding="15dp"
                 android:text="Continue"
-                android:textColor="@color/colorWhite"/>
-        </LinearLayout>
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/multiple40Card2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorWhite">
 
-    </LinearLayout>
+        <include layout="@layout/toobarwithout" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

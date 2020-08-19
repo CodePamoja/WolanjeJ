@@ -1,32 +1,29 @@
 package com.example.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.wolanjej.recyclerAdapters.SelectUserAdapter;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TransferToBank44 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String[] select_bank = {"Select Bank","Equity Bank","Barclays Bank", "CfC Stanbic Bank","Co-operative Bank","Chase Bank", "Citibank"};
-    String[] select_branch;
+public class TransferToBank44 extends AppCompatActivity {
 
     private Button button;
-    private Spinner spin;
-    private EditText text;
+    private Spinner spin, spinner;
+    private EditText text, editText, editText1, editText2, editText3, editText4;
     private String phoneNumber;
     private String sessionID;
     private String branchName;
@@ -34,8 +31,11 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
     private String amount;
     private String phoneCompany;
     private String phoneName;
+    private ArrayAdapter<CharSequence> aa;
+    private ArrayAdapter<CharSequence> adapter;
     private String bankSelected;
     private String AGENTNO;
+    private static final String TAG = "TransferToBank";
     private SharedPreferences pref;
 
 
@@ -58,95 +58,79 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.activity_transfer_to_bank44);
         setToolBar();
 
+        text = findViewById(R.id.bankAmount);
+        editText = findViewById(R.id.bankMessage);
+        editText1 = findViewById(R.id.holdName);
+        editText2 = findViewById(R.id.accNumber);
+
+
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
-        if(className.equals("MainTransfer36")) {
-        }else if (className.equals("SelectUserAdapter")){
-            this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
-            String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-            this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
+        switch (className) {
+            case "MainTransfer36":
+                break;
+            case "SelectUserAdapter": {
+                this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
+                String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
+                this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
 
-            EditText tvtext =  findViewById(R.id.holdName);
-            tvtext.setText(userName);
-        }else if (className.equals("ConfirmTransferToBank46")){
+                editText1.setText(userName);
+                break;
+            }
+            case "ConfirmTransferToBank46": {
 
-            pref=getApplication().getSharedPreferences("ConfirmTransferToBank46", MODE_PRIVATE);
-            this.accNumber = pref.getString("accNumber", "");
-            this.phoneNumber = "+"+ pref.getString("phone", "");
-            this.phoneName = pref.getString("phoneName", "");
-            this.branchName = pref.getString("branchName", "");
-            this.bankSelected = pref.getString("bankSelected", "");
+                pref = getApplication().getSharedPreferences("ConfirmTransferToBank46", MODE_PRIVATE);
+                this.accNumber = pref.getString("accNumber", "");
+                this.phoneNumber = "+" + pref.getString("phone", "");
+                this.phoneName = pref.getString("phoneName", "");
+                this.branchName = pref.getString("branchName", "");
+                this.bankSelected = pref.getString("bankSelected", "");
 
-            String userName = pref.getString("holderName", "");
-            String sendAmount = pref.getString("amount", "");
-            String sendMessage = pref.getString("message", "");
-            String sendAccNumber = pref.getString("accNumber", "");
-            String sendBank =  pref.getString("bankSelected", "");
-            String sendBranch = pref.getString("branchName", "");
+                String userName = pref.getString("holderName", "");
+                String sendAmount = pref.getString("amount", "");
+                String sendMessage = pref.getString("message", "");
+                String sendAccNumber = pref.getString("accNumber", "");
+                String sendBank = pref.getString("bankSelected", "");
+                String sendBranch = pref.getString("branchName", "");
 
-            EditText tvtext =  findViewById(R.id.holdName);
-            tvtext.setText(userName);
 
-            tvtext = findViewById(R.id.bankAmount);
-            tvtext.setText(sendAmount);
+                editText1.setText(userName);
+                text.setText(sendAmount);
 
-            tvtext = findViewById(R.id.bankMessage);
-            tvtext.setText(sendMessage);
+                editText.setText(sendMessage);
+                editText2.setText(sendAccNumber);
 
-            tvtext = findViewById(R.id.accNumber);
-            tvtext.setText(sendAccNumber);
-
-            tvtext = findViewById(R.id.branchName);
-            tvtext.setText(sendBranch);
+                break;
+            }
         }
 
         spin = (Spinner) this.findViewById(R.id.selectBank);
-        spin.setOnItemSelectedListener(this);
-
-        //Creating the ArrayAdapter instance having the country list
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,select_bank);
+        aa = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.select_bank, android.R.layout.simple_spinner_item);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
 
-    }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        Toast.makeText(getApplicationContext(),select_bank[position] , Toast.LENGTH_LONG).show();
-        bankSelected = select_bank[position];
-//        if ("Equity Bank".equals(select_bank[position])){
-//           select_branch = new String[]{"Select Branch", "Awendo Branch", "Bomet Branch", "Bondo Branch", "Bungoma Branch", "Corporate Branch", "Eldoret Branch"};
-//        }else if ("Barclays Bank".equals(select_bank[position])){
-//            select_branch = new String[]{"Select Branch", "Awendo Branch", "Bomet Branch", "Bondo Branch", "Bungoma Branch", "Corporate Branch", "Eldoret Branch"};
-//        }else if ("CfC Stanbic Bank".equals(select_bank[position])){
-//            select_branch = new String[]{"Select Branch", "Awendo Branch", "Bomet Branch", "Bondo Branch", "Bungoma Branch", "Corporate Branch", "Eldoret Branch"};
-//        }else if ("Co-operative Bank".equals(select_bank[position])){
-//            select_branch = new String[]{"Select Branch", "Awendo Branch", "Bomet Branch", "Bondo Branch", "Bungoma Branch", "Corporate Branch", "Eldoret Branch"};
-//        }else if ("Chase Bank".equals(select_bank[position])){
-//            select_branch = new String[]{"Select Branch", "Awendo Branch", "Bomet Branch", "Bondo Branch", "Bungoma Branch", "Corporate Branch", "Eldoret Branch"};
-//        }else if ("Citibank Bank".equals(select_bank[position])){
-//            select_branch = new String[]{"Select Branch", "Awendo Branch", "Bomet Branch", "Bondo Branch", "Bungoma Branch", "Corporate Branch", "Eldoret Branch"};
-//        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+        spinner = (Spinner) this.findViewById(R.id.branchName);
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.select_bank_branch, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
     }
+
 
     private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,MainTransfer36.class);
+        final Intent movetoLogo = new Intent(this, MainTransfer36.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        movetoLogo.putExtra("Class","TransferToBank44");
+                        movetoLogo.putExtra("Class", "TransferToBank44");
                         startActivity(movetoLogo);
                     }
                 }
@@ -155,7 +139,7 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
 
     public void moveToContact(View view) {
         Intent move = new Intent(this, ContactsView.class);
-        move.putExtra("Class","TransferToBank44");
+        move.putExtra("Class", "TransferToBank44");
         move.putExtra(EXTRA_CLASSTYPE, "bank");
         startActivity(move);
     }
@@ -166,53 +150,65 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
         Log.e("TAG phone number check", "button pressed to transfer money" + phone);
         String phonenumber = changePhoneNo(phone, view);
         Log.e("TAG phone number last", phonenumber);
-        if(phonenumber!="Fasle"){
-            Log.e("TAG phone number check", "button pressed to transfer money" + bankSelected);
-            if(!"Select Bank".equals(bankSelected)){
-
-                String bankSelect = bankSelected;
-
-                text = findViewById(R.id.bankAmount);
-                String amount = text.getText().toString();
-
-                text = findViewById(R.id.bankMessage);
-                String message = text.getText().toString();
-
-                text = findViewById(R.id.holdName);
-                String holderName = text.getText().toString();
-
-                text = findViewById(R.id.accNumber);
-                String accNumber = text.getText().toString();
-
-                text = findViewById(R.id.branchName);
-                String branchName = text.getText().toString();
-
-                if (amount!=null && message!=null && holderName!=null && accNumber!=null && branchName!=null ){
-                    valuesConferm(holderName, amount, message, accNumber, branchName, bankSelect, phone);
-                }
+        if (!phonenumber.equals("Fasle")) {
+            String amount = text.getText().toString();
+            String message = editText.getText().toString();
+            String holderName = editText1.getText().toString();
+            String accNumber = editText2.getText().toString();
+            if (amount.isEmpty() || message.isEmpty() || holderName.isEmpty() || accNumber.isEmpty()) {
+                Toast.makeText(this, "please provide all the details", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            String[] bankAndBranch = selectedBank();
+            String bank = bankAndBranch[0];
+            String branch = bankAndBranch[1];
+
+            Log.d(TAG, "bankTransfer: " + bank + "////" + branch);
+
+            valuesConferm(holderName, amount, message, accNumber, branch, bank, phone);
         }
     }
 
-    public void valuesConferm(String holderName, String amount, String message, String accNumber, String branchName,String bankSelect, String phone){
-
-        pref = getApplicationContext().getSharedPreferences("ConfirmTransferToBank46", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("holderName", holderName);
-        editor.putString("phoneName", phoneName);
-        editor.putString("phone", phone);
-        editor.putString("message", message);
-        editor.putString("accNumber", accNumber);
-        editor.putString("branchName", branchName);
-        editor.putString("bankSelect", bankSelect);
-        editor.putString("amount", amount);
-        editor.commit();
-
-        Intent move = new Intent(this, ConfirmTransferToBank46.class);
-        startActivity(move);
+    private String[] selectedBank() {
+        String bank = spin.getSelectedItem().toString();
+        String bank_branch = "False";
+        String[] arr = new String[2];
+        switch (bank) {
+            case "Equity Bank":
+            case "Co-operative Bank":
+            case "CfC Stanbic Bank":
+                arr[0] = bank;
+                arr[1] = bank_branch = spinner.getSelectedItem().toString();
+                break;
+            case "Barclays Bank":
+            case "Chase Bank":
+            case "Citibank Bank":
+                spinner.setAdapter(adapter);
+                arr[0] = bank;
+                arr[1] = spinner.getSelectedItem().toString();
+                break;
+        }
+        return arr;
     }
 
-    public String changePhoneNo(String inputPhone, View view){
+    public void valuesConferm(String holderName, String amount, String message, String accNumber, String branchName, String bankSelect, String phone) {
+
+        Intent move = new Intent(this, ConfirmTransferToBank46.class);
+        move.putExtra("Class", "TransferToBank44");
+        move.putExtra(EXTRA_AMOUNT, amount);
+        move.putExtra(EXTRA_MESSAGE, message);
+        move.putExtra(EXTRA_ACCOUNTNUMBER, accNumber);
+        move.putExtra(EXTRA_PHONENAME, phoneName);
+        move.putExtra(EXTRA_BANKSELECTED, bankSelect);
+        move.putExtra(EXTRA_BRANCHNAME, branchName);
+        move.putExtra(EXTRA_HOLDERNAME, holderName);
+        move.putExtra(EXTRA_PHONENUMBER, phone);
+        startActivity(move);
+        finish();
+    }
+
+    public String changePhoneNo(String inputPhone, View view) {
         String validPhoneNo = "Fasle";
         String safaricom = "^(?:254|\\+254|0)?(7(?:(?:[129][0-9])|(?:0[0-9])|(?:6[8-9])|(?:5[7-9])|(?:4[5-6])|(?:4[8])|(4[0-3]))[0-9]{6})$";
         String telkom = "^(?:254|\\+254|0)?(7(?:(?:[7][0-9]))[0-9]{6})$";
@@ -228,16 +224,16 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
                 Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
                 String replPhone3 = "null";
                 phoneCompany = "safaricom";
-                if(replPhone2.startsWith("0")){
+                if (replPhone2.startsWith("0")) {
                     replPhone3 = replPhone2.replaceFirst("0", "\\254");
                     Log.e("TAG phone starts 0", replPhone3);
                     validPhoneNo = replPhone3;
-                }else if(replPhone2.startsWith("7")){
+                } else if (replPhone2.startsWith("7")) {
                     replPhone3 = replPhone2.replaceFirst("7", "\\254");
                     Log.e("TAG phone starts 7", replPhone3);
                     validPhoneNo = replPhone3;
-                }else if(replPhone2.startsWith("+")){
-                    validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]","");
+                } else if (replPhone2.startsWith("+")) {
+                    validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
                     Log.e("TAG phone number +", validPhoneNo);
                 }
             } else {
@@ -247,38 +243,38 @@ public class TransferToBank44 extends AppCompatActivity implements AdapterView.O
                     Toast.makeText(getApplicationContext(), "Airtel Number", Toast.LENGTH_LONG).show();
                     String replPhone3 = "null";
                     phoneCompany = "airtel";
-                    if(replPhone2.startsWith("0")){
+                    if (replPhone2.startsWith("0")) {
                         replPhone3 = replPhone2.replaceFirst("0", "\\254");
                         Log.e("TAG phone starts 0", replPhone3);
                         validPhoneNo = replPhone3;
-                    }else if(replPhone2.startsWith("7")){
+                    } else if (replPhone2.startsWith("7")) {
                         replPhone3 = replPhone2.replaceFirst("7", "\\254");
                         Log.e("TAG phone starts 7", replPhone3);
                         validPhoneNo = replPhone3;
-                    }else if(replPhone2.startsWith("+")){
-                        validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]","");
+                    } else if (replPhone2.startsWith("+")) {
+                        validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
                         Log.e("TAG phone number +", validPhoneNo);
                     }
-                }else {
+                } else {
                     patt = Pattern.compile(telkom);
                     match = patt.matcher(replPhone2);
                     if (match.find()) {
                         Toast.makeText(getApplicationContext(), "Telkom Number", Toast.LENGTH_LONG).show();
                         String replPhone3 = "null";
                         phoneCompany = "telkom";
-                        if(replPhone2.startsWith("0")){
+                        if (replPhone2.startsWith("0")) {
                             replPhone3 = replPhone2.replaceFirst("0", "\\254");
                             Log.e("TAG phone starts 0", replPhone3);
                             validPhoneNo = replPhone3;
-                        }else if(replPhone2.startsWith("7")){
+                        } else if (replPhone2.startsWith("7")) {
                             replPhone3 = replPhone2.replaceFirst("7", "\\254");
                             Log.e("TAG phone starts 7", replPhone3);
                             validPhoneNo = replPhone3;
-                        }else if(replPhone2.startsWith("+")){
-                            validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]","");
+                        } else if (replPhone2.startsWith("+")) {
+                            validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
                             Log.e("TAG phone number +", validPhoneNo);
                         }
-                    }else {
+                    } else {
                         Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
                         Log.e("TAG phone No not check", replPhone2);
                         moveToContact(view);

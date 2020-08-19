@@ -84,8 +84,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:layout_marginHorizontal="12dp"
-                        android:layout_marginTop="16dp"
-                        android:hint="Full Name"
+                        android:layout_marginTop="10dp"
+                        android:hint="First Name"
                         app:counterEnabled="true"
                         app:counterMaxLength="9">
 
@@ -103,10 +103,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:layout_marginHorizontal="12dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         app:counterEnabled="true"
                         app:counterMaxLength="9"
-                        android:hint="UserName">
+                        android:hint="Last Name">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -122,7 +122,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:layout_marginHorizontal="12dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         android:hint="Email">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -139,7 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:layout_marginHorizontal="12dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         android:hint="@string/kenya_number"
                         app:counterEnabled="true"
                         app:counterMaxLength="9">
@@ -272,7 +272,7 @@
             android:backgroundTint="@color/warm_purple"
             android:fontFamily="@font/poppins_regular"
             android:textAllCaps="false"
-            android:onClick="MoveToProfile"
+            android:onClick="userDetails"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
