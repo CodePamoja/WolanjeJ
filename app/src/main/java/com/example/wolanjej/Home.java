@@ -65,7 +65,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     public static final String EXTRA_PRODUCT_NAME = "com.example.wolanjej.PRODUCT";
     public static final String EXTRA_MYBALANCE = "com.example.wolanjej.MYBALANCE";
-    private static final String TAG ="HOME";
+    private static final String TAG = "HOME";
     private Toolbar tb;
     private DrawerLayout drawer;
     private String sessionID;
@@ -288,27 +288,36 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         call.enqueue(new Callback<ApiJsonObjects>() {
             @Override
             public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(Home.this, "code" + response.code(), Toast.LENGTH_SHORT).show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(Home.this, "code" + response.code(), Toast.LENGTH_SHORT).show();
 
-                    SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("session_token", null);
-                    editor.apply();
-                    Intent move = new Intent(getApplicationContext(), LogIn.class);
-                    startActivity(move);
-                    finish();
-                    return;
-                }
+                            SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = pref.edit();
+                            editor.putString("session_token", null);
+                            editor.apply();
+                            Intent move = new Intent(getApplicationContext(), LogIn.class);
+                            startActivity(move);
+                            finish();
+                            return;
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                balanceModel = response.body().getBalances();
+                                for (BalanceModel balanceModel : balanceModel) {
+                                    MY_BALANCE = balanceModel.getBalance();
 
-                balanceModel = response.body().getBalances();
-                for (BalanceModel balanceModel : balanceModel) {
-                    MY_BALANCE = balanceModel.getBalance();
+                                    tvtext.setText("KES " + MY_BALANCE);
+                                }
 
-                    tvtext.setText("KES " + MY_BALANCE);
-                }
+                            }
+                        });
 
-
+                    }
+                }).start();
             }
 
             @Override
@@ -1002,6 +1011,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         bottomSheetDialog.setContentView(bottomSheetViewPayElectricity);
         bottomSheetDialog.show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (bottomSheetDialog != null) {
+            bottomSheetDialog.dismiss();
+            bottomSheetDialog = null;
+        }
+
     }
 
     private void MoveToPayElectricityToken() {
