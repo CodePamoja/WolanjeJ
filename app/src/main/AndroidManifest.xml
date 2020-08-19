@@ -33,7 +33,6 @@
         <activity android:name=".Registration051" />
         <activity android:name=".Profile49" />
         <activity android:name=".Loans" />
-        <activity android:name=".UserProfileDetails" />
         <activity android:name=".Sponsor07" />
         <activity android:name=".Sponsor06" />
         <activity android:name=".Sponsor05" />

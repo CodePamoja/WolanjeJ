@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.wolanjej.models.Transactions;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -353,7 +354,7 @@ public class EnterPin extends AppCompatActivity {
         protected void onPostExecute(Response response) {
             super.onPostExecute(response);
             progressBar.setVisibility(View.GONE);
-            if (response.code() == 201) {
+            if (response != null && response.code() == 201) {
                 try {
                     String value = response.body().string();
                     JSONObject jBody = new JSONObject(value); // adding
@@ -385,7 +386,7 @@ public class EnterPin extends AppCompatActivity {
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
-            } else if (response.code() != 201) {
+            } else if (response != null && response.code() != 201) {
                 {
                     progressBar.setVisibility(View.GONE);
                     String statusResults = "unsuccessful";
@@ -398,6 +399,8 @@ public class EnterPin extends AppCompatActivity {
                     }
                 }
 
+            }else {
+                Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }
     }
@@ -417,7 +420,7 @@ public class EnterPin extends AppCompatActivity {
         @Override
         protected void onPostExecute(Response result) {
             String verifyResult = null;
-            if (result.code() == 200) {
+            if (result != null && result.code() == 200) {
                 try {
                     String test = result.body().string();
                     Log.d("TAG test", test);
@@ -433,7 +436,7 @@ public class EnterPin extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-            } else if (result.code() != 201) {
+            } else if (result != null && result.code() != 201) {
                 try {
                     verifyResult = result.body().string();
                     JSONObject jBody = new JSONObject(verifyResult); // adding
@@ -447,6 +450,8 @@ public class EnterPin extends AppCompatActivity {
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
+            }else{
+                Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }
 
@@ -610,7 +615,7 @@ public class EnterPin extends AppCompatActivity {
         protected void onPostExecute(Response response) {
             super.onPostExecute(response);
             progressBar.setVisibility(View.GONE);
-            if (response.code() == 201) {
+            if (response != null && response.code() == 201) {
                 try {
                     String value = response.body().string();
                     JSONObject jBody = new JSONObject(value); // adding
@@ -642,7 +647,7 @@ public class EnterPin extends AppCompatActivity {
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
-            } else if (response.code() != 201) {
+            } else if (response != null && response.code() != 201) {
                 {
                     progressBar.setVisibility(View.GONE);
                     String statusResults = "unsuccessful";
@@ -656,6 +661,8 @@ public class EnterPin extends AppCompatActivity {
                     }
                 }
 
+            }else {
+                Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }
     }

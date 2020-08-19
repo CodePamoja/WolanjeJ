@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +28,9 @@ import java.io.IOException;
 import okhttp3.Response;
 
 public class TvSubscriptions extends AppCompatActivity {
+    public static final String EXTRA_SEND_FEE = "com.example.wolanjej.SEND_FEE";
+    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_REFERENCE_NUMBER = "com.example.wolanjej.REFERNCE_NUMBER";
     private Button button;
     private String ProductName;
     private String amount;
@@ -39,9 +44,7 @@ public class TvSubscriptions extends AppCompatActivity {
     private String sendfee;
     private String sendIDReference;
     private static final String TAG = "TVSubscription";
-    public static final String EXTRA_SEND_FEE = "com.example.wolanjej.SEND_FEE";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
-    public static final String EXTRA_REFERENCE_NUMBER = "com.example.wolanjej.REFERNCE_NUMBER";
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -294,7 +297,7 @@ public class TvSubscriptions extends AppCompatActivity {
         protected void onPostExecute(Response response) {
             progressBar.setVisibility(View.GONE);
             super.onPostExecute(response);
-            if (response.code() == 201) {
+            if (response != null && response.code() == 201) {
                 try {
                     String value = response.body().string();
                     JSONObject jBody = new JSONObject(value); // adding
@@ -328,7 +331,7 @@ public class TvSubscriptions extends AppCompatActivity {
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
-            } else if (response.code() != 201) {
+            } else if (response != null && response.code() != 201) {
                 {
                     String statusResults = "unsuccessful";
                     try {
@@ -341,6 +344,8 @@ public class TvSubscriptions extends AppCompatActivity {
                     }
                 }
 
+            } else {
+                Snackbar.make(findViewById(R.id.activityTvSubscription), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }
     }

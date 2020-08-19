@@ -163,7 +163,7 @@ public class HistoryFragment extends Fragment {
                         }
                     }
                     else {
-                        Snackbar.make(historyFragment.v.findViewById(R.id.constarintHistoryFrag), "No Internet Connection", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(historyFragment.v.findViewById(R.id.constarintHistoryFrag), "Something went wrong", Snackbar.LENGTH_LONG).show();
                     }
 
                 }

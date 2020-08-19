@@ -142,13 +142,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         }
 
         Button button4 = findViewById(R.id.btnaddnew);
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), UserProfileDetails.class);
-                startActivity(intent);
-            }
-        });
+
 
 
         tb = findViewById(R.id.toolbarhome);
@@ -1094,7 +1088,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             productName = "DSTV_BILLPAY";
 
         }
-        if (productName.equals("GOTV_BILLPAY")) {
+        if (productName.equals("GOTV PayBill")) {
             productName = "GOTV_BILLPAY";
 
         }
