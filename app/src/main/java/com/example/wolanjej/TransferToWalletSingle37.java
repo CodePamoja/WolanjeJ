@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.example.wolanjej.recyclerAdapters.SelectUserAdapter;
 
@@ -23,7 +26,14 @@ import java.util.regex.Pattern;
 
 public class TransferToWalletSingle37 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] selectUser = {"Single Transfers", "Multiple Transfers"};
-
+    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
+    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
+    public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
+    public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
+    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     private Button button;
     private Spinner spin;
     private EditText text;
@@ -34,15 +44,6 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     private String phoneCompany;
     private String amount;
     private SharedPreferences pref;
-
-    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
-    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
-    public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
-    public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,22 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
         fetchClassIntent();
+        setActionBarColor();
 
+    }
+
+    private void setActionBarColor() {
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
     }
 
     private void fetchClassIntent() {

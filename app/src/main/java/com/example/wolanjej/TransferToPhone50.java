@@ -5,12 +5,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.example.wolanjej.recyclerAdapters.SelectUserAdapter;
 
@@ -18,6 +21,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TransferToPhone50 extends AppCompatActivity {
+    public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     private Button button;
     private EditText text;
     private String phoneNumber = "phone1";
@@ -25,15 +31,13 @@ public class TransferToPhone50 extends AppCompatActivity {
     private String phoneCompany;
     private SharedPreferences pref;
 
-    public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_to_phone50);
         setToolBar();
+        setActionBarColor();
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
@@ -72,6 +76,20 @@ public class TransferToPhone50 extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void setActionBarColor() {
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     private void setToolBar() {

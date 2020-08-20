@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,10 @@ import java.io.IOException;
 import okhttp3.Response;
 
 public class PayInternet2Pin extends AppCompatActivity {
+    private static final String TAG = "PayInternet";
+    public static final String EXTRA_SEND_FEE = "com.example.wolanjej.SEND_FEE";
+    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_REFERENCE_NUMBER = "com.example.wolanjej.REFERNCE_NUMBER";
     private Button button;
     private String sessionID;
     private SharedPreferences pref;
@@ -37,21 +42,27 @@ public class PayInternet2Pin extends AppCompatActivity {
     private TextView textViewAmount;
     private String sendAmount;
     private TextView txtWallet3_Pay;
+    private EditText text1, text2, text3, text4;
     private String phoneNumber;
     private String sendIDReference;
     private String sendfee;
     private ProgressBar progressBar;
     private String product_name;
-    private static final String TAG = "PayInternet";
-    public static final String EXTRA_SEND_FEE = "com.example.wolanjej.SEND_FEE";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
-    public static final String EXTRA_REFERENCE_NUMBER = "com.example.wolanjej.REFERNCE_NUMBER";
+
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_internet2);
+
+        //pin editText
+        text1 = findViewById(R.id.pinDigit1);
+        text2 = findViewById(R.id.pinDigit2);
+        text3 = findViewById(R.id.pinDigit3);
+        text4 = findViewById(R.id.pinDigit4);
+        //
+
         button = (Button) findViewById(R.id.btn_enter_pay);
         textViewAccountNumber = (TextView) findViewById(R.id.txt_saf_eWallet3_1);
         textViewAmount = (TextView) findViewById(R.id.txt_numberEWallet3_1);
@@ -90,10 +101,7 @@ public class PayInternet2Pin extends AppCompatActivity {
     }
 
     private void initPinEntry() {
-        final EditText text1 = findViewById(R.id.pinDigit1);
-        final EditText text2 = findViewById(R.id.pinDigit2);
-        final EditText text3 = findViewById(R.id.pinDigit3);
-        final EditText text4 = findViewById(R.id.pinDigit4);
+
         final String[] numbers = new String[4];
 
         text1.addTextChangedListener(new TextWatcher() {
@@ -174,10 +182,11 @@ public class PayInternet2Pin extends AppCompatActivity {
     }
 
     private void getProceedIntent() {
-        button = (Button) findViewById(R.id.btn_enter_pay);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        text4.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
                 EditText tvtext = findViewById(R.id.pinDigit1);
                 String pin1 = tvtext.getText().toString();
 
@@ -205,8 +214,10 @@ public class PayInternet2Pin extends AppCompatActivity {
                             System.out.println("Not an airtel, safaricom or telkom");
                             break;
                     }
+                return false;
             }
         });
+
     }
 
 
@@ -220,9 +231,10 @@ public class PayInternet2Pin extends AppCompatActivity {
         startActivity(intent);
 
     }
-    public void ConfirmPaymentUnsuccessful(){
+
+    public void ConfirmPaymentUnsuccessful() {
         Intent intent = new Intent(getApplicationContext(), Home.class);
-        intent.putExtra("Class","payInternet2pinUnsuccessful");
+        intent.putExtra("Class", "payInternet2pinUnsuccessful");
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(EXTRA_SEND_FEE, sendfee);
         intent.putExtra(EXTRA_AMOUNT, Amount);
@@ -251,7 +263,6 @@ public class PayInternet2Pin extends AppCompatActivity {
 
         @Override
         protected Response doInBackground(Void... voids) {
-            progressBar.setVisibility(View.VISIBLE);
             JSONArray jdataset = new JSONArray();
             JSONObject jdata = new JSONObject();
 
@@ -334,7 +345,7 @@ public class PayInternet2Pin extends AppCompatActivity {
                     }
                 }
 
-            }else {
+            } else {
                 Snackbar.make(PayInternet2Pin.this.findViewById(R.id.constarintPayInternet2), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }

@@ -73,6 +73,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private String refrenceNumber;
     private String amount;
     private String AGENTNO;
+    private AlertDialog alertDialogTrans;
     private Spinner spinner;
     private String MY_BALANCE;
     private String phoneCompany;
@@ -286,8 +287,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     @Override
                     public void run() {
                         if (!response.isSuccessful()) {
-                            Toast.makeText(Home.this, "code" + response.code(), Toast.LENGTH_SHORT).show();
-
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(Home.this, "code" + response.code()+response.message(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
                             SharedPreferences.Editor editor = pref.edit();
                             editor.putString("session_token", null);
@@ -1222,10 +1227,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private void PayTransactions() {
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.transfer_unsuccessful_popup, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+        alertDialogTrans = new AlertDialog.Builder(this)
                 .setView(view)
                 .create();
-        Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(alertDialogTrans.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         TextView txtReference_number = view.findViewById(R.id.reference_numberTra);
         TextView txtAmount_sent_note = view.findViewById(R.id.amount_sent_note);
         TextView txtBalance_note2 = view.findViewById(R.id.balance_note2);
@@ -1237,12 +1242,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alertDialog.dismiss();
+                alertDialogTrans.dismiss();
             }
         });
+        alertDialogTrans.show();
+    }
 
-        alertDialog.show();
-
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (alertDialogTrans != null) {
+            alertDialogTrans.dismiss();
+            alertDialogTrans = null;
+        }
     }
 
     private void PayElectricityTokenDialog() {

@@ -27,6 +27,7 @@
     <color name="light_blue">#8caef7</color>
     <color name="gray3">#66000000</color>
     <color name="gray4">#e0e0e0 </color>
+    <color name="bShadeGray">#f8f9fa</color>
 
 
 </resources>

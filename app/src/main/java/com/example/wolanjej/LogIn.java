@@ -134,7 +134,7 @@ public class LogIn extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorWhite));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
 
@@ -203,39 +203,80 @@ public class LogIn extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Response result) {
-            prgBar.dismiss();
-            Log.e("All result", "Result");
-            if (result != null && result.code() == 200) {
-                Toast.makeText(getApplicationContext(), "Your have been Loggedin successfuly", Toast.LENGTH_LONG).show();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            prgBar.dismiss();
+
+                        }
+                    });
+                    Log.e("All result", "Result");
+                    if (result != null && result.code() == 200) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Your have been Loggedin successfuly", Toast.LENGTH_LONG).show();
+                            }
+                        });
 
 
-                try {
-                    String test = result.body().string();
-                    sessionID = new JSONObject(test);
-                    //adding values to SharedPreferences
-                    // make sure that in the getsharedPreferences the key value should be the same as the intent putextra class value
+                        try {
+                            String test = result.body().string();
+                            sessionID = new JSONObject(test);
+                            //adding values to SharedPreferences
+                            // make sure that in the getsharedPreferences the key value should be the same as the intent putextra class value
 
-                    SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("session_token", sessionID.getJSONObject("session").getString("session_token"));
-                    editor.putString("id", sessionID.getJSONObject("session").getString("id"));
-                    editor.putString("role", sessionID.getJSONObject("session").getString("role"));
-                    editor.putString("user_name", sessionID.getJSONObject("session").getString("user_name"));
-                    editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
-                    System.out.println(TAG+sessionID.getJSONObject("session").getString("agentno"));
-                    editor.apply();
-                    Intent move = new Intent(LogIn.this, LinkAccount11.class);
-                    move.putExtra("Class", "LogIn");
-                    startActivity(move);
-                    finish();
-                } catch (JSONException | IOException e) {
-                    //e.printStackTrace();
-                    Toast.makeText(LogIn.this, "There is a problem with your internet connection.Please try again if not logged in.", LENGTH_SHORT).show();
+                            SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = pref.edit();
+                            editor.putString("session_token", sessionID.getJSONObject("session").getString("session_token"));
+                            editor.putString("id", sessionID.getJSONObject("session").getString("id"));
+                            editor.putString("role", sessionID.getJSONObject("session").getString("role"));
+                            editor.putString("user_name", sessionID.getJSONObject("session").getString("user_name"));
+                            editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
+                            System.out.println(TAG + sessionID.getJSONObject("session").getString("agentno"));
+                            editor.apply();
+                            Intent move = new Intent(LogIn.this, LinkAccount11.class);
+                            move.putExtra("Class", "LogIn");
+                            startActivity(move);
+                            finish();
+                        } catch (JSONException | IOException e) {
+                            //e.printStackTrace();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(LogIn.this, "There is a problem with your internet connection.Please try again if not logged in.", LENGTH_SHORT).show();
+
+                                }
+                            });
+
+                        }
+                    } else if (result != null && result.code() != 201) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                    } else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(LogIn.this, "Sorry something went wrong", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                    }
+
 
                 }
-            } else if (result.code() != 201) {
-                Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
-            }
+            }).start();
+
+            Log.e("All result", "Result");
+
         }
     }
 

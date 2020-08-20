@@ -63,7 +63,7 @@ public class Registration05 extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorWhite));
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
 
 
         Button btn = findViewById(R.id.btn_continue);

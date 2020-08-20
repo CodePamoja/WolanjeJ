@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -42,6 +46,7 @@ public class TvSubscriptions extends AppCompatActivity {
     private String phoneNumber;
     private String sentAmount;
     private String sendfee;
+    private EditText text1, text2, text3, text4;
     private String sendIDReference;
     private static final String TAG = "TVSubscription";
 
@@ -51,6 +56,14 @@ public class TvSubscriptions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_subscriptions);
+
+        //pin editText
+        text1 = findViewById(R.id.pinDigit1);
+        text2 = findViewById(R.id.pinDigit2);
+        text3 = findViewById(R.id.pinDigit3);
+        text4 = findViewById(R.id.pinDigit4);
+        //
+
         textView1 = (TextView) findViewById(R.id.txt_TvSubscription_sp);
         textView2 = (TextView) findViewById(R.id.txt_Account_noTvSubscription);
         textView3 = (TextView) findViewById(R.id.txt_amount_EWallet_2_1);
@@ -98,13 +111,24 @@ public class TvSubscriptions extends AppCompatActivity {
 
         }
         initPinEntry();
+        setActionBarColor();
+    }
+
+    private void setActionBarColor() {
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     private void initPinEntry() {
-        final EditText text1 = findViewById(R.id.pinDigit1);
-        final EditText text2 = findViewById(R.id.pinDigit2);
-        final EditText text3 = findViewById(R.id.pinDigit3);
-        final EditText text4 = findViewById(R.id.pinDigit4);
         final String[] numbers = new String[4];
 
         text1.addTextChangedListener(new TextWatcher() {
@@ -185,10 +209,10 @@ public class TvSubscriptions extends AppCompatActivity {
     }
 
     private void getProceedIntent() {
-        button = (Button) findViewById(R.id.btn_enter_pay);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        text4.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 EditText tvtext = findViewById(R.id.pinDigit1);
                 String pin1 = tvtext.getText().toString();
 
@@ -215,8 +239,11 @@ public class TvSubscriptions extends AppCompatActivity {
                             System.out.println("Not an airtel, safaricom or telkom");
                             break;
                     }
+
+                return false;
             }
         });
+
     }
 
     public void ConfirmPaymentSuccess() {
@@ -261,7 +288,6 @@ public class TvSubscriptions extends AppCompatActivity {
 
         @Override
         protected Response doInBackground(Void... voids) {
-            progressBar.setVisibility(View.VISIBLE);
             JSONArray jdataset = new JSONArray();
             JSONObject jdata = new JSONObject();
 
@@ -321,7 +347,7 @@ public class TvSubscriptions extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "the transaction is being verified", Toast.LENGTH_SHORT).show();
                         ConfirmPaymentSuccess();
                     } else if (statusResulsts.equals("TRX_RESPONSE_ERROR")) {
-                        Toast.makeText(getApplicationContext(), "SorrynExperiences An error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Sorry Experiences An error", Toast.LENGTH_SHORT).show();
                         ConfirmPaymentUnsuccessful();
                     } else {
                         Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();

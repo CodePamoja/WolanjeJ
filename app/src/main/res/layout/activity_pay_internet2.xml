@@ -200,24 +200,12 @@
                     android:gravity="center"
                     android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
+                    android:imeOptions="actionGo"
                     android:inputType="number"
                     android:maxLength="1" />
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_enter_pay"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="55dp"
-            android:backgroundTint="@color/colorPurple"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Enter"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:textSize="14sp" />
     </LinearLayout>
 
 

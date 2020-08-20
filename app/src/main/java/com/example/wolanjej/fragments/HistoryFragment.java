@@ -130,6 +130,7 @@ public class HistoryFragment extends Fragment {
                             }
                             if (historyFragment.getActivity() == null){
                                 historyFragment.getActivity();
+                                return;
                             }
                             historyFragment.getActivity().runOnUiThread(new Runnable() {
                                 @Override

@@ -2,11 +2,14 @@ package com.example.wolanjej;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,6 +17,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ConfirmSingleTransfer40 extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
+    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
+    public static final String EXTRA_PRODUCT_NAME = "com.example.wolanjej.PRODUCT_NAME";
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
+    public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
+    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     private Button button;
     private String phoneNumber;
     private String sessionID;
@@ -23,20 +34,12 @@ public class ConfirmSingleTransfer40 extends AppCompatActivity {
     private String AGENTNO;
     private TextView tvtext;
 
-    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
-    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
-    public static final String EXTRA_PRODUCT_NAME = "com.example.wolanjej.PRODUCT_NAME";
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
-    public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_single_transfer40);
         setToolBar();
+        setActionBarColor();
 
         Intent move = getIntent();
         this.phoneNumber = move.getStringExtra(TransferToWalletSingle37.EXTRA_PHONENUMBER);
@@ -74,6 +77,20 @@ public class ConfirmSingleTransfer40 extends AppCompatActivity {
                 movetoPin();
             }
         });
+    }
+
+    private void setActionBarColor() {
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     private void setToolBar() {

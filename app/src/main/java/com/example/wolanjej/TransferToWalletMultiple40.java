@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.example.wolanjej.recyclerAdapters.SelectUserAdapter;
 
@@ -23,17 +26,6 @@ import java.util.regex.Pattern;
 
 public class TransferToWalletMultiple40 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] selectUser = {"Multiple Users", "Single User"};
-
-    private Button confirmButton;
-    private String sessionID;
-    private String AGENTNO;
-    private String phoneNumber1, phoneNumber2;
-    private String phoneName1,phoneName2;
-    private String phoneCompany;
-    private EditText editText1, editText2;
-    private Spinner spin;
-    private SharedPreferences pref;
-    private Button button1, button2;
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -44,6 +36,16 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
     public static final String EXTRA_PHONENAME2 = "com.example.wolanjej.PHONENAME2";
     public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    private Button confirmButton;
+    private String sessionID;
+    private String AGENTNO;
+    private String phoneNumber1, phoneNumber2;
+    private String phoneName1, phoneName2;
+    private String phoneCompany;
+    private EditText editText1, editText2;
+    private Spinner spin;
+    private SharedPreferences pref;
+    private Button button1, button2;
 
 
     @Override
@@ -51,14 +53,15 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_to_wallet_multiple40);
         setToolBar();
+        setActionBarColor();
         pref = getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
         pref = getApplicationContext().getSharedPreferences("TransferToWalletMultiple40", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
 
-        button1 = (Button)findViewById(R.id.buttonContactsMultiple1);
-        button2 = (Button)findViewById(R.id.buttonContactsMultiple2);
+        button1 = (Button) findViewById(R.id.buttonContactsMultiple1);
+        button2 = (Button) findViewById(R.id.buttonContactsMultiple2);
 
         // Get the Intent that started this activity and extract the string
         Intent intentExtra = getIntent();
@@ -106,6 +109,20 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         spin.setAdapter(aa);
 
         confirmButton = (Button) findViewById(R.id.continue_multiple_transfer);
+    }
+
+    private void setActionBarColor() {
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     @Override
@@ -156,6 +173,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         startActivity(move);
         finish();
     }
+
     public void MoveToContacts2(View view) {
         Intent move = new Intent(this, ContactsView.class);
         move.putExtra("Class", "TransferToWalletMultiple2");
@@ -182,7 +200,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
 
         String phone1 = phoneNumber1;
         String phone2 = phoneNumber2;
-        Log.e("TAG phone number check", "button pressed to transfer money" + phone1 +","+ phone2);
+        Log.e("TAG phone number check", "button pressed to transfer money" + phone1 + "," + phone2);
         if (phone1 == null && phone2 == null) {
             Toast.makeText(this, "please provide recipient", Toast.LENGTH_SHORT).show();
             return;
@@ -191,7 +209,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         phone1 = phonenumber[0];
         phone2 = phonenumber[1];
         Log.e("session after contact", sessionID);
-        Log.e("TAG phone number last", phone1+","+phone2);
+        Log.e("TAG phone number last", phone1 + "," + phone2);
         if (!phone1.equals("False") && !phone2.equals("False")) {
             movetoConfirm(phone1, phone2, amount, message);
         }
@@ -205,13 +223,13 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         move.putExtra(EXTRA_PHONENAME2, phoneName2);
         move.putExtra(EXTRA_MESSAGE, message);
         move.putExtra(EXTRA_AGENTNO, AGENTNO);
-        move.putExtra(EXTRA_PHONENUMBER1, phone1 );
+        move.putExtra(EXTRA_PHONENUMBER1, phone1);
         move.putExtra(EXTRA_PHONENUMBER2, phone2);
         move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);
     }
 
-    public String[] changePhoneNo(String inputPhone, String inputPhoneTwo ,View view) {
+    public String[] changePhoneNo(String inputPhone, String inputPhoneTwo, View view) {
         String validPhoneNo1 = "False";
         String validPhoneNo2 = "False";
         String[] arr = new String[2];
@@ -240,19 +258,19 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
                 if (replPhone2.startsWith("0") || replPhoneNumber2_2.startsWith("0")) {
                     replPhone3 = replPhone2.replaceFirst("0", "\\254");
                     replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("0", "\\254");
-                    Log.e("TAG phone starts 0", replPhone3 +"," +replPhoneNumber3_2);
+                    Log.e("TAG phone starts 0", replPhone3 + "," + replPhoneNumber3_2);
                     arr[0] = validPhoneNo1 = replPhone3;
                     arr[1] = validPhoneNo2 = replPhoneNumber3_2;
                 } else if (replPhone2.startsWith("7") || replPhoneNumber2_2.startsWith("7")) {
                     replPhone3 = replPhone2.replaceFirst("7", "\\254");
                     replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("7", "\\254");
-                    Log.e("TAG phone starts 7", replPhone3 + ","+replPhoneNumber3_2);
+                    Log.e("TAG phone starts 7", replPhone3 + "," + replPhoneNumber3_2);
                     arr[0] = validPhoneNo1 = replPhone3;
                     arr[1] = validPhoneNo2 = replPhoneNumber3_2;
                 } else if (replPhone2.startsWith("+") || replPhoneNumber2_2.startsWith("+")) {
                     replPhone3 = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
                     replPhoneNumber3_2 = replPhoneNumber2_2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                    Log.e("TAG phone number +", validPhoneNo1 +"," +validPhoneNo2);
+                    Log.e("TAG phone number +", validPhoneNo1 + "," + validPhoneNo2);
                     arr[0] = validPhoneNo1 = replPhone3;
                     arr[1] = validPhoneNo2 = replPhoneNumber3_2;
                 }
@@ -269,13 +287,13 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
                     if (replPhone2.startsWith("0") || replPhoneNumber2_2.startsWith("0")) {
                         replPhone3 = replPhone2.replaceFirst("0", "\\254");
                         replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("0", "\\254");
-                        Log.e("TAG phone starts 0", replPhone3+","+ replPhoneNumber3_2);
+                        Log.e("TAG phone starts 0", replPhone3 + "," + replPhoneNumber3_2);
                         arr[0] = validPhoneNo1 = replPhone3;
                         arr[1] = validPhoneNo2 = replPhoneNumber3_2;
                     } else if (replPhone2.startsWith("7") || replPhoneNumber2_2.startsWith("7")) {
                         replPhone3 = replPhone2.replaceFirst("7", "\\254");
                         replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("7", "\\254");
-                        Log.e("TAG phone starts 7", replPhone3+","+replPhoneNumber3_2);
+                        Log.e("TAG phone starts 7", replPhone3 + "," + replPhoneNumber3_2);
                         arr[0] = validPhoneNo1 = replPhone3;
                         arr[1] = validPhoneNo2 = replPhoneNumber3_2;
                     } else if (replPhone2.startsWith("+") || replPhoneNumber2_2.startsWith("+")) {
@@ -298,19 +316,19 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
                         if (replPhone2.startsWith("0") || replPhoneNumber2_2.startsWith("0")) {
                             replPhone3 = replPhone2.replaceFirst("0", "\\254");
                             replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("0", "\\254");
-                            Log.e("TAG phone starts 0", replPhone3+","+replPhoneNumber3_2);
+                            Log.e("TAG phone starts 0", replPhone3 + "," + replPhoneNumber3_2);
                             arr[0] = validPhoneNo1 = replPhone3;
                             arr[1] = validPhoneNo2 = replPhoneNumber3_2;
                         } else if (replPhone2.startsWith("7") || replPhoneNumber2_2.startsWith("7")) {
                             replPhone3 = replPhone2.replaceFirst("7", "\\254");
                             replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("7", "\\254");
-                            Log.e("TAG phone starts 7", replPhone3+","+replPhoneNumber3_2);
+                            Log.e("TAG phone starts 7", replPhone3 + "," + replPhoneNumber3_2);
                             arr[0] = validPhoneNo1 = replPhone3;
                             arr[1] = validPhoneNo2 = replPhoneNumber3_2;
                         } else if (replPhone2.startsWith("+") || replPhoneNumber2_2.startsWith("+")) {
-                            arr[0]= validPhoneNo1 = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
+                            arr[0] = validPhoneNo1 = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
                             arr[1] = validPhoneNo2 = replPhoneNumber2_2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                            Log.e("TAG phone number +", validPhoneNo1 +"," +validPhoneNo2);
+                            Log.e("TAG phone number +", validPhoneNo1 + "," + validPhoneNo2);
                         }
                     } else {
                         Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
@@ -325,7 +343,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
             MoveToContacts(view);
         }
 
-        return new String[]{phoneNumber1, phoneNumber2 };
+        return new String[]{phoneNumber1, phoneNumber2};
     }
 
 

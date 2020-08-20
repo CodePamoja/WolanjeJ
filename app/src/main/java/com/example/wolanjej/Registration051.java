@@ -61,7 +61,7 @@ public class Registration051 extends AppCompatActivity implements AdapterView.On
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorWhite));
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
         spinner = (Spinner) findViewById(R.id.spinner_gender);
 
         adapter = ArrayAdapter.createFromResource(this,
