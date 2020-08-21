@@ -94,7 +94,7 @@
             android:id="@+id/transaction_feeAmount"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="95dp"
+            android:layout_marginStart="87dp"
             android:fontFamily="@font/poppins_regular"
             android:gravity="end"
             android:text="0.00"
@@ -125,6 +125,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="15dp"
+            android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
             android:background="@color/blue_grey"/>
 

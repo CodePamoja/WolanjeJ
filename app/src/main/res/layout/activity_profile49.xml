@@ -229,7 +229,7 @@
                         android:layout_height="58dp"
                         android:layout_marginHorizontal="12dp"
                         android:layout_marginTop="12dp"
-                        android:hint="06/50/2020"
+                        android:hint="06/11/1900"
                         app:counterEnabled="true"
                         app:counterMaxLength="9">
 
@@ -239,7 +239,7 @@
                             android:drawableEnd="@drawable/event_note_av"
                             android:drawablePadding="5dp"
                             android:maxLines="1"
-                            android:inputType="number" />
+                            android:inputType="date" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
