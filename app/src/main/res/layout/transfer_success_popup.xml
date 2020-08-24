@@ -27,10 +27,10 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Transfer Done!"
-        android:layout_marginStart="70dp"
         android:textAlignment="center"
         android:textColor="@color/colorMidnight"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageTrasfer" />
 

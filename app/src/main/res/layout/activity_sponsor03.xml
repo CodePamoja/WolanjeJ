@@ -175,6 +175,7 @@
             android:layout_height="52dp"
             android:layout_marginEnd="5dp"
             android:backgroundTint="#d0d3d8"
+            android:textAllCaps="false"
             android:layout_weight="1"
             android:text="@string/save_amp_exit" />
 
@@ -183,6 +184,7 @@
             android:layout_height="52dp"
             android:layout_weight="1"
             android:backgroundTint="@color/colorAccent"
+            android:textAllCaps="false"
             android:onClick="moveSponsor04"
             android:text="@string/Continue"/>
 />

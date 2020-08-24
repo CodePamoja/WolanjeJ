@@ -33,4 +33,8 @@ public class Scholarship05 extends AppCompatActivity {
     }
 
 
+    public void MoveToScholarShip06(View view) {
+        Intent intent = new Intent(Scholarship05.this, Scholarship06.class);
+        startActivity(intent);
+    }
 }

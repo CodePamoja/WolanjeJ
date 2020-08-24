@@ -117,7 +117,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp">
+                    android:padding="10dp">
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -127,16 +127,22 @@
                         android:id="@+id/partial_scholarship"
                         android:visibility="gone"
                         />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:gravity="center"
+                        android:text="@string/partial_scholarship"
                         android:textColor="@color/colorMidnight"
-                        android:lineSpacingExtra="12sp"
-                        android:gravity="center_horizontal"
-                        android:text="Partial scholarship"
-                        android:layout_centerInParent="true"
-                        />
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 
@@ -304,6 +310,8 @@
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginEnd="5dp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/gray4"
             android:layout_weight="1"
             android:text="@string/save_amp_exit" />
 
@@ -311,6 +319,7 @@
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_weight="1"
+            android:textAllCaps="false"
             android:backgroundTint="@color/colorAccent"
             android:onClick="movetosponsor7"
             android:text="@string/Continue" />

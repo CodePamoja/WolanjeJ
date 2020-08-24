@@ -55,7 +55,6 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
-                android:hint="Enter Scholarship Amount"
                 android:background="@drawable/textviewborder"
                 android:layout_marginHorizontal="32dp"
                 android:paddingHorizontal="12dp"
@@ -63,7 +62,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/titlex"
-                android:text="Type of Scholarship"
+                android:hint="Enter Scholarship Amount"
                 android:id="@+id/scholarshipAmount"
                 />
             <TextView
@@ -73,7 +72,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:textColor="@color/colorMidnight"
-                tools:text="Other special requirement"
+                android:text="Other special requirement"
                 app:layout_constraintTop_toBottomOf="@id/scholarshipAmount"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:id="@+id/special"
@@ -81,15 +80,15 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:hint="Enter Scholarship Amount"
                 android:background="@drawable/textviewborder"
                 android:layout_marginHorizontal="32dp"
                 android:paddingHorizontal="12dp"
                 android:layout_marginTop="12dp"
+                android:maxLines="1"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/special"
-                android:text="Type of Scholarship"
+                android:hint="Enter details"
                 android:id="@+id/scholarshiptype"
                 />
 
@@ -144,6 +143,8 @@
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginEnd="5dp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/gray4"
             android:layout_weight="1"
             android:text="@string/save_amp_exit" />
 
@@ -151,6 +152,7 @@
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_weight="1"
+            android:textAllCaps="false"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/Continue" />
     </LinearLayout>

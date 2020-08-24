@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="327dp"
     android:layout_height="345dp"
-    android:orientation="vertical"
     android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="10dp">
 
     <ImageView
@@ -11,128 +13,94 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:src="@drawable/ic_x" />
+        android:src="@drawable/ic_x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
         android:gravity="center_horizontal"
-        android:text="Filter"
+        android:text="Repurchase Report"
         android:textColor="@color/colorMidnight"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_report_dlg" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/txt_from_r_dialog"
-            android:layout_width="wrap_content"
-            android:layout_marginStart="24dp"
-            android:fontFamily="@font/poppins_regular"
-            android:layout_marginTop="15dp"
-            android:layout_height="wrap_content"
-            android:text="From" />
-
-        <EditText
-            android:id="@+id/edit_from_r_dialog"
-            android:layout_width="219dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="24dp"
-            android:layout_toEndOf="@id/txt_from_r_dialog"
-            android:background="@drawable/textviewborder"
-            android:drawableEnd="@drawable/ic_calendar_date"
-            android:textColor="@color/colorMidnight"
-            android:hint="05/10/2019"
-            android:textSize="18sp"
-            android:padding="10dp" />
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp">
-
-        <TextView
-            android:id="@+id/txt_to_r_dialog"
-            android:layout_width="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins_regular"
-            android:layout_height="wrap_content"
-            android:text="To" />
-
-        <EditText
-            android:id="@+id/edit_to_r_dialog"
-            android:layout_width="219dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="40dp"
-            android:layout_toEndOf="@id/txt_to_r_dialog"
-            android:background="@drawable/textviewborder"
-            android:drawableEnd="@drawable/ic_calendar_date"
-            android:textColor="@color/colorMidnight"
-            android:hint="15/10/2019"
-            android:textSize="18sp"
-            android:padding="10dp" />
-    </RelativeLayout>
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/txt_from_r_dialog"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Payment Tags"
+        android:layout_marginTop="42dp"
         android:fontFamily="@font/poppins_regular"
-        android:layout_marginStart="24dp"/>
+        android:text="From"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/edit_from_r_dialog"
+        android:layout_width="219dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_toEndOf="@id/txt_from_r_dialog"
+        android:background="@drawable/textviewborder"
+        android:drawableEnd="@drawable/ic_calendar_date"
+        android:hint="05/10/2019"
+        android:padding="10dp"
+        android:textColor="@color/colorMidnight"
+        android:textSize="18sp"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toEndOf="@+id/txt_from_r_dialog"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/txt_to_r_dialog"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/amuntdis"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:id="@+id/txt_received_report_dlg"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="32dp"
-            android:background="@drawable/splash3"
-            android:backgroundTint="#26531edc"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:textColor="#531edc"
-            android:textSize="14sp"
-            android:text="received" />
+        android:layout_marginTop="52dp"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="To"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_from_r_dialog" />
 
-        <TextView
-            android:id="@+id/txt_sent_report_dlg"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="32dp"
-            android:background="@drawable/splash3"
-            android:backgroundTint="#26e6344a"
-            android:fontFamily="@font/poppins_regular"
-            android:layout_marginStart="12dp"
-            android:gravity="center"
-            android:textColor="#e6344a"
-            android:textSize="14sp"
-            android:text="sent" />
 
-        <TextView
-            android:id="@+id/txt_pending_dlg"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="32dp"
-            android:background="@drawable/splash3"
-            android:layout_marginStart="12dp"
-            android:gravity="center"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="#8484a9"
-            android:textSize="14sp"
-            android:text="pending" />
-    </LinearLayout>
-</LinearLayout>
+    <EditText
+        android:id="@+id/edit_to_r_dialog"
+        android:layout_width="219dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_toEndOf="@id/txt_to_r_dialog"
+        android:background="@drawable/textviewborder"
+        android:drawableEnd="@drawable/ic_calendar_date"
+        android:hint="15/10/2019"
+        android:padding="10dp"
+        android:textColor="@color/colorMidnight"
+        android:inputType="date"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.630"
+        app:layout_constraintStart_toEndOf="@+id/txt_to_r_dialog"
+        app:layout_constraintTop_toBottomOf="@+id/edit_from_r_dialog" />
+
+    <Button
+        android:id="@+id/submitSearchProf"
+        android:layout_width="287dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/warm_purple"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:onClick="SearchForResult"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_to_r_dialog" />
+</androidx.constraintlayout.widget.ConstraintLayout>

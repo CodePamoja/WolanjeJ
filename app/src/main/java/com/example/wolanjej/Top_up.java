@@ -22,6 +22,7 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
     String[] selectNumber = {"My Number", "Other Number"};
     private String phoneCompany;
     private String AGENTNO;
+    private static  final String TAG = "TopUp";
     Toolbar tb;
 
     private SharedPreferences pref;
@@ -125,7 +126,8 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
             patt = Pattern.compile(safaricom);
             match = patt.matcher(replPhone2);
             if (match.find()) {
-                Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
+                Log.d(TAG, "checkPhoneNo:  sfaricom number");
                 String replPhone3 = "null";
                 phoneCompany = "safaricom";
                 if (replPhone2.startsWith("0")) {

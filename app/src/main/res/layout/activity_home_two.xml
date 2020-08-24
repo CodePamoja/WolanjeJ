@@ -368,7 +368,6 @@ android:id="@+id/loanactivator"
                 android:layout_marginTop="20dp"/>
             <include layout="@layout/pop_up_my_wallet" android:visibility="gone"/>
             <include layout="@layout/loan_application_pop_up"/>
-            <include layout="@layout/loan2"/>
 
         </FrameLayout>
     </LinearLayout>

@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.wolanjej.models.Transactions;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.internal.$Gson$Preconditions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -77,6 +78,9 @@ public class EnterPin extends AppCompatActivity {
         Log.e("class Type className", className);
         switch (className) {
             case "BookBus06":
+
+                break;
+            case "Education_2":
 
                 break;
             case "TransferToWalletSingle37":
@@ -151,7 +155,15 @@ public class EnterPin extends AppCompatActivity {
                 if (fullPin != null) {
                     Intent intentExtra = getIntent();
                     String className = getIntent().getStringExtra("Class");
+                    Intent intent;
                     switch (className) {
+                        case "Education_2":
+                            intent = new Intent(getApplicationContext(), Education1.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("Class", "EnterPin");
+                            startActivity(intent);
+                            finish();
+                            break;
                         case "ConfirmMultipleTransfer":
                             transactionsList.add(new Transactions("WALLET_XFER", amount, PhoneNumber2, PhoneNumber2));
                             transactionsList.add(new Transactions("WALLET_XFER", amount, phoneNumber, phoneNumber));
@@ -160,7 +172,7 @@ public class EnterPin extends AppCompatActivity {
                             }
                             break;
                         case "BookBus06":
-                            Intent intent = new Intent(getApplicationContext(), BookBus09.class);
+                            intent = new Intent(getApplicationContext(), BookBus09.class);
                             startActivity(intent);
                             break;
                         case "TransferToWalletSingle37":
@@ -421,7 +433,7 @@ public class EnterPin extends AppCompatActivity {
                     }
                 }
 
-            }else {
+            } else {
                 Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }
@@ -472,7 +484,7 @@ public class EnterPin extends AppCompatActivity {
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
-            }else{
+            } else {
                 Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }
@@ -683,7 +695,7 @@ public class EnterPin extends AppCompatActivity {
                     }
                 }
 
-            }else {
+            } else {
                 Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }

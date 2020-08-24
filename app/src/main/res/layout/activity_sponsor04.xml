@@ -230,12 +230,15 @@
             android:layout_height="52dp"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/gray4"
             android:text="@string/save_amp_exit" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_weight="1"
+            android:textAllCaps="false"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/save_amp_continue"
             android:onClick="movetosponsor5"

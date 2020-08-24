@@ -4,52 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Education_50"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Education_50">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/headingtext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:paddingBottom="10dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Quick Services"
-            android:textColor="#222222"
-            android:layout_marginTop="22dp"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/cardhold"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headingtext">
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/headingtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingBottom="10dp"
+                android:text="Quick Services"
+                android:textColor="#222222"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardpayfee"
                 android:layout_width="103dp"
                 android:layout_height="100dp"
                 android:layout_marginVertical="5dp"
-                app:layout_constraintTop_toBottomOf="@id/headingtext"
                 android:layout_marginStart="20dp"
                 android:backgroundTint="@color/colorWhite"
                 android:clickable="true"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="10dp">
+                app:cardCornerRadius="8dp"
+                app:cardElevation="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/headingtext">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -85,11 +78,11 @@
                 android:layout_marginVertical="5dp"
                 android:backgroundTint="@color/colorWhite"
                 android:clickable="true"
-                android:layout_marginStart="13dp"
-                app:cardCornerRadius="4dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="10dp"
-
-                >
+                app:layout_constraintEnd_toStartOf="@+id/SponsorOpener"
+                app:layout_constraintStart_toEndOf="@+id/cardpayfee"
+                app:layout_constraintTop_toBottomOf="@+id/headingtext">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -122,12 +115,14 @@
                 android:id="@+id/SponsorOpener"
                 android:layout_width="103dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="13dp"
                 android:layout_marginVertical="5dp"
+                android:layout_marginEnd="20dp"
                 android:backgroundTint="@color/colorWhite"
                 android:clickable="true"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="10dp">
+                app:cardCornerRadius="8dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headingtext">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -147,8 +142,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/btnsponsor"
                         android:layout_centerHorizontal="true"
-                        android:gravity="center_horizontal"
                         android:fontFamily="@font/poppins_medium"
+                        android:gravity="center_horizontal"
                         android:text="Sponsor"
                         android:textColor="#444444"
                         android:textSize="12sp" />
@@ -156,43 +151,38 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtApplicationEducation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="29dp"
-            android:text="Recent Applications"
-            android:textColor="#222222"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_marginStart="20dp"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardhold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="146dp"
-            android:layout_marginTop="14dp"
-            android:elevation="12dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtApplicationEducation">
+            <TextView
+                android:id="@+id/txtApplicationEducation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="29dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Recent Applications"
+                android:textColor="#222222"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardpayfee" />
 
 
             <RelativeLayout
+                android:id="@+id/relativeLayout5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtApplicationEducation">
+
                 <LinearLayout
                     android:id="@+id/thisLinLayout1Edu"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:layout_marginTop="16sp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="29dp"
+                    android:layout_marginTop="16sp"
                     android:background="@drawable/splash3"
                     android:gravity="center">
 
@@ -209,10 +199,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="19dp"
-                    android:layout_toEndOf="@+id/thisLinLayout1Edu"
-                    android:lineSpacingExtra="7sp"
-                    android:fontFamily="@font/poppins_medium"
                     android:layout_marginTop="10sp"
+                    android:layout_toEndOf="@+id/thisLinLayout1Edu"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="7sp"
                     android:text="University Application"
                     android:textColor="#9c7bfc"
                     android:textSize="15sp" />
@@ -221,122 +211,128 @@
                     android:id="@+id/txt_statusEdu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/thisLinLayout1Edu"
                     android:layout_below="@id/txtUniApplication"
-                    android:fontFamily="@font/poppins_medium"
                     android:layout_marginStart="19dp"
-                    android:textSize="12sp"
-                    android:textColor="#8c8a9a"
+                    android:layout_toEndOf="@+id/thisLinLayout1Edu"
+                    android:fontFamily="@font/poppins_medium"
                     android:lineSpacingExtra="12sp"
                     android:text="Status: "
-                    />
+                    android:textColor="#8c8a9a"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="16sp"
-                    android:layout_toEndOf="@+id/txt_statusEdu"
                     android:layout_below="@id/txtUniApplication"
-                    android:fontFamily="@font/poppins_medium"
                     android:layout_marginStart="10dp"
-                    android:gravity="center"
-                    android:textSize="12sp"
+                    android:layout_toEndOf="@+id/txt_statusEdu"
                     android:background="@color/colorGreen"
-                    android:textColor="@color/colorWhite"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
                     android:lineSpacingExtra="12sp"
                     android:text="Approved "
-                    />
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
 
                 <ImageView
                     android:layout_width="26dp"
                     android:layout_height="26dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="0dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_ticktick"
-                    android:src="@drawable/ic_check_grey"
-                    android:layout_marginEnd="24dp" />
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="85dp"
-                    android:text="Scholarship Amount:"
-                    android:textColor="#8c8a9a"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
                     android:layout_marginEnd="24dp"
-                    android:gravity="end"
-                    android:lineSpacingExtra="9sp"
-                    android:text="#B3423424234"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="15sp" />
+                    android:background="@drawable/ic_ticktick"
+                    android:src="@drawable/ic_check_grey" />
+
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:text="Tracking number"
+                android:textColor="#8c8a9a"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout5" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="23dp"
+                android:gravity="end"
+                android:lineSpacingExtra="9sp"
+                android:text="#B3423424234"
+                android:textColor="@color/colorMidnight"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout5" />
+
             <View
                 android:id="@+id/divider12"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:background="@color/gray4"
+                app:layout_constraintTop_toBottomOf="@id/textView17"
                 android:layout_marginTop="14dp"
-                android:background="@color/gray4" />
-            <RelativeLayout
-                android:layout_width="match_parent"
+                tools:layout_editor_absoluteX="0dp" />
+
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="85dp"
-                    android:textSize="14sp"
-                    android:textColor="#8c8a9a"
-                    android:text="Scholarship Amount:"
-                    />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:gravity="center_horizontal"
+                android:text="Scholarship Amount:"
+                android:textColor="#8c8a9a"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider12" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="24dp"
-                    android:gravity="end"
-                    android:textSize="16sp"
-                    android:textColor="#18181c"
-                    android:text="KES 74,000"
-                    />
-            </RelativeLayout>
-
-
-        </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="end"
+                android:text="KES 74,000"
+                android:textColor="#18181c"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/divider12" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
     <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@mipmap/rectangle_2"
-        android:layout_width="match_parent">
+        android:background="@mipmap/rectangle_2">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarEducation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:navigationIcon="@mipmap/small_left"
-            app:layout_scrollFlags="scroll|enterAlways">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Education"
-                    android:fontFamily="@font/poppins_bold"
-                    android:textSize="28sp"
-                    android:textColor="@color/colorMidnight"/>
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@mipmap/small_left">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Education"
+                android:textColor="@color/colorMidnight"
+                android:textSize="28sp" />
 
         </androidx.appcompat.widget.Toolbar>
 

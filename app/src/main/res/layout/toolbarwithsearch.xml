@@ -15,8 +15,9 @@
             android:id="@+id/searchViewToolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:drawableLeft="@mipmap/ic_search_black_24dp"
+            android:baselineAligned="true"
+            android:layout_gravity="end"
+            android:searchIcon="@mipmap/ic_search_black_24dp"
             android:padding="8dp"
             android:singleLine="true" />
     </androidx.appcompat.widget.Toolbar>

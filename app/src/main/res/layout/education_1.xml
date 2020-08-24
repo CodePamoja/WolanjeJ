@@ -1,502 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/edu1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="24dp"
     tools:context=".Education1">
-
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="58dp">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ImageButton
-            android:id="@+id/imageback"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="@color/colorWhite"
-            android:onClick="Backtoeducation"
-            android:src="@mipmap/small_left" />
-
-    </RelativeLayout>
-
-    <ScrollView
-        android:id="@+id/scroll"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/headertext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Tuition Fee"
+            android:textColor="@color/colorMidnight"
+            android:textSize="28sp"
+            app:layout_goneMarginStart="24dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardtutionfee"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="547dp"
+            android:layout_marginHorizontal="2dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:cardElevation="8dp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headertext">
 
-            <TextView
-                android:id="@+id/headertext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tution Fee"
-                android:textColor="@color/colorMidnight"
-                android:textSize="28sp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardCornfirm"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_marginVertical="12dp"
-                android:paddingVertical="24dp"
-                android:visibility="gone"
-                app:cardElevation="8dp">
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:text="Pay Tuition Fee"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerSelectCounty"
+                    style="@style/spinner_style"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginVertical="5dp"
-                    android:orientation="vertical">
+                    android:layout_height="58dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/myspinner"
+                    android:layout_marginEnd="5dp"
+                    android:drawableEnd="@drawable/ic_dropdown_arrow"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textAllCaps="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorMidnight"
+                    app:strokeColor="#e7e7e7"
+                    app:strokeWidth="1dp"
 
+                    />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        android:text="Pay Tuition Fee"
-                        android:textColor="#18181c"
-                        android:textSize="22sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="22dp"
-                        android:text="9:00 PM   |  10/Jan/2020"
-                        android:textColor="@color/blue_grey"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@android:color/darker_gray" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="19dp"
-                        android:letterSpacing="0.08"
-                        android:text="DETAILS"
-                        android:textColor="@color/blue_grey"
-                        android:textSize="12sp" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/sch"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:text="School"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="Kiota School"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/fee"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/sch"
-                            android:layout_alignParentStart="true"
-                            android:text="Fee Details"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/sch"
-                            android:layout_alignParentEnd="true"
-                            android:gravity="end"
-                            android:text="Pay for trip"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/stuname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/fee"
-                            android:layout_alignParentStart="true"
-                            android:text="Student’s name"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/fee"
-                            android:layout_alignParentEnd="true"
-                            android:text="John Doe Jnr"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/stuname"
-                            android:layout_alignParentStart="true"
-                            android:text="Student’s ID"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/stuname"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginBottom="32dp"
-                            android:text="A0RT001"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp"
-
-                            />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_alignParentBottom="true"
-                            android:background="@android:color/darker_gray" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="40dp"
-
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginTop="32dp"
-                            android:text="AMOUNT"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="14sp"
-
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="KES 50,000"
-                            android:textColor="#3ca8b3"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardtutionfee"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                app:cardElevation="8dp">
-
-                <LinearLayout
+                <Spinner
+                    android:id="@+id/spinnerSelectSchool"
+                    style="@style/spinner_style"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginVertical="5dp"
-                    android:orientation="vertical">
+                    android:layout_height="58dp"
+                    android:drawableEnd="@drawable/ic_dropdown_arrow"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textAllCaps="false"
+                    android:background="@drawable/myspinner"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorMidnight"
+                    app:strokeColor="#e7e7e7"
+                    app:strokeWidth="1dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="20dp"
-                        android:text="Pay Tuition Fee"
-                        android:textColor="@color/colorMidnight"
-                        android:textSize="18sp" />
-
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:backgroundTint="@android:color/transparent"
-                        android:drawableEnd="@drawable/ic_dropdown_arrow"
-                        android:onClick="displayPopUp1"
-                        android:text="Select County"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/colorMidnight"
-                        app:strokeColor="#e7e7e7"
-                        app:strokeWidth="1dp"
-
-                        />
-
-                    <Button
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:backgroundTint="@android:color/transparent"
-                        android:drawableEnd="@drawable/ic_dropdown_arrow"
-                        android:onClick="displayPopUp1"
-
-                        android:text="Select School"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/colorMidnight"
-                        app:strokeColor="#e7e7e7"
-                        app:strokeWidth="1dp" />
-
-                    <Button
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:backgroundTint="@android:color/transparent"
-                        android:drawableEnd="@drawable/ic_dropdown_arrow"
-                        android:onClick="displayPopUpfee"
-                        android:text="Fee Details"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/colorMidnight"
-                        app:strokeColor="#e7e7e7"
-                        app:strokeWidth="1dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="20dp"
-                        android:letterSpacing="0.08"
-                        android:text="DETAILS"
-                        android:textColor="@color/blue_grey"
-                        android:textSize="12sp" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@drawable/textviewborder"
-                        android:hint="Name of Student"
-                        android:inputType="textPersonName"
-                        android:paddingHorizontal="5dp" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginVertical="5dp"
-                        android:background="@drawable/textviewborder"
-                        android:hint="Student ID"
-                        android:inputType="number"
-                        android:paddingHorizontal="5dp" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@drawable/textviewborder"
-                        android:hint="Enter the Amount"
-                        android:inputType="number"
-                        android:paddingHorizontal="5dp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardDone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="2dp"
-                android:layout_marginBottom="32dp"
-                android:visibility="gone"
-                app:cardElevation="8dp">
-
-                <LinearLayout
+                <Spinner
+                    android:id="@+id/spinnerFeeDetails"
+                    style="@style/spinner_style"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="58dp"
+                    android:drawableEnd="@drawable/ic_dropdown_arrow"
+                    android:textAllCaps="false"
+                    android:background="@drawable/myspinner"
+                    android:text="Fee Details"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorMidnight"
+                    app:strokeColor="#e7e7e7"
+                    app:strokeWidth="1dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:letterSpacing="0.08"
+                    android:text="DETAILS"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/textviewborder"
+                    android:hint="Name of Student"
+                    android:inputType="textPersonName"
+                    android:padding="5dp"
+                    android:maxLines="1"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:layout_marginVertical="5dp"
-                    android:orientation="vertical">
+                    android:background="@drawable/textviewborder"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Student ID"
+                    android:padding="5dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginStart="5dp"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:paddingHorizontal="5dp" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/textviewborder"
+                    android:hint="Enter the Amount"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingHorizontal="5dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/imgtop"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginVertical="29dp"
-                            android:src="@drawable/ic_button_roun" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonproceed"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:backgroundTint="@color/colorAccent"
+            android:onClick="confirmfeepayment"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Proceed"
+            android:textAllCaps="false"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardtutionfee" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/imgtop"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginBottom="12dp"
-                            android:lineSpacingExtra="8sp"
-                            android:text="Transfer done!"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="18sp" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarEducation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@mipmap/small_left">
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_alignParentBottom="true"
-                            android:background="@android:color/darker_gray" />
+        </androidx.appcompat.widget.Toolbar>
 
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/refno"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginTop="12dp"
-                            android:lineSpacingExtra="3sp"
-                            android:text="Reference number"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="12dp"
-                            android:lineSpacingExtra="3sp"
-                            android:text="Transfer Fee"
-                            android:textColor="@color/blue_grey"
-
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:id="@+id/refnodata"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/refno"
-                            android:layout_alignParentStart="true"
-                            android:lineSpacingExtra="8sp"
-                            android:text="#B3423424234"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/refno"
-                            android:layout_alignParentEnd="true"
-                            android:lineSpacingExtra="8sp"
-                            android:text="500.00"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/amountsent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/refnodata"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginTop="12dp"
-                            android:lineSpacingExtra="3sp"
-                            android:text="Amount sent"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/refnodata"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="12dp"
-                            android:lineSpacingExtra="3sp"
-                            android:text="Balance"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:id="@+id/amountsentdata"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/amountsent"
-                            android:layout_alignParentStart="true"
-                            android:lineSpacingExtra="8sp"
-                            android:text="50000.00"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/amountsent"
-                            android:layout_alignParentEnd="true"
-                            android:lineSpacingExtra="8sp"
-                            android:text="16,000.00"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/recipient"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/amountsentdata"
-                            android:layout_marginTop="12dp"
-                            android:lineSpacingExtra="3sp"
-                            android:text="Recipient:"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/recipient"
-                            android:lineSpacingExtra="8sp"
-                            android:text="Kiota School - Nairobi"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:layout_width="match_parent"
-                            android:layout_height="54dp"
-                            android:backgroundTint="#0bb8bb"
-                            android:text="Close" />
-                    </RelativeLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <Button
-                android:id="@+id/buttonproceed"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="@color/colorAccent"
-                android:onClick="confirmfeepayment"
-                android:text="Proceed"
-
-                />
-        </LinearLayout>
-
-    </ScrollView>
-
-    <include layout="@layout/loan2" />
-</LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

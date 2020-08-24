@@ -1,90 +1,143 @@
 package com.example.wolanjej;
 
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.PopupMenu;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
-public class Education1 extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
-    TextView tx;
-    Button btnpro;
-    ImageButton btnback;
-    Toolbar tb;
+import maes.tech.intentanim.CustomIntent;
+
+public class Education1 extends AppCompatActivity {
+    private TextView tx;
+    private Button btnpro;
+    private ImageButton btnback;
+    private Toolbar tb;
+    private ArrayAdapter adapter;
+    private Spinner spinner1, spinner2, spinner3;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.education_1);
         btnpro = findViewById(R.id.buttonproceed);
-        btnback = findViewById(R.id.imageback);
-        tx = findViewById(R.id.headertext);
-        findViewById(R.id.con).setOnClickListener(new View.OnClickListener() {
+        setActionBarColor();
+        setToolBar(tb);
+        selectCounty();
+        selectSchool();
+        selectFeeDetails();
+
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        Log.e("class Type className", className);
+        switch (className) {
+            case "EnterPin":
+                showDialogPayTutionFee();
+                break;
+            case "Education50":
+            case "Education_2":
+                break;
+        }
+
+    }
+
+
+    private void setActionBarColor() {
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+
+        //clear FLAG_TRANSLUCENT_STATUS flag:
+
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
+    }
+
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbarEducation);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent moveToLogo = new Intent(this, Education_50.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(moveToLogo);
+                        finish();
+                    }
+                }
+        );
+
+    }
+
+
+    private void showDialogPayTutionFee() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.transfer_success_popup, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button button = view.findViewById(R.id.dismiss_success);
+        button.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnback.setEnabled(false);
-                btnback.setAlpha(0.3f);
-                findViewById(R.id.loans2).setVisibility(View.GONE);
-                findViewById(R.id.scroll).setVisibility(View.VISIBLE);
-                findViewById(R.id.imageback).setVisibility(View.VISIBLE);
-                findViewById(R.id.cardtutionfee).setVisibility(View.GONE);
-                findViewById(R.id.cardCornfirm).setVisibility(View.GONE);
-                findViewById(R.id.cardDone).setVisibility(View.VISIBLE);
-
-                tx.setText("Tution Fee");
-                tx.setAlpha(0.3f);
-                btnpro.setText("Proceed");
-                btnpro.setAlpha(0.3f);
-                btnpro.setEnabled(false);
-
+                alertDialog.dismiss();
+                finish();
             }
         });
+        alertDialog.show();
     }
-    public void Backtoeducation(View view) {
-        findViewById(R.id.edu1).setVisibility(View.GONE);
+
+    private void selectCounty() {
+        spinner1 = (Spinner) findViewById(R.id.spinnerSelectCounty);
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.select_county, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(adapter);
     }
+    private void selectSchool(){
+        spinner2 = (Spinner) findViewById(R.id.spinnerSelectSchool);
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.select_School, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(adapter);
+
+    }
+    private void selectFeeDetails() {
+        spinner3 = (Spinner) findViewById(R.id.spinnerFeeDetails);
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.select_fee_details, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner3.setAdapter(adapter);
+    }
+
 
     public void confirmfeepayment(View view) {
-        btnpro = findViewById(R.id.buttonproceed);
-        tx = findViewById(R.id.headertext);
-        if (!btnpro.getText().equals("Continue")) {
-
-            findViewById(R.id.cardtutionfee).setVisibility(View.GONE);
-            findViewById(R.id.cardCornfirm).setVisibility(View.VISIBLE);
-
-            tx.setText("Confirm");
-            btnpro.setText("Continue");
-
-
-        } else if (btnpro.getText().equals("Continue")) {
-            findViewById(R.id.loans2).setVisibility(View.VISIBLE);
-            findViewById(R.id.scroll).setVisibility(View.GONE);
-            findViewById(R.id.imageback).setVisibility(View.GONE);
-
-        }
+        Intent intent = new Intent(Education1.this, Education_2.class);
+        startActivity(intent);
+        CustomIntent.customType(Education1.this, "left-to-right");
     }
 
-    public void displayPopUp1(View view) {
-        PopupMenu popup = new PopupMenu(this, view);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.pop_up_for_counties);
-        popup.show();
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        return false;
-    }
-
-    public void displayPopUpfee(View view) {
-        PopupMenu popup = new PopupMenu(this, view);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.popup_for_fee_details);
-        popup.show();
-    }
 }

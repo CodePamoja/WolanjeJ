@@ -14,6 +14,8 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.card.MaterialCardView;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class LinkAccount11 extends AppCompatActivity implements View.OnClickListener {
 
     private MaterialCardView card_westernunion, card_worldplay, card_unionpay, card_mastercard, card_visa, card_paypal;
@@ -91,6 +93,7 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
         Intent movetohome = new Intent(this,Home.class);
         movetohome.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(movetohome);
+        CustomIntent.customType(LinkAccount11.this, "left-to-right");
         finish();
     }
 }

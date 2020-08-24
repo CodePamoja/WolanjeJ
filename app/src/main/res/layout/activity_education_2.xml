@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loans2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
+    tools:context=".Education_2">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/gray4"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtViewTransferSingle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:text="Confirm"
+                android:textColor="@color/colorMidnight"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RelativeLayout
+                android:id="@+id/linConfirm1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/transfer_receipt"
+                android:orientation="vertical"
+                android:paddingHorizontal="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtViewTransferSingle">
+
+
+                <TextView
+                    android:id="@+id/waltName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="0dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Pay Tuition Fee"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/waltDateTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/waltName"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="0dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="9:00 PM | 10/Jan/2020"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="18sp" />
+
+                <View
+                    android:id="@+id/divst"
+                    style="@style/Divider"
+                    android:layout_below="@+id/waltDateTime"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="@mipmap/path_14_copy_2" />
+
+
+                <TextView
+                    android:id="@+id/txtDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/divst"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="DETAILS"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtSchool"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtDetails"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="50"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="School"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/fromUserCst"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtDetails"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="50"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Kiota School"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtFeeDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtSchool"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="50"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Fee Details"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/SchoolFeeDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fromUserCst"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="50"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Pay For Trip "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/txtStudentsName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtFeeDetails"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="50"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Students Name"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/StudentsName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/SchoolFeeDetails"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="50"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Joe Don jnr"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/txtStudentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtStudentsName"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="50"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Student's ID"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/Students_Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/StudentsName"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="A0RT001"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+
+                <View
+                    android:id="@+id/div2Cst"
+                    style="@style/Divider"
+                    android:layout_below="@+id/Students_Id"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="@mipmap/path_14_copy_2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/div2Cst"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="99dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Amount"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/waltTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/div2Cst"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="92dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="KES 50,000"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorGreenBlue"
+                    android:textSize="22sp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/confirm_single_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="15dp"
+                android:onClick="MoveToPin"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linConfirm1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorWhite">
+
+        <include layout="@layout/toobarwithout" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

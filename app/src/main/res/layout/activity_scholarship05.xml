@@ -202,13 +202,17 @@ circumstances from chief, religious leaders" />
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginEnd="5dp"
+            android:textAllCaps="false"
             android:layout_weight="1"
+            android:backgroundTint="@color/gray4"
             android:text="@string/save_amp_exit" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_weight="1"
+            android:onClick="MoveToScholarShip06"
+            android:textAllCaps="false"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/Continue" />
     </LinearLayout>

@@ -97,6 +97,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        getClassIntent();
+        }
+
+    private void getClassIntent() {
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
@@ -140,9 +144,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 case "EnterPin":
                     break;
             }
-        }
+    }
 
-        Button button4 = findViewById(R.id.btnaddnew);
+    Button button4 = findViewById(R.id.btnaddnew);
 
 
 
@@ -1118,25 +1122,30 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private void transferListDetails() {
 
 //        mImage and mNames ArrayList go here
-        mImageUrls.add("https://images.pexels.com/photos/4328961/pexels-photo-4328961.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-        mNames.add("John");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mImageUrls.add("https://images.pexels.com/photos/4328961/pexels-photo-4328961.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+                mNames.add("John");
 
-        mImageUrls.add("https://images.pexels.com/photos/2951142/pexels-photo-2951142.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-        mNames.add("Lucy");
+                mImageUrls.add("https://images.pexels.com/photos/2951142/pexels-photo-2951142.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+                mNames.add("Lucy");
 
-        mImageUrls.add("https://images.pexels.com/photos/4015088/pexels-photo-4015088.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-        mNames.add("ivy");
+                mImageUrls.add("https://images.pexels.com/photos/4015088/pexels-photo-4015088.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+                mNames.add("ivy");
 
-        mImageUrls.add("https://images.pexels.com/photos/2954199/pexels-photo-2954199.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-        mNames.add("Mark");
+                mImageUrls.add("https://images.pexels.com/photos/2954199/pexels-photo-2954199.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+                mNames.add("Mark");
 
-        mImageUrls.add("https://images.pexels.com/photos/4015088/pexels-photo-4015088.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-        mNames.add("ivy");
+                mImageUrls.add("https://images.pexels.com/photos/4015088/pexels-photo-4015088.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+                mNames.add("ivy");
 
 
-        mImageUrls.add("https://images.pexels.com/photos/2954199/pexels-photo-2954199.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-        mNames.add("Mark");
+                mImageUrls.add("https://images.pexels.com/photos/2954199/pexels-photo-2954199.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+                mNames.add("Mark");
 
+            }
+        }).start();
 
         initTransferRecyclerList();
     }

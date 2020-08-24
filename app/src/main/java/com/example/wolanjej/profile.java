@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -178,12 +179,11 @@ public class profile extends AppCompatActivity implements View.OnClickListener {
                 alertDialog.dismiss();
             }
         });
-        TextView textView1 = view.findViewById(R.id.txt_received_report_dlg);
-        textView1.setOnClickListener(new View.OnClickListener() {
+        Button button = (Button) view.findViewById(R.id.submitSearchProf);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), TransactionView.class);
-                startActivity(intent);
+                alertDialog.dismiss();
             }
         });
 

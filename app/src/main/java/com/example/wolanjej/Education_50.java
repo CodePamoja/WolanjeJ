@@ -34,6 +34,7 @@ public class Education_50 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Education1.class);
+                intent.putExtra("Class", "Education50");
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
