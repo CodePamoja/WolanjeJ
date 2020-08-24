@@ -10,7 +10,7 @@
     android:padding="16dp"
     android:onClick="moveToProfile"
     android:id="@+id/profileNav"
-    tools:context="com.example.wolanjej.Home">
+    tools:context="com.wolanjeAfrica.wolanjej.Home">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_holder"

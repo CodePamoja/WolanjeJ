@@ -1,0 +1,79 @@
+package com.wolanjeAfrica.wolanjej;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import com.wolanjeAfrica.wolanjej.pagerAdapters.BookABusAdapter;
+import com.google.android.material.tabs.TabLayout;
+
+public class BookBus01 extends AppCompatActivity {
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private Toolbar tb;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_book_bus01);
+
+
+        tabLayout = findViewById(R.id.tabLayout_book_bus);
+        viewPager = findViewById(R.id.bookBusViewPager);
+
+        tabLayout.addTab(tabLayout.newTab().setText("Book"));
+        tabLayout.addTab(tabLayout.newTab().setText("My Bookings"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
+        setViewPager();
+        setToolBar(tb);
+    }
+    private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
+        tb = findViewById(R.id.toolbar2);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("");
+        final Intent moveToLogo = new Intent(this,Travel.class);
+        tb.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(moveToLogo);
+                    }
+                }
+        );
+
+    }
+
+    private void setViewPager(){
+        final BookABusAdapter adapter = new BookABusAdapter(this,getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
+    public void MoveToBookBusSelectedDate(View view) {
+        Intent intent = new Intent(this, BookBusSelectedDate02.class);
+        startActivity(intent);
+    }
+}
