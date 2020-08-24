@@ -1,4 +1,4 @@
-package com.example.wolanjej;
+package com.wolanjeAfrica.wolanjej;
 
 import android.content.Intent;
 import android.os.Bundle;
