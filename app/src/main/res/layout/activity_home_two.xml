@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="clip_horizontal"
     android:fitsSystemWindows="true"
-    tools:context="com.example.wolanjej.HomeTwo"
+    tools:context="com.wolanjeAfrica.wolanjej.HomeTwo"
     >
 
 

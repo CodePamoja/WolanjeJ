@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:elevation="7dp"
     android:theme="@style/AppTheme"
-    tools:context="com.example.wolanjej.Home">
+    tools:context="com.wolanjeAfrica.wolanjej.Home">
 
     <ImageButton
         android:id="@+id/imgCloseWallet"
