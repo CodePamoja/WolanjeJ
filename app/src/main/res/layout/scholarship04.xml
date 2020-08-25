@@ -462,6 +462,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Yes"
+                android:theme="@style/colored_checkbox"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/quebursary" />
 
@@ -469,6 +470,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:theme="@style/colored_checkbox"
                 android:text="No"
                 app:layout_constraintLeft_toRightOf="@id/yesscheck"
                 app:layout_constraintTop_toBottomOf="@id/quebursary" />

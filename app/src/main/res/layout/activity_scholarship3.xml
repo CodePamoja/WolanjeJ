@@ -100,12 +100,14 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/cat"
                 android:id="@+id/select1"
+                android:theme="@style/colored_checkbox"
                 android:layout_marginStart="16dp"
                 />
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Public Boarding"
+                android:theme="@style/colored_checkbox"
                 android:layout_below="@id/cat"
                 android:layout_toEndOf="@id/select1"
                 android:layout_marginStart="92dp"                />
@@ -114,6 +116,7 @@
                 android:layout_height="wrap_content"
                 android:text="Private Boarding:"
                 android:layout_below="@id/select1"
+                android:theme="@style/colored_checkbox"
                 android:id="@+id/select3"
                 android:layout_marginStart="16dp"
                 />

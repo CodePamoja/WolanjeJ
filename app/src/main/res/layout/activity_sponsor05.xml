@@ -19,7 +19,7 @@
         app:layout_constraintVertical_weight="1">
 
 
-        <include layout="@layout/toobarwithout"/>
+        <include layout="@layout/toobarwithout" />
     </LinearLayout>
 
     <ScrollView
@@ -55,12 +55,12 @@
                 android:id="@+id/gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:lineSpacingExtra="8sp"
                 android:text="Select Criteria for sponsoring a student"
                 android:textColor="@color/colorMidnight"
                 android:textSize="18sp"
-                android:layout_marginStart="32dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/titlex" />
 
@@ -68,118 +68,124 @@
                 android:id="@+id/genderchoose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:lineSpacingExtra="5sp"
                 android:text="Select all that apply"
                 android:textColor="#222b45"
                 android:textSize="13sp"
-                android:layout_marginStart="32dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/gender" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/check1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Within [ location provided in previous screen ]"
-                android:id="@+id/check1"
-                app:layout_constraintTop_toBottomOf="@id/genderchoose"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
-                />
+                android:text="Within [ location provided in previous screen ]"
+                android:theme="@style/colored_checkbox"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/genderchoose" />
+
             <com.google.android.material.checkbox.MaterialCheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Special needs – persons with disability of whatever kind"
-            android:id="@+id/check2"
-            app:layout_constraintTop_toBottomOf="@id/check1"
-            app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginStart="32dp"
-            />
-            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/check2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vulnerable"
+                android:layout_marginStart="32dp"
+                android:text="Special needs – persons with disability of whatever kind"
+                android:theme="@style/colored_checkbox"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check1" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/check3"
-                app:layout_constraintTop_toBottomOf="@id/check2"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginStart="32dp"
-                />
-            <com.google.android.material.checkbox.MaterialCheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Capability"
+                android:layout_marginStart="32dp"
+                android:theme="@style/colored_checkbox"
+                android:text="Vulnerable"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check2" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/check4"
-                app:layout_constraintTop_toBottomOf="@id/check3"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginStart="32dp"
-                />
-            <com.google.android.material.checkbox.MaterialCheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Academic performance"
+                android:layout_marginStart="32dp"
+                android:theme="@style/colored_checkbox"
+                android:text="Capability"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check3" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/check5"
-                app:layout_constraintTop_toBottomOf="@id/check4"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginStart="32dp"
-                />
-            <com.google.android.material.checkbox.MaterialCheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Course"
+                android:theme="@style/colored_checkbox"
+                android:layout_marginStart="32dp"
+                android:text="Academic performance"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check4" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/check6"
-                app:layout_constraintTop_toBottomOf="@id/check5"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginStart="32dp"
-                />
-            <com.google.android.material.checkbox.MaterialCheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Full scholarship"
+                android:theme="@style/colored_checkbox"
+                android:layout_marginStart="32dp"
+                android:text="Course"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check5" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/check7"
-                app:layout_constraintTop_toBottomOf="@id/check6"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginStart="32dp"
-                />
-            <com.google.android.material.checkbox.MaterialCheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Partial scholarship"
-                android:id="@+id/check8"
-                app:layout_constraintTop_toBottomOf="@id/check7"
-                app:layout_constraintLeft_toLeftOf="parent"
+                android:theme="@style/colored_checkbox"
                 android:layout_marginStart="32dp"
-                />
+                android:text="Full scholarship"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check6" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/check8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:theme="@style/colored_checkbox"
+                android:text="Partial scholarship"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check7" />
 
             <TextView
+                android:id="@+id/progresstitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="32dp"
-                android:textColor="@color/blue_grey"
+                android:layout_marginTop="20dp"
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="2sp"
                 android:text="Question 4 0f 7"
-                app:layout_constraintTop_toBottomOf="@id/check8"
+                android:textColor="@color/blue_grey"
+                android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:id="@+id/progresstitle"
-                />
+                app:layout_constraintTop_toBottomOf="@id/check8" />
 
 
             <ProgressBar
                 android:id="@+id/determinateBar"
                 style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="32dp"
                 android:layout_height="5dp"
+                android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="16dp"
-                android:progress="57"
                 android:backgroundTint="#d8d8d8"
+                android:progress="57"
                 android:progressTint="@color/colorAccent"
-                app:layout_constraintTop_toBottomOf="@id/progresstitle"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progresstitle"
 
                 />
 
@@ -202,19 +208,18 @@
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginEnd="5dp"
-            android:textAllCaps="false"
-            android:backgroundTint="@color/gray4"
             android:layout_weight="1"
-            android:text="@string/save_amp_exit" />
+            android:backgroundTint="@color/gray4"
+            android:text="@string/save_amp_exit"
+            android:textAllCaps="false" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
             android:layout_height="52dp"
-            android:textAllCaps="false"
             android:layout_weight="1"
             android:backgroundTint="@color/colorAccent"
-            android:text="@string/Continue"
             android:onClick="moveSponsor7"
-            />
+            android:text="@string/Continue"
+            android:textAllCaps="false" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
