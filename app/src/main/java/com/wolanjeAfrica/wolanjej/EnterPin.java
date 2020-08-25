@@ -1,6 +1,8 @@
 package com.wolanjeAfrica.wolanjej;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -23,9 +26,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.wolanjeAfrica.wolanjej.models.Transactions;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.internal.$Gson$Preconditions;
+import com.wolanjeAfrica.wolanjej.models.Transactions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,8 +55,9 @@ public class EnterPin extends AppCompatActivity {
     private String myBalance;
     private String resultBalance;
     private String bankDetails;
+    private Context context;
     private AlertDialog alertDialog;
-    private EditText editText1, editText2;
+    private EditText text1, text2, text3, text4;
     private SharedPreferences pref;
     private final String TAG = "EnterPin";
     private ProgressBar progressBar;
@@ -66,22 +69,28 @@ public class EnterPin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_pin);
-        setActionBarColor();
 
         //SharedPreferences values for login eg token
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         progressBar = (ProgressBar) findViewById(R.id.progressBarEnterPin);
 
+        text1 = findViewById(R.id.pinValue1);
+        text2 = findViewById(R.id.pinValue2);
+        text3 = findViewById(R.id.pinValue3);
+        text4 = findViewById(R.id.pinValue4);
+
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         switch (className) {
+            case "ScholarShip06":
+                break;
             case "BookBus06":
 
                 break;
             case "Education_2":
-
+                //TODO:
                 break;
             case "TransferToWalletSingle37":
 
@@ -135,105 +144,7 @@ public class EnterPin extends AppCompatActivity {
                 break;
         }
 
-        button = (Button) findViewById(R.id.confirm_pin);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText tvtext = findViewById(R.id.pinValue1);
-                String pin1 = tvtext.getText().toString();
 
-                tvtext = findViewById(R.id.pinValue2);
-                String pin2 = tvtext.getText().toString();
-
-                tvtext = findViewById(R.id.pinValue3);
-                String pin3 = tvtext.getText().toString();
-
-                tvtext = findViewById(R.id.pinValue4);
-                String pin4 = tvtext.getText().toString();
-
-                String fullPin = pin1 + pin2 + pin3 + pin4;
-                if (fullPin != null) {
-                    Intent intentExtra = getIntent();
-                    String className = getIntent().getStringExtra("Class");
-                    Intent intent;
-                    switch (className) {
-                        case "Education_2":
-                            intent = new Intent(getApplicationContext(), Education1.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra("Class", "EnterPin");
-                            startActivity(intent);
-                            finish();
-                            break;
-                        case "ConfirmMultipleTransfer":
-                            transactionsList.add(new Transactions("WALLET_XFER", amount, PhoneNumber2, PhoneNumber2));
-                            transactionsList.add(new Transactions("WALLET_XFER", amount, phoneNumber, phoneNumber));
-                            for (Transactions transactions : transactionsList) {
-                                new Transfer2(fullPin, transactions).execute();
-                            }
-                            break;
-                        case "BookBus06":
-                            intent = new Intent(getApplicationContext(), BookBus09.class);
-                            startActivity(intent);
-                            break;
-                        case "TransferToWalletSingle37":
-                            new Transfer(fullPin, "WALLET_XFER", phoneNumber, phoneNumber).execute();
-                            break;
-                        case "TransferToPhone50":
-                            switch (phoneProvider) {
-                                //Case statements
-                                case "safaricom":
-                                    new Transfer(fullPin, "MPESA_B2C", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Sending via MPESA", Toast.LENGTH_LONG).show();
-                                    break;
-                                case "airtel":
-                                    new Transfer(fullPin, "AIRTEL_B2C", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Sending via AIRTEL MONEY", Toast.LENGTH_LONG).show();
-                                    break;
-                                case "telkom":
-                                    new Transfer(fullPin, "TKASH_B2C", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Sending via TKASH", Toast.LENGTH_LONG).show();
-                                    break;
-                                //Default case statement
-                                default:
-                                    System.out.println("Not an airtel, safaricom or telkom");
-                            }
-                            break;
-                        case "TransferToBank44":
-                            new Transfer(fullPin, "BANK_XFER", accNumber, phoneNumber).execute();
-                            break;
-                        case "TopUpOtherNumber":
-                        case "Top_up":
-                            switch (phoneProvider) {
-                                //Case statements
-                                case "safaricom":
-                                    new Transfer(fullPin, "SAF_ATP", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Top up via MPESA", Toast.LENGTH_LONG).show();
-                                    break;
-                                case "airtel":
-                                    new Transfer(fullPin, "AIRTEL_ATP", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Top up via AIRTEL MONEY", Toast.LENGTH_LONG).show();
-                                    break;
-                                case "telkom":
-                                    new Transfer(fullPin, "TKASH_ATP", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Top up via TKASH", Toast.LENGTH_LONG).show();
-                                    break;
-                                //Default case statement
-                                default:
-                                    System.out.println("Not an airtel, safaricom or telkom");
-                            }
-                            break;
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Please Enter your Pin", Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
-
-        final EditText text1 = findViewById(R.id.pinValue1);
-        final EditText text2 = findViewById(R.id.pinValue2);
-        final EditText text3 = findViewById(R.id.pinValue3);
-        final EditText text4 = findViewById(R.id.pinValue4);
         final String[] numbers = new String[4];
 
         text1.addTextChangedListener(new TextWatcher() {
@@ -311,6 +222,108 @@ public class EnterPin extends AppCompatActivity {
             }
         });
 
+        setActionBarColor();
+        ImplementService();
+    }
+
+    private void ImplementService() {
+        text4.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                String pin1 = text1.getText().toString();
+
+                String pin2 = text2.getText().toString();
+
+                String pin3 = text3.getText().toString();
+
+                String pin4 = text4.getText().toString();
+
+                String fullPin = pin1 + pin2 + pin3 + pin4;
+                if (fullPin != null) {
+                    Intent intentExtra = getIntent();
+                    String className = getIntent().getStringExtra("Class");
+                    Intent intent;
+                    switch (className) {
+                        case "ScholarShip06":
+                            intent = new Intent(EnterPin.this, Scholarship06.class);
+                            intent.putExtra("Class", "EnterPin");
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                            break;
+                        case "Education_2":
+                            intent = new Intent(getApplicationContext(), Education1.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("Class", "EnterPin");
+                            startActivity(intent);
+                            finish();
+                            break;
+                        case "ConfirmMultipleTransfer":
+                            transactionsList.add(new Transactions("WALLET_XFER", amount, PhoneNumber2, PhoneNumber2));
+                            transactionsList.add(new Transactions("WALLET_XFER", amount, phoneNumber, phoneNumber));
+                            for (Transactions transactions : transactionsList) {
+                                new Transfer2(fullPin, transactions).execute();
+                            }
+                            break;
+                        case "BookBus06":
+                            intent = new Intent(getApplicationContext(), BookBus09.class);
+                            startActivity(intent);
+                            break;
+                        case "TransferToWalletSingle37":
+                            new Transfer(fullPin, "WALLET_XFER", phoneNumber, phoneNumber).execute();
+                            break;
+                        case "TransferToPhone50":
+                            switch (phoneProvider) {
+                                //Case statements
+                                case "safaricom":
+                                    new Transfer(fullPin, "MPESA_B2C", phoneNumber, phoneNumber).execute();
+                                    Toast.makeText(getApplicationContext(), "Sending via MPESA", Toast.LENGTH_LONG).show();
+                                    break;
+                                case "airtel":
+                                    new Transfer(fullPin, "AIRTEL_B2C", phoneNumber, phoneNumber).execute();
+                                    Toast.makeText(getApplicationContext(), "Sending via AIRTEL MONEY", Toast.LENGTH_LONG).show();
+                                    break;
+                                case "telkom":
+                                    new Transfer(fullPin, "TKASH_B2C", phoneNumber, phoneNumber).execute();
+                                    Toast.makeText(getApplicationContext(), "Sending via TKASH", Toast.LENGTH_LONG).show();
+                                    break;
+                                //Default case statement
+                                default:
+                                    System.out.println("Not an airtel, safaricom or telkom");
+                            }
+                            break;
+                        case "TransferToBank44":
+                            new Transfer(fullPin, "BANK_XFER", accNumber, phoneNumber).execute();
+                            break;
+                        case "TopUpOtherNumber":
+                        case "Top_up":
+                            switch (phoneProvider) {
+                                //Case statements
+                                case "safaricom":
+                                    new Transfer(fullPin, "SAF_ATP", phoneNumber, phoneNumber).execute();
+                                    Toast.makeText(getApplicationContext(), "Top up via MPESA", Toast.LENGTH_LONG).show();
+                                    break;
+                                case "airtel":
+                                    new Transfer(fullPin, "AIRTEL_ATP", phoneNumber, phoneNumber).execute();
+                                    Toast.makeText(getApplicationContext(), "Top up via AIRTEL MONEY", Toast.LENGTH_LONG).show();
+                                    break;
+                                case "telkom":
+                                    new Transfer(fullPin, "TKASH_ATP", phoneNumber, phoneNumber).execute();
+                                    Toast.makeText(getApplicationContext(), "Top up via TKASH", Toast.LENGTH_LONG).show();
+                                    break;
+                                //Default case statement
+                                default:
+                                    System.out.println("Not an airtel, safaricom or telkom");
+                            }
+                            break;
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please Enter your Pin", Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+        });
     }
 
     private void setActionBarColor() {
@@ -352,7 +365,6 @@ public class EnterPin extends AppCompatActivity {
 
         @Override
         protected Response doInBackground(Void... voids) {
-            progressBar.setVisibility(View.VISIBLE);
             JSONArray jdataset = new JSONArray();
             JSONObject jdata = new JSONObject();
 
@@ -530,58 +542,64 @@ public class EnterPin extends AppCompatActivity {
     }
 
     private void ShowDialogSuccess() {
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View view = inflater.inflate(R.layout.transfer_success_popup, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this)
-                .setView(view)
-                .create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        Button btn = view.findViewById(R.id.dismiss_success);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Home.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("Class", "EnterPin");
-                startActivity(intent);
-                finish();
-                alertDialog.dismiss();
-            }
-        });
-        TextView textView = view.findViewById(R.id.refNumberSuccess);
-        textView.setText(sendIDReference);
-        TextView textView1 = view.findViewById(R.id.amountSentSuccess);
-        textView1.setText(sendAmount);
 
-        alertDialog.show();
+        if (!((Activity) context).isFinishing()) {
+            //show dialog
+            LayoutInflater inflater = LayoutInflater.from(this);
+            View view = inflater.inflate(R.layout.transfer_success_popup, null);
+            final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                    .setView(view)
+                    .create();
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            Button btn = view.findViewById(R.id.dismiss_success);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Class", "EnterPin");
+                    startActivity(intent);
+                    finish();
+                    alertDialog.dismiss();
+                }
+            });
+            TextView textView = view.findViewById(R.id.refNumberSuccess);
+            textView.setText(sendIDReference);
+            TextView textView1 = view.findViewById(R.id.amountSentSuccess);
+            textView1.setText(sendAmount);
+
+            alertDialog.show();
+        }
 
     }
 
     private void ShowDialogWalletFail() {
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View view = inflater.inflate(R.layout.transfer_unsuccessful_popup, null);
-        alertDialog = new AlertDialog.Builder(this)
-                .setView(view)
-                .create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        Button btn = view.findViewById(R.id.try_again_unsuccessful);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Home.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("Class", "EnterPin");
-                startActivity(intent);
-                finish();
-                alertDialog.dismiss();
-            }
-        });
-        TextView textView = view.findViewById(R.id.amount_sent_note);
-        TextView textView1 = view.findViewById(R.id.balance_note2);
-        TextView textView2 = view.findViewById(R.id.reference_numberTra);
-        textView2.setText(sendIDReference);
-        textView.setText(sendAmount);
-        alertDialog.show();
+        if (!((Activity) EnterPin.this).isFinishing()) {
+            LayoutInflater inflater = LayoutInflater.from(this);
+            View view = inflater.inflate(R.layout.transfer_unsuccessful_popup, null);
+            alertDialog = new AlertDialog.Builder(this)
+                    .setView(view)
+                    .create();
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            Button btn = view.findViewById(R.id.try_again_unsuccessful);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Class", "EnterPin");
+                    startActivity(intent);
+                    finish();
+                    alertDialog.dismiss();
+                }
+            });
+            TextView textView = view.findViewById(R.id.amount_sent_note);
+            TextView textView1 = view.findViewById(R.id.balance_note2);
+            TextView textView2 = view.findViewById(R.id.reference_numberTra);
+            textView2.setText(sendIDReference);
+            textView.setText(sendAmount);
+            alertDialog.show();
+        }
     }
 
     @Override

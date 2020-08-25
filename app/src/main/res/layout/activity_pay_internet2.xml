@@ -151,7 +151,7 @@
                     android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="numberPassword"
                     android:maxLength="1" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -167,7 +167,7 @@
                     android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="numberPassword"
                     android:maxLength="1" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -184,7 +184,7 @@
                     android:gravity="center"
                     android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
-                    android:inputType="number"
+                    android:inputType="numberPassword"
                     android:maxLength="1" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -201,7 +201,7 @@
                     android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
                     android:imeOptions="actionGo"
-                    android:inputType="number"
+                    android:inputType="numberPassword"
                     android:maxLength="1" />
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

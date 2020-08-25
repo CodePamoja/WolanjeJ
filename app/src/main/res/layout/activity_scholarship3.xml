@@ -461,7 +461,7 @@
             android:layout_weight="1"
             android:text="@string/save_amp_continue"
             android:onClick="movetostage3"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/colorGreenBlue2"
             />
     </LinearLayout>
 

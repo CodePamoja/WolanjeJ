@@ -12,11 +12,13 @@
     <color name="colorBluepurple">#531EDC</color>
     <color name="colorGreyBackground">#268484a9</color>
     <color name="colorGreenBlue">#3ca8b3</color>
+    <color name="colorGreenBlue2">#0bb8bb</color>
     <color name="colorGreen">#21c17a</color>
     <color name="colorAccent">#21c1a8</color>
     <color name="colorBlack">#000000 </color>
     <color name="warm_purple">#932777</color>
     <color name="light_gray">#ededed</color>
+    <color name="light_gray2">#f6f8fa</color>
     <color name="trans">#80000000</color>
     <color name="color_Dark_Blue">#32489a</color>
     <color name="colorRed">#ff0000</color>

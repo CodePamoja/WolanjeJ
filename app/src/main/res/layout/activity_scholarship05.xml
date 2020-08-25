@@ -213,7 +213,7 @@ circumstances from chief, religious leaders" />
             android:layout_weight="1"
             android:onClick="MoveToScholarShip06"
             android:textAllCaps="false"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/colorGreenBlue2"
             android:text="@string/Continue" />
     </LinearLayout>
 

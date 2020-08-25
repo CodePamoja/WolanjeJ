@@ -148,7 +148,7 @@
         <item>Nyamira</item>
         <item>Nairobi</item>
     </string-array>
-    <string-array name="select_School" >
+    <string-array name="select_School">
         <item>Select School</item>
     </string-array>
     <string-array name="select_fee_details">

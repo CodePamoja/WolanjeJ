@@ -372,9 +372,10 @@
         android:layout_height="52dp"
         android:layout_weight="1"
         android:textAllCaps="false"
+        android:fontFamily="@font/poppins_medium"
         android:paddingHorizontal="5dp"
         android:text="@string/save_amp_continue"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="#0bb8bb"
         android:onClick="movetostage2"
         />
 </LinearLayout>
