@@ -2,55 +2,55 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
+    android:theme="@style/AppTheme"
     tools:context=".TransactionView">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <com.google.android.material.appbar.AppBarLayout
-        android:background="@color/colorWhite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-        <include layout="@layout/toolbarwithsearch"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:layout_width="match_parent" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Transactions"
-            android:layout_marginStart="24dp"
-            android:textColor="@color/colorBlack"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="28sp"
-            android:textStyle="normal"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="start"
-            />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayoutTrans"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/linerarTrans1"
-            android:background="@color/colorWhite">
-        </com.google.android.material.tabs.TabLayout>
+            android:background="@color/colorWhite"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <include
+                layout="@layout/toolbarwithsearch"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/transaction_viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </androidx.viewpager.widget.ViewPager>
+
+            <TextView
+                android:id="@+id/texyviewtran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Transactions"
+                android:textColor="@color/colorBlack"
+                android:textSize="28sp"
+                android:textStyle="normal" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutTrans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linerarTrans1"
+                android:background="@color/colorWhite" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/transaction_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout >
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
