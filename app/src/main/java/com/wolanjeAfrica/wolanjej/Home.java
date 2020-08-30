@@ -33,6 +33,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.ApiJsonObjects;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
@@ -40,11 +45,6 @@ import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.models.Model;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.MyAdapter;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -97,67 +97,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getClassIntent();
-        }
 
-    private void getClassIntent() {
-
-        Intent intentExtra = getIntent();
-        String className = getIntent().getStringExtra("Class");
-        if (className != null) {
-            Log.e("class Type className", className);
-            switch (className) {
-                case "Ewallet2_1":
-                    ShowWalletTopUpConfDialog();
-                    break;
-                case "Ewallet3_1":
-                    withdrawConfirmationDialog();
-                    break;
-
-                case "MyAdapterCard3":
-                    PayInternetBottomSheet();
-                    break;
-                case "PayInternet2PinSuccess":
-                    this.sendFee = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_SEND_FEE);
-                    this.amount = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_AMOUNT);
-                    this.refrenceNumber = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_REFERENCE_NUMBER);
-                    PayInternetorWaterDialog();
-                    break;
-                case "payInternet2pinUnsuccessful":
-                    this.sendFee = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_SEND_FEE);
-                    this.amount = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_AMOUNT);
-                    this.refrenceNumber = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_REFERENCE_NUMBER);
-                    PayTransactions();
-                    break;
-                case "MyAdapterCard2":
-                    PayElectricityToken();
-                    break;
-                case "PayElectricity2":
-                    PayElectricityTokenDialog();
-                    break;
-                case "MyAdapterCard1":
-                    PayTvSubsriptionBottomSheet();
-                    break;
-                case "TvSubscriptions":
-                    payTvSubscriptionDialog();
-                    break;
-                case "EnterPin":
-                    break;
-            }
-    }
-
-    Button button4 = findViewById(R.id.btnaddnew);
-
-
-
+        Button button4 = findViewById(R.id.btnaddnew);
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
-        // Get the Intent that started this activity and extract the string
-        transferListDetails();
-        // Get the Intent that started this activity and extract the string
 
-
-        //SharedPreferences values for login eg token, user registered number
+        /*
+         SharedPreferences values for login eg token, user registered number
+         */
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
@@ -244,12 +191,57 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE); //check Connectivity to internet services
 
         setToolBar();
+        getClassIntent();
+        transferListDetails();
 
-//        MenuItem item = findViewById(R.id.bell_icon);
 
-        //      BadgeDrawable badgeDrawable = BadgeDrawable.create(getApplicationContext());
-        //    BadgeUtils.attachBadgeDrawable(badgeDrawable, (View) item, null);
+    }
 
+    private void getClassIntent() {
+
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        if (className != null) {
+            Log.e("class Type className", className);
+            switch (className) {
+                case "Ewallet2_1":
+                    ShowWalletTopUpConfDialog();
+                    break;
+                case "Ewallet3_1":
+                    withdrawConfirmationDialog();
+                    break;
+
+                case "MyAdapterCard3":
+                    PayInternetBottomSheet();
+                    break;
+                case "PayInternet2PinSuccess":
+                    this.sendFee = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_SEND_FEE);
+                    this.amount = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_AMOUNT);
+                    this.refrenceNumber = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_REFERENCE_NUMBER);
+                    PayInternetorWaterDialog();
+                    break;
+                case "payInternet2pinUnsuccessful":
+                    this.sendFee = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_SEND_FEE);
+                    this.amount = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_AMOUNT);
+                    this.refrenceNumber = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_REFERENCE_NUMBER);
+                    PayTransactions();
+                    break;
+                case "MyAdapterCard2":
+                    PayElectricityToken();
+                    break;
+                case "PayElectricity2":
+                    PayElectricityTokenDialog();
+                    break;
+                case "MyAdapterCard1":
+                    PayTvSubsriptionBottomSheet();
+                    break;
+                case "TvSubscriptions":
+                    payTvSubscriptionDialog();
+                    break;
+                case "EnterPin":
+                    break;
+            }
+        }
 
     }
 
@@ -275,65 +267,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Intent intent = new Intent(this, Notifications52.class);
         startActivity(intent);
     }
-
-    private void RetrieveWalletBalance() {
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", "Bearer " + sessionID + "");
-
-        Retrofit retrofit = RetrofitClient.getInstance();  //        Getting Retrofit Instance
-        JsonPlaceHolders jsonPlaceHolders = retrofit.create(JsonPlaceHolders.class);
-
-        Call<ApiJsonObjects> call = jsonPlaceHolders.getBalance(headers);
-        call.enqueue(new Callback<ApiJsonObjects>() {
-            @Override
-            public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (!response.isSuccessful()) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(Home.this, "code" + response.code()+response.message(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = pref.edit();
-                            editor.putString("session_token", null);
-                            editor.apply();
-                            Intent move = new Intent(getApplicationContext(), LogIn.class);
-                            startActivity(move);
-                            finish();
-                            return;
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                balanceModel = response.body().getBalances();
-                                for (BalanceModel balanceModel : balanceModel) {
-                                    MY_BALANCE = balanceModel.getBalance();
-
-                                    tvtext.setText("KES " + MY_BALANCE);
-                                }
-
-                            }
-                        });
-
-                    }
-                }).start();
-            }
-
-            @Override
-            public void onFailure(Call<ApiJsonObjects> call, Throwable t) {
-                Toast.makeText(Home.this, "error" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    //    close drawer on register new number
-    /*private void closeMyDrawer1() {
-        drawer.closeDrawer(GravityCompat.START);
-    }*/
 
 
     @Override
@@ -398,37 +331,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         getMenuInflater().inflate(R.menu.home_menu,
                 menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        Intent i;
-
-        switch (v.getId()) {
-            case R.id.cardBuyAirtime:
-                i = new Intent(this, Top_up.class);
-                i.putExtra("Class", "Home");
-                startActivity(i);
-                break;
-            case R.id.services:
-                i = new Intent(this, Home.class);
-                startActivity(i);
-                break;
-            case R.id.TransferMain:
-                i = new Intent(this, TransactionView.class);
-                i.putExtra("Class", "transaction");
-                startActivity(i);
-                break;
-            case R.id.transfer_money_button:
-                i = new Intent(this, MainTransfer36.class);
-                i.putExtra("Class", "Home");
-                startActivity(i);
-                break;
-            default:
-                break;
-        }
-
     }
 
     public void close_wallet3(View view) {
@@ -1413,6 +1315,91 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         map.put(phoneCompany, validPhoneNo);
         return map;
     }
+
+    private void RetrieveWalletBalance() {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Bearer " + sessionID + "");
+
+        Retrofit retrofit = RetrofitClient.getInstance();  //        Getting Retrofit Instance
+        JsonPlaceHolders jsonPlaceHolders = retrofit.create(JsonPlaceHolders.class);
+
+        Call<ApiJsonObjects> call = jsonPlaceHolders.getBalance(headers);
+        call.enqueue(new Callback<ApiJsonObjects>() {
+            @Override
+            public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!response.isSuccessful()) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(Home.this, "code" + response.code() + response.message(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = pref.edit();
+                            editor.putString("session_token", null);
+                            editor.apply();
+                            Intent move = new Intent(getApplicationContext(), LogIn.class);
+                            startActivity(move);
+                            finish();
+                            return;
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                balanceModel = response.body().getBalances();
+                                for (BalanceModel balanceModel : balanceModel) {
+                                    MY_BALANCE = balanceModel.getBalance();
+
+                                    tvtext.setText("KES " + MY_BALANCE);
+                                }
+
+                            }
+                        });
+
+                    }
+                }).start();
+            }
+
+            @Override
+            public void onFailure(Call<ApiJsonObjects> call, Throwable t) {
+                Toast.makeText(Home.this, "error" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent i;
+
+        switch (v.getId()) {
+            case R.id.cardBuyAirtime:
+                i = new Intent(this, Top_up.class);
+                i.putExtra("Class", "Home");
+                startActivity(i);
+                break;
+            case R.id.services:
+                i = new Intent(this, Home.class);
+                startActivity(i);
+                break;
+            case R.id.TransferMain:
+                i = new Intent(this, TransactionView.class);
+                i.putExtra("Class", "transaction");
+                startActivity(i);
+                break;
+            case R.id.transfer_money_button:
+                i = new Intent(this, MainTransfer36.class);
+                i.putExtra("Class", "Home");
+                startActivity(i);
+                break;
+            default:
+                break;
+        }
+
+    }
+
 
     private boolean isNetworkAvailable() {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();

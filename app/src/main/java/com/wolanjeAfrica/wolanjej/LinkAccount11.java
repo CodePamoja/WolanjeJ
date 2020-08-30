@@ -46,13 +46,13 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-// clear FLAG_TRANSLUCENT_STATUS flag:
+    // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+    // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-// finally change the color
+    // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
 
 
@@ -89,6 +89,7 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
 
     public void moveToHome(View view) {
         Intent movetohome = new Intent(this,Home.class);
+        movetohome.putExtra("Class", "LinkAccount11");
         movetohome.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(movetohome);
         CustomIntent.customType(LinkAccount11.this, "left-to-right");

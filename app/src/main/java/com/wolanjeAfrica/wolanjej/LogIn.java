@@ -9,8 +9,8 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,19 +26,28 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.wolanjeAfrica.wolanjej.realmDb.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 import java.util.concurrent.Executor;
 
+import io.realm.Realm;
 import okhttp3.Response;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class LogIn extends AppCompatActivity {
 
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_ID = "com.example.wolanjej.ID";
+    public static final String EXTRA_USERNAME = "com.example.wolanjej.USERNAME";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     private ImageView imageView, imageView1;
     public ProgressDialog prgBar;
     private Button button;
@@ -49,11 +58,14 @@ public class LogIn extends AppCompatActivity {
     private ConnectivityManager connectivityManager;
     private Executor executor;
     private String TAG = "Login";
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_ID = "com.example.wolanjej.ID";
-    public static final String EXTRA_USERNAME = "com.example.wolanjej.USERNAME";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
-
+    private Realm realm;
+    private String FirstName;
+    private String LastName;
+    private String email;
+    private String Gender;
+    private String phoneNumber;
+    private String password;
+    private SharedPreferences pref;
     public Base64Encoder baseResult = new Base64Encoder();
 
     @Override
@@ -62,6 +74,16 @@ public class LogIn extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
+
+        setToolBar();
+        Realm.init(this);  //init realm db
+
+
+        pref = getApplication().getSharedPreferences("Registration_details", MODE_PRIVATE);
+        this.email = pref.getString("Email_adress", "");
+        this.FirstName = pref.getString("First_Name", "");
+        this.LastName = pref.getString("Last_Name", "");
+        this.Gender = pref.getString("Gender", "");
 
         final LinearLayout linearLayout = findViewById(R.id.LoginNetAlert);
         imageView1 = findViewById(R.id.closeNetAlert);
@@ -96,9 +118,6 @@ public class LogIn extends AppCompatActivity {
                 }
         );
 
-        setToolBar();
-//        imageView = findViewById(R.id.image_holder);
-//        imageView.setImageResource(R.drawable.ic_groupwall);
         if (Build.VERSION.SDK_INT > 8) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -127,13 +146,13 @@ public class LogIn extends AppCompatActivity {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-// clear FLAG_TRANSLUCENT_STATUS flag:
+        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-// finally change the color
+        // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
@@ -213,7 +232,6 @@ public class LogIn extends AppCompatActivity {
 
                         }
                     });
-                    Log.e("All result", "Result");
                     if (result != null && result.code() == 200) {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -226,9 +244,10 @@ public class LogIn extends AppCompatActivity {
                         try {
                             String test = result.body().string();
                             sessionID = new JSONObject(test);
-                            //adding values to SharedPreferences
-                            // make sure that in the getsharedPreferences the key value should be the same as the intent putextra class value
-
+                            /*
+                             adding values to SharedPreferences
+                             make sure that in the getsharedPreferences the key value should be the same as the intent putextra class value
+                             */
                             SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
                             SharedPreferences.Editor editor = pref.edit();
                             editor.putString("session_token", sessionID.getJSONObject("session").getString("session_token"));
@@ -238,10 +257,52 @@ public class LogIn extends AppCompatActivity {
                             editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
                             System.out.println(TAG + sessionID.getJSONObject("session").getString("agentno"));
                             editor.apply();
-                            Intent move = new Intent(LogIn.this, LinkAccount11.class);
-                            move.putExtra("Class", "LogIn");
-                            startActivity(move);
-                            finish();
+
+                            /*
+                             write user to database
+                             */
+                            Looper.prepare();
+                            realm = Realm.getDefaultInstance();
+
+                            User user = realm.where(User.class).equalTo("phoneNumber", phone)
+                                    .findFirst();
+                            if (user == null) {
+                                realm.executeTransactionAsync(realm -> {
+                                    User user1 = realm.createObject(User.class, UUID.randomUUID().hashCode());
+                                    user1.setFirstName(FirstName);
+                                    user1.setLastName(LastName);
+                                    user1.setEmail(email);
+                                    user1.setPassword(generateHashedPassword(pin));
+                                    user1.setGender(Gender);
+                                    user1.setPhoneNumber(phone);
+                                }, () -> {
+                                    Intent intent = new Intent(LogIn.this, LinkAccount11.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                    finish();
+
+                                }, error -> Toast.makeText(LogIn.this, "Experienced an Error" + error, LENGTH_SHORT).show());
+                                Looper.loop();
+
+                                finish();
+                            } else {
+                                String password = user.getPassword();
+                                if (password.equals(generateHashedPassword(pin))) {
+                                    Intent intent = new Intent(LogIn.this, LinkAccount11.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                } else {
+                                    realm.beginTransaction();
+                                    user.setPassword(generateHashedPassword(pin));
+                                    realm.commitTransaction();
+                                    Intent intent = new Intent(LogIn.this, LinkAccount11.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }
+
+                            }
+
+
                         } catch (JSONException | IOException e) {
                             //e.printStackTrace();
                             runOnUiThread(new Runnable() {
@@ -252,6 +313,8 @@ public class LogIn extends AppCompatActivity {
                                 }
                             });
 
+                        } finally {
+                            realm.close();
                         }
                     } else if (result != null && result.code() != 201) {
                         runOnUiThread(new Runnable() {
@@ -275,9 +338,23 @@ public class LogIn extends AppCompatActivity {
                 }
             }).start();
 
-            Log.e("All result", "Result");
-
         }
+    }
+
+    private String generateHashedPassword(String pin) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(pin.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte aByte : bytes) {
+                sb.append(String.format("%02x", aByte));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     private boolean isNetworkAvailable() {
