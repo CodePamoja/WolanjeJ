@@ -10,6 +10,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -17,8 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.wolanjeAfrica.wolanjej.realmDb.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,35 +30,37 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import io.realm.Realm;
 import okhttp3.Response;
 
-public class PayInternet2Pin extends AppCompatActivity {
-    private static final String TAG = "PayInternet";
+public class EnterPin2 extends AppCompatActivity {
     public static final String EXTRA_SEND_FEE = "com.example.wolanjej.SEND_FEE";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     public static final String EXTRA_REFERENCE_NUMBER = "com.example.wolanjej.REFERNCE_NUMBER";
+    private static final String TAG = "TVSubscription";
     private Button button;
-    private String sessionID;
-    private SharedPreferences pref;
+    private String ProductName;
+    private String amount;
+    private String userId;
     private String AccountNumber;
-    private String Amount;
-    private TextView textViewAccountNumber;
-    private TextView textViewAmount;
-    private String sendAmount;
-    private TextView txtWallet3_Pay;
-    private EditText text1, text2, text3, text4;
-    private String phoneNumber;
-    private String sendIDReference;
-    private String sendfee;
+    private TextView textView1, textView2, textView3, textView4;
     private ProgressBar progressBar;
-    private String product_name;
+    private SharedPreferences pref;
+    private String sessionID;
+    private String phoneNumber;
+    private String sentAmount;
+    private Realm realm;
+    private String sendfee;
+    private EditText text1, text2, text3, text4;
+    private String sendIDReference;
 
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay_internet2);
+        setContentView(R.layout.activity_tv_subscriptions);
+        Realm.init(this);
 
         //pin editText
         text1 = findViewById(R.id.pinDigit1);
@@ -63,45 +69,72 @@ public class PayInternet2Pin extends AppCompatActivity {
         text4 = findViewById(R.id.pinDigit4);
         //
 
-        button = (Button) findViewById(R.id.btn_enter_pay);
-        textViewAccountNumber = (TextView) findViewById(R.id.txt_saf_eWallet3_1);
-        textViewAmount = (TextView) findViewById(R.id.txt_numberEWallet3_1);
-        txtWallet3_Pay = (TextView) findViewById(R.id.txtWallet3_Pay);
-        progressBar = (ProgressBar) findViewById(R.id.progressInternet2);
+        textView1 = (TextView) findViewById(R.id.txt_TvSubscription_sp);
+        textView2 = (TextView) findViewById(R.id.txt_Account_noTvSubscription);
+        textView3 = (TextView) findViewById(R.id.txt_amount_EWallet_2_1);
+        textView4 = (TextView) findViewById(R.id.txtTvSubscription);
+        progressBar = (ProgressBar) findViewById(R.id.progressTvSubscription);
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.phoneNumber = pref.getString("agentno", "");
+        this.userId = pref.getString("userDbId", null);
+
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
+
         switch (className) {
-            case "HomePayNet":
-
+            case "HomePayTvSubscription":
+                this.ProductName = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
+                this.amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
                 this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);
-                this.Amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
-                this.product_name = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
-                textViewAccountNumber.setText(AccountNumber);
-                textViewAmount.setText(Amount);
+                textView1.setText(ProductName);
+                textView2.setText(AccountNumber);
+                textView3.setText(amount);
+                textView4.setText("Confirmation: Tv Subscription");
                 getProceedIntent();
                 break;
-            case "HomePayElectricity":
-
+            case "HomePayWalletTopUp":
+                this.ProductName = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
+                this.amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
                 this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);
-                this.product_name = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
-                this.Amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
-                textViewAccountNumber.setText(AccountNumber);
-                textViewAmount.setText(Amount);
-                txtWallet3_Pay.setText("Confirmation: Buy Token");
+                textView1.setText(ProductName);
+                textView2.setText(AccountNumber);
+                textView3.setText(amount);
+                textView4.setText("Confirmation: Top up Subscription");
                 getProceedIntent();
                 break;
+            case "HomeWithdraw":
+                this.ProductName = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
+                this.amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
+                this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);
+                textView1.setText(ProductName);
+                textView2.setText(AccountNumber);
+                textView3.setText(amount);
+                textView4.setText("Withdraw Confirmation");
+                getProceedIntent();
+                break;
+
         }
-
-
         initPinEntry();
+        setActionBarColor();
+    }
+
+    private void setActionBarColor() {
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     private void initPinEntry() {
-
         final String[] numbers = new String[4];
 
         text1.addTextChangedListener(new TextWatcher() {
@@ -186,7 +219,6 @@ public class PayInternet2Pin extends AppCompatActivity {
         text4.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
                 EditText tvtext = findViewById(R.id.pinDigit1);
                 String pin1 = tvtext.getText().toString();
 
@@ -204,29 +236,47 @@ public class PayInternet2Pin extends AppCompatActivity {
                 String className = getIntent().getStringExtra("Class");
                 if (className != null)
                     switch (className) {
-                        case "HomePayNet":
-                            new Transfer(fullPin, product_name, Amount, AccountNumber).execute();
-                            break;
-                        case "HomePayElectricity":
-                            new Transfer(fullPin, product_name, Amount, AccountNumber).execute();
+                        case "HomePayTvSubscription":
+                        case "HomePayWalletTopUp":
+                        case "HomeWithdraw":
+                            if (ValidateUserPin(fullPin)) {
+                                new Transfer(fullPin, ProductName, amount, AccountNumber).execute();
+                            } else {
+                                Toast.makeText(EnterPin2.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                            }
                             break;
                         default:
                             System.out.println("Not an airtel, safaricom or telkom");
                             break;
                     }
+
                 return false;
             }
         });
 
     }
 
+    public Boolean ValidateUserPin(String pin) {
+        LogIn logIn = new LogIn();
+        String hasshedPassword = logIn.generateHashedPassword(pin);  //public method in Login class
+        realm = Realm.getDefaultInstance();
+        User user = realm.where(User.class)
+                .equalTo("id", Integer.valueOf(userId))
+                .findFirst();
+
+        if (user != null) {
+            String password = user.getPassword();
+            return password.equals(hasshedPassword);
+        }
+        return false;
+    }
 
     public void ConfirmPaymentSuccess() {
         Intent intent = new Intent(getApplicationContext(), Home.class);
         intent.putExtra("Class", "PayInternet2PinSuccess");
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(EXTRA_SEND_FEE, sendfee);
-        intent.putExtra(EXTRA_AMOUNT, Amount);
+        intent.putExtra(EXTRA_AMOUNT, amount);
         intent.putExtra(EXTRA_REFERENCE_NUMBER, sendIDReference);
         startActivity(intent);
 
@@ -237,7 +287,7 @@ public class PayInternet2Pin extends AppCompatActivity {
         intent.putExtra("Class", "payInternet2pinUnsuccessful");
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(EXTRA_SEND_FEE, sendfee);
-        intent.putExtra(EXTRA_AMOUNT, Amount);
+        intent.putExtra(EXTRA_AMOUNT, amount);
         intent.putExtra(EXTRA_REFERENCE_NUMBER, sendIDReference);
         startActivity(intent);
     }
@@ -269,7 +319,7 @@ public class PayInternet2Pin extends AppCompatActivity {
 
             try {
                 jdata.put("product_name", productName);
-                jdata.put("amount", Amount);
+                jdata.put("amount", amount);
                 jdata.put("phone", phoneNumber);
                 jdata.put("ref", ref);
                 jdata.put("pin", pin);
@@ -304,12 +354,12 @@ public class PayInternet2Pin extends AppCompatActivity {
                     JSONObject jBody = new JSONObject(value); // adding
                     System.out.println(TAG + "Response body json values are service : " + value);
                     Log.e("TAG", String.valueOf(value));
-                    sendAmount = jBody.getJSONArray("services").getJSONObject(0).getString("amount");
+                    sentAmount = jBody.getJSONArray("services").getJSONObject(0).getString("amount");
                     sendfee = jBody.getJSONArray("services").getJSONObject(0).getString("fee");
                     String sendNumber = jBody.getJSONArray("services").getJSONObject(0).getString("ref");
                     sendIDReference = jBody.getJSONArray("services").getJSONObject(0).getString("id");
                     String statusResulsts = jBody.getJSONArray("services").getJSONObject(0).getString("status");
-                    Log.e("TAG", sendAmount);
+                    Log.e("TAG", sentAmount);
 
                     if (phoneNumber.equals(sendNumber) && statusResulsts.equals("TRX_ASYNC")) {
                         ConfirmPaymentSuccess();
@@ -322,7 +372,7 @@ public class PayInternet2Pin extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "the transaction is being verified", Toast.LENGTH_SHORT).show();
                         ConfirmPaymentSuccess();
                     } else if (statusResulsts.equals("TRX_RESPONSE_ERROR")) {
-                        Toast.makeText(getApplicationContext(), "SorrynExperiences An error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Transaction Failed!", Toast.LENGTH_SHORT).show();
                         ConfirmPaymentUnsuccessful();
                     } else {
                         Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
@@ -346,8 +396,14 @@ public class PayInternet2Pin extends AppCompatActivity {
                 }
 
             } else {
-                Snackbar.make(PayInternet2Pin.this.findViewById(R.id.constarintPayInternet2), "Something went wrong", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(findViewById(R.id.activityTvSubscription), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
 }

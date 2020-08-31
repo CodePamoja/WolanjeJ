@@ -18,8 +18,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Sponsors12"></activity>
         <activity android:name=".Sponsors_13" />
-        <activity android:name=".TvSubscriptions" />
-        <activity android:name=".PayInternet2Pin" />
+        <activity android:name=".EnterPin2" />
+        <activity android:name=".EnterPin3" />
         <activity android:name=".Ewallet2_1" />
         <activity android:name=".GettingStarted" />
         <activity android:name=".NeedSupport" />

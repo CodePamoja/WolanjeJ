@@ -28,6 +28,7 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.models.Transactions;
+import com.wolanjeAfrica.wolanjej.realmDb.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +38,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import io.realm.Realm;
 import okhttp3.Response;
 
 public class EnterPin extends AppCompatActivity {
@@ -62,6 +64,8 @@ public class EnterPin extends AppCompatActivity {
     private final String TAG = "EnterPin";
     private ProgressBar progressBar;
     private Transactions transactions;
+    private String userId;
+    private Realm realm;
     private Collection<Transactions> transactionsList = new LinkedList<>();
 
 
@@ -70,9 +74,11 @@ public class EnterPin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_pin);
 
+        Realm.init(this);
         //SharedPreferences values for login eg token
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
+        this.userId = pref.getString("userDbId", null);
         progressBar = (ProgressBar) findViewById(R.id.progressBarEnterPin);
 
         text1 = findViewById(R.id.pinValue1);
@@ -240,40 +246,60 @@ public class EnterPin extends AppCompatActivity {
                 String pin4 = text4.getText().toString();
 
                 String fullPin = pin1 + pin2 + pin3 + pin4;
-                if (fullPin != null) {
-                    Intent intentExtra = getIntent();
-                    String className = getIntent().getStringExtra("Class");
-                    Intent intent;
-                    switch (className) {
-                        case "ScholarShip06":
+                Intent intentExtra = getIntent();
+                String className = getIntent().getStringExtra("Class");
+                Intent intent;
+                switch (className) {
+                    case "ScholarShip06":
+                        if (ValidateUserPin(fullPin)) {
                             intent = new Intent(EnterPin.this, Scholarship06.class);
                             intent.putExtra("Class", "EnterPin");
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             finish();
-                            break;
-                        case "Education_2":
+                        } else {
+                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case "Education_2":
+                        if (ValidateUserPin(fullPin)){
                             intent = new Intent(getApplicationContext(), Education1.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("Class", "EnterPin");
                             startActivity(intent);
                             finish();
-                            break;
-                        case "ConfirmMultipleTransfer":
+                        }else {
+                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case "ConfirmMultipleTransfer":
+                        if (ValidateUserPin(fullPin)) {
                             transactionsList.add(new Transactions("WALLET_XFER", amount, PhoneNumber2, PhoneNumber2));
                             transactionsList.add(new Transactions("WALLET_XFER", amount, phoneNumber, phoneNumber));
                             for (Transactions transactions : transactionsList) {
                                 new Transfer2(fullPin, transactions).execute();
                             }
-                            break;
-                        case "BookBus06":
+                        }else {
+                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case "BookBus06":
+                        if (ValidateUserPin(fullPin)) {
                             intent = new Intent(getApplicationContext(), BookBus09.class);
                             startActivity(intent);
-                            break;
-                        case "TransferToWalletSingle37":
+                        }else{
+                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case "TransferToWalletSingle37":
+                        if (ValidateUserPin(fullPin)) {
                             new Transfer(fullPin, "WALLET_XFER", phoneNumber, phoneNumber).execute();
-                            break;
-                        case "TransferToPhone50":
+                        }else{
+                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case "TransferToPhone50":
+                        if (ValidateUserPin(fullPin)) {
                             switch (phoneProvider) {
                                 //Case statements
                                 case "safaricom":
@@ -292,12 +318,20 @@ public class EnterPin extends AppCompatActivity {
                                 default:
                                     System.out.println("Not an airtel, safaricom or telkom");
                             }
-                            break;
-                        case "TransferToBank44":
+                        }else {
+                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case "TransferToBank44":
+                        if (ValidateUserPin(fullPin)) {
                             new Transfer(fullPin, "BANK_XFER", accNumber, phoneNumber).execute();
-                            break;
-                        case "TopUpOtherNumber":
-                        case "Top_up":
+                        }else{
+                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case "TopUpOtherNumber":
+                    case "Top_up":
+                        if (ValidateUserPin(fullPin)) {
                             switch (phoneProvider) {
                                 //Case statements
                                 case "safaricom":
@@ -317,9 +351,9 @@ public class EnterPin extends AppCompatActivity {
                                     System.out.println("Not an airtel, safaricom or telkom");
                             }
                             break;
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Please Enter your Pin", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                        }
                 }
                 return false;
             }
@@ -330,16 +364,33 @@ public class EnterPin extends AppCompatActivity {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-// clear FLAG_TRANSLUCENT_STATUS flag:
+        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-// finally change the color
+        // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
+    /*
+     validate user id db for further processing
+     */
+    public Boolean ValidateUserPin(String pin) {
+        LogIn logIn = new LogIn();
+        String hasshedPassword = logIn.generateHashedPassword(pin);  //public method in Login class
+        realm = Realm.getDefaultInstance();
+        User user = realm.where(User.class)
+                .equalTo("id", Integer.valueOf(userId))
+                .findFirst();
+
+        if (user != null) {
+            String password = user.getPassword();
+            return password.equals(hasshedPassword);
+        }
+        return false;
+    }
 
     /*
     perform AsyncTransfer
@@ -356,6 +407,7 @@ public class EnterPin extends AppCompatActivity {
             this.refValue = refValue;
             this.phoneNumber = phoneNumber;
         }
+
 
         @Override
         protected void onPreExecute() {
@@ -602,15 +654,6 @@ public class EnterPin extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (alertDialog != null) {
-            alertDialog.dismiss();
-            alertDialog = null;
-        }
-    }
-
 
     /*
     This AsyncTask Performs Multiple Transactions
@@ -717,6 +760,16 @@ public class EnterPin extends AppCompatActivity {
                 Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (alertDialog != null) {
+            alertDialog.dismiss();
+            alertDialog = null;
+        }
+        realm.close();
     }
 
 }

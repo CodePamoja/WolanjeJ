@@ -215,15 +215,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     PayInternetBottomSheet();
                     break;
                 case "PayInternet2PinSuccess":
-                    this.sendFee = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_SEND_FEE);
-                    this.amount = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_AMOUNT);
-                    this.refrenceNumber = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_REFERENCE_NUMBER);
+                    this.sendFee = intentExtra.getStringExtra(EnterPin3.EXTRA_SEND_FEE);
+                    this.amount = intentExtra.getStringExtra(EnterPin3.EXTRA_AMOUNT);
+                    this.refrenceNumber = intentExtra.getStringExtra(EnterPin3.EXTRA_REFERENCE_NUMBER);
                     PayInternetorWaterDialog();
                     break;
                 case "payInternet2pinUnsuccessful":
-                    this.sendFee = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_SEND_FEE);
-                    this.amount = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_AMOUNT);
-                    this.refrenceNumber = intentExtra.getStringExtra(PayInternet2Pin.EXTRA_REFERENCE_NUMBER);
+                    this.sendFee = intentExtra.getStringExtra(EnterPin3.EXTRA_SEND_FEE);
+                    this.amount = intentExtra.getStringExtra(EnterPin3.EXTRA_AMOUNT);
+                    this.refrenceNumber = intentExtra.getStringExtra(EnterPin3.EXTRA_REFERENCE_NUMBER);
                     PayTransactions();
                     break;
                 case "MyAdapterCard2":
@@ -654,7 +654,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             Toast.makeText(this, "select Telkom", Toast.LENGTH_SHORT).show();
             return;
         }
-        Intent intent = new Intent(getApplicationContext(), TvSubscriptions.class);
+        Intent intent = new Intent(getApplicationContext(), EnterPin2.class);
         intent.putExtra("Class", "HomeWithdraw");
         intent.putExtra(EXTRA_PRODUCT_NAME, productName);
         intent.putExtra(EXTRA_AMOUNT, amount);
@@ -724,7 +724,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
 //        String typePhoneNumber = checkPhoneNo(phoneNumber);
 //        Toast.makeText(getApplicationContext(), "number" + typePhoneNumber, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), TvSubscriptions.class);
+        Intent intent = new Intent(getApplicationContext(), EnterPin2.class);
         intent.putExtra("Class", "HomePayWalletTopUp");
         intent.putExtra(EXTRA_PRODUCT_NAME, productName);
         intent.putExtra(EXTRA_AMOUNT, amount);
@@ -881,7 +881,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         String produt_name = "ZUKU_BILLPAY";
         String AccountNumber = txtAccounNoPayNetSheet.getText().toString();
         String AmountPayable = txtamountPyNetSheet.getText().toString();
-        Intent move = new Intent(getApplicationContext(), PayInternet2Pin.class);
+        Intent move = new Intent(getApplicationContext(), EnterPin3.class);
         move.putExtra("Class", "HomePayNet");
         move.putExtra(EXTRA_PRODUCT_NAME, produt_name);
         move.putExtra(EXTRA_ACCOUNTNUMBER, AccountNumber);
@@ -932,7 +932,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         String productName = "KPLC_BILLPAY ";
         String AccountNumber = txtTokenAccountNumber.getText().toString();
         String amount = txtAmountToken.getText().toString();
-        Intent intent = new Intent(getApplicationContext(), PayInternet2Pin.class);
+        Intent intent = new Intent(getApplicationContext(), EnterPin3.class);
         intent.putExtra("Class", "HomePayElectricity");
         intent.putExtra(EXTRA_PRODUCT_NAME, productName);
         intent.putExtra(EXTRA_AMOUNT, amount);
@@ -1010,7 +1010,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             return;
         }
         String AccountNumber = txtPaytvAccountNoSheet.getText().toString();
-        Intent intent = new Intent(getApplicationContext(), TvSubscriptions.class);
+        Intent intent = new Intent(getApplicationContext(), EnterPin2.class);
         intent.putExtra("Class", "HomePayTvSubscription");
         intent.putExtra(EXTRA_PRODUCT_NAME, productName);
         intent.putExtra(EXTRA_AMOUNT, amount);

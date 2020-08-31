@@ -288,6 +288,10 @@ public class LogIn extends AppCompatActivity {
                             } else {
                                 String password = user.getPassword();
                                 if (password.equals(generateHashedPassword(pin))) {
+                                    String userId = String.valueOf(user.getId());
+                                    editor = pref.edit();
+                                    editor.putString("userDbId", userId);
+                                    editor.apply();
                                     Intent intent = new Intent(LogIn.this, LinkAccount11.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
@@ -341,7 +345,7 @@ public class LogIn extends AppCompatActivity {
         }
     }
 
-    private String generateHashedPassword(String pin) {
+    public String generateHashedPassword(String pin) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(pin.getBytes());
