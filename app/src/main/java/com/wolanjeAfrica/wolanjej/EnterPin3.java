@@ -19,7 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.wolanjeAfrica.wolanjej.realmDb.User;
+import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;

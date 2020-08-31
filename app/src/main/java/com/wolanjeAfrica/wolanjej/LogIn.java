@@ -26,7 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.wolanjeAfrica.wolanjej.realmDb.User;
+import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -316,9 +316,6 @@ public class LogIn extends AppCompatActivity {
 
                                 }
                             });
-
-                        } finally {
-                            realm.close();
                         }
                     } else if (result != null && result.code() != 201) {
                         runOnUiThread(new Runnable() {

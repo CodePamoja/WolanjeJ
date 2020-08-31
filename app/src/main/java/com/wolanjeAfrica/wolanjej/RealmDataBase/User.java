@@ -1,16 +1,25 @@
-package com.wolanjeAfrica.wolanjej.realmDb;
+package com.wolanjeAfrica.wolanjej.RealmDataBase;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
+import io.realm.annotations.RealmField;
 
+@RealmClass("user")
 public class User extends RealmObject {
     @PrimaryKey
     private int id;
-    private  String FirstName;
+    @RealmField(name = "first_name")
+    private String FirstName;
+    @RealmField(name = "last_name")
     private String LastName;
+    @RealmField(name = "email")
     private String email;
+    @RealmField(name = "Gender")
     private String Gender;
+    @RealmField(name = "phoneNumber")
     private String phoneNumber;
+    @RealmField(name = "password")
     private String password;
 
     public int getId() {
@@ -69,3 +78,4 @@ public class User extends RealmObject {
         this.password = password;
     }
 }
+

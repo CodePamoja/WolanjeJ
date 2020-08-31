@@ -27,8 +27,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
 import com.wolanjeAfrica.wolanjej.models.Transactions;
-import com.wolanjeAfrica.wolanjej.realmDb.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,6 +67,9 @@ public class EnterPin extends AppCompatActivity {
     private String userId;
     private Realm realm;
     private Collection<Transactions> transactionsList = new LinkedList<>();
+
+    public EnterPin() {
+    }
 
 
     @Override
@@ -769,7 +772,6 @@ public class EnterPin extends AppCompatActivity {
             alertDialog.dismiss();
             alertDialog = null;
         }
-        realm.close();
     }
 
 }
