@@ -21,6 +21,8 @@ public class User extends RealmObject {
     private String phoneNumber;
     @RealmField(name = "password")
     private String password;
+    @RealmField(name = "location")
+    private String location;
 
     public int getId() {
         return id;
@@ -76,6 +78,14 @@ public class User extends RealmObject {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
 

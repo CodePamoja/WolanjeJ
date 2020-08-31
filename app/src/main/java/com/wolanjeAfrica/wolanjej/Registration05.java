@@ -75,7 +75,7 @@ public class Registration05 extends AppCompatActivity {
                             SharedPreferences.Editor editor = registration_details.edit();
                             editor.putString("Phone_Number", text.getEditText().getText().toString());
                             editor.putString("Email_adress", mail.getEditText().getText().toString());
-                            editor.commit();
+                            editor.apply();
 
                             startActivity(new Intent(getApplicationContext(),Registration051.class));
                         }

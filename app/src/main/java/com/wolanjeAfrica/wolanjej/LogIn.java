@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
 
 import org.json.JSONException;
@@ -262,7 +264,8 @@ public class LogIn extends AppCompatActivity {
                              write user to database
                              */
                             Looper.prepare();
-                            realm = Realm.getDefaultInstance();
+                            realm = Realm.getInstance(DbMigrations.getDefaultInstance());
+
 
                             User user = realm.where(User.class).equalTo("phoneNumber", phone)
                                     .findFirst();
@@ -276,33 +279,16 @@ public class LogIn extends AppCompatActivity {
                                     user1.setGender(Gender);
                                     user1.setPhoneNumber(phone);
                                 }, () -> {
-                                    Intent intent = new Intent(LogIn.this, LinkAccount11.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
-                                    finish();
+                                    //success sign up
+                                    getUserId(phone, pin);
 
-                                }, error -> Toast.makeText(LogIn.this, "Experienced an Error" + error, LENGTH_SHORT).show());
+                                }, error -> Toast.makeText(LogIn.this, "Experienced an Error" + error, LENGTH_SHORT).show());// error in sign up
                                 Looper.loop();
 
                                 finish();
                             } else {
-                                String password = user.getPassword();
-                                if (password.equals(generateHashedPassword(pin))) {
-                                    String userId = String.valueOf(user.getId());
-                                    editor = pref.edit();
-                                    editor.putString("userDbId", userId);
-                                    editor.apply();
-                                    Intent intent = new Intent(LogIn.this, LinkAccount11.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
-                                } else {
-                                    realm.beginTransaction();
-                                    user.setPassword(generateHashedPassword(pin));
-                                    realm.commitTransaction();
-                                    Intent intent = new Intent(LogIn.this, LinkAccount11.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
-                                }
+                                //getUserId and login
+                                getUserId(phone, pin);
 
                             }
 
@@ -339,6 +325,33 @@ public class LogIn extends AppCompatActivity {
                 }
             }).start();
 
+        }
+    }
+
+    private void getUserId(String phone, String pin) {
+        User user = realm.where(User.class).equalTo("phoneNumber", phone)
+                .findFirst();
+        if (user != null) {
+            String password = user.getPassword();
+            if (password.equals(generateHashedPassword(pin))) {
+                String userId = String.valueOf(user.getId());
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("userDbId", userId);
+                editor.apply();
+                Intent intent = new Intent(LogIn.this, LinkAccount11.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            } else {
+                realm.beginTransaction();
+                user.setPassword(generateHashedPassword(pin));
+                realm.commitTransaction();
+                Intent intent = new Intent(LogIn.this, LinkAccount11.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        }else {
+            Toast.makeText(this, "user is null", LENGTH_SHORT).show();
         }
     }
 

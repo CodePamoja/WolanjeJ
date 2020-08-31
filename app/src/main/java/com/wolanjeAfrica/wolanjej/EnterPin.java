@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
 import com.wolanjeAfrica.wolanjej.models.Transactions;
 
@@ -78,6 +79,7 @@ public class EnterPin extends AppCompatActivity {
         setContentView(R.layout.activity_enter_pin);
 
         Realm.init(this);
+
         //SharedPreferences values for login eg token
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
@@ -383,7 +385,7 @@ public class EnterPin extends AppCompatActivity {
     public Boolean ValidateUserPin(String pin) {
         LogIn logIn = new LogIn();
         String hasshedPassword = logIn.generateHashedPassword(pin);  //public method in Login class
-        realm = Realm.getDefaultInstance();
+        realm = Realm.getInstance(DbMigrations.getDefaultInstance());
         User user = realm.where(User.class)
                 .equalTo("id", Integer.valueOf(userId))
                 .findFirst();

@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
 
 import org.json.JSONArray;
@@ -259,7 +260,7 @@ public class EnterPin2 extends AppCompatActivity {
     public Boolean ValidateUserPin(String pin) {
         LogIn logIn = new LogIn();
         String hasshedPassword = logIn.generateHashedPassword(pin);  //public method in Login class
-        realm = Realm.getDefaultInstance();
+        realm = Realm.getInstance(DbMigrations.getDefaultInstance());
         User user = realm.where(User.class)
                 .equalTo("id", Integer.valueOf(userId))
                 .findFirst();
@@ -401,9 +402,4 @@ public class EnterPin2 extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        realm.close();
-    }
 }
