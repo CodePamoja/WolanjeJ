@@ -29,8 +29,8 @@ public class Registration05 extends AppCompatActivity {
     private JSONObject sessionID = null;
     private String phoneNo = null;
     private TextView tlc;
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
+    public static final String EXTRA_SESSION = "com.wolanjeAfrica.wolanjej.SESSION";
+    public static final String EXTRA_PHONE = "com.wolanjeAfrica.wolanjej.PHONE";
     Toolbar tb ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
