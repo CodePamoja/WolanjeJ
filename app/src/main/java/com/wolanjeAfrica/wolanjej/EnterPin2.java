@@ -384,17 +384,7 @@ public class EnterPin2 extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else if (response != null && response.code() != 201) {
-                {
-                    String statusResults = "unsuccessful";
-                    try {
-                        String result = response.body().string();
-                        Log.e("TAG", String.valueOf(result));
-//                Toast.makeText(EnterPin.this, "Please Try Again"+verifyResult, Toast.LENGTH_SHORT).show();
-//                        showPopupFail();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+                Toast.makeText(EnterPin2.this, "massage"+response.message(), Toast.LENGTH_SHORT).show();
 
             } else {
                 Snackbar.make(findViewById(R.id.activityTvSubscription), "Something went wrong", Snackbar.LENGTH_LONG).show();

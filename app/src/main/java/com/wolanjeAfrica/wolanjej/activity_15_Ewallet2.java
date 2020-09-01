@@ -27,9 +27,6 @@ public class activity_15_Ewallet2 extends AppCompatActivity {
         if(className.equals("Home")) {
             this.sessionID = intentExtra.getStringExtra(Home.EXTRA_SESSION);
         }
-//        else if (className.equals("MainTransfer36")){
-//            this.sessionID = intentExtra.getStringExtra(MainTransfer36.EXTRA_SESSION);
-//        }
     }
 
     public void btnTopUpWallet(View view) {

@@ -358,17 +358,7 @@ public class EnterPin3 extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else if (response != null && response.code() != 201) {
-                {
-                    String statusResults = "unsuccessful";
-                    try {
-                        String result = response.body().string();
-                        Log.e("TAG", String.valueOf(result));
-//                Toast.makeText(EnterPin.this, "Please Try Again"+verifyResult, Toast.LENGTH_SHORT).show();
-//                        showPopupFail();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+                Toast.makeText(EnterPin3.this, "message"+response.message(), Toast.LENGTH_SHORT).show();
 
             } else {
                 Snackbar.make(EnterPin3.this.findViewById(R.id.constarintPayInternet2), "Something went wrong", Snackbar.LENGTH_LONG).show();

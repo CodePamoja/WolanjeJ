@@ -16,6 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +49,8 @@ public class Scholarship extends AppCompatActivity {
         setToolBar(tb);
         setActionBarColor();
 
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle("Scholarship");
         spinnercounties = findViewById(R.id.spinnercounties);
         myspinner = findViewById(R.id.spinnercountries);
 

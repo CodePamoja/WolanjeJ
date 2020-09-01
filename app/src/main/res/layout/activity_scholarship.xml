@@ -1,175 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scholarship"
-    >
-    <LinearLayout
+    tools:context=".Scholarship">
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            app:navigationIcon="@mipmap/small_left"
-            >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="28sp"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
-                android:textColor="@color/colorMidnight"
-                android:text="Scholarship"
-                />
-        </androidx.appcompat.widget.Toolbar>
 
         <RelativeLayout
+            android:id="@+id/relativeLayout4"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#f8f8fa"
-            android:paddingHorizontal="12dp"
 
-            >
+            android:paddingHorizontal="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <TextView
-                android:textSize="24sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Application"
-                android:fontFamily="@font/poppins_regular"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                />
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="0dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="New Application"
+                android:textColor="@color/colorMidnight"
+                android:textSize="24sp" />
+
             <View
-                android:layout_width="match_parent"
+                android:id="@+id/schView"
+                android:layout_width="200dp"
                 android:layout_height="1dp"
-                android:background="@color/warm_purple"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                />
+                android:layout_marginStart="24dp"
+                android:background="@color/warm_purple" />
 
         </RelativeLayout>
-        <ScrollView
+
+        <Spinner
+            android:id="@+id/spinnercountries"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="12dp"
+            android:layout_height="58dp"
+            android:background="@drawable/myspinner"
+            android:fontFamily="@font/poppins_regular"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingHorizontal="18dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/relativeLayout4" />
 
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="8dp"
-                >
+        <Spinner
+            android:id="@+id/spinnercounties"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@drawable/myspinner"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingHorizontal="18dp"
+            android:spinnerMode="dropdown"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnercountries" />
 
-                <Spinner
-                    android:id="@+id/spinnercountries"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:background="@drawable/myspinner"
-                    android:spinnerMode="dropdown"
-                    android:paddingHorizontal="18dp" />
-                <Spinner
-                    android:id="@+id/spinnercounties"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:paddingHorizontal="18dp"
-                    android:background="@drawable/myspinner"
-                    android:spinnerMode="dropdown"
-                    />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:paddingStart="18dp"
-                    android:background="@drawable/textviewborder"
-                    android:hint="Enter Location"
+        <EditText
+            android:id="@+id/locationScholarship"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/textviewborder"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="18dp"
+            android:hint="Enter Location"
+            android:paddingStart="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinnercounties" />
 
-                    />
+        <Spinner
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@drawable/myspinner"
+            android:fontFamily="@font/poppins_medium"
+            android:spinnerMode="dropdown"
+            android:layout_marginStart="24dp"
+            android:paddingHorizontal="18dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/locationScholarship" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:layout_marginTop="16dp"
-                    android:paddingHorizontal="18dp"
-                    android:text="Select Institution"
-                    android:fontFamily="@font/poppins_medium"
-                    android:backgroundTint="@android:color/transparent"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/blue_grey"
-                    android:drawableEnd="@drawable/ic_dropdown_arrow"
-                    app:strokeColor="#E7E7E7"
-                    app:strokeWidth="1dp"
+        <Spinner
+            android:id="@+id/button3"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@drawable/myspinner"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/blue_grey"
+            android:paddingHorizontal="18dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
 
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:layout_marginTop="16dp"
-                    android:paddingHorizontal="18dp"
-                    android:text="Select the Sponsor"
-                    android:backgroundTint="@android:color/transparent"
-                    android:textAlignment="viewStart"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/blue_grey"
-                    android:drawableEnd="@drawable/ic_dropdown_arrow"
-                    app:strokeColor="#E7E7E7"
-                    app:strokeWidth="1dp"
-
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_marginTop="16dp"
-                    android:paddingStart="18dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:background="@drawable/textviewborder"
-                    android:hint="Enter purpose"
-                    android:layout_below="@id/list_item_causes"
-
-                    />
-            </LinearLayout>
-
-        </ScrollView>
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/textviewborder"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Enter purpose"
+            android:paddingStart="18dp"
+            android:paddingHorizontal="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button3" />
 
         <TextView
+            android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="#222b45"
-            android:lineSpacingExtra="6sp"
-            android:gravity="center"
-            android:fontFamily="@font/poppins_regular"
-            android:textColorLink="@android:color/holo_blue_bright"
             android:layout_marginHorizontal="14dp"
             android:layout_marginVertical="32dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:lineSpacingExtra="6sp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
             android:text="@string/tlc"
-            />
+            android:textColor="#222b45"
+            android:textColorLink="@android:color/holo_blue_bright"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:text="@string/Continue"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
             android:backgroundTint="#0bb8bb"
-            android:textAllCaps="false"
             android:fontFamily="@font/poppins_medium"
             android:onClick="movetoscholar2"
-            android:layout_marginHorizontal="12dp"
+            android:text="@string/Continue"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
-            />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_backdrop_height"
+        android:fitsSystemWindows="true"
+        android:background="@color/colorWhite"
+        android:theme="@style/AppTheme">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="24dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-    </LinearLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@mipmap/small_left"
+                app:layout_scrollFlags="scroll|enterAlways" />
 
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
