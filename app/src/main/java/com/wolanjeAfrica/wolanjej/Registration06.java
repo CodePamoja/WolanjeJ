@@ -28,8 +28,8 @@ public class Registration06 extends AppCompatActivity {
 
     ProgressDialog prgBar;
     private JSONObject sessionID = null;
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_PHONE = "com.example.wolanjej.PHONE";
+    public static final String EXTRA_SESSION = "com.wolanjeAfrica.wolanjej.SESSION";
+    public static final String EXTRA_PHONE = "com.wolanjeAfrica.wolanjej.PHONE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
