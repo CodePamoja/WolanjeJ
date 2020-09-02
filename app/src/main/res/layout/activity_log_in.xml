@@ -8,6 +8,7 @@
     tools:context=".LogIn">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -16,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <LinearLayout
                 android:id="@+id/LoginNetAlert"
                 android:layout_width="match_parent"
@@ -23,9 +25,8 @@
                 android:background="@color/colorConcRed"
                 android:orientation="horizontal"
                 android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_anchorGravity="top|center"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
@@ -45,13 +46,12 @@
                     android:layout_marginStart="180dp"
                     android:src="@drawable/ic_close_white" />
             </LinearLayout>
-
             <ImageView
                 android:id="@+id/include3"
                 android:layout_width="185dp"
                 android:layout_height="172dp"
+                android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="17dp"
                 android:src="@mipmap/group_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -62,8 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
-                android:orientation="vertical"
                 android:layout_marginTop="75dp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/include3">
@@ -72,18 +72,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_semi_bold"
                     android:text="Log in to your account"
                     android:textAlignment="center"
-                    android:layout_marginTop="10dp"
                     android:textColor="@color/colorMidnight"
                     android:textSize="22sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_horizontal">
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
@@ -91,11 +91,11 @@
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginVertical="16dp"
                         android:elevation="12dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="8dp"
                         android:outlineAmbientShadowColor="@color/colorBlack"
                         android:paddingHorizontal="12dp"
-                        android:paddingVertical="12dp">
+                        android:paddingVertical="12dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -148,12 +148,12 @@
                                 android:layout_marginHorizontal="12dp"
                                 android:fontFamily="@font/poppins_medium"
                                 android:onClick="FogtPssd"
+                                android:text="Forgot Password?"
+                                android:textAlignment="textStart"
                                 android:textAllCaps="false"
                                 android:textColor="@color/warm_purple"
                                 android:textSize="14sp"
-                                android:textStyle="normal"
-                                android:text="Forgot Password?"
-                                android:textAlignment="textStart" />
+                                android:textStyle="normal" />
 
                             <Button
                                 android:id="@+id/btn_LogIn"

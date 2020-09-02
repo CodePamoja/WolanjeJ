@@ -135,6 +135,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 transferMoney.setBackgroundColor(getResources().getColor(R.color.colorAccent));
                 transferMoney.setTextColor(getResources().getColor(R.color.colorWhite));
                 Intent intent = new Intent(getApplicationContext(), MainTransfer36.class);
+                intent.putExtra("Class", "Home");
                 startActivity(intent);
 
             }
@@ -158,6 +159,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainTransfer36.class);
+                intent.putExtra("Class", "Home");
                 startActivity(intent);
             }
         });
@@ -491,6 +493,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
                         Intent intent = new Intent(v.getContext(), MainTransfer36.class);
+                        intent.putExtra("Class", "Home");
                         startActivity(intent);
                     }
                 }

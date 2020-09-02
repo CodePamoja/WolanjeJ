@@ -88,7 +88,9 @@ public class AllBillsFragment extends Fragment {
                     textView1.setVisibility(View.VISIBLE);
                 }
                 for (ListUserBills mListUserBills : listUserBills) {
-                    String ProductName = mListUserBills.getProduct_name().toString();
+                    String amount = mListUserBills.getAmount();
+                    Log.e(TAG, "onResponse: "+amount );
+                    String ProductName = mListUserBills.getProduct_name();
                     String date = mListUserBills.getCreated_on();
                     switch (ProductName) {
                         case "MPESA_B2C":

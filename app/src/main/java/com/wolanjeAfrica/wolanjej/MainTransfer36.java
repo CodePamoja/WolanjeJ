@@ -1,21 +1,20 @@
 package com.wolanjeAfrica.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+
 public class MainTransfer36 extends AppCompatActivity {
 
     private CardView walletCard, bankCard, phoneCard;
-
-
+    private String ClassName;
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
 
@@ -23,11 +22,19 @@ public class MainTransfer36 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_transfer36);
+
+        this.ClassName = getIntent().getStringExtra("Class");
+
+        switch (ClassName) {
+            case "Home":
+                break;
+            case "HomeTwo":
+                break;
+        }
         setToolBar();
         setActionBarColor();
 
-
-        walletCard = (CardView)findViewById(R.id.transfer_to_wallet);
+        walletCard = (CardView) findViewById(R.id.transfer_to_wallet);
         walletCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,7 +42,7 @@ public class MainTransfer36 extends AppCompatActivity {
             }
         });
 
-        bankCard = (CardView)findViewById(R.id.transfer_to_bank);
+        bankCard = (CardView) findViewById(R.id.transfer_to_bank);
         bankCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +50,7 @@ public class MainTransfer36 extends AppCompatActivity {
             }
         });
 
-        phoneCard = (CardView)findViewById(R.id.transfer_to_phone);
+        phoneCard = (CardView) findViewById(R.id.transfer_to_phone);
         phoneCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,20 +61,20 @@ public class MainTransfer36 extends AppCompatActivity {
 
     public void toWallet() {
         Intent move = new Intent(this, TransferToWalletSingle37.class);
-        move.putExtra("Class","MainTransfer36");
+        move.putExtra("Class", "MainTransfer36");
         startActivity(move);
     }
 
     public void toBank() {
         Intent move = new Intent(this, TransferToBank44.class);
-        move.putExtra("Class","MainTransfer36");
+        move.putExtra("Class", "MainTransfer36");
         startActivity(move);
     }
 
     public void toPhone() {
 //        Log.e("sessionID to mpesa",sessionID);
-        Intent move = new Intent(this,TransferToPhone50.class);
-        move.putExtra("Class","MainTransfer36");
+        Intent move = new Intent(this, TransferToPhone50.class);
+        move.putExtra("Class", "MainTransfer36");
         startActivity(move);
     }
 
@@ -75,18 +82,30 @@ public class MainTransfer36 extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,Home.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        movetoLogo.putExtra("Class","MainTransfer36");
-                        startActivity(movetoLogo);
+                        switch (ClassName) {
+                            case "Home":
+                                Intent movetoLogo = new Intent(getApplicationContext(), Home.class);
+                                movetoLogo.putExtra("Class", "MainTransfer36");
+                                startActivity(movetoLogo);
+                                break;
+                            case "HomeTwo":
+                                Intent movetohm2 = new Intent(getApplicationContext(), HomeTwo.class);
+                                movetohm2.putExtra("Class", "MainTransfer36");
+                                startActivity(movetohm2);
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
         );
 
     }
+
     private void setActionBarColor() {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);

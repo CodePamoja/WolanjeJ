@@ -1,92 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-    >
+    tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/home_home_two"
-            android:title="@string/home"
             android:icon="@drawable/ic_homeh"
+            android:title="@string/home"
 
             />
         <item
             android:id="@+id/my_e_wallet_home_two"
-            android:title="@string/my_e_wallets"
             android:icon="@drawable/ic_profile"
-            android:onClick="maketoast"
+            android:onClick="OpenWalletMHome2"
+            android:title="@string/my_e_wallets"
 
             />
         <item
             android:id="@+id/billing_home_two"
-            android:title="Bulk Payment"
             android:icon="@drawable/ic_receipt_list_43"
+            android:title="Bulk Payment"
 
             />
         <item
             android:id="@+id/services_home_two"
-            android:title="@string/services"
             android:icon="@drawable/ic_walleth"
-            android:onClick="opensevrvices"
-            />
+            android:title="@string/services" />
 
         <item
             android:id="@+id/income_nav_home_two"
-            android:title="@string/income_details"
             android:icon="@drawable/ic_incomed"
-            android:onClick="openIncomingDetails"
+            android:title="@string/income_details"
 
             />
         <item
             android:id="@+id/reports_home_two"
-            android:title="@string/reports"
             android:icon="@drawable/ic_reports"
+            android:title="@string/reports"
 
             />
         <item
             android:id="@+id/learn_hub_home_two"
-            android:title="@string/learning_hub"
             android:icon="@drawable/ic_fill_1"
-            android:onClick="openLearningHub"
+            android:title="@string/learning_hub"
 
             />
         <item
             android:id="@+id/profile_home_two"
-            android:title="@string/profile"
             android:icon="@drawable/ic_profile"
-            android:onClick="openProfile"
-            />
+            android:title="@string/profile" />
         <item
             android:id="@+id/not_home_two"
-            android:title="@string/notifications"
             android:icon="@drawable/ic_notification"
-            android:onClick="openNotifications52"
-            />
+            android:title="@string/notifications" />
         <item
             android:id="@+id/settings_nav_home_two"
-            android:title="@string/settings"
             android:icon="@drawable/ic_settingsh"
-            android:onClick="movetoSettings48"
-            />
+            android:title="@string/settings" />
         <item
             android:id="@+id/switch_account_nav_home_two"
-            android:title="@string/switch_account"
             android:icon="@drawable/ic_switchaccount"
-            android:onClick="chooseAnotherAccount"
-
-            />
+            android:title="@string/switch_account" />
         <item
-
-            android:title="Logout"
-
-
-            />
+            android:title="Logout" />
 
 
     </group>
-
-
 
 
 </menu>
