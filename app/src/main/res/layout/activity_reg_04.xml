@@ -86,6 +86,7 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:layout_centerVertical="true"
+                            android:onClick="uploadid"
                             android:background="@drawable/splash3"
                             android:src="@drawable/ic_baseline_attach_file_24" />
 
@@ -102,12 +103,21 @@
                             android:textSize="15sp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/uploadFile1Reg04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:background="@drawable/backgroundblue"
                             android:src="@drawable/align_top_24" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_discardFile1Reg4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_group_x"
+                            android:visibility="gone" />
 
                     </RelativeLayout>
 
@@ -130,6 +140,7 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:background="@drawable/splash3"
+                            android:onClick="uploadid"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_baseline_attach_file_24" />
 
@@ -146,12 +157,21 @@
                             android:textSize="15sp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/uploadFile2Reg04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:background="@drawable/backgroundblue"
                             android:src="@drawable/align_top_24" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_discardFile2Reg4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_group_x"
+                            android:visibility="gone" />
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -184,6 +204,7 @@ CEO or Board members"
                             android:id="@+id/uploadbtn2"
                             android:layout_width="36dp"
                             android:layout_height="36dp"
+                            android:onClick="uploadid"
                             android:layout_centerVertical="true"
                             android:background="@drawable/splash3"
                             android:src="@drawable/ic_baseline_attach_file_24" />
@@ -201,12 +222,21 @@ CEO or Board members"
                             android:textSize="15sp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/uploadFile3Reg04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:background="@drawable/backgroundblue"
                             android:src="@drawable/align_top_24" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_discardFile3Reg4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_group_x"
+                            android:visibility="gone" />
 
 
                     </RelativeLayout>
@@ -220,21 +250,13 @@ CEO or Board members"
                     android:layout_marginHorizontal="50dp">
 
                     <com.google.android.material.checkbox.MaterialCheckBox
-                        android:id="@+id/mycheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
+                        android:id="@+id/mycheckboxReg04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/mycheckbox"
-                        android:autoLink="web"
-                        android:fontFamily="@font/poppins_regular"
-                        android:lineSpacingExtra="4sp"
-                        android:linksClickable="true"
-                        android:text="I have read and agree to the Terms &amp; Conditions "
-                        android:textColor="#222b45"
-                        android:textSize="12sp" />
+                        android:theme="@style/colored_checkbox"
+                        android:text="I have read and agree to the Terms &amp; Conditions ">
+
+                    </com.google.android.material.checkbox.MaterialCheckBox>
                 </RelativeLayout>
 
                 <TextView
@@ -244,9 +266,9 @@ CEO or Board members"
                     android:layout_above="@id/contbtn"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="43dp"
-                    android:layout_marginTop="114dp"
+                    android:layout_marginTop="100dp"
                     android:layout_marginEnd="40dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="50dp"
                     android:lineSpacingExtra="6sp"
                     android:text="@string/tlc"
                     android:textColor="#222b45"

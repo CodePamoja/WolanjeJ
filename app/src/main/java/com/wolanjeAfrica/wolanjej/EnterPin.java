@@ -67,6 +67,7 @@ public class EnterPin extends AppCompatActivity {
     private Transactions transactions;
     private String userId;
     private Realm realm;
+    private  String userRole;
     private Collection<Transactions> transactionsList = new LinkedList<>();
 
     public EnterPin() {
@@ -80,11 +81,19 @@ public class EnterPin extends AppCompatActivity {
 
         Realm.init(this);
 
+        realm =Realm.getInstance(DbMigrations.getDefaultInstance());
+
+
+
         //SharedPreferences values for login eg token
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.userId = pref.getString("userDbId", null);
         progressBar = (ProgressBar) findViewById(R.id.progressBarEnterPin);
+
+        userRole = realm.where(User.class)
+                .equalTo("id", Integer.parseInt(userId))
+                .findFirst().getRole();
 
         text1 = findViewById(R.id.pinValue1);
         text2 = findViewById(R.id.pinValue2);
@@ -267,13 +276,13 @@ public class EnterPin extends AppCompatActivity {
                         }
                         break;
                     case "Education_2":
-                        if (ValidateUserPin(fullPin)){
+                        if (ValidateUserPin(fullPin)) {
                             intent = new Intent(getApplicationContext(), Education1.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("Class", "EnterPin");
                             startActivity(intent);
                             finish();
-                        }else {
+                        } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }
                         break;
@@ -284,7 +293,7 @@ public class EnterPin extends AppCompatActivity {
                             for (Transactions transactions : transactionsList) {
                                 new Transfer2(fullPin, transactions).execute();
                             }
-                        }else {
+                        } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }
                         break;
@@ -292,14 +301,14 @@ public class EnterPin extends AppCompatActivity {
                         if (ValidateUserPin(fullPin)) {
                             intent = new Intent(getApplicationContext(), BookBus09.class);
                             startActivity(intent);
-                        }else{
+                        } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case "TransferToWalletSingle37":
                         if (ValidateUserPin(fullPin)) {
                             new Transfer(fullPin, "WALLET_XFER", phoneNumber, phoneNumber).execute();
-                        }else{
+                        } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }
                         break;
@@ -323,14 +332,14 @@ public class EnterPin extends AppCompatActivity {
                                 default:
                                     System.out.println("Not an airtel, safaricom or telkom");
                             }
-                        }else {
+                        } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case "TransferToBank44":
                         if (ValidateUserPin(fullPin)) {
                             new Transfer(fullPin, "BANK_XFER", accNumber, phoneNumber).execute();
-                        }else{
+                        } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }
                         break;
@@ -356,7 +365,7 @@ public class EnterPin extends AppCompatActivity {
                                     System.out.println("Not an airtel, safaricom or telkom");
                             }
                             break;
-                        }else{
+                        } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }
                 }
@@ -599,7 +608,6 @@ public class EnterPin extends AppCompatActivity {
     }
 
     private void ShowDialogSuccess() {
-
         if (!((Activity) context).isFinishing()) {
             //show dialog
             LayoutInflater inflater = LayoutInflater.from(this);
@@ -612,12 +620,34 @@ public class EnterPin extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("Class", "EnterPin");
-                    startActivity(intent);
-                    finish();
-                    alertDialog.dismiss();
+                    Intent intent;
+                    switch (userRole){
+                        case "1":
+                            intent = new Intent(getApplicationContext(), HomeTwo.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("Class", "EnterPin");
+                            startActivity(intent);
+                            finish();
+                            alertDialog.dismiss();
+                            break;
+                        case "0":
+                            intent = new Intent(getApplicationContext(), Home.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("Class", "EnterPin");
+                            startActivity(intent);
+                            finish();
+                            alertDialog.dismiss();
+                            break;
+                        default:
+                            intent = new Intent(getApplicationContext(), LogIn.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("Class", "EnterPin");
+                            startActivity(intent);
+                            finish();
+                            alertDialog.dismiss();
+                            finish();
+                            break;
+                    }
                 }
             });
             TextView textView = view.findViewById(R.id.refNumberSuccess);
@@ -642,12 +672,34 @@ public class EnterPin extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("Class", "EnterPin");
-                    startActivity(intent);
-                    finish();
-                    alertDialog.dismiss();
+                    Intent intent;
+                    switch (userRole){
+                        case "1":
+                            intent = new Intent(getApplicationContext(), HomeTwo.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("Class", "EnterPin");
+                            startActivity(intent);
+                            finish();
+                            alertDialog.dismiss();
+                            break;
+                        case "0":
+                            intent = new Intent(getApplicationContext(), Home.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("Class", "EnterPin");
+                            startActivity(intent);
+                            finish();
+                            alertDialog.dismiss();
+                            break;
+                        default:
+                            intent = new Intent(getApplicationContext(), LogIn.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("Class", "EnterPin");
+                            startActivity(intent);
+                            finish();
+                            alertDialog.dismiss();
+                            finish();
+                            break;
+                    }
                 }
             });
             TextView textView = view.findViewById(R.id.amount_sent_note);

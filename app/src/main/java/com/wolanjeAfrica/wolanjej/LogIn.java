@@ -67,6 +67,7 @@ public class LogIn extends AppCompatActivity {
     private String Gender;
     private String phoneNumber;
     private String password;
+    private String userRole;
     private SharedPreferences pref;
     public Base64Encoder baseResult = new Base64Encoder();
 
@@ -258,8 +259,9 @@ public class LogIn extends AppCompatActivity {
                             editor.putString("user_name", sessionID.getJSONObject("session").getString("user_name"));
                             editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
                             System.out.println(TAG + sessionID.getJSONObject("session").getString("agentno"));
+                            Log.e(TAG, "run: " + sessionID.getJSONObject("session").toString());
                             editor.apply();
-
+                            userRole = sessionID.getJSONObject("session").getString("role");
                             /*
                              write user to database
                              */
@@ -278,9 +280,11 @@ public class LogIn extends AppCompatActivity {
                                     user1.setPassword(generateHashedPassword(pin));
                                     user1.setGender(Gender);
                                     user1.setPhoneNumber(phone);
+                                    user1.setRole(userRole);
+
                                 }, () -> {
                                     //success sign up
-                                    getUserId(phone, pin);
+                                    getUserId(phone, pin, userRole);
 
                                 }, error -> Toast.makeText(LogIn.this, "Experienced an Error" + error, LENGTH_SHORT).show());// error in sign up
                                 Looper.loop();
@@ -288,7 +292,7 @@ public class LogIn extends AppCompatActivity {
                                 finish();
                             } else {
                                 //getUserId and login
-                                getUserId(phone, pin);
+                                getUserId(phone, pin, userRole);
 
                             }
 
@@ -328,12 +332,13 @@ public class LogIn extends AppCompatActivity {
         }
     }
 
-    private void getUserId(String phone, String pin) {
+    private void getUserId(String phone, String pin, String userRole) {
         User user = realm.where(User.class).equalTo("phoneNumber", phone)
                 .findFirst();
         if (user != null) {
             String password = user.getPassword();
-            if (password.equals(generateHashedPassword(pin))) {
+            String role = user.getRole();
+            if (password.equals(generateHashedPassword(pin)) && role != null) {
                 String userId = String.valueOf(user.getId());
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
@@ -345,12 +350,13 @@ public class LogIn extends AppCompatActivity {
             } else {
                 realm.beginTransaction();
                 user.setPassword(generateHashedPassword(pin));
+                user.setRole(userRole);
                 realm.commitTransaction();
                 Intent intent = new Intent(LogIn.this, LinkAccount11.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
-        }else {
+        } else {
             Toast.makeText(this, "user is null", LENGTH_SHORT).show();
         }
     }

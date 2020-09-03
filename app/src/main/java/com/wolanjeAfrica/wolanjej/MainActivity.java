@@ -50,7 +50,5 @@ public class MainActivity extends AppCompatActivity {
         Intent move1 = new Intent(this, LogIn.class);
         startActivity(move1);
         finish();
-
-
     }
 }

@@ -15,15 +15,18 @@ public class DbMigrations implements RealmMigration {
             schema.get("user")
                     .addField("location", String.class);
             oldVersion++;
-
-
+        }
+        if (oldVersion == 1) {
+            schema.get("user")
+                    .addField("role", String.class);
+            oldVersion++;
         }
 
     }
 
     @Override
     public boolean equals(@Nullable Object obj) {
-        return obj instanceof DbMigrations ;
+        return obj instanceof DbMigrations;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class DbMigrations implements RealmMigration {
     //no db migrations yet
     public static RealmConfiguration getDefaultInstance() {
         return new RealmConfiguration.Builder()
-                .schemaVersion(1)
+                .schemaVersion(2)
                 .migration(new DbMigrations())
                 .build();
     }

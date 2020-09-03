@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -28,16 +29,16 @@ import com.wolanjeAfrica.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
 
 import java.util.ArrayList;
 
-public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, View.OnClickListener {
 
 
     private DrawerLayout drawer;
     private Toolbar toolbar;
-    private MaterialCardView materialCardView;
+    private Button transfer_money_button_hm2;
+    private MaterialCardView materialCardView, materialCardView1;
     private BottomSheetDialog bottomSheetDialog;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,27 +46,15 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
         toolbar = findViewById(R.id.toolbarhome2);
         drawer = findViewById(R.id.drawer_layout_home_two);
-
+        transfer_money_button_hm2 = findViewById(R.id.transfer_money_button_hm2);transfer_money_button_hm2.setOnClickListener(this);
+        materialCardView = (MaterialCardView)findViewById(R.id.loanscardHomeTwo);materialCardView.setOnClickListener(this);
+        materialCardView1 = (MaterialCardView)findViewById(R.id.card1_home_two);materialCardView1.setOnClickListener(this);
         setToolBar();
 
         transferListDetails();
-        onClickEvents();
     }
 
-    private void onClickEvents() {
 
-        materialCardView = (MaterialCardView)findViewById(R.id.loanscardHomeTwo);
-        materialCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeTwo.this, MainTransfer36.class);
-                intent.putExtra("Class", "HomeTwo");
-                startActivity(intent);
-            }
-        });
-
-
-    }
 
     private void setToolBar() {
         setSupportActionBar(toolbar);
@@ -307,4 +296,21 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     }
 
 
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()){
+            case R.id.transfer_money_button_hm2:
+            case R.id.loanscardHomeTwo:
+                intent = new Intent(HomeTwo.this, MainTransfer36.class);
+                startActivity(intent);
+                break;
+            case R.id.card1_home_two:
+                intent = new Intent(HomeTwo.this, BulkPaymentsMain.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+    }
 }

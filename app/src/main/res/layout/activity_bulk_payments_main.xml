@@ -1,116 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BulkPaymentsMain"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:theme="@style/AppTheme"
+    tools:context=".BulkPaymentsMain">
+
 
     <LinearLayout
+        android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="wrap_content"
         android:background="@color/color_Dark_Blue"
-        android:orientation="vertical">
-        <include layout="@layout/toolbarwithout2"/>
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/toolbarwithout2" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="#ffffff"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Bulk Payment"
-            />
+            android:textColor="#ffffff"
+            android:textSize="28sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/payrollcard"
-            android:layout_width="98dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="26dp"
-            android:backgroundTint="#912f91"
-            android:background="@drawable/curvedsplash"
-            >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_taxipay"/>
-            <TextView
-                style="@style/TextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="20dp"
-                android:text="Payroll"
-                />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/payrollcard"
+        android:layout_width="98dp"
+        android:layout_height="114dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/curvedsplash"
+        android:backgroundTint="#912f91"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/Airtime_card"
-            android:layout_width="98dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="20dp"
-            android:backgroundTint="#cf345a"
-            android:background="@drawable/curvedsplash">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/img_blp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_phoneg"/>
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
+                android:src="@drawable/ic_taxipay" />
 
             <TextView
                 style="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_below="@+id/img_blp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
                 android:layout_gravity="center_vertical"
-                android:text="Buy Airtime"
-                />
-        </com.google.android.material.card.MaterialCardView>
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:text="Payroll" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/PayBillCard"
-            android:layout_width="98dp"
-            android:layout_height="114dp"
-            android:layout_marginStart="20dp"
-            android:backgroundTint="#479e3e"
-            android:background="@drawable/curvedsplash"
-            >
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/Airtime_card"
+        android:layout_width="98dp"
+        android:layout_height="114dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/curvedsplash"
+        android:backgroundTint="#cf345a"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintStart_toEndOf="@+id/payrollcard"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/img_blp2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_paybill"/>
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
+                android:src="@drawable/ic_phoneg" />
+
+            <TextView
+                style="@style/TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_blp2"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:text="Buy Airtime" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/PayBillCard"
+        android:layout_width="98dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/curvedsplash"
+        android:backgroundTint="#479e3e"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Airtime_card"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_blp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
+                android:src="@drawable/ic_paybill" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#ffffff"
-                android:lineSpacingExtra="2sp"
+                android:layout_below="@+id/img_blp3"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
                 android:gravity="center_horizontal"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center_vertical"
+                android:lineSpacingExtra="2sp"
                 android:text="Pay Bill"
-                />
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-</LinearLayout>
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
