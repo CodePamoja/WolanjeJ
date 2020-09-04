@@ -1,5 +1,6 @@
 package com.wolanjeAfrica.wolanjej;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -8,11 +9,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class Reg_04 extends AppCompatActivity implements View.OnClickListener {
     private ImageView imageView, imageView2, imageView3, imageView4, imageView5, imageView6;
     private Intent myintent;
     private TextView tx;
+    private String path;
     private Toolbar tb;
     private MaterialCheckBox materialCheckBox;
     private String CheckBoxl;
@@ -48,10 +50,11 @@ public class Reg_04 extends AppCompatActivity implements View.OnClickListener {
         imageView4 = findViewById(R.id.img_discardFile2Reg4);
         imageView5 = findViewById(R.id.uploadFile3Reg04);
         imageView6 = findViewById(R.id.img_discardFile3Reg4);
-        materialCheckBox = findViewById(R.id.mycheckboxReg04);materialCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked){
+        materialCheckBox = findViewById(R.id.mycheckboxReg04);
+        materialCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
                 Reg_04.this.CheckBoxl = "1";
-            }else {
+            } else {
                 Reg_04.this.CheckBoxl = null;
             }
         });
@@ -85,7 +88,28 @@ public class Reg_04 extends AppCompatActivity implements View.OnClickListener {
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.blue_grey));
     }
 
-    public void uploadid(View view) {
+    public void uploadCetr(View view) {
+        uploadid();
+        pathCertificate = path;
+        imageView.setVisibility(View.INVISIBLE);
+        imageView2.setVisibility(View.VISIBLE);
+    }
+
+    public void uploadSigned(View view) {
+        uploadid();
+        pathSignedOffAgreement = path;
+        imageView3.setVisibility(View.INVISIBLE);
+        imageView4.setVisibility(View.VISIBLE);
+    }
+
+    public void uploadPin(View view) {
+        uploadid();
+        pathKraPin = path;
+        imageView5.setVisibility(View.INVISIBLE);
+        imageView6.setVisibility(View.VISIBLE);
+    }
+
+    public void uploadid() {
         myintent = new Intent(Intent.ACTION_GET_CONTENT);
         myintent.setType("*/*");
         myintent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -112,9 +136,7 @@ public class Reg_04 extends AppCompatActivity implements View.OnClickListener {
                     if (uri != null) {
                         Log.d(TAG, "File Uri: " + uri.toString());
                         // Get the path
-                        pathKraPin = getPath(uri);
-                        pathCertificate = getPath(uri);
-                        pathSignedOffAgreement = getPath(uri);
+                        path = getPath(uri);
                         //TODO: COLLECT EACH FILE SEPARATELY
                         Log.d(TAG, "File Path: " + pathCertificate + ":" + pathSignedOffAgreement + ":" + pathKraPin);
                         // Get the file instance
@@ -148,22 +170,70 @@ public class Reg_04 extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void movetoLogin(View view) {
-        if (pathCertificate == null || pathSignedOffAgreement == null || pathKraPin == null) {
-            Toast.makeText(this, "please provide all details", Toast.LENGTH_SHORT).show();
+        if (pathCertificate == null) {
+            Toast.makeText(this, "Certificate of Incorporation Missing", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (CheckBoxl == null){
-            Toast.makeText(this, "You must Agree to Terms & Conditions", Toast.LENGTH_SHORT).show();
+        if (pathKraPin == null) {
+            Toast.makeText(this, "Signed Of a Agreement Missing", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (pathSignedOffAgreement == null) {
+            Toast.makeText(this, "KRA Pin Certificate Missing", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (CheckBoxl == null) {
+            Toast.makeText(this, "please Agree to Terms & Conditions", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        /*
+         perform async
+         */
+        SuccessSignUp();
+
         SharedPreferences preferences = getApplicationContext().getSharedPreferences("BusinessReg", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.apply();
+    }
 
-        /*
-         perform async
-         */
+    private void SuccessSignUp() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.succes_signup_dialog, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        ImageButton btn = view.findViewById(R.id.btn_closeSuccess);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                Intent intent = new Intent(Reg_04.this, HomeTwo.class);
+                startActivity(intent);
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    private void UnSuccessfulSignUp() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.unsuccessful_sign_up_dialog, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        ImageButton btn = view.findViewById(R.id.btn_closeUnSuccess);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                Intent intent = new Intent(Reg_04.this, Registration05.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        alertDialog.show();
     }
 
     @Override

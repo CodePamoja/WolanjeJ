@@ -86,18 +86,18 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:layout_centerVertical="true"
-                            android:onClick="uploadid"
                             android:background="@drawable/splash3"
+                            android:onClick="uploadCetr"
                             android:src="@drawable/ic_baseline_attach_file_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="9dp"
                             android:layout_toRightOf="@id/uploadbtn"
                             android:fontFamily="@font/poppins_regular"
                             android:lineSpacingExtra="7sp"
-                            android:layout_marginStart="9dp"
                             android:text="Certificate of incorporation"
                             android:textColor="#9c7bfc"
                             android:textSize="15sp" />
@@ -110,6 +110,7 @@
                             android:layout_centerVertical="true"
                             android:background="@drawable/backgroundblue"
                             android:src="@drawable/align_top_24" />
+
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/img_discardFile1Reg4"
                             android:layout_width="wrap_content"
@@ -120,7 +121,6 @@
                             android:visibility="gone" />
 
                     </RelativeLayout>
-
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -139,19 +139,19 @@
                             android:id="@+id/uploadbtn1"
                             android:layout_width="36dp"
                             android:layout_height="36dp"
-                            android:background="@drawable/splash3"
-                            android:onClick="uploadid"
                             android:layout_centerVertical="true"
+                            android:background="@drawable/splash3"
+                            android:onClick="uploadSigned"
                             android:src="@drawable/ic_baseline_attach_file_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="9dp"
                             android:layout_toRightOf="@id/uploadbtn1"
                             android:fontFamily="@font/poppins_regular"
                             android:lineSpacingExtra="7sp"
-                            android:layout_marginStart="9dp"
                             android:text="Signed off agreement"
                             android:textColor="#9c7bfc"
                             android:textSize="15sp" />
@@ -164,6 +164,7 @@
                             android:layout_centerVertical="true"
                             android:background="@drawable/backgroundblue"
                             android:src="@drawable/align_top_24" />
+
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/img_discardFile2Reg4"
                             android:layout_width="wrap_content"
@@ -204,19 +205,19 @@ CEO or Board members"
                             android:id="@+id/uploadbtn2"
                             android:layout_width="36dp"
                             android:layout_height="36dp"
-                            android:onClick="uploadid"
                             android:layout_centerVertical="true"
                             android:background="@drawable/splash3"
+                            android:onClick="uploadPin"
                             android:src="@drawable/ic_baseline_attach_file_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="9dp"
                             android:layout_toRightOf="@id/uploadbtn2"
                             android:fontFamily="@font/poppins_regular"
                             android:lineSpacingExtra="7sp"
-                            android:layout_marginStart="9dp"
                             android:text="KRA PIN Certificate"
                             android:textColor="#9c7bfc"
                             android:textSize="15sp" />
@@ -229,6 +230,7 @@ CEO or Board members"
                             android:layout_centerVertical="true"
                             android:background="@drawable/backgroundblue"
                             android:src="@drawable/align_top_24" />
+
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/img_discardFile3Reg4"
                             android:layout_width="wrap_content"
@@ -246,15 +248,15 @@ CEO or Board members"
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginHorizontal="50dp">
+                    android:layout_marginHorizontal="50dp"
+                    android:layout_marginTop="24dp">
 
                     <com.google.android.material.checkbox.MaterialCheckBox
                         android:id="@+id/mycheckboxReg04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:theme="@style/colored_checkbox"
-                        android:text="I have read and agree to the Terms &amp; Conditions ">
+                        android:text="I have read and agree to the Terms &amp; Conditions "
+                        android:theme="@style/colored_checkbox">
 
                     </com.google.android.material.checkbox.MaterialCheckBox>
                 </RelativeLayout>
@@ -302,14 +304,14 @@ CEO or Board members"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:backgroundTint="@color/warm_purple"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="0dp"
-            android:textAllCaps="false"
+            android:backgroundTint="@color/warm_purple"
             android:fontFamily="@font/poppins_regular"
             android:lineSpacingExtra="9sp"
             android:onClick="movetoLogin"
             android:text="Continue"
+            android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="15sp" />
     </RelativeLayout>

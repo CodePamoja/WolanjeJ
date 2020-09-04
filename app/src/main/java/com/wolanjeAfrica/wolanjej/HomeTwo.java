@@ -143,11 +143,8 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        drawer.closeDrawer(GravityCompat.START);
-                        Intent intent = new Intent(getApplicationContext(), Ewallet2_1.class);
-                        startActivity(intent);
                         bottomSheetDialog.dismiss();
+                        openEwalletPopUp();
 
                     }
                 }
@@ -156,8 +153,8 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        drawer.closeDrawer(GravityCompat.START);
-                        bottomSheetDialog.hide();
+                        bottomSheetDialog.dismiss();
+                        OpenWithdrawBottomSheet();
                     }
                 }
         );
@@ -166,9 +163,8 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
                         Intent intent = new Intent(v.getContext(), MainTransfer36.class);
-//                        intent.putExtra(EXTRA_SESSION, sessionID);
-//                        intent.putExtra(EXTRA_AGENTNO, AGENTNO);
                         intent.putExtra("Class", "Home");
                         startActivity(intent);
                     }
@@ -178,19 +174,13 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
                         Intent intent = new Intent(v.getContext(), TransactionView.class);
                         startActivity(intent);
                     }
                 }
         );
-        bottomSheetViewOpenWalletM.findViewById(R.id.pendingCommCard).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-//                TODO: intent
-
-            }
-        });
+        bottomSheetViewOpenWalletM.findViewById(R.id.pendingCommCard).setVisibility(View.INVISIBLE);
 
 
         if (bottomSheetViewOpenWalletM.getParent() != null) {
@@ -201,6 +191,11 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
     }
 
+    private void OpenWithdrawBottomSheet() {
+    }
+
+    private void openEwalletPopUp() {
+    }
 
 
     public ArrayList<Model> getMylist() {

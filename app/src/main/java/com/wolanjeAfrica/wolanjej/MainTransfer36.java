@@ -80,7 +80,7 @@ public class MainTransfer36 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (UserRole.equals("0")){
+                        if (UserRole.equals("1")){
                             Intent movetohm2 = new Intent(getApplicationContext(), HomeTwo.class);
                             movetohm2.putExtra("Class", "MainTransfer36");
                             startActivity(movetohm2);

@@ -755,11 +755,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        drawer.closeDrawer(GravityCompat.START);
-                        Intent intent = new Intent(getApplicationContext(), Ewallet2_1.class);
-                        startActivity(intent);
                         bottomSheetDialog.dismiss();
+                        openEwalletPopUp();
 
                     }
                 }
@@ -768,8 +765,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        drawer.closeDrawer(GravityCompat.START);
-                        bottomSheetDialog.hide();
+                        bottomSheetDialog.dismiss();
+                        OpenWithdrawBottomSheet();
                     }
                 }
         );
@@ -779,8 +776,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(v.getContext(), MainTransfer36.class);
-//                        intent.putExtra(EXTRA_SESSION, sessionID);
-//                        intent.putExtra(EXTRA_AGENTNO, AGENTNO);
                         intent.putExtra("Class", "Home");
                         startActivity(intent);
                     }
