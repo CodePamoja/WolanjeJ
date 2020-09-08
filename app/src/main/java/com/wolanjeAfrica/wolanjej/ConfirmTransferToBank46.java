@@ -26,10 +26,12 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
     public static final String EXTRA_BRANCHNAME = "com.example.wolanjej.BRANCHNAME";
     public static final String EXTRA_HOLDERNAME = "com.example.wolanjej.HOLDERSNAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
+    public static final String EXTRA_PHONECOMPANY = "com.example.wolanjej.PHONECOMPANY";
     private Button button;
     private EditText text;
     private String accNumber;
     private String phoneNumber;
+    private String phoneProvider;
     private String phoneName;
     private String holderName;
     private String branchName;
@@ -47,7 +49,6 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_transfer_to_bank46);
         setToolBar();
-        setActionBarColor();
 
         //SharedPreferences values for login activity class eg token
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
@@ -55,8 +56,6 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
 
 
         Intent intentExtra = getIntent();
-
-
         this.accNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_ACCOUNTNUMBER);
         this.phoneNumber = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENUMBER);
         this.phoneName = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONENAME);
@@ -65,6 +64,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         this.message = intentExtra.getStringExtra(TransferToBank44.EXTRA_MESSAGE);
         this.branchName = intentExtra.getStringExtra(TransferToBank44.EXTRA_BRANCHNAME);
         this.bankSelected = intentExtra.getStringExtra(TransferToBank44.EXTRA_BANKSELECTED);
+        this.phoneProvider = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONECOMPANY);
 
         tvtext = findViewById(R.id.bankToName);
         tvtext.setText(holderName);
@@ -99,19 +99,6 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         });
     }
 
-    private void setActionBarColor() {
-        Window window = this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-// clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
-    }
 
     private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
@@ -127,6 +114,14 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
                     }
                 }
         );
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     public void movetoPin() {
@@ -140,6 +135,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         move.putExtra(EXTRA_BRANCHNAME, branchName);
         move.putExtra(EXTRA_HOLDERNAME, holderName);
         move.putExtra(EXTRA_PHONENUMBER, phoneNumber);
+        move.putExtra(EXTRA_PHONECOMPANY,phoneProvider);
         startActivity(move);
         finish();
     }

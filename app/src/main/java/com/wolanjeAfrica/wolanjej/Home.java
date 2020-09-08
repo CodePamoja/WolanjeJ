@@ -41,6 +41,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.ApiJsonObjects;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
+import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.models.Model;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.MyAdapter;
@@ -51,8 +52,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -640,7 +639,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             return;
         }
 
-        Map<String, String> map = checkPhoneNo(phoneNumber);
+        Map<String, String> map = CheckPhoneNumber.getInstance().checkPhoneNo(Home.this,phoneNumber);
         for (Map.Entry<String, String> entry : map.entrySet()) {
             key = entry.getKey();
             value = entry.getValue();
@@ -1231,87 +1230,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         models.add(m4);
 
         return models;
-    }
-
-    public Map<String, String> checkPhoneNo(String inputPhone) {
-        String validPhoneNo = "Fasle";
-        Map<String, String> map = new HashMap<>();
-        String safaricom = "^(?:254|\\+254|0)?(7(?:(?:[129][0-9])|(?:0[0-9])|(?:6[8-9])|(?:5[7-9])|(?:4[5-6])|(?:4[8])|(4[0-3]))[0-9]{6})$";
-        String telkom = "^(?:254|\\+254|0)?(7(?:(?:[7][0-9]))[0-9]{6})$";
-        String airtel = "^(?:254|\\+254|0)?(7(?:(?:[3][0-9])|(?:5[0-6])|(?:6[2])|(8[0-9]))[0-9]{6})$";
-        Pattern patt;
-        Matcher match;
-        if (!inputPhone.isEmpty()) {
-            String replPhone1 = inputPhone.trim();
-            String replPhone2 = replPhone1.replaceAll("\\s", "");
-            patt = Pattern.compile(safaricom);
-            match = patt.matcher(replPhone2);
-            if (match.find()) {
-                Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
-                String replPhone3 = "null";
-                phoneCompany = "safaricom";
-                if (replPhone2.startsWith("0")) {
-                    replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                    Log.e("TAG phone starts 0", replPhone3);
-                    validPhoneNo = replPhone3;
-                } else if (replPhone2.startsWith("7")) {
-                    replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                    Log.e("TAG phone starts 7", replPhone3);
-                    validPhoneNo = replPhone3;
-                } else if (replPhone2.startsWith("+")) {
-                    validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                    Log.e("TAG phone number +", validPhoneNo);
-                }
-            } else {
-                patt = Pattern.compile(airtel);
-                match = patt.matcher(replPhone2);
-                if (match.find()) {
-                    Toast.makeText(getApplicationContext(), "Airtel Number", Toast.LENGTH_LONG).show();
-                    String replPhone3 = "null";
-                    phoneCompany = "airtel";
-                    if (replPhone2.startsWith("0")) {
-                        replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                        Log.e("TAG phone starts 0", replPhone3);
-                        validPhoneNo = replPhone3;
-                    } else if (replPhone2.startsWith("7")) {
-                        replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                        Log.e("TAG phone starts 7", replPhone3);
-                        validPhoneNo = replPhone3;
-                    } else if (replPhone2.startsWith("+")) {
-                        validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                        Log.e("TAG phone number +", validPhoneNo);
-                    }
-                } else {
-                    patt = Pattern.compile(telkom);
-                    match = patt.matcher(replPhone2);
-                    if (match.find()) {
-                        Toast.makeText(getApplicationContext(), "Telkom Number", Toast.LENGTH_LONG).show();
-                        String replPhone3 = "null";
-                        phoneCompany = "telkom";
-                        if (replPhone2.startsWith("0")) {
-                            replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                            Log.e("TAG phone starts 0", replPhone3);
-                            validPhoneNo = replPhone3;
-                        } else if (replPhone2.startsWith("7")) {
-                            replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                            Log.e("TAG phone starts 7", replPhone3);
-                            validPhoneNo = replPhone3;
-                        } else if (replPhone2.startsWith("+")) {
-                            validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                            Log.e("TAG phone number +", validPhoneNo);
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
-                        Log.e("TAG phone No not check", replPhone2);
-                    }
-                }
-
-            }
-        } else {
-            Toast.makeText(getApplicationContext(), "Please enter a mobile number ", Toast.LENGTH_LONG).show();
-        }
-        map.put(phoneCompany, validPhoneNo);
-        return map;
     }
 
     private void RetrieveWalletBalance() {

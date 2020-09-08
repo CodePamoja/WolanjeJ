@@ -11,8 +11,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import com.wolanjeAfrica.wolanjej.pagerAdapters.TransactionViewAdapter;
 import com.google.android.material.tabs.TabLayout;
+import com.wolanjeAfrica.wolanjej.pagerAdapters.TransactionViewAdapter;
 
 public class TransactionView extends AppCompatActivity {
 
@@ -27,29 +27,14 @@ public class TransactionView extends AppCompatActivity {
         setContentView(R.layout.activity_transactions_view);
         CreateViewPager(); // init viewpager
         setToolBar(tb);    // init toolbar
-        setActionBarColor();
 
-    }
-
-    private void setActionBarColor() {
-        Window window = this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-// clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
     }
 
     private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
         tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent moveToLogo = new Intent(this,Home.class);
+        final Intent moveToLogo = new Intent(this, Home.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -58,9 +43,19 @@ public class TransactionView extends AppCompatActivity {
                     }
                 }
         );
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
+    // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+    // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
-    private void CreateViewPager(){
+
+    private void CreateViewPager() {
 
         tabLayout = findViewById(R.id.tabLayoutTrans);
         viewPager = findViewById(R.id.transaction_viewPager);
@@ -70,7 +65,7 @@ public class TransactionView extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Received"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final TransactionViewAdapter adapter = new TransactionViewAdapter(getSupportFragmentManager(), this,tabLayout.getTabCount());
+        final TransactionViewAdapter adapter = new TransactionViewAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

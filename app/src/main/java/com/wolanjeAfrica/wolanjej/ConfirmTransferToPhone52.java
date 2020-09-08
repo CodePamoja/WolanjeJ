@@ -17,6 +17,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ConfirmTransferToPhone52 extends AppCompatActivity {
+
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
+    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
+    public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
+    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_PHONEPROVIDER = "com.example.wolanjej.PHONEPROVIDER";
     private Button button;
     private String phoneNumber;
     private String sessionID;
@@ -28,30 +35,25 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
     private String userName;
     private SharedPreferences pref;
 
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
-    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
-    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
-    public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_transfer_to_phone52);
         setToolBar();
-        setActionBarColor();
 
         //SharedPreferences values for login activity class eg token
         pref=getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.userName= pref.getString("user_name", "");
 
+        Intent intentExtra = getIntent();
+
+        this.phoneNumber = intentExtra.getStringExtra(TransferToPhone50.EXTRA_PHONENUMBER);
+        this.phoneName =  intentExtra.getStringExtra(TransferToPhone50.EXTRA_PHONENAME);
+        this.amount =  intentExtra.getStringExtra(TransferToPhone50.EXTRA_AMOUNT);
+        this.phoneProvider =  intentExtra.getStringExtra(TransferToPhone50.EXTRA_PHONECOMPANY);
         //SharedPreferences values for TransferToPhone52 activity class eg token
         pref=getApplication().getSharedPreferences("ConfirmTransferToPhone52", MODE_PRIVATE);
-        this.phoneNumber =  pref.getString("phone", "");
-        this.phoneName =  pref.getString("phoneName", "");
-        this.amount =  pref.getString("amount", "");
-        this.phoneProvider =  pref.getString("phoneCompany", "");
+        pref.edit().clear().apply();
 
         tvtext =  findViewById(R.id.PName);
         tvtext.setText(phoneName);
@@ -86,20 +88,6 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
         });
     }
 
-    private void setActionBarColor() {
-        Window window = this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-// clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
-    }
-
     private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
@@ -114,12 +102,28 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
                     }
                 }
         );
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+    // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+    // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+    // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     public void movetoPin() {
         Intent move = new Intent(this, EnterPin.class);
-        move.putExtra("Class","TransferToPhone50");
+        move.putExtra("Class", "ConfirmTransferToPhone52");
+        move.putExtra(EXTRA_AMOUNT, amount);
+        move.putExtra(EXTRA_PHONEPROVIDER, phoneProvider);
+        move.putExtra(EXTRA_PHONENAME, phoneName);
+        move.putExtra(EXTRA_PHONENUMBER, phoneNumber);
         startActivity(move);
+        finish();
     }
 
     public String dateTime(){

@@ -14,10 +14,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
 
 public class TopupOtherNumber extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] selectNumber = {"Other Number", "My Number"};
@@ -95,6 +95,8 @@ public class TopupOtherNumber extends AppCompatActivity implements AdapterView.O
     }
 
     public void TopUpNumberContinue(View view) {
+        String key = null;
+        String value = null;
         text = findViewById(R.id.amount_layout_other_number);
         String amount = text.getText().toString();
 
@@ -102,8 +104,11 @@ public class TopupOtherNumber extends AppCompatActivity implements AdapterView.O
         String phone = text.getText().toString();
 
         Log.e("TAG phone number check", "button pressed to transfer money" + phone);
-        String phonenumber = changePhoneNo(phone, view);
-        Log.e("TAG phone number last", phonenumber);
+        Map<String, String> map = CheckPhoneNumber.getInstance().checkPhoneNo(TopupOtherNumber.this, phone);
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            key = entry.getKey();
+            value = entry.getValue();
+        }
         if (amount.isEmpty() || phone.isEmpty()) {
             text.requestFocus();
             Toast.makeText(getApplicationContext(), "please provide Amount", Toast.LENGTH_LONG).show();
@@ -113,8 +118,9 @@ public class TopupOtherNumber extends AppCompatActivity implements AdapterView.O
         if (amount != null) {
             if (x >= 10) {
                 if (x <= 70000) {
-                    if (phonenumber != "Fasle") {
-                        movetoPin(phonenumber, amount);
+                    if (value != null && !value.equals("Fasle")) {
+                        Log.e("TAG phone number last", value);
+                        movetoPin(value, amount, key);
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "The Amount is above 70000", Toast.LENGTH_LONG).show();
@@ -129,89 +135,7 @@ public class TopupOtherNumber extends AppCompatActivity implements AdapterView.O
 
     }
 
-    public String changePhoneNo(String inputPhone, View view) {
-        String validPhoneNo = "Fasle";
-        String safaricom = "^(?:254|\\+254|0)?(7(?:(?:[129][0-9])|(?:0[0-9])|(?:6[8-9])|(?:5[7-9])|(?:4[5-6])|(?:4[8])|(4[0-3]))[0-9]{6})$";
-        String telkom = "^(?:254|\\+254|0)?(7(?:(?:[7][0-9]))[0-9]{6})$";
-        String airtel = "^(?:254|\\+254|0)?(7(?:(?:[3][0-9])|(?:5[0-6])|(?:6[2])|(8[0-9]))[0-9]{6})$";
-        Pattern patt;
-        Matcher match;
-        if (!inputPhone.isEmpty()) {
-            String replPhone1 = inputPhone.trim();
-            String replPhone2 = replPhone1.replaceAll("\\s", "");
-            patt = Pattern.compile(safaricom);
-            match = patt.matcher(replPhone2);
-            if (match.find()) {
-                Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
-                String replPhone3 = "null";
-                phoneCompany = "safaricom";
-                if (replPhone2.startsWith("0")) {
-                    replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                    Log.e("TAG phone starts 0", replPhone3);
-                    validPhoneNo = replPhone3;
-                } else if (replPhone2.startsWith("7")) {
-                    replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                    Log.e("TAG phone starts 7", replPhone3);
-                    validPhoneNo = replPhone3;
-                } else if (replPhone2.startsWith("+")) {
-                    validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                    Log.e("TAG phone number +", validPhoneNo);
-                }
-            } else {
-                patt = Pattern.compile(airtel);
-                match = patt.matcher(replPhone2);
-                if (match.find()) {
-                    Toast.makeText(getApplicationContext(), "Airtel Number", Toast.LENGTH_LONG).show();
-                    String replPhone3 = "null";
-                    phoneCompany = "airtel";
-                    if (replPhone2.startsWith("0")) {
-                        replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                        Log.e("TAG phone starts 0", replPhone3);
-                        validPhoneNo = replPhone3;
-                    } else if (replPhone2.startsWith("7")) {
-                        replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                        Log.e("TAG phone starts 7", replPhone3);
-                        validPhoneNo = replPhone3;
-                    } else if (replPhone2.startsWith("+")) {
-                        validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                        Log.e("TAG phone number +", validPhoneNo);
-                    }
-                } else {
-                    patt = Pattern.compile(telkom);
-                    match = patt.matcher(replPhone2);
-                    if (match.find()) {
-                        Toast.makeText(getApplicationContext(), "Telkom Number", Toast.LENGTH_LONG).show();
-                        String replPhone3 = "null";
-                        phoneCompany = "telkom";
-                        if (replPhone2.startsWith("0")) {
-                            replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                            Log.e("TAG phone starts 0", replPhone3);
-                            validPhoneNo = replPhone3;
-                        } else if (replPhone2.startsWith("7")) {
-                            replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                            Log.e("TAG phone starts 7", replPhone3);
-                            validPhoneNo = replPhone3;
-                        } else if (replPhone2.startsWith("+")) {
-                            validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                            Log.e("TAG phone number +", validPhoneNo);
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
-                        Log.e("TAG phone No not check", replPhone2);
-                        moveToContact(view);
-                    }
-                }
-
-            }
-        } else {
-            Toast.makeText(getApplicationContext(), "Please enter a mobile number ", Toast.LENGTH_LONG).show();
-            moveToContact(view);
-        }
-
-        return validPhoneNo;
-    }
-
-    public void movetoPin(String phone, String amount) {
+    public void movetoPin(String phone, String amount, String phoneCompany) {
         Intent move = new Intent(this, EnterPin.class);
         move.putExtra("Class", "TopUpOtherNumber");
         move.putExtra(EXTRA_PHONENAME, phoneName);

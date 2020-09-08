@@ -19,10 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class TransferToWalletSingle37 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] selectUser = {"Single Transfers", "Multiple Transfers"};
@@ -36,7 +34,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     private Button button;
     private Spinner spin;
-    private EditText text;
+    private EditText text, editText1, editText2, editText3;
     private String phoneNumber;
     private String sessionID;
     private String phoneName;
@@ -50,6 +48,10 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_to_wallet_single37);
         setToolBar();
+        editText1 = (EditText) findViewById(R.id.walluserName);
+        editText2 = (EditText) findViewById(R.id.walltAmount);
+        editText3 = (EditText) findViewById(R.id.walltMessage);
+
         pref = getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
@@ -79,7 +81,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     private void fetchClassIntent() {
@@ -98,11 +100,13 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
                 break;
             case "SelectUserAdapter": {
                 this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
-                String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
                 this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
 
-                EditText tvtext = findViewById(R.id.walluserName);
-                tvtext.setText(userName);
+                if (phoneName == null) {
+                    editText1.setText(phoneNumber);
+                    return;
+                }
+                editText1.setText(phoneName);
                 break;
             }
             case "ConfirmSingleTransfer40": {
@@ -113,15 +117,9 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
                 this.phoneName = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_PHONENAME);
                 String sendAmount = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_AMOUNT);
                 String sendMessage = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_MESSAGE);
-
-                EditText tvtext = findViewById(R.id.walluserName);
-                tvtext.setText(userName);
-
-                tvtext = findViewById(R.id.walltAmount);
-                tvtext.setText(sendAmount);
-
-                tvtext = findViewById(R.id.walltMessage);
-                tvtext.setText(sendMessage);
+                editText1.setText(userName);
+                editText2.setText(sendAmount);
+                editText3.setText(sendMessage);
                 break;
             }
         }
@@ -189,26 +187,20 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     }
 
     public void transferMoney(View view) {
-        text = findViewById(R.id.walltAmount);
-        String amount = text.getText().toString();
 
-        text = findViewById(R.id.walltMessage);
-        String message = text.getText().toString();
-
-        if (amount.isEmpty()) {
-            text.requestFocus();
-            Toast.makeText(this, "please provide all details", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-
-        String phone = phoneNumber;
-        Log.e("TAG phone number check", "button pressed to transfer money" + phone);
-        if (phone == null) {
+        String phone = editText1.getText().toString();
+        String amount = editText2.getText().toString();
+        String message = editText3.getText().toString();
+        if (phone.isEmpty()) {
             Toast.makeText(this, "please provide recipient", Toast.LENGTH_SHORT).show();
             return;
         }
-        String phonenumber = changePhoneNo(phone, view);
+        if (amount.isEmpty()) {
+            Toast.makeText(this, "please provide amount", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String phonenumber = CheckPhoneNumber.getInstance().changePhoneNo(TransferToWalletSingle37.this, phone, view);
         Log.e("session after contact", sessionID);
         Log.e("TAG phone number last", phonenumber);
         if (!phonenumber.equals("Fasle")) {
@@ -226,88 +218,6 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_AMOUNT, amount);
         startActivity(move);
-    }
-
-    public String changePhoneNo(String inputPhone, View view) {
-        String validPhoneNo = "Fasle";
-        String safaricom = "^(?:254|\\+254|0)?(7(?:(?:[129][0-9])|(?:0[0-9])|(?:6[8-9])|(?:5[7-9])|(?:4[5-6])|(?:4[8])|(4[0-3]))[0-9]{6})$";
-        String telkom = "^(?:254|\\+254|0)?(7(?:(?:[7][0-9]))[0-9]{6})$";
-        String airtel = "^(?:254|\\+254|0)?(7(?:(?:[3][0-9])|(?:5[0-6])|(?:6[2])|(8[0-9]))[0-9]{6})$";
-        Pattern patt;
-        Matcher match;
-        if (!inputPhone.isEmpty()) {
-            String replPhone1 = inputPhone.trim();
-            String replPhone2 = replPhone1.replaceAll("\\s", "");
-            patt = Pattern.compile(safaricom);
-            match = patt.matcher(replPhone2);
-            if (match.find()) {
-                Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
-                String replPhone3 = "null";
-                phoneCompany = "safaricom";
-                if (replPhone2.startsWith("0")) {
-                    replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                    Log.e("TAG phone starts 0", replPhone3);
-                    validPhoneNo = replPhone3;
-                } else if (replPhone2.startsWith("7")) {
-                    replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                    Log.e("TAG phone starts 7", replPhone3);
-                    validPhoneNo = replPhone3;
-                } else if (replPhone2.startsWith("+")) {
-                    validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                    Log.e("TAG phone number +", validPhoneNo);
-                }
-            } else {
-                patt = Pattern.compile(airtel);
-                match = patt.matcher(replPhone2);
-                if (match.find()) {
-                    Toast.makeText(getApplicationContext(), "Airtel Number", Toast.LENGTH_LONG).show();
-                    String replPhone3 = "null";
-                    phoneCompany = "airtel";
-                    if (replPhone2.startsWith("0")) {
-                        replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                        Log.e("TAG phone starts 0", replPhone3);
-                        validPhoneNo = replPhone3;
-                    } else if (replPhone2.startsWith("7")) {
-                        replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                        Log.e("TAG phone starts 7", replPhone3);
-                        validPhoneNo = replPhone3;
-                    } else if (replPhone2.startsWith("+")) {
-                        validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                        Log.e("TAG phone number +", validPhoneNo);
-                    }
-                } else {
-                    patt = Pattern.compile(telkom);
-                    match = patt.matcher(replPhone2);
-                    if (match.find()) {
-                        Toast.makeText(getApplicationContext(), "Telkom Number", Toast.LENGTH_LONG).show();
-                        String replPhone3 = "null";
-                        phoneCompany = "telkom";
-                        if (replPhone2.startsWith("0")) {
-                            replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                            Log.e("TAG phone starts 0", replPhone3);
-                            validPhoneNo = replPhone3;
-                        } else if (replPhone2.startsWith("7")) {
-                            replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                            Log.e("TAG phone starts 7", replPhone3);
-                            validPhoneNo = replPhone3;
-                        } else if (replPhone2.startsWith("+")) {
-                            validPhoneNo = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                            Log.e("TAG phone number +", validPhoneNo);
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
-                        Log.e("TAG phone No not check", replPhone2);
-                        moveToContact(view);
-                    }
-                }
-
-            }
-        } else {
-            Toast.makeText(getApplicationContext(), "Please enter a mobile number ", Toast.LENGTH_LONG).show();
-            moveToContact(view);
-        }
-
-        return validPhoneNo;
     }
 
 

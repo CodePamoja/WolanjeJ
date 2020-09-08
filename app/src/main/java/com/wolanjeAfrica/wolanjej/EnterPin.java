@@ -67,7 +67,7 @@ public class EnterPin extends AppCompatActivity {
     private Transactions transactions;
     private String userId;
     private Realm realm;
-    private  String userRole;
+    private String userRole;
     private Collection<Transactions> transactionsList = new LinkedList<>();
 
     public EnterPin() {
@@ -81,8 +81,7 @@ public class EnterPin extends AppCompatActivity {
 
         Realm.init(this);
 
-        realm =Realm.getInstance(DbMigrations.getDefaultInstance());
-
+        realm = Realm.getInstance(DbMigrations.getDefaultInstance());
 
 
         //SharedPreferences values for login eg token
@@ -134,6 +133,7 @@ public class EnterPin extends AppCompatActivity {
                 this.phoneName = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONENAME);
                 this.amount = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_AMOUNT);
                 this.message = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_MESSAGE);
+                this.phoneProvider = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONECOMPANY);
                 String sendBranch = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BRANCHNAME);
                 String sendBank = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BANKSELECTED);
                 this.bankDetails = sendBank + "-" + sendBranch;
@@ -162,6 +162,13 @@ public class EnterPin extends AppCompatActivity {
                 this.phoneName1 = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_PHONENAME2);
                 this.amount = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_AMOUNT);
                 break;
+            case "ConfirmTransferToPhone52":
+                this.amount = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AMOUNT);
+                this.phoneProvider = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONEPROVIDER);
+                this.phoneName = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENAME);
+                this.phoneNumber = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENUMBER);
+                break;
+
         }
 
 
@@ -313,6 +320,7 @@ public class EnterPin extends AppCompatActivity {
                         }
                         break;
                     case "TransferToPhone50":
+                    case "ConfirmTransferToPhone52":
                         if (ValidateUserPin(fullPin)) {
                             switch (phoneProvider) {
                                 //Case statements
@@ -577,6 +585,7 @@ public class EnterPin extends AppCompatActivity {
         new UserBalance().execute();
 
         switch (className) {
+            case "ConfirmTransferToPhone52":
             case "TransferToWalletSingle37":
             case "ConfirmMultipleTransfer":
             case "Top_up":
@@ -594,6 +603,7 @@ public class EnterPin extends AppCompatActivity {
         String className = getIntent().getStringExtra("Class");
 
         switch (className) {
+            case "ConfirmTransferToPhone52":
             case "TransferToWalletSingle37":
             case "ConfirmMultipleTransfer":
             case "TransferToPhone50":
@@ -608,7 +618,7 @@ public class EnterPin extends AppCompatActivity {
     }
 
     private void ShowDialogSuccess() {
-        if (!((Activity) context).isFinishing()) {
+
             //show dialog
             LayoutInflater inflater = LayoutInflater.from(this);
             View view = inflater.inflate(R.layout.transfer_success_popup, null);
@@ -621,7 +631,7 @@ public class EnterPin extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent;
-                    switch (userRole){
+                    switch (userRole) {
                         case "1":
                             intent = new Intent(getApplicationContext(), HomeTwo.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -656,7 +666,7 @@ public class EnterPin extends AppCompatActivity {
             textView1.setText(sendAmount);
 
             alertDialog.show();
-        }
+
 
     }
 
@@ -673,7 +683,7 @@ public class EnterPin extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent;
-                    switch (userRole){
+                    switch (userRole) {
                         case "1":
                             intent = new Intent(getApplicationContext(), HomeTwo.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
