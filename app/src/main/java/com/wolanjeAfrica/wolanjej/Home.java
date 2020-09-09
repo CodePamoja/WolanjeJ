@@ -30,6 +30,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,24 +40,17 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.wolanjeAfrica.wolanjej.RetrofitUtils.ApiJsonObjects;
-import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
-import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
+import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.models.Model;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.MyAdapter;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
@@ -100,6 +95,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Button button4 = findViewById(R.id.btnaddnew);
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
+        tvtext = findViewById(R.id.MYBalance);
 
         /*
          SharedPreferences values for login eg token, user registered number
@@ -108,7 +104,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
 
-
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(Home.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels){
+                    MY_BALANCE = b.getBalance();
+                    tvtext.setText("KSH"+MY_BALANCE);
+                }
+            }
+        });
         NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
         View headerView = navigationView.getHeaderView(0);
         TextView navUsernumber = (TextView) headerView.findViewById(R.id.phone_number_nav_header);
@@ -117,7 +122,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         navUsernumber.setText("+" + pref.getString("user_name", ""));
 
 
-        tvtext = findViewById(R.id.MYBalance);
 
         MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
         materialCardView.setOnClickListener(this);
@@ -125,20 +129,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Button viewall = (Button) findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
 
-        transferMoney = (Button) findViewById(R.id.transfer_money_button);
-        transferMoney.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonWallet.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-                buttonWallet.setTextColor(getResources().getColor(R.color.colorAccent));
-                transferMoney.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                transferMoney.setTextColor(getResources().getColor(R.color.colorWhite));
-                Intent intent = new Intent(getApplicationContext(), MainTransfer36.class);
-                intent.putExtra("Class", "Home");
-                startActivity(intent);
-
-            }
-        });
+        transferMoney = (Button) findViewById(R.id.transfer_money_button);transferMoney.setOnClickListener(this);
+  ;
 
         buttonWallet = findViewById(R.id.wallet);
         buttonWallet.setOnClickListener(new View.OnClickListener() {
@@ -251,7 +243,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     protected void onStart() {
         super.onStart();
         if (isNetworkAvailable()) {
-            RetrieveWalletBalance();
+//            RetrieveWalletBalance();
 
         } else {
             Snackbar.make(findViewById(R.id.drawer_layout), "No Internet Connection", Snackbar.LENGTH_LONG).show();
@@ -639,7 +631,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             return;
         }
 
-        Map<String, String> map = CheckPhoneNumber.getInstance().checkPhoneNo(Home.this,phoneNumber);
+        Map<String, String> map = CheckPhoneNumber.getInstance().checkPhoneNo(Home.this, phoneNumber);
         for (Map.Entry<String, String> entry : map.entrySet()) {
             key = entry.getKey();
             value = entry.getValue();
@@ -1232,65 +1224,21 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         return models;
     }
 
-    private void RetrieveWalletBalance() {
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", "Bearer " + sessionID + "");
-
-        Retrofit retrofit = RetrofitClient.getInstance();  //        Getting Retrofit Instance
-        JsonPlaceHolders jsonPlaceHolders = retrofit.create(JsonPlaceHolders.class);
-
-        Call<ApiJsonObjects> call = jsonPlaceHolders.getBalance(headers);
-        call.enqueue(new Callback<ApiJsonObjects>() {
-            @Override
-            public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (!response.isSuccessful()) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(Home.this, "code" + response.code() + response.message(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = pref.edit();
-                            editor.putString("session_token", null);
-                            editor.apply();
-                            Intent move = new Intent(getApplicationContext(), LogIn.class);
-                            startActivity(move);
-                            finish();
-                            return;
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                balanceModel = response.body().getBalances();
-                                for (BalanceModel balanceModel : balanceModel) {
-                                    MY_BALANCE = balanceModel.getBalance();
-
-                                    tvtext.setText("KES " + MY_BALANCE);
-                                }
-
-                            }
-                        });
-
-                    }
-                }).start();
-            }
-
-            @Override
-            public void onFailure(Call<ApiJsonObjects> call, Throwable t) {
-                Toast.makeText(Home.this, "error" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     public void onClick(View v) {
         Intent i;
 
         switch (v.getId()) {
+            case R.id.wallet:
+                buttonWallet.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+                buttonWallet.setTextColor(getResources().getColor(R.color.colorAccent));
+                transferMoney.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                transferMoney.setTextColor(getResources().getColor(R.color.colorWhite));
+                Intent intent = new Intent(getApplicationContext(), MainTransfer36.class);
+                intent.putExtra("Class", "Home");
+                startActivity(intent);
+                break;
             case R.id.cardBuyAirtime:
                 i = new Intent(this, Top_up.class);
                 i.putExtra("Class", "Home");

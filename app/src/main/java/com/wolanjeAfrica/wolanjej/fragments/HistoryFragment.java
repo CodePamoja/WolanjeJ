@@ -15,11 +15,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.wolanjeAfrica.wolanjej.Home;
 import com.wolanjeAfrica.wolanjej.OkhttpConnection;
 import com.wolanjeAfrica.wolanjej.R;
+import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
+import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.models.TranasactionHistory;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.TransactionRecyclerAdapter;
 import com.google.android.material.snackbar.Snackbar;
@@ -48,6 +53,7 @@ public class HistoryFragment extends Fragment {
     private String USERID;
     private String USERNAME;
     private String AGENTNO;
+    private String MY_BALANCE;
     private TextView textView;
 
     public HistoryFragment() {
@@ -62,6 +68,7 @@ public class HistoryFragment extends Fragment {
         textView = (TextView) v.findViewById(R.id.txt_hist_amount);
         progressBar.setVisibility(View.VISIBLE);
         UserServices userServices = new UserServices(this);
+        setUserBalance();
         userServices.execute();
         return v;
     }
@@ -73,6 +80,18 @@ public class HistoryFragment extends Fragment {
         pref = getActivity().getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
+    }
+    private void setUserBalance() {
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(v.getContext(), sessionID).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels){
+                    MY_BALANCE = b.getBalance();
+                    textView.setText("KES"+ MY_BALANCE);
+                }
+            }
+        });
     }
 
     public static class UserServices extends AsyncTask<Void, Void, Response> {
