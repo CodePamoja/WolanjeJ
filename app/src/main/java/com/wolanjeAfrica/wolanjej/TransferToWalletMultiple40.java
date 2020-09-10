@@ -13,14 +13,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
+import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,6 +50,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
     private String phoneCompany;
     private EditText editText1, editText2;
     private Spinner spin;
+    private TextView textView;
     private SharedPreferences pref;
     private Button button1, button2;
 
@@ -53,15 +60,16 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_to_wallet_multiple40);
         setToolBar();
-        setActionBarColor();
         pref = getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
+
         pref = getApplicationContext().getSharedPreferences("TransferToWalletMultiple40", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
 
         button1 = (Button) findViewById(R.id.buttonContactsMultiple1);
         button2 = (Button) findViewById(R.id.buttonContactsMultiple2);
+        textView = (TextView) findViewById(R.id.balancetxtTMwallet) ;
 
         // Get the Intent that started this activity and extract the string
         Intent intentExtra = getIntent();
@@ -109,20 +117,17 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         spin.setAdapter(aa);
 
         confirmButton = (Button) findViewById(R.id.continue_multiple_transfer);
-    }
 
-    private void setActionBarColor() {
-        Window window = this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-// clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(TransferToWalletMultiple40.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels) {
+                    textView.setText("KES" + b.getBalance());
+                }
+            }
+        });
     }
 
     @Override
@@ -161,6 +166,14 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
                     }
                 }
         );
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
 

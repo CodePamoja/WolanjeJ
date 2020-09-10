@@ -103,17 +103,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
-
-        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
-        userBalanceViewModel.getUserBalance(Home.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
-            @Override
-            public void onChanged(List<BalanceModel> balanceModels) {
-                for (BalanceModel b : balanceModels){
-                    MY_BALANCE = b.getBalance();
-                    tvtext.setText("KSH"+MY_BALANCE);
-                }
-            }
-        });
+        RetrieveBalance();
         NavigationView navigationView = (NavigationView) findViewById(R.id.mynav);
         View headerView = navigationView.getHeaderView(0);
         TextView navUsernumber = (TextView) headerView.findViewById(R.id.phone_number_nav_header);
@@ -122,64 +112,20 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         navUsernumber.setText("+" + pref.getString("user_name", ""));
 
 
-
         MaterialCardView materialCardView = findViewById(R.id.cardBuyAirtime);
         materialCardView.setOnClickListener(this);
-
         Button viewall = (Button) findViewById(R.id.btnviewall);
         viewall.setOnClickListener(this);
-
-        transferMoney = (Button) findViewById(R.id.transfer_money_button);transferMoney.setOnClickListener(this);
-  ;
-
-        buttonWallet = findViewById(R.id.wallet);
-        buttonWallet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonWallet.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                buttonWallet.setTextColor(getResources().getColor(R.color.colorWhite));
-                transferMoney.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-                transferMoney.setTextColor(getResources().getColor(R.color.colorAccent));
-                OpenWallet();
-            }
-        });
-
-
-        MaterialCardView TransferHome = findViewById(R.id.CTransferMain);
-        TransferHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainTransfer36.class);
-                intent.putExtra("Class", "Home");
-                startActivity(intent);
-            }
-        });
-
-        MaterialCardView materialCardView1 = findViewById(R.id.cardTrans);
-        materialCardView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(), TransactionView.class);
-                startActivity(intent1);
-            }
-        });
-
-
-        findViewById(R.id.loanscard).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Loans.class));
-
-            }
-        });
-
-        findViewById(R.id.btnviewall).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                OpenScreen16();
-            }
-        });
+        transferMoney = (Button) findViewById(R.id.transfer_money_button);
+        transferMoney.setOnClickListener(this);
+        buttonWallet = (Button) findViewById(R.id.wallet);
+        buttonWallet.setOnClickListener(this);
+        MaterialCardView TransferHome = (MaterialCardView) findViewById(R.id.CTransferMain);
+        TransferHome.setOnClickListener(this);
+        MaterialCardView materialCardView1 = (MaterialCardView) findViewById(R.id.cardTrans);
+        materialCardView1.setOnClickListener(this);
+        MaterialCardView materialCardView2 = (MaterialCardView) findViewById(R.id.loanscard);
+        materialCardView2.setOnClickListener(this);
 
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE); //check Connectivity to internet services
 
@@ -188,6 +134,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         transferListDetails();
 
 
+    }
+
+    private void RetrieveBalance() {
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(Home.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels) {
+                    MY_BALANCE = b.getBalance();
+                    tvtext.setText("KES" + MY_BALANCE);
+                }
+            }
+        });
     }
 
     private void getClassIntent() {
@@ -1230,14 +1189,30 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         Intent i;
 
         switch (v.getId()) {
+            case R.id.loanscard:
+                i = new Intent(getApplicationContext(), Loans.class);
+                startActivity(i);
+                break;
+            case R.id.cardTrans:
+                i = new Intent(getApplicationContext(), TransactionView.class);
+                startActivity(i);
+                break;
+            case R.id.CTransferMain:
+                i = new Intent(getApplicationContext(), MainTransfer36.class);
+                i.putExtra("Class", "Home");
+                startActivity(i);
+                break;
+            case R.id.btnviewall:
+                OpenScreen16();
+                break;
             case R.id.wallet:
-                buttonWallet.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-                buttonWallet.setTextColor(getResources().getColor(R.color.colorAccent));
-                transferMoney.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                transferMoney.setTextColor(getResources().getColor(R.color.colorWhite));
-                Intent intent = new Intent(getApplicationContext(), MainTransfer36.class);
-                intent.putExtra("Class", "Home");
-                startActivity(intent);
+                buttonWallet.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                buttonWallet.setTextColor(getResources().getColor(R.color.colorWhite));
+                transferMoney.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+                transferMoney.setTextColor(getResources().getColor(R.color.colorAccent));
+                i = new Intent(getApplicationContext(), MainTransfer36.class);
+                i.putExtra("Class", "Home");
+                startActivity(i);
                 break;
             case R.id.cardBuyAirtime:
                 i = new Intent(this, Top_up.class);
@@ -1254,6 +1229,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 startActivity(i);
                 break;
             case R.id.transfer_money_button:
+                buttonWallet.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+                buttonWallet.setTextColor(getResources().getColor(R.color.colorAccent));
+                transferMoney.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                transferMoney.setTextColor(getResources().getColor(R.color.colorWhite));
                 i = new Intent(this, MainTransfer36.class);
                 i.putExtra("Class", "Home");
                 startActivity(i);
@@ -1270,5 +1249,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        RetrieveBalance();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        RetrieveBalance();
+    }
 }
 

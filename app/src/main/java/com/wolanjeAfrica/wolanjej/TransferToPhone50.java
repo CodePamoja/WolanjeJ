@@ -9,15 +9,21 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
+import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
+import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 
+import java.util.List;
 import java.util.Map;
 
 public class TransferToPhone50 extends AppCompatActivity {
@@ -30,10 +36,14 @@ public class TransferToPhone50 extends AppCompatActivity {
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     private Button button;
     private EditText editText1, editText2, editText3;
+    private TextView textView1;
     private String phoneNumber = "phone1";
     private String phoneName;
     private String phoneCompany;
     private SharedPreferences pref;
+    private String sessionId;
+    private String AGENTNO;
+    private String MY_BALANCE;
 
 
     @Override
@@ -41,9 +51,14 @@ public class TransferToPhone50 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_to_phone50);
         setToolBar();
+        //SharedPreferences values for login eg token, user registered number
+        pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
+        this.sessionId = pref.getString("session_token", "");
+        this.AGENTNO = pref.getString("agentno", "");
+
         editText1 = (EditText) findViewById(R.id.transContactAmount);
         editText2 = (EditText) findViewById(R.id.transAmountPhone);
-
+        textView1 = (TextView) findViewById(R.id.balancetxtTphone);
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
@@ -75,6 +90,17 @@ public class TransferToPhone50 extends AppCompatActivity {
                 break;
             }
         }
+
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(TransferToPhone50.this, sessionId).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels) {
+                    MY_BALANCE = b.getBalance();
+                    textView1.setText("KES" + MY_BALANCE);
+                }
+            }
+        });
 
     }
 

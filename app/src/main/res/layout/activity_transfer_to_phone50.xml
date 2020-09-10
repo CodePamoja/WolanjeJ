@@ -86,12 +86,13 @@
                             android:textSize="16sp"
                             android:textColor="@color/colorMidnight"/>
                         <TextView
+                            android:id="@+id/balancetxtTphone"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
                             android:textAlignment="textEnd"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="Kes 15,000"
+                            android:text="KES0.00"
                             android:textSize="22sp"
                             android:textColor="@color/colorMidnight"/>
                     </LinearLayout>
@@ -203,7 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPurple"
-                android:padding="15dp"
+
                 android:textAllCaps="false"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Continue"

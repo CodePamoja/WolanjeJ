@@ -97,10 +97,11 @@
                         tools:ignore="NestedWeights" />
 
                     <TextView
+                        android:id="@+id/balancetxtTwallet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="Kes 15,000"
+                        android:text="KES 0.00"
                         android:textAlignment="textEnd"
                         android:textColor="@color/colorMidnight"
                         android:textSize="22sp" />

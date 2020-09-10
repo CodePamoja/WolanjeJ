@@ -13,14 +13,21 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
+import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
+import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
+
+import java.util.List;
 
 public class TransferToWalletSingle37 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] selectUser = {"Single Transfers", "Multiple Transfers"};
@@ -41,6 +48,8 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     private String AGENTNO;
     private String phoneCompany;
     private String amount;
+    private String MY_BALANCE;
+    private TextView textView;
     private SharedPreferences pref;
 
     @Override
@@ -51,6 +60,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         editText1 = (EditText) findViewById(R.id.walluserName);
         editText2 = (EditText) findViewById(R.id.walltAmount);
         editText3 = (EditText) findViewById(R.id.walltMessage);
+        textView = (TextView) findViewById(R.id.balancetxtTwallet);
 
         pref = getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
@@ -66,23 +76,20 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
         fetchClassIntent();
-        setActionBarColor();
+
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(TransferToWalletSingle37.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels) {
+                    MY_BALANCE = b.getBalance();
+                    textView.setText("KES" + MY_BALANCE);
+                }
+            }
+        });
 
     }
 
-    private void setActionBarColor() {
-        Window window = this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-// clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
-    }
 
     private void fetchClassIntent() {
 
@@ -163,6 +170,17 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
                     }
                 }
         );
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     public void moveToContact(View view) {

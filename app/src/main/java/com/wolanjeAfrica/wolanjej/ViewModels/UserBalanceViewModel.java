@@ -3,7 +3,6 @@ package com.wolanjeAfrica.wolanjej.ViewModels;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
@@ -26,15 +25,13 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 
 public class UserBalanceViewModel extends ViewModel {
-    private MutableLiveData<List<BalanceModel>> mutableLiveData;
+    private MutableLiveData<List<BalanceModel>> mutableLiveData = mutableLiveData = new MutableLiveData<List<BalanceModel>>();
     private List<BalanceModel> balanceModel = new ArrayList<>();
     private static final String TAG = "userbalanceviewmodel";
 
     public LiveData<List<BalanceModel>> getUserBalance(Context context, String sessionId) {
-        if (mutableLiveData == null) {
-            mutableLiveData = new MutableLiveData<List<BalanceModel>>();
-            loadUsers(context, sessionId);
-        }
+
+        loadUsers(context, sessionId);
         return mutableLiveData;
     }
 
@@ -49,27 +46,23 @@ public class UserBalanceViewModel extends ViewModel {
         call.enqueue(new Callback<ApiJsonObjects>() {
             @Override
             public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
-                new Thread(new Runnable() {
 
-                    @Override
-                    public void run() {
-                        if (!response.isSuccessful()) {
+                if (!response.isSuccessful()) {
 
-                            Toast.makeText(context.getApplicationContext(), "code" + response.code() + response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context.getApplicationContext(), "code" + response.code() + response.message(), Toast.LENGTH_SHORT).show();
 
-                            SharedPreferences pref = context.getApplicationContext().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = pref.edit();
-                            editor.putString("session_token", null);
-                            editor.apply();
-                            Intent move = new Intent(context.getApplicationContext(), LogIn.class);
-                            context.startActivity(move);
-                            return;
-                        }
+                    SharedPreferences pref = context.getApplicationContext().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("session_token", null);
+                    editor.apply();
+                    Intent move = new Intent(context.getApplicationContext(), LogIn.class);
+                    context.startActivity(move);
+                    return;
+                }
 
-                        balanceModel = response.body().getBalances();
-                        mutableLiveData.postValue(balanceModel);
-                    }
-                }).start();
+                balanceModel = response.body().getBalances();
+                mutableLiveData.postValue(balanceModel);
+
             }
 
             @Override

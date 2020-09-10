@@ -35,7 +35,7 @@
 
         <TextView
 
-            android:id="@+id/balance_layout_other-number"
+            android:id="@+id/balancetxtTotherNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_balance3"

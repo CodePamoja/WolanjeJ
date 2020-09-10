@@ -1,6 +1,8 @@
 package com.wolanjeAfrica.wolanjej;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,33 +15,43 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
+import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
+import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 
+import java.util.List;
 import java.util.Map;
 
 public class TopupOtherNumber extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
+    public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
+    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
+    public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
+    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     String[] selectNumber = {"Other Number", "My Number"};
-
+    private SharedPreferences pref;
+    private String sessionID;
+    private String AGENTNO;
     private String phoneName;
     private String phoneNumber;
     private String phoneCompany;
     private EditText text;
     private Spinner spin;
     private Toolbar tb;
-    public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
-    public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
-    public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
-    public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topup_other_number);
 
-
+        pref = getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
+        this.sessionID = pref.getString("session_token", "");
+        this.AGENTNO = pref.getString("agentno", "");
         // Get the Intent that started this activity and extract the string
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
@@ -63,13 +75,22 @@ public class TopupOtherNumber extends AppCompatActivity implements AdapterView.O
 
         spin = (Spinner) this.findViewById(R.id.select_other_number);
         spin.setOnItemSelectedListener(this);
-
+        textView = (TextView) findViewById(R.id.balancetxtTotherNo);
         //Creating the ArrayAdapter instance having the country list
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, selectNumber);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
 
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(TopupOtherNumber.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels) {
+                    textView.setText("KES" + b.getBalance());
+                }
+            }
+        });
 
     }
 

@@ -11,15 +11,21 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
+import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
+import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 
+import java.util.List;
 import java.util.Map;
 
 public class TransferToBank44 extends AppCompatActivity {
@@ -36,6 +42,7 @@ public class TransferToBank44 extends AppCompatActivity {
     public static final String EXTRA_BRANCHNAME = "com.example.wolanjej.BRANCHNAME";
     public static final String EXTRA_BANKSELECTED = "com.example.wolanjej.BANKSELECTED";
     public static final String EXTRA_PHONECOMPANY = "com.example.wolanjej.PHONECOMPANY";
+    private static final String TAG = "TransferToBank";
     private Button button;
     private Spinner spin, spinner;
     private EditText text, editText, editText1, editText2, editText3, editText4;
@@ -50,8 +57,10 @@ public class TransferToBank44 extends AppCompatActivity {
     private ArrayAdapter<CharSequence> adapter;
     private String bankSelected;
     private String AGENTNO;
-    private static final String TAG = "TransferToBank";
-    private SharedPreferences pref;
+    private String MY_BALANCE;
+    private String sessionId;
+    private SharedPreferences pref,pref1;
+    private TextView textView;
 
 
 
@@ -61,10 +70,10 @@ public class TransferToBank44 extends AppCompatActivity {
         setContentView(R.layout.activity_transfer_to_bank44);
         setToolBar();
         text = findViewById(R.id.bankAmount);
+        textView = (findViewById(R.id.balancetxtTbank));
         editText = findViewById(R.id.bankMessage);
         editText1 = findViewById(R.id.holdName);
         editText2 = findViewById(R.id.accNumber);
-
 
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
@@ -120,6 +129,24 @@ public class TransferToBank44 extends AppCompatActivity {
                 R.array.select_bank_branch, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+
+        pref1 = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
+        this.sessionId = pref1.getString("session_token", "");
+        this.AGENTNO = pref1.getString("agentno", "");
+
+
+
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(TransferToBank44.this, sessionId).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels) {
+                    MY_BALANCE = b.getBalance();
+                    textView.setText("KES" + MY_BALANCE);
+                }
+            }
+        });
 
     }
 
