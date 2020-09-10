@@ -39,7 +39,6 @@ public class Registration06 extends AppCompatActivity {
 
         setContentView(R.layout.activity_registration06);
         setToolBar();
-        setActionBarColor();
         final EditText text1 = findViewById(R.id.edittext);
         final EditText text2 =findViewById(R.id.inp2);
         final EditText text3 = findViewById(R.id.inp3);
@@ -132,7 +131,6 @@ public class Registration06 extends AppCompatActivity {
             }
         });
 
-        actionBarColor();
 
 
     }
@@ -150,34 +148,17 @@ public class Registration06 extends AppCompatActivity {
                     }
                 }
         );
-
-    }
-    private void actionBarColor(){
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-// clear FLAG_TRANSLUCENT_STATUS flag:
+        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
+        // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
     }
-    private void setActionBarColor(){
-        Window window = this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-// clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.blue_grey));
-    }
 
     public void sendtoSetYourPin(View view) {
 

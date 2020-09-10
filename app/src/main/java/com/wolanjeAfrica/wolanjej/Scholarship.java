@@ -47,7 +47,6 @@ public class Scholarship extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scholarship);
         setToolBar(tb);
-        setActionBarColor();
 
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle("Scholarship");
@@ -130,12 +129,12 @@ public class Scholarship extends AppCompatActivity {
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinnercounties);
-// Create an ArrayAdapter using the string array and a default spinner layout
+    // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.select_county, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+    // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+    // Apply the adapter to the spinner
         spinnercounties.setAdapter(adapter);
     }
     private void setToolBar(androidx.appcompat.widget.Toolbar tb) {
@@ -151,19 +150,16 @@ public class Scholarship extends AppCompatActivity {
                     }
                 }
         );
-
-    }
-    private void setActionBarColor() {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-// clear FLAG_TRANSLUCENT_STATUS flag:
+        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-// finally change the color
+        // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 

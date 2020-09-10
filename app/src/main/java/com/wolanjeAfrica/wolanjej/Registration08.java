@@ -36,7 +36,7 @@ public class Registration08 extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_registration08);
-        setActionBarColor();
+
         executor = ContextCompat.getMainExecutor(this);
         final BiometricManager biometricManager = BiometricManager.from(this);
 
@@ -90,23 +90,10 @@ public class Registration08 extends AppCompatActivity {
         });
 
         setToolBar();
-//        imageView = findViewById(R.id.image_holder);
-//        imageView.setImageResource(R.drawable.ic_groupwall);
+
     }
 
-    private void setActionBarColor() {
-        Window window = this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-// clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
-    }
 
     private void setToolBar() {
         Toolbar tb = findViewById(R.id.toolbar);
@@ -121,6 +108,14 @@ public class Registration08 extends AppCompatActivity {
                     }
                 }
         );
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
 
     }
 

@@ -1,9 +1,5 @@
 package com.wolanjeAfrica.wolanjej;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +14,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONObject;
@@ -25,13 +25,14 @@ import org.json.JSONObject;
 public class Registration05 extends AppCompatActivity {
 
     public ProgressDialog prgBar;
-    private TextInputLayout text,mail;
+    private TextInputLayout text, mail;
     private JSONObject sessionID = null;
     private String phoneNo = null;
     private TextView tlc;
     public static final String EXTRA_SESSION = "com.wolanjeAfrica.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.wolanjeAfrica.wolanjej.PHONE";
-    Toolbar tb ;
+    Toolbar tb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,23 +42,11 @@ public class Registration05 extends AppCompatActivity {
 
         tlc = findViewById(R.id.tlc);
         tlc.setMovementMethod(LinkMovementMethod.getInstance());
-         tb = findViewById(R.id.toolbar);
+        tb = findViewById(R.id.toolbar);
 
-         mail = findViewById(R.id.mail);
+        mail = findViewById(R.id.mail);
         text = findViewById(R.id.phoneNumber);
         setToolBar();
-
-        Window window = this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-// clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
 
 
         Button btn = findViewById(R.id.btn_continue);
@@ -65,19 +54,19 @@ public class Registration05 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                      // new UserSendPhone(text.getEditText().getText().toString()).execute();
-                        if(TextUtils.isEmpty(text.getEditText().getText().toString()) || TextUtils.isEmpty(mail.getEditText().getText().toString())){
+                        // new UserSendPhone(text.getEditText().getText().toString()).execute();
+                        if (TextUtils.isEmpty(text.getEditText().getText().toString()) || TextUtils.isEmpty(mail.getEditText().getText().toString())) {
 
                             Toast.makeText(Registration05.this, "Fill all", Toast.LENGTH_SHORT).show();
 
-                        }else {
+                        } else {
                             SharedPreferences registration_details = getSharedPreferences("Registration_details", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = registration_details.edit();
                             editor.putString("Phone_Number", text.getEditText().getText().toString());
                             editor.putString("Email_adress", mail.getEditText().getText().toString());
                             editor.apply();
 
-                            startActivity(new Intent(getApplicationContext(),Registration051.class));
+                            startActivity(new Intent(getApplicationContext(), Registration051.class));
                         }
                     }
                 }
@@ -87,7 +76,7 @@ public class Registration05 extends AppCompatActivity {
     private void setToolBar() {
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        final Intent movetoLogo = new Intent(this,LogIn.class);
+        final Intent movetoLogo = new Intent(this, LogIn.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -96,21 +85,30 @@ public class Registration05 extends AppCompatActivity {
                     }
                 }
         );
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
+
 
     }
 
     public void movetoLogin(View view) {
 
-        Intent movetoLogo = new Intent(this,LogIn.class);
+        Intent movetoLogo = new Intent(this, LogIn.class);
         startActivity(movetoLogo);
     }
 
-    public String getPhone(){
+    public String getPhone() {
         return phoneNo;
     }
 
     public void createAccount(View view) {
-        Intent movetobusiness = new Intent(this,Reg_02.class);
+        Intent movetobusiness = new Intent(this, Reg_02.class);
         startActivity(movetobusiness);
     }
 }
