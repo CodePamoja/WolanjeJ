@@ -106,7 +106,7 @@ public class Registration051 extends AppCompatActivity implements AdapterView.On
             editor.putString("First_Name", firstname.getEditText().getText().toString());
             editor.putString("Last_Name", lastname.getEditText().getText().toString());
             editor.putString("Gender", spinner.getSelectedItem().toString());
-            editor.commit();
+            editor.apply();
 
             new UserSendPhone(fromreg2.getString("Phone_Number", "")).execute();
 

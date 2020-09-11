@@ -1,12 +1,5 @@
 package com.wolanjeAfrica.wolanjej;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.biometric.BiometricManager;
-import androidx.biometric.BiometricPrompt.AuthenticationResult;
-import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +8,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt.AuthenticationResult;
+import androidx.core.content.ContextCompat;
 
 import java.util.concurrent.Executor;
 
@@ -26,7 +26,7 @@ public class Registration08 extends AppCompatActivity {
     private Button button;
     private androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
     private androidx.biometric.BiometricPrompt biometricPrompt;
-
+    private BiometricManager biometricManager;
     private int check_device;
     private Executor executor;
 
@@ -38,7 +38,7 @@ public class Registration08 extends AppCompatActivity {
         setContentView(R.layout.activity_registration08);
 
         executor = ContextCompat.getMainExecutor(this);
-        final BiometricManager biometricManager = BiometricManager.from(this);
+        biometricManager = BiometricManager.from(this);
 
         biometricPrompt = new androidx.biometric.BiometricPrompt(Registration08.this, executor, new androidx.biometric.BiometricPrompt.AuthenticationCallback() {
             @Override
@@ -51,6 +51,7 @@ public class Registration08 extends AppCompatActivity {
             public void onAuthenticationSucceeded(@NonNull AuthenticationResult result) {
                 //super.onAuthenticationSucceeded(result);
                 Toast.makeText(Registration08.this, "Succes" + result, LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -66,33 +67,9 @@ public class Registration08 extends AppCompatActivity {
                 .build();
 
 
-        button = findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                switch (biometricManager.canAuthenticate()) {
-                    case BiometricManager.BIOMETRIC_SUCCESS:
-                        biometricPrompt.authenticate(promptInfo);
-                        break;
-                    case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
-                        Toast.makeText(Registration08.this, "No hardware", LENGTH_SHORT).show();
-                        break;
-                    case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
-                        Toast.makeText(Registration08.this, "Hardware unavailable", LENGTH_SHORT).show();
-                        break;
-                    case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
-                        Toast.makeText(Registration08.this, "No Bio Enrolled", LENGTH_SHORT).show();
-                        break;
-                }
-
-            }
-        });
-
         setToolBar();
 
     }
-
 
 
     private void setToolBar() {
@@ -115,7 +92,7 @@ public class Registration08 extends AppCompatActivity {
         // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
 
     }
 
@@ -125,4 +102,27 @@ public class Registration08 extends AppCompatActivity {
     }
 
 
+    public void promptBiometric(View view) {
+        Intent intent;
+        switch (biometricManager.canAuthenticate()) {
+            case BiometricManager.BIOMETRIC_SUCCESS:
+                biometricPrompt.authenticate(promptInfo);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                Toast.makeText(Registration08.this, "Fingerprint not supported", LENGTH_SHORT).show();
+                intent = new Intent(Registration08.this, LogIn.class);
+                startActivity(intent);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                Toast.makeText(Registration08.this, "Hardware unavailable", LENGTH_SHORT).show();
+                intent = new Intent(Registration08.this,LogIn.class);
+                startActivity(intent);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                Toast.makeText(Registration08.this, "Enrolled", LENGTH_SHORT).show();
+                intent = new Intent(Registration08.this,LogIn.class);
+                startActivity(intent);
+                break;
+        }
+    }
 }

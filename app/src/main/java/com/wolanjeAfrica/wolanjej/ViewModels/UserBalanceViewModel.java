@@ -53,6 +53,7 @@ public class UserBalanceViewModel extends ViewModel {
 
                     SharedPreferences pref = context.getApplicationContext().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
+                    editor.clear();
                     editor.putString("session_token", null);
                     editor.apply();
                     Intent move = new Intent(context.getApplicationContext(), LogIn.class);

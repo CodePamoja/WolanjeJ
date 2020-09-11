@@ -34,7 +34,6 @@ public class DbMigrations implements RealmMigration {
         return DbMigrations.class.hashCode();
     }
 
-    //no db migrations yet
     public static RealmConfiguration getDefaultInstance() {
         return new RealmConfiguration.Builder()
                 .schemaVersion(2)

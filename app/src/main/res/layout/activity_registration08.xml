@@ -73,7 +73,7 @@
                 android:background="@drawable/roundedcorner"
                 android:text="continue"
                 android:layout_gravity="center_horizontal"
-                android:onClick="sendtoLogin"
+                android:onClick="promptBiometric"
                 android:backgroundTint="@color/warm_purple"
                 android:textAllCaps="false"
                 android:fontFamily="@font/poppins_medium"

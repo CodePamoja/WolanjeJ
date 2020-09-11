@@ -7,6 +7,7 @@
     tools:context=".Registration07">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -15,9 +16,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingHorizontal="10dp"
-            android:paddingVertical="10dp"
-            android:orientation="vertical">
+            android:paddingVertical="10dp">
 
             <ImageView
                 android:id="@+id/image_holder"
@@ -36,14 +37,14 @@
                 android:id="@+id/setpintxt"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:text="Set your PIN"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Set your PIN"
+                android:textAlignment="center"
                 android:textColor="@color/colorMidnight"
                 android:textSize="22sp"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image_holder" />
@@ -51,122 +52,121 @@
             <TextView
                 android:id="@+id/txtdesc"
                 android:layout_width="327dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
-                android:text="You will use this to login next time"
-                android:textColor="@color/blue_grey"
-                android:textSize="14sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
                 android:fontFamily="@font/poppins_regular"
                 android:paddingVertical="10dp"
-                android:layout_marginHorizontal="20dp"
+                android:text="You will use this to login next time"
                 android:textAlignment="center"
+                android:textColor="@color/blue_grey"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/setpintxt" />
 
             <LinearLayout
+                android:id="@+id/linearLayout13"
                 android:layout_width="match_parent"
                 android:layout_height="268dp"
+                android:gravity="center_horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:gravity="center_horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtdesc">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="327dp"
-                android:layout_height="240dp"
-                android:layout_marginTop="10dp"
-                android:elevation="12dp"
-                app:cardBackgroundColor="@color/colorWhite"
-                app:cardElevation="8dp">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="327dp"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="10dp"
+                    android:elevation="12dp"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardElevation="8dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/pin1"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginHorizontal="12dp"
-                        android:paddingHorizontal="5dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginBottom="0dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:hint="4 digit Pin"
-                        app:endIconMode="password_toggle">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/pin1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginHorizontal="12dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:hint="4 digit Pin"
+                            android:paddingHorizontal="5dp"
+                            app:endIconMode="password_toggle">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="numberPassword"
-                            android:maxLength="4"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="numberPassword"
+                                android:maxLength="4" />
 
-                            />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/pin2"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="294dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pin1"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginHorizontal="12dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:hint="Repeat Pin"
+                            android:paddingHorizontal="5dp"
+                            app:endIconMode="password_toggle">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/pin2"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="294dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/pin1"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginHorizontal="12dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginTop="10dp"
-                        android:paddingHorizontal="5dp"
-                        android:layout_marginBottom="0dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:hint="Repeat Pin"
-                        app:endIconMode="password_toggle">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="numberPassword"
+                                android:maxLength="4" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="numberPassword"
-                            android:maxLength="4" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <Button
-                        android:id="@+id/btn_getstarted"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/pin2"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_gravity="center"
-                        android:layout_marginVertical="10dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="10dp"
-                        android:backgroundTint="@color/colorPurple"
-                        android:fontFamily="@font/poppins_medium"
-                        android:onClick="sendPin"
-                        android:text="Continue"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp" />
+                        <Button
+                            android:id="@+id/btn_getstarted"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pin2"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="10dp"
+                            android:backgroundTint="@color/colorPurple"
+                            android:fontFamily="@font/poppins_medium"
+                            android:onClick="sendPin"
+                            android:text="Continue"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16sp" />
 
-                </RelativeLayout>
+                    </RelativeLayout>
 
 
-            </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -189,5 +189,14 @@
             app:navigationIcon="@mipmap/small_left" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <ProgressBar
+        android:id="@+id/progressr07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@drawable/progress"
+        app:layout_anchor="@+id/nestedScrollView3"
+        app:layout_anchorGravity="center" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
