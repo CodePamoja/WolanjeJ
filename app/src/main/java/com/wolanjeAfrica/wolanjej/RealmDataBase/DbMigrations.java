@@ -21,6 +21,11 @@ public class DbMigrations implements RealmMigration {
                     .addField("role", String.class);
             oldVersion++;
         }
+        if(oldVersion == 3){
+            schema.get("user")
+                    .removeField("biologin");
+            oldVersion++;
+        }
 
     }
 
@@ -36,7 +41,7 @@ public class DbMigrations implements RealmMigration {
 
     public static RealmConfiguration getDefaultInstance() {
         return new RealmConfiguration.Builder()
-                .schemaVersion(2)
+                .schemaVersion(4)
                 .migration(new DbMigrations())
                 .build();
     }
