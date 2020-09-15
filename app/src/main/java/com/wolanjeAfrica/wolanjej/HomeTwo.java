@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +35,7 @@ import java.util.ArrayList;
 
 public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, View.OnClickListener {
 
-
+    private ArrayAdapter adapter;
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private Button transfer_money_button_hm2;
@@ -39,19 +43,22 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     private BottomSheetDialog bottomSheetDialog;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
+    private Spinner spinner;
+    private TextView txtMobilenumber,txtAmountTopUpWallet,txtMobileNumberWithdraw,txtAmountWithdraw;
+    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_two);
-
         toolbar = findViewById(R.id.toolbarhome2);
         drawer = findViewById(R.id.drawer_layout_home_two);
         transfer_money_button_hm2 = findViewById(R.id.transfer_money_button_hm2);transfer_money_button_hm2.setOnClickListener(this);
         materialCardView = (MaterialCardView)findViewById(R.id.loanscardHomeTwo);materialCardView.setOnClickListener(this);
         materialCardView1 = (MaterialCardView)findViewById(R.id.card1_home_two);materialCardView1.setOnClickListener(this);
-        setToolBar();
+        button = (Button) findViewById(R.id.wallet_home_two);button.setOnClickListener(this);
 
         transferListDetails();
+        setToolBar();
     }
 
 
@@ -144,7 +151,7 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
-                        openEwalletPopUp();
+//                        openEwalletPopUp();
 
                     }
                 }
@@ -154,7 +161,7 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
-                        OpenWithdrawBottomSheet();
+//                        OpenWithdrawBottomSheet();
                     }
                 }
         );
@@ -190,14 +197,153 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         bottomSheetDialog.show();
 
     }
+    private void OpenWallet() {
 
-    private void OpenWithdrawBottomSheet() {
+         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                HomeTwo.this, R.style.BottomSheetDialogTheme
+        );
+        View bottomSheetViewOpenWalle = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.pop_up_my_wallet, (ConstraintLayout) findViewById(R.id.show_ple)
+                );
+        bottomSheetDialog.setCanceledOnTouchOutside(false);
+        bottomSheetDialog.setDismissWithAnimation(true);
+        bottomSheetViewOpenWalle.findViewById(R.id.imgCloseWallet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+        bottomSheetViewOpenWalle.findViewById(R.id.mytopupcard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        openEwalletPopUp();
+
+                    }
+                }
+        );
+
+        bottomSheetViewOpenWalle.findViewById(R.id.mywithdrawcard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        OpenWithdrawBottomSheet();
+                    }
+
+                });
+
+        bottomSheetViewOpenWalle.findViewById(R.id.openFundTrasfer).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(v.getContext(), MainTransfer36.class);
+                        intent.putExtra("Class", "Home");
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetViewOpenWalle.findViewById(R.id.transactionHistCard).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(v.getContext(), TransactionView.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+        bottomSheetViewOpenWalle.findViewById(R.id.pendingCommCard).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                TODO: intent
+
+            }
+        });
+        if(bottomSheetViewOpenWalle.getParent() != null) {
+            ((ViewGroup)bottomSheetViewOpenWalle.getParent()).removeView(bottomSheetViewOpenWalle); // <- fix
+            OpenWallet();
+            return;
+        }
+        bottomSheetDialog.setContentView(bottomSheetViewOpenWalle);
+        bottomSheetDialog.show();
+
     }
 
     private void openEwalletPopUp() {
+        bottomSheetDialog = new BottomSheetDialog(
+                HomeTwo.this, R.style.BottomSheetDialogTheme
+        );
+        View bottomSheetViewopenEwalletPopUp = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.wallet_pop_up, (LinearLayout) findViewById(R.id.Ewallet2)
+                );
+        spinner = bottomSheetViewopenEwalletPopUp.findViewById(R.id.selecttype);
+        txtMobilenumber = bottomSheetViewopenEwalletPopUp.findViewById(R.id.mobilenumber);
+        txtAmountTopUpWallet = bottomSheetViewopenEwalletPopUp.findViewById(R.id.amountTopUpWallet);
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.wallet_top_up_services, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        bottomSheetViewopenEwalletPopUp.findViewById(R.id.contWalletPop).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        MoveToTopUpWallet();
+                    }
+                }
+        );
+        bottomSheetViewopenEwalletPopUp.findViewById(R.id.cancelWalletTopUp).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                    }
+                }
+        );
+        bottomSheetDialog.setContentView(bottomSheetViewopenEwalletPopUp);
+        bottomSheetDialog.show();
     }
 
+    private void OpenWithdrawBottomSheet() {
+        bottomSheetDialog = new BottomSheetDialog(
+                HomeTwo.this, R.style.BottomSheetDialogTheme
+        );
+        View bottomSheetViewOpenWithdraw = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.withdraw, (LinearLayout) findViewById(R.id.Ewallet3)
+                );
+        spinner = bottomSheetViewOpenWithdraw.findViewById(R.id.selectypeWithdraw);
+        txtMobileNumberWithdraw = bottomSheetViewOpenWithdraw.findViewById(R.id.mobileNumberWithdraw);
+        txtAmountWithdraw = bottomSheetViewOpenWithdraw.findViewById(R.id.amountWithdraw);
+        adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
+                R.array.wallet_top_up_services, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        bottomSheetViewOpenWithdraw.findViewById(R.id.btn_sendWithdrawRequest).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+//                        MoveToConfirmWithdraw();
+                    }
+                }
+        );
+        bottomSheetViewOpenWithdraw.findViewById(R.id.cancelWithdraw).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                    }
+                }
+        );
 
+
+        bottomSheetDialog.setContentView(bottomSheetViewOpenWithdraw);
+        bottomSheetDialog.show();
+    }
     public ArrayList<Model> getMylist() {
         ArrayList<Model> models = new ArrayList<>();
         Model m = new Model();
@@ -304,6 +450,8 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                 intent = new Intent(HomeTwo.this, BulkPaymentsMain.class);
                 startActivity(intent);
                 break;
+            case R.id.wallet_home_two:
+                OpenWallet();
             default:
                 break;
         }

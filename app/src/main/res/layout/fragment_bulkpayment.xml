@@ -1,141 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/AppTheme"
+    tools:context=".fragments.BulkPaymentFragment"
     android:orientation="vertical">
 
     <View
-        android:visibility="invisible"
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="10dp"
-        android:background="@color/colorRed"/>
+        android:layout_marginEnd="0dp"
+        android:background="@color/colorRed"
+        android:visibility="invisible" />
 
     <com.google.android.material.card.MaterialCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/card1fbulk"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_below="@+id/view"
+        app:cardElevation="7dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="2dp">
 
-        >
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="26dp"
-                android:src="@drawable/ic_baseline_attach_file_24"
-                android:layout_marginTop="25dp"
-                android:layout_marginStart="25dp"
-                android:backgroundTint="#f8f8fa"/>
 
-            <LinearLayout
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/uploadfilebtn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="29dp"
+                android:background="@drawable/splash3"
+                android:src="@drawable/ic_baseline_attach_file_24" />
+
+
+            <TextView
+                android:id="@+id/uploadtxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="25dp"
+                android:layout_toEndOf="@+id/uploadfilebtn"
+                android:fontFamily="@font/poppins_medium"
+                android:lineSpacingExtra="7sp"
+                android:text="Upload CSV file"
+                android:textColor="#9c7bfc"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:textColor="#9c7bfc"
-                    android:lineSpacingExtra="7sp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginStart="10dp"
-                    android:text="Upload CSV file"
-                    />
-
-                <TextView
-                    android:id="@+id/txtMerchantsFile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textColor="@color/blue_grey"
-                    android:lineSpacingExtra="12sp"
-                    android:layout_marginStart="10dp"
-                    android:text="MarchPayments.csv"
-                    />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/txtMerchantsFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/uploadtxt"
+                android:layout_marginStart="9dp"
+                android:visibility="gone"
+                android:layout_marginTop="0dp"
+                android:layout_toEndOf="@+id/uploadbtn"
+                android:lineSpacingExtra="12sp"
+                android:text="MarchPayments.csv"
+                android:textColor="@color/blue_grey"
+                android:textSize="12sp" />
 
             <ImageView
                 android:id="@+id/cancelCsvUpload"
-                android:visibility="gone"
                 android:layout_width="24dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone"
                 android:layout_marginStart="150dp"
-                android:src="@drawable/align_top_24"
-                android:background="@drawable/ic_group_x"/>
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/ic_group_x" />
 
             <ImageView
                 android:id="@+id/uploadCsvFile"
                 android:layout_width="24dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginStart="150dp"
-                android:src="@drawable/align_top_24"
-                android:background="@drawable/backgroundblue"/>
-        </LinearLayout>
-
-
-
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/backgroundblue"
+                android:src="@drawable/align_top_24" />
+        </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
+
     <View
-        android:visibility="invisible"
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/colorRed"/>
+        android:layout_below="@+id/card1fbulk"
+        android:background="@color/colorRed"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:visibility="invisible" />
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/txt_amount_fb"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="48dp"
+        android:layout_below="@+id/view2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="21dp"
+        android:background="@drawable/textviewborder1"
+        android:hint="KES"
+        android:inputType="number"
+        android:maxLength="9"
+        android:padding="5dp"
+        android:textColorHint="#3ca8b3" />
 
-        <EditText
-            android:id="@+id/txt_amount_fb"
-            android:layout_gravity="center"
-            android:layout_width="327dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="24dp"
-            android:hint="KES"
-            android:textColorHint="#3ca8b3"
-            android:inputType="number"
-            android:maxLength="9"
-            android:background="@drawable/textviewborder1"
-            android:padding="5dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/buttonContinuefbulk"
+        android:layout_width="327dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/txt_amount_fb"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="40dp"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#eaecec"
+        android:text="@string/Continue"
+        android:textColor="#8a7c7c" />
 
-            <Button
-                android:layout_width="327dp"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="40dp"
-                android:backgroundTint="#eaecec"
-                android:text="@string/Continue"
-                android:textColor="#8a7c7c" />
+    <Button
+        android:layout_width="327dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/buttonContinuefbulk"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="348dp"
+        android:backgroundTint="#fb6d3a"
+        android:text="Processing"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp"
+        android:visibility="invisible" />
+</RelativeLayout>
 
-            <Button
-                android:visibility="invisible"
-                android:layout_width="327dp"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="40dp"
-                android:text="Processing"
-                android:backgroundTint="#fb6d3a"
-                android:textColor="@color/colorWhite" />
-        </RelativeLayout>
-    </LinearLayout>
-</LinearLayout>
+
+

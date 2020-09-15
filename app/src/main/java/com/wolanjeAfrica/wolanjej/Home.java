@@ -1210,9 +1210,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 buttonWallet.setTextColor(getResources().getColor(R.color.colorWhite));
                 transferMoney.setBackgroundColor(getResources().getColor(R.color.colorWhite));
                 transferMoney.setTextColor(getResources().getColor(R.color.colorAccent));
-                i = new Intent(getApplicationContext(), MainTransfer36.class);
-                i.putExtra("Class", "Home");
-                startActivity(i);
+                OpenWallet();
                 break;
             case R.id.cardBuyAirtime:
                 i = new Intent(this, Top_up.class);
