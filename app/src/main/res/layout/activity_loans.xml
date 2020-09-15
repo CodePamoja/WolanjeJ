@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:theme="@style/AppTheme"
     tools:context=".Loans">
 
     <LinearLayout
         android:id="@+id/linerLoans1"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <include layout="@layout/toolbarwithsearch"/>
+        <include layout="@layout/toolbarwithsearch" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="20dp"
             android:text="Loans"
             android:textColor="@color/colorBlack"
             android:textSize="28sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="start"
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -33,18 +36,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linerLoans1"
-        android:background="#f8f8fa">
-    </com.google.android.material.tabs.TabLayout>
+        android:background="#f8f8fa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linerLoans1" />
 
     <LinearLayout
-        android:layout_below="@+id/tabLayoutLoans"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tabLayoutLoans"
+        android:orientation="vertical">
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/loansV_viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </androidx.viewpager.widget.ViewPager>
+            android:layout_height="match_parent" />
     </LinearLayout>
-</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/applyLoanBtn"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:backgroundTint="@color/warm_purple"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="9sp"
+            android:text="Apply for a Loan"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

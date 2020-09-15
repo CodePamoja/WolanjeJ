@@ -154,6 +154,14 @@
     <string-array name="select_fee_details">
         <item>Fee Details</item>
     </string-array>
+    <string-array name="loanUseOfFunds">
+        <item>Use of Funds</item>
+        <item>Working Capital </item>
+        <item>Purchase of Equipment</item>
+        <item>LPO Financing </item>
+        <item>Salary Advance</item>
+        <item></item>Other
+    </string-array>
 
     <string name="login"><font color="#531edc">Log in</font></string>
     <string name="registration">Registration</string>
@@ -163,8 +171,7 @@
     <string name="unpaid">Unpaid</string>
     <string name="paid">Paid</string>
     <string name="kenya_number"><b><font color="#000000"></font>  KEN   |   725 000 000</b></string>
-    <string name="mail_text"><b><font color="#000000"></font>  Email address</b></string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="mail_text"><b><font color="#000000"></font>  Email address</b></string><!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
     <string name="my_e_wallets">My E-wallet</string>

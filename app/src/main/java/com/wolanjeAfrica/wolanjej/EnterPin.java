@@ -103,6 +103,9 @@ public class EnterPin extends AppCompatActivity {
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         switch (className) {
+            case "HomeTwoloans":
+            case "Homeloans":
+                break;
             case "ScholarShip06":
                 break;
             case "BookBus06":
@@ -271,6 +274,20 @@ public class EnterPin extends AppCompatActivity {
                 String className = getIntent().getStringExtra("Class");
                 Intent intent;
                 switch (className) {
+                    case "Homeloans":
+                        intent = new Intent(EnterPin.this, Home.class);
+                        intent.putExtra("Class", "EnterPin");
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    case "HomeTwoloans":
+                        intent = new Intent(EnterPin.this, HomeTwo.class);
+                        intent.putExtra("Class", "EnterPin");
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                        break;
                     case "ScholarShip06":
                         if (ValidateUserPin(fullPin)) {
                             intent = new Intent(EnterPin.this, Scholarship06.class);

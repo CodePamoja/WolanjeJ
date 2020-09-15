@@ -38,7 +38,7 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
     private String sessionId;
     private String AGENTNO;
     private Toolbar tb;
-    private String MY_BALANCE;
+    private static String MY_BALANCE;
     private SharedPreferences pref;
 
 

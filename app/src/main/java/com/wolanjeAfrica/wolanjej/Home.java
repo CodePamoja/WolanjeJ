@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
@@ -58,6 +59,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     public static final String EXTRA_ACCOUNTNUMBER = "com.example.wolanjej.ACCOUNTNUMBER";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     public static final String EXTRA_PRODUCT_NAME = "com.example.wolanjej.PRODUCT";
+    public static final String EXTRA_CLASS_TYPE = "com.example.wolanjej.CLASS_TYPE";
     public static final String EXTRA_MYBALANCE = "com.example.wolanjej.MYBALANCE";
     private static final String TAG = "HOME";
     private Toolbar tb;
@@ -69,7 +71,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     private String AGENTNO;
     private AlertDialog alertDialogTrans;
     private Spinner spinner;
-    private String MY_BALANCE;
+    private static String MY_BALANCE;
     private String phoneCompany;
     private ArrayAdapter adapter;
     private TextView tvtext, txtAccounNoPayNetSheet, txtAmountWithdraw, txtamountPyNetSheet, txtMobileNumberWithdraw, txtAmountTopUpWallet, txtMobilenumber, txtTokenAccountNumber, txtAmountPayTvSheet, txtAmountToken, txtPaytvAccountNoSheet;
@@ -191,6 +193,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     payTvSubscriptionDialog();
                     break;
                 case "EnterPin":
+                    ShowLoanSuccess();
                     break;
             }
         }
@@ -533,7 +536,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetViewOpenWithdraw = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.withdraw, (LinearLayout) findViewById(R.id.Ewallet3)
                 );
+
         spinner = bottomSheetViewOpenWithdraw.findViewById(R.id.selectypeWithdraw);
+        TextView textView1 = (TextView) bottomSheetViewOpenWithdraw.findViewById(R.id.txtBalanceWithdraw);
+        textView1.setText("KES"+MY_BALANCE);
         txtMobileNumberWithdraw = bottomSheetViewOpenWithdraw.findViewById(R.id.mobileNumberWithdraw);
         txtAmountWithdraw = bottomSheetViewOpenWithdraw.findViewById(R.id.amountWithdraw);
         adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
@@ -623,6 +629,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetViewopenEwalletPopUp = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.wallet_pop_up, (LinearLayout) findViewById(R.id.Ewallet2)
                 );
+        TextView textView1 = bottomSheetViewopenEwalletPopUp.findViewById(R.id.txtTopup);
+        textView1.setText("KES"+MY_BALANCE);
         spinner = bottomSheetViewopenEwalletPopUp.findViewById(R.id.selecttype);
         txtMobilenumber = bottomSheetViewopenEwalletPopUp.findViewById(R.id.mobilenumber);
         txtAmountTopUpWallet = bottomSheetViewopenEwalletPopUp.findViewById(R.id.amountTopUpWallet);
@@ -806,6 +814,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                     }
                 }
         );
+        TextView textView = (TextView) bottomSheetViewPayInternet.findViewById(R.id.txtpayInternet);
+        textView.setText("KES"+MY_BALANCE);
         txtAccounNoPayNetSheet = bottomSheetViewPayInternet.findViewById(R.id.AccounNoPayNetSheet);
         txtamountPyNetSheet = bottomSheetViewPayInternet.findViewById(R.id.amountPyNetSheet);
         bottomSheetViewPayInternet.findViewById(R.id.buttonPayNetSheet).setOnClickListener(new View.OnClickListener() {
@@ -846,6 +856,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         bottomSheetViewPayElectricity = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.buy_electricity_token_sheet, (ConstraintLayout) findViewById(R.id.buyElectricityToken)
                 );
+        TextView textView = (TextView) bottomSheetViewPayElectricity.findViewById(R.id.balanceTokenSheet);
+        textView.setText("KES"+MY_BALANCE);
         txtTokenAccountNumber = bottomSheetViewPayElectricity.findViewById(R.id.TokenNumberSheet);
         txtAmountToken = bottomSheetViewPayElectricity.findViewById(R.id.amountBuyTokenSheet);
 
@@ -864,6 +876,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         bottomSheetDialog.setContentView(bottomSheetViewPayElectricity);
         bottomSheetDialog.show();
+
     }
 
     @Override
@@ -901,7 +914,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 .inflate(R.layout.pay_tv_subscription_sheet, (LinearLayout) findViewById(R.id.register_new_number)
                 );
         spinner = bottomSheetViewPayTvSubsription.findViewById(R.id.selectServiceProviderTvSheet);
-
+        TextView textView =(TextView) bottomSheetViewPayTvSubsription.findViewById(R.id.txtTvSubscriptionBalance);
+        textView.setText("KES"+MY_BALANCE);
         adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
                 R.array.tv_service_products, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1151,6 +1165,22 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         alertDialog.show();
     }
+    private void ShowLoanSuccess() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.loan_req_success, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        ImageButton button = view.findViewById(R.id.btn_closeSuccess);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
 
 
     public ArrayList<Model> getMylist() {
@@ -1191,6 +1221,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         switch (v.getId()) {
             case R.id.loanscard:
                 i = new Intent(getApplicationContext(), Loans.class);
+                i.putExtra("Class","Home");
+                i.putExtra(EXTRA_CLASS_TYPE,"Homeloans");
                 startActivity(i);
                 break;
             case R.id.cardTrans:

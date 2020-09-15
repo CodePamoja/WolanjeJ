@@ -1,6 +1,9 @@
 package com.wolanjeAfrica.wolanjej;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
@@ -27,6 +31,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.wolanjeAfrica.wolanjej.models.Model;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
@@ -35,32 +40,52 @@ import java.util.ArrayList;
 
 public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, View.OnClickListener {
 
+    private static final String EXTRA_CLASS_TYPE =  "com.example.wolanjej.CLASS_TYPE";
+    private static String ClassType;
     private ArrayAdapter adapter;
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private Button transfer_money_button_hm2;
-    private MaterialCardView materialCardView, materialCardView1;
+    private MaterialCardView materialCardView, materialCardView1, materialCardView2;
     private BottomSheetDialog bottomSheetDialog;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private Spinner spinner;
-    private TextView txtMobilenumber,txtAmountTopUpWallet,txtMobileNumberWithdraw,txtAmountWithdraw;
+    private TextView txtMobilenumber, txtAmountTopUpWallet, txtMobileNumberWithdraw, txtAmountWithdraw;
     private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_two);
         toolbar = findViewById(R.id.toolbarhome2);
         drawer = findViewById(R.id.drawer_layout_home_two);
-        transfer_money_button_hm2 = findViewById(R.id.transfer_money_button_hm2);transfer_money_button_hm2.setOnClickListener(this);
-        materialCardView = (MaterialCardView)findViewById(R.id.loanscardHomeTwo);materialCardView.setOnClickListener(this);
-        materialCardView1 = (MaterialCardView)findViewById(R.id.card1_home_two);materialCardView1.setOnClickListener(this);
-        button = (Button) findViewById(R.id.wallet_home_two);button.setOnClickListener(this);
+        transfer_money_button_hm2 = findViewById(R.id.transfer_money_button_hm2);
+        transfer_money_button_hm2.setOnClickListener(this);
+        materialCardView = (MaterialCardView) findViewById(R.id.loanscardHomeTwo);
+        materialCardView.setOnClickListener(this);
+        materialCardView1 = (MaterialCardView) findViewById(R.id.card1_home_two);
+        materialCardView1.setOnClickListener(this);
+        materialCardView2 = (MaterialCardView) findViewById(R.id.loanactivator);
+        materialCardView2.setOnClickListener(this);
+        button = (Button) findViewById(R.id.wallet_home_two);
+        button.setOnClickListener(this);
 
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        if (className != null) {
+            Log.e("class Type className", className);
+            switch (className) {
+                case "EnterPin":
+                    ShowLoanSuccess();
+                    break;
+                default:
+                    break;
+            }
+        }
         transferListDetails();
         setToolBar();
     }
-
 
 
     private void setToolBar() {
@@ -197,9 +222,10 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         bottomSheetDialog.show();
 
     }
+
     private void OpenWallet() {
 
-         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                 HomeTwo.this, R.style.BottomSheetDialogTheme
         );
         View bottomSheetViewOpenWalle = LayoutInflater.from(getApplicationContext())
@@ -264,8 +290,8 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
             }
         });
-        if(bottomSheetViewOpenWalle.getParent() != null) {
-            ((ViewGroup)bottomSheetViewOpenWalle.getParent()).removeView(bottomSheetViewOpenWalle); // <- fix
+        if (bottomSheetViewOpenWalle.getParent() != null) {
+            ((ViewGroup) bottomSheetViewOpenWalle.getParent()).removeView(bottomSheetViewOpenWalle); // <- fix
             OpenWallet();
             return;
         }
@@ -344,6 +370,23 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         bottomSheetDialog.setContentView(bottomSheetViewOpenWithdraw);
         bottomSheetDialog.show();
     }
+    private void ShowLoanSuccess() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.loan_req_success, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        ImageButton button = view.findViewById(R.id.btn_closeSuccess);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
+
     public ArrayList<Model> getMylist() {
         ArrayList<Model> models = new ArrayList<>();
         Model m = new Model();
@@ -440,7 +483,7 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     @Override
     public void onClick(View v) {
         Intent intent;
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.transfer_money_button_hm2:
             case R.id.loanscardHomeTwo:
                 intent = new Intent(HomeTwo.this, MainTransfer36.class);
@@ -452,6 +495,14 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                 break;
             case R.id.wallet_home_two:
                 OpenWallet();
+                break;
+            case R.id.loanactivator:
+                intent = new Intent(HomeTwo.this, Loans.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("Class","HomeTwo");
+                intent.putExtra(EXTRA_CLASS_TYPE,"HomeTwoloans");
+                startActivity(intent);
+                break;
             default:
                 break;
         }

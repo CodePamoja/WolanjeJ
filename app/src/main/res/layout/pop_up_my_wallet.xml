@@ -48,7 +48,7 @@
         android:layout_marginStart="24dp"
         android:focusable="true"
         app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
@@ -99,7 +99,7 @@
         android:layout_marginStart="17dp"
         android:layout_marginTop="13dp"
         app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintStart_toEndOf="@+id/mytopupcard"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
@@ -150,7 +150,7 @@
         android:elevation="3dp"
         android:focusable="true"
         app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintStart_toEndOf="@+id/mywithdrawcard"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
@@ -196,7 +196,7 @@
         android:elevation="3dp"
         android:focusable="true"
         app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -248,7 +248,7 @@
         android:elevation="3dp"
         android:focusable="true"
         app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintStart_toEndOf="@+id/transactionHistCard"
         app:layout_constraintTop_toBottomOf="@+id/mywithdrawcard">
 
