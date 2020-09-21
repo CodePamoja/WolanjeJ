@@ -125,6 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/flightFormItem"
                 android:layout_alignParentStart="true"
+                android:layout_marginBottom="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="1dp"
                 android:fontFamily="@font/poppins_medium"

@@ -42,6 +42,7 @@ public class TransferToBank44 extends AppCompatActivity {
     public static final String EXTRA_BRANCHNAME = "com.example.wolanjej.BRANCHNAME";
     public static final String EXTRA_BANKSELECTED = "com.example.wolanjej.BANKSELECTED";
     public static final String EXTRA_PHONECOMPANY = "com.example.wolanjej.PHONECOMPANY";
+    public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
     private static final String TAG = "TransferToBank";
     private Button button;
     private Spinner spin, spinner;
@@ -58,6 +59,7 @@ public class TransferToBank44 extends AppCompatActivity {
     private String bankSelected;
     private String AGENTNO;
     private String MY_BALANCE;
+    private static String className;
     private String sessionId;
     private SharedPreferences pref,pref1;
     private TextView textView;
@@ -80,6 +82,7 @@ public class TransferToBank44 extends AppCompatActivity {
         Log.e("class Type className", className);
         switch (className) {
             case "MainTransfer36":
+                TransferToBank44.className = intentExtra.getStringExtra(MainTransfer36.EXTRA_PARENTCLASSNAME);
                 break;
             case "SelectUserAdapter": {
                 this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
@@ -250,6 +253,7 @@ public class TransferToBank44 extends AppCompatActivity {
         move.putExtra(EXTRA_BRANCHNAME, branchName);
         move.putExtra(EXTRA_HOLDERNAME, holderName);
         move.putExtra(EXTRA_PHONENUMBER, phone);
+        move.putExtra(EXTRA_PARENTCLASSNAME, className);
         startActivity(move);
     }
 

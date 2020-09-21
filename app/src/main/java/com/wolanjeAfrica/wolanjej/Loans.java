@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -19,7 +18,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.wolanjeAfrica.wolanjej.pagerAdapters.LoansAdapter;
 
 public class Loans extends AppCompatActivity implements View.OnClickListener {
-    private static  String ClassType;
+    private static String ClassType;
     private ArrayAdapter adapter;
     private BottomSheetDialog bottomSheetDialog;
     private TabLayout tabLayout;
@@ -98,7 +97,8 @@ public class Loans extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }
-    public void OpenBootomSheetLoan(){
+
+    public void OpenBootomSheetLoan() {
         bottomSheetDialog = new BottomSheetDialog(
                 Loans.this, R.style.BottomSheetDialogTheme
         );
@@ -116,7 +116,7 @@ public class Loans extends AppCompatActivity implements View.OnClickListener {
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
                 Intent intent = new Intent(Loans.this, EnterPin.class);
-                intent.putExtra("Class",ClassType);
+                intent.putExtra("Class", ClassType);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

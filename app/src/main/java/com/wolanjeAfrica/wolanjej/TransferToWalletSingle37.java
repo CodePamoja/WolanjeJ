@@ -39,6 +39,8 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
+    private static String className;
     private Button button;
     private Spinner spin;
     private EditText text, editText1, editText2, editText3;
@@ -100,6 +102,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
             case "EnterPin":
                 break;
             case "MainTransfer36":
+                TransferToWalletSingle37.className = intentExtra.getStringExtra(MainTransfer36.EXTRA_PARENTCLASSNAME);
                 break;
             case "TransferToWalletMultiple40":
                 this.sessionID = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_SESSION);
@@ -229,12 +232,14 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     public void valuesConferm(String phone, String amount, String message) {
         Log.e("session before contact", sessionID);
         Intent move = new Intent(this, ConfirmSingleTransfer40.class);
+        move.putExtra("Class","TransferToWalletSingle37");
         move.putExtra(EXTRA_SESSION, sessionID);
         move.putExtra(EXTRA_PHONENAME, phoneName);
         move.putExtra(EXTRA_MESSAGE, message);
         move.putExtra(EXTRA_AGENTNO, AGENTNO);
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_AMOUNT, amount);
+        move.putExtra(EXTRA_PARENTCLASSNAME,className);
         startActivity(move);
     }
 

@@ -28,7 +28,7 @@ public class Reg_04 extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "Reg04";
     private static final int FILE_SELECT_CODE = 0;
-    private String pathCertificate, pathSignedOffAgreement, pathKraPin = null;
+    private static String pathCertificate, pathSignedOffAgreement, pathKraPin = null;
     private ImageView imageView, imageView2, imageView3, imageView4, imageView5, imageView6;
     private Intent myintent;
     private TextView tx;

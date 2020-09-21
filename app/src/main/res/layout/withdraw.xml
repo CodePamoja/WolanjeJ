@@ -83,7 +83,7 @@
             android:hint="Mobile Number"
             android:inputType="number"
             app:counterEnabled="true"
-            android:maxLength="9"
+
             android:id="@+id/mobileNumberWithdraw"
             android:layout_below="@id/selectypeWithdraw"
             />

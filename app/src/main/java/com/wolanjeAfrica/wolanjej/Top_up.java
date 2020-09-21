@@ -31,6 +31,7 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
     private static final String TAG = "TopUp";
     private String[] selectNumber = {"My Number", "Other Number"};
     private String phoneCompany;
@@ -40,6 +41,7 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
     private Toolbar tb;
     private static String MY_BALANCE;
     private SharedPreferences pref;
+    private static String className;
 
 
     @Override
@@ -51,7 +53,10 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
         this.sessionId = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
 
+
         textView1 = (TextView) findViewById(R.id.balance_layout_top_up);
+
+        className = getIntent().getStringExtra("Class");
 
         Spinner spin = (Spinner) this.findViewById(R.id.select_number);
         spin.setOnItemSelectedListener(this);
@@ -161,6 +166,7 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
         move.putExtra(EXTRA_PROVIDER, provider);
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_AMOUNT, amount);
+        move.putExtra(EXTRA_PARENTCLASSNAME, className);
         startActivity(move);
     }
 

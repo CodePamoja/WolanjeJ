@@ -323,7 +323,6 @@ public class EnterPin2 extends AppCompatActivity {
                 jdata.put("amount", amount);
                 jdata.put("phone", phoneNumber);
                 jdata.put("ref", ref);
-                jdata.put("pin", pin);
                 jdataset.put(jdata);
             } catch (Exception e) {
                 e.getStackTrace();
@@ -388,6 +387,7 @@ public class EnterPin2 extends AppCompatActivity {
 
             } else {
                 Snackbar.make(findViewById(R.id.activityTvSubscription), "Something went wrong", Snackbar.LENGTH_LONG).show();
+                Log.e(TAG, "onPostExecute: "+response );
             }
         }
     }

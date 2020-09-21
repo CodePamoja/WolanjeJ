@@ -76,7 +76,7 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         if (className != null) {
             Log.e("class Type className", className);
             switch (className) {
-                case "EnterPin":
+                case "EnterPinloan":
                     ShowLoanSuccess();
                     break;
                 default:
@@ -267,7 +267,7 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
                         Intent intent = new Intent(v.getContext(), MainTransfer36.class);
-                        intent.putExtra("Class", "Home");
+                        intent.putExtra("Class", "HomeTwo");
                         startActivity(intent);
                     }
                 }
@@ -487,10 +487,12 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
             case R.id.transfer_money_button_hm2:
             case R.id.loanscardHomeTwo:
                 intent = new Intent(HomeTwo.this, MainTransfer36.class);
+                intent.putExtra("Class", "HomeTwo");
                 startActivity(intent);
                 break;
             case R.id.card1_home_two:
                 intent = new Intent(HomeTwo.this, BulkPaymentsMain.class);
+                intent.putExtra("Class","HomeTwo");
                 startActivity(intent);
                 break;
             case R.id.wallet_home_two:

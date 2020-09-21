@@ -57,7 +57,7 @@ public class PaymentsMain extends AppCompatActivity {
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
 
-        final Intent moveToLogo = new Intent(this,CryptoBalance.class);
+        final Intent moveToLogo = new Intent(this,BulkPaymentsMain.class);
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override

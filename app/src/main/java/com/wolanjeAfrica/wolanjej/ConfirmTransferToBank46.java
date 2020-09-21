@@ -27,6 +27,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
     public static final String EXTRA_HOLDERNAME = "com.example.wolanjej.HOLDERSNAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_PHONECOMPANY = "com.example.wolanjej.PHONECOMPANY";
+    public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
     private Button button;
     private EditText text;
     private String accNumber;
@@ -41,6 +42,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
     private String AGENTNO;
     private String userName;
     private TextView tvtext;
+    private static String className;
     private SharedPreferences pref;
 
 
@@ -65,6 +67,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         this.branchName = intentExtra.getStringExtra(TransferToBank44.EXTRA_BRANCHNAME);
         this.bankSelected = intentExtra.getStringExtra(TransferToBank44.EXTRA_BANKSELECTED);
         this.phoneProvider = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONECOMPANY);
+        className = intentExtra.getStringExtra(TransferToBank44.EXTRA_PARENTCLASSNAME);
 
         tvtext = findViewById(R.id.bankToName);
         tvtext.setText(holderName);
@@ -136,6 +139,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         move.putExtra(EXTRA_HOLDERNAME, holderName);
         move.putExtra(EXTRA_PHONENUMBER, phoneNumber);
         move.putExtra(EXTRA_PHONECOMPANY,phoneProvider);
+        move.putExtra(EXTRA_PARENTCLASSNAME,className);
         startActivity(move);
         finish();
     }

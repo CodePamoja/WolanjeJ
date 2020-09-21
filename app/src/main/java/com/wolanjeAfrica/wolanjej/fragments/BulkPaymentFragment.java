@@ -18,7 +18,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.wolanjeAfrica.wolanjej.ConfirmSingleTransfer40;
-import com.wolanjeAfrica.wolanjej.ConfirmTransferToPhone52;
 import com.wolanjeAfrica.wolanjej.R;
 
 
@@ -28,6 +27,8 @@ public class BulkPaymentFragment extends Fragment implements View.OnClickListene
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
+    public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
+    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
     private static final int FILE_SELECT_CODE = 0;
     private static final String TAG = "BulkPaymentsMain";
     private String path;
@@ -127,23 +128,13 @@ public class BulkPaymentFragment extends Fragment implements View.OnClickListene
 
         return ((path == null || path.isEmpty()) ? (uri.getPath()) : path);
     }
-
-
-
-    private void MoveToBulkpayments03() {
+    public void ProceedToConfirmBulkPayment() {
         String amount = editText.getText().toString();
-        if (!amount.isEmpty() && path != null) {
-            button.setBackgroundColor(getResources().getColor(R.color.warm_purple));
-            myintent = new Intent(getContext(), ConfirmSingleTransfer40.class);
-            myintent.putExtra("Class", "BulkPaymentFrag");
-            myintent.putExtra(EXTRA_AMOUNT, amount);
-//            myintent.putExtra(EXTRA_PHONENAME, phoneName);
-//            myintent.putExtra(EXTRA_PHONENUMBER, phone);
-            startActivity(myintent);
-        } else {
-            button.setEnabled(false);
-        }
-
+        button.setBackgroundColor(getResources().getColor(R.color.warm_purple));
+        myintent = new Intent(getContext(), ConfirmSingleTransfer40.class);
+        myintent.putExtra("Class", "BulkPaymentFrag");
+        myintent.putExtra(EXTRA_AMOUNT, amount);
+        startActivity(myintent);
     }
 
 
@@ -154,10 +145,11 @@ public class BulkPaymentFragment extends Fragment implements View.OnClickListene
                 loadCopyOfFile();
                 break;
             case R.id.buttonContinuefbulk:
-//                MoveToBulkpayments03();
+                ProceedToConfirmBulkPayment();
                 break;
         }
     }
+
 
 }
 

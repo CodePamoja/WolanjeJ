@@ -34,6 +34,8 @@ public class TransferToPhone50 extends AppCompatActivity {
     public static final String EXTRA_PHONECOMPANY = "com.example.wolanjej.PHONECOMPANY";
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
+    public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
+    private static String className;
     private Button button;
     private EditText editText1, editText2, editText3;
     private TextView textView1;
@@ -64,6 +66,7 @@ public class TransferToPhone50 extends AppCompatActivity {
         Log.e("class Type className", className);
         switch (className) {
             case "MainTransfer36":
+                TransferToPhone50.className = intentExtra.getStringExtra(MainTransfer36.EXTRA_PARENTCLASSNAME);
                 break;
             case "ContactsView":
                 break;
@@ -160,7 +163,7 @@ public class TransferToPhone50 extends AppCompatActivity {
         }
         if (value != null && !value.equals("Fasle")) {
             valuesConferm(value, amount, key);
-        }else {
+        } else {
             Toast.makeText(this, "invalid phone", Toast.LENGTH_SHORT).show();
         }
     }
@@ -175,6 +178,7 @@ public class TransferToPhone50 extends AppCompatActivity {
         move.putExtra(EXTRA_PHONECOMPANY, phoneprovider);
         move.putExtra(EXTRA_PHONENAME, phoneName);
         move.putExtra(EXTRA_PHONENUMBER, phone);
+        move.putExtra(EXTRA_PARENTCLASSNAME, className);
         startActivity(move);
     }
 

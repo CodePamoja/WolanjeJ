@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,6 +25,8 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
     public static final String EXTRA_PHONEPROVIDER = "com.example.wolanjej.PHONEPROVIDER";
+    public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
+    private static final String TAG = "ConfirmTransferToPhone";
     private Button button;
     private String phoneNumber;
     private String sessionID;
@@ -34,6 +37,7 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
     private String AGENTNO;
     private String userName;
     private SharedPreferences pref;
+    private static String className;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,8 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
         this.phoneName =  intentExtra.getStringExtra(TransferToPhone50.EXTRA_PHONENAME);
         this.amount =  intentExtra.getStringExtra(TransferToPhone50.EXTRA_AMOUNT);
         this.phoneProvider =  intentExtra.getStringExtra(TransferToPhone50.EXTRA_PHONECOMPANY);
+        className = intentExtra.getStringExtra(TransferToPhone50.EXTRA_PARENTCLASSNAME);
+
         //SharedPreferences values for TransferToPhone52 activity class eg token
         pref=getApplication().getSharedPreferences("ConfirmTransferToPhone52", MODE_PRIVATE);
         pref.edit().clear().apply();
@@ -122,6 +128,7 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
         move.putExtra(EXTRA_PHONEPROVIDER, phoneProvider);
         move.putExtra(EXTRA_PHONENAME, phoneName);
         move.putExtra(EXTRA_PHONENUMBER, phoneNumber);
+        move.putExtra(EXTRA_PARENTCLASSNAME, className);
         startActivity(move);
         finish();
     }

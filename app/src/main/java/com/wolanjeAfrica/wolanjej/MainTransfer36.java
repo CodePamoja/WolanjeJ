@@ -12,63 +12,34 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
-import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
-import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
-
-import io.realm.Realm;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
-
-public class MainTransfer36 extends AppCompatActivity {
-
+public class MainTransfer36 extends AppCompatActivity implements View.OnClickListener {
+    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
+    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
+    public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
+    private static final String TAG = "MainTransfer";
     private CardView walletCard, bankCard, phoneCard;
     private String userId;
     private SharedPreferences pref;
-    private String UserRole;
-    public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
+    private static String ClassName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_transfer36);
 
-        setToolBar();
-        setActionBarColor();
-        Realm.init(this);
 
-        pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
-        this.userId = pref.getString("userDbId", "");
-
-        Realm realm = Realm.getInstance(DbMigrations.getDefaultInstance());
-        UserRole = realm.where(User.class)
-                .equalTo("id", Integer.valueOf(userId) )
-                .findFirst().getRole();
+        ClassName = getIntent().getStringExtra("Class"); //get previous class
 
 
         walletCard = (CardView) findViewById(R.id.transfer_to_wallet);
-        walletCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toWallet();
-            }
-        });
-
+        walletCard.setOnClickListener(this);
         bankCard = (CardView) findViewById(R.id.transfer_to_bank);
-        bankCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toBank();
-            }
-        });
+        bankCard.setOnClickListener(this);
 
         phoneCard = (CardView) findViewById(R.id.transfer_to_phone);
-        phoneCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toPhone();
-            }
-        });
+        phoneCard.setOnClickListener(this);
+        setToolBar();
     }
 
 
@@ -80,22 +51,20 @@ public class MainTransfer36 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (UserRole.equals("1")){
+                        if (ClassName.equals("HomeTwo")) {
                             Intent movetohm2 = new Intent(getApplicationContext(), HomeTwo.class);
                             movetohm2.putExtra("Class", "MainTransfer36");
+                            movetohm2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(movetohm2);
-                        }else{
+                        } else {
                             Intent movetoLogo = new Intent(getApplicationContext(), Home.class);
                             movetoLogo.putExtra("Class", "MainTransfer36");
+                            movetoLogo.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(movetoLogo);
                         }
                     }
                 }
         );
-
-    }
-
-    private void setActionBarColor() {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
@@ -110,23 +79,33 @@ public class MainTransfer36 extends AppCompatActivity {
     }
 
 
-    public void toWallet() {
-        Intent move = new Intent(this, TransferToWalletSingle37.class);
-        move.putExtra("Class", "MainTransfer36");
-        startActivity(move);
+    @Override
+    public void onClick(View v) {
+        Intent move;
+        switch (v.getId()) {
+            case R.id.transfer_to_wallet:
+                move = new Intent(this, TransferToWalletSingle37.class);
+                move.putExtra("Class", "MainTransfer36");
+                move.putExtra(EXTRA_PARENTCLASSNAME, ClassName);
+                move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(move);
+                break;
+            case R.id.transfer_to_bank:
+                move = new Intent(this, TransferToBank44.class);
+                move.putExtra("Class", "MainTransfer36");
+                move.putExtra(EXTRA_PARENTCLASSNAME, ClassName);
+                move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(move);
+                break;
+            case R.id.transfer_to_phone:
+                move = new Intent(this, TransferToPhone50.class);
+                move.putExtra("Class", "MainTransfer36");
+                move.putExtra(EXTRA_PARENTCLASSNAME, ClassName);
+                move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(move);
+                break;
+            default:
+                break;
+        }
     }
-
-    public void toBank() {
-        Intent move = new Intent(this, TransferToBank44.class);
-        move.putExtra("Class", "MainTransfer36");
-        startActivity(move);
-    }
-
-    public void toPhone() {
-//        Log.e("sessionID to mpesa",sessionID);
-        Intent move = new Intent(this, TransferToPhone50.class);
-        move.putExtra("Class", "MainTransfer36");
-        startActivity(move);
-    }
-
 }

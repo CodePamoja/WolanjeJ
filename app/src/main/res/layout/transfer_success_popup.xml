@@ -145,6 +145,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtAmountSentSuccess" />
 
     <TextView
+        android:id="@+id/balanceTransferDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"

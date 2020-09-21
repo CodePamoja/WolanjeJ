@@ -25,10 +25,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
+import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
+import com.wolanjeAfrica.wolanjej.fragments.BulkPaymentFragment;
+import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.models.Transactions;
 
 import org.json.JSONArray;
@@ -38,6 +43,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import io.realm.Realm;
 import okhttp3.Response;
@@ -45,6 +51,8 @@ import okhttp3.Response;
 public class EnterPin extends AppCompatActivity {
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
+    private static String parentClassName;
+    private static String userBalance;
     private Button button;
     private String sessionID;
     private String phoneNumber, PhoneNumber2;
@@ -67,7 +75,6 @@ public class EnterPin extends AppCompatActivity {
     private Transactions transactions;
     private String userId;
     private Realm realm;
-    private String userRole;
     private Collection<Transactions> transactionsList = new LinkedList<>();
 
     public EnterPin() {
@@ -81,8 +88,6 @@ public class EnterPin extends AppCompatActivity {
 
         Realm.init(this);
 
-        realm = Realm.getInstance(DbMigrations.getDefaultInstance());
-
 
         //SharedPreferences values for login eg token
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
@@ -90,9 +95,6 @@ public class EnterPin extends AppCompatActivity {
         this.userId = pref.getString("userDbId", null);
         progressBar = (ProgressBar) findViewById(R.id.progressBarEnterPin);
 
-        userRole = realm.where(User.class)
-                .equalTo("id", Integer.parseInt(userId))
-                .findFirst().getRole();
 
         text1 = findViewById(R.id.pinValue1);
         text2 = findViewById(R.id.pinValue2);
@@ -119,6 +121,7 @@ public class EnterPin extends AppCompatActivity {
                 this.phoneNumber = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_PHONENUMBER);
                 this.amount = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_AMOUNT);
                 this.phoneName = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_PHONENAME);
+                parentClassName = intentExtra.getStringExtra(ConfirmSingleTransfer40.EXTRA_PARENTCLASSNAME);
 
                 break;
             case "TransferToPhone50":
@@ -139,6 +142,7 @@ public class EnterPin extends AppCompatActivity {
                 this.phoneProvider = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONECOMPANY);
                 String sendBranch = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BRANCHNAME);
                 String sendBank = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BANKSELECTED);
+                parentClassName = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PARENTCLASSNAME);
                 this.bankDetails = sendBank + "-" + sendBranch;
 
                 break;
@@ -155,7 +159,7 @@ public class EnterPin extends AppCompatActivity {
                 this.phoneNumber = intentExtra.getStringExtra(Top_up.EXTRA_PHONENUMBER);
                 this.amount = intentExtra.getStringExtra(Top_up.EXTRA_AMOUNT);
                 this.phoneProvider = intentExtra.getStringExtra(Top_up.EXTRA_PROVIDER);
-
+                parentClassName = intentExtra.getStringExtra(Top_up.EXTRA_PARENTCLASSNAME);
                 break;
             case "ConfirmMultipleTransfer":
                 this.message = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_MESSAGE);
@@ -170,6 +174,7 @@ public class EnterPin extends AppCompatActivity {
                 this.phoneProvider = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONEPROVIDER);
                 this.phoneName = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENAME);
                 this.phoneNumber = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PHONENUMBER);
+                parentClassName = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_PARENTCLASSNAME);
                 break;
 
         }
@@ -276,14 +281,14 @@ public class EnterPin extends AppCompatActivity {
                 switch (className) {
                     case "Homeloans":
                         intent = new Intent(EnterPin.this, Home.class);
-                        intent.putExtra("Class", "EnterPin");
+                        intent.putExtra("Class", "EnterPinloan");
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
                         break;
                     case "HomeTwoloans":
                         intent = new Intent(EnterPin.this, HomeTwo.class);
-                        intent.putExtra("Class", "EnterPin");
+                        intent.putExtra("Class", "EnterPinloan");
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
@@ -505,18 +510,23 @@ public class EnterPin extends AppCompatActivity {
                     Log.e("TAG", sendAmount);
 
                     if (phoneNumber.equals(sendNumber) && statusResulsts.equals("TRX_ASYNC")) {
+                        RetrieveBalance();
                         showPopup();
                     } else if (statusResulsts.equals("TRX_OK")) {
+                        RetrieveBalance();
                         showPopup();
                     } else if (statusResulsts.equals("TRX_INSUFFICIENT_BALANCE")) {
                         Toast.makeText(getApplicationContext(), "You have insufficient balance on your wallet", Toast.LENGTH_LONG).show();
+                        RetrieveBalance();
                         showPopupFail();
                     } else if (statusResulsts.equals("TRX_VERIFY")) {
                         Toast.makeText(getApplicationContext(), "the transaction is being verified", Toast.LENGTH_SHORT).show();
+                        RetrieveBalance();
                         ShowDialogWalletFail();
 
                     } else {
                         Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
+                        RetrieveBalance();
                         showPopupFail();
                     }
 
@@ -542,64 +552,10 @@ public class EnterPin extends AppCompatActivity {
         }
     }
 
-    public class UserBalance extends AsyncTask<Void, Void, Response> {
-
-        @Override
-        protected Response doInBackground(Void... voids) {
-
-            String url = "/api/balance";
-            OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, sessionID); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-            Log.d("TAG", String.valueOf(result));
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response result) {
-            String verifyResult = null;
-            if (result != null && result.code() == 200) {
-                try {
-                    String test = result.body().string();
-                    Log.d("TAG test", test);
-                    JSONObject JBalance = new JSONObject(test);
-                    System.out.println("Response body json values are : " + JBalance);
-
-                    resultBalance = JBalance.getJSONArray("balance").getJSONObject(0).getString("balance");
-
-
-                    myBalance = "KSH " + resultBalance;
-
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
-
-            } else if (result != null && result.code() != 201) {
-                try {
-                    verifyResult = result.body().string();
-                    JSONObject jBody = new JSONObject(verifyResult); // adding
-                    System.out.println("Response body json values are : " + verifyResult);
-                    Log.e("TAG", String.valueOf(verifyResult));
-//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
-//                    Log.e("TAG", String.valueOf(sendResutls));
-//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
-                    Log.e("TAG result value", String.valueOf(result));
-                    Log.e("TAG result body", verifyResult);
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
-            }
-        }
-
-    }
-
 
     public void showPopup() {
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
-
-        new UserBalance().execute();
 
         switch (className) {
             case "ConfirmTransferToPhone52":
@@ -636,53 +592,63 @@ public class EnterPin extends AppCompatActivity {
 
     private void ShowDialogSuccess() {
 
-            //show dialog
-            LayoutInflater inflater = LayoutInflater.from(this);
-            View view = inflater.inflate(R.layout.transfer_success_popup, null);
-            final AlertDialog alertDialog = new AlertDialog.Builder(this)
-                    .setView(view)
-                    .create();
-            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            Button btn = view.findViewById(R.id.dismiss_success);
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent;
-                    switch (userRole) {
-                        case "1":
-                            intent = new Intent(getApplicationContext(), HomeTwo.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra("Class", "EnterPin");
-                            startActivity(intent);
-                            finish();
-                            alertDialog.dismiss();
-                            break;
-                        case "0":
-                            intent = new Intent(getApplicationContext(), Home.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra("Class", "EnterPin");
-                            startActivity(intent);
-                            finish();
-                            alertDialog.dismiss();
-                            break;
-                        default:
-                            intent = new Intent(getApplicationContext(), LogIn.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra("Class", "EnterPin");
-                            startActivity(intent);
-                            finish();
-                            alertDialog.dismiss();
-                            finish();
-                            break;
-                    }
+        //show dialog
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.transfer_success_popup, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        TextView textView = (TextView) view.findViewById(R.id.balanceTransferDone);
+        textView.setText(userBalance);
+        Button btn = view.findViewById(R.id.dismiss_success);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                switch (parentClassName) {
+                    case "HomeTwo":
+                        intent = new Intent(getApplicationContext(), HomeTwo.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("Class", "EnterPin");
+                        startActivity(intent);
+                        finish();
+                        alertDialog.dismiss();
+                        break;
+                    case "Home":
+                        intent = new Intent(getApplicationContext(), Home.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("Class", "EnterPin");
+                        startActivity(intent);
+                        finish();
+                        alertDialog.dismiss();
+                        break;
+                    case"BulkPaymentFrag":
+                        intent = new Intent(getApplicationContext(), BulkPaymentsMain.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("Class", "EnterPinSuccess");
+                        startActivity(intent);
+                        finish();
+                        alertDialog.dismiss();
+                        break;
+                    default:
+                        intent = new Intent(getApplicationContext(), LogIn.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("Class", "EnterPin");
+                        startActivity(intent);
+                        finish();
+                        alertDialog.dismiss();
+                        finish();
+                        break;
                 }
-            });
-            TextView textView = view.findViewById(R.id.refNumberSuccess);
-            textView.setText(sendIDReference);
-            TextView textView1 = view.findViewById(R.id.amountSentSuccess);
-            textView1.setText(sendAmount);
+            }
+        });
+        TextView textView1 = view.findViewById(R.id.refNumberSuccess);
+        textView1.setText(sendIDReference);
+        TextView textView2 = view.findViewById(R.id.amountSentSuccess);
+        textView2.setText(sendAmount);
 
-            alertDialog.show();
+        alertDialog.show();
 
 
     }
@@ -695,13 +661,16 @@ public class EnterPin extends AppCompatActivity {
                     .setView(view)
                     .create();
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            TextView text = (TextView) view.findViewById(R.id.balance_note2);
+            text.setText(userBalance);
             Button btn = view.findViewById(R.id.try_again_unsuccessful);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent;
-                    switch (userRole) {
-                        case "1":
+
+                    switch (parentClassName) {
+                        case "HomeTwo":
                             intent = new Intent(getApplicationContext(), HomeTwo.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("Class", "EnterPin");
@@ -709,10 +678,18 @@ public class EnterPin extends AppCompatActivity {
                             finish();
                             alertDialog.dismiss();
                             break;
-                        case "0":
+                        case "Home":
                             intent = new Intent(getApplicationContext(), Home.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("Class", "EnterPin");
+                            startActivity(intent);
+                            finish();
+                            alertDialog.dismiss();
+                            break;
+                        case"BulkPaymentFrag":
+                            intent = new Intent(getApplicationContext(), BulkPaymentsMain.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("Class", "EnterPinFail");
                             startActivity(intent);
                             finish();
                             alertDialog.dismiss();
@@ -833,7 +810,6 @@ public class EnterPin extends AppCompatActivity {
                     try {
                         String result = response.body().string();
                         Log.e("TAG", String.valueOf(result));
-//                Toast.makeText(EnterPin.this, "Please Try Again"+verifyResult, Toast.LENGTH_SHORT).show();
                         showPopupFail();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -846,7 +822,20 @@ public class EnterPin extends AppCompatActivity {
         }
     }
 
+    private void RetrieveBalance() {
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(EnterPin.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels) {
+                    userBalance = b.getBalance();
+                }
+            }
+        });
+    }
+
     @Override
+
     protected void onDestroy() {
         super.onDestroy();
         if (alertDialog != null) {
