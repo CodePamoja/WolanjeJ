@@ -57,6 +57,7 @@ public class UserBalanceViewModel extends ViewModel {
                     editor.putString("session_token", null);
                     editor.apply();
                     Intent move = new Intent(context.getApplicationContext(), LogIn.class);
+                    move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     context.startActivity(move);
                     return;
                 }

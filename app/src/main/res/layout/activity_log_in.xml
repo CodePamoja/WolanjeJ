@@ -17,6 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:navigationIcon="@mipmap/small_left" />
 
             <LinearLayout
                 android:id="@+id/LoginNetAlert"
@@ -46,16 +55,16 @@
                     android:layout_marginStart="180dp"
                     android:src="@drawable/ic_close_white" />
             </LinearLayout>
+
             <ImageView
                 android:id="@+id/include3"
                 android:layout_width="185dp"
                 android:layout_height="172dp"
-                android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
                 android:src="@mipmap/group_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -118,6 +127,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:drawableStart="@drawable/ic_kenya_flag"
+                                    android:background="@drawable/textviewborder"
                                     android:inputType="number" />
 
                             </com.google.android.material.textfield.TextInputLayout>
@@ -135,6 +145,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="numberPassword"
+                                    android:background="@drawable/textviewborder"
                                     android:maxLength="4"
 
                                     />
@@ -177,15 +188,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:backgroundTint="@color/colorWhite">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:navigationIcon="@mipmap/small_left"
-            app:layout_scrollFlags="scroll|enterAlways"/>
-    </com.google.android.material.appbar.AppBarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

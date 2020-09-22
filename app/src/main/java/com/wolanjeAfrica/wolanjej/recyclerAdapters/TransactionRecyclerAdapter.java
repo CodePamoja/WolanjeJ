@@ -41,7 +41,7 @@ public class TransactionRecyclerAdapter extends RecyclerView.Adapter<Transaction
         TranasactionHistory current=mData.get(position);
         holder.month.setText(current.getmMONTHS());
         holder.date.setText(current.getmDATE());
-        holder.top_up_amount.setText(current.getmTOP_UP_AMOUNT());
+        holder.top_up_amount.setText(String.format("+%s", current.getmTOP_UP_AMOUNT()));
         holder.transaction_fee.setText(current.getmTRANSACTION_FEE());
         holder.status.setText(current.getmSTATUS());
         holder.pending.setText(current.getmPENDING());

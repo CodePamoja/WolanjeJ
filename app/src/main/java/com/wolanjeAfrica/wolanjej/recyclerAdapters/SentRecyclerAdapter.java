@@ -50,9 +50,9 @@ public class SentRecyclerAdapter extends RecyclerView.Adapter<SentRecyclerAdapte
         return mData.size();
     }
 
-    public static class viewHolder extends RecyclerView.ViewHolder{
+    public static class viewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mMONTH ;
+        private TextView mMONTH;
         private TextView mDATE;
         private ImageView mImageView;
         private TextView mNAME;

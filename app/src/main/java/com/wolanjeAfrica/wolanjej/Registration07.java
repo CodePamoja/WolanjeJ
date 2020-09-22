@@ -1,13 +1,17 @@
 package com.wolanjeAfrica.wolanjej;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -98,6 +102,27 @@ public class Registration07 extends AppCompatActivity {
         }
     }
 
+    private void SuccessSignUp() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.success_user_signup, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        Button btn = view.findViewById(R.id.buttonSignUpSuccess);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                Intent intent = new Intent(Registration07.this, LogIn.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        alertDialog.show();
+    }
+
+
     public class sendPinServer extends AsyncTask<Void, Void, Response> {
         String phonenumber;
         String pin1;
@@ -133,13 +158,7 @@ public class Registration07 extends AppCompatActivity {
         protected void onPostExecute(Response response) {
             progressBar.setVisibility(View.GONE);
             if (response.code() == 202) {
-
-                Log.d("TAG", String.valueOf(response));
-                Toast.makeText(getApplicationContext(), "Your password has been changed successfuly", Toast.LENGTH_LONG).show();
-                Intent move = new Intent(Registration07.this, LogIn.class);
-                startActivity(move);
-                finish();
-
+                SuccessSignUp();
             } else if (response.code() != 201) {
                 Log.d("TAG", String.valueOf(response));
                 Toast.makeText(getApplicationContext(), "Access Denied to Resource", Toast.LENGTH_LONG).show();
@@ -147,4 +166,5 @@ public class Registration07 extends AppCompatActivity {
 
         }
     }
+
 }

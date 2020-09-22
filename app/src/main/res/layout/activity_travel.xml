@@ -1,51 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Travel">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".Travel">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:background="@color/home_purple"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <include layout="@layout/toolbarwithout2" />
+            <RelativeLayout
+                android:id="@+id/relativeLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:background="@color/home_purple"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="9dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Travel"
-                android:textColor="@color/colorWhite"
-                android:textSize="28sp" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:navigationIcon="@mipmap/small_left2">
+                </androidx.appcompat.widget.Toolbar>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:layout_marginTop="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/toolbar2"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="9dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Travel"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="28sp" />
+            </RelativeLayout>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/flight_ticket_card"
                 android:layout_width="152dp"
                 android:layout_height="162dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="39dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
+                app:cardElevation="7dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout6">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -85,10 +96,12 @@
                 android:id="@+id/train_ticket_card"
                 android:layout_width="152dp"
                 android:layout_height="162dp"
-                android:layout_marginStart="23dp"
-                android:layout_marginTop="3dp"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:layout_marginTop="39dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/flight_ticket_card"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout6">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -118,7 +131,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center_horizontal"
                         android:text="Train ticket"
-                        android:textColor="@color/colorMidnight"
+                        android:textColor="@color/gray4"
                         android:textSize="16sp" />
 
                     <TextView
@@ -140,21 +153,20 @@
                         android:textSize="16sp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:layout_marginTop="40dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/bus_ticket_card"
                 android:layout_width="152dp"
                 android:layout_height="162dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="249dp"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flight_ticket_card">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -185,7 +197,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center_horizontal"
                         android:text="Bus ticket"
-                        android:textColor="@color/colorMidnight"
+                        android:textColor="@color/gray4"
                         android:textSize="16sp" />
 
                     <TextView
@@ -213,10 +225,14 @@
                 android:id="@+id/booking_ticket_card"
                 android:layout_width="152dp"
                 android:layout_height="162dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="249dp"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bus_ticket_card"
+                app:layout_constraintTop_toBottomOf="@+id/train_ticket_card">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -247,7 +263,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center_horizontal"
                         android:text="Booking ticket"
-                        android:textColor="@color/colorMidnight"
+                        android:textColor="@color/gray4"
                         android:textSize="16sp" />
 
                     <TextView
@@ -270,7 +286,6 @@
                         android:textSize="16sp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

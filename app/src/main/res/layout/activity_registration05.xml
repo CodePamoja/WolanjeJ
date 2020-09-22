@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Registration05">
 
     <androidx.core.widget.NestedScrollView
@@ -16,34 +15,60 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:navigationIcon="@mipmap/small_left">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:backgroundTint="@android:color/transparent"
+                        android:fontFamily="@font/poppins_medium"
+                        android:onClick="movetoLogin"
+                        android:text="@string/login"
+                        android:textAllCaps="false" />
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+
             <ImageView
                 android:id="@+id/image_holder"
                 android:layout_width="185dp"
                 android:layout_height="172dp"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="17dp"
                 android:src="@mipmap/group_5"
                 app:layout_constraintBottom_toTopOf="@id/titlereg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
             <TextView
                 android:id="@+id/titlereg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/registration"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/registration"
+                android:textAlignment="center"
                 android:textColor="@color/colorMidnight"
                 android:textSize="22sp"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/descreg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_holder"
-                app:layout_constraintBottom_toTopOf="@id/descreg"
-                />
+                app:layout_constraintTop_toBottomOf="@id/image_holder" />
 
             <TextView
                 android:id="@+id/descreg"
@@ -51,9 +76,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/poppins_regular"
+                android:paddingHorizontal="40dp"
                 android:text="@string/please_enter_your_mobile_number_then_we_will_send_otp_to_verify"
                 android:textAlignment="center"
-                android:paddingHorizontal="40dp"
                 android:textColor="@color/blue_grey"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@id/descreg"
@@ -70,9 +95,9 @@
                 android:layout_marginVertical="12dp"
                 android:backgroundTint="@color/colorWhite"
                 android:elevation="12dp"
+                android:outlineAmbientShadowColor="#120d0229"
                 app:cardCornerRadius="6dp"
                 app:cardElevation="8dp"
-                android:outlineAmbientShadowColor="#120d0229"
                 app:layout_constraintBottom_toTopOf="@id/tlccon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,6 +124,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
+                            android:background="@drawable/textviewborder"
                             android:drawableStart="@drawable/ic_kenya_flag"
                             android:drawablePadding="5dp"
                             android:inputType="number" />
@@ -109,14 +135,15 @@
                         android:id="@+id/mail"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
-                        android:layout_gravity="center_horizontal"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:layout_marginHorizontal="12dp"
                         android:hint="@string/mail_text">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/textviewborder"
                             android:drawableStart="@drawable/ic_baseline_mail_24"
                             android:drawablePadding="5dp"
                             android:inputType="textEmailAddress" />
@@ -126,8 +153,8 @@
                     <Button
                         android:id="@+id/btn_continue"
                         android:layout_width="match_parent"
-                        android:layout_gravity="center_horizontal"
                         android:layout_height="58dp"
+                        android:layout_gravity="center_horizontal"
                         android:layout_marginHorizontal="12dp"
                         android:layout_marginVertical="10dp"
                         android:backgroundTint="#932777"
@@ -140,8 +167,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal"
                         android:paddingHorizontal="12dp">
 
                         <View
@@ -155,10 +182,10 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:fontFamily="@font/poppins_medium"
                             android:gravity="center_horizontal"
                             android:letterSpacing="0.08"
                             android:text="OR"
-                            android:fontFamily="@font/poppins_medium"
                             android:textColor="@color/colorMidnight"
                             android:textSize="16sp" />
 
@@ -178,10 +205,10 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginHorizontal="12dp"
                         android:backgroundTint="#120d0229"
-                        android:onClick="createAccount"
-                        android:textAllCaps="false"
                         android:fontFamily="@font/poppins_medium"
+                        android:onClick="createAccount"
                         android:text="Create a Business Account"
+                        android:textAllCaps="false"
                         android:textColor="#8484a9"
                         android:textSize="14sp" />
 
@@ -220,42 +247,7 @@
             </RelativeLayout>
 
 
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:backgroundTint="@color/colorWhite"
-        >
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:navigationIcon="@mipmap/small_left"
-            app:layout_scrollFlags="scroll|enterAlways">
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-           <com.google.android.material.button.MaterialButton
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_alignParentEnd="true"
-               android:fontFamily="@font/poppins_medium"
-               android:text="@string/login"
-               android:textAllCaps="false"
-               android:onClick="movetoLogin"
-               android:backgroundTint="@android:color/transparent"
-               style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-               />
-
-       </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

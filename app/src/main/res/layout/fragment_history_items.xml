@@ -23,7 +23,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Oct"
             android:textColor="@color/blue_grey"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/transaction_date"
@@ -34,12 +34,12 @@
             android:fontFamily="@font/poppins_regular"
             android:text="22"
             android:textColor="@color/colorMidnight"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layout_02"
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -51,26 +51,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/poppins_regular"
             android:text="Top Up - Admin"
             android:textColor="@color/colorMidnight"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/transaction_top_up_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="95dp"
-            android:textSize="18sp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/colorMidnight"
             android:gravity="end"
             android:text="+10.00"
-            />
-    </LinearLayout>
+            android:textColor="@color/colorMidnight"
+            android:textSize="16sp" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layout_03"
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -83,26 +85,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/blue_grey"
             android:text="Transaction Fee:"
-            />
+            android:textColor="@color/blue_grey"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/transaction_feeAmount"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="87dp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/poppins_regular"
             android:gravity="end"
             android:text="0.00"
             android:textColor="@color/blue_grey"
-            android:textSize="18sp" />
-    </LinearLayout>
+            android:textSize="14sp" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layout_04"
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -116,36 +120,46 @@
             android:id="@+id/txt_transaction_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="30dp"
-            android:text="Status: Completed "
+            android:layout_marginEnd="0dp"
+            android:layout_toStartOf="@+id/txt_transaction_pending"
             android:fontFamily="@font/poppins_regular"
+            android:text="Status: Completed "
             android:textColor="@color/blue_grey"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="15dp"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
-            android:background="@color/blue_grey"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="1dp"
+            android:layout_toStartOf="@+id/txt_transaction_pending"
+            android:background="@color/blue_grey" />
 
         <TextView
             android:id="@+id/txt_transaction_pending"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="12dp"
-            android:textSize="16sp"
+            android:layout_marginEnd="70dp"
             android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/blue_grey"
             android:text="Pending: 0  "
-            />
-    </LinearLayout>
+            android:textColor="@color/blue_grey"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
     <View
-        android:layout_width="355dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="20dp"
         android:layout_below="@id/layout_1"
-        android:background="@color/blue_grey"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="#e7e7e7" />
 
 
 </RelativeLayout>

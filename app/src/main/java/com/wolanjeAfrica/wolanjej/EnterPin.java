@@ -32,7 +32,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
-import com.wolanjeAfrica.wolanjej.fragments.BulkPaymentFragment;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.models.Transactions;
 
@@ -105,6 +104,9 @@ public class EnterPin extends AppCompatActivity {
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         switch (className) {
+            case "BillManager":
+                parentClassName = "Home";
+                break;
             case "HomeTwoloans":
             case "Homeloans":
                 break;
@@ -115,6 +117,7 @@ public class EnterPin extends AppCompatActivity {
                 break;
             case "Education_2":
                 //TODO:
+
                 break;
             case "TransferToWalletSingle37":
 
@@ -279,6 +282,9 @@ public class EnterPin extends AppCompatActivity {
                 String className = getIntent().getStringExtra("Class");
                 Intent intent;
                 switch (className) {
+                    case "BillManager":
+                        showPopup();
+                        break;
                     case "Homeloans":
                         intent = new Intent(EnterPin.this, Home.class);
                         intent.putExtra("Class", "EnterPinloan");
@@ -558,6 +564,7 @@ public class EnterPin extends AppCompatActivity {
         String className = getIntent().getStringExtra("Class");
 
         switch (className) {
+            case "BillManager":
             case "ConfirmTransferToPhone52":
             case "TransferToWalletSingle37":
             case "ConfirmMultipleTransfer":
@@ -576,6 +583,7 @@ public class EnterPin extends AppCompatActivity {
         String className = getIntent().getStringExtra("Class");
 
         switch (className) {
+            case "BillManager":
             case "ConfirmTransferToPhone52":
             case "TransferToWalletSingle37":
             case "ConfirmMultipleTransfer":
@@ -623,7 +631,7 @@ public class EnterPin extends AppCompatActivity {
                         finish();
                         alertDialog.dismiss();
                         break;
-                    case"BulkPaymentFrag":
+                    case "BulkPaymentFrag":
                         intent = new Intent(getApplicationContext(), BulkPaymentsMain.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("Class", "EnterPinSuccess");
@@ -686,7 +694,7 @@ public class EnterPin extends AppCompatActivity {
                             finish();
                             alertDialog.dismiss();
                             break;
-                        case"BulkPaymentFrag":
+                        case "BulkPaymentFrag":
                             intent = new Intent(getApplicationContext(), BulkPaymentsMain.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("Class", "EnterPinFail");

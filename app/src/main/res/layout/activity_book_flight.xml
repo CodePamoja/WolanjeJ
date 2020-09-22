@@ -11,11 +11,10 @@
     <LinearLayout
         android:id="@+id/linearLayout5bk"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/home_purple">
         <include layout="@layout/toolbarwithout2"
-            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent" />
 

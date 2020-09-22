@@ -9,21 +9,12 @@
     tools:context=".TransactionView">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-            <include
-                layout="@layout/toolbarwithsearch"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_scrollFlags="scroll|enterAlways" />
+            <include layout="@layout/toolbarwithsearch" />
 
 
             <TextView
@@ -33,7 +24,7 @@
                 android:layout_gravity="start"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Transactions"
                 android:textColor="@color/colorBlack"
                 android:textSize="28sp"
@@ -43,9 +34,8 @@
                 android:id="@+id/tabLayoutTrans"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/linerarTrans1"
-                android:background="@color/colorWhite" />
-        </com.google.android.material.appbar.AppBarLayout>
+                android:background="#f8f8fa"
+                android:layout_below="@+id/linerarTrans1" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/transaction_viewPager"

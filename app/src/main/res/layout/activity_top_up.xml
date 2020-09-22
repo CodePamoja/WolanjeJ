@@ -17,9 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            app:navigationIcon="@mipmap/small_left"
-
-            />
+            app:navigationIcon="@mipmap/small_left" />
 
         <TextView
             android:id="@+id/txt_balance_top_up"

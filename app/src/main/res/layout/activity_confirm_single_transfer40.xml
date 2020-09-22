@@ -17,6 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <include
+                android:id="@+id/include"
+                layout="@layout/toobarwithout"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/txtViewTransferSingle"
                 android:layout_width="match_parent"
@@ -29,7 +34,7 @@
                 android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/include" />
 
 
             <RelativeLayout
@@ -40,8 +45,8 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtViewTransferSingle"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtViewTransferSingle">
 
 
                 <TextView
@@ -79,13 +84,13 @@
                 <View
                     android:id="@+id/divst"
                     style="@style/Divider"
-                    android:background="@mipmap/path_14_copy_2"
                     android:layout_below="@+id/waltDateTime"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="0dp" />
+                    android:layout_marginEnd="0dp"
+                    android:background="@mipmap/path_14_copy_2" />
 
 
                 <TextView
@@ -302,27 +307,17 @@
                 android:id="@+id/confirm_single_transfer"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
                 android:backgroundTint="@color/colorPurple"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Continue"
-                android:layout_marginEnd="24dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="24dp"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
-                app:layout_constraintTop_toBottomOf="@id/linConfirm1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linConfirm1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorWhite">
-
-        <include layout="@layout/toobarwithout" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

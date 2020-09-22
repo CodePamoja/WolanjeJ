@@ -16,6 +16,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarEducation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@mipmap/small_left">
+
+        </androidx.appcompat.widget.Toolbar>
+
         <TextView
             android:id="@+id/headertext"
             android:layout_width="wrap_content"
@@ -25,10 +38,9 @@
             android:text="Tuition Fee"
             android:textColor="@color/colorMidnight"
             android:textSize="28sp"
-            app:layout_goneMarginStart="24dp"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbarEducation"
+            app:layout_goneMarginStart="24dp" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardtutionfee"
@@ -180,19 +192,4 @@
             app:layout_constraintTop_toBottomOf="@+id/cardtutionfee" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarEducation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@mipmap/small_left">
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
