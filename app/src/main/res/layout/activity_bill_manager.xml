@@ -57,6 +57,7 @@
             android:layout_gravity="right|bottom"
             android:layout_marginBottom="31dp"
             android:layout_marginEnd="27dp"
+            app:tint="@color/warm_purple"
             android:onClick="billBottomSheet"
             android:src="@drawable/floatbutton"
             app:backgroundTint="#f5b403" />

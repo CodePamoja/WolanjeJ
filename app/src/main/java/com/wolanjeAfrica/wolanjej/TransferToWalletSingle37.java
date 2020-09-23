@@ -30,7 +30,7 @@ import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 import java.util.List;
 
 public class TransferToWalletSingle37 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String[] selectUser = {"Single Transfers", "Multiple Transfers"};
+    String[] selectUser = {"Select User","Single Transfers", "Multiple Transfers"};
     public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     public static final String EXTRA_PROVIDER = "com.example.wolanjej.PROVIDER";

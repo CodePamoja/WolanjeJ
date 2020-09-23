@@ -24,7 +24,7 @@
             android:layout_marginTop="9dp"
             android:layout_marginStart="28dp"
             android:textSize="28sp"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/colorWhite"
             android:text="Book a Flight"
             />

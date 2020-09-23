@@ -28,7 +28,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:text="Account"
                 android:textColor="@color/colorWhite"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
 

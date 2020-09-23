@@ -10,15 +10,15 @@ import androidx.fragment.app.Fragment;
 import com.wolanjeAfrica.wolanjej.R;
 
 
-
 public class MyBookingsFragment extends Fragment {
 
-    public MyBookingsFragment(){
+    public MyBookingsFragment() {
         // Required empty public constructor
     }
-    public static MyBookingsFragment newInstance(String param1,String param2){
+
+    public static MyBookingsFragment newInstance(String param1, String param2) {
         MyBookingsFragment fragment = new MyBookingsFragment();
-        Bundle args =new Bundle();
+        Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }

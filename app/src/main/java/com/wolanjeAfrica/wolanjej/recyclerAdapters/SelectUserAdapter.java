@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.wolanjeAfrica.wolanjej.Home;
 import com.wolanjeAfrica.wolanjej.R;
 import com.wolanjeAfrica.wolanjej.TransferToWalletMultiple40;
 import com.wolanjeAfrica.wolanjej.models.SelectUser;
@@ -73,6 +74,9 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
 
     public void moversCheck(String name){
         switch (name) {
+            case "home":
+                moveToHome();
+                break;
             case "phone":
                 movebackToPhone();
                 break;
@@ -93,6 +97,15 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
                 break;
 
         }
+    }
+
+    private void moveToHome() {
+        Intent move = new Intent(context, Home.class);
+        move.putExtra("Class","SelectUserAdapter2");
+        move.putExtra(EXTRA_NAME, phoneName);
+        move.putExtra(EXTRA_PHONE, phoneNumber);
+        move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(move);
     }
 
     private void moveTomultipleTransfers2() {

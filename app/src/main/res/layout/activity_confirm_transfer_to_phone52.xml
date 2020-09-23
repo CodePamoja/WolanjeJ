@@ -254,6 +254,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPurple"
                 android:padding="15dp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Continue"
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>

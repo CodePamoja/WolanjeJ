@@ -63,14 +63,21 @@
                 <TextView
                     android:layout_width="327dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginHorizontal="20dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:paddingVertical="10dp"
-                    android:text="Please enter the code that sent to your phone in the form below.This code will expire in  00:30 seconds"
+                    android:text="Please enter the code that sent to your phone in the form below.This code will expire in "
                     android:textAlignment="center"
                     android:textColor="@color/blue_grey"
                     android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/txtview_countdown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fe5218"
+                    android:layout_gravity="center_horizontal"
+                    android:text="0:30"/>
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="327dp"
                     android:layout_marginTop="5dp"

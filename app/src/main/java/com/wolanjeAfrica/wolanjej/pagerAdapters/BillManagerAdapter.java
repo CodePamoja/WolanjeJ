@@ -2,9 +2,11 @@ package com.wolanjeAfrica.wolanjej.pagerAdapters;
 
 import android.content.Context;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.wolanjeAfrica.wolanjej.fragments.AllBillsFragment;
 import com.wolanjeAfrica.wolanjej.fragments.PaidFragment;
@@ -41,5 +43,11 @@ public class BillManagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return totalTabs;
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return super.getPageTitle(position);
     }
 }

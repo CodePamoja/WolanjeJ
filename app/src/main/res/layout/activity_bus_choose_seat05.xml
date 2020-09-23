@@ -53,7 +53,7 @@
                     android:id="@+id/tabLayout_book_bus"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_marginTop="45dp"
+                    android:layout_marginTop="60dp"
                     android:background="@drawable/splash2"
                     android:backgroundTint="#f0f2f6"
                     android:gravity="center_horizontal"
@@ -604,7 +604,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="48dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/warm_purple"
@@ -612,6 +612,8 @@
             android:layout_marginBottom="8dp"
             android:onClick="MoveToBookBus06"
             android:text="Next"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

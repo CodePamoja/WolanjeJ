@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <item
-      android:id="@+id/my_wallet"
-      android:icon="@drawable/ic_group_5"
-      android:title="My wallet"
-      android:enabled="true"
-      android:fontFamily="@font/poppins_regular"
-      android:onClick="moveMyWallet"
-      android:iconTint="@color/colorBlack"/>
+    <item
+        android:id="@+id/my_wallet"
+        android:enabled="true"
+        android:fontFamily="@font/poppins_regular"
+        android:icon="@drawable/ic_group_5"
+        android:iconTint="@color/colorBlack"
+        android:onClick="moveMyWallet"
+        android:title="My wallet" />
 
-  <item
-      android:id="@+id/payments"
-      android:icon="@mipmap/hand"
-      android:title="Payments"
-      android:enabled="true"
-      android:fontFamily="@font/poppins_regular"
-      android:onClick="moveBillManagerPayment"
-      android:iconTint="@color/colorBlack"/>
+    <item
+        android:id="@+id/payments"
+        android:enabled="true"
+        android:fontFamily="@font/poppins_regular"
+        android:icon="@mipmap/hand"
+        android:iconTint="@color/colorBlack"
+        android:onClick="moveBillManagerPayment"
+        android:title="Payments" />
 
-  <item
-      android:id="@+id/referrals"
-      android:icon="@mipmap/group2"
-      android:title="Loyalty"
-      android:enabled="true"
-      android:fontFamily="@font/poppins_regular"
-      android:onClick="moveReferrals"
-      android:iconTint="@color/colorBlack"/>
+    <item
+        android:id="@+id/referrals"
+        android:enabled="true"
+        android:fontFamily="@font/poppins_regular"
+        android:icon="@mipmap/group2"
+        android:iconTint="@color/colorBlack"
+        android:onClick="moveReferrals"
+        android:title="Loyalty" />
 
-  <item
-      android:id="@+id/billers"
-      android:icon="@mipmap/combined_shape"
-      android:title="Billers"
-      android:enabled="true"
-      android:fontFamily="@font/poppins_regular"
-      android:onClick="moveBillManagerBiller"
-      android:iconTint="@color/colorBlack"/>
+    <item
+        android:id="@+id/billers"
+        android:enabled="true"
+        android:fontFamily="@font/poppins_regular"
+        android:icon="@mipmap/combined_shape"
+        android:iconTint="@color/colorBlack"
+        android:onClick="moveBillManagerBiller"
+        android:title="Billers" />
 
-  <item
-      android:id="@+id/settings"
-      android:icon="@drawable/ic_settings"
-      android:title="Settings"
-      android:enabled="true"
-      android:fontFamily="@font/poppins_regular"
-      android:onClick="movetoSettings48"
-      android:iconTint="@color/colorBlack"/>
+    <item
+        android:id="@+id/settings"
+        android:enabled="true"
+        android:fontFamily="@font/poppins_regular"
+        android:icon="@drawable/ic_settings"
+        android:iconTint="@color/colorBlack"
+        android:onClick="movetoSettings48"
+        android:title="Settings" />
 </menu>

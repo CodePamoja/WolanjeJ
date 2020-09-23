@@ -43,7 +43,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
+import com.wolanjeAfrica.wolanjej.fragments.fragment_scan_code;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
+import com.wolanjeAfrica.wolanjej.models.Contacts;
 import com.wolanjeAfrica.wolanjej.models.Model;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.MyAdapter;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
@@ -251,7 +253,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
     public void moveReferrals(MenuItem item) {
-        Intent intent = new Intent(this, Referrals.class);
+        Intent intent = new Intent(this, ContactsView.class);
+        intent.putExtra("Class", "Home");
         startActivity(intent);
     }
 

@@ -20,12 +20,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.tabs.TabLayout;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
 import com.wolanjeAfrica.wolanjej.models.NewBillmodel;
 import com.wolanjeAfrica.wolanjej.pagerAdapters.BillManagerAdapter;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.tabs.TabLayout;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -71,14 +71,14 @@ public class BillManager extends AppCompatActivity {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-    // clear FLAG_TRANSLUCENT_STATUS flag:
+        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-    // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-    // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.bShadeGray));
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     private void setToolBar(Toolbar tb) {
@@ -116,12 +116,10 @@ public class BillManager extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
@@ -130,6 +128,7 @@ public class BillManager extends AppCompatActivity {
             }
         });
     }
+
 
     public void payNowElectric(View v) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
@@ -149,7 +148,7 @@ public class BillManager extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent moveToPin = new Intent(getApplicationContext(), EnterPin.class);
-                        moveToPin.putExtra("Class","BillManager");
+                        moveToPin.putExtra("Class", "BillManager");
                         startActivity(moveToPin);
                         bottomSheetDialog.dismiss();
                     }
@@ -218,6 +217,10 @@ public class BillManager extends AppCompatActivity {
         String AccountName = textView1.getText().toString();
         String NickName = textView2.getText().toString();
         String account_number = textView3.getText().toString();
+        if(account_number.isEmpty()){
+            Toast.makeText(this, "account number is empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
         newBillmodel.setAccount_no(account_number);
         String product = spinner.getSelectedItem().toString();
         newBillmodel.setProduct_name(product);
@@ -231,13 +234,21 @@ public class BillManager extends AppCompatActivity {
 
                 if (!response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "code" + response.code(), Toast.LENGTH_LONG).show();
-                    String result = response.body().toString();
-                    Log.d("TAG test CODE", result);
+                    if (response.body() != null) {
+                        String result = response.body().toString();
+                        Log.d("TAG test CODE", result);
+                    }else {
+                        Toast.makeText(BillManager.this, "Sorry something went wrong", Toast.LENGTH_SHORT).show();
+                    }
                     return;
                 }
-                Toast.makeText(getApplicationContext(), "Successfully Created A Bill" , Toast.LENGTH_LONG).show();
-                String result = response.body().toString();
-                Log.d("TAG test SUCCESS", result);
+                if (response.body() != null) {
+                    Toast.makeText(getApplicationContext(), "Successfully Created A Bill", Toast.LENGTH_LONG).show();
+                    String result = response.body().toString();
+                    Log.d("TAG test SUCCESS", result);
+                }else {
+                    Toast.makeText(BillManager.this, "Sorry something went wrong", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

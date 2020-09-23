@@ -4,184 +4,240 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Bookflight05"
-    android:background="@color/home_purple">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/displayflightfeatures"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@mipmap/small_left2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Baggage Fee"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
-
-    </androidx.appcompat.widget.Toolbar>
+    tools:context=".Bookflight05">
 
     <ScrollView
-        android:id="@+id/displayflightfeatures"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/splash2"
-        android:backgroundTint="#f0f2f6"
-        android:paddingBottom="12dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/btnnewxtholder"
-        >
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/home_purple"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:background="@color/home_purple"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:navigationIcon="@mipmap/small_left2">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Baggage Fee"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                </androidx.appcompat.widget.Toolbar>
+
+                <RelativeLayout
+                    android:id="@+id/tabLayout_book_bus"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/splash2"
+                    android:backgroundTint="#f0f2f6"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/baggaefeetitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginVertical="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="52dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:lineSpacingExtra="14sp"
+                        android:text="Baggage Fee Information"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="24dp"
-                >
+                android:background="#f0f2f6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorMidnight"
-                    android:lineSpacingExtra="14sp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:id="@+id/baggaefeetitle"
-                    android:text="Baggage Fee Information"
-                    android:layout_marginVertical="24dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textColor="#222b45"
-                    android:lineSpacingExtra="7sp"
-                    android:layout_below="@id/baggaefeetitle"
                     android:id="@+id/baggaefeedesc"
-                    android:layout_marginBottom="24dp"
-                    android:text="Baggage fees are not guaranteed and are subject to change at any time. We recommend checking the airlines’ sites for the latest information."
-                    />
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:id="@+id/airlinetxt"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="24dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="7sp"
+                    android:text="Baggage fees are not guaranteed and are subject to change at any time. We recommend checking the airlines’ sites for the latest information."
+                    android:textColor="#222b45"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/airlinetxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/baggaefeedesc"
-                    android:textColor="@color/colorMidnight"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="44dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="10sp"
                     android:text="Airline"
-                    />
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="14sp"
-                    android:textColor="@color/blue_grey"
-                    android:lineSpacingExtra="10sp"
                     android:layout_below="@id/baggaefeedesc"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="44dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="10sp"
                     android:text="Emirates Airlines"
-                    />
+                    android:textColor="@color/blue_grey"
+                    android:textSize="14sp" />
 
                 <View
+                    android:id="@+id/sepone"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:id="@+id/sepone"
                     android:layout_below="@id/airlinetxt"
-                    android:fontFamily="@font/poppins_regular"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginVertical="24dp"
-                    android:background="#585C63"/>
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@color/gray4"
+                    android:fontFamily="@font/poppins_regular" />
 
                 <TextView
+                    android:id="@+id/carrytxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:id="@+id/carrytxt"
                     android:layout_below="@id/sepone"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="17dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/colorMidnight"
                     android:lineSpacingExtra="10sp"
                     android:text="Carry on Bag"
-                    />
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/blue_grey"
-                    android:fontFamily="@font/poppins_regular"
-                    android:lineSpacingExtra="10sp"
                     android:layout_below="@id/sepone"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="10sp"
                     android:text="Fee free up to 15 Kg"
-                    />
+                    android:textColor="@color/blue_grey"
+                    android:textSize="14sp" />
 
                 <View
+                    android:id="@+id/septwo"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:id="@+id/septwo"
                     android:layout_below="@id/carrytxt"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginVertical="24dp"
-                    android:background="#585C63"/>
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@color/gray4" />
+
 
                 <TextView
+                    android:id="@+id/bagonetxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:id="@+id/bagonetxt"
-                    android:fontFamily="@font/poppins_regular"
                     android:layout_below="@id/septwo"
-                    android:textColor="@color/colorMidnight"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="17dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="10sp"
                     android:text="1st Bag"
-                    />
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/blue_grey"
-                    android:lineSpacingExtra="10sp"
                     android:layout_below="@id/septwo"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="10sp"
                     android:text="Fee free up to 25 Kg"
-                    />
+                    android:textColor="@color/blue_grey"
+                    android:textSize="14sp" />
 
                 <View
+                    android:id="@+id/septhree"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:id="@+id/septhree"
                     android:layout_below="@id/bagonetxt"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginVertical="24dp"
-                    android:background="#585C63"/>
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@color/gray4" />
 
                 <TextView
+                    android:id="@+id/bagtwotxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:id="@+id/bagtwotxt"
                     android:layout_below="@id/septhree"
-                    android:textColor="@color/colorMidnight"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="17dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="10sp"
                     android:text="2nd Bag"
-                    />
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:textColor="@color/blue_grey"
                     android:lineSpacingExtra="10sp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="17dp"
                     android:fontFamily="@font/poppins_regular"
                     android:layout_below="@id/septhree"
                     android:layout_alignParentEnd="true"
@@ -189,18 +245,19 @@
                     />
 
                 <View
+                    android:id="@+id/sepfour"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:id="@+id/sepfour"
                     android:layout_below="@id/bagtwotxt"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="100dp"
-                    android:background="#585C63"
-                    />
-
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@color/gray4" />
             </RelativeLayout>
-
-
+        </LinearLayout>
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -214,7 +271,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="48dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
@@ -222,6 +279,7 @@
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/warm_purple"
             android:text="@string/Continue"
+            android:textAllCaps="false"
             android:onClick="movetobook6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

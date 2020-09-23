@@ -47,6 +47,9 @@ public class ContactsView extends AppCompatActivity {
         className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         switch (className) {
+            case "Home":
+                classType = "home";
+                break;
             case "TransferToPhone50":
                 this.classType = intentExtra.getStringExtra(TransferToPhone50.EXTRA_CLASSTYPE);
                 break;
@@ -71,30 +74,6 @@ public class ContactsView extends AppCompatActivity {
         mydb = new DatabaseAdapter(getApplicationContext());
         recyclerView = (RecyclerView) findViewById(R.id.contacts_list);
         requestContactPermission();
-        search = (SearchView) findViewById(R.id.searchView);
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String stext) {
-                if (stext == null) {
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
-                if (stext == null) {
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    finish();
-                }
-                suAdapter.filter(stext);
-                return false;
-            }
-        });
 
     }
 
@@ -110,6 +89,8 @@ public class ContactsView extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent movetoLogo = null;
                         switch (className) {
+                            case "Home": movetoLogo = new Intent(ContactsView.this, Home.class);
+                            break;
                             case "TransferToPhone50":
                                 movetoLogo = new Intent(ContactsView.this, TransferToPhone50.class);
                                 break;
@@ -138,6 +119,34 @@ public class ContactsView extends AppCompatActivity {
 
     private void setRecyclerview() {
         new ConttactLoader().execute();
+    }
+
+    public void QueryContacts(View view) {
+        search = (SearchView) findViewById(R.id.searchView);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String stext) {
+                if (stext == null) {
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+                if (stext == null) {
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+                suAdapter.filter(stext);
+                return false;
+            }
+        });
+
     }
 
     public class ConttactLoader extends AsyncTask<Void, Void, List<SelectUser>> {

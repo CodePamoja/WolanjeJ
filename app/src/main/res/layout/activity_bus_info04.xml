@@ -40,7 +40,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="center_horizontal"
                         android:fontFamily="@font/poppins_regular"
                         android:text="Bus_information"
                         android:textColor="#ffffff"
@@ -53,7 +53,7 @@
                     android:id="@+id/tabLayout_book_bus"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_marginTop="45dp"
+                    android:layout_marginTop="60dp"
                     android:background="@drawable/splash2"
                     android:backgroundTint="#f0f2f6"
                     android:orientation="horizontal">
@@ -134,7 +134,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:backgroundTint="#f0f2f6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
@@ -164,7 +164,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/poppins_regular"
-                        android:lineSpacingExtra="8sp"
+                        android:lineSpacingExtra="11sp"
                         android:text="5:15 PM"
                         android:textColor="@color/blue_grey"
                         android:textSize="12sp" />
@@ -217,8 +217,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_below="@+id/imageArrow"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginVertical="24dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="0dp"
                     android:background="@color/gray4" />
 
                 <TextView
@@ -288,7 +292,7 @@
                     android:layout_marginBottom="12dp"
                     android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="14sp"
-                    android:text="Aircraft Details"
+                    android:text="Bus Details"
                     android:textColor="@color/colorMidnight"
                     android:textSize="16sp" />
 
@@ -489,11 +493,13 @@
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="48dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_medium"
             android:backgroundTint="@color/warm_purple"
             android:onClick="MoveToBus05"
             android:text="Next"

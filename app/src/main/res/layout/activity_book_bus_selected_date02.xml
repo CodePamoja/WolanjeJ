@@ -132,10 +132,10 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_book_bus02"
             android:layout_width="327dp"
-            android:layout_height="50dp"
+            android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="22dp"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/poppins_medium"
             android:text="Done"
             android:onClick="MoveToBookBus03"
             android:backgroundTint="@color/warm_purple"

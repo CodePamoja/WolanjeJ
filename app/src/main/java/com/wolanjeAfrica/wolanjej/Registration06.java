@@ -1,17 +1,19 @@
 package com.wolanjeAfrica.wolanjej;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,7 @@ public class Registration06 extends AppCompatActivity {
 
     ProgressDialog prgBar;
     private JSONObject sessionID = null;
+    private TextView textView;
     public static final String EXTRA_SESSION = "com.wolanjeAfrica.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.wolanjeAfrica.wolanjej.PHONE";
     private static final String TAG = "registrtion06";
@@ -45,6 +48,7 @@ public class Registration06 extends AppCompatActivity {
         final EditText text2 = findViewById(R.id.inp2);
         final EditText text3 = findViewById(R.id.inp3);
         final EditText text4 = findViewById(R.id.inp4);
+        textView = (TextView) findViewById(R.id.txtview_countdown);
         final String[] numbers = new String[4];
 
 
@@ -156,6 +160,23 @@ public class Registration06 extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
+        ExpirationTimer();
+    }
+
+    private void ExpirationTimer() {
+        new CountDownTimer(30000, 1000) {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onTick(long millisUntilFinished) {
+                textView.setText(millisUntilFinished / 1000 + "seconds");
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onFinish() {
+                textView.setText("done!");
+            }
+        }.start();
     }
 
 
