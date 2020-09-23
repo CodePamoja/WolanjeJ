@@ -452,6 +452,8 @@
         android:layout_gravity="start"
         android:fontFamily="@font/poppins_regular"
         app:headerLayout="@layout/nav_header"
+        app:itemIconTint="#2e2b2b"
+        app:itemIconSize="16dp"
         app:menu="@menu/navdraw" />
 </androidx.drawerlayout.widget.DrawerLayout>
 

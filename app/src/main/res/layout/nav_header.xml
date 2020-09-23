@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="293dp"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginTop="30dp"
@@ -49,11 +49,12 @@
 
     <Button
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="25dp"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="106dp"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/name_holder"
+        android:layout_marginEnd="31dp"
         android:onClick="closeMyDrawer"
         app:icon="@drawable/ic_close_copy_4" />
 
