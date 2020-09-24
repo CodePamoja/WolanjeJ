@@ -251,9 +251,8 @@
             <Button
                 android:id="@+id/confirm_phone_transfer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:backgroundTint="@color/colorPurple"
-                android:padding="15dp"
                 android:textAllCaps="false"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Continue"

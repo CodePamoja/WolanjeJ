@@ -50,6 +50,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     private String AGENTNO;
     private String phoneCompany;
     private String amount;
+    private ArrayAdapter adapter;
     private String MY_BALANCE;
     private TextView textView;
     private SharedPreferences pref;
@@ -73,10 +74,11 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         spin.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the country list
-        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, selectUser);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.user_select, R.layout.custom_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
-        spin.setAdapter(aa);
+        spin.setAdapter(adapter);
         fetchClassIntent();
 
         UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
@@ -146,6 +148,9 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
             move.putExtra(EXTRA_AGENTNO, AGENTNO);
             startActivity(move);
             finish();
+        }else if ("Single User".equals(selectUser[position])){
+            return;
+
         }
 
     }

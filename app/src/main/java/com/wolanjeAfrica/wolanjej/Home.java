@@ -766,7 +766,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
     }
 
 
-    public void registerNewNumber(MenuItem item) {
+    public void registerNewNumber(View view) {
         bottomSheetDialog = new BottomSheetDialog(
                 Home.this, R.style.BottomSheetDialogTheme
         );
@@ -1027,7 +1027,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     }
 
-    public void LogoutAccount(MenuItem item) {
+    public void LogoutAccount(View view) {
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();

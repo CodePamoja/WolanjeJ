@@ -22,7 +22,6 @@ public class Sponsors00 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sponsors00);
-        setActionBarColor();
         materialCardView1 = findViewById(R.id.card_new_application);
         materialCardView2 = findViewById(R.id.card_new_appliants);
         materialCardView3 = findViewById(R.id.card_saved_application);
@@ -68,9 +67,6 @@ public class Sponsors00 extends AppCompatActivity {
                     }
                 }
         );
-
-    }
-    private void setActionBarColor() {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
@@ -83,5 +79,6 @@ public class Sponsors00 extends AppCompatActivity {
 // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorGreenBlue2));
     }
+
 
 }

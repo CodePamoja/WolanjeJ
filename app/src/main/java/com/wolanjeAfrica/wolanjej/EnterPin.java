@@ -501,6 +501,7 @@ public class EnterPin extends AppCompatActivity {
         @Override
         protected void onPostExecute(Response response) {
             super.onPostExecute(response);
+            RetrieveBalance();
             progressBar.setVisibility(View.GONE);
             if (response != null && response.code() == 201) {
                 try {
@@ -516,23 +517,18 @@ public class EnterPin extends AppCompatActivity {
                     Log.e("TAG", sendAmount);
 
                     if (phoneNumber.equals(sendNumber) && statusResulsts.equals("TRX_ASYNC")) {
-                        RetrieveBalance();
                         showPopup();
                     } else if (statusResulsts.equals("TRX_OK")) {
-                        RetrieveBalance();
                         showPopup();
                     } else if (statusResulsts.equals("TRX_INSUFFICIENT_BALANCE")) {
                         Toast.makeText(getApplicationContext(), "You have insufficient balance on your wallet", Toast.LENGTH_LONG).show();
-                        RetrieveBalance();
                         showPopupFail();
                     } else if (statusResulsts.equals("TRX_VERIFY")) {
                         Toast.makeText(getApplicationContext(), "the transaction is being verified", Toast.LENGTH_SHORT).show();
-                        RetrieveBalance();
                         ShowDialogWalletFail();
 
                     } else {
                         Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
-                        RetrieveBalance();
                         showPopupFail();
                     }
 
@@ -779,6 +775,7 @@ public class EnterPin extends AppCompatActivity {
         protected void onPostExecute(Response response) {
             super.onPostExecute(response);
             progressBar.setVisibility(View.GONE);
+            RetrieveBalance();
             if (response != null && response.code() == 201) {
                 try {
                     String value = response.body().string();
@@ -830,7 +827,7 @@ public class EnterPin extends AppCompatActivity {
         }
     }
 
-    private void RetrieveBalance() {
+    private void  RetrieveBalance() {
         UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
         userBalanceViewModel.getUserBalance(EnterPin.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
             @Override

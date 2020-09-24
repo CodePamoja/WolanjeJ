@@ -27,6 +27,8 @@ public class BookFlight extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Book"));
         tabLayout.addTab(tabLayout.newTab().setText("My Bookings"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.warm_purple));
+        tabLayout.setTabTextColors(R.color.hard_gray,R.color.colorMidnight);
         setViewPager();
         setToolBar(tb);
     }

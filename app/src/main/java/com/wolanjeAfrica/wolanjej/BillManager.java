@@ -2,6 +2,8 @@ package com.wolanjeAfrica.wolanjej;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -63,23 +66,9 @@ public class BillManager extends AppCompatActivity {
         newBillmodel = new NewBillmodel();
         SetViewPager();
         setToolBar(tb);
-        setActionBarColor();
 
     }
 
-    private void setActionBarColor() {
-        Window window = this.getWindow();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-        // clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-        // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
-    }
 
     private void setToolBar(Toolbar tb) {
         tb = findViewById(R.id.toolbar);
@@ -95,7 +84,17 @@ public class BillManager extends AppCompatActivity {
                     }
                 }
         );
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     private void SetViewPager() {
@@ -106,6 +105,8 @@ public class BillManager extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Unpaid"));
         tabLayout.addTab(tabLayout.newTab().setText("Paid"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.warm_purple));
+        tabLayout.setTabTextColors(R.color.hard_gray,R.color.colorMidnight);
 
         final BillManagerAdapter adapter = new BillManagerAdapter(this, getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);

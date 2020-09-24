@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +28,7 @@ import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 import java.util.List;
 import java.util.Map;
 
-public class TransferToPhone50 extends AppCompatActivity {
+public class TransferToPhone50 extends AppCompatActivity  implements View.OnClickListener{
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -35,6 +37,7 @@ public class TransferToPhone50 extends AppCompatActivity {
     public static final String EXTRA_PHONENAME = "com.example.wolanjej.PHONENAME";
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
+    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
     private static String className;
     private Button button;
     private EditText editText1, editText2, editText3;
@@ -42,6 +45,8 @@ public class TransferToPhone50 extends AppCompatActivity {
     private String phoneNumber = "phone1";
     private String phoneName;
     private String phoneCompany;
+    private ArrayAdapter adapter;
+    private Spinner spin;
     private SharedPreferences pref;
     private String sessionId;
     private String AGENTNO;
@@ -59,8 +64,10 @@ public class TransferToPhone50 extends AppCompatActivity {
         this.AGENTNO = pref.getString("agentno", "");
 
         editText1 = (EditText) findViewById(R.id.transContactAmount);
-        editText2 = (EditText) findViewById(R.id.transAmountPhone);
+        editText2 = (EditText) findViewById(R.id.transAmount);
+        editText3 = (EditText) findViewById(R.id.messagetxt);
         textView1 = (TextView) findViewById(R.id.balancetxtTphone);
+        Button button = (Button) findViewById(R.id.qrcodetransphone);button.setOnClickListener(this);
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
@@ -93,6 +100,16 @@ public class TransferToPhone50 extends AppCompatActivity {
                 break;
             }
         }
+        spin = (Spinner) this.findViewById(R.id.select_multiple);
+
+        //Creating the ArrayAdapter instance having the country list
+
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.select_phone, R.layout.custom_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spin.setAdapter(adapter);
+
 
         UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
         userBalanceViewModel.getUserBalance(TransferToPhone50.this, sessionId).observe(this, new Observer<List<BalanceModel>>() {
@@ -143,8 +160,10 @@ public class TransferToPhone50 extends AppCompatActivity {
     }
 
     public void transferMoney(View view) {
+        String message ="";
         String phone = editText1.getText().toString();
         String amount = editText2.getText().toString();
+        message = editText3.getText().toString();
         String productName = null;
         String key = null;
         String value = null;
@@ -162,13 +181,13 @@ public class TransferToPhone50 extends AppCompatActivity {
             value = entry.getValue();
         }
         if (value != null && !value.equals("Fasle")) {
-            valuesConferm(value, amount, key);
+            valuesConferm(value, amount, key, message);
         } else {
             Toast.makeText(this, "invalid phone", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void valuesConferm(String phone, String amount, String phoneprovider) {
+    public void valuesConferm(String phone, String amount, String phoneprovider, String message) {
         //adding values to SharedPreferences
         // make sure that in the getsharedPreferences the key value should be the same as the intent putextra class value
 
@@ -179,7 +198,19 @@ public class TransferToPhone50 extends AppCompatActivity {
         move.putExtra(EXTRA_PHONENAME, phoneName);
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_PARENTCLASSNAME, className);
+        move.putExtra(EXTRA_MESSAGE, message);
         startActivity(move);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.qrcodetransphone:
+                Intent intent = new Intent(getApplicationContext(), Qr_code22.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                break;
+        }
+
+    }
 }

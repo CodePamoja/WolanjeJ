@@ -74,6 +74,8 @@ public class Loans extends AppCompatActivity implements View.OnClickListener {
         tabLayout.addTab(tabLayout.newTab().setText("Paid"));
         tabLayout.addTab(tabLayout.newTab().setText("Failed"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.warm_purple));
+        tabLayout.setTabTextColors(R.color.hard_gray,R.color.colorMidnight);
 
         final LoansAdapter loansAdapter = new LoansAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
         viewPager.setAdapter(loansAdapter);

@@ -75,17 +75,6 @@
             android:icon="@drawable/ic_switchaccount"
             android:onClick="chooseAnotherAccount"
             android:title="@string/switch_account" />
-        <item
-            android:id="@+id/fav"
-            android:fontFamily="@font/poppins_regular"
-            android:icon="@mipmap/favorites_2"
-            android:onClick="registerNewNumber"
-            android:title="@string/register_new_member" />
-        <item
-            android:id="@+id/logout"
-            android:fontFamily="@font/poppins_regular"
-            android:onClick="LogoutAccount"
-            android:title="logout" />
     </group>
 
 

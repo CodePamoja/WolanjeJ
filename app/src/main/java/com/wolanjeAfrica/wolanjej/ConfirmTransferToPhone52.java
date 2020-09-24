@@ -32,6 +32,7 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
     private String sessionID;
     private String phoneName;
     public String amount;
+    private String message;
     private String phoneProvider;
     private TextView tvtext;
     private String AGENTNO;
@@ -55,6 +56,7 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
         this.phoneName =  intentExtra.getStringExtra(TransferToPhone50.EXTRA_PHONENAME);
         this.amount =  intentExtra.getStringExtra(TransferToPhone50.EXTRA_AMOUNT);
         this.phoneProvider =  intentExtra.getStringExtra(TransferToPhone50.EXTRA_PHONECOMPANY);
+        this.message = intentExtra.getStringExtra(TransferToPhone50.EXTRA_MESSAGE);
         className = intentExtra.getStringExtra(TransferToPhone50.EXTRA_PARENTCLASSNAME);
 
         //SharedPreferences values for TransferToPhone52 activity class eg token
@@ -71,7 +73,7 @@ public class ConfirmTransferToPhone52 extends AppCompatActivity {
         tvtext.setText(dateTime());
 
         tvtext =  findViewById(R.id.senderMessage);
-        tvtext.setText("Thank You Test");
+        tvtext.setText(message);
 
         tvtext =  findViewById(R.id.PNumber);
         tvtext.setText("+"+phoneNumber);

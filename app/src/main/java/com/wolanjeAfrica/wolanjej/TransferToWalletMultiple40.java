@@ -31,7 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TransferToWalletMultiple40 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String[] selectUser = {"Multiple Users", "Single User"};
+    String[] selectUser = {"Select User", "Single User", "Multiple Users",};
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
@@ -51,6 +51,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
     private EditText editText1, editText2;
     private Spinner spin;
     private TextView textView;
+    private ArrayAdapter adapter;
     private SharedPreferences pref;
     private Button button1, button2;
 
@@ -69,7 +70,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
 
         button1 = (Button) findViewById(R.id.buttonContactsMultiple1);
         button2 = (Button) findViewById(R.id.buttonContactsMultiple2);
-        textView = (TextView) findViewById(R.id.balancetxtTMwallet) ;
+        textView = (TextView) findViewById(R.id.balancetxtTMwallet);
 
         // Get the Intent that started this activity and extract the string
         Intent intentExtra = getIntent();
@@ -111,10 +112,12 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         spin.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the country list
-        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, selectUser);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.user_select, R.layout.custom_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
-        spin.setAdapter(aa);
+        spin.setAdapter(adapter);
 
         confirmButton = (Button) findViewById(R.id.continue_multiple_transfer);
 
@@ -140,6 +143,8 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
             move.putExtra(EXTRA_SESSION, sessionID);
             move.putExtra(EXTRA_AGENTNO, AGENTNO);
             startActivity(move);
+        }else if ("Multiple Users".equals(selectUser[position])){
+            //do nothing
         }
 
     }

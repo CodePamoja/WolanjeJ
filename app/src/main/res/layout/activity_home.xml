@@ -85,8 +85,8 @@
                             android:fontFamily="@font/poppins_medium"
                             android:text="My E-wallet"
                             android:textAllCaps="false"
-                            android:textStyle="normal"
                             android:textSize="12sp"
+                            android:textStyle="normal"
                             app:layout_constraintEnd_toStartOf="@id/transfer_money_button"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/MYBalance" />
@@ -451,10 +451,57 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fontFamily="@font/poppins_regular"
+        app:elevation="@dimen/ms__item_height"
         app:headerLayout="@layout/nav_header"
-        app:itemIconTint="#2e2b2b"
         app:itemIconSize="16dp"
-        app:menu="@menu/navdraw" />
+        app:itemIconTint="#2e2b2b"
+        app:itemTextColor="#2e2b2b"
+        app:menu="@menu/navdraw">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="99dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgnewNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="16dp"
+                    android:src="@mipmap/favorites_2" />
+
+                <TextView
+                    android:id="@+id/fav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/colorMidnight"
+                    android:onClick="registerNewNumber"
+                    android:layout_toEndOf="@+id/imgnewNumber"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/register_new_member" />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="LogoutAccount"
+                android:layout_gravity="end"
+                android:layout_marginBottom="13dp"
+                android:layout_marginEnd="27dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="logout" />
+        </LinearLayout>
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
 
 

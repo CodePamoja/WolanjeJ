@@ -1,218 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TransferToPhone50">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:backgroundTint="@color/gray4"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/toobarwithout"/>
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="25dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/include8"
+                layout="@layout/toobarwithout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textviewTransferphone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="20dp"
                 android:text="Transfer to Phone"
                 android:textColor="@color/colorMidnight"
-                android:textSize="28sp" />
+                android:textSize="28sp"
+                android:fontFamily="@font/poppins_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include8" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="20dp">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingVertical="10dp"
-                    android:paddingHorizontal="20dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:paddingVertical="5dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_weight="50"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Wallet"
-                            android:textSize="14sp"
-                            android:textColor="@color/colorPurple"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_weight="50"
-                            android:textAlignment="textEnd"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Balance"
-                            android:textSize="14sp"
-                            android:textColor="@color/blue_grey"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_weight="50"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Wolenje 01"
-                            android:textSize="16sp"
-                            android:textColor="@color/colorMidnight"/>
-                        <TextView
-                            android:id="@+id/balancetxtTphone"
-                            android:layout_width="wrap_content"
-                            android:layout_weight="50"
-                            android:textAlignment="textEnd"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="KES0.00"
-                            android:textSize="22sp"
-                            android:textColor="@color/colorMidnight"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/multiple40Card1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp">
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textviewTransferphone">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Spinner
+                        android:id="@+id/select_multiple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="23dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/myspinner2"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Select User"
+                        android:textColor="#531edc">
+                    </Spinner>
+
+                    <TextView
+                        android:id="@+id/txt_balancewallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="50"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Balance"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/blue_grey"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txt_select_user"
+                        android:layout_width="134dp"
+                        android:layout_height="26dp"
+                        android:layout_marginBottom="12sp"
+                        android:layout_below="@+id/select_multiple"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Wolenje 01"
+                        android:textColor="@color/colorMidnight"
+                        android:drawSelectorOnTop="true"
+                        android:textSize="16dp"
+                        android:dropDownWidth="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:popupBackground="@android:color/holo_purple"
+                        android:spinnerMode="dropdown"
+                        android:textAlignment="textStart"
+                        tools:ignore="NestedWeights" />
+
+                    <TextView
+                        android:id="@+id/balancetxtTphone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_balancewallet"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="KES 0.00"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/colorMidnight"
+                        android:textSize="22sp" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/multiple40Card2"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/multiple40Card1"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:text="Transfer detail"
+                android:textAlignment="center"
+                android:textColor="@color/colorMidnight"
+                android:textSize="20sp" />
+
+
+
+                <EditText
+                    android:id="@+id/transContactAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:inputType="phone"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="Enter Phone No."
+                    android:padding="10dp"
+                    android:background="@drawable/textviewborder"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+                    <Button
+                        android:id="@+id/qrcodetransphone"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="15dp"
-                        android:text="Transfer detail"
-                        android:textSize="20sp"
+                        android:layout_weight="50"
+                        android:layout_marginRight="20dp"
+                        android:text="Scan QR"
+                        android:textAllCaps="false"
                         android:fontFamily="@font/poppins_medium"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorMidnight"/>
-
-                    <EditText
-                        android:id="@+id/transContactAmount"
-                        android:layout_width="match_parent"
+                        android:textSize="14sp"
+                        android:textColor="@color/blue_grey"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:backgroundTint="@color/colorGreyBackground"/>
+                    <Button
+                        android:id="@+id/TranPhoneContact"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:inputType="phone"
+                        android:layout_weight="50"
+                        android:layout_marginLeft="20dp"
+                        android:text="Contacts"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="Enter Phone No."
-                        android:padding="10dp"
-                        android:background="@drawable/textviewborder"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="5dp">
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="50"
-                            android:layout_marginRight="20dp"
-                            android:text="Scan QR"
-                            android:textAllCaps="false"
-                            android:fontFamily="@font/poppins_medium"
-                            android:textSize="14sp"
-                            android:textColor="@color/blue_grey"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:backgroundTint="@color/colorGreyBackground"/>
-                        <Button
-                            android:id="@+id/TranPhoneContact"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="50"
-                            android:layout_marginLeft="20dp"
-                            android:text="Contacts"
-                            android:fontFamily="@font/poppins_medium"
-                            android:textAllCaps="false"
-                            android:onClick="moveToContact"
-                            android:textSize="14sp"
-                            android:textColor="@color/blue_grey"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:backgroundTint="@color/colorGreyBackground"/>
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="DETAILS"
-                        android:autoSizeMinTextSize="12sp"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/blue_grey"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:inputType="number"
-                        android:hint="Amount"
-                        android:padding="10dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:id="@+id/transAmountPhone"
-                        android:background="@drawable/textviewborder"/>
-
+                        android:textAllCaps="false"
+                        android:onClick="moveToContact"
+                        android:textSize="14sp"
+                        android:textColor="@color/blue_grey"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:backgroundTint="@color/colorGreyBackground"/>
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="DETAILS"
+                    android:autoSizeMinTextSize="12sp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"/>
 
-        </LinearLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:inputType="number"
+                    android:hint="Amount"
+                    android:padding="10dp"
+                    android:lines="1"
+                    android:fontFamily="@font/poppins_medium"
+                    android:id="@+id/transAmount"
+                    android:background="@drawable/textviewborder"/>
+                <EditText
+                    android:id="@+id/messagetxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="79dp"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:inputType="textMultiLine"
+                    android:hint="Message"
+                    android:background="@drawable/textviewborder"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginVertical="50dp"
-            android:paddingHorizontal="20dp">
+            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <Button
                 android:id="@+id/continue_phone_transfer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPurple"
-
-                android:textAllCaps="false"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Continue"
                 android:onClick="transferMoney"
-                android:textColor="@color/colorWhite"/>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-</ScrollView>
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="24dp"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/multiple40Card2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
