@@ -35,7 +35,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#f8f8fa"
-                android:layout_below="@+id/linerarTrans1" />
+                app:tabTextColor="@color/gray4"
+                app:tabSelectedTextColor="@android:color/black"
+                android:layout_below="@+id/linerarTrans1"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/transaction_viewPager"

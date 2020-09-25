@@ -106,7 +106,6 @@ public class BillManager extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Paid"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.warm_purple));
-        tabLayout.setTabTextColors(R.color.hard_gray,R.color.colorMidnight);
 
         final BillManagerAdapter adapter = new BillManagerAdapter(this, getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);

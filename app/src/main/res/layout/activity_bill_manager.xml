@@ -31,7 +31,10 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:tabTextColor="@color/gray4"
+                app:tabSelectedTextColor="@android:color/black"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget">
             </com.google.android.material.tabs.TabLayout>
 
 

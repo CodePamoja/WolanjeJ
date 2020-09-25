@@ -12,7 +12,7 @@ import com.wolanjeAfrica.wolanjej.fragments.SentTransactionFragment;
 
 public class TransactionViewAdapter extends FragmentPagerAdapter {
     private Context context;
-    int     totalTabs;
+    int totalTabs;
 
     public TransactionViewAdapter(@NonNull FragmentManager fm, Context context, int totalTabs) {
         super(fm);
@@ -23,14 +23,11 @@ public class TransactionViewAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
-                SentTransactionFragment sentTransactionFragment = new SentTransactionFragment();
-                return sentTransactionFragment;
+                return new HistoryFragment();
             case 1:
-                HistoryFragment historyFragment = new HistoryFragment();
-                return historyFragment;
-
+                return new SentTransactionFragment();
         }
         return null;
     }

@@ -65,7 +65,6 @@ public class TransactionView extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Received"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.warm_purple));
-        tabLayout.setTabTextColors(R.color.hard_gray,R.color.colorMidnight);
 
         final TransactionViewAdapter adapter = new TransactionViewAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
         viewPager.setAdapter(adapter);

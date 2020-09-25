@@ -10,24 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.wolanjeAfrica.wolanjej.Home;
+import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.OkhttpConnection;
 import com.wolanjeAfrica.wolanjej.R;
-import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
-import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.models.TranasactionHistory;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.TransactionRecyclerAdapter;
-import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,10 +59,9 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_history, container, false);
         progressBar = v.findViewById(R.id.progressHistoryFrag);
-        textView = (TextView) v.findViewById(R.id.txt_hist_amount);
+        textView = v.findViewById(R.id.txtNoHistory);
         progressBar.setVisibility(View.VISIBLE);
         UserServices userServices = new UserServices(this);
-        setUserBalance();
         userServices.execute();
         return v;
     }
@@ -81,18 +74,7 @@ public class HistoryFragment extends Fragment {
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
     }
-    private void setUserBalance() {
-        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
-        userBalanceViewModel.getUserBalance(v.getContext(), sessionID).observe(this, new Observer<List<BalanceModel>>() {
-            @Override
-            public void onChanged(List<BalanceModel> balanceModels) {
-                for (BalanceModel b : balanceModels){
-                    MY_BALANCE = b.getBalance();
-                    textView.setText("KES"+ MY_BALANCE);
-                }
-            }
-        });
-    }
+
 
     public static class UserServices extends AsyncTask<Void, Void, Response> {
         private WeakReference<HistoryFragment> weakReference;
@@ -123,71 +105,68 @@ public class HistoryFragment extends Fragment {
         @Override
         protected void onPostExecute(Response result) {
             HistoryFragment historyFragment = weakReference.get();
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    String verifyResult = null;
-                    if (result != null && result.code() == 200) {
-                        try {
-                            String test = result.body().string();
-                            Log.d("TAG test", test);
-                            JSONObject JService = new JSONObject(test);
-                            System.out.println("Response body json values  services are : " + JService);
-                            JSONArray services = JService.getJSONArray("services");
 
-                            for (int i = 0; i < services.length(); i++) {
-                                JSONObject json_data = services.getJSONObject(i);
-                                String date = json_data.getString("created_on");//,"created_on":"2020-07-17 12:25:50"
-                                String status = json_data.getString("status");
+            String verifyResult = null;
+            if (result != null && result.code() == 200) {
+                try {
+                    String test = result.body().string();
+                    Log.d("TAG test", test);
+                    JSONObject JService = new JSONObject(test);
+                    System.out.println("Response body json values  services are : " + JService);
+                    JSONArray services = JService.getJSONArray("services");
 
-                                String Month = historyFragment.gettingMonth(date);
-                                String Day = historyFragment.gettingDay(date);
-                                String NewStatus = historyFragment.getTheStatus(status);
-                                String pending = historyFragment.pendingStatus(status);
-
-                                historyFragment.historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending));
-                            }
-                            if (historyFragment.getActivity() == null){
-                                historyFragment.getActivity();
-                                return;
-                            }
-                            historyFragment.getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    historyFragment.progressBar.setVisibility(View.GONE);
-                                    historyFragment.recyclerView = (RecyclerView) historyFragment.v.findViewById(R.id.recyclerview_history);
-                                    TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(historyFragment.getContext(), historyFragment.historyList);
-                                    historyFragment.recyclerView.setLayoutManager(new LinearLayoutManager(historyFragment.getActivity()));
-                                    historyFragment.recyclerView.setAdapter(transactionRecyclerAdapter);
-                                }
-                            });
-
-
-                        } catch (JSONException | IOException e) {
-                            e.printStackTrace();
-                        }
-
-                    } else if (result != null && result.code() != 201) {
-                        try {
-                            verifyResult = result.body().string();
-                            JSONObject jBody = new JSONObject(verifyResult); // adding
-                            System.out.println("Response body json values are : " + verifyResult);
-                            Log.e("TAG", String.valueOf(verifyResult));
-//                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
-//                    Log.e("TAG", String.valueOf(sendResutls));
-//                    Toast.makeText(getApplicationContext(), "Phone Number, "+sendResutls, Toast.LENGTH_LONG).show();
-                            Log.e("TAG result value", String.valueOf(result));
-                            Log.e("TAG result body", verifyResult);
-                        } catch (IOException | JSONException e) {
-                            e.printStackTrace();
-                        }
+                    if (services.length() == 0) {
+                        historyFragment.progressBar.setVisibility(View.GONE);
+                        historyFragment.textView.setVisibility(View.VISIBLE);
+                        return;
                     }
-                    else {
-                        Snackbar.make(historyFragment.v.findViewById(R.id.constarintHistoryFrag), "Something went wrong", Snackbar.LENGTH_LONG).show();
-                    }
+                    for (int i = 0; i < services.length(); i++) {
+                        JSONObject json_data = services.getJSONObject(i);
+                        String date = json_data.getString("created_on");//,"created_on":"2020-07-17 12:25:50"
+                        String status = json_data.getString("status");
 
+                        String Month = historyFragment.gettingMonth(date);
+                        String Day = historyFragment.gettingDay(date);
+                        String NewStatus = historyFragment.getTheStatus(status);
+                        String pending = historyFragment.pendingStatus(status);
+
+                        historyFragment.historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending));
+                    }
+                    if (historyFragment.getActivity() == null) {
+                        historyFragment.getActivity();
+                        return;
+                    }
+                    historyFragment.getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            historyFragment.progressBar.setVisibility(View.GONE);
+                            historyFragment.recyclerView = (RecyclerView) historyFragment.v.findViewById(R.id.recyclerview_history);
+                            TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(historyFragment.getContext(), historyFragment.historyList);
+                            historyFragment.recyclerView.setLayoutManager(new LinearLayoutManager(historyFragment.getActivity()));
+                            historyFragment.recyclerView.setAdapter(transactionRecyclerAdapter);
+                        }
+                    });
+
+
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
                 }
-            }).start();
+
+            } else if (result != null && result.code() != 201) {
+                try {
+                    verifyResult = result.body().string();
+                    JSONObject jBody = new JSONObject(verifyResult); // adding
+                    System.out.println("Response body json values are : " + verifyResult);
+                    Log.e("TAG", String.valueOf(verifyResult));
+                    Log.e("TAG result value", String.valueOf(result));
+                    Log.e("TAG result body", verifyResult);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Snackbar.make(historyFragment.v.findViewById(R.id.constarintHistoryFrag), "Something went wrong", Snackbar.LENGTH_LONG).show();
+            }
+
 
         }
     }
@@ -196,10 +175,9 @@ public class HistoryFragment extends Fragment {
 
         char chara1 = date.charAt(5);
         char chara2 = date.charAt(6);
-        StringBuilder sb = new StringBuilder();
-        sb.append(chara1);
-        sb.append(chara2);
-        int monthInt = Integer.parseInt(sb.toString());
+        String sb = String.valueOf(chara1) +
+                chara2;
+        int monthInt = Integer.parseInt(sb);
         DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
         return dateFormatSymbols.getShortMonths()[monthInt - 1];
     }
@@ -207,62 +185,40 @@ public class HistoryFragment extends Fragment {
     private String gettingDay(String date) {
         char chara1 = date.charAt(8);
         char chara2 = date.charAt(9);
-        StringBuilder sb = new StringBuilder();
-        sb.append(chara1);
-        sb.append(chara2);
-        return sb.toString();
+        return String.valueOf(chara1) +
+                chara2;
     }
 
     private String getTheStatus(String status) {
-        String TRX_OK, TRX_ASYNC, TRX_SCHED;
+        String newStatus;
 
-
-        String newStatus = null;
-        try {
-            if (status.equals("TRX_OK")) {
+        switch (status) {
+            case "TRX_OK":
                 newStatus = "successful";
                 return newStatus;
-            }
-            if (status.equals("TRX_ASYNC")) {
+            case "TRX_ASYNC":
                 newStatus = "processing";
                 return newStatus;
-            }
-            if (status.equals("TRX_SCHED")) {
+            case "TRX_SCHED":
                 newStatus = "queued";
                 return newStatus;
-            }
-            if (status.equals("TRX_INSUFFICIENT_BALANCE")) {
-                newStatus = "Insufficient Funds";
-                return newStatus;
-            } else {
-                newStatus = "failed";
-                return newStatus;
-            }
-        } catch (Exception e) {
-            Toast.makeText(getActivity(), "something went wrong" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            case "TRX_INSUFFICIENT_BALANCE":
+                return "Insufficient Funds";
+            default:
+                return "failed";
         }
-        return newStatus;
+
     }
 
     private String pendingStatus(String status) {
-        String TRX_OK, TRX_SCHED;
-
-        String Pending_status = null;
-        try {
-            if (status.equals("TRX_OK")) {
-                Pending_status = "0";
-                return Pending_status;
-            }
-            if (status.equals("TRX_SCHED")) {
-                Pending_status = "1";
-                return Pending_status;
-            } else {
-                Pending_status = "0";
-                return Pending_status;
-            }
-        } catch (Exception e) {
-            Toast.makeText(getActivity(), "something went wrong" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        if (status.equals("TRX_OK")) {
+            return "0";
         }
-        return Pending_status;
+        if (status.equals("TRX_SCHED")) {
+            return "1";
+        } else {
+            return "0";
+        }
+
     }
 }
