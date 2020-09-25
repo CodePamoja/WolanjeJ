@@ -113,7 +113,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/kenyanid"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/LoginTextInputLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="12dp"
@@ -124,7 +124,6 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/textviewborder"
                             android:drawableStart="@drawable/ic_kenya_flag"
                             android:inputType="number" />
 
@@ -132,7 +131,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/first_name"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/LoginTextInputLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="12dp"
@@ -141,7 +140,6 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/textviewborder"
                             android:drawableStart="@drawable/ic_baseline_account_circle_24"
                             android:inputType="textPersonName" />
 
@@ -149,7 +147,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/last_name"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/LoginTextInputLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="12dp"
@@ -158,7 +156,6 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/textviewborder"
                             android:drawableStart="@drawable/ic_baseline_account_circle_24"
                             android:drawablePadding="5dp"
                             android:inputType="textPersonName" />

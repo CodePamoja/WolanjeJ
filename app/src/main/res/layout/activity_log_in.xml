@@ -114,7 +114,7 @@
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/phoneNoLogIN"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                style="@style/LoginTextInputLayoutStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="12dp"
@@ -127,14 +127,13 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:drawableStart="@drawable/ic_kenya_flag"
-                                    android:background="@drawable/textviewborder"
                                     android:inputType="number" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/pinLogIN"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                style="@style/LoginTextInputLayoutStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginHorizontal="12dp"
@@ -145,10 +144,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="numberPassword"
-                                    android:background="@drawable/textviewborder"
-                                    android:maxLength="4"
-
-                                    />
+                                    android:maxLength="4" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 

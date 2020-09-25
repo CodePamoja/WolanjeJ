@@ -112,7 +112,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/phoneNumber"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/LoginTextInputLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="12dp"
@@ -124,7 +124,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
-                            android:background="@drawable/textviewborder"
                             android:drawableStart="@drawable/ic_kenya_flag"
                             android:drawablePadding="5dp"
                             android:inputType="number" />
@@ -133,7 +132,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/mail"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/LoginTextInputLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -143,7 +142,6 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/textviewborder"
                             android:drawableStart="@drawable/ic_baseline_mail_24"
                             android:drawablePadding="5dp"
                             android:inputType="textEmailAddress" />

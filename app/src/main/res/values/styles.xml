@@ -58,11 +58,11 @@
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">#18181c</item>
     </style>
-    
+
     <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
     </style>
-    
+
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
@@ -77,9 +77,14 @@
         <item name="android:paddingTop">5dp</item>
         <item name="android:popupBackground">#DFFFFFFF</item>
     </style>
-    
+
     <style name="colored_checkbox" parent="Theme.AppCompat.Light">
         <item name="colorAccent">@color/reddish_orange</item>
         <item name="android:textColorSecondary">@color/gray3</item>
+    </style>
+
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/gray4</item>
+        <item name="boxStrokeWidth">1dp</item>
     </style>
 </resources>
