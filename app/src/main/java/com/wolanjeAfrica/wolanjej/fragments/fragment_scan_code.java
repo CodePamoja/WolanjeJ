@@ -1,66 +1,121 @@
 package com.wolanjeAfrica.wolanjej.fragments;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.os.Vibrator;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Detector;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.wolanjeAfrica.wolanjej.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_scan_code#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.io.IOException;
+
+
 public class fragment_scan_code extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final int PERMISSION_REQUEST_CAMERA =0 ;
+    private SurfaceView surfaceView;
+    private CameraSource cameraSource;
+    private BarcodeDetector barcodeDetector;
+    private TextView textView;
+    private View v;
 
     public fragment_scan_code() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_scan_code.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fragment_scan_code newInstance(String param1, String param2) {
-        fragment_scan_code fragment = new fragment_scan_code();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_scan_code, container, false);
+        v = inflater.inflate(R.layout.fragment_scan_code, container, false);
+
+        cameraQrCodeFunction();
+        return v;
     }
+
+    private void cameraQrCodeFunction() {
+        surfaceView = v.findViewById(R.id.surfaceView);
+        textView =v.findViewById(R.id.textshowcontent);
+        barcodeDetector = new BarcodeDetector.Builder(getContext())
+                .setBarcodeFormats(Barcode.QR_CODE).build();
+        cameraSource = new CameraSource.Builder(getContext(), barcodeDetector)
+                .setRequestedPreviewSize(440, 480)
+                .build();
+        surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {
+
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    try {
+                        cameraSource.start(holder);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST_CAMERA);
+                }
+
+            }
+
+            @Override
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+            }
+
+            @Override
+            public void surfaceDestroyed(SurfaceHolder holder) {
+                cameraSource.stop();
+            }
+        });
+
+        barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
+            @Override
+            public void release() {
+
+            }
+
+            @Override
+            public void receiveDetections(Detector.Detections<Barcode> detections) {
+
+                SparseArray<Barcode> qrcodes = detections.getDetectedItems();
+                if (qrcodes.size() != 0){
+                    textView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Vibrator vibrator = (Vibrator) getContext().getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                            vibrator.vibrate(20);
+                            textView.setVisibility(View.VISIBLE);
+                            textView.setText(qrcodes.valueAt(0).displayValue);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+
 }

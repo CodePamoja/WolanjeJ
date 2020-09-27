@@ -105,68 +105,74 @@ public class HistoryFragment extends Fragment {
         @Override
         protected void onPostExecute(Response result) {
             HistoryFragment historyFragment = weakReference.get();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String verifyResult = null;
+                    if (result != null && result.code() == 200) {
+                        try {
+                            String test = result.body().string();
+                            Log.d("TAG test", test);
+                            JSONObject JService = new JSONObject(test);
+                            System.out.println("Response body json values  services are : " + JService);
+                            JSONArray services = JService.getJSONArray("services");
 
-            String verifyResult = null;
-            if (result != null && result.code() == 200) {
-                try {
-                    String test = result.body().string();
-                    Log.d("TAG test", test);
-                    JSONObject JService = new JSONObject(test);
-                    System.out.println("Response body json values  services are : " + JService);
-                    JSONArray services = JService.getJSONArray("services");
 
-                    if (services.length() == 0) {
-                        historyFragment.progressBar.setVisibility(View.GONE);
-                        historyFragment.textView.setVisibility(View.VISIBLE);
-                        return;
-                    }
-                    for (int i = 0; i < services.length(); i++) {
-                        JSONObject json_data = services.getJSONObject(i);
-                        String date = json_data.getString("created_on");//,"created_on":"2020-07-17 12:25:50"
-                        String status = json_data.getString("status");
+                            for (int i = 0; i < services.length(); i++) {
+                                JSONObject json_data = services.getJSONObject(i);
+                                String date = json_data.getString("created_on");//,"created_on":"2020-07-17 12:25:50"
+                                String status = json_data.getString("status");
 
-                        String Month = historyFragment.gettingMonth(date);
-                        String Day = historyFragment.gettingDay(date);
-                        String NewStatus = historyFragment.getTheStatus(status);
-                        String pending = historyFragment.pendingStatus(status);
+                                String Month = historyFragment.gettingMonth(date);
+                                String Day = historyFragment.gettingDay(date);
+                                String NewStatus = historyFragment.getTheStatus(status);
+                                String pending = historyFragment.pendingStatus(status);
 
-                        historyFragment.historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending));
-                    }
-                    if (historyFragment.getActivity() == null) {
-                        historyFragment.getActivity();
-                        return;
-                    }
-                    historyFragment.getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            historyFragment.progressBar.setVisibility(View.GONE);
-                            historyFragment.recyclerView = (RecyclerView) historyFragment.v.findViewById(R.id.recyclerview_history);
-                            TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(historyFragment.getContext(), historyFragment.historyList);
-                            historyFragment.recyclerView.setLayoutManager(new LinearLayoutManager(historyFragment.getActivity()));
-                            historyFragment.recyclerView.setAdapter(transactionRecyclerAdapter);
+                                historyFragment.historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending));
+                            }
+                            if (historyFragment.getActivity() == null) {
+                                historyFragment.getActivity();
+                                return;
+                            }
+                            historyFragment.getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    if (services.length() == 0) {
+                                        historyFragment.progressBar.setVisibility(View.GONE);
+                                        historyFragment.textView.setVisibility(View.VISIBLE);
+                                        return;
+                                    }
+                                    historyFragment.progressBar.setVisibility(View.GONE);
+                                    historyFragment.recyclerView = (RecyclerView) historyFragment.v.findViewById(R.id.recyclerview_history);
+                                    TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(historyFragment.getContext(), historyFragment.historyList);
+                                    historyFragment.recyclerView.setLayoutManager(new LinearLayoutManager(historyFragment.getActivity()));
+                                    historyFragment.recyclerView.setAdapter(transactionRecyclerAdapter);
+                                }
+                            });
+
+
+                        } catch (JSONException | IOException e) {
+                            e.printStackTrace();
                         }
-                    });
 
+                    } else if (result != null && result.code() != 201) {
+                        try {
+                            verifyResult = result.body().string();
+                            JSONObject jBody = new JSONObject(verifyResult); // adding
+                            System.out.println("Response body json values are : " + verifyResult);
+                            Log.e("TAG", String.valueOf(verifyResult));
+                            Log.e("TAG result value", String.valueOf(result));
+                            Log.e("TAG result body", verifyResult);
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Snackbar.make(historyFragment.v.findViewById(R.id.constarintHistoryFrag), "Something went wrong", Snackbar.LENGTH_LONG).show();
+                    }
 
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
                 }
-
-            } else if (result != null && result.code() != 201) {
-                try {
-                    verifyResult = result.body().string();
-                    JSONObject jBody = new JSONObject(verifyResult); // adding
-                    System.out.println("Response body json values are : " + verifyResult);
-                    Log.e("TAG", String.valueOf(verifyResult));
-                    Log.e("TAG result value", String.valueOf(result));
-                    Log.e("TAG result body", verifyResult);
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                Snackbar.make(historyFragment.v.findViewById(R.id.constarintHistoryFrag), "Something went wrong", Snackbar.LENGTH_LONG).show();
-            }
-
+            }).start();
 
         }
     }
