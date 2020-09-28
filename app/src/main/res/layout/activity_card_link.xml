@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/AppTheme"
-    tools:context=".MainActivity">
+    tools:context=".CardLink">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -17,12 +17,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <include
-                android:id="@+id/include6"
-                layout="@layout/toobarwithout"
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@mipmap/small_left">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:onClick="MoveToHome"
+                        android:backgroundTint="@android:color/transparent"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Skip"
+                        android:textAllCaps="false"
+                        android:textColor="#8c8a9a"
+                        android:textSize="14dp" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
 
             <ImageView
                 android:id="@+id/image_holder"
@@ -32,7 +56,7 @@
                 android:src="@drawable/ic_group_7__1_"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/include6" />
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
             <TextView
                 android:id="@+id/textView25"

@@ -9,6 +9,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -27,12 +29,11 @@ import java.util.List;
 
 public class ContactsView extends AppCompatActivity {
 
-    DatabaseAdapter mydb;
-    SelectUserAdapter suAdapter;
+    private DatabaseAdapter mydb;
+    private SelectUserAdapter suAdapter;
     public static final int PERMISSIONS_REQUEST_READ_CONTACTS = 1;
-    RecyclerView recyclerView;
-    SearchView search;
-
+    private RecyclerView recyclerView;
+    private SearchView search;
     private String classType;
     private String className;
 
@@ -41,7 +42,8 @@ public class ContactsView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts_view);
 
-//        setToolBar();
+        search = (SearchView) findViewById(R.id.searchView);
+        setToolBar();
 
         Intent intentExtra = getIntent();
         className = getIntent().getStringExtra("Class");
@@ -67,7 +69,7 @@ public class ContactsView extends AppCompatActivity {
                 break;
             case "TransferToWalletMultiple2":
                 this.classType = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_CLASSTYPE);
-                    break;
+                break;
         }
 
 
@@ -81,16 +83,15 @@ public class ContactsView extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-
-
         tb.setNavigationOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent movetoLogo = null;
                         switch (className) {
-                            case "Home": movetoLogo = new Intent(ContactsView.this, Home.class);
-                            break;
+                            case "Home":
+                                movetoLogo = new Intent(ContactsView.this, Home.class);
+                                break;
                             case "TransferToPhone50":
                                 movetoLogo = new Intent(ContactsView.this, TransferToPhone50.class);
                                 break;
@@ -114,7 +115,17 @@ public class ContactsView extends AppCompatActivity {
                     }
                 }
         );
+        Window window = this.getWindow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
     private void setRecyclerview() {
@@ -122,6 +133,7 @@ public class ContactsView extends AppCompatActivity {
     }
 
     public void QueryContacts(View view) {
+        search.setIconified(false);
         search = (SearchView) findViewById(R.id.searchView);
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
