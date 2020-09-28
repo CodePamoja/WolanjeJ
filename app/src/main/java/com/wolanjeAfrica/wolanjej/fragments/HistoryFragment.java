@@ -122,13 +122,15 @@ public class HistoryFragment extends Fragment {
                                 JSONObject json_data = services.getJSONObject(i);
                                 String date = json_data.getString("created_on");//,"created_on":"2020-07-17 12:25:50"
                                 String status = json_data.getString("status");
+                                String product = json_data.getString("product_name");
 
                                 String Month = historyFragment.gettingMonth(date);
                                 String Day = historyFragment.gettingDay(date);
                                 String NewStatus = historyFragment.getTheStatus(status);
                                 String pending = historyFragment.pendingStatus(status);
+                                String typeOfProduct = historyFragment.checkForTypeOfProduct(product);
 
-                                historyFragment.historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending));
+                                historyFragment.historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending, typeOfProduct));
                             }
                             if (historyFragment.getActivity() == null) {
                                 historyFragment.getActivity();
@@ -226,5 +228,35 @@ public class HistoryFragment extends Fragment {
             return "0";
         }
 
+    }
+
+    private String checkForTypeOfProduct(String product) {
+
+        switch (product) {
+            case "MPESA_B2C":
+            case "TKASH_B2C":
+            case "AIRTEL_B2C":
+            case "SAF_ATP":
+            case "AIRTEL_ATP":
+            case "TKASH_ATP":
+                return "phone";
+            case "WALLET_XFER":
+            case "BANK_XFER":
+                return "transfers";
+            case "KPLC_VOUCHER":
+            case "KPLC_BILLPAY":
+                return "electricity";
+            case "ZUKU_BILLPAY":
+                return "internet";
+            case "STARTIMES_BILLPAY":
+            case "DSTV_BILLPAY":
+            case "GOTV_BILLPAY":
+                return "tv";
+            case "NCWSC_BILLPAY":
+            case "KIWASCO_BILLPAY":
+                return "water";
+            default:
+                return "normal";
+        }
     }
 }
