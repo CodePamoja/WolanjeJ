@@ -7,7 +7,7 @@
     android:id="@+id/constarintHistoryFrag"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.HistoryFragment">
+    tools:context=".fragments.SentHistoryFragment">
 
     <ScrollView
         android:id="@+id/scrollView2"

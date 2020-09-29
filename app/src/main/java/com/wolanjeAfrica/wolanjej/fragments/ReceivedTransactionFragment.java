@@ -19,25 +19,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.wolanjeAfrica.wolanjej.R;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
-import com.wolanjeAfrica.wolanjej.recyclerAdapters.SentRecyclerAdapter;
+import com.wolanjeAfrica.wolanjej.models.TranasactionHistory;
+import com.wolanjeAfrica.wolanjej.recyclerAdapters.ReceivedRecyclerAdapter;
 import com.wolanjeAfrica.wolanjej.models.SentTransactionHistory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SentTransactionFragment extends Fragment {
+public class ReceivedTransactionFragment extends Fragment {
 
 
     private View v;
     private RecyclerView recyclerView;
-    private List<SentTransactionHistory> sentList;
+    private List<TranasactionHistory> sentList;
     private String sessionID;
     private String AGENTNO;
     private SharedPreferences pref;
     private TextView textView;
     private static String MY_BALANCE;
 
-    public SentTransactionFragment() {
+    public ReceivedTransactionFragment() {
 
     }
 
@@ -46,10 +47,10 @@ public class SentTransactionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.transaction_row_view, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_sent);
-        SentRecyclerAdapter sentRecyclerAdapter = new SentRecyclerAdapter(getContext(), sentList);
+        ReceivedRecyclerAdapter receivedRecyclerAdapter = new ReceivedRecyclerAdapter(getContext(), sentList);
         textView = (TextView) v.findViewById(R.id.txt_hist_amount);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(sentRecyclerAdapter);
+        recyclerView.setAdapter(receivedRecyclerAdapter);
         setUserBalance();
         return v;
     }
@@ -62,11 +63,17 @@ public class SentTransactionFragment extends Fragment {
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
 
+        TranasactionHistory tranasactionHistory= new TranasactionHistory();
+        tranasactionHistory.setmMONTHS("11");
+        tranasactionHistory.setmDATE("02");
+        tranasactionHistory.setmTOP_UP_AMOUNT("100");
+        tranasactionHistory.setmTRANSACTION_FEE("01");
+        tranasactionHistory.setmSTATUS("status :"+" success");
+        tranasactionHistory.setmPENDING("pending :"+" 0");
+
         sentList = new ArrayList<>();
-        sentList.add(new SentTransactionHistory("Aug", "04", R.drawable.ic_bulb, "John", "+254748188544","Credit Card", "1000", "10.00"));
-        sentList.add(new SentTransactionHistory("Nov", "24", R.drawable.ic_bulb, "Ivy", "+254748188544","Credit Card", "2000", "20.00"));
-        sentList.add(new SentTransactionHistory("Aug", "04", R.drawable.ic_bulb, "John", "+254748188544","Credit Card", "1000", "10.00"));
-        sentList.add(new SentTransactionHistory("Nov", "24", R.drawable.ic_bulb, "Ivy", "+254748188544","Credit Card", "2000", "20.00"));
+        sentList.add(tranasactionHistory);
+
     }
     private void setUserBalance() {
         UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);

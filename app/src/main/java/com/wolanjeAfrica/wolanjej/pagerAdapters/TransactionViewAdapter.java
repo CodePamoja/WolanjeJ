@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.wolanjeAfrica.wolanjej.fragments.HistoryFragment;
-import com.wolanjeAfrica.wolanjej.fragments.SentTransactionFragment;
+import com.wolanjeAfrica.wolanjej.fragments.SentHistoryFragment;
+import com.wolanjeAfrica.wolanjej.fragments.ReceivedTransactionFragment;
 
 public class TransactionViewAdapter extends FragmentPagerAdapter {
     private Context context;
@@ -25,9 +25,9 @@ public class TransactionViewAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new HistoryFragment();
+                return new SentHistoryFragment();
             case 1:
-                return new SentTransactionFragment();
+                return new ReceivedTransactionFragment();
         }
         return null;
     }

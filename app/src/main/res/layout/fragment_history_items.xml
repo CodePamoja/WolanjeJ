@@ -148,7 +148,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Pending: 0  "
             android:textColor="@color/blue_grey"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <View

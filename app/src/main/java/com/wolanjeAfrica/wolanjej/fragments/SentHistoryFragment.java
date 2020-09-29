@@ -36,7 +36,7 @@ import java.util.List;
 import okhttp3.Response;
 
 
-public class HistoryFragment extends Fragment {
+public class SentHistoryFragment extends Fragment {
 
     private View v;
     private ProgressBar progressBar;
@@ -50,7 +50,7 @@ public class HistoryFragment extends Fragment {
     private String MY_BALANCE;
     private TextView textView;
 
-    public HistoryFragment() {
+    public SentHistoryFragment() {
         // Required empty public constructor
     }
 
@@ -77,34 +77,34 @@ public class HistoryFragment extends Fragment {
 
 
     public static class UserServices extends AsyncTask<Void, Void, Response> {
-        private WeakReference<HistoryFragment> weakReference;
+        private WeakReference<SentHistoryFragment> weakReference;
 
-        UserServices(HistoryFragment historyFragment) {
-            weakReference = new WeakReference<>(historyFragment);
+        UserServices(SentHistoryFragment sentHistoryFragment) {
+            weakReference = new WeakReference<>(sentHistoryFragment);
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            HistoryFragment historyFragment = weakReference.get();
-            historyFragment.progressBar.setVisibility(View.VISIBLE);
+            SentHistoryFragment sentHistoryFragment = weakReference.get();
+            sentHistoryFragment.progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected Response doInBackground(Void... voids) {
 
-            HistoryFragment historyFragment = weakReference.get();
-            historyFragment.progressBar.setVisibility(View.VISIBLE);
+            SentHistoryFragment sentHistoryFragment = weakReference.get();
+            sentHistoryFragment.progressBar.setVisibility(View.VISIBLE);
             String url = "/api/services";
             OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-            Response result = okConn.getBalance(url, historyFragment.sessionID);// sending the url string and base 64 results to the okhttp connection and it's method is getLogin
+            Response result = okConn.getBalance(url, sentHistoryFragment.sessionID);// sending the url string and base 64 results to the okhttp connection and it's method is getLogin
             Log.d("TAG", String.valueOf(result));
             return result;
         }
 
         @Override
         protected void onPostExecute(Response result) {
-            HistoryFragment historyFragment = weakReference.get();
+            SentHistoryFragment sentHistoryFragment = weakReference.get();
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -124,32 +124,32 @@ public class HistoryFragment extends Fragment {
                                 String status = json_data.getString("status");
                                 String product = json_data.getString("product_name");
 
-                                String Month = historyFragment.gettingMonth(date);
-                                String Day = historyFragment.gettingDay(date);
-                                String NewStatus = historyFragment.getTheStatus(status);
-                                String pending = historyFragment.pendingStatus(status);
-                                String typeOfProduct = historyFragment.checkForTypeOfProduct(product);
+                                String Month = sentHistoryFragment.gettingMonth(date);
+                                String Day = sentHistoryFragment.gettingDay(date);
+                                String NewStatus = sentHistoryFragment.getTheStatus(status);
+                                String pending = sentHistoryFragment.pendingStatus(status);
+                                String typeOfProduct = sentHistoryFragment.checkForTypeOfProduct(product);
 
-                                historyFragment.historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status: " + NewStatus, "pending:" + pending, typeOfProduct));
+                                sentHistoryFragment.historyList.add(new TranasactionHistory(Month, Day, json_data.getString("amount"), json_data.getString("fee"), "status : " + NewStatus, "pending : " + pending, typeOfProduct));
                             }
-                            if (historyFragment.getActivity() == null) {
-                                historyFragment.getActivity();
+                            if (sentHistoryFragment.getActivity() == null) {
+                                sentHistoryFragment.getActivity();
                                 return;
                             }
-                            historyFragment.getActivity().runOnUiThread(new Runnable() {
+                            sentHistoryFragment.getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
 
                                     if (services.length() == 0) {
-                                        historyFragment.progressBar.setVisibility(View.GONE);
-                                        historyFragment.textView.setVisibility(View.VISIBLE);
+                                        sentHistoryFragment.progressBar.setVisibility(View.GONE);
+                                        sentHistoryFragment.textView.setVisibility(View.VISIBLE);
                                         return;
                                     }
-                                    historyFragment.progressBar.setVisibility(View.GONE);
-                                    historyFragment.recyclerView = (RecyclerView) historyFragment.v.findViewById(R.id.recyclerview_history);
-                                    TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(historyFragment.getContext(), historyFragment.historyList);
-                                    historyFragment.recyclerView.setLayoutManager(new LinearLayoutManager(historyFragment.getActivity()));
-                                    historyFragment.recyclerView.setAdapter(transactionRecyclerAdapter);
+                                    sentHistoryFragment.progressBar.setVisibility(View.GONE);
+                                    sentHistoryFragment.recyclerView = (RecyclerView) sentHistoryFragment.v.findViewById(R.id.recyclerview_history);
+                                    TransactionRecyclerAdapter transactionRecyclerAdapter = new TransactionRecyclerAdapter(sentHistoryFragment.getContext(), sentHistoryFragment.historyList);
+                                    sentHistoryFragment.recyclerView.setLayoutManager(new LinearLayoutManager(sentHistoryFragment.getActivity()));
+                                    sentHistoryFragment.recyclerView.setAdapter(transactionRecyclerAdapter);
                                 }
                             });
 
@@ -170,7 +170,7 @@ public class HistoryFragment extends Fragment {
                             e.printStackTrace();
                         }
                     } else {
-                        Snackbar.make(historyFragment.v.findViewById(R.id.constarintHistoryFrag), "Something went wrong", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(sentHistoryFragment.v.findViewById(R.id.constarintHistoryFrag), "Something went wrong", Snackbar.LENGTH_LONG).show();
                     }
 
                 }
