@@ -1,33 +1,62 @@
 package com.wolanjeAfrica.wolanjej.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TranasactionHistory {
 
+    @SerializedName("id")
     private String id;
+    @SerializedName("created_on")
+    private String created_on;
+    @SerializedName("created_by")
     private String Created_by;
+    @SerializedName("created_by_id")
     private String created_by_id;
+    @SerializedName("req_id")
     private String req_id;
+    @SerializedName("trx_id")
     private String trx_id;
+    @SerializedName("auth_ac_id")
     private String auth_ac_id;
+    @SerializedName("auth_ac_uname")
     private String auth_ac_uname;
+    @SerializedName("auth_phone")
     private String auth_phone;
+    @SerializedName("auth_email")
     private String auth_email;
+    @SerializedName("product_id")
     private String product_id;
+    @SerializedName("product_name")
     private String product_name;
+    @SerializedName("product_ve")
     private String product_ve;
+    @SerializedName("supplier_ac_id")
     private String supplier_ac_id;
+    @SerializedName("supplier_ac_uname")
     private String supplier_ac_uname;
+    @SerializedName("ref")
     private String ref;
+    @SerializedName("phone")
     private String phone;
+    @SerializedName("email")
     private String email;
+    @SerializedName("narration")
     private String narration;
+    @SerializedName("activity_count")
     private String activity_count;
+    @SerializedName("activity_ids")
     private String activity_ids;
+    @SerializedName("activity_id_last")
     private String activity_id_last;
+    @SerializedName("receipt_id")
     private String receipt_id;
     private String mMONTHS;
     private String mDATE;
+    @SerializedName("amount")
     private String mTOP_UP_AMOUNT ;
+    @SerializedName("fee")
     private String mTRANSACTION_FEE;
+    @SerializedName("status")
     private String mSTATUS;
     private String mPENDING;
     private int imageDrawable;
@@ -70,6 +99,14 @@ public class TranasactionHistory {
 
     public String getmPENDING() {
         return mPENDING;
+    }
+
+    public String getCreated_on() {
+        return created_on;
+    }
+
+    public void setCreated_on(String created_on) {
+        this.created_on = created_on;
     }
 
     public String getId() {

@@ -1,23 +1,22 @@
-package com.wolanjeAfrica.wolanjej.fragments;
+package com.wolanjeAfrica.wolanjej;
 
-import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.wolanjeAfrica.wolanjej.R;
 import com.wolanjeAfrica.wolanjej.ViewModels.ServicesViewModel;
 import com.wolanjeAfrica.wolanjej.models.TranasactionHistory;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.TransactionRecyclerAdapter;
@@ -26,49 +25,57 @@ import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
 
-public class SentHistoryFragment extends Fragment {
-
+public class Filter extends Fragment {
+    private static final String TAG = "Filter";
+    private Toolbar toolbar;
+    private ImageView imageView;
     private View v;
-    private ProgressBar progressBar;
-    private RecyclerView recyclerView;
     private SharedPreferences pref;
-    private List<TranasactionHistory> historyList = new ArrayList<>();
     private String sessionID;
-    private String USERID;
-    private String USERNAME;
-    private String AGENTNO;
-    private String MY_BALANCE;
+    private RecyclerView recyclerView;
     private TextView textView;
+    private List<TranasactionHistory> historyList = new ArrayList<>();
     private TransactionRecyclerAdapter transactionRecyclerAdapter;
-
-    public SentHistoryFragment() {
+    public Filter() {
         // Required empty public constructor
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_history, container, false);
-        progressBar = v.findViewById(R.id.progressHistoryFrag);
-        textView = v.findViewById(R.id.txtNoHistory);
+    public static Filter newInstance(String param1, String param2) {
+        Filter fragment = new Filter();
+        Bundle args = new Bundle();
 
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        pref = getContext().getSharedPreferences("LogIn", MODE_PRIVATE);
+        this.sessionID = pref.getString("session_token", "");
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        v = inflater.inflate(R.layout.fragment_filter, container, false);
+        toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        imageView = (ImageView) v.findViewById(R.id.toolbarButton);
+        imageView.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), Home.class);
+            startActivity(intent);
+        });
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_history);
+
         RetrieveHistory();
 
         return v;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        pref = getActivity().getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
-        this.sessionID = pref.getString("session_token", "");
-        this.AGENTNO = pref.getString("agentno", "");
-    }
     private void RetrieveHistory() {
-        progressBar.setVisibility(View.VISIBLE);
         ServicesViewModel servicesViewModel = new ViewModelProvider(this).get(ServicesViewModel.class);
         servicesViewModel.getSentTransaction(getContext(), sessionID).observe(this, new Observer<List<TranasactionHistory>>() {
             @Override
@@ -82,7 +89,6 @@ public class SentHistoryFragment extends Fragment {
                     String amount = tranasactionHistory.getmTOP_UP_AMOUNT();
                     historyList.add(new TranasactionHistory(month, Day,amount , tranasactionHistory.getmTRANSACTION_FEE(), "status : " + NewStatus, "pending : " + pending, typeOfProduct));
                     transactionRecyclerAdapter = new TransactionRecyclerAdapter(getContext(), historyList);
-                    progressBar.setVisibility(View.GONE);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     recyclerView.setAdapter(transactionRecyclerAdapter);
                 }
