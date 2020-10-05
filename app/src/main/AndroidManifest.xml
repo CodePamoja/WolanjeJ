@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Learning_Hub2"></activity>
+        <activity android:name=".Learning_hub03"></activity>
+        <activity android:name=".Learning_Hub2" />
         <activity android:name=".Sponsors12" />
         <activity android:name=".Sponsors_13" />
         <activity android:name=".EnterPin2" />
