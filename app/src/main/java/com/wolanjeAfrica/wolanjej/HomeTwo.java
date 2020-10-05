@@ -133,7 +133,7 @@ public class HomeTwo extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
     public void openLearningHub(MenuItem item) {
         Log.e("Found", "Troal");
-        Intent intent = new Intent(this, Hub.class);
+        Intent intent = new Intent(this, Learning_Hub2.class);
         startActivity(intent);
     }
 

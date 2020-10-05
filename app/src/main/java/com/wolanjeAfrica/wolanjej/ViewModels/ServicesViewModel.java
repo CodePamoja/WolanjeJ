@@ -50,8 +50,11 @@ public class ServicesViewModel extends ViewModel {
                 if (!response.isSuccessful()) {
                     Toast.makeText(context.getApplicationContext(), "response" + response.message(), Toast.LENGTH_SHORT).show();
                 }
-                histories = response.body().getHistory();
-                mutableLiveData.postValue(histories);
+                if (response.body() != null) {
+                    histories = response.body().getHistory();
+                    mutableLiveData.postValue(histories);
+                }
+                //TODO: do something to fire a call
             }
 
             @Override

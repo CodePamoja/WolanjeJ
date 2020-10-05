@@ -1,13 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/learningHub1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Hub"
     android:orientation="vertical"
-    >
-    <include layout="@layout/toolbar_learninghub"/>
+    tools:context=".Learning_Hub2">
+
+    <LinearLayout
+        android:id="@+id/toolbarlearninghub1"
+        android:layout_width="match_parent"
+        android:layout_marginTop="11dp"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:textAlignment="center">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imagetoolbar"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="24dp"
+                android:backgroundTint="@color/colorWhite"
+                android:src="@mipmap/small_left" />
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="21dp"
+                android:layout_toEndOf="@+id/imagetoolbar"
+                android:gravity="center_horizontal"
+                android:text="Learning Hub"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+            <ImageButton
+                android:id="@+id/btntoolbarlearninghub1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:background="@color/colorWhite"
+                android:src="@drawable/ic_close_copy_4" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,170 +61,166 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
 
             <RelativeLayout
+                android:id="@+id/phase1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@mipmap/image"
-                android:id="@+id/phase1"
 
                 >
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="10sp"
                     android:id="@+id/txtfront"
-                    android:textColor="@color/colorWhite"
-                    android:letterSpacing="0.02"
-                    android:layout_marginTop="82dp"
-                    android:layout_centerHorizontal="true"
-                    android:text="NEW"
-                    />
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="17sp"
-                    android:layout_below="@id/txtfront"
-                    android:id="@+id/txtmiddle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="82dp"
+                    android:letterSpacing="0.02"
+                    android:text="NEW"
                     android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/txtmiddle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtfront"
+                    android:layout_centerHorizontal="true"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="5sp"
-                    android:textAlignment="center"
-                    android:layout_centerHorizontal="true"
                     android:text="SME targeted interventions placeholder text commonly used in print"
-                    />
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp"
                     android:layout_below="@id/txtmiddle"
-                    android:textColor="@color/colorWhite"
-                    android:letterSpacing="0.02"
                     android:layout_centerHorizontal="true"
+                    android:letterSpacing="0.02"
                     android:text="02 January 2020"
-                    />
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
 
 
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/phase2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/phase2"
-                android:layout_below="@id/phase1"
-                >
+                android:layout_below="@id/phase1">
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_weight="1"
-                    android:background="#efeff3"
-                    >
+                    android:background="#efeff3">
+
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
                         android:id="@+id/txtfront2"
-                        android:textColor="#8c8c8c"
-                        android:letterSpacing="0.02"
-                        android:gravity="center_horizontal"
-                        android:text="Innovation"
-                        android:layout_marginTop="38dp"
-                        android:layout_centerHorizontal="true"
-                        />
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="38dp"
+                        android:gravity="center_horizontal"
+                        android:letterSpacing="0.02"
+                        android:text="Innovation"
+                        android:textColor="#8c8c8c"
+                        android:textSize="10sp" />
+
+                    <TextView
                         android:id="@+id/txtmiddle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/txtfront2"
-                        android:textColor="#323643"
+                        android:gravity="center_horizontal"
                         android:letterSpacing="-0.02"
                         android:lineSpacingExtra="3sp"
-                        android:gravity="center_horizontal"
                         android:text="Kenya&apos;s mobile magic Lorem ipsum dolor sit consectetur"
-                        />
+                        android:textColor="#323643"
+                        android:textSize="14sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#8c8c8c"
-                        android:letterSpacing="0.02"
                         android:layout_below="@id/txtmiddle2"
                         android:layout_centerHorizontal="true"
                         android:gravity="center_horizontal"
+                        android:letterSpacing="0.02"
                         android:text="2 hours ago"
-                        />
+                        android:textColor="#8c8c8c"
+                        android:textSize="10sp" />
 
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_weight="1"
-                    android:background="@mipmap/image_copy"
-                    >
+                    android:background="@mipmap/image_copy">
 
                 </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/phase3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/phase3"
-                android:layout_below="@id/phase2"
-                >
+                android:layout_below="@id/phase2">
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_weight="1"
-                    android:background="@mipmap/image_copy_3"
-                    >
+                    android:background="@mipmap/image_copy_3">
 
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_weight="1"
-                    android:background="#0f1020"
-                    >
+                    android:background="#0f1020">
+
+                    <TextView
+                        android:id="@+id/txtfront3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="48dp"
+                        android:letterSpacing="0.02"
+                        android:textColor="#8c8c8c"
+                        android:textSize="10sp"
+                        tools:text="TECHNOLOGY" />
+
+                    <TextView
+                        android:id="@+id/txtmiddle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtfront3"
+                        android:layout_centerHorizontal="true"
+                        android:letterSpacing="-0.02"
+                        android:lineSpacingExtra="3sp"
+                        android:text="Breaking Down The Difference"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:id="@+id/txtfront3"
-                        android:layout_centerHorizontal="true"
-                        android:textColor="#8c8c8c"
-                        android:letterSpacing="0.02"
-                        android:layout_marginTop="48dp"
-                        tools:text="TECHNOLOGY"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:id="@+id/txtmiddle3"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@id/txtfront3"
-                        android:textColor="@color/colorWhite"
-                        android:letterSpacing="-0.02"
-                        android:lineSpacingExtra="3sp"
-                        android:textAlignment="center"
-                        android:text="Breaking Down The Difference"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="11sp"
                         android:layout_below="@id/txtmiddle3"
                         android:layout_centerHorizontal="true"
-                        android:textColor="#8c8c8c"
-                        android:letterSpacing="0.02"
                         android:gravity="center_horizontal"
-                        tools:text="4 hours ago"
-                        />
+                        android:letterSpacing="0.02"
+                        android:textColor="#8c8c8c"
+                        android:textSize="11sp"
+                        tools:text="4 hours ago" />
 
 
                 </RelativeLayout>
@@ -188,39 +230,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="124dp"
                 android:layout_below="@id/phase3"
-                android:background="@mipmap/image_copy_2"
-                >
+                android:background="@mipmap/image_copy_2">
 
                 <TextView
+                    android:id="@+id/txtfront4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10sp"
-                    android:textColor="@color/colorWhite"
-                    android:letterSpacing="0.02"
-                    android:id="@+id/txtfront4"
                     android:layout_above="@id/txtmiddle4"
                     android:layout_centerHorizontal="true"
+                    android:letterSpacing="0.02"
                     android:text="Innovation"
-                    />
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
                 <TextView
+                    android:id="@+id/txtmiddle4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="5sp"
                     android:shadowColor="#000000"
                     android:shadowDy="2"
                     android:shadowRadius="4"
-                    android:textSize="17sp"
-                    android:textColor="@color/colorWhite"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="5sp"
-                    android:id="@+id/txtmiddle4"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
                     android:text="Ut enim ad minim veniam, quis nostrud"
-                    />
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp" />
             </RelativeLayout>
 
         </RelativeLayout>
-
 
 
     </ScrollView>

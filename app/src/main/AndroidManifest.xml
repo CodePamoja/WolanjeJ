@@ -7,8 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <uses-feature android:name="android.hardware.camera.any" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -19,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Sponsors12"></activity>
+        <activity android:name=".Learning_Hub2"></activity>
+        <activity android:name=".Sponsors12" />
         <activity android:name=".Sponsors_13" />
         <activity android:name=".EnterPin2" />
         <activity android:name=".EnterPin3" />
@@ -74,7 +77,6 @@
         <activity android:name=".Reg_02" />
         <activity android:name=".ContactsView" />
         <activity android:name=".cryptomarket" />
-        <activity android:name=".Hub" />
         <activity android:name=".Referrals" />
         <activity android:name=".BillManager" />
         <activity android:name=".CryptoBalance" />
