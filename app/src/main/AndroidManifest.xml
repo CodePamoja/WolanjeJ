@@ -22,7 +22,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Learning_hub03">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Learning_Hub2" />
         <activity android:name=".Sponsors12" />
@@ -117,11 +121,7 @@
             android:value="barcode" />
 
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

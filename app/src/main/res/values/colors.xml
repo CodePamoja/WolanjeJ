@@ -31,6 +31,7 @@
     <color name="gray3">#66000000</color>
     <color name="gray4">#e0e0e0 </color>
     <color name="bShadeGray">#f8f9fa</color>
+    <color name="redfill">#FF5C5C</color>
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/gray4</color>
 </resources>

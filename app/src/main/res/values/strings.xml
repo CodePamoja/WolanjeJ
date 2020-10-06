@@ -248,6 +248,6 @@
 
 <!--    Learning_hub03 Strings-->
     <string name="learning_hub3">Learning Hub</string>
-
+    <string name="smeplaceholder">SME targeted interventions placeholder text commonly used in print</string>
 
 </resources>
