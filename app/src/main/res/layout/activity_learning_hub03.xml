@@ -25,10 +25,10 @@
 
 
         <ImageButton
-            android:layout_width="7dp"
-            android:layout_height="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
-            
+            android:layout_marginTop="10dp"
             android:background="@drawable/ic_baseline_chevron_left_24"/>
 
         <TextView
@@ -43,8 +43,8 @@
             android:text="Learning Hub" />
 
         <ImageButton
-            android:layout_width="13dp"
-            android:layout_height="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/ic_baseline_close_24"
             android:layout_marginLeft="143dp"/>
 
