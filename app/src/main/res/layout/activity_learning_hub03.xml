@@ -57,7 +57,7 @@
             android:layout_below="@+id/intro_text"
             android:layout_centerInParent="true"
             android:layout_marginTop="19dp"
-            android:background="@color/redfill"
+            android:backgroundTint="@color/redfill"
             android:text="New"
             android:textAlignment="center"/>
 
