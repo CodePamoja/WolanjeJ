@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Learning_hub6">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="44dp"
+        tools:ignore="MissingConstraints"
+        >
+
+        <ImageButton
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/ic_baseline_close_black_24"/>
+
+        <ImageButton
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/ic_baseline_access_alarm_24"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="70dp"/>
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="92dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="9sp"
+            android:text="23s remaining"
+            android:textColor="#ec3f36"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="47dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="center_horizontal"
+            android:letterSpacing="-0.01"
+            android:text="Quit Test"
+            android:textColor="#3281ff"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+        <ProgressBar
+        android:id="@+id/determinateBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_marginTop="108dp"
+        android:backgroundTint="#eeeeee"
+        android:progressTint="#ef5454"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:progress="10"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/question30f10"
+        android:layout_width="101dp"
+        android:layout_height="22dp"
+        android:layout_below="@+id/determinateBar"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginRight="244dp"
+        android:fontFamily="@font/poppins_regular"
+        android:lineSpacingExtra="11sp"
+        android:text="QUESTION 03 OF 10"
+        android:textColor="#394157"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/question1"
+        android:layout_width="315dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/question30f10"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:fontFamily="@font/poppins_regular"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="9sp"
+        android:lineHeight="24sp"
+        android:text="What are the 4 types of questions Lorem ipsum dolor sit amet,?"
+        android:textColor="#191b20"
+        android:textSize="15dp" />
+
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/chapterCard"
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/ch2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="23dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Ch 2 - Getting Started"
+                    android:textColor="#191b20"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ch2"
+                    android:layout_marginLeft="25dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="9sp"
+                    android:text="1 of 3 pages"
+                    android:textColor="#666e7b"
+                    android:textSize="13sp" />
+
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_arrow_back_warm_purple_24"
+                    android:layout_marginLeft="82dp"
+                    android:layout_marginTop="36dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_arrow_forward_warm_purple_24"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginLeft="40dp"/>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>
