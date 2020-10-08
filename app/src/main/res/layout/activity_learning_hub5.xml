@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Learning_hub5">
+
+    <!--    <RelativeLayout-->
+<!--        android:id="@+id/hub5RelativeLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:layout_editor_absoluteX="0dp"-->
+<!--        tools:layout_editor_absoluteY="132dp"-->
+<!--        android:background="#f9fafb"-->
+<!--        tools:ignore="MissingConstraints">-->
+
+    <LinearLayout
+        android:id="@+id/hub5LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_baseline_close_black_24" />
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginLeft="283dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_baseline_more_vert_24" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/lipsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f9fafb"
+        android:layout_marginTop="80dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="136dp">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="29dp"
+                android:layout_marginTop="24dp"
+                android:lineHeight="22sp"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingExtra="9sp"
+                android:text="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero&apos;s De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:\n\n
+“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”
+The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn&apos;t distract from the layout.\n\n
+A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content.\n\n
+The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software.
+
+Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero&apos;s De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:\n\n
+“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”
+The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn&apos;t distract from the layout.\n\n
+A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content.\n\n
+The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software.
+"
+                android:textColor="#191b20"
+                android:textSize="13sp" />
+
+
+
+
+
+    </ScrollView>
+
+
+    <!--    </RelativeLayout>-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/chapterCard"
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/ch2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="23dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Ch 2 - Getting Started"
+                    android:textColor="#191b20"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ch2"
+                    android:layout_marginLeft="25dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="9sp"
+                    android:text="1 of 3 pages"
+                    android:textColor="#666e7b"
+                    android:textSize="13sp" />
+
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_arrow_back_warm_purple_24"
+                    android:layout_marginLeft="82dp"
+                    android:layout_marginTop="36dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_arrow_forward_warm_purple_24"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginLeft="40dp"/>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</RelativeLayout>

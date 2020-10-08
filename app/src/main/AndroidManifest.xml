@@ -21,16 +21,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".learning_hub4">
+        <activity android:name=".Learning_hub5">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Learning_hub03">
+        <activity android:name=".learning_hub4">
 
         </activity>
+        <activity android:name=".Learning_hub03"></activity>
         <activity android:name=".Learning_Hub2" />
         <activity android:name=".Sponsors12" />
         <activity android:name=".Sponsors_13" />
@@ -126,7 +127,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
