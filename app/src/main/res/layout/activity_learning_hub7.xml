@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".learning_hub7">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="120dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/rounded_corners"
+            android:fontFamily="@font/poppins_medium"
+            android:lineHeight="32sp"
+            android:lineSpacingExtra="2sp"
+            android:paddingTop="20dp"
+            android:text="75"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+
+        <TextView
+            android:id="@+id/exerciseText"
+            android:layout_width="176dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="20dp"
+            android:lineSpacingExtra="9sp"
+            android:text="Risk Management Exercise"
+            android:textColor="#8c8a9a"
+            android:textSize="13sp" />
+
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="126dp"
+        android:fontFamily="@font/poppins_medium"
+        android:lineHeight="32dp"
+        android:lineSpacingExtra="10sp"
+        android:text="Your Score"
+        android:textColor="#181818"
+        android:textSize="22dp" />
+    
+    <ImageButton
+        android:id="@+id/congratsTrophy"
+        android:layout_width="94dp"
+        android:layout_height="94dp"
+        android:background="@drawable/ico_congrats"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/congratsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/congratsTrophy"
+        android:layout_marginLeft="96.5dp"
+        android:layout_marginRight="96.5dp"
+        android:layout_marginTop="29dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="10sp"
+        android:text="Congratulations!"
+        android:textColor="#191b20"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/congratsMessage"
+        android:layout_width="300dp"
+        android:layout_height="44dp"
+        android:layout_below="@id/congratsText"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="37dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="9sp"
+        android:textColor="#666e7b"
+        android:textSize="13sp"
+        android:text="You have successfully completed the Risk Management Exercise" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="315dp"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="@color/warm_purple"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Close"
+        android:textSize="16sp"
+        android:textColor="#ffffff"/>
+
+</RelativeLayout>

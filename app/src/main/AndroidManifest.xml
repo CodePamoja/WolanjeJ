@@ -21,17 +21,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Learning_hub6">
+        <activity android:name=".learning_hub7">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Learning_hub5">
+        <activity android:name=".Learning_hub6">
 
         </activity>
-        <activity android:name=".learning_hub4"></activity>
+        <activity android:name=".Learning_hub5"></activity>
+        <activity android:name=".learning_hub4" />
         <activity android:name=".Learning_hub03" />
         <activity android:name=".Learning_Hub2" />
         <activity android:name=".Sponsors12" />
