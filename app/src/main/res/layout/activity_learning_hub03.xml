@@ -10,7 +10,8 @@
         android:id="@+id/banner_layout"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:background="@android:color/black"
+        android:background="@drawable/bitmap"
+
         tools:ignore="MissingConstraints">
 
 
@@ -59,6 +60,7 @@
             android:layout_marginTop="19dp"
             android:backgroundTint="@color/redfill"
             android:text="New"
+
             android:textAlignment="center"/>
 
         <TextView
@@ -103,7 +105,6 @@
         android:fontFamily="@font/poppins_regular"
         android:lineSpacingExtra="3sp"
         android:textColor="#666e7b"
-
         android:textSize="13sp"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="286dp"
