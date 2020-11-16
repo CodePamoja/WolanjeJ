@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
@@ -29,18 +28,24 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.textfield.TextInputLayout;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
+import com.wolanjeAfrica.wolanjej.RetrofitUtils.ApiJsonObjects;
+import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
+import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
+import com.wolanjeAfrica.wolanjej.models.LoginModel;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.Executor;
 
 import io.realm.Realm;
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -112,7 +117,7 @@ public class LogIn extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Please Fill ", LENGTH_SHORT).show();
                                 return;
                             }
-                            new UserLogin(phone, pin).execute();
+                            UserLogin(phone, pin);
                         } else {
                             linearLayout.setVisibility(View.VISIBLE);
                             Toast.makeText(getApplicationContext(), "No internet Available", Toast.LENGTH_LONG).show();
@@ -178,7 +183,7 @@ public class LogIn extends AppCompatActivity {
     }
 
     public void FogtPssd(View view) {
-        Intent move = new Intent(this, Registration05.class);
+        Intent move = new Intent(this, Registration07.class);
         startActivity(move);
     }
 
@@ -188,149 +193,85 @@ public class LogIn extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public class UserLogin extends AsyncTask<Void, Void, Response> {
+    public void UserLogin(String phone, String pin) {
 
-        private String phone;
-        private String pin;
 
-        UserLogin(String phone, String pin) {
-            this.phone = phone;
-            this.pin = pin;
+        if (phone == null || pin == null) {
+            Toast.makeText(this, "please fill all the deatils", LENGTH_SHORT).show();
         }
+        String phonePin = "254" + phone + ":" + pin;
+        String results = baseResult.encodedValue(phonePin);
 
-        @Override
-        protected void onPreExecute() {
-            prgBar = new ProgressDialog(LogIn.this);
-            prgBar.setMessage("Please Wait");
-            prgBar.setIndeterminate(false);
-            prgBar.setCancelable(false);
-            prgBar.show();
-        }
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Basic " + results + "");
 
-        @Override
-        protected Response doInBackground(Void... voids) {
-            Response result = null;
-
-            if (phone != null && pin != null) {
-                String phonePin = "254" + phone + ":" + pin; //adding a phone number and a pin together separating them using Full collon
-                String results = baseResult.encodedValue(phonePin); // sending the phone number and pin for base 64 encoder for and getting the string value
-
-                String url = "/api/";
-                OkhttpConnection okConn = new OkhttpConnection(); // calling the okhttp connection class here
-                result = okConn.getLogin(url, results); // sending the url string and base 64 results to the okhttp connection and it's method is getLogin
-
-            }
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response result) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            prgBar.dismiss();
-
-                        }
-                    });
-                    if (result != null && result.code() == 200) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "Your have been Loggedin successfuly", Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-
-                        try {
-                            String test = result.body().string();
-                            sessionID = new JSONObject(test);
-                            /*
-                             adding values to SharedPreferences
-                             make sure that in the getsharedPreferences the key value should be the same as the intent putextra class value
-                             */
-                            SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = pref.edit();
-                            editor.putString("session_token", sessionID.getJSONObject("session").getString("session_token"));
-                            editor.putString("id", sessionID.getJSONObject("session").getString("id"));
-                            editor.putString("role", sessionID.getJSONObject("session").getString("role"));
-                            editor.putString("user_name", sessionID.getJSONObject("session").getString("user_name"));
-                            editor.putString("agentno", sessionID.getJSONObject("session").getString("agentno"));
-                            System.out.println(TAG + sessionID.getJSONObject("session").getString("agentno"));
-                            Log.e(TAG, "run: " + sessionID.getJSONObject("session").toString());
-                            editor.apply();
-                            userRole = sessionID.getJSONObject("session").getString("role");
-                            /*
-                             write user to database
-                             */
-                            Looper.prepare();
-                            realm = Realm.getInstance(DbMigrations.getDefaultInstance());
-
-
-                            User user = realm.where(User.class).equalTo("phoneNumber", phone)
-                                    .findFirst();
-                            if (user == null) {
-                                realm.executeTransactionAsync(realm -> {
-                                    User user1 = realm.createObject(User.class, UUID.randomUUID().hashCode());
-                                    user1.setFirstName(FirstName);
-                                    user1.setLastName(LastName);
-                                    user1.setEmail(email);
-                                    user1.setPassword(generateHashedPassword(pin));
-                                    user1.setGender(Gender);
-                                    user1.setPhoneNumber(phone);
-                                    user1.setRole(userRole);
-
-                                }, () -> {
-                                    //success sign up
-                                    getUserId(phone, pin, userRole);
-
-                                }, error -> Toast.makeText(LogIn.this, "Experienced an Error" + error, LENGTH_SHORT).show());// error in sign up
-                                Looper.loop();
-
-                                finish();
-                            } else {
-                                //getUserId and login
-                                getUserId(phone, pin, userRole);
-
-                            }
-
-
-                        } catch (JSONException | IOException e) {
-                            //e.printStackTrace();
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(LogIn.this, "There is a problem with your internet connection.Please try again if not logged in.", LENGTH_SHORT).show();
-
-                                }
-                            });
-                        }
-                    } else if (result != null && result.code() != 201) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                    } else {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(LogIn.this, "Sorry something went wrong", Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                    }
-
-
+        Retrofit retrofit = RetrofitClient.getInstance();
+        JsonPlaceHolders jsonPlaceHolders = retrofit.create(JsonPlaceHolders.class);
+        Call<ApiJsonObjects> call = jsonPlaceHolders.loginUser(headers);
+        call.enqueue(new Callback<ApiJsonObjects>() {
+            @Override
+            public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "code" + response.code(), Toast.LENGTH_LONG).show();
+                    Log.e(TAG, "onResponse: " + response.errorBody());
+                    return;
                 }
-            }).start();
+                Log.d(TAG, "onResponse: " + response.body().getLoginModel().getSession_token());
+                AcquireSessionToken(response.body().getLoginModel(), pin);
+            }
 
-        }
+            @Override
+            public void onFailure(Call<ApiJsonObjects> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "error" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+    private void AcquireSessionToken(LoginModel body, String pin) {
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("LogIn", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("session_token", body.getSession_token());
+        editor.putString("id", body.getId());
+        editor.putString("role", body.getRole());
+        editor.putString("user_name", body.getUser_name());
+        editor.putString("agentno", body.getAgentno());
+        editor.apply();
+
+        /*
+          write user to database
+         */
+
+        realm = Realm.getInstance(DbMigrations.getDefaultInstance());
+
+
+        User user = realm.where(User.class).equalTo("phoneNumber", body.getAgentno())
+                .findFirst();
+        if (user == null) {
+            realm.executeTransactionAsync(realm -> {
+                User user1 = realm.createObject(User.class, UUID.randomUUID().hashCode());
+                user1.setFirstName(FirstName);
+                user1.setLastName(LastName);
+                user1.setEmail(email);
+                user1.setPassword(generateHashedPassword(pin));
+                user1.setGender(Gender);
+                user1.setPhoneNumber(body.getAgentno());
+                user1.setRole(userRole);
+            }, () -> {
+                //success sign up
+                getUserId(body.getAgentno(), pin, body.getRole());
+
+            }, error -> Toast.makeText(LogIn.this, "Experienced an Error" + error, LENGTH_SHORT).show());// error in sign up
+            Looper.loop();
+
+            finish();
+        } else {
+            //getUserId and login
+            getUserId(body.getAgentno(), pin, body.getRole());
+        }
+
+    }
+
 
     private void getUserId(String phone, String pin, String userRole) {
         User user = realm.where(User.class).equalTo("phoneNumber", phone)
@@ -374,7 +315,7 @@ public class LogIn extends AppCompatActivity {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
 
     private boolean isNetworkAvailable() {

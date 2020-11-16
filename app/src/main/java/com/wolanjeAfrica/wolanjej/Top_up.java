@@ -124,38 +124,44 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
     }
 
     public void moveToBuy(View view) {
-        EditText text = findViewById(R.id.amount_top_up);
-        String amount = text.getText().toString();
+        int Least_Amount = 10;
+        int Highest_Amount = 70000;
+        int amount_Length = 5;
         String key = null;
         String value = null;
+
+
+        EditText text = findViewById(R.id.amount_top_up);
+        String amount = text.getText().toString();
+
         if (amount.isEmpty()) {
             text.requestFocus();
             Toast.makeText(getApplicationContext(), "please provide Amount", Toast.LENGTH_LONG).show();
             return;
         }
-        int x = Integer.parseInt(amount);
-        if (amount != null) {
-            if (x >= 10) {
-                if (x <= 70000) {
-                    Map<String, String> map = CheckPhoneNumber.getInstance().checkPhoneNo(Top_up.this, "+" + AGENTNO);
-                    for (Map.Entry<String, String> entry : map.entrySet()) {
-                        key = entry.getKey();
-                        value = entry.getValue();
-                    }
-                    if (value != null && !value.equals("Fasle")) {
-                        movetoPin(value, amount, key);
-                    } else {
-                        Toast.makeText(this, "invalid phone", Toast.LENGTH_SHORT).show();
-                    }
+        if (amount.length() > amount_Length){
+            text.requestFocus();
+            Toast.makeText(getApplicationContext(), "The Amount is above 70000", Toast.LENGTH_LONG).show();
+            return;
+        }
+        int new_Amount = Integer.parseInt(amount);
+        if (new_Amount >= Least_Amount) {
+            if (new_Amount <= Highest_Amount) {
+                Map<String, String> map = CheckPhoneNumber.getInstance().checkPhoneNo(Top_up.this, "+" + AGENTNO);
+                for (Map.Entry<String, String> entry : map.entrySet()) {
+                    key = entry.getKey();
+                    value = entry.getValue();
+                }
+                if (value != null && !value.equals("Fasle")) {
+                    movetoPin(value, amount, key);
                 } else {
-                    Toast.makeText(getApplicationContext(), "The Amount is above 70000", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "invalid phone", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(getApplicationContext(), "The Amount is below 10", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "The Amount is above 70000", Toast.LENGTH_LONG).show();
             }
-
         } else {
-            Toast.makeText(getApplicationContext(), "Enter Amount", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "The Amount is below 10", Toast.LENGTH_LONG).show();
         }
 
     }

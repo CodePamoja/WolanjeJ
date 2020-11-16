@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -106,21 +107,20 @@ public class Loans extends AppCompatActivity implements View.OnClickListener {
         View bottomSheetViewOpenLoan = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.loans12_bottom_sheet, (ConstraintLayout) findViewById(R.id.loansbottomSheets)
                 );
+        ImageButton imageButton = (ImageButton) bottomSheetViewOpenLoan.findViewById(R.id.imagebtn_loan_netSheet);
         Button button = (Button) bottomSheetViewOpenLoan.findViewById(R.id.buttonReqLoanSheet);
         spinner = bottomSheetViewOpenLoan.findViewById(R.id.useOfFundsSpinner);
         adapter = ArrayAdapter.createFromResource(this,    // setting array-adapter belonging to spinner
                 R.array.loanUseOfFunds, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetDialog.dismiss();
-                Intent intent = new Intent(Loans.this, EnterPin.class);
-                intent.putExtra("Class", ClassType);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
+        imageButton.setOnClickListener(v-> bottomSheetDialog.dismiss());
+        button.setOnClickListener(v -> {
+            bottomSheetDialog.dismiss();
+            Intent intent = new Intent(Loans.this, EnterPin.class);
+            intent.putExtra("Class", ClassType);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         });
         bottomSheetDialog.setContentView(bottomSheetViewOpenLoan);
         bottomSheetDialog.show();

@@ -10,7 +10,7 @@ public class RetrofitClient {
 
         if (OUR_INSTANCE == null)
             OUR_INSTANCE = new Retrofit.Builder()
-                    .baseUrl("https://wolenjeafrica.com/wolenje/api/")
+                    .baseUrl("https://wolenjeafrica.com/wolenje/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

@@ -386,15 +386,12 @@ public class EnterPin extends AppCompatActivity {
                                 //Case statements
                                 case "safaricom":
                                     new Transfer(fullPin, "SAF_ATP", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Top up via MPESA", Toast.LENGTH_LONG).show();
                                     break;
                                 case "airtel":
                                     new Transfer(fullPin, "AIRTEL_ATP", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Top up via AIRTEL MONEY", Toast.LENGTH_LONG).show();
                                     break;
                                 case "telkom":
                                     new Transfer(fullPin, "TKASH_ATP", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Top up via TKASH", Toast.LENGTH_LONG).show();
                                     break;
                                 //Default case statement
                                 default:

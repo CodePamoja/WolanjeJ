@@ -2,6 +2,7 @@ package com.wolanjeAfrica.wolanjej.RetrofitUtils;
 
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.models.ListUserBills;
+import com.wolanjeAfrica.wolanjej.models.LoginModel;
 import com.wolanjeAfrica.wolanjej.models.ModelUserDetails;
 import com.wolanjeAfrica.wolanjej.models.TranasactionHistory;
 import com.google.gson.annotations.Expose;
@@ -26,11 +27,16 @@ public class ApiJsonObjects {
     @Expose
     private List<ListUserBills> listUserBills;
 
-    public ApiJsonObjects(List<ListUserBills> listUserBills,List<BalanceModel> balances, List<ModelUserDetails> userDetails, List<TranasactionHistory> tranasactionHistories) {
+    @SerializedName("session")
+    @Expose
+    private LoginModel loginModel;
+
+    public ApiJsonObjects(List<BalanceModel> balances, List<ModelUserDetails> userDetails, List<TranasactionHistory> tranasactionHistories, List<ListUserBills> listUserBills, LoginModel loginModel) {
         this.balances = balances;
         this.userDetails = userDetails;
         this.tranasactionHistories = tranasactionHistories;
         this.listUserBills = listUserBills;
+        this.loginModel = loginModel;
     }
 
     public List<BalanceModel> getBalances() {
@@ -41,11 +47,15 @@ public class ApiJsonObjects {
         return userDetails;
     }
 
-    public List<TranasactionHistory> getHistory(){
+    public List<TranasactionHistory> getHistory() {
         return tranasactionHistories;
     }
 
-    public List<ListUserBills> getListUserBills(){
+    public List<ListUserBills> getListUserBills() {
         return listUserBills;
+    }
+
+    public LoginModel getLoginModel() {
+        return loginModel;
     }
 }
