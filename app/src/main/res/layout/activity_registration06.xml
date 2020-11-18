@@ -121,6 +121,15 @@
                                 android:text="2"
                                 android:textSize="30sp" />
 
+                            <ProgressBar
+                                android:id="@+id/progressr07"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:background="@drawable/progress"
+                                app:layout_anchor="@+id/nestedScrollView3"
+                                app:layout_anchorGravity="center" />
+
                             <EditText
                                 android:id="@+id/inp3"
                                 android:layout_width="wrap_content"
@@ -183,7 +192,6 @@
 
                 </LinearLayout>
             </LinearLayout>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

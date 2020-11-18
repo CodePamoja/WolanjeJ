@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
@@ -13,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,18 +20,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
-import org.json.JSONException;
+import com.google.gson.JsonObject;
+import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
+import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
+
 import org.json.JSONObject;
 
-import java.io.IOException;
-
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class Registration06 extends AppCompatActivity {
 
     ProgressDialog prgBar;
     private JSONObject sessionID = null;
     private TextView textView;
+    private ProgressBar progressr07;
     public static final String EXTRA_SESSION = "com.wolanjeAfrica.wolanjej.SESSION";
     public static final String EXTRA_PHONE = "com.wolanjeAfrica.wolanjej.PHONE";
     private static final String TAG = "registrtion06";
@@ -44,6 +49,7 @@ public class Registration06 extends AppCompatActivity {
 
         setContentView(R.layout.activity_registration06);
         setToolBar();
+        progressr07 = (ProgressBar) findViewById(R.id.progressr07);
         final EditText text1 = findViewById(R.id.edittext);
         final EditText text2 = findViewById(R.id.inp2);
         final EditText text3 = findViewById(R.id.inp3);
@@ -154,11 +160,8 @@ public class Registration06 extends AppCompatActivity {
         );
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
         ExpirationTimer();
     }
@@ -184,77 +187,38 @@ public class Registration06 extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("Registration_details", MODE_PRIVATE);
         String value = sharedPreferences.getString("Phone_Number", "");
-
-        Toast.makeText(this, "The number is" + value, Toast.LENGTH_SHORT).show();
-        new UserverifyOTP(value).execute();
+        VerifyOTP(value);
     }
 
-    public class UserverifyOTP extends AsyncTask<Void, Void, Response> {
+    public void VerifyOTP(String phoneNumber) {
+        progressr07.setVisibility(View.VISIBLE);
+        JsonObject jValue = new JsonObject();
+        jValue.addProperty("phone", "254" + phoneNumber);
+        jValue.addProperty("otp", "12345678");
 
-        String phoneNo;
+        Retrofit retrofit = RetrofitClient.getInstance();
+        JsonPlaceHolders jsonPlaceHolders = retrofit.create(JsonPlaceHolders.class);
+        Call<JsonObject> call = jsonPlaceHolders.VerifyOTP(jValue);
 
-        public UserverifyOTP(String phonenumber) {
-
-            phoneNo = phonenumber;
-
-            Toast.makeText(Registration06.this, "Inside" + phoneNo, Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        protected void onPreExecute() {
-            prgBar = new ProgressDialog(Registration06.this);
-            prgBar.setMessage("Please Wait... Verifying OTP");
-            prgBar.setIndeterminate(false);
-            prgBar.setCancelable(false);
-            prgBar.show();
-        }
-
-        @Override
-        protected Response doInBackground(Void... voids) {
-            JSONObject jValue = new JSONObject();
-            try {
-                jValue.put("phone", "254" + phoneNo);
-                jValue.put("otp", "12345678");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            String url = "/gapi/verifyOTP";
-            OkhttpConnection okConn = new OkhttpConnection();
-            Response result = okConn.postRequest(url, jValue.toString());
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response result) {
-            String verifyResult = null;
-            if (result.code() == 201) {
-                prgBar.dismiss();
-                Toast.makeText(getApplicationContext(), "OTP verified successfully", Toast.LENGTH_LONG).show();
-                try {
-                    verifyResult = result.body().string();
-                    sessionID = new JSONObject(verifyResult); // adding
-
-//                //bypass the verification code and page for now since we are adding otp for testing
-                    Intent move = new Intent(Registration06.this, Registration07.class);
-                    move.putExtra(EXTRA_SESSION, sessionID.getJSONObject("session").getString("session_token"));
-                    move.putExtra(EXTRA_PHONE, phoneNo);
-                    startActivity(move);
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(Registration06.this, response.message(), Toast.LENGTH_SHORT).show();
+                    return;
                 }
-            } else if (result.code() != 201) {
-                prgBar.dismiss();
-                Toast.makeText(getApplicationContext(), "Error Occured", Toast.LENGTH_LONG).show();
-                try {
-                    verifyResult = result.body().string();
-                    JSONObject jBody = new JSONObject(verifyResult); // adding
-                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("otp").getJSONArray(0).getString(2);
-                    Toast.makeText(getApplicationContext(), "Phone Number, " + sendResutls, Toast.LENGTH_LONG).show();
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
+                String session = response.body().get("session").getAsJsonObject().get("session_token").getAsString();
+                progressr07.setVisibility(View.GONE);
+                Intent move = new Intent(Registration06.this, Registration07.class);
+                move.putExtra(EXTRA_SESSION, session);
+                move.putExtra(EXTRA_PHONE, phoneNumber);
+                startActivity(move);
             }
-        }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                Toast.makeText(Registration06.this, "error" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
 }

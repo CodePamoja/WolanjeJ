@@ -20,7 +20,7 @@ public class OkhttpConnection {
         try {
             RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
             String allUrl = baseUrl + url;
-            Log.e("TAG", allUrl);
+            Log.e("TAG okhttp", body.toString());
             Request request = new Request.Builder()
                     .url(allUrl)
                     .post(body)
@@ -63,28 +63,7 @@ public class OkhttpConnection {
     }
 
 
-    public Response payBill(String url, String jsonBody, String sessionID) {
-        Response result = null;
-        try {
-            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonBody);
-            String allUrl = baseUrl + url;
-            Request request = new Request.Builder()
-                    .header("Authorization", "Bearer " + sessionID + "")
-                    .url(allUrl)
-                    .post(body)
-                    .build();
 
-            Call call = client.newCall(request);
-            Response response = call.execute();
-            result = response;
-
-        } catch (IOException ex) {
-            System.out.println("IO Error : " + ex);
-            Log.d("TAG", String.valueOf(ex));
-        }
-
-        return result;
-    }
 
 
 }

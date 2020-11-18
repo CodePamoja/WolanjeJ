@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +59,7 @@ public class LogIn extends AppCompatActivity {
     private ImageView imageView, imageView1;
     public ProgressDialog prgBar;
     private Button button;
+    private ProgressBar progressBar;
     public JSONObject sessionID = null;
     private TextInputLayout textPhone, textPin;
     private androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
@@ -103,6 +105,7 @@ public class LogIn extends AppCompatActivity {
         });
         textPhone = findViewById(R.id.phoneNoLogIN);
         textPin = findViewById(R.id.pinLogIN);
+        progressBar = (ProgressBar) findViewById(R.id.progressr07);
 
         // login button action
         button = findViewById(R.id.btn_LogIn);
@@ -195,10 +198,10 @@ public class LogIn extends AppCompatActivity {
 
     public void UserLogin(String phone, String pin) {
 
-
         if (phone == null || pin == null) {
             Toast.makeText(this, "please fill all the deatils", LENGTH_SHORT).show();
         }
+        progressBar.setVisibility(View.VISIBLE);
         String phonePin = "254" + phone + ":" + pin;
         String results = baseResult.encodedValue(phonePin);
 
@@ -216,7 +219,6 @@ public class LogIn extends AppCompatActivity {
                     Log.e(TAG, "onResponse: " + response.errorBody());
                     return;
                 }
-                Log.d(TAG, "onResponse: " + response.body().getLoginModel().getSession_token());
                 AcquireSessionToken(response.body().getLoginModel(), pin);
             }
 
@@ -285,6 +287,7 @@ public class LogIn extends AppCompatActivity {
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putString("userDbId", userId);
                 editor.apply();
+                progressBar.setVisibility(View.GONE);
                 Intent intent = new Intent(LogIn.this, LinkAccount11.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -293,6 +296,7 @@ public class LogIn extends AppCompatActivity {
                 user.setPassword(generateHashedPassword(pin));
                 user.setRole(userRole);
                 realm.commitTransaction();
+                progressBar.setVisibility(View.GONE);
                 Intent intent = new Intent(LogIn.this, LinkAccount11.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

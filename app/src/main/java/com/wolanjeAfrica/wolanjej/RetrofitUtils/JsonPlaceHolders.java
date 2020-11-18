@@ -1,8 +1,11 @@
 package com.wolanjeAfrica.wolanjej.RetrofitUtils;
 
-import com.wolanjeAfrica.wolanjej.models.LoginModel;
+
+import com.google.gson.JsonObject;
 import com.wolanjeAfrica.wolanjej.models.ModelUserDetails;
 import com.wolanjeAfrica.wolanjej.models.NewBillmodel;
+
+import org.json.JSONObject;
 
 import java.util.Map;
 
@@ -38,5 +41,10 @@ public interface JsonPlaceHolders {
 
     @POST("api")
     Call<ApiJsonObjects> loginUser(@HeaderMap Map<String, String> headers );
+
+    @POST("gapi/verifyOTP")
+    Call<JsonObject> VerifyOTP(@Body JsonObject jsonObject);
+
+
 
 }
