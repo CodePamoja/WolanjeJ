@@ -113,12 +113,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
             case "SelectUserAdapter": {
                 this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
                 this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-
-                if (phoneName == null) {
-                    editText1.setText(phoneNumber);
-                    return;
-                }
-                editText1.setText(phoneName);
+                editText1.setText(phoneNumber);
                 break;
             }
             case "ConfirmSingleTransfer40": {

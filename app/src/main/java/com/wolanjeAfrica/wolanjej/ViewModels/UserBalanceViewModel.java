@@ -25,7 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 
 public class UserBalanceViewModel extends ViewModel {
-    private MutableLiveData<List<BalanceModel>> mutableLiveData = mutableLiveData = new MutableLiveData<List<BalanceModel>>();
+    private MutableLiveData<List<BalanceModel>> mutableLiveData = new MutableLiveData<>();
     private List<BalanceModel> balanceModel = new ArrayList<>();
     private static final String TAG = "userbalanceviewmodel";
 

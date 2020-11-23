@@ -21,11 +21,21 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.JsonObject;
+import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
+import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import okhttp3.Response;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class Registration07 extends AppCompatActivity {
     private ImageView imageView;
@@ -96,7 +106,7 @@ public class Registration07 extends AppCompatActivity {
         }
 
         if (pin1.length() > 3) {
-            new sendPinServer(pin1, phoneNumber).execute();
+            sendPinServer(phoneNumber,pin1);
         } else {
             Toast.makeText(this, "pin 4 digits", Toast.LENGTH_SHORT).show();
         }
@@ -122,49 +132,41 @@ public class Registration07 extends AppCompatActivity {
         alertDialog.show();
     }
 
+    public void sendPinServer (String phoneNumber, String pin1){
 
-    public class sendPinServer extends AsyncTask<Void, Void, Response> {
-        String phonenumber;
-        String pin1;
+        progressBar.setVisibility(View.VISIBLE);
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Bearer " + sessionID + "");
 
-        public sendPinServer(String pin1, String phone) {
-            this.phonenumber = phone;
-            this.pin1 = pin1;
-        }
+        JsonObject jValue = new JsonObject();
+        jValue.addProperty("phone", "254" + phoneNumber);
+        jValue.addProperty("pin", pin1);
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressBar.setVisibility(View.VISIBLE);
-        }
 
-        @Override
-        protected Response doInBackground(Void... voids) {
-            JSONObject jPin = new JSONObject();
-            try {
-                jPin.put("phone", "254" + phoneNumber);
-                jPin.put("pin", pin1);
+        Retrofit retrofit = RetrofitClient.getInstance();
+        JsonPlaceHolders jsonPlaceHolders = retrofit.create(JsonPlaceHolders.class);
+        Call<ResponseBody> call = jsonPlaceHolders.sendPinToServer(jValue,headers);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.code() == 202 ){
+                    progressBar.setVisibility(View.GONE);
+                    SuccessSignUp();
 
-            } catch (JSONException e) {
-                e.printStackTrace();
+                }else {
+                    Toast.makeText(Registration07.this, "failed to update your pin", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+                }
+
             }
 
-            String url = "/api/";
-            OkhttpConnection okConn = new OkhttpConnection();
-            return okConn.postValue(url, jPin.toString(), sessionID);
-        }
-
-        @Override
-        protected void onPostExecute(Response response) {
-            progressBar.setVisibility(View.GONE);
-            if (response.code() == 202) {
-                SuccessSignUp();
-            } else if (response.code() != 201) {
-                Log.d("TAG", String.valueOf(response));
-                Toast.makeText(getApplicationContext(), "Access Denied to Resource", Toast.LENGTH_LONG).show();
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(Registration07.this, "error"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
+        });
 
-        }
     }
+
 
 }

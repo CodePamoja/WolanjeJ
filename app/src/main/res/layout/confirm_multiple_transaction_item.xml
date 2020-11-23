@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/transfer_receipt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/confirmMultipleName1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="0dp"
+            android:text="John Doe"
+            android:textAlignment="center"
+            android:textColor="@color/colorMidnight"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/dateConfirmMultiple1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/confirmMultipleName1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="0dp"
+            android:text="9:00 PM | 10/Jan/2020"
+            android:textAlignment="center"
+            android:textColor="@color/blue_grey"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/divider"
+            style="@style/Divider"
+            android:layout_below="@+id/dateConfirmMultiple1"
+            android:layout_marginTop="41dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginBottom="15dp" />
+
+        <LinearLayout
+            android:id="@+id/textarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="34dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="DETAILS"
+                android:textAlignment="textStart"
+                android:textColor="@color/blue_grey"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="From"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/fromConfirmMultiple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="User 01"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="To"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/toConfirmMultiple1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="John Doe"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="Amount"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blue_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/amountConfirmMultiple1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="KES 1,000"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/message_cmt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="Message"/>
+
+                <TextView
+                    android:id="@+id/usermessage_cmt"
+                    android:layout_width="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp"
+                    android:layout_weight="50"
+                    android:text="Message" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/transaction_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="50"
+                    android:text="Transaction fee"/>
+
+                <TextView
+                    android:id="@+id/usertransaction_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="50"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorMidnight"
+                    android:textSize="18sp"
+                    android:textAlignment="textEnd"
+                    android:text="0.00"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider2"
+            style="@style/Divider"
+            android:layout_below="@+id/textarea"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider2"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:text="TOTAL"
+                android:textAlignment="textStart"
+                android:textColor="@color/blue_grey"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/totalAmountConfirm1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:text="KES 1,000"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorGreenBlue"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

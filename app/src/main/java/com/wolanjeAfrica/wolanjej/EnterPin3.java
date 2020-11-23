@@ -17,10 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
+import com.wolanjeAfrica.wolanjej.ViewModels.TransactionApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,6 +55,7 @@ public class EnterPin3 extends AppCompatActivity {
     private Realm realm;
     private ProgressBar progressBar;
     private String product_name;
+    private String sentAmount;
 
 
     @SuppressLint("SetTextI18n")
@@ -215,7 +218,7 @@ public class EnterPin3 extends AppCompatActivity {
                         case "HomePayNet":
                         case "HomePayElectricity":
                             if (ValidateUserPin(fullPin)) {
-                                new Transfer(fullPin, product_name, Amount, AccountNumber).execute();
+                                PerformTransaction(product_name,AccountNumber,phoneNumber,Amount);
                             }else {
                                 Toast.makeText(EnterPin3.this, "Invalid Pin", Toast.LENGTH_SHORT).show();
                             }
@@ -245,13 +248,46 @@ public class EnterPin3 extends AppCompatActivity {
         return false;
     }
 
+    private void PerformTransaction(String product, String refNo, String phoneNumber, String amount){
+        progressBar.setVisibility(View.VISIBLE);
+        TransactionApi transactionApi = new ViewModelProvider(this).get(TransactionApi.class);
+        transactionApi.userTransactions(EnterPin3.this, sessionID, product, refNo,phoneNumber,amount).observe(this, servicesModel -> {
+
+            progressBar.setVisibility(View.GONE);
+            sentAmount=servicesModel.getAmountTransaction();
+            sendfee= servicesModel.getTransactionFee();
+            String sendNumber =servicesModel.getRef();
+            sendIDReference = servicesModel.getId();
+            String statusResulsts = servicesModel.getLast_status();
+            switch (statusResulsts) {
+                case "TRX_ASYNC":
+                    ConfirmPaymentUnsuccessful();
+                    break;
+                case "TRX_OK":
+                    ConfirmPaymentUnsuccessful();
+                    ConfirmPaymentSuccess();
+                    break;
+                case "TRX_INSUFFICIENT_BALANCE":
+                    ConfirmPaymentUnsuccessful();
+                    break;
+                case "TRX_VERIFY":
+                    ConfirmPaymentUnsuccessful();
+                    break;
+                default:
+                    ConfirmPaymentUnsuccessful();
+                    break;
+            }
+        });
+    }
+
+
 
     public void ConfirmPaymentSuccess() {
         Intent intent = new Intent(getApplicationContext(), Home.class);
         intent.putExtra("Class", "PayInternet2PinSuccess");
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(EXTRA_SEND_FEE, sendfee);
-        intent.putExtra(EXTRA_AMOUNT, Amount);
+        intent.putExtra(EXTRA_AMOUNT, sendAmount);
         intent.putExtra(EXTRA_REFERENCE_NUMBER, sendIDReference);
         startActivity(intent);
 
@@ -262,108 +298,11 @@ public class EnterPin3 extends AppCompatActivity {
         intent.putExtra("Class", "payInternet2pinUnsuccessful");
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(EXTRA_SEND_FEE, sendfee);
-        intent.putExtra(EXTRA_AMOUNT, Amount);
+        intent.putExtra(EXTRA_AMOUNT, sendAmount);
         intent.putExtra(EXTRA_REFERENCE_NUMBER, sendIDReference);
         startActivity(intent);
     }
 
-    public class Transfer extends AsyncTask<Void, Void, Response> {
-        String pin;
-        String productName;
-        String amount;
-        String ref;
 
-        public Transfer(String pin, String productName, String amount, String ref) {
-            this.pin = pin;
-            this.productName = productName;
-            this.amount = amount;
-            this.ref = ref;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressBar.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected Response doInBackground(Void... voids) {
-            JSONArray jdataset = new JSONArray();
-            JSONObject jdata = new JSONObject();
-
-
-            try {
-                jdata.put("product_name", productName);
-                jdata.put("amount", Amount);
-                jdata.put("phone", phoneNumber);
-                jdata.put("ref", ref);
-                jdataset.put(jdata);
-            } catch (Exception e) {
-                e.getStackTrace();
-            }
-
-            JSONObject jMpesa = new JSONObject();
-            try {
-                jMpesa.put("ac_uname", "test");
-                jMpesa.put("services", jdataset);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            Log.e("TAG", String.valueOf(jMpesa));
-
-            String url = "/api/transactions";
-            OkhttpConnection okConn = new OkhttpConnection();
-            Response result = okConn.postValue(url, jMpesa.toString(), sessionID);
-            System.out.println("Response body json values are : " + result);
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response response) {
-            progressBar.setVisibility(View.GONE);
-            super.onPostExecute(response);
-            if (response != null && response.code() == 201) {
-                try {
-                    String value = response.body().string();
-                    JSONObject jBody = new JSONObject(value); // adding
-                    System.out.println(TAG + "Response body json values are service : " + value);
-                    Log.e("TAG", String.valueOf(value));
-                    sendAmount = jBody.getJSONArray("services").getJSONObject(0).getString("amount");
-                    sendfee = jBody.getJSONArray("services").getJSONObject(0).getString("fee");
-                    String sendNumber = jBody.getJSONArray("services").getJSONObject(0).getString("ref");
-                    sendIDReference = jBody.getJSONArray("services").getJSONObject(0).getString("id");
-                    String statusResulsts = jBody.getJSONArray("services").getJSONObject(0).getString("status");
-                    Log.e("TAG", sendAmount);
-
-                    if (phoneNumber.equals(sendNumber) && statusResulsts.equals("TRX_ASYNC")) {
-                        ConfirmPaymentSuccess();
-                    } else if (statusResulsts.equals("TRX_OK")) {
-                        ConfirmPaymentSuccess();
-                    } else if (statusResulsts.equals("TRX_INSUFFICIENT_BALANCE")) {
-                        Toast.makeText(getApplicationContext(), "You have insufficient balance on your wallet", Toast.LENGTH_LONG).show();
-                        ConfirmPaymentUnsuccessful();
-                    } else if (statusResulsts.equals("TRX_VERIFY")) {
-                        Toast.makeText(getApplicationContext(), "the transaction is being verified", Toast.LENGTH_SHORT).show();
-                        ConfirmPaymentSuccess();
-                    } else if (statusResulsts.equals("TRX_RESPONSE_ERROR")) {
-                        Toast.makeText(getApplicationContext(), "Transaction Failed!", Toast.LENGTH_SHORT).show();
-                        ConfirmPaymentUnsuccessful();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
-                        ConfirmPaymentUnsuccessful();
-                    }
-
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
-            } else if (response != null && response.code() != 201) {
-                Toast.makeText(EnterPin3.this, "message"+response.message(), Toast.LENGTH_SHORT).show();
-
-            } else {
-                Snackbar.make(EnterPin3.this.findViewById(R.id.constarintPayInternet2), "Something went wrong", Snackbar.LENGTH_LONG).show();
-                Log.e(TAG, "onPostExecute: "+response );
-            }
-        }
-    }
 
 }

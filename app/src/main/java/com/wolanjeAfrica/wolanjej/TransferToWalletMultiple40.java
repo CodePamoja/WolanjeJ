@@ -22,31 +22,30 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
+import com.wolanjeAfrica.wolanjej.models.Transactions;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class TransferToWalletMultiple40 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
     String[] selectUser = {"Select User", "Single User", "Multiple Users",};
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
     public static final String EXTRA_AGENTNO = "com.example.wolanjej.AGENTNO";
     public static final String EXTRA_CLASSTYPE = "com.example.wolanjej.CLASSTYPE";
-    public static final String EXTRA_PHONENUMBER1 = "com.example.wolanjej.PHONENUMBER1";
-    public static final String EXTRA_PHONENUMBER2 = "com.example.wolanjej.PHONENUMBER2";
-    public static final String EXTRA_PHONENAME1 = "com.example.wolanjej.PHONENAME1";
-    public static final String EXTRA_PHONENAME2 = "com.example.wolanjej.PHONENAME2";
-    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    private static final String TAG = "TransferToWallet";
     private Button confirmButton;
     private String sessionID;
     private String AGENTNO;
-    private String phoneNumber1, phoneNumber2;
-    private String phoneName1, phoneName2;
+    private String phoneNumber;
+    private String phoneName;
     private String phoneCompany;
     private EditText editText1, editText2;
     private Spinner spin;
@@ -54,6 +53,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
     private ArrayAdapter adapter;
     private SharedPreferences pref;
     private Button button1, button2;
+    private static List<Transactions> transactionsList = new ArrayList<>();
 
 
     @Override
@@ -65,12 +65,13 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
 
-        pref = getApplicationContext().getSharedPreferences("TransferToWalletMultiple40", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
 
         button1 = (Button) findViewById(R.id.buttonContactsMultiple1);
         button2 = (Button) findViewById(R.id.buttonContactsMultiple2);
         textView = (TextView) findViewById(R.id.balancetxtTMwallet);
+        editText1 = (EditText) findViewById(R.id.amountMultipleTransfer);
+        editText2 = (EditText) findViewById(R.id.messageMultipleTransfers);
+
 
         // Get the Intent that started this activity and extract the string
         Intent intentExtra = getIntent();
@@ -82,29 +83,16 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
                 this.AGENTNO = intentExtra.getStringExtra(TransferToWalletSingle37.EXTRA_AGENTNO);
                 break;
             case "SelectUserAdapter": {
-                this.phoneNumber1 = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
+                this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
                 String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-                this.phoneName1 = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-                editor.putString("firstPhoneNumber", phoneNumber1);
-                editor.putString("firstPhoneName", phoneName1);
-                editor.apply();
+                this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
                 button1.setEnabled(false);
                 EditText tvtext = findViewById(R.id.editTxtWalletMultiple);
                 tvtext.setText(userName);
                 break;
             }
-            case "SelectUserAdapter2": {
-                this.phoneNumber2 = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
-                String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-                this.phoneName2 = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-                EditText tvtext = findViewById(R.id.editTxtWalletMultiple);
-                tvtext.setText(userName);
-                button2.setEnabled(false);
-                this.phoneNumber1 = pref.getString("firstPhoneNumber", "");
-                System.out.println(phoneNumber1 + "/n/" + phoneNumber2);
-                break;
 
-            }
+
         }
 
 
@@ -133,9 +121,9 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         });
     }
 
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getApplicationContext(), selectUser[position], Toast.LENGTH_LONG).show();
         if ("Single User".equals(selectUser[position])) {
             Log.e("session before contact", sessionID);
             Intent move = new Intent(this, TransferToWalletSingle37.class);
@@ -143,7 +131,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
             move.putExtra(EXTRA_SESSION, sessionID);
             move.putExtra(EXTRA_AGENTNO, AGENTNO);
             startActivity(move);
-        }else if ("Multiple Users".equals(selectUser[position])){
+        } else if ("Multiple Users".equals(selectUser[position])) {
             //do nothing
         }
 
@@ -160,24 +148,17 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this, MainTransfer36.class);
         tb.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-//                        Log.e("set toolbar sess", sessionID);
-                        movetoLogo.putExtra("Class", "TransferToWalletMultiple40");
-                        movetoLogo.putExtra(EXTRA_SESSION, sessionID);
-                        movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
-                        startActivity(movetoLogo);
-                    }
+                v -> {
+                    movetoLogo.putExtra("Class", "TransferToWalletMultiple40");
+                    movetoLogo.putExtra(EXTRA_SESSION, sessionID);
+                    movetoLogo.putExtra(EXTRA_AGENTNO, AGENTNO);
+                    startActivity(movetoLogo);
                 }
         );
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
@@ -192,177 +173,67 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         finish();
     }
 
-    public void MoveToContacts2(View view) {
+
+    public void AddTransaction(View view) {
+        List<Transactions> transactions = NewTransaction();
+        if (transactions == null){
+            Toast.makeText(this, "please provide all the details", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent move = new Intent(this, ContactsView.class);
-        move.putExtra("Class", "TransferToWalletMultiple2");
+        move.putExtra("Class", "TransferToWalletMultiple");
         move.putExtra(EXTRA_SESSION, sessionID);
         move.putExtra(EXTRA_AGENTNO, AGENTNO);
-        move.putExtra(EXTRA_CLASSTYPE, "walletMultiple2");
+        move.putExtra(EXTRA_CLASSTYPE, "walletMultiple");
         startActivity(move);
         finish();
     }
 
-    public void Maketransfer(View view) {
-        editText1 = findViewById(R.id.amountMultipleTransfer);
+    private List<Transactions> NewTransaction() {
+        Transactions transactions = new Transactions();
+        View view = null;
         String amount = editText1.getText().toString();
-
-        editText2 = findViewById(R.id.messageMultipleTransfers);
         String message = editText2.getText().toString();
-
-        if (amount.isEmpty()) {
-            editText1.requestFocus();
-            Toast.makeText(this, "please provide all details", Toast.LENGTH_SHORT).show();
-            return;
+        if (amount.isEmpty() || message.isEmpty()) {
+            return null;
         }
+        String checkedPhoneNumber = CheckPhoneNumber.getInstance().changePhoneNo(TransferToWalletMultiple40.this, phoneNumber, view);
+        transactions.setAmount(amount);
+        transactions.setMessage(message);
+        transactions.setPhone(checkedPhoneNumber);
+        transactions.setRecepient_name(phoneName);
+        transactions.setTransactionInitializer(AGENTNO);
+        transactions.setDate(dateTime());
+        transactionsList.add(transactions);
+        return transactionsList;
 
+    }
+    public String dateTime() {
 
-        String phone1 = phoneNumber1;
-        String phone2 = phoneNumber2;
-        Log.e("TAG phone number check", "button pressed to transfer money" + phone1 + "," + phone2);
-        if (phone1 == null && phone2 == null) {
-            Toast.makeText(this, "please provide recipient", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        String[] phonenumber = changePhoneNo(phone1, phone2, view);
-        phone1 = phonenumber[0];
-        phone2 = phonenumber[1];
-        Log.e("session after contact", sessionID);
-        Log.e("TAG phone number last", phone1 + "," + phone2);
-        if (!phone1.equals("False") && !phone2.equals("False")) {
-            movetoConfirm(phone1, phone2, amount, message);
-        }
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a | dd/MMM/yyyy ");
+
+        return simpleDateFormat.format(calendar.getTime());
     }
 
-    private void movetoConfirm(String phone1, String phone2, String amount, String message) {
-        Log.e("session before contact", sessionID);
+    public void Maketransfer(View view) {
+        List<Transactions> transactions = NewTransaction();
+        Transactions transactions1 = new Transactions();
+        if (transactions == null){
+            Toast.makeText(this, "provide all the details ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        transactions1.setTransactionsList(transactionsList);
         Intent move = new Intent(this, ConfirmMultipleTransfer42.class);
+        Bundle bundle = new Bundle();
         move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra(EXTRA_PHONENAME1, phoneName1);
-        move.putExtra(EXTRA_PHONENAME2, phoneName2);
-        move.putExtra(EXTRA_MESSAGE, message);
         move.putExtra(EXTRA_AGENTNO, AGENTNO);
-        move.putExtra(EXTRA_PHONENUMBER1, phone1);
-        move.putExtra(EXTRA_PHONENUMBER2, phone2);
-        move.putExtra(EXTRA_AMOUNT, amount);
+        bundle.putParcelable("transactions", transactions1);
+        move.putExtras(bundle);
         startActivity(move);
+        transactionsList.clear();
+        finish();
+
     }
-
-    public String[] changePhoneNo(String inputPhone, String inputPhoneTwo, View view) {
-        String validPhoneNo1 = "False";
-        String validPhoneNo2 = "False";
-        String[] arr = new String[2];
-        String safaricom = "^(?:254|\\+254|0)?(7(?:(?:[129][0-9])|(?:0[0-9])|(?:6[8-9])|(?:5[7-9])|(?:4[5-6])|(?:4[8])|(4[0-3]))[0-9]{6})$";
-        String telkom = "^(?:254|\\+254|0)?(7(?:(?:[7][0-9]))[0-9]{6})$";
-        String airtel = "^(?:254|\\+254|0)?(7(?:(?:[3][0-9])|(?:5[0-6])|(?:6[2])|(8[0-9]))[0-9]{6})$";
-        Pattern patt;
-        Matcher match1, match2;
-        if (!inputPhone.isEmpty() && !inputPhoneTwo.isEmpty()) {
-            String replPhone1 = inputPhone.trim();
-            String replPhone2 = replPhone1.replaceAll("\\s", "");
-            patt = Pattern.compile(safaricom);
-            match1 = patt.matcher(replPhone2);
-
-            //phone Number 2
-            String replPhoneNumber2 = inputPhoneTwo.trim();
-            String replPhoneNumber2_2 = replPhoneNumber2.replaceAll("\\s", "");
-            patt = Pattern.compile(safaricom);
-            match2 = patt.matcher(replPhoneNumber2_2);
-
-            if (match1.find() || match2.find()) {
-                Toast.makeText(getApplicationContext(), "Safaricom Number", Toast.LENGTH_LONG).show();
-                String replPhone3 = "null";
-                String replPhoneNumber3_2 = "null";
-                phoneCompany = "safaricom";
-                if (replPhone2.startsWith("0") || replPhoneNumber2_2.startsWith("0")) {
-                    replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                    replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("0", "\\254");
-                    Log.e("TAG phone starts 0", replPhone3 + "," + replPhoneNumber3_2);
-                    arr[0] = validPhoneNo1 = replPhone3;
-                    arr[1] = validPhoneNo2 = replPhoneNumber3_2;
-                } else if (replPhone2.startsWith("7") || replPhoneNumber2_2.startsWith("7")) {
-                    replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                    replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("7", "\\254");
-                    Log.e("TAG phone starts 7", replPhone3 + "," + replPhoneNumber3_2);
-                    arr[0] = validPhoneNo1 = replPhone3;
-                    arr[1] = validPhoneNo2 = replPhoneNumber3_2;
-                } else if (replPhone2.startsWith("+") || replPhoneNumber2_2.startsWith("+")) {
-                    replPhone3 = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                    replPhoneNumber3_2 = replPhoneNumber2_2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                    Log.e("TAG phone number +", validPhoneNo1 + "," + validPhoneNo2);
-                    arr[0] = validPhoneNo1 = replPhone3;
-                    arr[1] = validPhoneNo2 = replPhoneNumber3_2;
-                }
-            } else {
-                patt = Pattern.compile(airtel);
-                match1 = patt.matcher(replPhone2);
-                match2 = patt.matcher(replPhoneNumber2_2);
-
-                if (match1.find() || match2.find()) {
-                    Toast.makeText(getApplicationContext(), "Airtel Number", Toast.LENGTH_LONG).show();
-                    String replPhone3 = "null";
-                    String replPhoneNumber3_2 = "null";
-                    phoneCompany = "airtel";
-                    if (replPhone2.startsWith("0") || replPhoneNumber2_2.startsWith("0")) {
-                        replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                        replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("0", "\\254");
-                        Log.e("TAG phone starts 0", replPhone3 + "," + replPhoneNumber3_2);
-                        arr[0] = validPhoneNo1 = replPhone3;
-                        arr[1] = validPhoneNo2 = replPhoneNumber3_2;
-                    } else if (replPhone2.startsWith("7") || replPhoneNumber2_2.startsWith("7")) {
-                        replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                        replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("7", "\\254");
-                        Log.e("TAG phone starts 7", replPhone3 + "," + replPhoneNumber3_2);
-                        arr[0] = validPhoneNo1 = replPhone3;
-                        arr[1] = validPhoneNo2 = replPhoneNumber3_2;
-                    } else if (replPhone2.startsWith("+") || replPhoneNumber2_2.startsWith("+")) {
-                        validPhoneNo1 = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                        validPhoneNo2 = replPhoneNumber2_2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                        Log.e("TAG phone number +", validPhoneNo1);
-                        arr[0] = validPhoneNo1 = replPhone3;
-                        arr[1] = validPhoneNo2 = replPhoneNumber3_2;
-                    }
-                } else {
-                    patt = Pattern.compile(telkom);
-                    match1 = patt.matcher(replPhone2);
-                    match2 = patt.matcher(replPhoneNumber2_2);
-
-                    if (match1.find() || match2.find()) {
-                        Toast.makeText(getApplicationContext(), "Telkom Number", Toast.LENGTH_LONG).show();
-                        String replPhone3 = "null";
-                        String replPhoneNumber3_2 = "null";
-                        phoneCompany = "telkom";
-                        if (replPhone2.startsWith("0") || replPhoneNumber2_2.startsWith("0")) {
-                            replPhone3 = replPhone2.replaceFirst("0", "\\254");
-                            replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("0", "\\254");
-                            Log.e("TAG phone starts 0", replPhone3 + "," + replPhoneNumber3_2);
-                            arr[0] = validPhoneNo1 = replPhone3;
-                            arr[1] = validPhoneNo2 = replPhoneNumber3_2;
-                        } else if (replPhone2.startsWith("7") || replPhoneNumber2_2.startsWith("7")) {
-                            replPhone3 = replPhone2.replaceFirst("7", "\\254");
-                            replPhoneNumber3_2 = replPhoneNumber2_2.replaceFirst("7", "\\254");
-                            Log.e("TAG phone starts 7", replPhone3 + "," + replPhoneNumber3_2);
-                            arr[0] = validPhoneNo1 = replPhone3;
-                            arr[1] = validPhoneNo2 = replPhoneNumber3_2;
-                        } else if (replPhone2.startsWith("+") || replPhoneNumber2_2.startsWith("+")) {
-                            arr[0] = validPhoneNo1 = replPhone2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                            arr[1] = validPhoneNo2 = replPhoneNumber2_2.replaceAll("[\\-\\+\\.\\^:,]", "");
-                            Log.e("TAG phone number +", validPhoneNo1 + "," + validPhoneNo2);
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Please enter a valid mobile number 'Safaricom only'", Toast.LENGTH_LONG).show();
-                        Log.e("TAG phone No not check", replPhone2);
-                        MoveToContacts(view);
-                    }
-                }
-
-            }
-        } else {
-            Toast.makeText(getApplicationContext(), "Please enter a mobile number ", Toast.LENGTH_LONG).show();
-            MoveToContacts(view);
-        }
-
-        return new String[]{phoneNumber1, phoneNumber2};
-    }
-
 
 }

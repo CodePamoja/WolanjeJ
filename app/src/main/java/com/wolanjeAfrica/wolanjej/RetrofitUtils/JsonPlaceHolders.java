@@ -5,11 +5,11 @@ import com.google.gson.JsonObject;
 import com.wolanjeAfrica.wolanjej.models.ModelUserDetails;
 import com.wolanjeAfrica.wolanjej.models.NewBillmodel;
 
-import org.json.JSONObject;
-
 import java.util.Map;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
@@ -40,11 +40,14 @@ public interface JsonPlaceHolders {
 
 
     @POST("api")
-    Call<ApiJsonObjects> loginUser(@HeaderMap Map<String, String> headers );
+    Call<ApiJsonObjects> loginUser(@HeaderMap Map<String, String> headers);
 
     @POST("gapi/verifyOTP")
     Call<JsonObject> VerifyOTP(@Body JsonObject jsonObject);
 
+    @POST("api/transactions")
+    Call<JsonObject> InitiateTransaction(@Body JsonObject jsonobject,@HeaderMap Map<String, String> headers);
 
-
+    @POST("api/")
+    Call<ResponseBody> sendPinToServer(@Body JsonObject jsonObject, @HeaderMap Map<String, String> headers);
 }

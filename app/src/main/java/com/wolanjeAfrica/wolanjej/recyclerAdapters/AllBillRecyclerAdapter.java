@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AllBillRecyclerAdapter extends RecyclerView.Adapter<AllBillRecyclerAdapter.viewholder> {
     private Context context;
-    private List<ListUserBills> listUserBills = new ArrayList<>();
+    private List<ListUserBills> listUserBills;
 
     public AllBillRecyclerAdapter(@NonNull Context context, List<ListUserBills> listUserBills) {
         this.context = context;

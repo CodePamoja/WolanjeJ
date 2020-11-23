@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,24 +27,20 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.material.snackbar.Snackbar;
+
 import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
+import com.wolanjeAfrica.wolanjej.ViewModels.TransactionApi;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
+
 import com.wolanjeAfrica.wolanjej.models.Transactions;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 import io.realm.Realm;
-import okhttp3.Response;
+
 
 public class EnterPin extends AppCompatActivity {
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
@@ -74,7 +69,7 @@ public class EnterPin extends AppCompatActivity {
     private Transactions transactions;
     private String userId;
     private Realm realm;
-    private Collection<Transactions> transactionsList = new LinkedList<>();
+    private List<Transactions> transactionsList;
 
     public EnterPin() {
     }
@@ -165,12 +160,10 @@ public class EnterPin extends AppCompatActivity {
                 parentClassName = intentExtra.getStringExtra(Top_up.EXTRA_PARENTCLASSNAME);
                 break;
             case "ConfirmMultipleTransfer":
-                this.message = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_MESSAGE);
-                this.phoneNumber = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_PHONENUMBER1);
-                this.PhoneNumber2 = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_PHONENUMBER2);
-                this.phoneName = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_PHONENAME1);
-                this.phoneName1 = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_PHONENAME2);
-                this.amount = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_AMOUNT);
+                Bundle bundle = getIntent().getExtras();
+                transactions = bundle.getParcelable("transactions");
+                transactionsList = transactions.getTransactionsList();
+                parentClassName = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_PARENTCLASSNAME);
                 break;
             case "ConfirmTransferToPhone52":
                 this.amount = intentExtra.getStringExtra(ConfirmTransferToPhone52.EXTRA_AMOUNT);
@@ -323,10 +316,8 @@ public class EnterPin extends AppCompatActivity {
                         break;
                     case "ConfirmMultipleTransfer":
                         if (ValidateUserPin(fullPin)) {
-                            transactionsList.add(new Transactions("WALLET_XFER", amount, PhoneNumber2, PhoneNumber2));
-                            transactionsList.add(new Transactions("WALLET_XFER", amount, phoneNumber, phoneNumber));
-                            for (Transactions transactions : transactionsList) {
-                                new Transfer2(fullPin, transactions).execute();
+                            for (Transactions transactions :transactionsList){
+                                PerformTransaction("WALLET_XFER",transactions.getPhone(),transactions.getPhone(),transactions.getAmount());
                             }
                         } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
@@ -342,7 +333,7 @@ public class EnterPin extends AppCompatActivity {
                         break;
                     case "TransferToWalletSingle37":
                         if (ValidateUserPin(fullPin)) {
-                            new Transfer(fullPin, "WALLET_XFER", phoneNumber, phoneNumber).execute();
+                            PerformTransaction("WALLET_XFER",phoneNumber,phoneNumber,amount);
                         } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }
@@ -353,18 +344,15 @@ public class EnterPin extends AppCompatActivity {
                             switch (phoneProvider) {
                                 //Case statements
                                 case "safaricom":
-                                    new Transfer(fullPin, "MPESA_B2C", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Sending via MPESA", Toast.LENGTH_LONG).show();
+                                    PerformTransaction("MPESA_B2C",phoneNumber,phoneNumber,amount);
                                     break;
                                 case "airtel":
-                                    new Transfer(fullPin, "AIRTEL_B2C", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Sending via AIRTEL MONEY", Toast.LENGTH_LONG).show();
+                                    PerformTransaction("AIRTEL_B2C",phoneNumber,phoneNumber,amount);
                                     break;
                                 case "telkom":
-                                    new Transfer(fullPin, "TKASH_B2C", phoneNumber, phoneNumber).execute();
-                                    Toast.makeText(getApplicationContext(), "Sending via TKASH", Toast.LENGTH_LONG).show();
+
+                                    PerformTransaction("TKASH_B2C",phoneNumber,phoneNumber,amount);
                                     break;
-                                //Default case statement
                                 default:
                                     System.out.println("Not an airtel, safaricom or telkom");
                             }
@@ -374,7 +362,8 @@ public class EnterPin extends AppCompatActivity {
                         break;
                     case "TransferToBank44":
                         if (ValidateUserPin(fullPin)) {
-                            new Transfer(fullPin, "BANK_XFER", accNumber, phoneNumber).execute();
+
+                            PerformTransaction("BANK_XFER",accNumber,phoneNumber,amount);
                         } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }
@@ -385,15 +374,16 @@ public class EnterPin extends AppCompatActivity {
                             switch (phoneProvider) {
                                 //Case statements
                                 case "safaricom":
-                                    new Transfer(fullPin, "SAF_ATP", phoneNumber, phoneNumber).execute();
+                                    PerformTransaction("SAF_ATP",phoneNumber,phoneNumber,amount);
                                     break;
                                 case "airtel":
-                                    new Transfer(fullPin, "AIRTEL_ATP", phoneNumber, phoneNumber).execute();
+
+                                    PerformTransaction("AIRTEL_ATP",phoneNumber, phoneNumber, amount );
                                     break;
                                 case "telkom":
-                                    new Transfer(fullPin, "TKASH_ATP", phoneNumber, phoneNumber).execute();
+
+                                    PerformTransaction("TKASH_ATP",phoneNumber, phoneNumber, amount );
                                     break;
-                                //Default case statement
                                 default:
                                     System.out.println("Not an airtel, safaricom or telkom");
                             }
@@ -410,20 +400,12 @@ public class EnterPin extends AppCompatActivity {
     private void setActionBarColor() {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-        // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
-    /*
-     validate user id db for further processing
-     */
+
     public Boolean ValidateUserPin(String pin) {
         LogIn logIn = new LogIn();
         String hasshedPassword = logIn.generateHashedPassword(pin);  //public method in Login class
@@ -439,117 +421,55 @@ public class EnterPin extends AppCompatActivity {
         return false;
     }
 
-    /*
-    perform AsyncTransfer
-     */
-    public class Transfer extends AsyncTask<Void, Void, Response> {
-        String pin;
-        String productName;
-        String refValue;
-        String phoneNumber;
 
-        public Transfer(String pin, String productName, String refValue, String phoneNumber) {
-            this.pin = pin;
-            this.productName = productName;
-            this.refValue = refValue;
-            this.phoneNumber = phoneNumber;
-        }
-
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressBar.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected Response doInBackground(Void... voids) {
-            JSONArray jdataset = new JSONArray();
-            JSONObject jdata = new JSONObject();
-
-
-            try {
-                jdata.put("product_name", productName);
-                jdata.put("amount", amount);
-                jdata.put("phone", phoneNumber);
-                jdata.put("ref", refValue);
-                jdata.put("pin", pin);
-                jdataset.put(jdata);
-            } catch (Exception e) {
-                e.getStackTrace();
-            }
-
-            JSONObject jMpesa = new JSONObject();
-            try {
-                jMpesa.put("ac_uname", "test");
-                jMpesa.put("services", jdataset);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            Log.e("TAG", String.valueOf(jMpesa));
-
-            String url = "/api/transactions";
-            OkhttpConnection okConn = new OkhttpConnection();
-            Response result = okConn.postValue(url, jMpesa.toString(), sessionID);
-            System.out.println("Response body json values are : " + result);
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response response) {
-            super.onPostExecute(response);
-            RetrieveBalance();
-            progressBar.setVisibility(View.GONE);
-            if (response != null && response.code() == 201) {
-                try {
-                    String value = response.body().string();
-                    JSONObject jBody = new JSONObject(value); // adding
-                    System.out.println(TAG + "Response body json values are service : " + value);
-                    Log.e("TAG", String.valueOf(value));
-                    sendAmount = jBody.getJSONArray("services").getJSONObject(0).getString("amount");
-                    String sendfee = jBody.getJSONArray("services").getJSONObject(0).getString("fee");
-                    String sendNumber = jBody.getJSONArray("services").getJSONObject(0).getString("ref");
-                    sendIDReference = jBody.getJSONArray("services").getJSONObject(0).getString("id");
-                    String statusResulsts = jBody.getJSONArray("services").getJSONObject(0).getString("status");
-                    Log.e("TAG", sendAmount);
-
-                    if (phoneNumber.equals(sendNumber) && statusResulsts.equals("TRX_ASYNC")) {
-                        showPopup();
-                    } else if (statusResulsts.equals("TRX_OK")) {
-                        showPopup();
-                    } else if (statusResulsts.equals("TRX_INSUFFICIENT_BALANCE")) {
-                        Toast.makeText(getApplicationContext(), "You have insufficient balance on your wallet", Toast.LENGTH_LONG).show();
-                        showPopupFail();
-                    } else if (statusResulsts.equals("TRX_VERIFY")) {
-                        Toast.makeText(getApplicationContext(), "the transaction is being verified", Toast.LENGTH_SHORT).show();
-                        ShowDialogWalletFail();
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
-                        showPopupFail();
-                    }
-
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
+    private void RetrieveBalance() {
+        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
+        userBalanceViewModel.getUserBalance(EnterPin.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
+            @Override
+            public void onChanged(List<BalanceModel> balanceModels) {
+                for (BalanceModel b : balanceModels) {
+                    userBalance = b.getBalance();
+                    Log.e(TAG, "onChanged: balanceq"+userBalance );
                 }
-            } else if (response != null && response.code() != 201) {
-                {
-                    progressBar.setVisibility(View.GONE);
-                    String statusResults = "unsuccessful";
-                    try {
-                        String result = response.body().string();
-                        Log.e("TAG", String.valueOf(result));
-                        showPopupFail();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            } else {
-                Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
             }
-        }
+        });
     }
+
+    private void PerformTransaction(String product, String refNo, String phoneNumber, String amount){
+        progressBar.setVisibility(View.VISIBLE);
+        TransactionApi transactionApi = new ViewModelProvider(this).get(TransactionApi.class);
+        RetrieveBalance();
+        transactionApi.userTransactions(EnterPin.this, sessionID, product, refNo,phoneNumber,amount).observe(this, servicesModel -> {
+
+            progressBar.setVisibility(View.GONE);
+
+
+
+            sendAmount =servicesModel.getAmountTransaction();
+            String sendfee = servicesModel.getTransactionFee();
+            String sendNumber =servicesModel.getRef();
+            sendIDReference = servicesModel.getId();
+            String statusResulsts = servicesModel.getLast_status();
+            switch (statusResulsts) {
+                case "TRX_ASYNC":
+                    showPopup();
+                    break;
+                case "TRX_OK":
+                    showPopup();
+                    break;
+                case "TRX_INSUFFICIENT_BALANCE":
+                    showPopupFail();
+                    break;
+                case "TRX_VERIFY":
+                    ShowDialogWalletFail();
+                    break;
+                default:
+                    showPopupFail();
+                    break;
+            }
+        });
+    }
+
 
 
     public void showPopup() {
@@ -593,7 +513,6 @@ public class EnterPin extends AppCompatActivity {
 
     private void ShowDialogSuccess() {
 
-        //show dialog
         LayoutInflater inflater = LayoutInflater.from(this);
         View view = inflater.inflate(R.layout.transfer_success_popup, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this)
@@ -717,124 +636,6 @@ public class EnterPin extends AppCompatActivity {
     }
 
 
-    /*
-    This AsyncTask Performs Multiple Transactions
-    */
-    public class Transfer2 extends AsyncTask<Void, Void, Response> {
-        private Transactions transactions;
-        private String pin;
-
-        public Transfer2(String pin, Transactions transactions) {
-            this.transactions = transactions;
-            this.pin = pin;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressBar.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected Response doInBackground(Void... voids) {
-            JSONArray jdataset = new JSONArray();
-            JSONObject jdata = new JSONObject();
-
-
-            try {
-                jdata.put("product_name", transactions.getProduct_name());
-                jdata.put("amount", transactions.getAmount());
-                jdata.put("phone", transactions.getPhone());
-                jdata.put("ref", transactions.getRef());
-                jdata.put("pin", pin);
-                jdataset.put(jdata);
-            } catch (Exception e) {
-                e.getStackTrace();
-            }
-
-            JSONObject jMpesa = new JSONObject();
-            try {
-                jMpesa.put("ac_uname", "test");
-                jMpesa.put("services", jdataset);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            Log.e("TAG", String.valueOf(jMpesa));
-
-            String url = "/api/transactions";
-            OkhttpConnection okConn = new OkhttpConnection();
-            Response result = okConn.postValue(url, jMpesa.toString(), sessionID);
-            System.out.println("Response body json values are : " + result);
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response response) {
-            super.onPostExecute(response);
-            progressBar.setVisibility(View.GONE);
-            RetrieveBalance();
-            if (response != null && response.code() == 201) {
-                try {
-                    String value = response.body().string();
-                    JSONObject jBody = new JSONObject(value); // adding
-                    System.out.println(TAG + "Response body json values are service : " + value);
-                    Log.e("TAG", String.valueOf(value));
-                    sendAmount = jBody.getJSONArray("services").getJSONObject(0).getString("amount");
-                    String sendfee = jBody.getJSONArray("services").getJSONObject(0).getString("fee");
-                    String sendNumber = jBody.getJSONArray("services").getJSONObject(0).getString("ref");
-                    sendIDReference = jBody.getJSONArray("services").getJSONObject(0).getString("id");
-                    String statusResulsts = jBody.getJSONArray("services").getJSONObject(0).getString("status");
-                    Log.e("TAG", sendAmount);
-
-                    if (phoneNumber.equals(sendNumber) && statusResulsts.equals("TRX_ASYNC")) {
-                        showPopup();
-                    } else if (statusResulsts.equals("TRX_OK")) {
-                        showPopup();
-                    } else if (statusResulsts.equals("TRX_INSUFFICIENT_BALANCE")) {
-                        Toast.makeText(getApplicationContext(), "You have insufficient balance on your wallet", Toast.LENGTH_LONG).show();
-                        showPopupFail();
-                    } else if (statusResulsts.equals("TRX_VERIFY")) {
-                        Toast.makeText(getApplicationContext(), "the transaction is being verified", Toast.LENGTH_SHORT).show();
-                        ShowDialogWalletFail();
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "You have insufficient balance", Toast.LENGTH_LONG).show();
-                        showPopupFail();
-                    }
-
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
-            } else if (response != null && response.code() != 201) {
-                {
-                    progressBar.setVisibility(View.GONE);
-                    String statusResults = "unsuccessful";
-                    try {
-                        String result = response.body().string();
-                        Log.e("TAG", String.valueOf(result));
-                        showPopupFail();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            } else {
-                Snackbar.make(findViewById(R.id.activityEnterPin), "Something went wrong", Snackbar.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    private void  RetrieveBalance() {
-        UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
-        userBalanceViewModel.getUserBalance(EnterPin.this, sessionID).observe(this, new Observer<List<BalanceModel>>() {
-            @Override
-            public void onChanged(List<BalanceModel> balanceModels) {
-                for (BalanceModel b : balanceModels) {
-                    userBalance = b.getBalance();
-                }
-            }
-        });
-    }
 
     @Override
 

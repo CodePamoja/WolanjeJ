@@ -187,4 +187,108 @@ public class ServicesModel {
     public String getLast_status() {
         return last_status;
     }
+
+    public void setId(String id) {
+        Id = id;
+    }
+
+    public void setCreated_on(String created_on) {
+        this.created_on = created_on;
+    }
+
+    public void setCreated_by(String created_by) {
+        this.created_by = created_by;
+    }
+
+    public void setCreated_by_id(String created_by_id) {
+        this.created_by_id = created_by_id;
+    }
+
+    public void setReq_id(String req_id) {
+        this.req_id = req_id;
+    }
+
+    public void setTransaction_id(String transaction_id) {
+        this.transaction_id = transaction_id;
+    }
+
+    public void setAuth_ac_id(String auth_ac_id) {
+        this.auth_ac_id = auth_ac_id;
+    }
+
+    public void setAc_uname(String ac_uname) {
+        this.ac_uname = ac_uname;
+    }
+
+    public void setAccount_phone(String account_phone) {
+        this.account_phone = account_phone;
+    }
+
+    public void setAuth_email(String auth_email) {
+        this.auth_email = auth_email;
+    }
+
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public void setProduct_ve(String product_ve) {
+        this.product_ve = product_ve;
+    }
+
+    public void setSupplier_ac_id(String supplier_ac_id) {
+        this.supplier_ac_id = supplier_ac_id;
+    }
+
+    public void setSupplier_ac_name(String supplier_ac_name) {
+        this.supplier_ac_name = supplier_ac_name;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setAmountTransaction(String amountTransaction) {
+        this.amountTransaction = amountTransaction;
+    }
+
+    public void setTransactionFee(String transactionFee) {
+        this.transactionFee = transactionFee;
+    }
+
+    public void setNarration(String narration) {
+        this.narration = narration;
+    }
+
+    public void setActivity_count(String activity_count) {
+        this.activity_count = activity_count;
+    }
+
+    public void setActivity_ids(String activity_ids) {
+        this.activity_ids = activity_ids;
+    }
+
+    public void setActivity_id_last(String activity_id_last) {
+        this.activity_id_last = activity_id_last;
+    }
+
+    public void setReceipt_id(String receipt_id) {
+        this.receipt_id = receipt_id;
+    }
+
+    public void setLast_status(String last_status) {
+        this.last_status = last_status;
+    }
 }

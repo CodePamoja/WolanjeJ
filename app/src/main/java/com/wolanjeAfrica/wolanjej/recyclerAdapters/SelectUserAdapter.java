@@ -25,6 +25,7 @@ import java.util.Locale;
 
 public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.MyContactListViewHolder> {
 
+    public static final String EXTRA_TRANSACTIONS = "com.example.wolanjej.TRANSACTIONS";
     List<SelectUser> mainInfo;
     private ArrayList<SelectUser> arraylist;
     Context context;
@@ -42,6 +43,7 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
         this.arraylist = new ArrayList<>();
         this.arraylist.addAll(mainInfo);
     }
+
 
     public SelectUserAdapter(){}
 
@@ -92,24 +94,11 @@ public class SelectUserAdapter extends RecyclerView.Adapter<SelectUserAdapter.My
             case  "walletMultiple":
                 moveTomultipleTransfers();
                 break;
-            case  "walletMultiple2":
-                moveTomultipleTransfers2();
-                break;
-
         }
     }
 
     private void moveToHome() {
         Intent move = new Intent(context, Home.class);
-        move.putExtra("Class","SelectUserAdapter2");
-        move.putExtra(EXTRA_NAME, phoneName);
-        move.putExtra(EXTRA_PHONE, phoneNumber);
-        move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        context.startActivity(move);
-    }
-
-    private void moveTomultipleTransfers2() {
-        Intent move = new Intent(context, TransferToWalletMultiple40.class);
         move.putExtra("Class","SelectUserAdapter2");
         move.putExtra(EXTRA_NAME, phoneName);
         move.putExtra(EXTRA_PHONE, phoneNumber);

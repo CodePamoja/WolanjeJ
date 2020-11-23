@@ -225,7 +225,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:backgroundTint="@color/colorGreyBackground"
-                        android:onClick="MoveToContacts2"
+                        android:onClick="AddTransaction"
                         android:padding="10dp"
                         android:text="Add User"
                         android:textAllCaps="false"

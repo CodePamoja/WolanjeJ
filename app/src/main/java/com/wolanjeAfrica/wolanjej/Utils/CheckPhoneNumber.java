@@ -128,7 +128,6 @@ public class CheckPhoneNumber {
             patt = Pattern.compile(safaricom);
             match = patt.matcher(replPhone2);
             if (match.find()) {
-                Toast.makeText(context, "Safaricom Number", Toast.LENGTH_LONG).show();
                 String replPhone3 = "null";
                 phoneCompany = "safaricom";
                 if (replPhone2.startsWith("0")) {
@@ -147,7 +146,6 @@ public class CheckPhoneNumber {
                 patt = Pattern.compile(airtel);
                 match = patt.matcher(replPhone2);
                 if (match.find()) {
-                    Toast.makeText(context, "Airtel Number", Toast.LENGTH_LONG).show();
                     String replPhone3 = "null";
                     phoneCompany = "airtel";
                     if (replPhone2.startsWith("0")) {
@@ -166,7 +164,6 @@ public class CheckPhoneNumber {
                     patt = Pattern.compile(telkom);
                     match = patt.matcher(replPhone2);
                     if (match.find()) {
-                        Toast.makeText(context, "Telkom Number", Toast.LENGTH_LONG).show();
                         String replPhone3 = "null";
                         phoneCompany = "telkom";
                         if (replPhone2.startsWith("0")) {

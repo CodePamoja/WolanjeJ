@@ -3,6 +3,7 @@ package com.wolanjeAfrica.wolanjej;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,29 +14,34 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.wolanjeAfrica.wolanjej.models.Transactions;
+import com.wolanjeAfrica.wolanjej.recyclerAdapters.ConfirmMultipleTransaction;
+import com.wolanjeAfrica.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConfirmMultipleTransfer42 extends AppCompatActivity {
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-    public static final String EXTRA_PHONENAME1 = "com.example.wolanjej.PHONENAME1";
-    public static final String EXTRA_PHONENAME2 = "com.example.wolanjej.PHONENAME2";
+
     public static final String EXTRA_AGENTNAME = "com.example.wolanjej.AGENTNAME";
-    public static final String EXTRA_PHONENUMBER1 = "com.example.wolanjej.PHONENUMBER1";
-    public static final String EXTRA_PHONENUMBER2 = "com.example.wolanjej.PHONENUMBER2";
-    public static final String EXTRA_MESSAGE = "com.example.wolanjej.MESSAGE";
-    public static final String EXTRA_AMOUNT = "com.example.wolanjej.AMOUNT";
+    private static final String TAG = "ConfirmMultipleTransfer";
+    public static final String EXTRA_PARENTCLASSNAME ="com.example.wolanjej.PARENTCLASSNAME";
+
     public Button button;
-    public TextView textView1, textView2, textView3, textView4, textView5, textView6,
-            textView7, textView8, textView9, textView10, textView11, textView12, textView13, textView14, textView15, textView16;
-    private String message;
-    private String phoneNumber1, phoneNumber2;
-    private String amount;
+    public TextView textView1, textView2, textView3, textView4;
     private String agentName;
-    private String phoneName1, phoneName2;
     private String sessionId;
+    private Transactions transactions;
+    private List<Transactions> transactionsList;
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -45,67 +51,26 @@ public class ConfirmMultipleTransfer42 extends AppCompatActivity {
         setToolBar();
         setActionBarColor();
         Intent intent = getIntent();
-        this.message = intent.getStringExtra(TransferToWalletMultiple40.EXTRA_MESSAGE);
-        this.phoneNumber1 = intent.getStringExtra(TransferToWalletMultiple40.EXTRA_PHONENUMBER1);
-        this.phoneNumber2 = intent.getStringExtra(TransferToWalletMultiple40.EXTRA_PHONENUMBER2);
-        this.amount = intent.getStringExtra(TransferToWalletMultiple40.EXTRA_AMOUNT);
-        this.phoneName1 = intent.getStringExtra(TransferToWalletMultiple40.EXTRA_PHONENAME1);
-        this.phoneName2 = intent.getStringExtra(TransferToWalletMultiple40.EXTRA_PHONENAME2);
         this.sessionId = intent.getStringExtra(TransferToWalletMultiple40.EXTRA_SESSION);
         this.agentName = intent.getStringExtra(TransferToWalletMultiple40.EXTRA_AGENTNO);
+        Bundle bundle = getIntent().getExtras();
+        transactions = bundle.getParcelable("transactions");
+        transactionsList = new ArrayList<>(transactions.getTransactionsList());
+        List<Transactions> listWithoutDuplicates = transactionsList.stream()
+                .distinct()
+                .collect(Collectors.toList());
+        initTransferRecyclerList(listWithoutDuplicates);
 
-        button = (Button) findViewById(R.id.confirm_multiple_transfer);
-        textView1 = (TextView) findViewById(R.id.confirmMultipleName1);
-        textView1.setText(phoneName1);
-        textView2 = (TextView) findViewById(R.id.dateConfirmMultiple1);
-        textView2.setText(dateTime());
-        textView3 = (TextView) findViewById(R.id.fromConfirmMultiple);
-        textView3.setText(agentName);
-        textView4 = (TextView) findViewById(R.id.toConfirmMultiple1);
-        textView4.setText(phoneName1);
-        textView5 = (TextView) findViewById(R.id.amountConfirmMultiple1);
-        textView5.setText(amount);
-        textView6 = (TextView) findViewById(R.id.messageConfirm1);
-        textView6.setText(message);
-        textView7 = (TextView) findViewById(R.id.Confirm1transactionFee);
-        //TODO: setfee
-        textView8 = (TextView) findViewById(R.id.totalAmountConfirm1);
-        textView8.setText(amount);
-        textView9 = (TextView) findViewById(R.id.confirmName2);
-        textView9.setText(phoneName2);
-        textView10 = (TextView) findViewById(R.id.dataConfirm2);
-        textView10.setText(dateTime());
-        textView11 = (TextView) findViewById(R.id.fromUserConfirm01);
-        textView11.setText(agentName);
-        textView12 = (TextView) findViewById(R.id.NameconfirmTo2);
-        textView12.setText(phoneName2);
-        textView13 = (TextView) findViewById(R.id.amountConfirm2);
-        textView13.setText(amount);
-        textView14 = (TextView) findViewById(R.id.messageConfirmMultiple2);
-        textView14.setText(message);
-        textView15 = (TextView) findViewById(R.id.transactionFeeConfirmMultiple2);
-        //TODO: setfee
-        textView16 = (TextView) findViewById(R.id.totalAmountConfirm2);
-        textView16.setText(amount);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                movetoPin();
-            }
-        });
     }
 
     private void setActionBarColor() {
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-// clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-// finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
@@ -115,34 +80,31 @@ public class ConfirmMultipleTransfer42 extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this, TransferToWalletMultiple40.class);
         tb.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(movetoLogo);
-                    }
-                }
+                v -> startActivity(movetoLogo)
         );
     }
 
-    public String dateTime() {
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a | dd/MMM/yyyy ");
 
-        return simpleDateFormat.format(calendar.getTime());
+    private void initTransferRecyclerList( List<Transactions> transactionsList) {
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(ConfirmMultipleTransfer42.this, LinearLayoutManager.VERTICAL, false);
+        RecyclerView recyclerView = findViewById(R.id.multipletransactions);
+        recyclerView.setLayoutManager(layoutManager);
+        ConfirmMultipleTransaction adapter = new ConfirmMultipleTransaction(ConfirmMultipleTransfer42.this, transactionsList);
+        recyclerView.setAdapter(adapter);
+
     }
 
-    public void movetoPin() {
+    public void movetoEnterpin(View view) {
         Intent move = new Intent(this, EnterPin.class);
+        Bundle bundle = new Bundle();
         move.putExtra("Class", "ConfirmMultipleTransfer");
         move.putExtra(EXTRA_SESSION, sessionId);
-        move.putExtra(EXTRA_PHONENAME1, phoneName1);
-        move.putExtra(EXTRA_PHONENAME2, phoneName2);
         move.putExtra(EXTRA_AGENTNAME, agentName);
-        move.putExtra(EXTRA_PHONENUMBER1, phoneNumber1);
-        move.putExtra(EXTRA_PHONENUMBER2, phoneNumber2);
-        move.putExtra(EXTRA_MESSAGE, message);
-        move.putExtra(EXTRA_AMOUNT, amount);
+        move.putExtra(EXTRA_PARENTCLASSNAME, "Home");
+        bundle.putParcelable("transactions", transactions);
+        move.putExtras(bundle);
         startActivity(move);
         startActivity(move);
     }
