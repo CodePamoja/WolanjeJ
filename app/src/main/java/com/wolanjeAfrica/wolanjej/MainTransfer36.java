@@ -48,33 +48,27 @@ public class MainTransfer36 extends AppCompatActivity implements View.OnClickLis
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
         tb.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (ClassName.equals("HomeTwo")) {
-                            Intent movetohm2 = new Intent(getApplicationContext(), HomeTwo.class);
-                            movetohm2.putExtra("Class", "MainTransfer36");
-                            movetohm2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(movetohm2);
-                        } else {
-                            Intent movetoLogo = new Intent(getApplicationContext(), Home.class);
-                            movetoLogo.putExtra("Class", "MainTransfer36");
-                            movetoLogo.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(movetoLogo);
-                        }
+                v -> {
+                    if (ClassName.equals("HomeTwo")) {
+                        Intent movetohm2 = new Intent(getApplicationContext(), HomeTwo.class);
+                        movetohm2.putExtra("Class", "MainTransfer36");
+                        movetohm2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(movetohm2);
+                    } else {
+                        Intent movetoLogo = new Intent(getApplicationContext(), Home.class);
+                        movetoLogo.putExtra("Class", "MainTransfer36");
+                        movetoLogo.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(movetoLogo);
                     }
                 }
         );
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-        // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 

@@ -27,6 +27,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.JsonObject;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.ApiJsonObjects;
@@ -34,6 +35,7 @@ import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
 import com.wolanjeAfrica.wolanjej.models.LoginModel;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.security.MessageDigest;
@@ -215,8 +217,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onResponse(Call<ApiJsonObjects> call, retrofit2.Response<ApiJsonObjects> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "code" + response.code(), Toast.LENGTH_LONG).show();
-                    Log.e(TAG, "onResponse: " + response.errorBody());
+                    Toast.makeText(getApplicationContext(), "Invalid username or password" + response.code(), Toast.LENGTH_LONG).show();
                     return;
                 }
                 AcquireSessionToken(response.body().getLoginModel(), pin);

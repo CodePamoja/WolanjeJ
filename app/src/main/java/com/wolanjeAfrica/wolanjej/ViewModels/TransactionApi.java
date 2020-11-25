@@ -14,6 +14,9 @@ import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
 import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
 import com.wolanjeAfrica.wolanjej.models.ServicesModel;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,10 +61,11 @@ public class TransactionApi extends ViewModel {
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if (response == null) {
-                    Toast.makeText(context, "The Transaction Failed ", Toast.LENGTH_SHORT).show();
+                if (!response.isSuccessful()) {
+                    Toast.makeText(context, "Transaction failed", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 ServicesModel servicesModel = new ServicesModel();
                 JsonArray responseJson = response.body().get("services").getAsJsonArray();
                 servicesModel.setAmountTransaction(responseJson.get(0).getAsJsonObject().get("amount").getAsString());
@@ -70,11 +74,12 @@ public class TransactionApi extends ViewModel {
                 servicesModel.setId(responseJson.get(0).getAsJsonObject().get("id").getAsString());
                 servicesModel.setLast_status(responseJson.get(0).getAsJsonObject().get("status").getAsString());
                 mutableLiveData.postValue(servicesModel);
+
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Toast.makeText(context, "error"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "error" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

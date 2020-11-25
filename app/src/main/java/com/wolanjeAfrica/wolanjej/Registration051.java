@@ -6,12 +6,14 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -20,6 +22,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.JsonObject;
+import com.wolanjeAfrica.wolanjej.RetrofitUtils.JsonPlaceHolders;
+import com.wolanjeAfrica.wolanjej.RetrofitUtils.RetrofitClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,10 +32,16 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import okhttp3.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
 
 public class Registration051 extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    Toolbar tb;
-    ProgressDialog prgBar;
+    private static final String TAG = "Registration051";
+    private Toolbar tb;
+    private ProgressDialog prgBar;
+    private ProgressBar progressBar;
     private Spinner spinner;
     private ArrayAdapter adapter;
     TextInputLayout kenyanid, firstname, lastname, mygender;
@@ -49,6 +60,7 @@ public class Registration051 extends AppCompatActivity implements AdapterView.On
 
 
         spinner = (Spinner) findViewById(R.id.spinner_gender);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         adapter = ArrayAdapter.createFromResource(this,
                 R.array.gender_array, android.R.layout.simple_spinner_item);
@@ -108,70 +120,40 @@ public class Registration051 extends AppCompatActivity implements AdapterView.On
             editor.putString("Gender", spinner.getSelectedItem().toString());
             editor.apply();
 
-            new UserSendPhone(fromreg2.getString("Phone_Number", "")).execute();
-
+            UserSendPhone(fromreg2.getString("Phone_Number", ""));
 
         }
     }
+    private void UserSendPhone(String phone){
+        progressBar.setVisibility(View.VISIBLE);
+        JsonObject jValue = new JsonObject();
+        jValue.addProperty("phone", "254" + phone);
 
-    public class UserSendPhone extends AsyncTask<Void, Void, Response> {
+        Retrofit retrofit = RetrofitClient.getInstance();
+        JsonPlaceHolders jsonPlaceHolders = retrofit.create(JsonPlaceHolders.class);
+        Call<ResponseBody> call = jsonPlaceHolders.RegisterPhoneNumber(jValue);
 
-
-        String phoneNo;
-
-        public UserSendPhone(String phonenumber) {
-
-            phoneNo = phonenumber;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            prgBar = new ProgressDialog(Registration051.this);
-            prgBar.setMessage("Please Wait... Sending Phone Number");
-            prgBar.setIndeterminate(false);
-            prgBar.setCancelable(false);
-            prgBar.show();
-        }
-
-        @Override
-        protected Response doInBackground(Void... voids) {
-
-            JSONObject jPhone = new JSONObject();
-            try {
-                jPhone.put("phone", "254" + phoneNo);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            String url = "/gapi/sendOTP";
-            OkhttpConnection okConn = new OkhttpConnection();
-            Response result = okConn.postRequest(url, jPhone.toString());
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Response result) {
-            if (result.code() == 201) {
-                prgBar.dismiss();
-                Toast.makeText(getApplicationContext(), "Phone number sent successfully", Toast.LENGTH_LONG).show();
-                //new UserverifyOTP().execute();
-
-                Intent movetoregnext = new Intent(Registration051.this, Registration06.class);
-
-                startActivity(movetoregnext);
-            } else if (result.code() != 201) {
-                prgBar.dismiss();
-                String value = null;
-                try {
-                    value = result.body().string();
-                    JSONObject jBody = new JSONObject(value); // adding
-                    String sendResutls = jBody.getJSONObject("errors").getJSONObject("otp").getJSONArray("action").getJSONArray(0).getString(2);
-                    Toast.makeText(getApplicationContext(), "Phone Number, " + sendResutls, Toast.LENGTH_LONG).show();
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                progressBar.setVisibility(View.GONE);
+                if (!response.isSuccessful()){
+                    Toast.makeText(Registration051.this, "This Number Is already registered", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+                Toast.makeText(getApplicationContext(), "Phone number sent successfully", Toast.LENGTH_LONG).show();
+                Intent movetoregnext = new Intent(Registration051.this, Registration06.class);
+                startActivity(movetoregnext);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(Registration051.this, "error"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
-        }
+        });
     }
+
+
 
 }

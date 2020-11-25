@@ -50,4 +50,7 @@ public interface JsonPlaceHolders {
 
     @POST("api/")
     Call<ResponseBody> sendPinToServer(@Body JsonObject jsonObject, @HeaderMap Map<String, String> headers);
+
+    @POST("gapi/sendOTP")
+    Call<ResponseBody> RegisterPhoneNumber(@Body JsonObject jsonObject);
 }

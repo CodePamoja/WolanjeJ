@@ -51,23 +51,19 @@ public class Registration05 extends AppCompatActivity {
 
         Button btn = findViewById(R.id.btn_continue);
         btn.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // new UserSendPhone(text.getEditText().getText().toString()).execute();
-                        if (TextUtils.isEmpty(text.getEditText().getText().toString()) || TextUtils.isEmpty(mail.getEditText().getText().toString())) {
+                v -> {
+                    if (TextUtils.isEmpty(text.getEditText().getText().toString()) || TextUtils.isEmpty(mail.getEditText().getText().toString())) {
 
-                            Toast.makeText(Registration05.this, "Fill all", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Registration05.this, "Fill all", Toast.LENGTH_SHORT).show();
 
-                        } else {
-                            SharedPreferences registration_details = getSharedPreferences("Registration_details", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = registration_details.edit();
-                            editor.putString("Phone_Number", text.getEditText().getText().toString());
-                            editor.putString("Email_adress", mail.getEditText().getText().toString());
-                            editor.apply();
+                    } else {
+                        SharedPreferences registration_details = getSharedPreferences("Registration_details", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = registration_details.edit();
+                        editor.putString("Phone_Number", text.getEditText().getText().toString());
+                        editor.putString("Email_adress", mail.getEditText().getText().toString());
+                        editor.apply();
 
-                            startActivity(new Intent(getApplicationContext(), Registration051.class));
-                        }
+                        startActivity(new Intent(getApplicationContext(), Registration051.class));
                     }
                 }
         );
