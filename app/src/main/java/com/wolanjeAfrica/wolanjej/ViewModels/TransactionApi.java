@@ -66,6 +66,7 @@ public class TransactionApi extends ViewModel {
                     return;
                 }
 
+                Log.e(TAG, "onResponse: "+ response.body() );
                 ServicesModel servicesModel = new ServicesModel();
                 JsonArray responseJson = response.body().get("services").getAsJsonArray();
                 servicesModel.setAmountTransaction(responseJson.get(0).getAsJsonObject().get("amount").getAsString());
@@ -74,6 +75,7 @@ public class TransactionApi extends ViewModel {
                 servicesModel.setId(responseJson.get(0).getAsJsonObject().get("id").getAsString());
                 servicesModel.setLast_status(responseJson.get(0).getAsJsonObject().get("status").getAsString());
                 mutableLiveData.postValue(servicesModel);
+
 
             }
 

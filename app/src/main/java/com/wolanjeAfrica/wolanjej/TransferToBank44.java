@@ -43,6 +43,7 @@ public class TransferToBank44 extends AppCompatActivity {
     public static final String EXTRA_BANKSELECTED = "com.example.wolanjej.BANKSELECTED";
     public static final String EXTRA_PHONECOMPANY = "com.example.wolanjej.PHONECOMPANY";
     public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
+    public static final String EXTRA_PRODUCTNAME = "com.example.wolanjej.PRODUCTNAME";
     private static final String TAG = "TransferToBank";
     private Button button;
     private Spinner spin, spinner;
@@ -61,9 +62,8 @@ public class TransferToBank44 extends AppCompatActivity {
     private String MY_BALANCE;
     private static String className;
     private String sessionId;
-    private SharedPreferences pref,pref1;
+    private SharedPreferences pref, pref1;
     private TextView textView;
-
 
 
     @Override
@@ -139,7 +139,6 @@ public class TransferToBank44 extends AppCompatActivity {
         this.AGENTNO = pref1.getString("agentno", "");
 
 
-
         UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);
         userBalanceViewModel.getUserBalance(TransferToBank44.this, sessionId).observe(this, new Observer<List<BalanceModel>>() {
             @Override
@@ -208,15 +207,22 @@ public class TransferToBank44 extends AppCompatActivity {
             String[] bankAndBranch = selectedBank();
             String bank = bankAndBranch[0];
             String branch = bankAndBranch[1];
+            String product_name = SetProductName(bank);
 
-            Log.d(TAG, "bankTransfer: " + bank + "////" + branch);
-
-            valuesConferm(holderName, key, amount, message, accNumber, branch, bank, value);
-
+            valuesConferm(holderName, key, amount, message, accNumber, branch, bank, value, product_name);
         } else {
             Toast.makeText(this, "invalid phone", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private String SetProductName(String bankAndBranch) {
+        if (!"Co-operative Bank".equals(bankAndBranch)) {
+            return "COOP_PESALINK";
+        } else {
+            return "COOP_INS";
+        }
+    }
+
 
     private String[] selectedBank() {
         String bank = spin.getSelectedItem().toString();
@@ -227,7 +233,7 @@ public class TransferToBank44 extends AppCompatActivity {
             case "Co-operative Bank":
             case "CfC Stanbic Bank":
                 arr[0] = bank;
-                arr[1] = bank_branch = spinner.getSelectedItem().toString();
+                arr[1] = spinner.getSelectedItem().toString();
                 break;
             case "Barclays Bank":
             case "Chase Bank":
@@ -240,7 +246,7 @@ public class TransferToBank44 extends AppCompatActivity {
         return arr;
     }
 
-    public void valuesConferm(String holderName, String phoneCompany, String amount, String message, String accNumber, String branchName, String bankSelect, String phone) {
+    public void valuesConferm(String holderName, String phoneCompany, String amount, String message, String accNumber, String branchName, String bankSelect, String phone,String product_Name) {
 
         Intent move = new Intent(this, ConfirmTransferToBank46.class);
         move.putExtra("Class", "TransferToBank44");
@@ -254,6 +260,7 @@ public class TransferToBank44 extends AppCompatActivity {
         move.putExtra(EXTRA_HOLDERNAME, holderName);
         move.putExtra(EXTRA_PHONENUMBER, phone);
         move.putExtra(EXTRA_PARENTCLASSNAME, className);
+        move.putExtra(EXTRA_PRODUCTNAME, product_Name);
         startActivity(move);
     }
 

@@ -52,7 +52,7 @@ public class EnterPin extends AppCompatActivity {
     private String phoneNumber, PhoneNumber2;
     private String phoneName, phoneName1;
     private String amount;
-    private String accNumber;
+    private static String accNumber = "68-2727272727";
     private String sendIDReference;
     private String phoneProvider;
     private String message;
@@ -69,6 +69,7 @@ public class EnterPin extends AppCompatActivity {
     private Transactions transactions;
     private String userId;
     private Realm realm;
+    private String bank_ProductName;
     private List<Transactions> transactionsList;
 
     public EnterPin() {
@@ -132,12 +133,12 @@ public class EnterPin extends AppCompatActivity {
                 break;
             case "TransferToBank44":
 
-                this.accNumber = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_ACCOUNTNUMBER);
                 this.phoneNumber = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONENUMBER);
                 this.phoneName = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONENAME);
                 this.amount = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_AMOUNT);
                 this.message = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_MESSAGE);
                 this.phoneProvider = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PHONECOMPANY);
+                this.bank_ProductName = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PRODUCTNAME);
                 String sendBranch = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BRANCHNAME);
                 String sendBank = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_BANKSELECTED);
                 parentClassName = intentExtra.getStringExtra(ConfirmTransferToBank46.EXTRA_PARENTCLASSNAME);
@@ -363,7 +364,7 @@ public class EnterPin extends AppCompatActivity {
                     case "TransferToBank44":
                         if (ValidateUserPin(fullPin)) {
 
-                            PerformTransaction("BANK_XFER",accNumber,phoneNumber,amount);
+                            PerformTransaction(bank_ProductName,accNumber,phoneNumber,amount);
                         } else {
                             Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
                         }

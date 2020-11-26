@@ -28,6 +28,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
     public static final String EXTRA_PHONENUMBER = "com.example.wolanjej.PHONENUMBER";
     public static final String EXTRA_PHONECOMPANY = "com.example.wolanjej.PHONECOMPANY";
     public static final String EXTRA_PARENTCLASSNAME = "com.example.wolanjej.PARENTCLASSNAME";
+    public static final String EXTRA_PRODUCTNAME = "com.example.wolanjej.PRODUCTNAME";
     private Button button;
     private EditText text;
     private String accNumber;
@@ -44,6 +45,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
     private TextView tvtext;
     private static String className;
     private SharedPreferences pref;
+    private String product_name;
 
 
     @Override
@@ -67,6 +69,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         this.branchName = intentExtra.getStringExtra(TransferToBank44.EXTRA_BRANCHNAME);
         this.bankSelected = intentExtra.getStringExtra(TransferToBank44.EXTRA_BANKSELECTED);
         this.phoneProvider = intentExtra.getStringExtra(TransferToBank44.EXTRA_PHONECOMPANY);
+        this.product_name = intentExtra.getStringExtra(TransferToBank44.EXTRA_PRODUCTNAME);
         className = intentExtra.getStringExtra(TransferToBank44.EXTRA_PARENTCLASSNAME);
 
         tvtext = findViewById(R.id.bankToName);
@@ -94,12 +97,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         tvtext.setText("KES " + amount);
 
         button = (Button) findViewById(R.id.confirm_bank_transfer);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                movetoPin();
-            }
-        });
+        button.setOnClickListener(v -> movetoPin());
     }
 
 
@@ -109,12 +107,9 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this, TransferToBank44.class);
         tb.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        movetoLogo.putExtra("Class", "ConfirmTransferToBank46");
-                        startActivity(movetoLogo);
-                    }
+                v -> {
+                    movetoLogo.putExtra("Class", "ConfirmTransferToBank46");
+                    startActivity(movetoLogo);
                 }
         );
         Window window = this.getWindow();
@@ -140,6 +135,7 @@ public class ConfirmTransferToBank46 extends AppCompatActivity {
         move.putExtra(EXTRA_PHONENUMBER, phoneNumber);
         move.putExtra(EXTRA_PHONECOMPANY,phoneProvider);
         move.putExtra(EXTRA_PARENTCLASSNAME,className);
+        move.putExtra(EXTRA_PRODUCTNAME, product_name);
         startActivity(move);
         finish();
     }
