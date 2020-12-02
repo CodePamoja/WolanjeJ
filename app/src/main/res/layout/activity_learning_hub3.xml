@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LearningHub3">
+
+    <RelativeLayout
+        android:id="@+id/featuredimage"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imagetoolbar"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_small_left" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/imagetoolbar"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textStyle="normal"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:text="Learning Hub" />
+
+                <ImageButton
+                android:id="@+id/btntoolbarlearninghub1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="19dp" android:background="@android:color/transparent"
+                android:src="@drawable/ic_close_white" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/note_line"
+            android:layout_width="33dp"
+            android:layout_height="16dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginStart="173dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="204dp"
+            android:background="@drawable/gradient"
+            android:backgroundTint="#ff5c5c"
+            android:gravity="center"
+            android:padding="0dp"
+            android:textAllCaps="false">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New"
+                android:textStyle="normal"
+                android:textSize="8sp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorWhite" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="normal"
+            android:textSize="17sp"
+            android:paddingLeft="53dp"
+            android:paddingRight="53dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#ffffff"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="5sp"
+            android:gravity="center_horizontal"
+            android:text="SME targeted interventions placeholder text commonly used in print"
+            android:layout_below="@+id/note_line"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginTop="22dp"
+            android:text="02 January 2020"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="normal"
+            android:textSize="10sp"
+            android:textColor="#ffffff"
+            android:letterSpacing="0.02"
+            android:gravity="center_horizontal"/>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
