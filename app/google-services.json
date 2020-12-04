@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "998179510026",
+    "project_id": "wolenjeclientapp",
+    "storage_bucket": "wolenjeclientapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998179510026:android:a6d40cd6a847226e68ccf3",
+        "android_client_info": {
+          "package_name": "com.wolanjeAfrica.wolanjej"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998179510026-a69nhu38j79luhrvjocjnrfhtggvrir3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzZigRuU44f3S1Jq-EqZEVU1Pu6EQNZLM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998179510026-a69nhu38j79luhrvjocjnrfhtggvrir3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
