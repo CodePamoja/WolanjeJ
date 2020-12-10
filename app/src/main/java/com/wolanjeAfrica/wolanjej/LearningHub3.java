@@ -50,12 +50,7 @@ public class LearningHub3 extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this, Learning_Hub2.class);
         tb.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(movetoLogo);
-                    }
-                }
+                v -> startActivity(movetoLogo)
         );
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
@@ -77,5 +72,12 @@ public class LearningHub3 extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public void moveToChapter01(View view) {
+        Intent intent = new Intent(this, LearningHub04.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
     }
 }

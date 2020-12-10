@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LearningHub06">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout13"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/buttonClose"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="69dp"
+            android:background="@color/colorWhite"
+            android:src="@drawable/ic_close_copy_4" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="69dp"
+            android:layout_toEndOf="@+id/buttonClose"
+            android:src="@drawable/clock" />
+
+        <TextView
+            android:id="@+id/textClockRemaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="68dp"
+            android:layout_toEndOf="@+id/clock"
+            android:fontFamily="@font/poppins_medium"
+            android:lineSpacingExtra="9sp"
+            android:text="23s remaining"
+            android:textColor="#ec3f36"
+            android:textSize="13sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="69dp"
+            android:layout_toEndOf="@+id/textClockRemaining"
+            android:fontFamily="@font/inter_extralight_slnt"
+            android:gravity="center_horizontal"
+            android:letterSpacing="-0.01"
+            android:textColor="#3281ff"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:text="Quit Test" />
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout13" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/poppins_medium"
+        android:lineSpacingExtra="11sp"
+        android:text="QUESTION 03 OF 10"
+        android:textColor="#394157"
+        android:textSize="11sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:letterSpacing="-0.01"
+        android:lineSpacingExtra="9sp"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="What are the 4 types of questions Lorem ipsum dolor sit amet,?"
+        android:textColor="#191b20"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+    <CheckBox
+        android:id="@+id/Choice1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/inter_extralight_slnt"
+        android:paddingStart="16dp"
+        android:text="Choice No.1"
+        android:textColor="#191b20"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+    <CheckBox
+        android:id="@+id/Choice2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/inter_extralight_slnt"
+        android:paddingStart="16dp"
+        android:text="Choice No.2"
+        android:textColor="#191b20"
+        android:layout_marginStart="30dp"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Choice1" />
+
+    <CheckBox
+        android:id="@+id/Choice3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/inter_extralight_slnt"
+        android:paddingStart="16dp"
+        android:layout_marginStart="30dp"
+        android:text="Choice No.3"
+        android:textColor="#191b20"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Choice2" />
+
+    <CheckBox
+        android:id="@+id/Choice4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/inter_extralight_slnt"
+        android:paddingStart="16dp"
+        android:text="Choice No.1"
+        android:textColor="#191b20"
+        android:layout_marginStart="30dp"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Choice3" />
+
+    <CheckBox
+        android:id="@+id/Choice5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/inter_extralight_slnt"
+        android:paddingStart="16dp"
+        android:text="All of the above"
+        android:textColor="#191b20"
+        android:textSize="13sp"
+        android:layout_marginStart="30dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Choice4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:background="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textGettingStarted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Ch 2 - Getting Started"
+            android:textColor="#191b20"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textGettingStarted"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="9sp"
+            android:text="1 of 3 pages"
+            android:textColor="#666e7b"
+            android:textSize="13sp"
+            android:textStyle="normal" />
+
+        <RelativeLayout
+            android:layout_width="160dp"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="28dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:onClick="moveToLearningHub07"
+                android:layout_marginEnd="33dp"
+                android:background="@color/colorWhite"
+                android:src="@drawable/nextbutton" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite"
+                android:src="@drawable/previousbutton" />
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

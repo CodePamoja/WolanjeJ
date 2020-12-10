@@ -21,7 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LearningHub3"></activity>
+        <activity android:name=".LearningHub07"></activity>
+        <activity android:name=".LearningHub06" />
+        <activity android:name=".LearningHub05" />
+        <activity android:name=".LearningHub04" />
+        <activity android:name=".LearningHub3" />
         <activity android:name=".Learning_Hub2" />
         <activity android:name=".Sponsors12" />
         <activity android:name=".Sponsors_13" />
