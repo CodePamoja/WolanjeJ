@@ -38,12 +38,11 @@ public class LearningHub3 extends AppCompatActivity {
 
         Intent intent = getIntent();
         LearningHubFeatured learningHubFeatured = intent.getParcelableExtra("featured");
-        Log.e(TAG, "onCreate: "+learningHubFeatured.getFeatured_item_image()+","+learningHubFeatured.getFeatured_item_description()+","+
-                learningHubFeatured.getFeatured_item_title());
         Bitmap myImage = getBitmapFromURL(learningHubFeatured.getFeatured_item_image());
         Drawable dr = new BitmapDrawable(myImage);
         relativeLayout.setBackground(dr);
     }
+
     private void setToolBar() {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);

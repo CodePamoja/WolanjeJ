@@ -17,21 +17,12 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_small_left">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/imagetoolbar"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_small_left" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -165,16 +156,23 @@
             android:textStyle="normal" />
 
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.vaibhavlakhera.circularprogressview.CircularProgressView
+            android:id="@+id/progress_chap1"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="17dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="19dp"
-            android:background="@drawable/progress" />
+            app:animate="true"
+            app:animateDuration="600"
+            app:fillColor="@color/colorWhite"
+            app:progress="20"
+            app:progressColor="#932777"
+            app:progressWidth="2dp"
+            app:total="100"
+            app:totalColor="#cdced1"
+            app:totalWidth="2dp" />
     </RelativeLayout>
 
     <View
@@ -225,17 +223,22 @@
             android:textSize="11sp"
             android:textStyle="normal" />
 
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.vaibhavlakhera.circularprogressview.CircularProgressView
+            android:id="@+id/progressViewchap2"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="17dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="19dp"
-            android:background="@drawable/progress" />
+            app:fillColor="#ffa635"
+            app:progressTextColor="#FFF"
+            app:progressTextEnabled="true"
+            app:progressTextSize="10sp"
+            app:progressTextType="progress"
+            app:progressWidth="12dp"
+            app:totalColor="#ffa635"
+            app:totalWidth="10dp" />
     </RelativeLayout>
 
     <View
@@ -289,16 +292,23 @@
             android:textStyle="normal" />
 
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.vaibhavlakhera.circularprogressview.CircularProgressView
+            android:id="@+id/progress_chap3"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="17dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="19dp"
-            android:background="@drawable/progress" />
+            app:animate="true"
+            app:animateDuration="600"
+            app:fillColor="@color/colorWhite"
+            app:progress="0"
+            app:progressColor="#932777"
+            app:progressWidth="2dp"
+            app:total="100"
+            app:totalColor="#cdced1"
+            app:totalWidth="2dp" />
     </RelativeLayout>
 
     <View
