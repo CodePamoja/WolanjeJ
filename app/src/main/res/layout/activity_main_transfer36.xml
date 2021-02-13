@@ -26,10 +26,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="20dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/transfer"
-                android:textColor="@color/colorMidnight"
-                android:textSize="28sp" />
+                android:fontFamily="@font/nexa_xbold"
+                android:textStyle="bold"
+                android:textSize="18.7sp"
+                android:textColor="#0b0320"
+                android:text="@string/transfer" />
 
         </LinearLayout>
 
@@ -75,9 +76,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/transfer_to_wallet"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/poppins_regular"
+                            android:shadowColor="#19000000"
+                            android:shadowDy="5"
+                            android:shadowRadius="14"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="13.3sp"
+                            android:textColor="#ffffff"
+                            android:lineSpacingExtra="2.7sp"
                             android:layout_marginStart="20dp"
                             app:fontFamily="@font/poppins_medium"/>
 
@@ -122,9 +128,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/transfer_to_bank"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/poppins_regular"
+                            android:shadowColor="#19000000"
+                            android:shadowDy="5"
+                            android:shadowRadius="14"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="13.3sp"
+                            android:textColor="#ffffff"
+                            android:lineSpacingExtra="2.7sp"
                             android:layout_marginStart="20dp"
                             app:fontFamily="@font/poppins_medium"/>
 
@@ -167,9 +178,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/transfer_to_phone"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/poppins_regular"
+                            android:shadowColor="#19000000"
+                            android:shadowDy="5"
+                            android:shadowRadius="14"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="13.3sp"
+                            android:textColor="#ffffff"
+                            android:lineSpacingExtra="2.7sp"
                             android:layout_marginStart="20dp"
                             app:fontFamily="@font/poppins_medium"/>
 

@@ -2,17 +2,20 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item>
-        <layer-list>
-            <item>
+        <layer-list android:paddingTop="0dp" >
+            <item android:height="40dp" >
                 <shape android:shape="rectangle">
-                    <solid android:color="@android:color/white" />
-                    <corners android:radius="4dp" />
-                    <stroke android:width="1dip" android:color="#E7E7E7"/>
+                    <solid  android:color="@android:color/white"  />
+                    <corners android:radius="4dp"  />
+                    <stroke android:width="1dip"  android:color="#E7E7E7"/>
                     <padding android:right="10dp"/>
                 </shape>
             </item>
             <item
             android:drawable="@drawable/ic_dropdown_arrow"
+                android:fontFamily="@font/nexa_bold"
+                android:textSize="9.3sp"
+                android:textStyle="bold"
             android:gravity="end|center_vertical">
 
         </item>

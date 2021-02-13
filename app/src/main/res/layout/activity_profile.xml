@@ -25,11 +25,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/poppins_regular"
                 android:text="Account"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#ffffff" />
 
 
         </androidx.appcompat.widget.Toolbar>
@@ -71,21 +71,22 @@
                         android:id="@+id/txtProfName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_regular"
                         android:text=""
                         android:hint="Account Name"
-                        android:textColor="#000000"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/nexa_bold"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="#0b0320" />
                     <TextView
                         android:id="@+id/txt_phone_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/nexa_book"
+                        android:textStyle="normal"
+                        android:textSize="12sp"
+                        android:textColor="#8c8a9a"
                         android:text=""
-                        android:hint="+254 *** ***"
-                        android:textColor="#000000"
-                        android:textSize="12sp" />
+                        android:hint="+254 *** ***" />
                 </LinearLayout>
 
                 <com.google.android.material.card.MaterialCardView
@@ -94,7 +95,8 @@
                     android:layout_height="162dp"
                     android:layout_below="@id/cardy"
                     android:layout_alignParentTop="false"
-                    android:layout_margin="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
                     app:cardCornerRadius="11dp"
                     app:cardElevation="10dp">
 
@@ -126,13 +128,14 @@
                             android:layout_marginStart="0dp"
                             android:layout_marginTop="0dp"
                             android:layout_marginEnd="0dp"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="12.7sp"
+                            android:textColor="#0b0320"
                             android:layout_marginBottom="0dp"
-                            android:fontFamily="@font/poppins_regular"
                             android:gravity="center"
                             android:paddingHorizontal="5dp"
-                            android:text="Repurchase Report"
-                            android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:text="Repurchase Report" />
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -144,7 +147,8 @@
                     android:layout_below="@id/cardy"
                     android:layout_alignParentTop="false"
                     android:layout_alignParentRight="true"
-                    android:layout_margin="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="20dp"
                     app:cardCornerRadius="11dp"
                     app:cardElevation="10dp">
 
@@ -175,12 +179,13 @@
                             android:layout_marginStart="0dp"
                             android:layout_marginTop="0dp"
                             android:gravity="center"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="12.7sp"
+                            android:textColor="#0b0320"
                             android:layout_marginEnd="0dp"
                             android:layout_marginBottom="0dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="Settings"
-                            android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:text="Settings" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -189,9 +194,10 @@
                     android:layout_width="152dp"
                     android:layout_height="162dp"
                     android:layout_below="@id/CardRepurchaseReport"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="false"
-                    android:layout_margin="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
                     app:cardCornerRadius="11dp"
                     app:cardElevation="10dp">
 
@@ -205,7 +211,7 @@
                             android:id="@+id/imgSupport"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentStart="false"
                             android:layout_alignParentTop="true"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="20dp"
@@ -223,11 +229,12 @@
                             android:layout_marginTop="0dp"
                             android:layout_marginEnd="0dp"
                             android:gravity="center"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="12.7sp"
+                            android:textColor="#0b0320"
                             android:layout_marginBottom="0dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="Support"
-                            android:textColor="#000000"
-                            android:textSize="16sp" />
+                            android:text="Support" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
             </RelativeLayout>

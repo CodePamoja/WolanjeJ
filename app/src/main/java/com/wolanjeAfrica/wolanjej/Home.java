@@ -95,8 +95,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        Button button4 = findViewById(R.id.btnaddnew);
         tb = findViewById(R.id.toolbarhome);
         drawer = findViewById(R.id.drawer_layout);
         tvtext = findViewById(R.id.MYBalance);
@@ -840,8 +838,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     private void moveToPayNet() {
         String produt_name = "ZUKU_BILLPAY";
-        String AccountNumber = txtAccounNoPayNetSheet.getText().toString();
-        String AmountPayable = txtamountPyNetSheet.getText().toString();
+        String AccountNumber = txtAccounNoPayNetSheet.getText().toString().trim();
+        String AmountPayable = txtamountPyNetSheet.getText().toString().trim();
+        if(AccountNumber.isEmpty()){
+            txtAccounNoPayNetSheet.setError("");
+            return;
+        }
+        if (AmountPayable.isEmpty()){
+            txtamountPyNetSheet.setError("");
+        }
         Intent move = new Intent(getApplicationContext(), EnterPin3.class);
         move.putExtra("Class", "HomePayNet");
         move.putExtra(EXTRA_PRODUCT_NAME, produt_name);
@@ -849,7 +854,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         move.putExtra(EXTRA_AMOUNT, AmountPayable);
         startActivity(move);
         bottomSheetDialog.dismiss();
-        Toast.makeText(Home.this, "" + AmountPayable + AccountNumber, Toast.LENGTH_SHORT).show();
     }
 
     private void PayElectricityToken() {
@@ -864,18 +868,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         txtTokenAccountNumber = bottomSheetViewPayElectricity.findViewById(R.id.TokenNumberSheet);
         txtAmountToken = bottomSheetViewPayElectricity.findViewById(R.id.amountBuyTokenSheet);
 
-        bottomSheetViewPayElectricity.findViewById(R.id.buttonBuyTokenSheet).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MoveToPayElectricityToken();
-            }
-        });
-        bottomSheetViewPayElectricity.findViewById(R.id.cancelBuyTokenSheetSheet).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetDialog.dismiss();
-            }
-        });
+        bottomSheetViewPayElectricity.findViewById(R.id.buttonBuyTokenSheet).setOnClickListener(v -> MoveToPayElectricityToken());
+        bottomSheetViewPayElectricity.findViewById(R.id.cancelBuyTokenSheetSheet).setOnClickListener(v -> bottomSheetDialog.dismiss());
 
         bottomSheetDialog.setContentView(bottomSheetViewPayElectricity);
         bottomSheetDialog.show();
@@ -894,8 +888,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
     private void MoveToPayElectricityToken() {
         String productName = "KPLC_BILLPAY ";
-        String AccountNumber = txtTokenAccountNumber.getText().toString();
-        String amount = txtAmountToken.getText().toString();
+        String AccountNumber = txtTokenAccountNumber.getText().toString().trim();
+        String amount = txtAmountToken.getText().toString().trim();
+        if (AccountNumber.isEmpty()){
+            txtTokenAccountNumber.setError("");
+            return;
+        }
+        if (amount.isEmpty()){
+            txtAmountToken.setError("");
+            return;
+        }
         Intent intent = new Intent(getApplicationContext(), EnterPin3.class);
         intent.putExtra("Class", "HomePayElectricity");
         intent.putExtra(EXTRA_PRODUCT_NAME, productName);
@@ -933,12 +935,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
             }
         });
         MaterialButton button = bottomSheetViewPayTvSubsription.findViewById(R.id.buttonPayTvSheet2);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MoveToPayTvSubcription();
-                bottomSheetDialog.dismiss();
-            }
+        button.setOnClickListener(v -> {
+            MoveToPayTvSubcription();
         });
         bottomSheetViewPayTvSubsription.findViewById(R.id.cancelPayTvSheet).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -969,12 +967,24 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
 
         }
         String amount = txtAmountPayTvSheet.getText().toString().trim();
+        String AccountNumber = txtPaytvAccountNoSheet.getText().toString().trim();
+
+        if (AccountNumber.isEmpty()){
+            txtPaytvAccountNoSheet.setError("");
+            return;
+        }
+        if (amount.isEmpty()){
+            txtAmountPayTvSheet.setError("");
+            return;
+        }
+
+
 
         if (Integer.parseInt(amount) > 100000) {
             Toast.makeText(this, "Amount should be less than 100000", Toast.LENGTH_SHORT).show();
             return;
         }
-        String AccountNumber = txtPaytvAccountNoSheet.getText().toString();
+
         Intent intent = new Intent(getApplicationContext(), EnterPin2.class);
         intent.putExtra("Class", "HomePayTvSubscription");
         intent.putExtra(EXTRA_PRODUCT_NAME, productName);
@@ -982,6 +992,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         intent.putExtra(EXTRA_ACCOUNTNUMBER, AccountNumber);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        bottomSheetDialog.dismiss();
 
     }
 

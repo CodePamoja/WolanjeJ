@@ -2,6 +2,7 @@ package com.wolanjeAfrica.wolanjej;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -82,13 +83,72 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void moveToHome(View view) {
-        Intent movetohome = new Intent(this,Home.class);
-        movetohome.putExtra("Class", "LinkAccount11");
-        movetohome.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(movetohome);
-        CustomIntent.customType(LinkAccount11.this, "left-to-right");
-        finish();
+    public void Skip(View view) {
+        String className = getIntent().getStringExtra("Class");
+        if (className != null) {
+            Log.e("class Type className", className);
+            Intent intent;
+            switch (className) {
+                case"Enterpin3":
+                    intent = new Intent(this,EnterPin3.class);
+                    intent.putExtra("Class", "LinkAccount11");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    CustomIntent.customType(LinkAccount11.this, "left-to-right");
+                    finish();
+                case"Enterpin2":
+                    intent = new Intent(this,EnterPin2.class);
+                    intent.putExtra("Class", "LinkAccount11");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    CustomIntent.customType(LinkAccount11.this, "left-to-right");
+                    finish();
+                    break;
+                case "topup":
+                    Intent movetohome = new Intent(this,Top_up.class);
+                    movetohome.putExtra("Class", "LinkAccount11");
+                    movetohome.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(movetohome);
+                    CustomIntent.customType(LinkAccount11.this, "left-to-right");
+                    finish();
+                    break;
+                case "TransferToWalletSingle37":
+                    intent = new Intent(this,TransferToWalletSingle37.class);
+                    intent.putExtra("Class", "LinkAccount11");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    CustomIntent.customType(LinkAccount11.this, "left-to-right");
+                    finish();
+                    break;
+                case "TransferToBank44":
+                    intent = new Intent(this,TransferToBank44.class);
+                    intent.putExtra("Class", "LinkAccount11");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    CustomIntent.customType(LinkAccount11.this, "left-to-right");
+                    finish();
+                    break;
+                case "TransferToPhone50":
+                    intent = new Intent(this,TransferToPhone50.class);
+                    intent.putExtra("Class", "LinkAccount11");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    CustomIntent.customType(LinkAccount11.this, "left-to-right");
+                    finish();
+                    break;
+
+                default:
+                    intent = new Intent(this,Home.class);
+                    intent.putExtra("Class", "LinkAccount11");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    CustomIntent.customType(LinkAccount11.this, "left-to-right");
+                    finish();
+                    break;
+
+            }
+        }
+
     }
 
     public void MoveToCardLink(View view) {
@@ -98,4 +158,7 @@ public class LinkAccount11 extends AppCompatActivity implements View.OnClickList
         startActivity(movetohome);
         CustomIntent.customType(LinkAccount11.this, "left-to-right");
     }
+
+
+
 }

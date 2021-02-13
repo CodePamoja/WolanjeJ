@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
+import com.wolanjeAfrica.wolanjej.Utils.WolenjeUtil;
 import com.wolanjeAfrica.wolanjej.ViewModels.TransactionApi;
 
 import org.json.JSONArray;
@@ -85,9 +86,18 @@ public class EnterPin3 extends AppCompatActivity {
         Intent intentExtra = getIntent();
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
+        String activePaymentMethod = new WolenjeUtil().ActivePaymentMethod(userId);
         switch (className) {
+            case "LinkAccount11":
+                break;
             case "HomePayNet":
-
+                if (activePaymentMethod == null){
+                    Intent intent = new Intent(EnterPin3.this, LinkAccount11.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Class", "Enterpin3");
+                    startActivity(intent);
+                    finish();
+                }
                 this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);
                 this.Amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
                 this.product_name = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
@@ -97,6 +107,13 @@ public class EnterPin3 extends AppCompatActivity {
                 break;
             case "HomePayElectricity":
 
+                if (activePaymentMethod == null){
+                    Intent intent = new Intent(EnterPin3.this, LinkAccount11.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Class", "Enterpin3");
+                    startActivity(intent);
+                    finish();
+                }
                 this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);
                 this.product_name = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
                 this.Amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);

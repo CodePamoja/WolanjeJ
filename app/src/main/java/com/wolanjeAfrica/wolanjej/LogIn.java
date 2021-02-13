@@ -145,12 +145,7 @@ public class LogIn extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this, Registration05.class);
         tb.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(movetoLogo);
-                    }
-                }
+                v -> startActivity(movetoLogo)
         );
 
     }
@@ -241,9 +236,15 @@ public class LogIn extends AppCompatActivity {
         editor.putString("agentno", body.getAgentno());
         editor.apply();
 
+        Log.e(TAG, "AcquireSessionToken: "+ body.getRole());
         /*
           write user to database
          */
+        WriteUserToDatabase(body, pin);
+
+    }
+
+    private void WriteUserToDatabase(LoginModel body, String pin){
 
         realm = Realm.getInstance(DbMigrations.getDefaultInstance());
 
@@ -262,21 +263,18 @@ public class LogIn extends AppCompatActivity {
                 user1.setRole(userRole);
             }, () -> {
                 //success sign up
-                getUserId(body.getAgentno(), pin, body.getRole());
+                getUserIdFromDatabase(body.getAgentno(), pin, body.getRole());
 
             }, error -> Toast.makeText(LogIn.this, "Experienced an Error" + error, LENGTH_SHORT).show());// error in sign up
             Looper.loop();
 
             finish();
         } else {
-            //getUserId and login
-            getUserId(body.getAgentno(), pin, body.getRole());
+            getUserIdFromDatabase(body.getAgentno(), pin, body.getRole());
         }
-
     }
 
-
-    private void getUserId(String phone, String pin, String userRole) {
+    private void getUserIdFromDatabase(String phone, String pin, String userRole) {
         User user = realm.where(User.class).equalTo("phoneNumber", phone)
                 .findFirst();
         if (user != null) {
@@ -289,7 +287,7 @@ public class LogIn extends AppCompatActivity {
                 editor.putString("userDbId", userId);
                 editor.apply();
                 progressBar.setVisibility(View.GONE);
-                Intent intent = new Intent(LogIn.this, LinkAccount11.class);
+                Intent intent = new Intent(LogIn.this, Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             } else {
@@ -298,10 +296,11 @@ public class LogIn extends AppCompatActivity {
                 user.setRole(userRole);
                 realm.commitTransaction();
                 progressBar.setVisibility(View.GONE);
-                Intent intent = new Intent(LogIn.this, LinkAccount11.class);
+                Intent intent = new Intent(LogIn.this, Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
+            finish();
         } else {
             Toast.makeText(this, "user is null", LENGTH_SHORT).show();
         }

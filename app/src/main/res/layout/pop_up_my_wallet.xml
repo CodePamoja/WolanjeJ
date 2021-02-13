@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:elevation="7dp"
+    android:layout_marginBottom="15dp"
     android:theme="@style/AppTheme"
     tools:context="com.wolanjeAfrica.wolanjej.Home">
 
@@ -28,10 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="My E-Wallet"
-        android:textColor="@color/colorMidnight"
-        android:textSize="22sp"
+        android:text="My Wallet"
+        android:fontFamily="@font/nexa_bold"
+        android:textStyle="bold"
+        android:textSize="14.7sp"
+        android:textColor="#0b0320"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,14 +77,16 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="0dp"
+                android:fontFamily="@font/nexa_bold"
+                android:lineSpacingExtra="1.3sp"
+                android:textStyle="bold"
+                android:textSize="12.3sp"
+                android:textColor="#8c8a9a"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
-                android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
-                android:text="Top Up"
-                android:textColor="@color/blue_grey"
-                android:textSize="14sp" />
+                android:text="Top Up" />
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -125,15 +129,17 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
+                android:lineSpacingExtra="1.3sp"
                 android:layout_marginStart="0dp"
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textSize="12.3sp"
+                android:textColor="#8c8a9a"
                 android:layout_marginTop="0dp"
                 android:gravity="center"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Withdraw"
-                android:textColor="@color/blue_grey"
-                android:textSize="14sp" />
+                android:text="Withdraw" />
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -175,14 +181,16 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="0dp"
                 android:paddingHorizontal="5dp"
+                android:fontFamily="@font/nexa_bold"
+                android:lineSpacingExtra="1.3sp"
+                android:textStyle="bold"
+                android:textSize="12.3sp"
+                android:textColor="#8c8a9a"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
-                android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
-                android:text="Fund Transfer"
-                android:textColor="@color/blue_grey"
-                android:textSize="14sp" />
+                android:text="Send Money" />
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -224,14 +232,17 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="0dp"
+                android:lineSpacingExtra="1.3sp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textSize="12.3sp"
+                android:textColor="#8c8a9a"
                 android:paddingHorizontal="5dp"
-                android:fontFamily="@font/poppins_regular"
+                android:paddingTop="20dp"
                 android:gravity="center_horizontal"
-                android:text="Transaction History"
-                android:textColor="@color/blue_grey"
-                android:textSize="14sp" />
+                android:text="Transaction History" />
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -274,24 +285,49 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="0dp"
+                android:paddingTop="20dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
+                android:fontFamily="@font/nexa_bold"
+                android:lineSpacingExtra="1.3sp"
+                android:textStyle="bold"
+                android:textSize="12.3sp"
+                android:textColor="#8c8a9a"
                 android:layout_marginBottom="0dp"
-                android:fontFamily="@font/poppins_regular"
                 android:gravity="center_horizontal"
-                android:text="Points pending"
-                android:textColor="@color/blue_grey"
-                android:textSize="14sp" />
+                android:text="Points pending" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:backgroundTint="@color/colorWhite"
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/nexa_book"
+        android:lineSpacingExtra="3.3sp"
+        android:text="PRO TIPS:"
+        android:textColor="#249af3"
+        android:textSize="12.7sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pendingCommCard" />
+
+    <TextView
+        android:id="@+id/Earnup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nexa_book"
+        android:lineSpacingExtra="3.3sp"
+        android:paddingHorizontal="26dp"
+        android:text="Earn up to 10% in Loyalty Points from qualifying vendors the more you transact or send money."
+        android:textColor="#222b45"
+        android:textSize="12.7sp"
+        android:textStyle="normal"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="220dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transactionHistCard" />
+        app:layout_constraintTop_toBottomOf="@+id/textView39" />
 </androidx.constraintlayout.widget.ConstraintLayout>

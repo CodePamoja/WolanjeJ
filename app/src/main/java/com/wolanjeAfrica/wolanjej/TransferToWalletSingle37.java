@@ -23,6 +23,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
+import com.wolanjeAfrica.wolanjej.Utils.WolenjeUtil;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
@@ -54,6 +55,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
     private String MY_BALANCE;
     private TextView textView;
     private SharedPreferences pref;
+    private  String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         pref = getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
-
+        this.userId = pref.getString("userDbId", null);
 
         spin = (Spinner) this.findViewById(R.id.select_user);
         spin.setOnItemSelectedListener(this);
@@ -101,10 +103,19 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         switch (className) {
+            case"LinkAccount11":
             case "EnterPin":
                 break;
             case "MainTransfer36":
                 TransferToWalletSingle37.className = intentExtra.getStringExtra(MainTransfer36.EXTRA_PARENTCLASSNAME);
+                String activePaymentMethod = new WolenjeUtil().ActivePaymentMethod(userId);
+                if (activePaymentMethod == null){
+                    Intent intent = new Intent(TransferToWalletSingle37.this, LinkAccount11.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Class", "TransferToWalletSingle37");
+                    startActivity(intent);
+                    finish();
+                }
                 break;
             case "TransferToWalletMultiple40":
                 this.sessionID = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_SESSION);

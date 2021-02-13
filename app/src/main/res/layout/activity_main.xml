@@ -41,9 +41,11 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/app_intro"
-            android:textSize="16sp" />
+            android:fontFamily="@font/nexa_book"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:text="@string/app_intro" />
 
         <Button
             android:id="@+id/btn_getstarted"
@@ -56,13 +58,13 @@
             android:layout_marginEnd="40dp"
             android:background="@drawable/splash"
             android:backgroundTint="@color/colorWhite"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/nexa_bold"
             android:onClick="movetoRegistration"
             android:text="@string/button_intro"
             android:textAllCaps="false"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp" />
-
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="#333333"/>
     </RelativeLayout>
 
 

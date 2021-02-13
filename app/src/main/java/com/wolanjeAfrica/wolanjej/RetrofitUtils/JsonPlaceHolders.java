@@ -7,6 +7,7 @@ import com.wolanjeAfrica.wolanjej.models.NewBillmodel;
 
 import java.util.Map;
 
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -15,6 +16,7 @@ import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface JsonPlaceHolders {
 
@@ -53,4 +55,54 @@ public interface JsonPlaceHolders {
 
     @POST("gapi/sendOTP")
     Call<ResponseBody> RegisterPhoneNumber(@Body JsonObject jsonObject);
+
+
+/*
+   Merchant Endpoints
+ */
+
+    @POST("merchant/new")
+    Call<Response> CreateAccountMerchant(@Body JsonObject jsonObject, @HeaderMap Map<String, String> headers);
+
+
+    @POST("merchant/login")
+    Call<Response> LoginMerchant(@Body JsonObject jsonObject, @HeaderMap Map<String, String> headers);
+
+
+    @GET("merchant/balance")
+    Call<Response> MerchantUserBalance(@Query("userid") String id, @HeaderMap Map<String, String> headers);
+
+
+
+    @POST("merchant/verify")
+    Call<ResponseBody> merchantVerify(@Body JsonObject jsonObject, @HeaderMap Map<String, String> headers);
+
+
+    @POST("payment/request")
+    Call<ResponseBody> AddScheduledPayment(@Body JsonObject jsonObject);
+
+
+    @GET("payment/transactions")
+    Call<ResponseBody> FetchTransactions(@Query("userId") String userId,@Query("limit")String limit, @HeaderMap Map<String, String>headers);
+
+
+    @POST("wallet/transfer")
+    Call<Response> WalletTransfer(@Body JsonObject jsonObject, @HeaderMap Map<String, String > headers);
+
+
+    @POST("payment/delete")
+    Call<ResponseBody> DeleteScheduledPayment(@Body JsonObject jsonObject, @HeaderMap Map<String ,String > headers);
+
+
+    @POST("payment/edit")
+    Call<ResponseBody> EditScheduledPayments(@Body JsonObject jsonObject, @HeaderMap Map<String ,String> headers);
+
+
+
+
+
+
+
+
+
 }

@@ -21,6 +21,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
+import com.wolanjeAfrica.wolanjej.Utils.WolenjeUtil;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
@@ -64,6 +65,7 @@ public class TransferToBank44 extends AppCompatActivity {
     private String sessionId;
     private SharedPreferences pref, pref1;
     private TextView textView;
+    private String userId;
 
 
     @Override
@@ -81,8 +83,18 @@ public class TransferToBank44 extends AppCompatActivity {
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         switch (className) {
+            case"LinkAccount11":
+                break;
             case "MainTransfer36":
                 TransferToBank44.className = intentExtra.getStringExtra(MainTransfer36.EXTRA_PARENTCLASSNAME);
+                String activePaymentMethod = new WolenjeUtil().ActivePaymentMethod(userId);
+                if (activePaymentMethod == null){
+                    Intent intent = new Intent(TransferToBank44.this, LinkAccount11.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Class", "TransferToBank44");
+                    startActivity(intent);
+                    finish();
+                }
                 break;
             case "SelectUserAdapter": {
                 this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
@@ -137,6 +149,7 @@ public class TransferToBank44 extends AppCompatActivity {
         pref1 = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionId = pref1.getString("session_token", "");
         this.AGENTNO = pref1.getString("agentno", "");
+        this.userId = pref1.getString("userDbId", null);
 
 
         UserBalanceViewModel userBalanceViewModel = new ViewModelProvider(this).get(UserBalanceViewModel.class);

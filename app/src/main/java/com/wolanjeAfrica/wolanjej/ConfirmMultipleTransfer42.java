@@ -30,11 +30,9 @@ import java.util.stream.Collectors;
 public class ConfirmMultipleTransfer42 extends AppCompatActivity {
 
     public static final String EXTRA_SESSION = "com.example.wolanjej.SESSION";
-
     public static final String EXTRA_AGENTNAME = "com.example.wolanjej.AGENTNAME";
     private static final String TAG = "ConfirmMultipleTransfer";
     public static final String EXTRA_PARENTCLASSNAME ="com.example.wolanjej.PARENTCLASSNAME";
-
     public Button button;
     public TextView textView1, textView2, textView3, textView4;
     private String agentName;

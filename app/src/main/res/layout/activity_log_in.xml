@@ -82,11 +82,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_semi_bold"
                     android:text="Log in to your account"
+                    android:fontFamily="@font/nexa_bold"
                     android:textAlignment="center"
                     android:textColor="@color/colorMidnight"
-                    android:textSize="22sp" />
+                    android:textSize="14sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginVertical="16dp"
-                        android:elevation="12dp"
+                        android:elevation="1dp"
                         android:outlineAmbientShadowColor="@color/colorBlack"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="12dp"
@@ -126,6 +126,8 @@
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:letterSpacing="0.08"
+                                    android:fontFamily="@font/nexa_bold"
                                     android:drawableStart="@drawable/ic_kenya_flag"
                                     android:inputType="number" />
 
@@ -144,6 +146,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="numberPassword"
+                                    android:fontFamily="@font/nexa_book"
                                     android:maxLength="4" />
 
                             </com.google.android.material.textfield.TextInputLayout>
@@ -153,13 +156,13 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="12dp"
-                                android:fontFamily="@font/poppins_medium"
+                                android:fontFamily="@font/nexa_book"
                                 android:onClick="FogtPssd"
                                 android:text="Forgot Password?"
                                 android:textAlignment="textStart"
                                 android:textAllCaps="false"
                                 android:textColor="@color/warm_purple"
-                                android:textSize="14sp"
+                                android:textSize="12sp"
                                 android:textStyle="normal" />
 
                             <Button
@@ -169,11 +172,11 @@
                                 android:layout_marginHorizontal="12dp"
                                 android:layout_marginVertical="10dp"
                                 android:backgroundTint="#932777"
-                                android:fontFamily="@font/poppins_medium"
+                                android:fontFamily="@font/nexa_bold"
                                 android:text="Log in"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorWhite"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>

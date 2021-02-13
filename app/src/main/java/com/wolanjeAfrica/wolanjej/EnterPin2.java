@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.Snackbar;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.DbMigrations;
 import com.wolanjeAfrica.wolanjej.RealmDataBase.User;
+import com.wolanjeAfrica.wolanjej.Utils.WolenjeUtil;
 import com.wolanjeAfrica.wolanjej.ViewModels.TransactionApi;
 
 import org.json.JSONArray;
@@ -87,7 +88,17 @@ public class EnterPin2 extends AppCompatActivity {
         Log.e("class Type className", className);
 
         switch (className) {
+            case"LinkAccount11":
+                break;
             case "HomePayTvSubscription":
+                String activePaymentMethod = new WolenjeUtil().ActivePaymentMethod(userId);
+                if (activePaymentMethod == null){
+                    Intent intent = new Intent(EnterPin2.this, LinkAccount11.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Class", "Enterpin2");
+                    startActivity(intent);
+                    finish();
+                }
                 this.ProductName = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
                 this.amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
                 this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);

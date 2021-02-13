@@ -21,6 +21,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
+import com.wolanjeAfrica.wolanjej.Utils.WolenjeUtil;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
@@ -51,6 +52,7 @@ public class TransferToPhone50 extends AppCompatActivity  implements View.OnClic
     private String sessionId;
     private String AGENTNO;
     private String MY_BALANCE;
+    private String userId;
 
 
     @Override
@@ -62,6 +64,7 @@ public class TransferToPhone50 extends AppCompatActivity  implements View.OnClic
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionId = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
+        this.userId = pref.getString("userDbId", null);
 
         editText1 = (EditText) findViewById(R.id.transContactAmount);
         editText2 = (EditText) findViewById(R.id.transAmount);
@@ -72,8 +75,18 @@ public class TransferToPhone50 extends AppCompatActivity  implements View.OnClic
         String className = getIntent().getStringExtra("Class");
         Log.e("class Type className", className);
         switch (className) {
+            case "LinkAccount11":
+                break;
             case "MainTransfer36":
                 TransferToPhone50.className = intentExtra.getStringExtra(MainTransfer36.EXTRA_PARENTCLASSNAME);
+                String activePaymentMethod = new WolenjeUtil().ActivePaymentMethod(userId);
+                if (activePaymentMethod == null){
+                    Intent intent = new Intent(TransferToPhone50.this, LinkAccount11.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Class", "TransferToPhone50");
+                    startActivity(intent);
+                    finish();
+                }
                 break;
             case "ContactsView":
                 break;

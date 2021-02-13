@@ -553,7 +553,7 @@ public class EnterPin extends AppCompatActivity {
                         alertDialog.dismiss();
                         break;
                     default:
-                        intent = new Intent(getApplicationContext(), LogIn.class);
+                        intent = new Intent(getApplicationContext(), Home.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("Class", "EnterPin");
                         startActivity(intent);

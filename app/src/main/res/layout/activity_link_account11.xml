@@ -32,25 +32,26 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_marginStart="120dp"
+                        android:fontFamily="@font/nexa_bold"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="#0b0320"
                         android:layout_marginTop="15dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Link Accoount"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:text="Link Accoount" />
 
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_alignParentEnd="true"
-                        android:textSize="14dp"
                         android:textAllCaps="false"
-                        android:onClick="moveToHome"
-                        android:textColor="#8c8a9a"
+                        android:onClick="Skip"
+                        android:fontFamily="@font/nexa_bold"
+                        android:textStyle="bold"
+                        android:textSize="12.7sp"
+                        android:textColor="#531edc"
                         android:backgroundTint="@android:color/transparent"
                         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                        android:fontFamily="@font/poppins_medium"
                         android:text="Skip" />
                 </RelativeLayout>
 
@@ -68,11 +69,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_margin="20dp"
-                    android:fontFamily="@font/poppins_regular"
                     android:text="@string/bank_account"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/nexa_bold"
+                    android:textStyle="bold"
+                    android:textSize="12.7sp"
+                    android:textColor="#222222" />
 
 
                 <LinearLayout
@@ -151,10 +152,10 @@
                     android:layout_gravity="start"
                     android:layout_margin="20dp"
                     android:text="@string/international_card"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/nexa_bold"
+                    android:textStyle="bold"
+                    android:textSize="12.7sp"
+                    android:textColor="#222222" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

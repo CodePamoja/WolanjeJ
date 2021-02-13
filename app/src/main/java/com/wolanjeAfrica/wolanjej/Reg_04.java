@@ -204,13 +204,10 @@ public class Reg_04 extends AppCompatActivity implements View.OnClickListener {
                 .setView(view)
                 .create();
         ImageButton btn = view.findViewById(R.id.btn_closeSuccess);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-                Intent intent = new Intent(Reg_04.this, HomeTwo.class);
-                startActivity(intent);
-            }
+        btn.setOnClickListener(v -> {
+            alertDialog.dismiss();
+            Intent intent = new Intent(Reg_04.this, HomeTwo.class);
+            startActivity(intent);
         });
 
         alertDialog.show();
@@ -223,14 +220,11 @@ public class Reg_04 extends AppCompatActivity implements View.OnClickListener {
                 .setView(view)
                 .create();
         ImageButton btn = view.findViewById(R.id.btn_closeUnSuccess);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-                Intent intent = new Intent(Reg_04.this, Registration05.class);
-                startActivity(intent);
-                finish();
-            }
+        btn.setOnClickListener(v -> {
+            alertDialog.dismiss();
+            Intent intent = new Intent(Reg_04.this, Registration05.class);
+            startActivity(intent);
+            finish();
         });
 
         alertDialog.show();

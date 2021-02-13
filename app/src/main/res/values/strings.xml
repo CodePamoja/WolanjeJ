@@ -40,7 +40,7 @@
     <string name="add_new">ADD NEW</string>
     <string name="no_transfers">NO TRANSFERS</string>
     <string name="quick_services">Quick Services</string>
-    <string name="view_all">View All</string>
+    <string name="view_all">VIEW ALL</string>
     <string name="buy_airtime">Buy Airtime</string>
     <string name="transfers">Transfers</string>
     <string name="loans">Loans</string>
@@ -227,7 +227,7 @@
     <string name="_05_10_2000">05/10/2000</string>
     <string name="state_any_special_need_if_any">State any special need (if any)</string>
     <string name="step_02_of_03">step_02_of_03</string>
-    <string name="tlc">By clicking “Continue you agree to our <b><u><a href="https://dakarenergylimited.co.ke/Leaf/"><font color="#249af3"> Terms and conditions </font></a></u></b> as well as our <b><u><a href="https://dakarenergylimited.co.ke/Leaf/"><font color="#249af3">privacy policy</font></a></u></b>  </string>
+    <string name="tlc">By clicking “Continue you agree to our <b><u><a href="http://wolenje.codepamoja.org/terms-conditions/"><font color="#249af3"> Terms and conditions </font></a></u></b> as well as our <b><u><a href="http://wolenje.codepamoja.org/privacy-policy/"><font color="#249af3">privacy policy</font></a></u></b>  </string>
     <string name="loyalty_program">Loyalty Program</string>
     <string name="flight_information">Flight Information</string>
     <string name="emirates_airlines">Emirates Airlines</string>
@@ -245,4 +245,5 @@
     <string name="need_support">Need Support?</string>
     <string name="i_can_t_login_to_the_merchant">I can’t login to the merchant</string>
     <string name="partial_scholarship">Partial scholarship</string>
+    <string name="disable_account">Disable Account</string>
 </resources>

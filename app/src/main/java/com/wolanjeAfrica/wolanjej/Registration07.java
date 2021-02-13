@@ -119,14 +119,11 @@ public class Registration07 extends AppCompatActivity {
                 .setView(view)
                 .create();
         Button btn = view.findViewById(R.id.buttonSignUpSuccess);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-                Intent intent = new Intent(Registration07.this, LogIn.class);
-                startActivity(intent);
-                finish();
-            }
+        btn.setOnClickListener(v -> {
+            alertDialog.dismiss();
+            Intent intent = new Intent(Registration07.this, LogIn.class);
+            startActivity(intent);
+            finish();
         });
 
         alertDialog.show();

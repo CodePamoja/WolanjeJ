@@ -35,8 +35,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:backgroundTint="@android:color/transparent"
-                        android:fontFamily="@font/poppins_medium"
+                        android:fontFamily="@font/nexa_bold"
+                        android:textColor="#531edc"
                         android:onClick="movetoLogin"
+                        android:textSize="12sp"
                         android:text="@string/login"
                         android:textAllCaps="false" />
 
@@ -60,11 +62,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/poppins_semi_bold"
+                android:fontFamily="@font/nexa_bold"
                 android:text="@string/registration"
+                android:textSize="14.7sp"
+                android:textColor="#0b0320"
                 android:textAlignment="center"
-                android:textColor="@color/colorMidnight"
-                android:textSize="22sp"
                 app:layout_constraintBottom_toTopOf="@id/descreg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,12 +77,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/poppins_regular"
                 android:paddingHorizontal="40dp"
                 android:text="@string/please_enter_your_mobile_number_then_we_will_send_otp_to_verify"
                 android:textAlignment="center"
-                android:textColor="@color/blue_grey"
-                android:textSize="14sp"
+                android:fontFamily="@font/nexa_book"
+                android:textStyle="normal"
+                android:textSize="12sp"
+                android:textColor="#8c8a9a"
                 app:layout_constraintBottom_toTopOf="@id/descreg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +97,7 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="12dp"
                 android:backgroundTint="@color/colorWhite"
-                android:elevation="12dp"
+                android:elevation="1dp"
                 android:outlineAmbientShadowColor="#120d0229"
                 app:cardCornerRadius="6dp"
                 app:cardElevation="8dp"
@@ -124,6 +127,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
+                            android:textColor="#0b0320"
+                            android:letterSpacing="0.08"
+                            android:fontFamily="@font/nexa_bold"
                             android:drawableStart="@drawable/ic_kenya_flag"
                             android:drawablePadding="5dp"
                             android:inputType="number" />
@@ -144,6 +150,10 @@
                             android:layout_height="wrap_content"
                             android:drawableStart="@drawable/ic_baseline_mail_24"
                             android:drawablePadding="5dp"
+                            android:fontFamily="@font/nexa_book"
+                            android:textStyle="normal"
+                            android:textSize="12sp"
+                            android:textColor="#8c8a9a"
                             android:inputType="textEmailAddress" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -156,11 +166,11 @@
                         android:layout_marginHorizontal="12dp"
                         android:layout_marginVertical="10dp"
                         android:backgroundTint="#932777"
-                        android:fontFamily="@font/poppins_medium"
+                        android:fontFamily="@font/nexa_bold"
                         android:text="Continue"
+                        android:textColor="#ffffff"
                         android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -180,12 +190,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/poppins_medium"
                             android:gravity="center_horizontal"
-                            android:letterSpacing="0.08"
                             android:text="OR"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="16sp" />
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            android:textColor="#0b0320"
+                            android:letterSpacing="0.08"
+                            />
 
                         <View
                             android:layout_width="0dp"
@@ -203,12 +215,16 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginHorizontal="12dp"
                         android:backgroundTint="#120d0229"
-                        android:fontFamily="@font/poppins_medium"
                         android:onClick="createAccount"
                         android:text="Create a Business Account"
                         android:textAllCaps="false"
+                        android:fontFamily="@font/nexa_bold"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:layout_marginTop="10dp"
                         android:textColor="#8484a9"
-                        android:textSize="14sp" />
+
+                       />
 
                 </LinearLayout>
 
@@ -231,15 +247,16 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textColor="#222b45"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_medium"
                     android:lineSpacingExtra="6sp"
                     android:text="@string/tlc"
                     android:textAlignment="center"
-                    android:textColor="#222b45"
                     android:textSize="12sp" />
 
             </RelativeLayout>

@@ -39,6 +39,11 @@
                         android:backgroundTint="@android:color/transparent"
                         android:onClick="movetoLogin"
                         android:text="@string/login"
+                        android:fontFamily="@font/nexa_bold"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="#531edc"
+
                         android:textAllCaps="false" />
 
                 </RelativeLayout>
@@ -61,11 +66,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/poppins_semi_bold"
                 android:text="@string/registration"
                 android:textAlignment="center"
-                android:textColor="@color/colorMidnight"
-                android:textSize="22sp"
+                android:fontFamily="@font/nexa_xbold"
+                android:textStyle="bold"
+                android:textSize="14.7sp"
+                android:textColor="#0b0320"
                 app:layout_constraintBottom_toTopOf="@id/descreg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,12 +82,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/poppins_regular"
                 android:paddingHorizontal="40dp"
+                android:fontFamily="@font/nexa_book"
+                android:textStyle="normal"
+                android:textSize="12sp"
+                android:textColor="#8c8a9a"
                 android:text="Complete the fields below to continue"
                 android:textAlignment="center"
-                android:textColor="@color/blue_grey"
-                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@id/descreg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +102,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/colorWhite"
-                android:elevation="12dp"
+                android:elevation="1dp"
                 android:outlineAmbientShadowColor="#120d0229"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
@@ -120,12 +127,19 @@
                         android:layout_marginHorizontal="12dp"
                         android:hint="ID Number"
                         app:counterEnabled="true"
+                        android:layout_marginVertical="6dp"
                         app:counterMaxLength="8">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_kenya_flag"
+                            android:fontFamily="@font/nexa_book"
+                            android:textSize="12sp"
+                            android:textColor="#0b0320"
+                            android:textStyle="bold"
+                            android:textColorHint="#8c8a9a"
+                            android:textAppearance="@font/nexa_bold"
+                            android:letterSpacing="0.08"
                             android:inputType="number" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -141,7 +155,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_baseline_account_circle_24"
+                            android:fontFamily="@font/nexa_book"
+                            android:textStyle="normal"
+                            android:textSize="12sp"
+                            android:textColor="#8c8a9a"
                             android:inputType="textPersonName" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -152,13 +169,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="12dp"
+                        android:layout_marginVertical="6dp"
                         android:hint="Last Name">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawableStart="@drawable/ic_baseline_account_circle_24"
                             android:drawablePadding="5dp"
+                            android:fontFamily="@font/nexa_book"
+                            android:textStyle="normal"
+                            android:textSize="12sp"
+                            android:textColor="#8c8a9a"
                             android:inputType="textPersonName" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -166,13 +187,17 @@
                     <Spinner
                         android:id="@+id/spinner_gender"
                         android:layout_width="match_parent"
-                        android:layout_height="58dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/myspinner"
+                        android:fontFamily="@font/nexa_bold"
+                        android:popupBackground="#e7e7e7"
+                        android:textSize="12sp"
+                        android:textColor="#8c8a9a"
                         android:paddingHorizontal="18dp"
-                        android:spinnerMode="dropdown" />
+                        android:spinnerMode="dropdown"
+                        android:layout_height="wrap_content" />
 
 
                 </LinearLayout>
@@ -196,6 +221,9 @@
                     android:layout_height="58dp"
                     android:backgroundTint="@color/warm_purple"
                     android:onClick="askForOtp"
+                    android:fontFamily="@font/nexa_bold"
+                    android:textSize="12sp"
+                    android:textColor="#ffffff"
                     android:text="@string/Continue"
                     android:textAllCaps="false" />
             </RelativeLayout>

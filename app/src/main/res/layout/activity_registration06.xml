@@ -53,11 +53,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/poppins_semi_bold"
                     android:text="Verification"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="22sp" />
+                    android:fontFamily="@font/nexa_xbold"
+                    android:textStyle="bold"
+                    android:textSize="14.7sp"
+                    android:textColor="#0b0320"
+                    android:textAlignment="center" />
 
 
                 <TextView
@@ -66,24 +67,28 @@
                     android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginHorizontal="20dp"
-                    android:fontFamily="@font/poppins_regular"
                     android:text="Please enter the code that sent to your phone in the form below.This code will expire in "
                     android:textAlignment="center"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="14sp" />
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textSize="12sp"
+                    android:textColor="#8c8a9a" />
                 <TextView
                     android:id="@+id/txtview_countdown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#fe5218"
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textSize="12sp"
+                    android:textColor="#8c8a9a"
                     android:layout_gravity="center_horizontal"
                     android:text="0:30"/>
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="327dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    app:cardElevation="8dp"
-                    android:elevation="12dp"
+                    app:cardElevation="1dp"
+                    android:elevation="1dp"
                     app:cardCornerRadius="8dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="172dp">
@@ -160,12 +165,13 @@
                             android:layout_height="56dp"
                             android:layout_marginVertical="20dp"
                             android:backgroundTint="@color/colorPurple"
-                            android:fontFamily="@font/poppins_medium"
                             android:onClick="sendtoSetYourPin"
                             android:text="Continue"
-                            android:textAllCaps="false"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="16sp" />
+                            android:fontFamily="@font/nexa_xbold"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            android:textColor="#ffffff"
+                            android:textAllCaps="false" />
 
                     </LinearLayout>
 
@@ -185,9 +191,11 @@
                         style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="327dp"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/warm_purple"
                         android:textAllCaps="false"
-                        android:fontFamily="@font/poppins_medium"
+                        android:fontFamily="@font/nexa_book"
+                        android:textStyle="normal"
+                        android:textSize="12sp"
+                        android:textColor="#932777"
                         android:text="Resend" />
 
                 </LinearLayout>

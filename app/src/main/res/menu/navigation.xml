@@ -3,45 +3,60 @@
     <item
         android:id="@+id/my_wallet"
         android:enabled="true"
-        android:fontFamily="@font/poppins_regular"
         android:icon="@drawable/ic_group_5"
         android:iconTint="@color/colorBlack"
+        android:fontFamily="@font/nexa_bold"
+        android:textStyle="bold"
+        android:textSize="7.3sp"
+        android:textColor="#21c17a"
         android:onClick="moveMyWallet"
         android:title="My wallet" />
 
     <item
         android:id="@+id/payments"
         android:enabled="true"
-        android:fontFamily="@font/poppins_regular"
         android:icon="@mipmap/hand"
         android:iconTint="@color/colorBlack"
         android:onClick="moveBillManagerPayment"
+        android:fontFamily="@font/nexa_book"
+        android:textStyle="normal"
+        android:textSize="7.3sp"
+        android:textColor="#000000"
         android:title="Payments" />
 
     <item
         android:id="@+id/referrals"
         android:enabled="true"
-        android:fontFamily="@font/poppins_regular"
         android:icon="@mipmap/group2"
         android:iconTint="@color/colorBlack"
         android:onClick="moveReferrals"
+        android:fontFamily="@font/nexa_book"
+        android:textStyle="normal"
+        android:textSize="7.3sp"
+        android:textColor="#000000"
         android:title="Loyalty" />
 
     <item
         android:id="@+id/billers"
         android:enabled="true"
-        android:fontFamily="@font/poppins_regular"
         android:icon="@mipmap/combined_shape"
         android:iconTint="@color/colorBlack"
         android:onClick="moveBillManagerBiller"
+        android:fontFamily="@font/nexa_book"
+        android:textStyle="normal"
+        android:textSize="7.3sp"
+        android:textColor="#000000"
         android:title="Billers" />
 
     <item
         android:id="@+id/settings"
         android:enabled="true"
-        android:fontFamily="@font/poppins_regular"
         android:icon="@drawable/ic_settings"
         android:iconTint="@color/colorBlack"
+        android:fontFamily="@font/nexa_book"
+        android:textStyle="normal"
+        android:textSize="7.3sp"
+        android:textColor="#000000"
         android:onClick="movetoSettings48"
         android:title="Settings" />
 </menu>

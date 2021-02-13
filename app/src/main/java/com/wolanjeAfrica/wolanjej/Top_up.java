@@ -3,6 +3,7 @@ package com.wolanjeAfrica.wolanjej;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,6 +21,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
+import com.wolanjeAfrica.wolanjej.Utils.WolenjeUtil;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 
@@ -42,6 +44,7 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
     private static String MY_BALANCE;
     private SharedPreferences pref;
     private static String className;
+    private String userId;
 
 
     @Override
@@ -52,7 +55,7 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
         pref = getApplication().getSharedPreferences("LogIn", MODE_PRIVATE);
         this.sessionId = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
-
+        this.userId = pref.getString("userDbId", null);
 
         textView1 = (TextView) findViewById(R.id.balance_layout_top_up);
 
@@ -79,6 +82,7 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
         });
 
         setToolBar();
+        getClassIntent();
     }
 
     private void setToolBar() {
@@ -107,7 +111,29 @@ public class Top_up extends AppCompatActivity implements AdapterView.OnItemSelec
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
 
     }
+    private void getClassIntent() {
 
+        Intent intentExtra = getIntent();
+        String className = getIntent().getStringExtra("Class");
+        if (className != null) {
+            Log.e("class Type className", className);
+            switch (className) {
+                case "Home":
+                    String activePaymentMethod = new WolenjeUtil().ActivePaymentMethod(userId);
+                    if (activePaymentMethod == null){
+                        Intent intent = new Intent(Top_up.this, LinkAccount11.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("Class", "topup");
+                        startActivity(intent);
+                        finish();
+                    }
+                    break;
+                case "LinkAccount11":
+                    break;
+
+            }
+        }
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
