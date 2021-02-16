@@ -26,12 +26,13 @@
                 android:id="@+id/txtViewTransferSingle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
                 android:gravity="center_vertical"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="30dp"
+                android:fontFamily="@font/nexa_xbold"
+                android:textStyle="bold"
+                android:textSize="18.7sp"
+                android:textColor="#0b0320"
                 android:text="Confirm"
-                android:textColor="@color/colorMidnight"
-                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/include" />
@@ -57,13 +58,14 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="78dp"
                     android:layout_marginEnd="0dp"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/nexa_bold"
+                    android:textStyle="bold"
+                    android:textSize="14.7sp"
+                    android:textColor="#18181c"
                     android:text="John Doe"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="24sp" />
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/waltDateTime"
@@ -75,11 +77,12 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="0dp"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textSize="12.3sp"
+                    android:textColor="#8c8a9a"
                     android:text="9:00 PM | 10/Jan/2020"
-                    android:textAlignment="center"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="18sp" />
+                    android:textAlignment="center" />
 
                 <View
                     android:id="@+id/divst"
@@ -88,57 +91,41 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="40dp"
                     android:layout_marginEnd="0dp"
                     android:background="@mipmap/path_14_copy_2" />
 
 
                 <TextView
-                    android:id="@+id/txtDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/divst"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="0dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="DETAILS"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="16sp" />
-
-                <TextView
                     android:id="@+id/txtFrom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtDetails"
+                    android:layout_below="@+id/divst"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="50"
-                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="55.3dp"
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textSize="12.3sp"
+                    android:textColor="#8c8a9a"
                     android:text="From"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="16sp" />
+                    android:textAlignment="textStart" />
 
                 <TextView
                     android:id="@+id/fromUserCst"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtDetails"
+                    android:layout_below="@+id/divst"
                     android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/nexa_bold"
+                    android:textStyle="bold"
+                    android:textSize="12.7sp"
+                    android:textColor="#0b0320"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="55.3dp"
                     android:layout_marginEnd="0dp"
-                    android:layout_weight="50"
-                    android:fontFamily="@font/poppins_regular"
                     android:text="User 01"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="18sp" />
+                    android:textAlignment="textEnd" />
 
                 <TextView
                     android:id="@+id/txtTo"
@@ -147,13 +134,14 @@
                     android:layout_below="@+id/txtFrom"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="0dp"
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textSize="12.3sp"
+                    android:textColor="#8c8a9a"
                     android:layout_marginTop="15dp"
                     android:layout_weight="50"
-                    android:fontFamily="@font/poppins_regular"
                     android:text="To"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="16sp" />
+                    android:textAlignment="textStart" />
 
                 <TextView
                     android:id="@+id/waltToName"
@@ -163,12 +151,13 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="0dp"
+                    android:fontFamily="@font/nexa_bold"
+                    android:textStyle="bold"
+                    android:textSize="12.7sp"
+                    android:textColor="#0b0320"
                     android:layout_weight="50"
-                    android:fontFamily="@font/poppins_regular"
                     android:text="John Doe"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="18sp" />
+                    android:textAlignment="textEnd" />
 
 
                 <TextView
@@ -179,12 +168,12 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="15dp"
-                    android:layout_weight="50"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textSize="12.3sp"
+                    android:textColor="#8c8a9a"
                     android:text="Amount"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="16sp" />
+                    android:textAlignment="textStart" />
 
                 <TextView
                     android:id="@+id/waltAmout"
@@ -192,14 +181,15 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/waltToName"
                     android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/nexa_bold"
+                    android:textStyle="bold"
+                    android:textSize="12.7sp"
+                    android:textColor="#0b0320"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="0dp"
                     android:layout_weight="50"
-                    android:fontFamily="@font/poppins_regular"
                     android:text="KES 1,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="18sp" />
+                    android:textAlignment="textEnd" />
 
 
                 <TextView
@@ -210,12 +200,12 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="15dp"
-                    android:layout_weight="50"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textSize="12.3sp"
+                    android:textColor="#8c8a9a"
                     android:text="Message"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="16sp" />
+                    android:textAlignment="textStart" />
 
                 <TextView
                     android:id="@+id/waltMessage"
@@ -225,11 +215,12 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="0dp"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/nexa_bold"
+                    android:textStyle="bold"
+                    android:textSize="12.7sp"
+                    android:textColor="#0b0320"
                     android:text="Thank you"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="18sp" />
+                    android:textAlignment="textEnd" />
 
                 <TextView
                     android:id="@+id/txtTransactionFeeCst"
@@ -237,13 +228,14 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtMessageCst"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textSize="12.3sp"
+                    android:textColor="#8c8a9a"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppins_regular"
                     android:text="Tansaction fee"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="16sp" />
+                    android:textAlignment="textStart" />
 
                 <TextView
                     android:id="@+id/waltTransFee"
@@ -253,12 +245,12 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="0dp"
-                    android:layout_weight="50"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/nexa_bold"
+                    android:textStyle="bold"
+                    android:textSize="12.7sp"
+                    android:textColor="#0b0320"
                     android:text="0.00"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/colorMidnight"
-                    android:textSize="18sp" />
+                    android:textAlignment="textEnd" />
 
                 <View
                     android:id="@+id/div2Cst"
@@ -267,7 +259,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="100dp"
                     android:layout_marginEnd="0dp"
                     android:background="@mipmap/path_14_copy_2" />
 
@@ -280,11 +272,12 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="99dp"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/nexa_book"
+                    android:textStyle="normal"
+                    android:textSize="12.3sp"
+                    android:textColor="#8c8a9a"
                     android:text="TOTAL"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/blue_grey"
-                    android:textSize="18sp" />
+                    android:textAlignment="textStart" />
 
                 <TextView
                     android:id="@+id/waltTotal"
@@ -295,12 +288,13 @@
                     android:layout_alignParentBottom="false"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="0dp"
+                    android:fontFamily="@font/nexa_bold"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="#3ca8b3"
                     android:layout_marginBottom="92dp"
-                    android:fontFamily="@font/poppins_regular"
                     android:text="KES 1,000"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/colorGreenBlue"
-                    android:textSize="22sp" />
+                    android:textAlignment="textEnd" />
             </RelativeLayout>
 
             <Button
@@ -311,10 +305,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="24dp"
                 android:backgroundTint="@color/colorPurple"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="normal"
+                android:textSize="12.7sp"
+                android:textColor="#ffffff"
                 android:text="Continue"
                 android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linConfirm1" />

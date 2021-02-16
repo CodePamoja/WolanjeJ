@@ -628,7 +628,6 @@ public class EnterPin extends AppCompatActivity {
                 }
             });
             TextView textView = view.findViewById(R.id.amount_sent_note);
-            TextView textView1 = view.findViewById(R.id.balance_note2);
             TextView textView2 = view.findViewById(R.id.reference_numberTra);
             textView2.setText(sendIDReference);
             textView.setText(sendAmount);

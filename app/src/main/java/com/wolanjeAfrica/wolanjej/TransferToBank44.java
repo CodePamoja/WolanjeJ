@@ -202,6 +202,11 @@ public class TransferToBank44 extends AppCompatActivity {
         String key = null;
         String value = null;
 
+        if (phone == null){
+            Toast.makeText(this, "please select a phoneNumber", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Map<String, String> map = CheckPhoneNumber.getInstance().checkPhoneNo(TransferToBank44.this, phone);
         for (Map.Entry<String, String> entry : map.entrySet()) {
             key = entry.getKey();

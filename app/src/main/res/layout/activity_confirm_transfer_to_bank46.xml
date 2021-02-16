@@ -26,8 +26,10 @@
                 android:gravity="center_vertical"
                 android:paddingHorizontal="20dp"
                 android:text="Confirm"
-                android:textColor="@color/colorMidnight"
-                android:textSize="28sp" />
+                android:fontFamily="@font/nexa_xbold"
+                android:textStyle="bold"
+                android:textSize="18.7sp"
+                android:textColor="@color/colorMidnight" />
 
         </LinearLayout>
 
@@ -40,13 +42,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@mipmap/transfer_receipt"
-                android:gravity="center_vertical"
                 android:paddingHorizontal="50dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
                     android:orientation="vertical">
                     <TextView
                         android:id="@+id/bankToName"
@@ -54,35 +56,32 @@
                         android:layout_height="wrap_content"
                         android:text="John Doe"
                         android:textAlignment="center"
-                        android:textColor="@color/colorMidnight"
-                        android:textSize="24sp"/>
+                        android:fontFamily="@font/nexa_bold"
+                        android:textStyle="bold"
+                        android:textSize="14.7sp"
+                        android:textColor="#18181c" />
                     <TextView
                         android:id="@+id/dateBank"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="9:00 PM | 10/Jan/2020"
-                        android:textAlignment="center"
-                        android:textColor="@color/blue_grey"
-                        android:textSize="18sp"/>
+                        android:fontFamily="@font/nexa_book"
+                        android:textStyle="normal"
+                        android:textSize="12.3sp"
+                        android:textColor="#8c8a9a"
+                        android:textAlignment="center" />
 
                 </LinearLayout>
 
                 <View style="@style/Divider"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
                     android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="DETAILS"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/blue_grey"
-                        android:textSize="16sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -94,8 +93,10 @@
                             android:layout_weight="50"
                             android:text="To"
                             android:textAlignment="textStart"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="16sp"
+                            android:fontFamily="@font/nexa_book"
+                            android:textStyle="normal"
+                            android:textSize="12.3sp"
+                            android:textColor="#8c8a9a"
                             />
                         <TextView
                             android:id="@+id/userToName"
@@ -103,9 +104,11 @@
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
                             android:text="John Doe"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="12.7sp"
+                            android:textColor="#0b0320"
                             android:textAlignment="textEnd"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="18sp"
                             />
                     </LinearLayout>
 
@@ -120,8 +123,10 @@
                             android:layout_weight="50"
                             android:text="Bank"
                             android:textAlignment="textStart"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="16sp"
+                            android:fontFamily="@font/nexa_book"
+                            android:textStyle="normal"
+                            android:textSize="12.3sp"
+                            android:textColor="#8c8a9a"
                             />
                         <TextView
                             android:id="@+id/bankAccNumber"
@@ -129,9 +134,11 @@
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
                             android:text="5678 2345 9877 6489"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="12.7sp"
+                            android:textColor="#0b0320"
                             android:textAlignment="textEnd"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="18sp"
                             />
                     </LinearLayout>
 
@@ -146,8 +153,10 @@
                             android:layout_weight="40"
                             android:text="Amount"
                             android:textAlignment="textStart"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="16sp"
+                            android:fontFamily="@font/nexa_book"
+                            android:textStyle="normal"
+                            android:textSize="9.3sp"
+                            android:textColor="#8c8a9a"
                             />
                         <TextView
                             android:id="@+id/AmountToBank"
@@ -155,9 +164,12 @@
                             android:layout_width="wrap_content"
                             android:layout_weight="70"
                             android:text="KES 1,000"
+
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="12.7sp"
+                            android:textColor="#0b0320"
                             android:textAlignment="textEnd"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="18sp"
                             />
                     </LinearLayout>
 
@@ -172,8 +184,10 @@
                             android:layout_weight="50"
                             android:text="Message"
                             android:textAlignment="textStart"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="16sp"
+                            android:fontFamily="@font/nexa_book"
+                            android:textStyle="normal"
+                            android:textSize="12.3sp"
+                            android:textColor="#8c8a9a"
                             />
                         <TextView
                             android:id="@+id/bankMessage"
@@ -181,9 +195,11 @@
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
                             android:text="Thank you"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="12.7sp"
+                            android:textColor="#0b0320"
                             android:textAlignment="textEnd"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="18sp"
                             />
                     </LinearLayout>
 
@@ -196,10 +212,12 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
+                            android:fontFamily="@font/nexa_book"
+                            android:textStyle="normal"
+                            android:textSize="12.3sp"
+                            android:textColor="#8c8a9a"
                             android:text="Tansaction fee"
                             android:textAlignment="textStart"
-                            android:textColor="@color/blue_grey"
-                            android:textSize="16sp"
                             />
                         <TextView
                             android:id="@+id/bankTransFee"
@@ -207,9 +225,11 @@
                             android:layout_width="wrap_content"
                             android:layout_weight="50"
                             android:text="0.00"
+                            android:fontFamily="@font/nexa_bold"
+                            android:textStyle="bold"
+                            android:textSize="12.7sp"
+                            android:textColor="#0b0320"
                             android:textAlignment="textEnd"
-                            android:textColor="@color/colorMidnight"
-                            android:textSize="18sp"
                             />
                     </LinearLayout>
 
@@ -217,7 +237,7 @@
 
                 <View style="@style/Divider"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="40dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -229,18 +249,23 @@
                         android:layout_weight="40"
                         android:text="TOTAL"
                         android:textAlignment="textStart"
-                        android:textColor="@color/blue_grey"
-                        android:textSize="18sp"
+                        android:fontFamily="@font/nexa_book"
+                        android:textStyle="normal"
+                        android:textSize="12.3sp"
+                        android:textColor="#8c8a9a"
                         />
                     <TextView
                         android:id="@+id/totBankToAmount"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:layout_weight="70"
+
+                        android:fontFamily="@font/nexa_bold"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="#3ca8b3"
                         android:text="KES 1,000"
                         android:textAlignment="textEnd"
-                        android:textColor="@color/colorGreenBlue"
-                        android:textSize="22sp"
                         />
 
                 </LinearLayout>
@@ -253,7 +278,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginVertical="70dp"
+            android:layout_marginVertical="10dp"
             android:paddingHorizontal="20dp">
             <Button
                 android:id="@+id/confirm_bank_transfer"

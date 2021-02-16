@@ -145,8 +145,6 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //Log.e("session before contact", sessionID);
-        Toast.makeText(getApplicationContext(), selectUser[position], Toast.LENGTH_LONG).show();
         if ("Multiple Transfers".equals(selectUser[position])) {
             Intent move = new Intent(this, TransferToWalletMultiple40.class);
             move.putExtra("Class", "TransferToWalletSingle37");
@@ -154,9 +152,6 @@ public class TransferToWalletSingle37 extends AppCompatActivity implements Adapt
             move.putExtra(EXTRA_AGENTNO, AGENTNO);
             startActivity(move);
             finish();
-        }else if ("Single User".equals(selectUser[position])){
-            return;
-
         }
 
     }
