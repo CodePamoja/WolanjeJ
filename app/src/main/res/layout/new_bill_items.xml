@@ -35,12 +35,14 @@
             android:layout_below="@+id/Bill_imageView"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
+            android:fontFamily="@font/nexa_bold"
+            android:textStyle="bold"
+            android:textSize="12.7sp"
             android:layout_marginStart="14dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="0dp"
             android:text="Phone bill"
-            android:textColor="@color/colorMidnight"
-            android:textSize="16sp" />
+            android:textColor="@color/colorMidnight" />
 
         <TextView
             android:id="@+id/billCreatedDate"
@@ -50,9 +52,11 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="1dp"
+            android:fontFamily="@font/nexa_book"
+            android:textStyle="normal"
+            android:textSize="12.3sp"
             android:text="11/10/2019"
-            android:textColor="#8c8a9a"
-            android:textSize="14sp" />
+            android:textColor="#8c8a9a" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ButtonCurrentBill"
@@ -64,6 +68,8 @@
             android:onClick="payNowElectric"
             android:backgroundTint="@color/warm_purple"
             android:layout_marginStart="16dp"
+            android:fontFamily="@font/nexa_bold"
+            android:textStyle="bold"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="47dp"
             android:gravity="center"

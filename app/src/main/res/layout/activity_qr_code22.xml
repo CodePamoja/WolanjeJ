@@ -27,8 +27,9 @@
         android:layout_marginTop="9dp"
         android:text="QR Code"
         android:layout_marginStart="24dp"
-        android:textSize="28dp"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/nexa_xbold"
+        android:textStyle="normal"
+        android:textSize="18.7sp"
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/colorMidnight"
         app:layout_constraintHorizontal_bias="0.077"
@@ -41,8 +42,10 @@
         android:layout_height="25dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins_regular"
         android:text="Please Scan Code for Payment"
+        android:fontFamily="@font/nexa_book"
+        android:textStyle="normal"
+        android:textSize="12.7sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bannerQrCode" />
 

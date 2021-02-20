@@ -23,8 +23,9 @@
                     android:text="@string/bill_manager"
                     android:textColor="@color/colorBlack"
                     android:textSize="28sp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nexa_xbold"
+                    android:textStyle="bold"
+                    android:layout_marginStart="20dp"
                     android:layout_gravity="start"
                     />
             </LinearLayout>
@@ -33,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabTextColor="@color/gray4"
+                android:fontFamily="@font/nexa_bold"
                 app:tabSelectedTextColor="@android:color/black"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget">
             </com.google.android.material.tabs.TabLayout>

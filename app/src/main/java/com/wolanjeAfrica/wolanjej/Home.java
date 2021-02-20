@@ -808,29 +808,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 .inflate(R.layout.pay_internet_bottom_sheet, (LinearLayout) findViewById(R.id.register_new_number)
                 );
         bottomSheetViewPayInternet.findViewById(R.id.imagebtn_pay_netSheet).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bottomSheetDialog.dismiss();
-                    }
-                }
+                v -> bottomSheetDialog.dismiss()
         );
         TextView textView = (TextView) bottomSheetViewPayInternet.findViewById(R.id.txtpayInternet);
         textView.setText("KES" + MY_BALANCE);
         txtAccounNoPayNetSheet = bottomSheetViewPayInternet.findViewById(R.id.AccounNoPayNetSheet);
         txtamountPyNetSheet = bottomSheetViewPayInternet.findViewById(R.id.amountPyNetSheet);
-        bottomSheetViewPayInternet.findViewById(R.id.buttonPayNetSheet).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveToPayNet();
-            }
-        });
-        bottomSheetViewPayInternet.findViewById(R.id.cancelPayNetSheet).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetDialog.dismiss();
-            }
-        });
+        bottomSheetViewPayInternet.findViewById(R.id.buttonPayNetSheet).setOnClickListener(v -> moveToPayNet());
+        bottomSheetViewPayInternet.findViewById(R.id.cancelPayNetSheet).setOnClickListener(v -> bottomSheetDialog.dismiss());
 
         bottomSheetDialog.setContentView(bottomSheetViewPayInternet);
         bottomSheetDialog.show();
@@ -1061,12 +1046,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
         TextView textView = (TextView) view.findViewById(R.id.balanceUnSuccessd);
         textView.setText(MY_BALANCE);
         MaterialButton button = view.findViewById(R.id.confDialogUnsuccessful);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
+        button.setOnClickListener(v -> alertDialog.dismiss());
         alertDialog.show();
     }
 
@@ -1192,12 +1172,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Pop
                 .create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         ImageButton button = view.findViewById(R.id.btn_closeSuccess);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
+        button.setOnClickListener(v -> alertDialog.dismiss());
         alertDialog.show();
     }
 

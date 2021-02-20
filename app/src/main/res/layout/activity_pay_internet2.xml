@@ -6,32 +6,34 @@
     android:id="@+id/constarintPayInternet2"
     android:layout_height="match_parent"
     tools:context=".EnterPin3">
+
     <TextView
         android:id="@+id/txtWallet3_Pay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
         android:layout_marginTop="49dp"
-        android:lineSpacingExtra="8sp"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/colorMidnight"
-        android:textSize="18sp"
+        android:fontFamily="@font/nexa_bold"
+        android:lineSpacingExtra="5.3sp"
+        android:text="Confirmation"
+        android:textColor="#0b0320"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Confirmation" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressInternet2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:background="@drawable/progress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintHorizontal_bias="0.498"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338" />
+        app:layout_constraintVertical_bias="0.682" />
 
     <ImageView
         android:id="@+id/img_e_wallet3_1"
@@ -55,23 +57,25 @@
             android:id="@+id/txtWithdrawFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13sp"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/nexa_book"
+            android:textStyle="normal"
+            android:textSize="12sp"
             android:textColor="#8c8a9a"
+            android:lineSpacingExtra="0.7sp"
             android:layout_marginStart="25dp"
-            android:lineSpacingExtra="3sp"
             android:text="Account No." />
         <TextView
             android:id="@+id/txtMobileNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="13sp"
-            android:layout_marginTop="7dp"
+            android:fontFamily="@font/nexa_book"
+            android:textStyle="normal"
+            android:textSize="12sp"
             android:textColor="#8c8a9a"
+            android:lineSpacingExtra="0.7sp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="7dp"
             android:layout_below="@id/txtWithdrawFrom"
-            android:lineSpacingExtra="3sp"
             android:text="Amount:" />
 
         <TextView
@@ -79,20 +83,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:fontFamily="@font/poppins_regular"
             android:layout_marginEnd="52dp"
+            android:fontFamily="@font/nexa_bold"
+            android:textStyle="bold"
+            android:textSize="13.7sp"
+            android:textColor="#0b0320"
+            android:lineSpacingExtra="5.3sp"
             android:textAllCaps="false"
-            android:textSize="16sp"
-            android:text="B3423424234"
-            android:textColor="@color/colorMidnight" />
+            android:text="B3423424234" />
 
         <TextView
             android:id="@+id/txt_numberEWallet3_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/colorMidnight"
+            android:fontFamily="@font/nexa_bold"
+            android:textStyle="bold"
+            android:textSize="13.7sp"
+            android:textColor="#0b0320"
+            android:lineSpacingExtra="5.3sp"
             android:layout_marginTop="7dp"
             android:layout_below="@id/txt_saf_eWallet3_1"
             android:layout_marginEnd="52dp"
@@ -114,7 +123,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="69dp"
         android:alpha="1"
@@ -127,21 +136,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
             android:layout_marginStart="20dp"
             android:text="Enter PIN"
-            android:textColor="@color/colorBlack"
-            android:textSize="25sp" />
+            android:fontFamily="@font/nexa_bold"
+            android:textStyle="bold"
+            android:textSize="14.7sp"
+            android:textColor="@color/colorBlack" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="15dp"
-
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
+                app:cardElevation="6dp"
                 android:layout_margin="16dp">
 
                 <EditText
@@ -152,12 +162,14 @@
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
                     android:inputType="numberPassword"
+                    android:textCursorDrawable="@color/blue_grey"
                     android:maxLength="1" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
+                app:cardElevation="6dp"
                 android:layout_margin="16dp">
 
                 <EditText
@@ -167,6 +179,7 @@
                     android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
+                    android:textCursorDrawable="@color/blue_grey"
                     android:inputType="numberPassword"
                     android:maxLength="1" />
             </com.google.android.material.card.MaterialCardView>
@@ -174,8 +187,8 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:layout_margin="16dp"
-                android:clickable="true">
+                app:cardElevation="6dp"
+                android:layout_margin="16dp">
 
                 <EditText
                     android:id="@+id/pinDigit3"
@@ -184,6 +197,7 @@
                     android:gravity="center"
                     android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
+                    android:textCursorDrawable="@color/blue_grey"
                     android:inputType="numberPassword"
                     android:maxLength="1" />
             </com.google.android.material.card.MaterialCardView>
@@ -191,6 +205,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
+                app:cardElevation="6dp"
                 android:layout_margin="16dp">
 
                 <EditText
@@ -200,6 +215,7 @@
                     android:gravity="center"
                     android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
+                    android:textCursorDrawable="@color/blue_grey"
                     android:imeOptions="actionGo"
                     android:inputType="numberPassword"
                     android:maxLength="1" />

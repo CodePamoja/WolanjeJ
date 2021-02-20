@@ -34,12 +34,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pay Bill"
+                android:text="Save Bill"
                 android:textColor="@color/colorBlack"
-                android:textSize="22sp"
+                android:fontFamily="@font/nexa_bold"
                 android:textStyle="bold"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginLeft="20dp"
+                android:textSize="14.7sp"
+                android:layout_marginStart="20dp"
                 android:gravity="left"
                 />
             <TextView
@@ -50,36 +50,16 @@
                 android:layout_marginTop="5dp"
                 android:textColor="@color/blue_grey"
                 android:layout_marginEnd="30dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/poppins_regular"
-                android:textStyle="bold"
-                android:layout_marginRight="23dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/nexa_book"
+                android:textStyle="normal"
                 android:layout_alignParentEnd="true"
                 />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/detTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DETAILS"
-                android:textColor="@color/blue_grey"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.08"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:gravity="left"
-                />
 
             <ImageView
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/detTV"
                 android:textColor="@color/blue_grey"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -90,7 +70,6 @@
                 android:layout_marginRight="20dp"
                 android:gravity="left"
                 />
-        </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,12 +80,12 @@
                 android:layout_height="wrap_content"
                 android:text="Service Provider"
                 android:textColor="@color/blue_grey"
-                android:textSize="14sp"
-                android:fontFamily="@font/poppins_regular"
-                android:textStyle="bold"
+                android:fontFamily="@font/nexa_book"
+                android:textStyle="normal"
+                android:textSize="12sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:gravity="left"
+                android:layout_marginStart="20dp"
+
                 />
             <TextView
                 android:id="@+id/spName"
@@ -115,11 +94,11 @@
                 android:text="PesaPal"
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/colorMidnight"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/nexa_bold"
                 android:textStyle="bold"
+                android:textSize="13.7sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="26dp"
+                android:layout_marginEnd="26dp"
                 android:gravity="end"
                 />
             <TextView
@@ -130,11 +109,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_below="@id/sp"
                 android:textColor="@color/blue_grey"
-                android:textSize="14sp"
-                android:fontFamily="@font/poppins_regular"
-                android:textStyle="bold"
-                android:layout_marginLeft="20dp"
-                android:gravity="left"
+                android:fontFamily="@font/nexa_book"
+                android:textStyle="normal"
+                android:textSize="12sp"
+                android:layout_marginStart="20dp"
                 />
             <TextView
                 android:id="@+id/nickName"
@@ -142,14 +120,14 @@
                 android:layout_height="wrap_content"
                 android:text="Internet Tingz"
                 android:textColor="@color/colorMidnight"
-                android:textSize="16sp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/nexa_bold"
                 android:textStyle="bold"
-                android:fontFamily="@font/poppins_regular"
+                android:textSize="13.7sp"
                 android:layout_below="@id/sp"
-                android:layout_marginRight="26dp"
+                android:layout_marginEnd="26dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
                 android:gravity="end"
                 />
             <TextView
@@ -158,13 +136,12 @@
                 android:layout_height="wrap_content"
                 android:text="Account Name"
                 android:textColor="@color/blue_grey"
-                android:textSize="14sp"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/nexa_book"
+                android:textStyle="normal"
+                android:textSize="12sp"
                 android:layout_below="@+id/nick"
                 android:layout_marginTop="8dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="20dp"
-                android:gravity="left"
+                android:layout_marginStart="20dp"
                 />
             <TextView
                 android:id="@+id/accountName"
@@ -172,14 +149,14 @@
                 android:layout_height="wrap_content"
                 android:text="Zuku1010"
                 android:textColor="@color/colorMidnight"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textSize="13.7sp"
                 android:layout_below="@+id/nick"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginRight="26dp"
+                android:layout_marginEnd="26dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
                 android:gravity="end"
                 />
             <TextView
@@ -188,13 +165,12 @@
                 android:layout_height="wrap_content"
                 android:text="Account No."
                 android:textColor="@color/blue_grey"
-                android:textSize="14sp"
+                android:fontFamily="@font/nexa_book"
+                android:textStyle="normal"
+                android:textSize="12sp"
                 android:layout_marginTop="8dp"
                 android:layout_below="@+id/account"
-                android:fontFamily="@font/poppins_regular"
-                android:textStyle="bold"
-                android:layout_marginLeft="20dp"
-                android:gravity="left"
+                android:layout_marginStart="20dp"
                 />
             <TextView
                 android:id="@+id/accountNumber"
@@ -202,14 +178,14 @@
                 android:layout_height="wrap_content"
                 android:text="444 789"
                 android:textColor="@color/colorMidnight"
-                android:textSize="16sp"
-                android:layout_marginRight="26dp"
-                android:fontFamily="@font/poppins_regular"
+                android:layout_marginEnd="26dp"
+                android:fontFamily="@font/nexa_bold"
                 android:textStyle="bold"
+                android:textSize="13.7sp"
                 android:layout_marginTop="8dp"
                 android:layout_below="@+id/account"
                 android:layout_alignParentEnd="true"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
                 android:gravity="end"
                 />
         </RelativeLayout>
@@ -237,12 +213,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:hint="Enter Amount"
+                android:textCursorDrawable="@color/blue_grey"
+                android:textColor="#0b0320"
+                android:textStyle="normal"
+                android:textSize="12.7sp"
+                android:textColorHint="#8c8a9a"
+                android:fontFamily="@font/nexa_book"
                 android:padding="5dp"
                 android:background="@drawable/textviewborder"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="24dp"
                 android:layout_marginLeft="24dp"
-                android:fontFamily="@font/poppins_regular"
                 android:inputType="number"/>
         </LinearLayout>
 
@@ -258,25 +239,28 @@
                 android:text="Continue"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="24dp"
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textSize="12.7sp"
                 android:layout_marginLeft="24dp"
-                android:fontFamily="@font/poppins_medium"
                 android:backgroundTint="@color/colorPurple"
-                android:textColor="@color/colorWhite"
-                android:textSize="14sp" />
+                android:textColor="@color/colorWhite" />
             <TextView
                 android:id="@+id/btnCancelBill"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="Cancel"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="55dp"
+                android:layout_marginEnd="24dp"
                 android:gravity="center"
-                android:layout_marginLeft="55dp"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textSize="12.7sp"
                 android:layout_marginBottom="20dp"
-                android:fontFamily="@font/poppins_medium"
                 android:backgroundTint="@color/colorWhite"
-                android:textColor="@color/blue_grey"
-                android:textSize="16sp" />
+                android:textColor="@color/blue_grey" />
 
         </LinearLayout>
 

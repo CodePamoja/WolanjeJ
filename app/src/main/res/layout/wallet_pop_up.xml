@@ -29,40 +29,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/balance"
-        android:text="Wallet Top-Up"
-        android:textColor="@color/colorMidnight"
-        android:fontFamily="@font/poppins_bold"
-        android:textSize="22sp" />
+        android:text="Top-Up"
+        android:fontFamily="@font/nexa_bold"
+        android:textStyle="bold"
+        android:textSize="14.7sp"
+        android:textColor="@color/colorMidnight" />
 
     <TextView
         android:id="@+id/balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imagebtn"
-        android:layout_alignParentRight="true"
-        android:fontFamily="@font/poppins_regular"
+        android:fontFamily="@font/nexa_book"
+        android:textStyle="normal"
+        android:textSize="12.3sp"
+        android:layout_alignParentEnd="true"
         android:gravity="end"
         android:text="Balance"
-        android:textColor="@color/blue_grey"
-        android:textSize="14sp" />
+        android:textColor="@color/blue_grey" />
 
     <TextView
         android:id="@+id/txtTopup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/balance"
-        android:layout_alignParentRight="true"
-        android:fontFamily="@font/poppins_regular"
+        android:layout_alignParentEnd="true"
         android:gravity="end"
-        android:letterSpacing="0.03"
-        android:text="kes 0.000"
+        android:fontFamily="@font/nexa_bold"
+        android:textStyle="bold"
+        android:textSize="12sp"
         android:textColor="#18181c"
-        android:textSize="14sp" />
+        android:text="kes 0.000" />
 
     <Spinner
         android:id="@+id/selecttype"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/wpp"
         android:layout_marginTop="12dp"
         android:background="@drawable/myspinner"
@@ -76,13 +78,19 @@
         android:layout_height="52dp"
         android:layout_below="@id/selecttype"
         android:layout_marginTop="16dp"
+        android:textCursorDrawable="@color/blue_grey"
+        android:textColor="#0b0320"
+        android:textStyle="normal"
+        android:textSize="12.7sp"
+        android:textColorHint="#8c8a9a"
+        android:fontFamily="@font/nexa_book"
         android:inputType="number"
         app:counterEnabled="true"
         android:maxLength="9"
-        android:fontFamily="@font/poppins_regular"
         android:background="@drawable/wallet_pop_up_shape"
         android:hint="Mobile Number"
-        android:paddingStart="18dp" />
+        android:paddingStart="18dp"
+        android:paddingEnd="0dp" />
 
     <EditText
         android:id="@+id/amountTopUpWallet"
@@ -92,11 +100,17 @@
         android:layout_marginTop="16dp"
         android:maxLength="6"
         android:inputType="number"
+        android:paddingStart="18dp"
+        android:paddingEnd="0dp"
         android:lines="1"
-        android:fontFamily="@font/poppins_regular"
+        android:textCursorDrawable="@color/blue_grey"
+        android:textColor="#0b0320"
+        android:textStyle="normal"
+        android:textSize="12.7sp"
+        android:textColorHint="#8c8a9a"
+        android:fontFamily="@font/nexa_book"
         android:background="@drawable/wallet_pop_up_shape"
-        android:hint="Amount"
-        android:paddingStart="18dp" />
+        android:hint="Amount" />
 
     <Button
         android:id="@+id/contWalletPop"
@@ -105,7 +119,9 @@
         android:layout_height="48dp"
         android:layout_below="@id/amountTopUpWallet"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_regular"
+        android:fontFamily="@font/nexa_bold"
+        android:textStyle="bold"
+        android:textSize="12.7sp"
         android:textAllCaps="false"
         android:backgroundTint="@color/warm_purple"
         android:text="@string/Continue" />
@@ -117,13 +133,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/contWalletPop"
         android:layout_marginTop="22dp"
+        android:fontFamily="@font/nexa_bold"
+        android:textStyle="bold"
+        android:textSize="12.7sp"
         android:layout_marginBottom="100dp"
         android:backgroundTint="@android:color/transparent"
-        android:fontFamily="@font/poppins_regular"
         android:text="Cancel"
         android:textAllCaps="false"
         android:textColor="#8c8a9a"
-        android:textSize="16sp" />
+    />
 
   </RelativeLayout>
 

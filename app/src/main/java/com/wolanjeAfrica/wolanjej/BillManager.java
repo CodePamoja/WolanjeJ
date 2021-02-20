@@ -137,30 +137,17 @@ public class BillManager extends AppCompatActivity {
         View bottomSheetView = LayoutInflater.from(getApplicationContext())
                 .inflate(R.layout.pay_bill_now, (LinearLayout) findViewById(R.id.payBillNow)
                 );
-        bottomSheetView.findViewById(R.id.closeBillNow).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetDialog.dismiss();
-            }
-        });
+        bottomSheetView.findViewById(R.id.closeBillNow).setOnClickListener(v12 -> bottomSheetDialog.dismiss());
         bottomSheetView.findViewById(R.id.btn_continue_pay).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent moveToPin = new Intent(getApplicationContext(), EnterPin.class);
-                        moveToPin.putExtra("Class", "BillManager");
-                        startActivity(moveToPin);
-                        bottomSheetDialog.dismiss();
-                    }
+                v1 -> {
+                    Intent moveToPin = new Intent(getApplicationContext(), EnterPin.class);
+                    moveToPin.putExtra("Class", "BillManager");
+                    startActivity(moveToPin);
+                    bottomSheetDialog.dismiss();
                 }
         );
         bottomSheetView.findViewById(R.id.btnCancelBill).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bottomSheetDialog.dismiss();
-                    }
-                }
+                v13 -> bottomSheetDialog.dismiss()
         );
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();

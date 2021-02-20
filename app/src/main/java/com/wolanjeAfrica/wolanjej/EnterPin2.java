@@ -91,14 +91,6 @@ public class EnterPin2 extends AppCompatActivity {
             case"LinkAccount11":
                 break;
             case "HomePayTvSubscription":
-                String activePaymentMethod = new WolenjeUtil().ActivePaymentMethod(userId);
-                if (activePaymentMethod == null){
-                    Intent intent = new Intent(EnterPin2.this, LinkAccount11.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("Class", "Enterpin2");
-                    startActivity(intent);
-                    finish();
-                }
                 this.ProductName = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
                 this.amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
                 this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);

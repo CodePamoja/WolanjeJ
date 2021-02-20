@@ -38,13 +38,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="36dp"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textSize="12.7sp"
                 android:layout_marginTop="72dp"
                 android:layout_marginBottom="74dp"
                 android:layout_toEndOf="@id/imageQrCode"
                 android:text="1234 5432 8765"
-                android:textColor="@color/colorMidnight"
-                android:textSize="16sp" />
+                android:textColor="@color/colorMidnight" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -53,7 +54,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="266dp"
         android:backgroundTint="@color/warm_purple"
-        android:fontFamily="@font/poppins_regular"
+        android:fontFamily="@font/nexa_bold"
+        android:textStyle="bold"
+        android:textSize="12.7sp"
         android:layout_marginStart="40dp"
         android:gravity="center"
         android:text="Cancel"

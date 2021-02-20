@@ -16,34 +16,78 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <include
-                android:id="@+id/include8"
-                layout="@layout/toobarwithout"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:navigationIcon="@mipmap/small_left" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:layout_marginStart="300dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_balancewallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:text="Balance"
+                        android:textAlignment="textEnd"
+                        android:fontFamily="@font/nexa_book"
+                        android:textStyle="normal"
+                        android:textSize="12.3sp"
+                        android:textColor="#8c8a9a" />
+
+                    <TextView
+                        android:id="@+id/balancetxtTphone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:text="KES 0.00"
+                        android:fontFamily="@font/nexa_bold"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="#18181c"
+                        android:letterSpacing="0.03"
+                        android:textAlignment="textEnd" />
+
+
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+
 
             <TextView
                 android:id="@+id/textviewTransferphone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:layout_marginTop="8.7dp"
                 android:paddingHorizontal="20dp"
-                android:text="Transfer to Phone"
-                android:textColor="@color/colorMidnight"
-                android:textSize="28sp"
-                android:fontFamily="@font/poppins_medium"
+                android:text="Send to Phone"
+                android:fontFamily="@font/nexa_xbold"
+                android:textStyle="bold"
+                android:textSize="18.7sp"
+                android:textColor="#0b0320"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/include8" />
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/multiple40Card1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="22dp"
                 android:layout_marginEnd="24dp"
-                app:cardElevation="10dp"
+                app:cardElevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textviewTransferphone">
@@ -55,63 +99,40 @@
                         android:id="@+id/select_multiple"
                         android:layout_width="wrap_content"
                         android:layout_height="23dp"
+                        android:fontFamily="@font/nexa_book"
+                        android:textStyle="normal"
+                        android:textSize="12.3sp"
+                        android:textColor="#531edc"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="15dp"
                         android:background="@drawable/myspinner2"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="Select User"
-                        android:textColor="#531edc">
+                        android:text="Select User">
                     </Spinner>
 
-                    <TextView
-                        android:id="@+id/txt_balancewallet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="Balance"
-                        android:textAlignment="textEnd"
-                        android:textColor="@color/blue_grey"
-                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/txt_select_user"
-                        android:layout_width="134dp"
-                        android:layout_height="26dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="12sp"
                         android:layout_below="@+id/select_multiple"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="16dp"
+                        android:fontFamily="@font/nexa_bold"
+                        android:textStyle="bold"
+                        android:textSize="10.7sp"
+                        android:textColor="#0b0320"
                         android:layout_marginTop="10dp"
                         android:text="Wolenje 01"
-                        android:textColor="@color/colorMidnight"
                         android:drawSelectorOnTop="true"
-                        android:textSize="16dp"
                         android:dropDownWidth="wrap_content"
-                        android:fontFamily="@font/poppins_regular"
                         android:popupBackground="@android:color/holo_purple"
                         android:spinnerMode="dropdown"
                         android:textAlignment="textStart"
                         tools:ignore="NestedWeights" />
 
-                    <TextView
-                        android:id="@+id/balancetxtTphone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/txt_balancewallet"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="KES 0.00"
-                        android:textAlignment="textEnd"
-                        android:textColor="@color/colorMidnight"
-                        android:textSize="22sp" />
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -123,7 +144,7 @@
                 android:layout_marginVertical="20dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                app:cardElevation="10dp"
+                app:cardElevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/multiple40Card1"
                 app:layout_constraintStart_toStartOf="parent">
@@ -138,10 +159,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="15dp"
-                android:text="Transfer detail"
-                android:textAlignment="center"
-                android:textColor="@color/colorMidnight"
-                android:textSize="20sp" />
+                android:text="Transfer details"
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="#0b0320" />
 
 
 
@@ -150,8 +172,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
+                    android:fontFamily="@font/nexa_book"
+                    android:textColorHint="#8c8a9a"
+                    android:textCursorDrawable="@color/blue_grey"
+                    android:textColor="#0b0320"
+                    android:textStyle="normal"
+                    android:textSize="12.7sp"
                     android:inputType="phone"
-                    android:fontFamily="@font/poppins_medium"
                     android:hint="Enter Phone No."
                     android:padding="10dp"
                     android:background="@drawable/textviewborder"/>
@@ -167,7 +194,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
-                        android:layout_marginRight="20dp"
+                        app:icon="@mipmap/barcode_qr"
+                        app:iconSize="12dp"
+                        app:iconTint="@color/blue_grey"
+                        android:layout_marginEnd="20dp"
                         android:text="Scan QR"
                         android:textAllCaps="false"
                         android:fontFamily="@font/poppins_medium"
@@ -180,26 +210,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:text="Contacts"
                         android:fontFamily="@font/poppins_medium"
                         android:textAllCaps="false"
+                        app:icon="@drawable/ic_baseline_contacts_24"
+                        app:iconSize="12dp"
+                        app:iconTint="@color/blue_grey"
                         android:onClick="moveToContact"
                         android:textSize="14sp"
                         android:textColor="@color/blue_grey"
                         style="?android:attr/borderlessButtonStyle"
                         android:backgroundTint="@color/colorGreyBackground"/>
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="DETAILS"
-                    android:autoSizeMinTextSize="12sp"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/blue_grey"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -208,8 +231,13 @@
                     android:inputType="number"
                     android:hint="Amount"
                     android:padding="10dp"
+                    android:fontFamily="@font/nexa_book"
+                    android:textColorHint="#8c8a9a"
+                    android:textCursorDrawable="@color/blue_grey"
+                    android:textColor="#0b0320"
+                    android:textStyle="normal"
+                    android:textSize="12.7sp"
                     android:lines="1"
-                    android:fontFamily="@font/poppins_medium"
                     android:id="@+id/transAmount"
                     android:background="@drawable/textviewborder"/>
                 <EditText
@@ -218,6 +246,12 @@
                     android:layout_height="79dp"
                     android:layout_marginTop="20dp"
                     android:padding="10dp"
+                    android:fontFamily="@font/nexa_book"
+                    android:textColorHint="#8c8a9a"
+                    android:textCursorDrawable="@color/blue_grey"
+                    android:textColor="#0b0320"
+                    android:textStyle="normal"
+                    android:textSize="12.7sp"
                     android:inputType="textMultiLine"
                     android:hint="Message"
                     android:background="@drawable/textviewborder"/>
@@ -230,14 +264,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPurple"
-                android:fontFamily="@font/poppins_medium"
                 android:onClick="transferMoney"
                 android:text="Continue"
                 android:textAllCaps="false"
                 android:layout_marginEnd="24dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="52.7dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="normal"
+                android:textSize="12.7sp"
+                android:textColor="#ffffff"
                 android:layout_marginStart="24dp"
-                android:textColor="@color/colorWhite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

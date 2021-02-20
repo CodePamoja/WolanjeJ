@@ -27,14 +27,11 @@ public class BillManagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                AllBillsFragment allBillsFragment = new AllBillsFragment();
-                return allBillsFragment;
+                return new AllBillsFragment();
             case 1:
-                UnpaidFragment unpaidFragment = new UnpaidFragment();
-                return unpaidFragment;
+                return new UnpaidFragment();
             case 2:
-                PaidFragment paidFragment = new PaidFragment();
-                return paidFragment;
+                return new PaidFragment();
             default:
                 return null;
         }

@@ -11,13 +11,15 @@
         android:id="@+id/txtTvSubscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
         android:layout_marginTop="49dp"
-        android:fontFamily="@font/poppins_regular"
-        android:lineSpacingExtra="8sp"
+        android:fontFamily="@font/nexa_bold"
+        android:gravity="center"
+        android:lineSpacingExtra="5.3sp"
         android:text="Confirmation : Tv Subscription"
-        android:textColor="@color/colorMidnight"
-        android:textSize="18sp"
+        android:textColor="#0b0320"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,12 +29,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/progress"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout10"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/img_TvSubscription"
@@ -58,11 +58,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:fontFamily="@font/poppins_regular"
-            android:lineSpacingExtra="3sp"
-            android:text="Service Provider:"
+            android:fontFamily="@font/nexa_book"
+            android:textStyle="normal"
+            android:textSize="12sp"
             android:textColor="#8c8a9a"
-            android:textSize="13sp" />
+            android:lineSpacingExtra="0.7sp"
+            android:text="Service Provider:" />
 
         <TextView
             android:id="@+id/txtAccountTvSubscription"
@@ -70,24 +71,26 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txt2TvSubscription"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="7dp"
-            android:fontFamily="@font/poppins_regular"
-            android:lineSpacingExtra="3sp"
-            android:text="Account No. :"
+            android:fontFamily="@font/nexa_book"
+            android:textStyle="normal"
+            android:textSize="12sp"
             android:textColor="#8c8a9a"
-            android:textSize="13sp" />
+            android:lineSpacingExtra="0.7sp"
+            android:layout_marginTop="7dp"
+            android:text="Account No. :" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtAccountTvSubscription"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="7dp"
-            android:fontFamily="@font/poppins_regular"
-            android:lineSpacingExtra="3sp"
-            android:text="Amount :"
+            android:fontFamily="@font/nexa_book"
+            android:textStyle="normal"
+            android:textSize="12sp"
             android:textColor="#8c8a9a"
-            android:textSize="13sp" />
+            android:lineSpacingExtra="0.7sp"
+            android:layout_marginTop="7dp"
+            android:text="Amount :" />
 
         <TextView
             android:id="@+id/txt_TvSubscription_sp"
@@ -95,11 +98,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="52dp"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/nexa_bold"
+            android:textStyle="bold"
+            android:textSize="12.7sp"
+            android:textColor="#0b0320"
+            android:lineSpacingExtra="5.3sp"
             android:text="Dstv"
-            android:textAllCaps="false"
-            android:textColor="@color/colorMidnight"
-            android:textSize="16sp" />
+            android:textAllCaps="false" />
 
         <TextView
             android:id="@+id/txt_Account_noTvSubscription"
@@ -109,9 +114,12 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="52dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="070048188532"
-            android:textColor="@color/colorMidnight" />
+            android:fontFamily="@font/nexa_bold"
+            android:textStyle="bold"
+            android:textSize="12.7sp"
+            android:textColor="#0b0320"
+            android:lineSpacingExtra="5.3sp"
+            android:text="070048188532" />
 
         <TextView
             android:id="@+id/txt_amount_EWallet_2_1"
@@ -120,10 +128,13 @@
             android:layout_below="@id/txt_Account_noTvSubscription"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="7dp"
+            android:fontFamily="@font/nexa_bold"
+            android:textStyle="bold"
+            android:textSize="12.7sp"
+            android:textColor="#0b0320"
+            android:lineSpacingExtra="5.3sp"
             android:layout_marginEnd="52dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Kes 15,000"
-            android:textColor="@color/colorMidnight" />
+            android:text="Kes 15,000" />
 
 
     </RelativeLayout>
@@ -141,7 +152,7 @@
     <LinearLayout
         android:id="@+id/linearLayout10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="69dp"
         android:alpha="1"
@@ -155,82 +166,85 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:fontFamily="@font/poppins_bold"
             android:text="Enter PIN"
             android:textColor="@color/colorBlack"
-            android:textSize="25sp" />
+            android:fontFamily="@font/nexa_bold"
+            android:textStyle="bold"
+            android:textSize="14.7sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="15dp"
-
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                app:cardElevation="6dp">
 
                 <EditText
                     android:id="@+id/pinDigit1"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
-                    android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
                     android:inputType="number"
-                    android:maxLength="1" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:layout_margin="16dp">
-
-                <EditText
-                    android:id="@+id/pinDigit2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/textviewborder"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:textCursorDrawable="@color/blue_grey" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 android:layout_margin="16dp"
-                android:clickable="true">
+                app:cardElevation="6dp">
 
                 <EditText
-                    android:id="@+id/pinDigit3"
+                    android:id="@+id/pinDigit2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
                     android:inputType="number"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:textCursorDrawable="@color/blue_grey" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                app:cardElevation="6dp">
+
+                <EditText
+                    android:id="@+id/pinDigit3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textCursorDrawable="@color/blue_grey" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_margin="16dp"
+                app:cardElevation="6dp">
 
                 <EditText
                     android:id="@+id/pinDigit4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/textviewborder"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
                     android:imeOptions="actionGo"
                     android:inputType="number"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:textCursorDrawable="@color/blue_grey" />
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 

@@ -87,4 +87,12 @@
         <item name="boxStrokeColor">@color/gray4</item>
         <item name="boxStrokeWidth">1dp</item>
     </style>
+
+    <style name="spinnerTheme">
+        <item name="android:textColor">#0b0320</item>
+        <item name="hintTextColor">#8c8a9a</item>
+        <item name="android:fontFamily">@font/nexa_bold</item>
+        <item name="android:textSize">12.3sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

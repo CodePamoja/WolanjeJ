@@ -91,29 +91,15 @@ public class EnterPin3 extends AppCompatActivity {
             case "LinkAccount11":
                 break;
             case "HomePayNet":
-                if (activePaymentMethod == null){
-                    Intent intent = new Intent(EnterPin3.this, LinkAccount11.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("Class", "Enterpin3");
-                    startActivity(intent);
-                    finish();
-                }
                 this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);
                 this.Amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);
                 this.product_name = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
                 textViewAccountNumber.setText(AccountNumber);
                 textViewAmount.setText(Amount);
+                txtWallet3_Pay.setText("Confirmation: Buy Internet");
                 getProceedIntent();
                 break;
             case "HomePayElectricity":
-
-                if (activePaymentMethod == null){
-                    Intent intent = new Intent(EnterPin3.this, LinkAccount11.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("Class", "Enterpin3");
-                    startActivity(intent);
-                    finish();
-                }
                 this.AccountNumber = intentExtra.getStringExtra(Home.EXTRA_ACCOUNTNUMBER);
                 this.product_name = intentExtra.getStringExtra(Home.EXTRA_PRODUCT_NAME);
                 this.Amount = intentExtra.getStringExtra(Home.EXTRA_AMOUNT);

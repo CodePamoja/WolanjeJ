@@ -13,9 +13,6 @@
             </item>
             <item
             android:drawable="@drawable/ic_dropdown_arrow"
-                android:fontFamily="@font/nexa_bold"
-                android:textSize="9.3sp"
-                android:textStyle="bold"
             android:gravity="end|center_vertical">
 
         </item>

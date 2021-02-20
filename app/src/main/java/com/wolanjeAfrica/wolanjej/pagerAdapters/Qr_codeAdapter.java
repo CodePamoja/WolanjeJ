@@ -24,11 +24,9 @@ public class Qr_codeAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                fragment_qr_code fragment_qr_code = new fragment_qr_code();
-                return fragment_qr_code;
+                return new fragment_qr_code();
             case 1:
-                fragment_scan_code fragment_scan_code = new fragment_scan_code();
-                return fragment_scan_code;
+                return new fragment_scan_code();
 
         }
         return null;
