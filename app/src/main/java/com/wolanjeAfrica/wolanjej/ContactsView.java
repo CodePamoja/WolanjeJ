@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -22,25 +25,47 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.wolanjeAfrica.wolanjej.models.SelectUser;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsView extends AppCompatActivity {
 
+    private static final String TAG = "ContactsView";
+    private static final String EXTRA_PHONE = "com.example.wolanjej.SelectUserList";
     private DatabaseAdapter mydb;
     private SelectUserAdapter suAdapter;
     public static final int PERMISSIONS_REQUEST_READ_CONTACTS = 1;
+    public static List<SelectUser> listOfMultiUserContactView = new ArrayList<>();
     private RecyclerView recyclerView;
     private SearchView search;
     private String classType;
     private String className;
+    private LinearLayout linearLayout1;
+    private RelativeLayout relativeLayout;
+    public MaterialButton button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts_view);
+        linearLayout1 =findViewById(R.id.holdandp);
+        relativeLayout = findViewById(R.id.Rlayoutbottom);
+        button = findViewById(R.id.continuePaymentMultipleUsers);
+
+        button.setOnClickListener(v -> {
+            listOfMultiUserContactView = SelectUserAdapter.getListOfSelectedUsers();
+            if (listOfMultiUserContactView.size() > 0){
+                Intent move = new Intent(ContactsView.this, TransferToWalletMultiple40.class);
+                move.putExtra("Class","SelectUserAdapter");
+                move.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(move);
+            }
+        });
+
 
         search = (SearchView) findViewById(R.id.searchView);
         setToolBar();
@@ -65,6 +90,8 @@ public class ContactsView extends AppCompatActivity {
                 this.classType = intentExtra.getStringExtra(TopupOtherNumber.EXTRA_CLASSTYPE);
                 break;
             case "TransferToWalletMultiple":
+                linearLayout1.setVisibility(View.VISIBLE);
+                relativeLayout.setVisibility(View.VISIBLE);
                 this.classType = intentExtra.getStringExtra(TransferToWalletMultiple40.EXTRA_CLASSTYPE);
                 break;
             case "TransferToWalletMultiple2":
@@ -83,48 +110,38 @@ public class ContactsView extends AppCompatActivity {
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
         getSupportActionBar().setTitle("");
-        tb.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent movetoLogo = null;
-                        switch (className) {
-                            case "Home":
-                                movetoLogo = new Intent(ContactsView.this, Home.class);
-                                break;
-                            case "TransferToPhone50":
-                                movetoLogo = new Intent(ContactsView.this, TransferToPhone50.class);
-                                break;
-                            case "TransferToWalletSingle37":
-                                movetoLogo = new Intent(ContactsView.this, TransferToWalletSingle37.class);
-                                break;
-                            case "TransferToBank44":
-                                movetoLogo = new Intent(ContactsView.this, TransferToBank44.class);
-                                break;
-                            case "TopUpOtherNumber":
-                                movetoLogo = new Intent(ContactsView.this, TopupOtherNumber.class);
-                                break;
-                            case "TransferToWalletMultiple":
-                            case "TransferToWalletMultiple2":
-                                movetoLogo = new Intent(ContactsView.this, TransferToWalletMultiple40.class);
-                                break;
-                        }
-                        final Intent finalMovetoLogo = movetoLogo;
-                        finalMovetoLogo.putExtra("Class", "ContactsView");
-                        startActivity(finalMovetoLogo);
+        tb.setNavigationOnClickListener(v -> {
+                    Intent movetoLogo = null;
+                    switch (className) {
+                        case "Home":
+                            movetoLogo = new Intent(ContactsView.this, Home.class);
+                            break;
+                        case "TransferToPhone50":
+                            movetoLogo = new Intent(ContactsView.this, TransferToPhone50.class);
+                            break;
+                        case "TransferToWalletSingle37":
+                            movetoLogo = new Intent(ContactsView.this, TransferToWalletSingle37.class);
+                            break;
+                        case "TransferToBank44":
+                            movetoLogo = new Intent(ContactsView.this, TransferToBank44.class);
+                            break;
+                        case "TopUpOtherNumber":
+                            movetoLogo = new Intent(ContactsView.this, TopupOtherNumber.class);
+                            break;
+                        case "TransferToWalletMultiple":
+                        case "TransferToWalletMultiple2":
+                            movetoLogo = new Intent(ContactsView.this, TransferToWalletMultiple40.class);
+                            break;
                     }
+                    final Intent finalMovetoLogo = movetoLogo;
+                    finalMovetoLogo.putExtra("Class", "ContactsView");
+                    startActivity(finalMovetoLogo);
                 }
         );
         Window window = this.getWindow();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-        // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-        // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bShadeGray));
     }
 
@@ -172,7 +189,7 @@ public class ContactsView extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<SelectUser> selectUsers) {
             if (!selectUsers.isEmpty()) {
-                suAdapter = new SelectUserAdapter(ContactsView.this, selectUsers, classType);
+                suAdapter = new SelectUserAdapter(ContactsView.this,R.layout.activity_contacts_view, selectUsers, classType);
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(ContactsView.this));
                 recyclerView.setAdapter(suAdapter);
@@ -187,27 +204,15 @@ public class ContactsView extends AppCompatActivity {
     public void requestContactPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                        android.Manifest.permission.READ_CONTACTS)) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_CONTACTS)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setTitle("Read Contacts permission");
                     builder.setPositiveButton(android.R.string.ok, null);
                     builder.setMessage("Please enable access to contacts.");
-                    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                        @TargetApi(Build.VERSION_CODES.M)
-                        @Override
-                        public void onDismiss(DialogInterface dialog) {
-                            requestPermissions(
-                                    new String[]
-                                            {android.Manifest.permission.READ_CONTACTS}
-                                    , PERMISSIONS_REQUEST_READ_CONTACTS);
-                        }
-                    });
+                    builder.setOnDismissListener(dialog -> requestPermissions(new String[]{android.Manifest.permission.READ_CONTACTS},PERMISSIONS_REQUEST_READ_CONTACTS));
                     builder.show();
                 } else {
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{android.Manifest.permission.READ_CONTACTS},
-                            PERMISSIONS_REQUEST_READ_CONTACTS);
+                    ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_CONTACTS}, PERMISSIONS_REQUEST_READ_CONTACTS);
                 }
             } else {
                 getContacts();
@@ -230,5 +235,11 @@ public class ContactsView extends AppCompatActivity {
                 return;
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        listOfMultiUserContactView.clear();
     }
 }

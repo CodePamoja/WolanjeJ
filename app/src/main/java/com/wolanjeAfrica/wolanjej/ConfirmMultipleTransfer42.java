@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.wolanjeAfrica.wolanjej.models.SelectUser;
 import com.wolanjeAfrica.wolanjej.models.Transactions;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.ConfirmMultipleTransaction;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.RecyclerViewHomeAdapter;
@@ -38,7 +39,7 @@ public class ConfirmMultipleTransfer42 extends AppCompatActivity {
     private String agentName;
     private String sessionId;
     private Transactions transactions;
-    private List<Transactions> transactionsList;
+    public static List<SelectUser> listOfMultiUserConfirmMultipleTransfer42= new ArrayList<>();
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -53,8 +54,8 @@ public class ConfirmMultipleTransfer42 extends AppCompatActivity {
         this.agentName = intent.getStringExtra(TransferToWalletMultiple40.EXTRA_AGENTNO);
         Bundle bundle = getIntent().getExtras();
         transactions = bundle.getParcelable("transactions");
-        transactionsList = new ArrayList<>(transactions.getTransactionsList());
-        List<Transactions> listWithoutDuplicates = transactionsList.stream()
+        listOfMultiUserConfirmMultipleTransfer42 = TransferToWalletMultiple40.listOfMultiUserTransferToWalletMultiple40;
+        List<SelectUser> listWithoutDuplicates = listOfMultiUserConfirmMultipleTransfer42.stream()
                 .distinct()
                 .collect(Collectors.toList());
         initTransferRecyclerList(listWithoutDuplicates);
@@ -84,7 +85,7 @@ public class ConfirmMultipleTransfer42 extends AppCompatActivity {
 
 
 
-    private void initTransferRecyclerList( List<Transactions> transactionsList) {
+    private void initTransferRecyclerList( List<SelectUser> transactionsList) {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(ConfirmMultipleTransfer42.this, LinearLayoutManager.VERTICAL, false);
         RecyclerView recyclerView = findViewById(R.id.multipletransactions);

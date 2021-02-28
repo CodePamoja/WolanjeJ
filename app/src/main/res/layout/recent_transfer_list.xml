@@ -32,14 +32,12 @@
                 android:layout_below="@id/image_transfer_list"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textSize="12.7sp"
+                android:textColor="#939292"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/colorMidnight"
-                android:layout_marginBottom="5dp"
-                android:textStyle="normal"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeMaxTextSize="15dp"/>
+                android:layout_marginBottom="5dp" />
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>

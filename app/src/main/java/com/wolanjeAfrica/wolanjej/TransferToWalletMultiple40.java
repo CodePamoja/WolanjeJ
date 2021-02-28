@@ -21,11 +21,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.wolanjeAfrica.wolanjej.Utils.CheckPhoneNumber;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
-import com.wolanjeAfrica.wolanjej.models.Transactions;
+import com.wolanjeAfrica.wolanjej.models.SelectUser;
+import com.wolanjeAfrica.wolanjej.recyclerAdapters.MultipleUsersTransactionsAdapter;
 import com.wolanjeAfrica.wolanjej.recyclerAdapters.SelectUserAdapter;
 
 import java.text.SimpleDateFormat;
@@ -53,25 +55,20 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
     private ArrayAdapter adapter;
     private SharedPreferences pref;
     private Button button1, button2;
-    private static List<Transactions> transactionsList = new ArrayList<>();
-
+    public static List<SelectUser> listOfMultiUserTransferToWalletMultiple40= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_to_wallet_multiple40);
         setToolBar();
+
         pref = getApplication().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
         this.sessionID = pref.getString("session_token", "");
         this.AGENTNO = pref.getString("agentno", "");
 
-
-        button1 = (Button) findViewById(R.id.buttonContactsMultiple1);
-        button2 = (Button) findViewById(R.id.buttonContactsMultiple2);
         textView = (TextView) findViewById(R.id.balancetxtTMwallet);
-        editText1 = (EditText) findViewById(R.id.amountMultipleTransfer);
-        editText2 = (EditText) findViewById(R.id.messageMultipleTransfers);
-
+        editText1 = findViewById(R.id.amount_to_send_multiple_users);
 
         // Get the Intent that started this activity and extract the string
         Intent intentExtra = getIntent();
@@ -84,11 +81,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
                 break;
             case "SelectUserAdapter": {
                 this.phoneNumber = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_PHONE);
-                String userName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-                this.phoneName = intentExtra.getStringExtra(SelectUserAdapter.EXTRA_NAME);
-                button1.setEnabled(false);
-                EditText tvtext = findViewById(R.id.editTxtWalletMultiple);
-                tvtext.setText(userName);
+                listOfMultiUserTransferToWalletMultiple40 = ContactsView.listOfMultiUserContactView;
                 break;
             }
 
@@ -119,6 +112,7 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
                 }
             }
         });
+        initTransferRecyclerList();
     }
 
 
@@ -143,9 +137,8 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
     }
 
     private void setToolBar() {
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar tb = (Toolbar) findViewById(R.id.include7);
         setSupportActionBar(tb);
-        getSupportActionBar().setTitle("");
         final Intent movetoLogo = new Intent(this, MainTransfer36.class);
         tb.setNavigationOnClickListener(
                 v -> {
@@ -163,23 +156,15 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
     }
 
 
-    public void MoveToContacts(View view) {
-        Intent move = new Intent(this, ContactsView.class);
-        move.putExtra("Class", "TransferToWalletMultiple");
-        move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra(EXTRA_AGENTNO, AGENTNO);
-        move.putExtra(EXTRA_CLASSTYPE, "walletMultiple");
-        startActivity(move);
-        finish();
+    private void initTransferRecyclerList() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(TransferToWalletMultiple40.this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView recyclerView = findViewById(R.id.selected_multiple_users);
+        recyclerView.setLayoutManager(layoutManager);
+        MultipleUsersTransactionsAdapter adapter = new MultipleUsersTransactionsAdapter(TransferToWalletMultiple40.this,listOfMultiUserTransferToWalletMultiple40);
+        recyclerView.setAdapter(adapter);
+
     }
-
-
     public void AddTransaction(View view) {
-        List<Transactions> transactions = NewTransaction();
-        if (transactions == null){
-            Toast.makeText(this, "please provide all the details", Toast.LENGTH_SHORT).show();
-            return;
-        }
         Intent move = new Intent(this, ContactsView.class);
         move.putExtra("Class", "TransferToWalletMultiple");
         move.putExtra(EXTRA_SESSION, sessionID);
@@ -189,25 +174,6 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
         finish();
     }
 
-    private List<Transactions> NewTransaction() {
-        Transactions transactions = new Transactions();
-        View view = null;
-        String amount = editText1.getText().toString();
-        String message = editText2.getText().toString();
-        if (amount.isEmpty() || message.isEmpty()) {
-            return null;
-        }
-        String checkedPhoneNumber = CheckPhoneNumber.getInstance().changePhoneNo(TransferToWalletMultiple40.this, phoneNumber, view);
-        transactions.setAmount(amount);
-        transactions.setMessage(message);
-        transactions.setPhone(checkedPhoneNumber);
-        transactions.setRecepient_name(phoneName);
-        transactions.setTransactionInitializer(AGENTNO);
-        transactions.setDate(dateTime());
-        transactionsList.add(transactions);
-        return transactionsList;
-
-    }
     public String dateTime() {
 
         Calendar calendar = Calendar.getInstance();
@@ -217,23 +183,23 @@ public class TransferToWalletMultiple40 extends AppCompatActivity implements Ada
     }
 
     public void Maketransfer(View view) {
-        List<Transactions> transactions = NewTransaction();
-        Transactions transactions1 = new Transactions();
-        if (transactions == null){
-            Toast.makeText(this, "provide all the details ", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        transactions1.setTransactionsList(transactionsList);
-        Intent move = new Intent(this, ConfirmMultipleTransfer42.class);
-        Bundle bundle = new Bundle();
-        move.putExtra(EXTRA_SESSION, sessionID);
-        move.putExtra(EXTRA_AGENTNO, AGENTNO);
-        bundle.putParcelable("transactions", transactions1);
-        move.putExtras(bundle);
-        startActivity(move);
-        transactionsList.clear();
-        finish();
+        String amount = editText1.getText().toString();
+        if (amount.isEmpty()){
+            Toast.makeText(this, "Provide Amount", Toast.LENGTH_SHORT).show();
+        }else {
+            listOfMultiUserTransferToWalletMultiple40.forEach(selectUser1 -> {
+                selectUser1.setDate(dateTime());
+                selectUser1.setAmount(amount);
+            });
 
+            Intent move = new Intent(this, ConfirmMultipleTransfer42.class);
+            Bundle bundle = new Bundle();
+            move.putExtra(EXTRA_SESSION, sessionID);
+            move.putExtra(EXTRA_AGENTNO, AGENTNO);
+            move.putExtras(bundle);
+            startActivity(move);
+            finish();
+        }
     }
 
 }

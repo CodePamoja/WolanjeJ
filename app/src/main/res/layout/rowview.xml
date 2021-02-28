@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clickable="true"
+    android:id="@+id/contact_rowview_layout"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,29 +34,26 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@id/no"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignWithParentIfMissing="true"
-                android:layout_toRightOf="@id/pic"
+                android:fontFamily="@font/nexa_bold"
+                android:textStyle="bold"
+                android:textSize="12.7sp"
+                android:textColor="#0b0320"
                 android:gravity="center_vertical"
-                android:text="Name"
-                android:textSize="16sp"
-                android:textColor="@color/colorBlack"/>
+                android:text="Name" />
 
             <TextView
                 android:id="@+id/no"
                 android:layout_width="fill_parent"
-                android:layout_height="26dip"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/pic"
+                android:layout_height="wrap_content"
                 android:ellipsize="marquee"
                 android:text="Phone Number"
+                android:fontFamily="@font/nexa_book"
+                android:textStyle="normal"
+                android:textColor="#8c8a9a"
                 android:textSize="12sp"
-                android:singleLine="true" />/>
+                android:singleLine="true" />
 
         </LinearLayout>
 

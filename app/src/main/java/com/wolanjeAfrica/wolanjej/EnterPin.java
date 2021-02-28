@@ -34,6 +34,7 @@ import com.wolanjeAfrica.wolanjej.ViewModels.TransactionApi;
 import com.wolanjeAfrica.wolanjej.ViewModels.UserBalanceViewModel;
 import com.wolanjeAfrica.wolanjej.models.BalanceModel;
 
+import com.wolanjeAfrica.wolanjej.models.SelectUser;
 import com.wolanjeAfrica.wolanjej.models.Transactions;
 
 
@@ -66,11 +67,10 @@ public class EnterPin extends AppCompatActivity {
     private SharedPreferences pref;
     private final String TAG = "EnterPin";
     private ProgressBar progressBar;
-    private Transactions transactions;
     private String userId;
     private Realm realm;
     private String bank_ProductName;
-    private List<Transactions> transactionsList;
+    private List<SelectUser> transactionsList;
 
     public EnterPin() {
     }
@@ -161,9 +161,7 @@ public class EnterPin extends AppCompatActivity {
                 parentClassName = intentExtra.getStringExtra(Top_up.EXTRA_PARENTCLASSNAME);
                 break;
             case "ConfirmMultipleTransfer":
-                Bundle bundle = getIntent().getExtras();
-                transactions = bundle.getParcelable("transactions");
-                transactionsList = transactions.getTransactionsList();
+                transactionsList = TransferToWalletMultiple40.listOfMultiUserTransferToWalletMultiple40;
                 parentClassName = intentExtra.getStringExtra(ConfirmMultipleTransfer42.EXTRA_PARENTCLASSNAME);
                 break;
             case "ConfirmTransferToPhone52":
@@ -259,142 +257,137 @@ public class EnterPin extends AppCompatActivity {
     }
 
     private void ImplementService() {
-        text4.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        text4.setOnEditorActionListener((v, actionId, event) -> {
 
-                String pin1 = text1.getText().toString();
+            String pin1 = text1.getText().toString();
 
-                String pin2 = text2.getText().toString();
+            String pin2 = text2.getText().toString();
 
-                String pin3 = text3.getText().toString();
+            String pin3 = text3.getText().toString();
 
-                String pin4 = text4.getText().toString();
+            String pin4 = text4.getText().toString();
 
-                String fullPin = pin1 + pin2 + pin3 + pin4;
-                Intent intentExtra = getIntent();
-                String className = getIntent().getStringExtra("Class");
-                Intent intent;
-                switch (className) {
-                    case "BillManager":
-                        showPopup();
-                        break;
-                    case "Homeloans":
-                        intent = new Intent(EnterPin.this, Home.class);
-                        intent.putExtra("Class", "EnterPinloan");
+            String fullPin = pin1 + pin2 + pin3 + pin4;
+            Intent intentExtra = getIntent();
+            String className = getIntent().getStringExtra("Class");
+            Intent intent;
+            switch (className) {
+                case "BillManager":
+                    showPopup();
+                    break;
+                case "Homeloans":
+                    intent = new Intent(EnterPin.this, Home.class);
+                    intent.putExtra("Class", "EnterPinloan");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case "HomeTwoloans":
+                    intent = new Intent(EnterPin.this, HomeTwo.class);
+                    intent.putExtra("Class", "EnterPinloan");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case "ScholarShip06":
+                    if (ValidateUserPin(fullPin)) {
+                        intent = new Intent(EnterPin.this, Scholarship06.class);
+                        intent.putExtra("Class", "EnterPin");
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
-                        break;
-                    case "HomeTwoloans":
-                        intent = new Intent(EnterPin.this, HomeTwo.class);
-                        intent.putExtra("Class", "EnterPinloan");
+                    } else {
+                        Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case "Education_2":
+                    if (ValidateUserPin(fullPin)) {
+                        intent = new Intent(getApplicationContext(), Education1.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("Class", "EnterPin");
                         startActivity(intent);
                         finish();
-                        break;
-                    case "ScholarShip06":
-                        if (ValidateUserPin(fullPin)) {
-                            intent = new Intent(EnterPin.this, Scholarship06.class);
-                            intent.putExtra("Class", "EnterPin");
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case "Education_2":
-                        if (ValidateUserPin(fullPin)) {
-                            intent = new Intent(getApplicationContext(), Education1.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra("Class", "EnterPin");
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case "ConfirmMultipleTransfer":
-                        if (ValidateUserPin(fullPin)) {
-                            for (Transactions transactions :transactionsList){
-                                PerformTransaction("WALLET_XFER",transactions.getPhone(),transactions.getPhone(),transactions.getAmount());
-                            }
-                        } else {
-                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case "BookBus06":
-                        if (ValidateUserPin(fullPin)) {
-                            intent = new Intent(getApplicationContext(), BookBus09.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case "TransferToWalletSingle37":
-                        if (ValidateUserPin(fullPin)) {
-                            PerformTransaction("WALLET_XFER",phoneNumber,phoneNumber,amount);
-                        } else {
-                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case "TransferToPhone50":
-                    case "ConfirmTransferToPhone52":
-                        if (ValidateUserPin(fullPin)) {
-                            switch (phoneProvider) {
-                                //Case statements
-                                case "safaricom":
-                                    PerformTransaction("MPESA_B2C",phoneNumber,phoneNumber,amount);
-                                    break;
-                                case "airtel":
-                                    PerformTransaction("AIRTEL_B2C",phoneNumber,phoneNumber,amount);
-                                    break;
-                                case "telkom":
+                    } else {
+                        Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case "ConfirmMultipleTransfer":
+                    if (ValidateUserPin(fullPin)) {
+                        transactionsList.forEach(selectUser -> PerformTransaction("WALLET_XFER",selectUser.getPhone(),selectUser.getPhone(),selectUser.getAmount()));
+                    } else {
+                        Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case "BookBus06":
+                    if (ValidateUserPin(fullPin)) {
+                        intent = new Intent(getApplicationContext(), BookBus09.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case "TransferToWalletSingle37":
+                    if (ValidateUserPin(fullPin)) {
+                        PerformTransaction("WALLET_XFER",phoneNumber,phoneNumber,amount);
+                    } else {
+                        Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case "TransferToPhone50":
+                case "ConfirmTransferToPhone52":
+                    if (ValidateUserPin(fullPin)) {
+                        switch (phoneProvider) {
+                            //Case statements
+                            case "safaricom":
+                                PerformTransaction("MPESA_B2C",phoneNumber,phoneNumber,amount);
+                                break;
+                            case "airtel":
+                                PerformTransaction("AIRTEL_B2C",phoneNumber,phoneNumber,amount);
+                                break;
+                            case "telkom":
 
-                                    PerformTransaction("TKASH_B2C",phoneNumber,phoneNumber,amount);
-                                    break;
-                                default:
-                                    System.out.println("Not an airtel, safaricom or telkom");
-                            }
-                        } else {
-                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                                PerformTransaction("TKASH_B2C",phoneNumber,phoneNumber,amount);
+                                break;
+                            default:
+                                System.out.println("Not an airtel, safaricom or telkom");
+                        }
+                    } else {
+                        Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case "TransferToBank44":
+                    if (ValidateUserPin(fullPin)) {
+
+                        PerformTransaction(bank_ProductName,accNumber,phoneNumber,amount);
+                    } else {
+                        Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case "TopUpOtherNumber":
+                case "Top_up":
+                    if (ValidateUserPin(fullPin)) {
+                        switch (phoneProvider) {
+                            //Case statements
+                            case "safaricom":
+                                PerformTransaction("SAF_ATP",phoneNumber,phoneNumber,amount);
+                                break;
+                            case "airtel":
+
+                                PerformTransaction("AIRTEL_ATP",phoneNumber, phoneNumber, amount );
+                                break;
+                            case "telkom":
+
+                                PerformTransaction("TKASH_ATP",phoneNumber, phoneNumber, amount );
+                                break;
+                            default:
+                                System.out.println("Not an airtel, safaricom or telkom");
                         }
                         break;
-                    case "TransferToBank44":
-                        if (ValidateUserPin(fullPin)) {
-
-                            PerformTransaction(bank_ProductName,accNumber,phoneNumber,amount);
-                        } else {
-                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case "TopUpOtherNumber":
-                    case "Top_up":
-                        if (ValidateUserPin(fullPin)) {
-                            switch (phoneProvider) {
-                                //Case statements
-                                case "safaricom":
-                                    PerformTransaction("SAF_ATP",phoneNumber,phoneNumber,amount);
-                                    break;
-                                case "airtel":
-
-                                    PerformTransaction("AIRTEL_ATP",phoneNumber, phoneNumber, amount );
-                                    break;
-                                case "telkom":
-
-                                    PerformTransaction("TKASH_ATP",phoneNumber, phoneNumber, amount );
-                                    break;
-                                default:
-                                    System.out.println("Not an airtel, safaricom or telkom");
-                            }
-                            break;
-                        } else {
-                            Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
-                        }
-                }
-                return false;
+                    } else {
+                        Toast.makeText(EnterPin.this, "Invalid pin", Toast.LENGTH_SHORT).show();
+                    }
             }
+            return false;
         });
     }
 
