@@ -132,8 +132,9 @@ public class LogIn extends AppCompatActivity {
         );
 
         if (Build.VERSION.SDK_INT > 8) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
+//            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().allow;
+            StrictMode.setThreadPolicy(StrictMode.allowThreadDiskReads());
         }
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         setActionBarColor();
